@@ -1,0 +1,12 @@
+num,x,y,name,genus,species,img
+1,40.692222,-73.975278,Ginkgo,Ginkgo,biloba,ginkgo.png
+2,50.6925,-103.975278,Northern Red Oak,Quercus,rubra,northernredoak.png
+3,60.692222,-83.975833,Black Locust,Robinia,pseudoacacia,blacklocust.png
+4,70.692222,-79.975833,Japanese Zelkova,Zelkova,serrata,zelkova.png
+5,25.692222,-71.975833,Honey Locust,Gleditsia,triacanthos,honeylocust.png
+7,66.691389,-53.978611,Mulberry,Morus,,mulberry.png
+19,88.691111,-45.975,Goldenrain Tree,Koelreuteria,paniculata,goldenrain.png
+-28,55.68999,23.974882,Pin Oak,Quercus,palustris,pinoak.png
+29,54.690039,-99.974758,Eastern White Pine,Pinus,strobus,easternwhitepine.png
+98,55.68999,-73.974882,Pin Oak,Quercus,palustris,pinoak.png
+25,-25.68999,123.974882,Pin Oak,Quercus,palustris,pinoak.png

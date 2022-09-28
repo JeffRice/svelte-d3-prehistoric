@@ -1,0 +1,121 @@
+<script>
+  // selected dates on the timeline (= the spots)
+  import { panelHeight } from '../stores/dimensions';
+  import { timeScale } from '../stores/scales';
+  import { spottooltipable } from '../actions/spottooltipable';
+  import { drawWrapper } from '../stores/elements';
+  import { createTweenedPos } from '../transitions/tween';
+
+  export let spot;
+
+  const x = createTweenedPos();
+
+  const lineLength = 35;
+  const offset = 5;
+  let yScaleText, mapScaleText, timeScaleText;
+
+
+  $: $x = $timeScale(spot.date);
+
+
+</script>
+
+
+<g class="labels">
+  <g class="time-scale">
+<g class="spot time-scale-label"
+    transform="translate({$x} -20)"
+    use:spottooltipable={{data: spot, target: $drawWrapper, top: $panelHeight + 20}}>
+
+
+            <rect x="0" y ="-20" width="35" height="40" rx="5" />
+
+
+            <path d="M0 0l{lineLength} 0"></path>
+            <text class="bg"
+                  dx={lineLength + offset}
+                  dy="4">{spot.name} Era </text>
+            <text bind:this={timeScaleText}
+                  dx={lineLength + offset}
+                  dy="4">{spot.name} Era </text>
+            <path d="M{timeScaleText ? timeScaleText.getComputedTextLength() + lineLength + 2 * offset: 0} 0l{lineLength} 0"
+                  marker-end="url(#arrow)"></path>
+ <!--
+  
+  <circle cx="0" cy="0" r="5"></circle>
+  <circle class="bait" cx="0" cy="0" r="10"></circle>
+ -->
+
+</g>
+</g>
+</g>
+
+<style>
+  g.spot {
+    pointer-events: all;
+    cursor: pointer;
+  }
+
+  g.spot:hover circle:not(.bait) {
+    fill: var(--dfrlab-gray);
+  }
+
+  circle {
+    stroke: var(--dfrlab-gray);
+    stroke-width: 0.13rem;
+    stroke-opacity: 0.9;
+    fill: var(--bg);
+    transition: all 200ms ease;
+  }
+
+  circle.bait {
+    fill: none;
+    stroke: none;
+  }
+
+  rect {
+    stroke: var(--dfrlab-gray);
+    stroke-width: 0.13rem;
+    stroke-opacity: 0.9;
+    fill: var(--bg);
+    transition: all 200ms ease;
+  }
+
+  rect.bait {
+    fill: none;
+    stroke: none;
+  }
+
+  .time-scale text {
+    fill: var(--text-darkgray);
+    font-family: var(--font-02);
+    font-size: 0.7rem;
+    text-anchor: middle;
+  }
+
+  .time-scale-label text {
+    text-anchor: start;
+  }
+
+
+
+  .time-scale circle {
+    stroke: none;
+    fill: var(--dfrlab-gray);
+  }
+
+  .y-scale-ticks text, .y-scale text, .map-scale text {
+    fill: var(--text-darkgray);
+    font-family: var(--font-02);
+    font-size: 0.7rem;
+  }
+
+  .y-scale-ticks text {
+    font-size: 0.6rem;
+  }
+
+  .time-scale path, .y-scale path, .map-scale path {
+    stroke: var(--text-darkgray);
+    stroke-width: 0.1rem;
+  }
+</style>
