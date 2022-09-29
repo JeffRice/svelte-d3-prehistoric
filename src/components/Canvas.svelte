@@ -9,11 +9,12 @@
 
   let canvas;
 
-  import {select, geoEqualEarth, geoGraticule, geoNaturalEarth1, geoStereographic, geoMercator, geoPath as d3geoPath} from "d3"
+  import {select, geoGraticule, geoNaturalEarth1, geoMercator, geoPath as d3geoPath} from "d3"
   import { onMount, afterUpdate } from "svelte";
-  import { feature, quantize, transform, topology, mergeArcs } from "topojson";
+  import { feature } from "topojson";
   import loadFossilSpots from '../utils/loadFossilSpots';
   import loadFossilSpots2 from '../utils/loadFossilSpots2';
+  import loadFossilSpots3 from '../utils/loadFossilSpots3';
 
   
 
@@ -22,8 +23,10 @@
   let graticule;
   let fossilSpots;
   let fossilSpots2;
+  let fossilSpots3;  
   let originalFossilSpots;
   let switchValue;
+  let mesozoic = {};
   
 
 
@@ -54,8 +57,19 @@
 
   fossilSpots = await loadFossilSpots();
   fossilSpots2 = await loadFossilSpots2();
+  fossilSpots3 = await loadFossilSpots3();  
   originalFossilSpots = await loadFossilSpots();
 
+
+ // console.log(fossilSpots);
+
+
+
+  mesozoic.jurassic = fossilSpots;
+  mesozoic.triassic = fossilSpots2;
+  mesozoic.cretaceous = fossilSpots3;
+
+  // console.log(mesozoic);
 
   });
 
@@ -73,7 +87,7 @@ another way to redraw on updates
 
 
  // $: if (canvas && $countries.length > 0) {
-  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && originalFossilSpots) {
+  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalFossilSpots) {
   //  console.log('countries store', $countries)
  //   console.log('fossilSpots: ', fossilSpots)
 
@@ -142,25 +156,71 @@ let info = base.append("div")
 function createMap(dataset) {
 
 
-    
+  ctx.globalAlpha = .2
   var dataBinding = locations.selectAll("points.arc")
-    .data(dataset)
+
+    .data(dataset.jurassic)
   
   		.enter()
       .append("points")
       .classed("arc", true)
       .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
       .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
-      .attr("radius", 3)
+      .attr("radius", 9)
       .attr("fillStyle", "#34B2C9")
-      
-
-
 
 
       
+      drawCanvas();
+
+     
+
+}
+
+function createTriassicMap(dataset) {
+
+
+  ctx.globalAlpha = .2
+var dataBinding = locations.selectAll("points.arc")
+
+  .data(dataset.triassic)
+
+    .enter()
+    .append("points")
+    .classed("arc", true)
+    .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
+    .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
+    .attr("radius", 9)
+    .attr("fillStyle", "purple")
+
+
+    drawCanvas();
+
+
+
+}
+
+function createCretaceousMap(dataset) {
+
+
+ctx.globalAlpha = 0.015
+var dataBinding = locations.selectAll("points.arc")
+
+.data(dataset.cretaceous)
+
+  .enter()
+  .append("points")
+  .classed("arc", true)
+  .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
+  .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
+  .attr("radius", 9)
+  .attr("fillStyle", "yellow")
+
+
   drawCanvas();
-  
+
+
+
 }
 
 function drawCanvas() {
@@ -173,6 +233,9 @@ function drawCanvas() {
 		ctx.arc(node.attr("x"), node.attr("y"), node.attr("radius"), 0, 2 * Math.PI);
 		ctx.fillStyle = node.attr("fillStyle");
     ctx.fill();
+    ctx.lineWidth = 0.5;
+      ctx.strokeStyle = '#000000';
+      ctx.stroke();
     ctx.closePath();
 	})
 
@@ -233,9 +296,16 @@ ctx.clearRect(0, -$panelHeight, $width, $height);
 }
 
 
-createMap(fossilSpots);
 
 
+// createCretaceousMap(mesozoic);
+
+createTriassicMap(mesozoic);
+
+createMap(mesozoic);
+
+
+createCretaceousMap(mesozoic);
 
 
 
@@ -314,10 +384,15 @@ function worldMap() {
 	//	console.log('clear')
   //  console.log('fossilSpots: ', fossilSpots);
   //  console.log('fossilSpots2: ', fossilSpots2)
-
+/*
     fossilSpots = fossilSpots.filter((d) => d.id < 20);
     reDraw();
     return fossilSpots;
+    */
+
+    mesozoic.jurassic = mesozoic.jurassic.filter((d) => d.id < 20);
+    reDraw();
+    return mesozoic;
 
 	}
 
@@ -326,9 +401,10 @@ function worldMap() {
   //  console.log('fossilSpots: ', fossilSpots);
   //  console.log('fossilSpots2: ', fossilSpots2)
 
-    fossilSpots = originalFossilSpots;
+    mesozoic.jurassic = originalFossilSpots;
     reDraw();
-    return fossilSpots;
+    return mesozoic;
+
 
 	}
 
@@ -340,7 +416,7 @@ var elements = locations.selectAll("points.arc");
 // console.log('elements: ', elements)
 
   elements.each(function(d, i) {
-    console.log('element: ', elements[i])
+   // console.log('element: ', elements[i])
   var node = select(this);
  // console.log(d, node, i, this)
 

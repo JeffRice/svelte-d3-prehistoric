@@ -14812,16 +14812,6 @@ var app = (function () {
 	  };
 	}
 
-	function azimuthalInvert(angle) {
-	  return function (x, y) {
-	    var z = sqrt$1(x * x + y * y),
-	        c = angle(z),
-	        sc = sin(c),
-	        cc = cos(c);
-	    return [atan2(x * sc, z * cc), asin(z && y * sc / z)];
-	  };
-	}
-
 	function mercatorRaw(lambda, phi) {
 	  return [lambda, log$2(tan((halfPi + phi) / 2))];
 	}
@@ -14869,38 +14859,6 @@ var app = (function () {
 	  return reclip();
 	}
 
-	var A1 = 1.340264,
-	    A2 = -0.081106,
-	    A3 = 0.000893,
-	    A4 = 0.003796,
-	    M = sqrt$1(3) / 2,
-	    iterations = 12;
-	function equalEarthRaw(lambda, phi) {
-	  var l = asin(M * sin(phi)),
-	      l2 = l * l,
-	      l6 = l2 * l2 * l2;
-	  return [lambda * cos(l) / (M * (A1 + 3 * A2 * l2 + l6 * (7 * A3 + 9 * A4 * l2))), l * (A1 + A2 * l2 + l6 * (A3 + A4 * l2))];
-	}
-
-	equalEarthRaw.invert = function (x, y) {
-	  var l = y,
-	      l2 = l * l,
-	      l6 = l2 * l2 * l2;
-
-	  for (var i = 0, delta, fy, fpy; i < iterations; ++i) {
-	    fy = l * (A1 + A2 * l2 + l6 * (A3 + A4 * l2)) - y;
-	    fpy = A1 + 3 * A2 * l2 + l6 * (7 * A3 + 9 * A4 * l2);
-	    l -= delta = fy / fpy, l2 = l * l, l6 = l2 * l2 * l2;
-	    if (abs$2(delta) < epsilon2) break;
-	  }
-
-	  return [M * x * (A1 + 3 * A2 * l2 + l6 * (7 * A3 + 9 * A4 * l2)) / cos(l), asin(sin(l) / M)];
-	};
-
-	function geoEqualEarth () {
-	  return projection(equalEarthRaw).scale(177.158);
-	}
-
 	function naturalEarth1Raw(lambda, phi) {
 	  var phi2 = phi * phi,
 	      phi4 = phi2 * phi2;
@@ -14923,18 +14881,6 @@ var app = (function () {
 
 	function geoNaturalEarth1 () {
 	  return projection(naturalEarth1Raw).scale(175.295);
-	}
-
-	function stereographicRaw(x, y) {
-	  var cy = cos(y),
-	      k = 1 + cos(x) * cy;
-	  return [cy * sin(x) / k, sin(y) / k];
-	}
-	stereographicRaw.invert = azimuthalInvert(function (z) {
-	  return 2 * atan(z);
-	});
-	function geoStereographic () {
-	  return projection(stereographicRaw).scale(250).clipAngle(142);
 	}
 
 	function ascending$1 (a, b) {
@@ -35191,7 +35137,8 @@ var app = (function () {
 
 	var fossilData = 'jurassic_bigdata.csv'; // export const fossilData = 'westernUSjurassicfossils.csv';
 
-	var fossilData2 = 'ftgreenetrees.csv'; // export const data = '/data/DFRLab_interference2020.csv';
+	var fossilData2 = 'triassicFossils.csv';
+	var fossilData3 = 'cretaceousFossils.csv'; // export const data = '/data/DFRLab_interference2020.csv';
 
 	var spotData = 'timelinedates.csv'; // export const coronaData = 'us.csv';
 
@@ -52916,44 +52863,6 @@ var app = (function () {
 	  };
 	}
 
-	function bbox(topology) {
-	  var t = transform(topology.transform), key,
-	      x0 = Infinity, y0 = x0, x1 = -x0, y1 = -x0;
-
-	  function bboxPoint(p) {
-	    p = t(p);
-	    if (p[0] < x0) x0 = p[0];
-	    if (p[0] > x1) x1 = p[0];
-	    if (p[1] < y0) y0 = p[1];
-	    if (p[1] > y1) y1 = p[1];
-	  }
-
-	  function bboxGeometry(o) {
-	    switch (o.type) {
-	      case "GeometryCollection": o.geometries.forEach(bboxGeometry); break;
-	      case "Point": bboxPoint(o.coordinates); break;
-	      case "MultiPoint": o.coordinates.forEach(bboxPoint); break;
-	    }
-	  }
-
-	  topology.arcs.forEach(function(arc) {
-	    var i = -1, n = arc.length, p;
-	    while (++i < n) {
-	      p = t(arc[i], i);
-	      if (p[0] < x0) x0 = p[0];
-	      if (p[0] > x1) x1 = p[0];
-	      if (p[1] < y0) y0 = p[1];
-	      if (p[1] > y1) y1 = p[1];
-	    }
-	  });
-
-	  for (key in topology.objects) {
-	    bboxGeometry(topology.objects[key]);
-	  }
-
-	  return [x0, y0, x1, y1];
-	}
-
 	function reverse(array, n) {
 	  var t, j = array.length, i = j - n;
 	  while (i < --j) t = array[i], array[i++] = array[j], array[j] = t;
@@ -53026,1073 +52935,6 @@ var app = (function () {
 	  return geometry(o);
 	}
 
-	function stitch(topology, arcs) {
-	  var stitchedArcs = {},
-	      fragmentByStart = {},
-	      fragmentByEnd = {},
-	      fragments = [],
-	      emptyIndex = -1;
-
-	  // Stitch empty arcs first, since they may be subsumed by other arcs.
-	  arcs.forEach(function(i, j) {
-	    var arc = topology.arcs[i < 0 ? ~i : i], t;
-	    if (arc.length < 3 && !arc[1][0] && !arc[1][1]) {
-	      t = arcs[++emptyIndex], arcs[emptyIndex] = i, arcs[j] = t;
-	    }
-	  });
-
-	  arcs.forEach(function(i) {
-	    var e = ends(i),
-	        start = e[0],
-	        end = e[1],
-	        f, g;
-
-	    if (f = fragmentByEnd[start]) {
-	      delete fragmentByEnd[f.end];
-	      f.push(i);
-	      f.end = end;
-	      if (g = fragmentByStart[end]) {
-	        delete fragmentByStart[g.start];
-	        var fg = g === f ? f : f.concat(g);
-	        fragmentByStart[fg.start = f.start] = fragmentByEnd[fg.end = g.end] = fg;
-	      } else {
-	        fragmentByStart[f.start] = fragmentByEnd[f.end] = f;
-	      }
-	    } else if (f = fragmentByStart[end]) {
-	      delete fragmentByStart[f.start];
-	      f.unshift(i);
-	      f.start = start;
-	      if (g = fragmentByEnd[start]) {
-	        delete fragmentByEnd[g.end];
-	        var gf = g === f ? f : g.concat(f);
-	        fragmentByStart[gf.start = g.start] = fragmentByEnd[gf.end = f.end] = gf;
-	      } else {
-	        fragmentByStart[f.start] = fragmentByEnd[f.end] = f;
-	      }
-	    } else {
-	      f = [i];
-	      fragmentByStart[f.start = start] = fragmentByEnd[f.end = end] = f;
-	    }
-	  });
-
-	  function ends(i) {
-	    var arc = topology.arcs[i < 0 ? ~i : i], p0 = arc[0], p1;
-	    if (topology.transform) p1 = [0, 0], arc.forEach(function(dp) { p1[0] += dp[0], p1[1] += dp[1]; });
-	    else p1 = arc[arc.length - 1];
-	    return i < 0 ? [p1, p0] : [p0, p1];
-	  }
-
-	  function flush(fragmentByEnd, fragmentByStart) {
-	    for (var k in fragmentByEnd) {
-	      var f = fragmentByEnd[k];
-	      delete fragmentByStart[f.start];
-	      delete f.start;
-	      delete f.end;
-	      f.forEach(function(i) { stitchedArcs[i < 0 ? ~i : i] = 1; });
-	      fragments.push(f);
-	    }
-	  }
-
-	  flush(fragmentByEnd, fragmentByStart);
-	  flush(fragmentByStart, fragmentByEnd);
-	  arcs.forEach(function(i) { if (!stitchedArcs[i < 0 ? ~i : i]) fragments.push([i]); });
-
-	  return fragments;
-	}
-
-	function planarRingArea(ring) {
-	  var i = -1, n = ring.length, a, b = ring[n - 1], area = 0;
-	  while (++i < n) a = b, b = ring[i], area += a[0] * b[1] - a[1] * b[0];
-	  return Math.abs(area); // Note: doubled area!
-	}
-
-	function mergeArcs(topology, objects) {
-	  var polygonsByArc = {},
-	      polygons = [],
-	      groups = [];
-
-	  objects.forEach(geometry);
-
-	  function geometry(o) {
-	    switch (o.type) {
-	      case "GeometryCollection": o.geometries.forEach(geometry); break;
-	      case "Polygon": extract(o.arcs); break;
-	      case "MultiPolygon": o.arcs.forEach(extract); break;
-	    }
-	  }
-
-	  function extract(polygon) {
-	    polygon.forEach(function(ring) {
-	      ring.forEach(function(arc) {
-	        (polygonsByArc[arc = arc < 0 ? ~arc : arc] || (polygonsByArc[arc] = [])).push(polygon);
-	      });
-	    });
-	    polygons.push(polygon);
-	  }
-
-	  function area(ring) {
-	    return planarRingArea(object$1(topology, {type: "Polygon", arcs: [ring]}).coordinates[0]);
-	  }
-
-	  polygons.forEach(function(polygon) {
-	    if (!polygon._) {
-	      var group = [],
-	          neighbors = [polygon];
-	      polygon._ = 1;
-	      groups.push(group);
-	      while (polygon = neighbors.pop()) {
-	        group.push(polygon);
-	        polygon.forEach(function(ring) {
-	          ring.forEach(function(arc) {
-	            polygonsByArc[arc < 0 ? ~arc : arc].forEach(function(polygon) {
-	              if (!polygon._) {
-	                polygon._ = 1;
-	                neighbors.push(polygon);
-	              }
-	            });
-	          });
-	        });
-	      }
-	    }
-	  });
-
-	  polygons.forEach(function(polygon) {
-	    delete polygon._;
-	  });
-
-	  return {
-	    type: "MultiPolygon",
-	    arcs: groups.map(function(polygons) {
-	      var arcs = [], n;
-
-	      // Extract the exterior (unique) arcs.
-	      polygons.forEach(function(polygon) {
-	        polygon.forEach(function(ring) {
-	          ring.forEach(function(arc) {
-	            if (polygonsByArc[arc < 0 ? ~arc : arc].length < 2) {
-	              arcs.push(arc);
-	            }
-	          });
-	        });
-	      });
-
-	      // Stitch the arcs into one or more rings.
-	      arcs = stitch(topology, arcs);
-
-	      // If more than one ring is returned,
-	      // at most one of these rings can be the exterior;
-	      // choose the one with the greatest absolute area.
-	      if ((n = arcs.length) > 1) {
-	        for (var i = 1, k = area(arcs[0]), ki, t; i < n; ++i) {
-	          if ((ki = area(arcs[i])) > k) {
-	            t = arcs[0], arcs[0] = arcs[i], arcs[i] = t, k = ki;
-	          }
-	        }
-	      }
-
-	      return arcs;
-	    })
-	  };
-	}
-
-	function untransform(transform) {
-	  if (transform == null) return identity$7;
-	  var x0,
-	      y0,
-	      kx = transform.scale[0],
-	      ky = transform.scale[1],
-	      dx = transform.translate[0],
-	      dy = transform.translate[1];
-	  return function(input, i) {
-	    if (!i) x0 = y0 = 0;
-	    var j = 2,
-	        n = input.length,
-	        output = new Array(n),
-	        x1 = Math.round((input[0] - dx) / kx),
-	        y1 = Math.round((input[1] - dy) / ky);
-	    output[0] = x1 - x0, x0 = x1;
-	    output[1] = y1 - y0, y0 = y1;
-	    while (j < n) output[j] = input[j], ++j;
-	    return output;
-	  };
-	}
-
-	function quantize(topology, transform) {
-	  if (topology.transform) throw new Error("already quantized");
-
-	  if (!transform || !transform.scale) {
-	    if (!((n = Math.floor(transform)) >= 2)) throw new Error("n must be ≥2");
-	    box = topology.bbox || bbox(topology);
-	    var x0 = box[0], y0 = box[1], x1 = box[2], y1 = box[3], n;
-	    transform = {scale: [x1 - x0 ? (x1 - x0) / (n - 1) : 1, y1 - y0 ? (y1 - y0) / (n - 1) : 1], translate: [x0, y0]};
-	  } else {
-	    box = topology.bbox;
-	  }
-
-	  var t = untransform(transform), box, key, inputs = topology.objects, outputs = {};
-
-	  function quantizePoint(point) {
-	    return t(point);
-	  }
-
-	  function quantizeGeometry(input) {
-	    var output;
-	    switch (input.type) {
-	      case "GeometryCollection": output = {type: "GeometryCollection", geometries: input.geometries.map(quantizeGeometry)}; break;
-	      case "Point": output = {type: "Point", coordinates: quantizePoint(input.coordinates)}; break;
-	      case "MultiPoint": output = {type: "MultiPoint", coordinates: input.coordinates.map(quantizePoint)}; break;
-	      default: return input;
-	    }
-	    if (input.id != null) output.id = input.id;
-	    if (input.bbox != null) output.bbox = input.bbox;
-	    if (input.properties != null) output.properties = input.properties;
-	    return output;
-	  }
-
-	  function quantizeArc(input) {
-	    var i = 0, j = 1, n = input.length, p, output = new Array(n); // pessimistic
-	    output[0] = t(input[0], 0);
-	    while (++i < n) if ((p = t(input[i], i))[0] || p[1]) output[j++] = p; // non-coincident points
-	    if (j === 1) output[j++] = [0, 0]; // an arc must have at least two points
-	    output.length = j;
-	    return output;
-	  }
-
-	  for (key in inputs) outputs[key] = quantizeGeometry(inputs[key]);
-
-	  return {
-	    type: "Topology",
-	    bbox: box,
-	    transform: transform,
-	    objects: outputs,
-	    arcs: topology.arcs.map(quantizeArc)
-	  };
-	}
-
-	// Computes the bounding box of the specified hash of GeoJSON objects.
-	function bounds(objects) {
-	  var x0 = Infinity,
-	      y0 = Infinity,
-	      x1 = -Infinity,
-	      y1 = -Infinity;
-
-	  function boundGeometry(geometry) {
-	    if (geometry != null && boundGeometryType.hasOwnProperty(geometry.type)) boundGeometryType[geometry.type](geometry);
-	  }
-
-	  var boundGeometryType = {
-	    GeometryCollection: function(o) { o.geometries.forEach(boundGeometry); },
-	    Point: function(o) { boundPoint(o.coordinates); },
-	    MultiPoint: function(o) { o.coordinates.forEach(boundPoint); },
-	    LineString: function(o) { boundLine(o.arcs); },
-	    MultiLineString: function(o) { o.arcs.forEach(boundLine); },
-	    Polygon: function(o) { o.arcs.forEach(boundLine); },
-	    MultiPolygon: function(o) { o.arcs.forEach(boundMultiLine); }
-	  };
-
-	  function boundPoint(coordinates) {
-	    var x = coordinates[0],
-	        y = coordinates[1];
-	    if (x < x0) x0 = x;
-	    if (x > x1) x1 = x;
-	    if (y < y0) y0 = y;
-	    if (y > y1) y1 = y;
-	  }
-
-	  function boundLine(coordinates) {
-	    coordinates.forEach(boundPoint);
-	  }
-
-	  function boundMultiLine(coordinates) {
-	    coordinates.forEach(boundLine);
-	  }
-
-	  for (var key in objects) {
-	    boundGeometry(objects[key]);
-	  }
-
-	  return x1 >= x0 && y1 >= y0 ? [x0, y0, x1, y1] : undefined;
-	}
-
-	function hashset(size, hash, equal, type, empty) {
-	  if (arguments.length === 3) {
-	    type = Array;
-	    empty = null;
-	  }
-
-	  var store = new type(size = 1 << Math.max(4, Math.ceil(Math.log(size) / Math.LN2))),
-	      mask = size - 1;
-
-	  for (var i = 0; i < size; ++i) {
-	    store[i] = empty;
-	  }
-
-	  function add(value) {
-	    var index = hash(value) & mask,
-	        match = store[index],
-	        collisions = 0;
-	    while (match != empty) {
-	      if (equal(match, value)) return true;
-	      if (++collisions >= size) throw new Error("full hashset");
-	      match = store[index = (index + 1) & mask];
-	    }
-	    store[index] = value;
-	    return true;
-	  }
-
-	  function has(value) {
-	    var index = hash(value) & mask,
-	        match = store[index],
-	        collisions = 0;
-	    while (match != empty) {
-	      if (equal(match, value)) return true;
-	      if (++collisions >= size) break;
-	      match = store[index = (index + 1) & mask];
-	    }
-	    return false;
-	  }
-
-	  function values() {
-	    var values = [];
-	    for (var i = 0, n = store.length; i < n; ++i) {
-	      var match = store[i];
-	      if (match != empty) values.push(match);
-	    }
-	    return values;
-	  }
-
-	  return {
-	    add: add,
-	    has: has,
-	    values: values
-	  };
-	}
-
-	function hashmap(size, hash, equal, keyType, keyEmpty, valueType) {
-	  if (arguments.length === 3) {
-	    keyType = valueType = Array;
-	    keyEmpty = null;
-	  }
-
-	  var keystore = new keyType(size = 1 << Math.max(4, Math.ceil(Math.log(size) / Math.LN2))),
-	      valstore = new valueType(size),
-	      mask = size - 1;
-
-	  for (var i = 0; i < size; ++i) {
-	    keystore[i] = keyEmpty;
-	  }
-
-	  function set(key, value) {
-	    var index = hash(key) & mask,
-	        matchKey = keystore[index],
-	        collisions = 0;
-	    while (matchKey != keyEmpty) {
-	      if (equal(matchKey, key)) return valstore[index] = value;
-	      if (++collisions >= size) throw new Error("full hashmap");
-	      matchKey = keystore[index = (index + 1) & mask];
-	    }
-	    keystore[index] = key;
-	    valstore[index] = value;
-	    return value;
-	  }
-
-	  function maybeSet(key, value) {
-	    var index = hash(key) & mask,
-	        matchKey = keystore[index],
-	        collisions = 0;
-	    while (matchKey != keyEmpty) {
-	      if (equal(matchKey, key)) return valstore[index];
-	      if (++collisions >= size) throw new Error("full hashmap");
-	      matchKey = keystore[index = (index + 1) & mask];
-	    }
-	    keystore[index] = key;
-	    valstore[index] = value;
-	    return value;
-	  }
-
-	  function get(key, missingValue) {
-	    var index = hash(key) & mask,
-	        matchKey = keystore[index],
-	        collisions = 0;
-	    while (matchKey != keyEmpty) {
-	      if (equal(matchKey, key)) return valstore[index];
-	      if (++collisions >= size) break;
-	      matchKey = keystore[index = (index + 1) & mask];
-	    }
-	    return missingValue;
-	  }
-
-	  function keys() {
-	    var keys = [];
-	    for (var i = 0, n = keystore.length; i < n; ++i) {
-	      var matchKey = keystore[i];
-	      if (matchKey != keyEmpty) keys.push(matchKey);
-	    }
-	    return keys;
-	  }
-
-	  return {
-	    set: set,
-	    maybeSet: maybeSet, // set if unset
-	    get: get,
-	    keys: keys
-	  };
-	}
-
-	function equalPoint(pointA, pointB) {
-	  return pointA[0] === pointB[0] && pointA[1] === pointB[1];
-	}
-
-	// TODO if quantized, use simpler Int32 hashing?
-
-	var buffer = new ArrayBuffer(16),
-	    floats = new Float64Array(buffer),
-	    uints = new Uint32Array(buffer);
-
-	function hashPoint(point) {
-	  floats[0] = point[0];
-	  floats[1] = point[1];
-	  var hash = uints[0] ^ uints[1];
-	  hash = hash << 5 ^ hash >> 7 ^ uints[2] ^ uints[3];
-	  return hash & 0x7fffffff;
-	}
-
-	// Given an extracted (pre-)topology, identifies all of the junctions. These are
-	// the points at which arcs (lines or rings) will need to be cut so that each
-	// arc is represented uniquely.
-	//
-	// A junction is a point where at least one arc deviates from another arc going
-	// through the same point. For example, consider the point B. If there is a arc
-	// through ABC and another arc through CBA, then B is not a junction because in
-	// both cases the adjacent point pairs are {A,C}. However, if there is an
-	// additional arc ABD, then {A,D} != {A,C}, and thus B becomes a junction.
-	//
-	// For a closed ring ABCA, the first point A’s adjacent points are the second
-	// and last point {B,C}. For a line, the first and last point are always
-	// considered junctions, even if the line is closed; this ensures that a closed
-	// line is never rotated.
-	function join(topology) {
-	  var coordinates = topology.coordinates,
-	      lines = topology.lines,
-	      rings = topology.rings,
-	      indexes = index(),
-	      visitedByIndex = new Int32Array(coordinates.length),
-	      leftByIndex = new Int32Array(coordinates.length),
-	      rightByIndex = new Int32Array(coordinates.length),
-	      junctionByIndex = new Int8Array(coordinates.length),
-	      junctionCount = 0, // upper bound on number of junctions
-	      i, n,
-	      previousIndex,
-	      currentIndex,
-	      nextIndex;
-
-	  for (i = 0, n = coordinates.length; i < n; ++i) {
-	    visitedByIndex[i] = leftByIndex[i] = rightByIndex[i] = -1;
-	  }
-
-	  for (i = 0, n = lines.length; i < n; ++i) {
-	    var line = lines[i],
-	        lineStart = line[0],
-	        lineEnd = line[1];
-	    currentIndex = indexes[lineStart];
-	    nextIndex = indexes[++lineStart];
-	    ++junctionCount, junctionByIndex[currentIndex] = 1; // start
-	    while (++lineStart <= lineEnd) {
-	      sequence(i, previousIndex = currentIndex, currentIndex = nextIndex, nextIndex = indexes[lineStart]);
-	    }
-	    ++junctionCount, junctionByIndex[nextIndex] = 1; // end
-	  }
-
-	  for (i = 0, n = coordinates.length; i < n; ++i) {
-	    visitedByIndex[i] = -1;
-	  }
-
-	  for (i = 0, n = rings.length; i < n; ++i) {
-	    var ring = rings[i],
-	        ringStart = ring[0] + 1,
-	        ringEnd = ring[1];
-	    previousIndex = indexes[ringEnd - 1];
-	    currentIndex = indexes[ringStart - 1];
-	    nextIndex = indexes[ringStart];
-	    sequence(i, previousIndex, currentIndex, nextIndex);
-	    while (++ringStart <= ringEnd) {
-	      sequence(i, previousIndex = currentIndex, currentIndex = nextIndex, nextIndex = indexes[ringStart]);
-	    }
-	  }
-
-	  function sequence(i, previousIndex, currentIndex, nextIndex) {
-	    if (visitedByIndex[currentIndex] === i) return; // ignore self-intersection
-	    visitedByIndex[currentIndex] = i;
-	    var leftIndex = leftByIndex[currentIndex];
-	    if (leftIndex >= 0) {
-	      var rightIndex = rightByIndex[currentIndex];
-	      if ((leftIndex !== previousIndex || rightIndex !== nextIndex)
-	        && (leftIndex !== nextIndex || rightIndex !== previousIndex)) {
-	        ++junctionCount, junctionByIndex[currentIndex] = 1;
-	      }
-	    } else {
-	      leftByIndex[currentIndex] = previousIndex;
-	      rightByIndex[currentIndex] = nextIndex;
-	    }
-	  }
-
-	  function index() {
-	    var indexByPoint = hashmap(coordinates.length * 1.4, hashIndex, equalIndex, Int32Array, -1, Int32Array),
-	        indexes = new Int32Array(coordinates.length);
-
-	    for (var i = 0, n = coordinates.length; i < n; ++i) {
-	      indexes[i] = indexByPoint.maybeSet(i, i);
-	    }
-
-	    return indexes;
-	  }
-
-	  function hashIndex(i) {
-	    return hashPoint(coordinates[i]);
-	  }
-
-	  function equalIndex(i, j) {
-	    return equalPoint(coordinates[i], coordinates[j]);
-	  }
-
-	  visitedByIndex = leftByIndex = rightByIndex = null;
-
-	  var junctionByPoint = hashset(junctionCount * 1.4, hashPoint, equalPoint), j;
-
-	  // Convert back to a standard hashset by point for caller convenience.
-	  for (i = 0, n = coordinates.length; i < n; ++i) {
-	    if (junctionByIndex[j = indexes[i]]) {
-	      junctionByPoint.add(coordinates[j]);
-	    }
-	  }
-
-	  return junctionByPoint;
-	}
-
-	// Given an extracted (pre-)topology, cuts (or rotates) arcs so that all shared
-	// point sequences are identified. The topology can then be subsequently deduped
-	// to remove exact duplicate arcs.
-	function cut(topology) {
-	  var junctions = join(topology),
-	      coordinates = topology.coordinates,
-	      lines = topology.lines,
-	      rings = topology.rings,
-	      next,
-	      i, n;
-
-	  for (i = 0, n = lines.length; i < n; ++i) {
-	    var line = lines[i],
-	        lineMid = line[0],
-	        lineEnd = line[1];
-	    while (++lineMid < lineEnd) {
-	      if (junctions.has(coordinates[lineMid])) {
-	        next = {0: lineMid, 1: line[1]};
-	        line[1] = lineMid;
-	        line = line.next = next;
-	      }
-	    }
-	  }
-
-	  for (i = 0, n = rings.length; i < n; ++i) {
-	    var ring = rings[i],
-	        ringStart = ring[0],
-	        ringMid = ringStart,
-	        ringEnd = ring[1],
-	        ringFixed = junctions.has(coordinates[ringStart]);
-	    while (++ringMid < ringEnd) {
-	      if (junctions.has(coordinates[ringMid])) {
-	        if (ringFixed) {
-	          next = {0: ringMid, 1: ring[1]};
-	          ring[1] = ringMid;
-	          ring = ring.next = next;
-	        } else { // For the first junction, we can rotate rather than cut.
-	          rotateArray(coordinates, ringStart, ringEnd, ringEnd - ringMid);
-	          coordinates[ringEnd] = coordinates[ringStart];
-	          ringFixed = true;
-	          ringMid = ringStart; // restart; we may have skipped junctions
-	        }
-	      }
-	    }
-	  }
-
-	  return topology;
-	}
-
-	function rotateArray(array, start, end, offset) {
-	  reverse$1(array, start, end);
-	  reverse$1(array, start, start + offset);
-	  reverse$1(array, start + offset, end);
-	}
-
-	function reverse$1(array, start, end) {
-	  for (var mid = start + ((end-- - start) >> 1), t; start < mid; ++start, --end) {
-	    t = array[start], array[start] = array[end], array[end] = t;
-	  }
-	}
-
-	// Given a cut topology, combines duplicate arcs.
-	function dedup(topology) {
-	  var coordinates = topology.coordinates,
-	      lines = topology.lines, line,
-	      rings = topology.rings, ring,
-	      arcCount = lines.length + rings.length,
-	      i, n;
-
-	  delete topology.lines;
-	  delete topology.rings;
-
-	  // Count the number of (non-unique) arcs to initialize the hashmap safely.
-	  for (i = 0, n = lines.length; i < n; ++i) {
-	    line = lines[i]; while (line = line.next) ++arcCount;
-	  }
-	  for (i = 0, n = rings.length; i < n; ++i) {
-	    ring = rings[i]; while (ring = ring.next) ++arcCount;
-	  }
-
-	  var arcsByEnd = hashmap(arcCount * 2 * 1.4, hashPoint, equalPoint),
-	      arcs = topology.arcs = [];
-
-	  for (i = 0, n = lines.length; i < n; ++i) {
-	    line = lines[i];
-	    do {
-	      dedupLine(line);
-	    } while (line = line.next);
-	  }
-
-	  for (i = 0, n = rings.length; i < n; ++i) {
-	    ring = rings[i];
-	    if (ring.next) { // arc is no longer closed
-	      do {
-	        dedupLine(ring);
-	      } while (ring = ring.next);
-	    } else {
-	      dedupRing(ring);
-	    }
-	  }
-
-	  function dedupLine(arc) {
-	    var startPoint,
-	        endPoint,
-	        startArcs, startArc,
-	        endArcs, endArc,
-	        i, n;
-
-	    // Does this arc match an existing arc in order?
-	    if (startArcs = arcsByEnd.get(startPoint = coordinates[arc[0]])) {
-	      for (i = 0, n = startArcs.length; i < n; ++i) {
-	        startArc = startArcs[i];
-	        if (equalLine(startArc, arc)) {
-	          arc[0] = startArc[0];
-	          arc[1] = startArc[1];
-	          return;
-	        }
-	      }
-	    }
-
-	    // Does this arc match an existing arc in reverse order?
-	    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[1]])) {
-	      for (i = 0, n = endArcs.length; i < n; ++i) {
-	        endArc = endArcs[i];
-	        if (reverseEqualLine(endArc, arc)) {
-	          arc[1] = endArc[0];
-	          arc[0] = endArc[1];
-	          return;
-	        }
-	      }
-	    }
-
-	    if (startArcs) startArcs.push(arc); else arcsByEnd.set(startPoint, [arc]);
-	    if (endArcs) endArcs.push(arc); else arcsByEnd.set(endPoint, [arc]);
-	    arcs.push(arc);
-	  }
-
-	  function dedupRing(arc) {
-	    var endPoint,
-	        endArcs,
-	        endArc,
-	        i, n;
-
-	    // Does this arc match an existing line in order, or reverse order?
-	    // Rings are closed, so their start point and end point is the same.
-	    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[0]])) {
-	      for (i = 0, n = endArcs.length; i < n; ++i) {
-	        endArc = endArcs[i];
-	        if (equalRing(endArc, arc)) {
-	          arc[0] = endArc[0];
-	          arc[1] = endArc[1];
-	          return;
-	        }
-	        if (reverseEqualRing(endArc, arc)) {
-	          arc[0] = endArc[1];
-	          arc[1] = endArc[0];
-	          return;
-	        }
-	      }
-	    }
-
-	    // Otherwise, does this arc match an existing ring in order, or reverse order?
-	    if (endArcs = arcsByEnd.get(endPoint = coordinates[arc[0] + findMinimumOffset(arc)])) {
-	      for (i = 0, n = endArcs.length; i < n; ++i) {
-	        endArc = endArcs[i];
-	        if (equalRing(endArc, arc)) {
-	          arc[0] = endArc[0];
-	          arc[1] = endArc[1];
-	          return;
-	        }
-	        if (reverseEqualRing(endArc, arc)) {
-	          arc[0] = endArc[1];
-	          arc[1] = endArc[0];
-	          return;
-	        }
-	      }
-	    }
-
-	    if (endArcs) endArcs.push(arc); else arcsByEnd.set(endPoint, [arc]);
-	    arcs.push(arc);
-	  }
-
-	  function equalLine(arcA, arcB) {
-	    var ia = arcA[0], ib = arcB[0],
-	        ja = arcA[1], jb = arcB[1];
-	    if (ia - ja !== ib - jb) return false;
-	    for (; ia <= ja; ++ia, ++ib) if (!equalPoint(coordinates[ia], coordinates[ib])) return false;
-	    return true;
-	  }
-
-	  function reverseEqualLine(arcA, arcB) {
-	    var ia = arcA[0], ib = arcB[0],
-	        ja = arcA[1], jb = arcB[1];
-	    if (ia - ja !== ib - jb) return false;
-	    for (; ia <= ja; ++ia, --jb) if (!equalPoint(coordinates[ia], coordinates[jb])) return false;
-	    return true;
-	  }
-
-	  function equalRing(arcA, arcB) {
-	    var ia = arcA[0], ib = arcB[0],
-	        ja = arcA[1], jb = arcB[1],
-	        n = ja - ia;
-	    if (n !== jb - ib) return false;
-	    var ka = findMinimumOffset(arcA),
-	        kb = findMinimumOffset(arcB);
-	    for (var i = 0; i < n; ++i) {
-	      if (!equalPoint(coordinates[ia + (i + ka) % n], coordinates[ib + (i + kb) % n])) return false;
-	    }
-	    return true;
-	  }
-
-	  function reverseEqualRing(arcA, arcB) {
-	    var ia = arcA[0], ib = arcB[0],
-	        ja = arcA[1], jb = arcB[1],
-	        n = ja - ia;
-	    if (n !== jb - ib) return false;
-	    var ka = findMinimumOffset(arcA),
-	        kb = n - findMinimumOffset(arcB);
-	    for (var i = 0; i < n; ++i) {
-	      if (!equalPoint(coordinates[ia + (i + ka) % n], coordinates[jb - (i + kb) % n])) return false;
-	    }
-	    return true;
-	  }
-
-	  // Rings are rotated to a consistent, but arbitrary, start point.
-	  // This is necessary to detect when a ring and a rotated copy are dupes.
-	  function findMinimumOffset(arc) {
-	    var start = arc[0],
-	        end = arc[1],
-	        mid = start,
-	        minimum = mid,
-	        minimumPoint = coordinates[mid];
-	    while (++mid < end) {
-	      var point = coordinates[mid];
-	      if (point[0] < minimumPoint[0] || point[0] === minimumPoint[0] && point[1] < minimumPoint[1]) {
-	        minimum = mid;
-	        minimumPoint = point;
-	      }
-	    }
-	    return minimum - start;
-	  }
-
-	  return topology;
-	}
-
-	// Given an array of arcs in absolute (but already quantized!) coordinates,
-	// converts to fixed-point delta encoding.
-	// This is a destructive operation that modifies the given arcs!
-	function delta(arcs) {
-	  var i = -1,
-	      n = arcs.length;
-
-	  while (++i < n) {
-	    var arc = arcs[i],
-	        j = 0,
-	        k = 1,
-	        m = arc.length,
-	        point = arc[0],
-	        x0 = point[0],
-	        y0 = point[1],
-	        x1,
-	        y1;
-
-	    while (++j < m) {
-	      point = arc[j], x1 = point[0], y1 = point[1];
-	      if (x1 !== x0 || y1 !== y0) arc[k++] = [x1 - x0, y1 - y0], x0 = x1, y0 = y1;
-	    }
-
-	    if (k === 1) arc[k++] = [0, 0]; // Each arc must be an array of two or more positions.
-
-	    arc.length = k;
-	  }
-
-	  return arcs;
-	}
-
-	// Extracts the lines and rings from the specified hash of geometry objects.
-	//
-	// Returns an object with three properties:
-	//
-	// * coordinates - shared buffer of [x, y] coordinates
-	// * lines - lines extracted from the hash, of the form [start, end]
-	// * rings - rings extracted from the hash, of the form [start, end]
-	//
-	// For each ring or line, start and end represent inclusive indexes into the
-	// coordinates buffer. For rings (and closed lines), coordinates[start] equals
-	// coordinates[end].
-	//
-	// For each line or polygon geometry in the input hash, including nested
-	// geometries as in geometry collections, the `coordinates` array is replaced
-	// with an equivalent `arcs` array that, for each line (for line string
-	// geometries) or ring (for polygon geometries), points to one of the above
-	// lines or rings.
-	function extract(objects) {
-	  var index = -1,
-	      lines = [],
-	      rings = [],
-	      coordinates = [];
-
-	  function extractGeometry(geometry) {
-	    if (geometry && extractGeometryType.hasOwnProperty(geometry.type)) extractGeometryType[geometry.type](geometry);
-	  }
-
-	  var extractGeometryType = {
-	    GeometryCollection: function(o) { o.geometries.forEach(extractGeometry); },
-	    LineString: function(o) { o.arcs = extractLine(o.arcs); },
-	    MultiLineString: function(o) { o.arcs = o.arcs.map(extractLine); },
-	    Polygon: function(o) { o.arcs = o.arcs.map(extractRing); },
-	    MultiPolygon: function(o) { o.arcs = o.arcs.map(extractMultiRing); }
-	  };
-
-	  function extractLine(line) {
-	    for (var i = 0, n = line.length; i < n; ++i) coordinates[++index] = line[i];
-	    var arc = {0: index - n + 1, 1: index};
-	    lines.push(arc);
-	    return arc;
-	  }
-
-	  function extractRing(ring) {
-	    for (var i = 0, n = ring.length; i < n; ++i) coordinates[++index] = ring[i];
-	    var arc = {0: index - n + 1, 1: index};
-	    rings.push(arc);
-	    return arc;
-	  }
-
-	  function extractMultiRing(rings) {
-	    return rings.map(extractRing);
-	  }
-
-	  for (var key in objects) {
-	    extractGeometry(objects[key]);
-	  }
-
-	  return {
-	    type: "Topology",
-	    coordinates: coordinates,
-	    lines: lines,
-	    rings: rings,
-	    objects: objects
-	  };
-	}
-
-	// Given a hash of GeoJSON objects, returns a hash of GeoJSON geometry objects.
-	// Any null input geometry objects are represented as {type: null} in the output.
-	// Any feature.{id,properties,bbox} are transferred to the output geometry object.
-	// Each output geometry object is a shallow copy of the input (e.g., properties, coordinates)!
-	function geometry(inputs) {
-	  var outputs = {}, key;
-	  for (key in inputs) outputs[key] = geomifyObject(inputs[key]);
-	  return outputs;
-	}
-
-	function geomifyObject(input) {
-	  return input == null ? {type: null}
-	      : (input.type === "FeatureCollection" ? geomifyFeatureCollection
-	      : input.type === "Feature" ? geomifyFeature
-	      : geomifyGeometry)(input);
-	}
-
-	function geomifyFeatureCollection(input) {
-	  var output = {type: "GeometryCollection", geometries: input.features.map(geomifyFeature)};
-	  if (input.bbox != null) output.bbox = input.bbox;
-	  return output;
-	}
-
-	function geomifyFeature(input) {
-	  var output = geomifyGeometry(input.geometry), key; // eslint-disable-line no-unused-vars
-	  if (input.id != null) output.id = input.id;
-	  if (input.bbox != null) output.bbox = input.bbox;
-	  for (key in input.properties) { output.properties = input.properties; break; }
-	  return output;
-	}
-
-	function geomifyGeometry(input) {
-	  if (input == null) return {type: null};
-	  var output = input.type === "GeometryCollection" ? {type: "GeometryCollection", geometries: input.geometries.map(geomifyGeometry)}
-	      : input.type === "Point" || input.type === "MultiPoint" ? {type: input.type, coordinates: input.coordinates}
-	      : {type: input.type, arcs: input.coordinates}; // TODO Check for unknown types?
-	  if (input.bbox != null) output.bbox = input.bbox;
-	  return output;
-	}
-
-	function prequantize(objects, bbox, n) {
-	  var x0 = bbox[0],
-	      y0 = bbox[1],
-	      x1 = bbox[2],
-	      y1 = bbox[3],
-	      kx = x1 - x0 ? (n - 1) / (x1 - x0) : 1,
-	      ky = y1 - y0 ? (n - 1) / (y1 - y0) : 1;
-
-	  function quantizePoint(input) {
-	    return [Math.round((input[0] - x0) * kx), Math.round((input[1] - y0) * ky)];
-	  }
-
-	  function quantizePoints(input, m) {
-	    var i = -1,
-	        j = 0,
-	        n = input.length,
-	        output = new Array(n), // pessimistic
-	        pi,
-	        px,
-	        py,
-	        x,
-	        y;
-
-	    while (++i < n) {
-	      pi = input[i];
-	      x = Math.round((pi[0] - x0) * kx);
-	      y = Math.round((pi[1] - y0) * ky);
-	      if (x !== px || y !== py) output[j++] = [px = x, py = y]; // non-coincident points
-	    }
-
-	    output.length = j;
-	    while (j < m) j = output.push([output[0][0], output[0][1]]);
-	    return output;
-	  }
-
-	  function quantizeLine(input) {
-	    return quantizePoints(input, 2);
-	  }
-
-	  function quantizeRing(input) {
-	    return quantizePoints(input, 4);
-	  }
-
-	  function quantizePolygon(input) {
-	    return input.map(quantizeRing);
-	  }
-
-	  function quantizeGeometry(o) {
-	    if (o != null && quantizeGeometryType.hasOwnProperty(o.type)) quantizeGeometryType[o.type](o);
-	  }
-
-	  var quantizeGeometryType = {
-	    GeometryCollection: function(o) { o.geometries.forEach(quantizeGeometry); },
-	    Point: function(o) { o.coordinates = quantizePoint(o.coordinates); },
-	    MultiPoint: function(o) { o.coordinates = o.coordinates.map(quantizePoint); },
-	    LineString: function(o) { o.arcs = quantizeLine(o.arcs); },
-	    MultiLineString: function(o) { o.arcs = o.arcs.map(quantizeLine); },
-	    Polygon: function(o) { o.arcs = quantizePolygon(o.arcs); },
-	    MultiPolygon: function(o) { o.arcs = o.arcs.map(quantizePolygon); }
-	  };
-
-	  for (var key in objects) {
-	    quantizeGeometry(objects[key]);
-	  }
-
-	  return {
-	    scale: [1 / kx, 1 / ky],
-	    translate: [x0, y0]
-	  };
-	}
-
-	// Constructs the TopoJSON Topology for the specified hash of features.
-	// Each object in the specified hash must be a GeoJSON object,
-	// meaning FeatureCollection, a Feature or a geometry object.
-	function topology(objects, quantization) {
-	  var bbox = bounds(objects = geometry(objects)),
-	      transform = quantization > 0 && bbox && prequantize(objects, bbox, quantization),
-	      topology = dedup(cut(extract(objects))),
-	      coordinates = topology.coordinates,
-	      indexByArc = hashmap(topology.arcs.length * 1.4, hashArc, equalArc);
-
-	  objects = topology.objects; // for garbage collection
-	  topology.bbox = bbox;
-	  topology.arcs = topology.arcs.map(function(arc, i) {
-	    indexByArc.set(arc, i);
-	    return coordinates.slice(arc[0], arc[1] + 1);
-	  });
-
-	  delete topology.coordinates;
-	  coordinates = null;
-
-	  function indexGeometry(geometry) {
-	    if (geometry && indexGeometryType.hasOwnProperty(geometry.type)) indexGeometryType[geometry.type](geometry);
-	  }
-
-	  var indexGeometryType = {
-	    GeometryCollection: function(o) { o.geometries.forEach(indexGeometry); },
-	    LineString: function(o) { o.arcs = indexArcs(o.arcs); },
-	    MultiLineString: function(o) { o.arcs = o.arcs.map(indexArcs); },
-	    Polygon: function(o) { o.arcs = o.arcs.map(indexArcs); },
-	    MultiPolygon: function(o) { o.arcs = o.arcs.map(indexMultiArcs); }
-	  };
-
-	  function indexArcs(arc) {
-	    var indexes = [];
-	    do {
-	      var index = indexByArc.get(arc);
-	      indexes.push(arc[0] < arc[1] ? index : ~index);
-	    } while (arc = arc.next);
-	    return indexes;
-	  }
-
-	  function indexMultiArcs(arcs) {
-	    return arcs.map(indexArcs);
-	  }
-
-	  for (var key in objects) {
-	    indexGeometry(objects[key]);
-	  }
-
-	  if (transform) {
-	    topology.transform = transform;
-	    topology.arcs = delta(topology.arcs);
-	  }
-
-	  return topology;
-	}
-
-	function hashArc(arc) {
-	  var i = arc[0], j = arc[1], t;
-	  if (j < i) t = i, i = j, j = t;
-	  return i + 31 * j;
-	}
-
-	function equalArc(arcA, arcB) {
-	  var ia = arcA[0], ja = arcA[1],
-	      ib = arcB[0], jb = arcB[1], t;
-	  if (ja < ia) t = ia, ia = ja, ja = t;
-	  if (jb < ib) t = ib, ib = jb, jb = t;
-	  return ia === ib && ja === jb;
-	}
-
 	var loadFossilSpots = /*#__PURE__*/function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	    var data;
@@ -54138,9 +52980,9 @@ var app = (function () {
 	            return csv$1(fossilData2, function (d, i) {
 	              return {
 	                id: i,
-	                name: d.name,
-	                x: d.x,
-	                y: d.y
+	                name: d.accepted_name,
+	                x: d.lat,
+	                y: d.lng
 	              };
 	            });
 
@@ -54157,6 +52999,40 @@ var app = (function () {
 	  }));
 
 	  return function loadFossilSpots2() {
+	    return _ref.apply(this, arguments);
+	  };
+	}();
+
+	var loadFossilSpots3 = /*#__PURE__*/function () {
+	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	    var data;
+	    return regeneratorRuntime.wrap(function _callee$(_context) {
+	      while (1) {
+	        switch (_context.prev = _context.next) {
+	          case 0:
+	            _context.next = 2;
+	            return csv$1(fossilData3, function (d, i) {
+	              return {
+	                id: i,
+	                name: d.accepted_name,
+	                x: d.lat,
+	                y: d.lng
+	              };
+	            });
+
+	          case 2:
+	            data = _context.sent;
+	            return _context.abrupt("return", data);
+
+	          case 4:
+	          case "end":
+	            return _context.stop();
+	        }
+	      }
+	    }, _callee);
+	  }));
+
+	  return function loadFossilSpots3() {
 	    return _ref.apply(this, arguments);
 	  };
 	}();
@@ -54234,33 +53110,33 @@ var app = (function () {
 	      /*switchValue*/
 	      ctx[1]);
 	      attr_dev(div0, "class", "layer");
-	      add_location(div0, file$z, 360, 1, 7310);
+	      add_location(div0, file$z, 436, 1, 8716);
 	      attr_dev(div1, "id", "points");
-	      add_location(div1, file$z, 362, 31, 7383);
+	      add_location(div1, file$z, 438, 31, 8789);
 	      attr_dev(canvas_1, "class", "svelte-5592ys");
-	      add_location(canvas_1, file$z, 362, 4, 7356);
+	      add_location(canvas_1, file$z, 438, 4, 8762);
 	      attr_dev(div2, "id", "map");
-	      add_location(div2, file$z, 361, 1, 7337);
+	      add_location(div2, file$z, 437, 1, 8743);
 	      set_style(button0, "position", "absolute");
 	      set_style(button0, "z-index", "199999999999");
 	      set_style(button0, "right", "0px");
 	      set_style(button0, "top", "0px");
 	      set_style(button0, "width", "100px");
 	      set_style(button0, "height", "400px");
-	      add_location(button0, file$z, 365, 2, 7427);
+	      add_location(button0, file$z, 441, 2, 8833);
 	      set_style(button1, "position", "absolute");
 	      set_style(button1, "z-index", "199999999999");
 	      set_style(button1, "right", "0px");
 	      set_style(button1, "top", "250px");
 	      set_style(button1, "width", "100px");
 	      set_style(button1, "height", "400px");
-	      add_location(button1, file$z, 375, 2, 7605);
-	      add_location(p, file$z, 393, 0, 7951);
+	      add_location(button1, file$z, 451, 2, 9011);
+	      add_location(p, file$z, 469, 0, 9357);
 	      set_style(div3, "position", "absolute");
 	      set_style(div3, "z-index", "199999999999");
 	      set_style(div3, "left", "670px");
 	      set_style(div3, "top", "180px");
-	      add_location(div3, file$z, 386, 2, 7786);
+	      add_location(div3, file$z, 462, 2, 9192);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -54371,35 +53247,35 @@ var app = (function () {
 	  var $geoPath;
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(12, $width = $$value);
+	    return $$invalidate(14, $width = $$value);
 	  });
 	  validate_store(height, "height");
 	  component_subscribe($$self, height, function ($$value) {
-	    return $$invalidate(13, $height = $$value);
+	    return $$invalidate(15, $height = $$value);
 	  });
 	  validate_store(countries, "countries");
 	  component_subscribe($$self, countries, function ($$value) {
-	    return $$invalidate(14, $countries = $$value);
+	    return $$invalidate(16, $countries = $$value);
 	  });
 	  validate_store(mapHeight, "mapHeight");
 	  component_subscribe($$self, mapHeight, function ($$value) {
-	    return $$invalidate(15, $mapHeight = $$value);
+	    return $$invalidate(17, $mapHeight = $$value);
 	  });
 	  validate_store(projection$1, "projection");
 	  component_subscribe($$self, projection$1, function ($$value) {
-	    return $$invalidate(16, $projection = $$value);
+	    return $$invalidate(18, $projection = $$value);
 	  });
 	  validate_store(scaleFactor, "scaleFactor");
 	  component_subscribe($$self, scaleFactor, function ($$value) {
-	    return $$invalidate(17, $scaleFactor = $$value);
+	    return $$invalidate(19, $scaleFactor = $$value);
 	  });
 	  validate_store(panelHeight, "panelHeight");
 	  component_subscribe($$self, panelHeight, function ($$value) {
-	    return $$invalidate(18, $panelHeight = $$value);
+	    return $$invalidate(20, $panelHeight = $$value);
 	  });
 	  validate_store(geoPath, "geoPath");
 	  component_subscribe($$self, geoPath, function ($$value) {
-	    return $$invalidate(19, $geoPath = $$value);
+	    return $$invalidate(21, $geoPath = $$value);
 	  });
 	  var canvas;
 	  var worldFeature;
@@ -54407,8 +53283,10 @@ var app = (function () {
 	  var graticule$1;
 	  var fossilSpots;
 	  var fossilSpots2;
+	  var fossilSpots3;
 	  var originalFossilSpots;
 	  var switchValue;
+	  var mesozoic = {};
 	  onMount( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	    var response, json, worldResponse;
 	    return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -54459,38 +53337,55 @@ var app = (function () {
 	            (0, _context.t4)(10, _context.t5);
 	            _context.t6 = $$invalidate;
 	            _context.next = 28;
-	            return loadFossilSpots();
+	            return loadFossilSpots3();
 
 	          case 28:
-	            _context.t7 = originalFossilSpots = _context.sent;
+	            _context.t7 = fossilSpots3 = _context.sent;
 	            (0, _context.t6)(11, _context.t7);
+	            _context.t8 = $$invalidate;
+	            _context.next = 33;
+	            return loadFossilSpots();
 
-	          case 30:
+	          case 33:
+	            _context.t9 = originalFossilSpots = _context.sent;
+	            (0, _context.t8)(12, _context.t9);
+	            // console.log(fossilSpots);
+	            $$invalidate(13, mesozoic.jurassic = fossilSpots, mesozoic);
+	            $$invalidate(13, mesozoic.triassic = fossilSpots2, mesozoic);
+	            $$invalidate(13, mesozoic.cretaceous = fossilSpots3, mesozoic);
+
+	          case 38:
 	          case "end":
 	            return _context.stop();
 	        }
 	      }
 	    }, _callee);
-	  })));
+	  }))); // console.log(mesozoic);
 
 	  function handleClick() {
 	    //	console.log('clear')
 	    //  console.log('fossilSpots: ', fossilSpots);
 	    //  console.log('fossilSpots2: ', fossilSpots2)
-	    $$invalidate(9, fossilSpots = fossilSpots.filter(function (d) {
+
+	    /*
+	      fossilSpots = fossilSpots.filter((d) => d.id < 20);
+	      reDraw();
+	      return fossilSpots;
+	      */
+	    $$invalidate(13, mesozoic.jurassic = mesozoic.jurassic.filter(function (d) {
 	      return d.id < 20;
-	    }));
+	    }), mesozoic);
 	    reDraw();
-	    return fossilSpots;
+	    return mesozoic;
 	  }
 
 	  function handleNewClick() {
 	    //	console.log('clear')
 	    //  console.log('fossilSpots: ', fossilSpots);
 	    //  console.log('fossilSpots2: ', fossilSpots2)
-	    $$invalidate(9, fossilSpots = originalFossilSpots);
+	    $$invalidate(13, mesozoic.jurassic = originalFossilSpots, mesozoic);
 	    reDraw();
-	    return fossilSpots;
+	    return mesozoic;
 	  }
 
 	  function reDraw() {
@@ -54498,7 +53393,7 @@ var app = (function () {
 	    var elements = locations.selectAll("points.arc"); // console.log('elements: ', elements)
 
 	    elements.each(function (d, i) {
-	      console.log("element: ", elements[i]);
+	      // console.log('element: ', elements[i])
 	      var node = select(this); // console.log(d, node, i, this)
 
 	      this.remove();
@@ -54518,7 +53413,7 @@ var app = (function () {
 	  function canvas_1_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      canvas = $$value;
-	      (((((((((((((($$invalidate(0, canvas), $$invalidate(14, $countries)), $$invalidate(7, worldjson)), $$invalidate(9, fossilSpots)), $$invalidate(10, fossilSpots2)), $$invalidate(11, originalFossilSpots)), $$invalidate(12, $width)), $$invalidate(15, $mapHeight)), $$invalidate(16, $projection)), $$invalidate(17, $scaleFactor)), $$invalidate(13, $height)), $$invalidate(18, $panelHeight)), $$invalidate(19, $geoPath)), $$invalidate(8, graticule$1)), $$invalidate(6, worldFeature)), $$invalidate(1, switchValue);
+	      (((((((((((((((($$invalidate(0, canvas), $$invalidate(16, $countries)), $$invalidate(7, worldjson)), $$invalidate(9, fossilSpots)), $$invalidate(10, fossilSpots2)), $$invalidate(11, fossilSpots3)), $$invalidate(12, originalFossilSpots)), $$invalidate(14, $width)), $$invalidate(17, $mapHeight)), $$invalidate(18, $projection)), $$invalidate(19, $scaleFactor)), $$invalidate(15, $height)), $$invalidate(20, $panelHeight)), $$invalidate(21, $geoPath)), $$invalidate(13, mesozoic)), $$invalidate(8, graticule$1)), $$invalidate(6, worldFeature)), $$invalidate(1, switchValue);
 	    });
 	  }
 
@@ -54545,28 +53440,25 @@ var app = (function () {
 	      Switch: Switch,
 	      canvas: canvas,
 	      select: select,
-	      geoEqualEarth: geoEqualEarth,
 	      geoGraticule: graticule,
 	      geoNaturalEarth1: geoNaturalEarth1,
-	      geoStereographic: geoStereographic,
 	      geoMercator: geoMercator,
 	      d3geoPath: d3geoPath,
 	      onMount: onMount,
 	      afterUpdate: afterUpdate,
 	      feature: feature,
-	      quantize: quantize,
-	      transform: transform,
-	      topology: topology,
-	      mergeArcs: mergeArcs,
 	      loadFossilSpots: loadFossilSpots,
 	      loadFossilSpots2: loadFossilSpots2,
+	      loadFossilSpots3: loadFossilSpots3,
 	      worldFeature: worldFeature,
 	      worldjson: worldjson,
 	      graticule: graticule$1,
 	      fossilSpots: fossilSpots,
 	      fossilSpots2: fossilSpots2,
+	      fossilSpots3: fossilSpots3,
 	      originalFossilSpots: originalFossilSpots,
 	      switchValue: switchValue,
+	      mesozoic: mesozoic,
 	      worldDataPath: worldDataPath,
 	      handleClick: handleClick,
 	      handleNewClick: handleNewClick,
@@ -54589,8 +53481,10 @@ var app = (function () {
 	    if ("graticule" in $$props) $$invalidate(8, graticule$1 = $$props.graticule);
 	    if ("fossilSpots" in $$props) $$invalidate(9, fossilSpots = $$props.fossilSpots);
 	    if ("fossilSpots2" in $$props) $$invalidate(10, fossilSpots2 = $$props.fossilSpots2);
-	    if ("originalFossilSpots" in $$props) $$invalidate(11, originalFossilSpots = $$props.originalFossilSpots);
+	    if ("fossilSpots3" in $$props) $$invalidate(11, fossilSpots3 = $$props.fossilSpots3);
+	    if ("originalFossilSpots" in $$props) $$invalidate(12, originalFossilSpots = $$props.originalFossilSpots);
 	    if ("switchValue" in $$props) $$invalidate(1, switchValue = $$props.switchValue);
+	    if ("mesozoic" in $$props) $$invalidate(13, mesozoic = $$props.mesozoic);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -54600,7 +53494,7 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*$width, $height*/
-	    12288) {
+	    49152) {
 	      //to update the fossil locations on resize
 	       if ($width || $height) {
 	        reDraw();
@@ -54608,8 +53502,8 @@ var app = (function () {
 	    }
 
 	    if ($$self.$$.dirty &
-	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, originalFossilSpots, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, graticule, worldFeature, switchValue*/
-	    1048515) {
+	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, fossilSpots3, originalFossilSpots, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, mesozoic, graticule, worldFeature, switchValue*/
+	    4194243) {
 	      /*
 	      another way to redraw on updates
 	      afterUpdate(() => {
@@ -54618,7 +53512,7 @@ var app = (function () {
 	      });
 	      */
 	      // $: if (canvas && $countries.length > 0) {
-	       if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && originalFossilSpots) {
+	       if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalFossilSpots) {
 	        //  console.log('countries store', $countries)
 	        //   console.log('fossilSpots: ', fossilSpots)
 	        //  console.log($projection)
@@ -54650,11 +53544,32 @@ var app = (function () {
 	        var info = base.append("div").attr("class", "info");
 
 	        function createMap(dataset) {
-	          var dataBinding = locations.selectAll("points.arc").data(dataset).enter().append("points").classed("arc", true).attr("x", function (d) {
+	          ctx.globalAlpha = 0.2;
+	          var dataBinding = locations.selectAll("points.arc").data(dataset.jurassic).enter().append("points").classed("arc", true).attr("x", function (d) {
 	            return testProjection([d.y, d.x])[0];
 	          }).attr("y", function (d) {
 	            return testProjection([d.y, d.x])[1];
-	          }).attr("radius", 3).attr("fillStyle", "#34B2C9");
+	          }).attr("radius", 9).attr("fillStyle", "#34B2C9");
+	          drawCanvas();
+	        }
+
+	        function createTriassicMap(dataset) {
+	          ctx.globalAlpha = 0.2;
+	          var dataBinding = locations.selectAll("points.arc").data(dataset.triassic).enter().append("points").classed("arc", true).attr("x", function (d) {
+	            return testProjection([d.y, d.x])[0];
+	          }).attr("y", function (d) {
+	            return testProjection([d.y, d.x])[1];
+	          }).attr("radius", 9).attr("fillStyle", "purple");
+	          drawCanvas();
+	        }
+
+	        function createCretaceousMap(dataset) {
+	          ctx.globalAlpha = 0.015;
+	          var dataBinding = locations.selectAll("points.arc").data(dataset.cretaceous).enter().append("points").classed("arc", true).attr("x", function (d) {
+	            return testProjection([d.y, d.x])[0];
+	          }).attr("y", function (d) {
+	            return testProjection([d.y, d.x])[1];
+	          }).attr("radius", 9).attr("fillStyle", "yellow");
 	          drawCanvas();
 	        }
 
@@ -54666,11 +53581,17 @@ var app = (function () {
 	            ctx.arc(node.attr("x"), node.attr("y"), node.attr("radius"), 0, 2 * Math.PI);
 	            ctx.fillStyle = node.attr("fillStyle");
 	            ctx.fill();
+	            ctx.lineWidth = 0.5;
+	            ctx.strokeStyle = "#000000";
+	            ctx.stroke();
 	            ctx.closePath();
 	          });
 	        }
 
-	        createMap(fossilSpots);
+
+	        createTriassicMap(mesozoic);
+	        createMap(mesozoic);
+	        createCretaceousMap(mesozoic);
 
 	        function makeGraticules() {
 	          var geoGenerator = d3geoPath().projection(geoNaturalEarth1projection).context(ctx); // Create and configure the graticule generator (one line every 20 degrees)

@@ -1,0 +1,911 @@
+occurrence_no,record_type,reid_no,flags,collection_no,identified_name,identified_rank,identified_no,difference,accepted_name,accepted_attr,accepted_rank,accepted_no,early_interval,late_interval,max_ma,min_ma,reference_no,lng,lat
+149834,occ,,,13263,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Rhaetian,Hettangian,208.5,199.3,4395,-108.930832,38.27861
+149988,occ,19972,,13285,Efraasia minor,species,91403,,Efraasia minor,,species,54997,Norian,,228,208.5,19481,8.978333,49.023609
+220070,occ,37935,,22680,Plateosaurus trossingensis,species,64679,subjective synonym of,Plateosaurus erlenbergiensis,,species,57402,Norian,,228,208.5,75731,8.016667,47.5
+220073,occ,21878,,22680,Liliensternus sp.,genus,55542,,Liliensternus,,genus,55542,Norian,,228,208.5,30215,8.016667,47.5
+220082,occ,,,22683,Plateosaurus n. sp. trossingensis,species,64679,subjective synonym of,Plateosaurus erlenbergiensis,,species,57402,Norian,,228,208.5,26308,8.65,48.066669
+220084,occ,,,22683,Liliensternus sp.,genus,55542,,Liliensternus,,genus,55542,Norian,,228,208.5,5702,8.65,48.066669
+220085,occ,23672,,22684,Gresslyosaurus n. sp. torgeri,species,65095,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,58890,11.073611,51.897499
+220087,occ,28163,,22684,Liliensternus sp.,genus,55542,,Liliensternus,,genus,55542,Rhaetian,,208.5,201.3,5702,11.073611,51.897499
+229290,occ,,,22682,Pachysaurus ? n. sp. giganteus,species,64744,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,29483,8.65,48.066669
+229333,occ,37907,,22706,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Carnian,Norian,237,208.5,75613,-101.247002,32.1721
+255449,occ,19255,I,24798,Eubrontes n. sp. veillonensis,species,96251,,Eubrontes veillonensis,,species,96251,Rhaetian,,208.5,201.3,23532,-1.6702,46.437599
+255450,occ,19254,IF,24798,Grallator n. sp. variabilis,species,96249,,Grallator variabilis,,species,96249,Rhaetian,,208.5,201.3,23532,-1.6702,46.437599
+255935,occ,18189,I,24834,Coelurosaurichnus perriauxi,species,82507,,Coelurosaurichnus perriauxi,,species,82507,Anisian,Ladinian,247.2,237,17956,4.432778,46.841946
+255937,occ,18190,IF,24834,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,17957,4.432778,46.841946
+256434,occ,,,24877,n. gen. Eoraptor n. sp. lunensis,species,57454,,Eoraptor lunensis,,species,57454,Carnian,,237,228,6971,-68.904999,-31.10111
+256435,occ,,,24877,Herrerasaurus ischigualastensis,species,55000,,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,6971,-68.904999,-31.10111
+256441,occ,12145,,24878,Herrerasaurus ischigualastensis,species,55000,,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,12426,-68.283333,-30.133333
+261810,occ,17808,,25298,n. gen. Agnosphitys n. sp. cromhallensis,species,53365,,Agnosphitys cromhallensis,,species,53365,Rhaetian,,208.5,201.3,7095,-2.428333,51.623055
+261854,occ,,,25307,n. gen. Saturnalia n. sp. tupiniquim,species,68124,,Saturnalia tupiniquim,,species,68124,Carnian,Norian,237,208.5,7097,-53.75,-29.666668
+269485,occ,,,25836,n. gen. Dimodosaurus n. sp. poligniensis,species,54159,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,23796,5.659798,46.842579
+269486,occ,,,25836,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,7187,5.659798,46.842579
+277109,occ,,,26452,n. gen. Pisanosaurus n. sp. mertii,species,64409,,Pisanosaurus mertii,,species,64409,Carnian,,237,228,7278,-68,-30
+283828,occ,12362,,26998,Plateosaurus longiceps,species,64684,subjective synonym of,Plateosaurus erlenbergiensis,,species,57402,Norian,,228,208.5,12994,-23.513889,71.827499
+283829,occ,,,26998,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,7466,-23.513889,71.827499
+283860,occ,38991,,26996,n. gen. Issi n. sp. saaneq,species,443779,,Issi saaneq,,species,443779,Norian,,228,208.5,78483,-22.568611,71.383614
+283950,occ,,I,27008,Grallator sp.,genus,64079,,Grallator,,genus,64079,Alaunian,,215.56,212,7466,-22.552778,71.414719
+283951,occ,,,27008,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Alaunian,,215.56,212,7466,-22.552778,71.414719
+283952,occ,38800,IF,27008,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Alaunian,,215.56,212,78090,-22.552778,71.414719
+284027,occ,13156,,27012,Thecodontosaurus n. sp. caducus,species,57689,recombined as,Pantydraco caducus,,species,57689,Rhaetian,,208.5,201.3,10661,-3.373889,51.459999
+284031,occ,19701,,27012,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,14199,-3.373889,51.459999
+294291,occ,35728,IF,28091,Coelurosaurichnus n. sp. sabinensis,species,68187,,Coelurosaurichnus sabinensis,,species,68187,Late Triassic,,237,201.3,7692,4.616667,47.183334
+294292,occ,18187,IF,28092,Coelurosaurichnus sabinensis,species,68187,,Coelurosaurichnus sabinensis,,species,68187,Middle Triassic,,247.2,237,7692,4.47658,46.607204
+297315,occ,,I,28462,Coelurosaurichnus perriauxi,species,82507,,Coelurosaurichnus perriauxi,,species,82507,Anisian,Ladinian,247.2,237,7850,4.416667,46.900002
+297316,occ,34062,IF,28462,Anchisauripus n. sp. bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,8459,4.416667,46.900002
+297867,occ,,I,28614,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,7895,152.907898,-27.607546
+360364,occ,,,34132,n. gen. Zupaysaurus n. sp. rougieri,species,54097,,Zupaysaurus rougieri,,species,54097,Norian,,228,208.5,8988,-68.066666,-29.85
+363120,occ,,IF,24835,Coelurosaurichnus n. sp. ziegelangernensis,species,85792,,Coelurosaurichnus ziegelangernensis,,species,85792,Carnian,,237,228,40024,10.5,50
+364229,occ,,I,34535,Coelurosaurichnus n. sp. informal,genus,68186,,Coelurosaurichnus,,genus,68186,Carnian,,237,228,9115,10.883333,49.883331
+364230,occ,,IF,34535,Coelurosaurichnus n. sp. kronbergeri,species,85797,,Coelurosaurichnus kronbergeri,,species,85797,Carnian,,237,228,9115,10.883333,49.883331
+366210,occ,12589,,34678,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Carnian,Rhaetian,237,201.3,13211,-8.85,31.166668
+366441,occ,38335,IF,34701,n. gen. Tridactylus n. sp. machouensis,species,436506,,Tridactylus machouensis,,species,436506,Carnian,,237,228,76667,-8.956,31.066999
+367667,occ,,,34779,Syntarsus rhodesiensis,species,55541,recombined as,Coelophysis rhodesiensis,,species,55541,Late Triassic,,237,201.3,9278,28.5833,-19.799999
+370541,occ,,,35079,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,9359,-77.327225,39.704445
+372891,occ,20922,,35295,n. gen. Blikanasaurus n. sp. cromptoni,species,55644,,Blikanasaurus cromptoni,,species,55644,Norian,Rhaetian,228,201.3,9521,27.616667,-30.566668
+378116,occ,,,35708,Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,28154,27.6,-30.433332
+379967,occ,24531,,35967,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,13033,101.75,16.75
+381729,occ,,IF,36226,Coelurosaurichnus cf. palyssii,species,371539,"misspelling of, obsolete variant of",Coelurosaurichnus palissyi,,species,92020,Anisian,Ladinian,247.2,237,9714,4.432778,46.841946
+381730,occ,,I,36226,Coelurosaurichnus sp.,genus,68186,,Coelurosaurichnus,,genus,68186,Anisian,Ladinian,247.2,237,9714,4.432778,46.841946
+384555,occ,19672,,36609,Melanorosaurus readi,species,54980,,Melanorosaurus readi,,species,54980,Norian,Rhaetian,228,201.3,9815,27,-31.233334
+384558,occ,,,36610,n. gen. Euskelesaurus n. sp. brownii,species,65484,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,13242,26.616667,-30.950001
+385301,occ,,,36704,n. gen. Melanorosaurus n. sp. readi,species,54980,,Melanorosaurus readi,,species,54980,Norian,,228,208.5,9818,27.383329,-30.6
+385302,occ,,,36705,Melanorosaurus readi,species,54980,,Melanorosaurus readi,,species,54980,Norian,Rhaetian,228,201.3,9818,27.433332,-30.549999
+385604,occ,,,36733,n. gen. Eucnemesaurus n. sp. fortis,species,56614,,Eucnemesaurus fortis,,species,56614,Norian,Rhaetian,228,201.3,14536,28.233334,-28.5
+385606,occ,,,36735,Euskelosaurus n. sp. africanus,species,56594,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,9818,27.4167,-30.5333
+385607,occ,,,36735,Plateosaurus n. sp. cullingworthi,species,56591,recombined as,Plateosauravus cullingworthi,,species,56591,Norian,,228,208.5,9818,27.4167,-30.5333
+385610,occ,,,36738,Plateosaurus cullingworthi,species,56591,recombined as,Plateosauravus cullingworthi,,species,56591,Norian,Rhaetian,228,201.3,9818,27.233299,-30.700001
+385611,occ,,,36739,Plateosaurus n. sp. stormbergensis,species,56604,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,Rhaetian,228,201.3,17006,26.783333,-31.083332
+385656,occ,19025,,36610,n. gen. Orinosaurus n. sp. capensis,species,56675,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,Rhaetian,228,201.3,14156,26.616667,-30.950001
+405213,occ,,IF,38886,Kayentapus sp.,genus,68970,,Kayentapus,,genus,68970,Rhaetian,Hettangian,208.5,199.3,41099,-111.164169,35.931667
+405214,occ,,I,38886,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,Hettangian,208.5,199.3,41099,-111.164169,35.931667
+405215,occ,,I,38886,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Rhaetian,Hettangian,208.5,199.3,41099,-111.164169,35.931667
+405216,occ,,IF,38886,Dilophosauripus sp.,genus,231458,,Dilophosauripus,,genus,231458,Rhaetian,Hettangian,208.5,199.3,41099,-111.164169,35.931667
+405217,occ,,IF,38886,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Rhaetian,Hettangian,208.5,199.3,41099,-111.164169,35.931667
+405220,occ,20949,I,38888,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,Hettangian,208.5,199.3,27985,-111.112221,35.863056
+405221,occ,20948,I,38889,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,Hettangian,208.5,199.3,27985,-111.112221,35.863056
+406872,occ,,,39160,n. gen. Camposaurus n. sp. arizonensis,species,66659,,Camposaurus arizonensis,,species,66659,Norian,,228,208.5,13905,-109.462486,34.43742
+461293,occ,39455,,45513,n. gen. Unaysaurus n. sp. tolentinoi,species,62959,,Unaysaurus tolentinoi,,species,62959,Norian,,228,208.5,11929,-53.856945,-29.601389
+463421,occ,,,22684,n. gen. Pterospondylus n. sp. trielbae,species,56383,nomen dubium,Ceratosauria,,suborder,90100,Rhaetian,,208.5,201.3,34613,11.073611,51.897499
+468605,occ,,I,46555,n. gen. Agialopous n. sp. wyomingensis,species,54519,,Agialopous wyomingensis,,species,54519,Norian,Rhaetian,228,201.3,9241,-108.808891,43.025555
+468633,occ,,I,46560,Anomoepus ? sp.,genus,67049,,Anomoepus,,genus,67049,Norian,,228,208.5,12429,-103.350899,36.894199
+468634,occ,,IF,46560,cf. Anchisauripus hitchcocki,species,66091,subjective synonym of,Grallator tenuis,,species,67368,Norian,,228,208.5,12429,-103.350899,36.894199
+468903,occ,27489,I,46621,Grallator n. sp. sulcatus,species,64081,subjective synonym of,Grallator cursorius,,species,64080,Norian,,228,208.5,12444,-75.095001,40.568611
+468904,occ,,I,46622,Gigandipus n. sp. milfordensis,species,68465,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,19814,-75.095001,40.568611
+468906,occ,31571,,46622,Dinosauria indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,12444,-75.095001,40.568611
+474116,occ,,,47036,Herrerasaurus sp.,genus,38511,,Herrerasaurus,,genus,38511,Carnian,,237,228,12507,-67.877777,-30.136944
+479382,occ,,,36610,n. gen. Aliwalia n. sp. rex,species,55003,subjective synonym of,Eucnemesaurus fortis,,species,56614,Norian,Rhaetian,228,201.3,9279,26.616667,-30.950001
+479548,occ,,,47800,Thecodontosaurus n. sp. diagnosticus,species,64389,subjective synonym of,Efraasia minor,,species,54997,Alaunian,,215.56,212,26359,8.9764,49.0644
+479551,occ,23500,,47802,n. gen. Gresslyosaurus n. sp. ingens,species,57405,,Gresslyosaurus ingens,,species,57405,Sevatian,,212,205.6,34081,7.7333,47.466702
+479552,occ,,,47802,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Sevatian,,212,205.6,16924,7.7333,47.466702
+479560,occ,37124,,47803,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,72985,8.451944,47.706112
+479561,occ,37125,,47804,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,72985,8.4667,47.700001
+479563,occ,,,47806,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,,228,208.5,12799,8.486944,47.741669
+483851,occ,22869,,39160,Herrerasauridae indet.,family,38510,,Herrerasauridae,,family,38510,Norian,,228,208.5,13905,-109.462486,34.43742
+483867,occ,,,48422,Coelurus n. sp. bauri,species,54212,recombined as,Coelophysis bauri,,species,54212,Rhaetian,,208.5,201.3,5928,-106.473099,36.331699
+483876,occ,22725,,48423,Theropoda indet.,unranked clade,162964,,Theropoda,,unranked clade,38513,Norian,,228,208.5,28148,-111.247223,35.841667
+483890,occ,17951,,48424,Ornithischia indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,17273,-101.168892,33.449165
+483891,occ,17952,,48424,Theropoda ? indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,17273,-101.168892,33.449165
+484390,occ,,I,48459,Grallator sp.,genus,64079,,Grallator,,genus,64079,Carnian,,237,228,12946,28.274721,-30.97611
+484409,occ,22995,,48460,cf. Saturnalia sp.,genus,68123,,Saturnalia,,genus,68123,Carnian,,237,228,7097,30.333332,-16.233334
+484986,occ,34482,,48546,n. gen. Chindesaurus n. sp. bryansmalli,species,66909,,Chindesaurus bryansmalli,,species,66909,Norian,,228,208.5,14122,-109.794441,35.087502
+484990,occ,,,48547,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,5705,-109.765282,34.943333
+484993,occ,,,48547,Ornithischia ? indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,5705,-109.765282,34.943333
+486103,occ,12348,,48639,Plateosaurus engelhardti,species,56683,,Plateosaurus engelhardti,,species,56683,Norian,,228,208.5,12994,5.766667,46.900002
+486104,occ,12347,,25836,Plateosaurus engelhardti,species,56683,,Plateosaurus engelhardti,,species,56683,Norian,,228,208.5,12994,5.659798,46.842579
+486105,occ,,,48640,Dimodosaurus poligniensis,species,54159,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,7187,5.6,46.766666
+486106,occ,,,48641,Dimodosaurus poligniensis,species,54159,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,7187,6.033333,47.25
+486128,occ,,,36106,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Rhaetian,,208.5,201.3,15228,6.332844,48.615555
+486145,occ,,,48643,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,,228,208.5,12975,5.55,46.666672
+486146,occ,28193,,48643,Gresslyosaurus cf. plieningeri,species,57406,,Gresslyosaurus plieningeri,,species,57406,Norian,,228,208.5,12975,5.55,46.666672
+486147,occ,,,48644,n. gen. Avalonia n. sp. sanfordi,species,56607,nomen dubium,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,29865,-2.816667,51.216671
+486165,occ,,,48644,n. gen. Camelotia n. sp. borealis,species,56586,,Camelotia borealis,,species,56586,Rhaetian,,208.5,201.3,12982,-2.816667,51.216671
+486188,occ,,,48658,n. gen. Staurikosaurus n. sp. pricei,species,55001,,Staurikosaurus pricei,,species,55001,Carnian,,237,228,12492,-53.799999,-29.683001
+486393,occ,,,48683,n. gen. Plateosaurus n. sp. engelhardti,species,56683,,Plateosaurus engelhardti,,species,56683,Norian,,228,208.5,23495,11.133,49.516602
+486395,occ,23380,,48683,cf. Liliensternus sp.,genus,55542,,Liliensternus,,genus,55542,Norian,,228,208.5,33788,11.133,49.516602
+486397,occ,33456,,48684,Zanclodon n. sp. bavaricus,species,65085,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,62417,10.658611,50.197777
+486402,occ,,,48687,Plateosaurus n. sp. quenstedti,species,57401,nomen dubium,Plateosaurus,,genus,38644,Rhaetian,,208.5,201.3,16920,9.05,48.533329
+486403,occ,,,48687,Pachysaurus n. sp. magnus,species,57410,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,16920,9.05,48.533329
+486405,occ,,,48689,Plateosaurus n. sp. reinigeri,species,57400,nomen dubium,Plateosaurus,,genus,38644,Norian,,228,208.5,16920,9.166667,48.75
+486406,occ,,,48689,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,12994,9.166667,48.75
+486407,occ,33909,,48690,Plateosaurus n. sp. erlenbergiensis,species,57402,,Plateosaurus erlenbergiensis,,species,57402,Rhaetian,,208.5,201.3,16920,9.1,48.733299
+486408,occ,30614,,48691,Gresslyosaurus n. sp. plieningeri,species,57406,,Gresslyosaurus plieningeri,,species,57406,Norian,,228,208.5,16920,9.166667,48.75
+486409,occ,,,48692,Gresslyosaurus n. sp. robustus,species,57407,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,16920,9.0667,48.549999
+486410,occ,,,48693,Pachysaurus n. sp. ajax,species,57409,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,16920,9.4606,49.080799
+486411,occ,23675,,22684,Plateosaurus n. sp. longiceps,species,64684,subjective synonym of,Plateosaurus erlenbergiensis,,species,57402,Rhaetian,,208.5,201.3,25716,11.073611,51.897499
+486412,occ,12366,,48694,n. gen. Ruehleia n. sp. bedheimensis,species,65100,,Ruehleia bedheimensis,,species,65100,Norian,,228,208.5,12994,10.55,50.383301
+486413,occ,,,48694,Halticosaurus n. sp. liliensterni,species,56380,recombined as,Liliensternus liliensterni,,species,56380,Norian,,228,208.5,13767,10.55,50.383301
+487127,occ,,,48830,Theropoda ? indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Late Triassic,Early Jurassic,237,174.1,13013,37.8167,8.9833
+487269,occ,,,48873,Sauropoda indet.,unranked clade,38653,,Sauropoda,,unranked clade,38653,Norian,Rhaetian,228,201.3,13035,101.983299,16.3333
+490747,occ,12600,,49499,n. gen. Gojirasaurus n. sp. quayi,species,65490,,Gojirasaurus quayi,,species,65490,Norian,,228,208.5,7058,-103.379997,35.365276
+490753,occ,,,49499,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,13246,-103.379997,35.365276
+490755,occ,37914,,49500,Coelophysidae indet.,family,55478,,Coelophysidae,,family,55478,Norian,,228,208.5,75605,-109.833298,35.033298
+491743,occ,12681,,49654,Liliensternus n. sp. airelensis,species,56381,recombined as,Lophostropheus airelensis,,species,56381,Rhaetian,Hettangian,208.5,199.3,13302,1.083333,49.216667
+497884,occ,,I,50302,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,13507,8.983333,49
+497885,occ,,I,50303,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,13508,9.83333,48.916672
+504253,occ,19707,,47803,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,14199,8.451944,47.706112
+513187,occ,,,39671,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Late Triassic,,237,201.3,13103,-101.133301,33.5
+513479,occ,28133,,51970,Thecodontosaurus n. sp. antiquus,species,56627,,Thecodontosaurus antiquus,,species,56627,Rhaetian,,208.5,201.3,14071,-2.616667,51.469166
+513485,occ,,,51970,n. gen. Agrosaurus n. sp. macgillivrayi,species,64396,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,53449,-2.616667,51.469166
+513496,occ,20863,IF,51979,Grallator (Eubrontes) giganteus,species,131087,recombined as,Eubrontes giganteus,,species,67402,Rhaetian,,208.5,201.3,27923,12.56667,56.200001
+513572,occ,,,52014,n. gen. Coloradia n. sp. brevis,species,66680,recombined as,Coloradisaurus brevis,,species,66680,Norian,,228,208.5,13923,-68.216667,-29.733334
+513603,occ,,,52032,n. gen. Riojasaurus n. sp. incertus,species,56585,,Riojasaurus incertus,,species,56585,Norian,,228,208.5,13920,-67.933327,-29.783501
+513604,occ,13259,,52032,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,23520,-67.933327,-29.783501
+513907,occ,,,52086,Syntarsus sp.,genus,38525,,Syntarsus,,genus,38525,Rhaetian,Hettangian,208.5,199.3,13958,-111.302223,35.931389
+515173,occ,,I,52168,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,55930,-103.639397,34.976601
+517568,occ,,IF,52494,Grallator tenuis,species,67368,,Grallator tenuis,,species,67368,Late Triassic,,237,201.3,14120,-76.803864,40.158424
+517569,occ,,IF,52494,Anchisauripus sillimani,species,67393,recombined as,Eubrontes sillimani,,species,67392,Late Triassic,,237,201.3,14120,-76.803864,40.158424
+517570,occ,37905,,52495,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75613,-103.379997,35.365276
+517571,occ,37903,,52496,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75613,-109.79512,35.087524
+517572,occ,37906,,52497,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Lacian,,221.5,215.56,75613,-103.488297,35.159779
+517573,occ,,,52498,Coelurus bauri,species,54212,recombined as,Coelophysis bauri,,species,54212,Norian,,228,208.5,9090,-106.339478,36.205296
+517574,occ,,,47126,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,29943,-106.466667,36.316666
+517575,occ,15604,,39160,Saurischia indet.,unranked clade,38505,,Saurischia,,unranked clade,38505,Norian,,228,208.5,15399,-109.462486,34.43742
+517583,occ,,,52496,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,14122,-109.79512,35.087524
+517592,occ,22711,,52499,Revueltosaurus hunti,species,69055,recombined as,Krzyzanowskisaurus hunti,,species,69055,Norian,,228,208.5,31634,-109.316704,34.533298
+517598,occ,,,52500,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,14122,-109.800003,34.866699
+517621,occ,,,52498,Coelurus n. sp. longicollis,species,54211,subjective synonym of,Coelophysis bauri,,species,54212,Norian,,228,208.5,9090,-106.339478,36.205296
+517622,occ,,,52498,Tanystropheus n. sp. willistoni,species,66655,subjective synonym of,Coelophysis bauri,,species,54212,Norian,,228,208.5,17157,-106.339478,36.205296
+518725,occ,,,52740,Herrerasaurus ischigualastensis,species,55000,,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,11823,-68.699997,-29.216669
+518726,occ,,,52741,n. gen. Herrerasaurus n. sp. ischigualastensis,species,55000,,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,11823,-68.699997,-29.216669
+518727,occ,,,52742,Herrerasaurus ischigualastensis,species,55000,,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,11823,-68.699997,-29.216669
+518730,occ,38232,,52743,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Late Triassic,,237,201.3,65740,-68.699997,-29.216669
+518731,occ,,,52744,Herrerasaurus ischigualastensis,species,55000,,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,11823,-68.699997,-29.216669
+518732,occ,,,52745,n. gen. Ischisaurus n. sp. cattoi,species,58914,subjective synonym of,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,11823,-68.699997,-29.216669
+518733,occ,,,52746,Ischisaurus cattoi,species,58914,subjective synonym of,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,11823,-68.699997,-29.216669
+518738,occ,32905,,52748,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Carnian,,237,228,60797,-68.699997,-29.216669
+519917,occ,,,52907,n. gen. Frenguellisaurus n. sp. ischigualastensis,species,66349,subjective synonym of,Herrerasaurus ischigualastensis,,species,55000,Carnian,,237,228,13756,-67.916664,-30.083332
+527467,occ,,,53829,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Rhaetian,,208.5,201.3,14493,-0.810833,53.034721
+528637,occ,,,54006,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+528639,occ,,,54008,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+528640,occ,,,54009,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+528641,occ,,,54010,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+528642,occ,,,54011,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+528643,occ,,,54012,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+528644,occ,,,54013,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+528645,occ,,,54014,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,14598,-106.446297,36.313
+530240,occ,,I,54144,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,14637,-75.43,40.224167
+530241,occ,,I,54144,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,14637,-75.43,40.224167
+530242,occ,34815,I,54144,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,65944,-75.43,40.224167
+530454,occ,,,54167,Coelophysis bauri,species,55477,,Coelophysis bauri,,species,54212,Norian,,228,208.5,14598,-106.339478,36.205296
+530455,occ,,,54168,Coelophysis bauri,species,55477,,Coelophysis bauri,,species,54212,Norian,,228,208.5,14598,-106.874496,36.339298
+534097,occ,20873,I,55259,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,65919,-108.914368,38.646606
+534098,occ,,IF,55259,Anomoepodidae indet.,family,52874,,Anomoepodidae,,family,52874,Norian,,228,208.5,14750,-108.914368,38.646606
+534099,occ,,IF,55259,Pseudotetrasauropus ? sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Norian,,228,208.5,14750,-108.914368,38.646606
+534105,occ,,,55259,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,14750,-108.914368,38.646606
+534612,occ,,I,55316,Coelurosaurichnus n. sp. grancieri,species,68203,,Coelurosaurichnus grancieri,,species,68203,Carnian,,237,228,14684,4.15,44.450001
+534736,occ,28999,,55321,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Rhaetian,,208.5,201.3,33897,10.68333,52.066669
+534770,occ,22026,,51970,n. gen. Asylosaurus n. sp. yalensis,species,153776,,Asylosaurus yalensis,,species,153776,Rhaetian,,208.5,201.3,30681,-2.616667,51.469166
+534771,occ,22027,,51970,Anchisauria indet.,unranked clade,68582,,Anchisauria,,unranked clade,68582,Rhaetian,,208.5,201.3,30681,-2.616667,51.469166
+534998,occ,,,55365,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,14872,12.454604,46.309559
+534999,occ,,,55366,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,14872,12.483277,46.327412
+535000,occ,,,55367,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,14872,12.601133,46.307098
+535860,occ,,I,55410,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,14907,-75.033501,40.548599
+535861,occ,,I,55411,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,14907,-75.064163,40.539444
+535862,occ,,I,55412,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,14907,-74.106667,40.826389
+535863,occ,,I,55413,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,12444,-76.75,40.1525
+535867,occ,,I,55414,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,14907,-77.057899,40.001499
+535873,occ,,I,55415,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,14907,-75.45639,40.1525
+535877,occ,,IF,55416,Atreipus n. sp. acadianus,species,68461,subjective synonym of,Grallator tenuis,,species,67368,Carnian,,237,228,14907,-64.616669,45.200001
+535880,occ,,I,55417,Coelurosaurichnus n. sp. metzneri,species,68462,subjective synonym of,Grallator tuberosus,,species,67394,Carnian,,237,228,45225,10.6167,49.483299
+535881,occ,,IF,55418,Anchisauripus sillimani,species,67393,recombined as,Eubrontes sillimani,,species,67392,Norian,,228,208.5,14907,-74.190002,40.752777
+535882,occ,,I,55418,Anchisauripus tuberosus,species,67395,recombined as,Grallator tuberosus,,species,67394,Norian,,228,208.5,14907,-74.190002,40.752777
+535883,occ,,I,55418,Atreipus sp.,genus,68367,,Atreipus,,genus,68367,Norian,,228,208.5,14907,-74.190002,40.752777
+535884,occ,,I,55419,Atreipus sp.,genus,68367,,Atreipus,,genus,68367,Norian,,228,208.5,14907,-75.454445,40.225555
+536068,occ,,,55446,Guaibasaurus candelariensis,species,66571,,Guaibasaurus candelariensis,,species,66571,Norian,,228,208.5,14939,-53.446667,-29.5625
+536422,occ,,I,55412,Grallator spp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,14907,-74.106667,40.826389
+536423,occ,,IF,55412,Anchisauripus spp.,genus,64083,,Anchisauripus,,genus,64083,Norian,,228,208.5,14907,-74.106667,40.826389
+536424,occ,31549,I,55412,Coelurosaurichnus sp. 2. informal,genus,68186,,Coelurosaurichnus,,genus,68186,Norian,,228,208.5,55918,-74.106667,40.826389
+536429,occ,,I,55492,Gigandipus milfordensis,species,68465,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,12444,-75.095001,40.568611
+536430,occ,,I,55493,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,14907,-79.668999,36.540901
+536599,occ,,,55526,Dinosauria ? indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Carnian,,237,228,14991,-79.281944,35.56028
+538678,occ,39642,,56018,n. gen. Kholumolumo n. sp. ellenbergerorum,species,423012,,Kholumolumo ellenbergerorum,,species,423012,Norian,Rhaetian,228,201.3,72974,27.516701,-30.2167
+538681,occ,20931,IF,56020,n. gen. Deuterotrisauropus n. sp. socialis,species,133336,recombined as,Grallator socialis,,species,133336,Norian,Rhaetian,228,201.3,28154,27.516701,-30.2167
+538683,occ,20932,IF,56020,Trisauropodiscus n. sp. aviforma,species,133339,,Trisauropodiscus aviforma,,species,133339,Norian,Rhaetian,228,201.3,28154,27.516701,-30.2167
+538697,occ,,I,56029,cf. Otozoum sp.,genus,64089,,Otozoum,,genus,64089,Carnian,Norian,237,208.5,15109,27.433331,-29.366671
+538698,occ,,,56029,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Carnian,Norian,237,208.5,15109,27.433331,-29.366671
+538699,occ,22146,IF,56030,n. gen. Pseudotetrasauropus n. sp. bipedoida,species,133313,,Pseudotetrasauropus bipedoida,,species,133313,Carnian,Norian,237,208.5,28154,29.033331,-29.15
+538738,occ,,,56047,aff. Thyreophora indet.,unranked clade,52777,,Thyreophora,,unranked clade,52777,Alaunian,,215.56,212,15111,6.211,49.811001
+539206,occ,,,56156,n. gen. Lessemsaurus n. sp. sauropoides,species,68588,,Lessemsaurus sauropoides,,species,68588,Norian,,228,208.5,15138,-66.083298,-30.4167
+539478,occ,,,56188,Saturnalia tupiniquim,species,68124,,Saturnalia tupiniquim,,species,68124,Carnian,Norian,237,208.5,15151,-53.774166,-29.697779
+544692,occ,34683,I,57011,Agialopous sp.,genus,54518,subjective synonym of,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,15378,-109.417221,40.578056
+545075,occ,,,57059,n. gen. Walkeria n. sp. maleriensis,species,65488,recombined as,Alwalkeria maleriensis,,species,65488,Carnian,,237,228,13245,79.633301,19.0667
+545089,occ,,IF,57063,Pseudotetrasauropus sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Rhaetian,,208.5,201.3,15414,-111.129166,37.996666
+545090,occ,,I,57063,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,15414,-111.129166,37.996666
+545094,occ,,IF,57064,Pseudotetrasauropus sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Rhaetian,,208.5,201.3,15414,-111.129166,37.996666
+545095,occ,,I,57064,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,15414,-111.129166,37.996666
+545100,occ,,I,57065,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,Hettangian,208.5,199.3,15414,-112.12278,37.205002
+545102,occ,,I,57066,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,Hettangian,208.5,199.3,15414,-111.309723,37.857777
+557169,occ,37912,,57684,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Norian,,228,208.5,75605,-109.82222,34.830555
+557176,occ,37904,,57685,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75613,-109.834099,35.110901
+557177,occ,,,57685,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,15512,-109.834099,35.110901
+557183,occ,37913,,57686,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,75605,-109.807503,35.125
+557184,occ,38973,,57687,Coelophysidae indet.,family,55478,,Coelophysidae,,family,55478,Norian,,228,208.5,78440,-109.807503,35.125
+558127,occ,,I,57917,Atreipus ? sp.,genus,68367,,Atreipus,,genus,68367,Norian,,228,208.5,15573,-73.909164,41.140568
+558128,occ,,I,57917,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,63167,-73.909164,41.140568
+558361,occ,19013,I,57949,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,78434,-3.250398,51.393559
+558362,occ,,I,57949,Gigandipus sp.,genus,96914,subjective synonym of,Eubrontes,,genus,66094,Norian,,228,208.5,15587,-3.250398,51.393559
+558365,occ,,IF,57952,Brontozoum n. sp. thomasi,species,85795,recombined as,Anchisauripus thomasi,,species,85795,Late Triassic,,237,201.3,24478,-3.72243,51.497223
+558388,occ,15693,,57958,Camelotia sp.,genus,38647,,Camelotia,,genus,38647,Rhaetian,,208.5,201.3,16509,-2.629478,51.60265
+558389,occ,19706,,57958,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,14199,-2.629478,51.60265
+558437,occ,,,57975,Thecodontosaurus antiquus ?,species,56627,,Thecodontosaurus antiquus,,species,56627,Rhaetian,,208.5,201.3,15587,-2.489664,51.598282
+559094,occ,,,58106,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,15654,-106.473099,36.331699
+559614,occ,,,53829,Saurischia indet.,unranked clade,38505,,Saurischia,,unranked clade,38505,Rhaetian,,208.5,201.3,16509,-0.810833,53.034721
+559615,occ,,,58155,Zanclodon n. sp. cambrensis,species,65109,nomen dubium,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,29866,-3.5771,51.5065
+561802,occ,,,58569,Riojasaurus incertus,species,56585,,Riojasaurus incertus,,species,56585,Norian,,228,208.5,16624,-68.112999,-30
+562018,occ,34651,I,58623,cf. Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,,228,208.5,65481,3.96667,44.083328
+562019,occ,,,58623,Sauropoda ? indet.,unranked clade,38653,,Sauropoda,,unranked clade,38653,Norian,,228,208.5,16648,3.96667,44.083328
+562020,occ,34652,I,58624,cf. Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,,228,208.5,65481,3.96667,44.083328
+562021,occ,,,58624,Sauropoda ? indet.,unranked clade,38653,,Sauropoda,,unranked clade,38653,Norian,,228,208.5,16648,3.96667,44.083328
+562022,occ,,,58625,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Rhaetian,,208.5,201.3,16648,5.8,43.116699
+562836,occ,,,13273,n. gen. Protoavis n. sp. texensis,species,192929,,Protoavis texensis,,species,192929,Norian,,228,208.5,36775,-101.315002,33.521389
+566224,occ,,,59290,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,16981,3.441667,43.966667
+566225,occ,19674,,59291,Melanorosaurus n. sp. thabanensis,species,56589,recombined as,Meroktenos thabanensis,,species,56589,Norian,Rhaetian,228,201.3,16646,27.4,-29.9333
+566781,occ,36180,IF,59340,Grallator variabilis,species,96249,,Grallator variabilis,,species,96249,Rhaetian,Hettangian,208.5,199.3,70772,-0.455278,32.748333
+567906,occ,,,36377,Theropoda ? indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Alaunian,,215.56,212,17072,9.717,45.682999
+567907,occ,,,59639,Theropoda ? indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Alaunian,,215.56,212,17072,9.817,45.783001
+568126,occ,24749,,59669,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Ladinian,,242,237,35582,-68.417778,-29.611668
+568152,occ,,IF,59670,Tetrasauropus sp.,genus,77113,,Tetrasauropus,,genus,77113,Middle Triassic,,247.2,237,17074,-68.890282,-32.450832
+572563,occ,,,22705,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,17273,-109.358612,34.513889
+572564,occ,,,22705,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,17273,-109.358612,34.513889
+572565,occ,,,22705,Ornithischia ? indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,17273,-109.358612,34.513889
+572594,occ,,,55248,Prosauropoda ? indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,17273,-108.487221,35.424168
+572597,occ,,,55248,Ornithischia ? indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,17273,-108.487221,35.424168
+572672,occ,,,48424,Prosauropoda ? indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,17273,-101.168892,33.449165
+575515,occ,31544,IF,60501,n. gen. Pengxianpus n. sp. cifengensis,species,348384,,Pengxianpus cifengensis,,species,348384,Rhaetian,,208.5,201.3,16852,104.43528,30.856112
+586581,occ,,I,61845,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,17860,-109.928329,38.435555
+587325,occ,,,46077,cf. Thecodontosaurus sp.,genus,53022,,Thecodontosaurus,,genus,53022,Rhaetian,,208.5,201.3,17881,-3.472222,51.508057
+589288,occ,,I,62182,Coelurosaurichnus n. sp. perriauxi,species,82507,,Coelurosaurichnus perriauxi,,species,82507,Anisian,Ladinian,247.2,237,17956,4.432778,46.841946
+589290,occ,,IF,62183,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,17967,4.432778,46.841946
+589368,occ,,IF,28092,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Middle Triassic,,247.2,237,17970,4.47658,46.607204
+589404,occ,,,62206,Prosauropoda ? indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,17974,-109.763611,34.942501
+589914,occ,20951,I,62286,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,,228,208.5,27985,-109.764168,34.942501
+589915,occ,20952,I,62286,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,27985,-109.764168,34.942501
+590148,occ,22855,,62311,cf. Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Lacian,Sevatian,221.5,205.6,24249,-106.473053,36.331669
+590149,occ,22856,,62311,Coelophysoidea indet.,superfamily,55476,,Coelophysoidea,,superfamily,55476,Lacian,Sevatian,221.5,205.6,24249,-106.473053,36.331669
+590157,occ,,,62312,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Lacian,Sevatian,221.5,205.6,18008,-106.473053,36.331669
+590159,occ,,,62313,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Lacian,Sevatian,221.5,205.6,18008,-106.473053,36.331669
+590160,occ,,I,52168,aff. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,18009,-103.639397,34.976601
+592705,occ,,I,62766,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Rhaetian,,208.5,201.3,18106,-75.803612,40.286667
+592708,occ,,I,62766,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,28162,-75.803612,40.286667
+593060,occ,,I,55418,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,62822,-74.190002,40.752777
+593069,occ,,I,62841,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,18115,-75.155281,40.61972
+593071,occ,,I,62841,cf. Coelurosaurichnus sp.,genus,68186,,Coelurosaurichnus,,genus,68186,Norian,,228,208.5,18115,-75.155281,40.61972
+593072,occ,,I,62841,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,18115,-75.155281,40.61972
+593111,occ,,IF,62768,Eubrontes giganteus,species,66095,,Eubrontes giganteus,,species,67402,Rhaetian,,208.5,201.3,18115,-75.862228,40.273548
+604143,occ,,,64316,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Rhaetian,,208.5,201.3,18552,2.171667,61.512501
+604469,occ,,,64397,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Late Triassic,Early Jurassic,237,174.1,14536,29.139444,-28.27389
+627731,occ,,,67699,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,19338,-101.352081,33.012535
+627732,occ,38998,,13273,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,78487,-101.315002,33.521389
+632299,occ,,,47800,Sellosaurus n. sp. fraasi,species,57411,subjective synonym of,Efraasia minor,,species,54997,Alaunian,,215.56,212,10510,8.9764,49.0644
+632300,occ,,,47800,Teratosaurus n. sp. minor,species,54997,recombined as,Efraasia minor,,species,54997,Alaunian,,215.56,212,19481,8.9764,49.0644
+632301,occ,,,47800,Efraasia minor,species,91403,,Efraasia minor,,species,54997,Alaunian,,215.56,212,19481,8.9764,49.0644
+632302,occ,18794,,47785,n. gen. Sellosaurus n. sp. gracilis,species,54996,recombined as,Plateosaurus gracilis,,species,54996,Norian,,228,208.5,16920,9.142778,48.760555
+632303,occ,,,68038,Plateosaurus gracilis,species,56596,,Plateosaurus gracilis,,species,54996,Norian,,228,208.5,19481,8.682539,48.102707
+632304,occ,,,47785,Thecodontosaurus n. sp. hermannianus,species,64685,subjective synonym of,Plateosaurus gracilis,,species,54996,Norian,,228,208.5,16920,9.142778,48.760555
+633918,occ,,IF,68222,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,19626,4.432778,46.841946
+633921,occ,,IF,62182,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,19626,4.432778,46.841946
+633922,occ,,I,55316,Grallator sp.,genus,64079,,Grallator,,genus,64079,Carnian,,237,228,19626,4.15,44.450001
+633923,occ,,I,68224,Grallator sp.,genus,64079,,Grallator,,genus,64079,Carnian,,237,228,19626,4.15,44.450001
+633924,occ,,I,68225,Coelurosaurichnus grancieri,species,68203,,Coelurosaurichnus grancieri,,species,68203,Carnian,,237,228,19626,4.15,44.450001
+633926,occ,,IF,68226,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,19626,4.651667,46.653332
+633927,occ,,IF,68226,cf. Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Anisian,Ladinian,247.2,237,19626,4.651667,46.653332
+638656,occ,,IF,68705,Grallator cuneatus,species,67370,subjective synonym of,Grallator tenuis,,species,67368,Norian,Rhaetian,228,201.3,19814,-75.460152,40.247086
+638657,occ,,I,68705,Otouphebus n. sp. poolei,species,93702,"misspelling of, recombined as",Anchisauripus poolei,,species,85749,Norian,Rhaetian,228,201.3,19814,-75.460152,40.247086
+638663,occ,,I,68706,Anchisauripus n. sp. gwyneddensis,species,85753,,Anchisauripus gwyneddensis,,species,85753,Norian,,228,208.5,19814,-75.26889,40.198696
+638664,occ,,IF,68706,Platypterna n. sp. lockatong,species,93705,,Platypterna lockatong,,species,93705,Norian,,228,208.5,19814,-75.26889,40.198696
+639037,occ,,IF,68779,n. gen. Coelurosaurichnus n. sp. toscanus,species,77045,,Coelurosaurichnus toscanus,,species,77045,Carnian,,237,228,46342,10.490556,43.742779
+639038,occ,,I,68780,Grallator sp.,genus,64079,,Grallator,,genus,64079,Carnian,,237,228,19851,9.882214,44.081387
+639039,occ,,I,68780,Anomoepus sp.,genus,67049,,Anomoepus,,genus,67049,Carnian,,237,228,19851,9.882214,44.081387
+639429,occ,19694,,68833,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Tuvalian,Lacian,232,215.56,14199,12.105572,46.421043
+639430,occ,30833,,68833,Prosauropoda ? indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Tuvalian,Lacian,232,215.56,54299,12.105572,46.421043
+639431,occ,30834,,68833,Ornithopoda ? indet.,unranked clade,147918,,Ornithopoda,,unranked clade,38713,Tuvalian,Lacian,232,215.56,54299,12.105572,46.421043
+639662,occ,19696,,68883,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Tuvalian,,232,221.5,14199,12.309936,46.566063
+639663,occ,19104,,68884,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,23520,11.75154,46.564125
+639664,occ,,,68885,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Carnian,Norian,237,208.5,19851,12.01852,46.50552
+639674,occ,,IF,68889,Kayentapus minor,species,94348,,Kayentapus minor,,species,67431,Lacian,Alaunian,221.5,212,81036,-77.915054,38.439735
+639680,occ,39548,I,68890,Grallator cf. tuberosus,species,131245,,Grallator tuberosus,,species,67394,Lacian,Alaunian,221.5,212,81036,-77.915054,38.439735
+639681,occ,39549,IF,68890,Grallator cf. sillimani,species,94350,recombined as,Eubrontes sillimani,,species,67392,Lacian,Alaunian,221.5,212,81036,-77.915054,38.439735
+639682,occ,18971,IF,68890,Kayentapus minor,species,94348,,Kayentapus minor,,species,67431,Lacian,Alaunian,221.5,212,19883,-77.915054,38.439735
+639683,occ,,I,68890,Grallator ? sp.,genus,64079,,Grallator,,genus,64079,Lacian,Alaunian,221.5,212,19884,-77.915054,38.439735
+639684,occ,,I,68890,n. gen. Gregaripus n. sp. bairdi,species,94346,,Gregaripus bairdi,,species,94346,Lacian,Alaunian,221.5,212,19884,-77.915054,38.439735
+639809,occ,,I,68906,Coelurosaurichnus perriauxi,species,82507,,Coelurosaurichnus perriauxi,,species,82507,Anisian,Ladinian,247.2,237,19896,4.397335,46.871639
+639810,occ,,IF,68906,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,19896,4.397335,46.871639
+643849,occ,,,69523,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,78488,12.48,46.330002
+643850,occ,,,55367,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,23343,12.601133,46.307098
+643851,occ,,,69524,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,23343,12.621129,46.210579
+643853,occ,,,69525,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,23419,12.608914,46.271412
+643854,occ,,,69526,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,23343,12.601133,46.307098
+644887,occ,26378,IF,57949,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Norian,,228,208.5,39735,-3.250398,51.393559
+644888,occ,38966,IF,57949,Pseudotetrasauropus sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Norian,,228,208.5,23358,-3.250398,51.393559
+644889,occ,38807,IF,69623,Tetrasauropus sp.,genus,77113,,Tetrasauropus,,genus,77113,Norian,,228,208.5,23358,10.157794,46.6343
+644890,occ,34650,I,69623,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,,228,208.5,65481,10.157794,46.6343
+646251,occ,,,69797,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Late Triassic,,237,201.3,23419,12.05,46.383331
+651203,occ,28240,,70425,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,45554,5.43333,45.950001
+655625,occ,,I,24798,Grallator olonensis,species,96248,,Grallator olonensis,,species,96248,Rhaetian,,208.5,201.3,23532,-1.6702,46.437599
+655626,occ,,I,24798,Grallator n. sp. maximus,species,96250,,Grallator maximus,,species,96250,Rhaetian,,208.5,201.3,23532,-1.6702,46.437599
+655627,occ,,I,24798,n. gen. Saltopoides n. sp. igalensis,species,96253,,Saltopoides igalensis,,species,96253,Rhaetian,,208.5,201.3,23532,-1.6702,46.437599
+655629,occ,36248,I,70801,Grallator n. sp. olonensis,species,96248,,Grallator olonensis,,species,96248,Rhaetian,,208.5,201.3,23532,-1.6644,46.4347
+655630,occ,,I,70803,Grallator maximus,species,96250,,Grallator maximus,,species,96250,Rhaetian,,208.5,201.3,23532,-1.6705,46.437
+655631,occ,,IF,70804,Grallator variabilis,species,96249,,Grallator variabilis,,species,96249,Rhaetian,,208.5,201.3,23532,-1.6647,46.434101
+666648,occ,,,39160,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,24249,-109.462486,34.43742
+683554,occ,,,34132,Saurischia ? indet.,unranked clade,38505,,Saurischia,,unranked clade,38505,Norian,,228,208.5,24702,-68.066666,-29.85
+690303,occ,37908,,74202,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75613,-106.47506,36.323849
+690304,occ,,,74202,Coelophysoidea indet.,superfamily,55476,,Coelophysoidea,,superfamily,55476,Norian,,228,208.5,24915,-106.47506,36.323849
+699867,occ,,,75181,Massospondylus sp.,genus,38642,,Massospondylus,,genus,38642,Norian,Sinemurian,228,190.8,25375,27.533333,-30.533333
+699888,occ,,,75188,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.1,-31.133333
+699889,occ,,,75189,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.116667,-31.116667
+699890,occ,,,75190,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.133333,-31.1
+699892,occ,,,75192,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,Rhaetian,228,201.3,25375,27.433332,-30.566668
+705707,occ,,,47800,Sellosaurus gracilis,species,54996,recombined as,Plateosaurus gracilis,,species,54996,Alaunian,,215.56,212,25583,8.9764,49.0644
+705953,occ,,,75758,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Norian,,228,208.5,33788,10.978889,49.063057
+705954,occ,32304,,75758,Plateosaurus engelhardti,species,56683,,Plateosaurus engelhardti,,species,56683,Norian,,228,208.5,33788,10.978889,49.063057
+709243,occ,,,22682,Pachysaurus n. sp. wetzelianus,species,65097,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,29483,8.65,48.066669
+712660,occ,20121,,46889,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,14199,-2.428889,51.622501
+712661,occ,35967,,46889,Thecodontosaurus antiquus,species,56627,,Thecodontosaurus antiquus,,species,56627,Rhaetian,,208.5,201.3,70247,-2.428889,51.622501
+728255,occ,,,78294,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,59149,9.199,48.811001
+728363,occ,,,47800,Halticosaurus n. sp. longotarsus,species,56377,nomen dubium,Theropoda,,unranked clade,38513,Alaunian,,215.56,212,26360,8.9764,49.0644
+728364,occ,,,47800,n. gen. Procompsognathus n. sp. triassicus,species,56382,,Procompsognathus triassicus,,species,56382,Alaunian,,215.56,212,26308,8.9764,49.0644
+755359,occ,,,48424,Ornithischia ? indet.,unranked clade,91973,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,17273,-101.168892,33.449165
+776751,occ,,I,83328,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,27978,-108.541382,35.453732
+778203,occ,,IF,57066,Evazoum sp.,genus,131586,,Evazoum,,genus,131586,Rhaetian,Hettangian,208.5,199.3,27985,-111.309723,37.857777
+778210,occ,31559,IF,83555,Anchisauripus sillimani,species,67393,recombined as,Eubrontes sillimani,,species,67392,Norian,Rhaetian,228,201.3,27985,-109.539169,38.008888
+778223,occ,34816,I,83556,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,Rhaetian,228,201.3,27985,-110.443901,38.19186
+778596,occ,,IF,52168,Evazoum sirigui,species,131587,,Evazoum sirigui,,species,131587,Norian,,228,208.5,27985,-103.639397,34.976601
+778600,occ,,I,52168,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,,228,208.5,27985,-103.639397,34.976601
+778926,occ,,,57071,Ceratosauria indet.,suborder,84515,,Ceratosauria,,suborder,90100,Norian,,228,208.5,28078,-104.150558,34.979168
+778927,occ,,,57071,cf. Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,69995,-104.150558,34.979168
+780405,occ,,IF,83958,n. gen. Barrancapus n. sp. cresapi,species,131589,,Barrancapus cresapi,,species,131589,Lacian,,221.5,215.56,28129,-103.488297,35.159779
+780406,occ,,IF,52168,Pseudotetrasauropus sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Norian,,228,208.5,28129,-103.639397,34.976601
+780407,occ,20944,IF,83959,Evazoum sirigui,species,131587,,Evazoum sirigui,,species,131587,Norian,,228,208.5,27985,-103.433998,34.945999
+780409,occ,20945,I,83959,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,,228,208.5,27985,-103.433998,34.945999
+780410,occ,20946,I,83960,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,,228,208.5,27985,-103.442497,34.951668
+780411,occ,20947,IF,83960,Evazoum sirigui,species,131587,,Evazoum sirigui,,species,131587,Norian,,228,208.5,27985,-103.442497,34.951668
+780653,occ,22758,,84015,Coelophysoidea indet.,superfamily,55476,,Coelophysoidea,,superfamily,55476,Rhaetian,,208.5,201.3,31658,-111.247223,35.816666
+780678,occ,22733,,84017,Theropoda indet.,unranked clade,162964,,Theropoda,,unranked clade,38513,Norian,,228,208.5,28148,-111.116669,35.650002
+780686,occ,20940,IF,84021,Eosauropus ? sp.,genus,131584,,Eosauropus,,genus,131584,Norian,,228,208.5,27985,-103.152702,36.937901
+780687,occ,20941,IF,84021,Anchisauripus sillimani,species,67393,recombined as,Eubrontes sillimani,,species,67392,Norian,,228,208.5,27985,-103.152702,36.937901
+780689,occ,20942,I,84023,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,,228,208.5,27985,-103.152702,36.937901
+780690,occ,20943,IF,84023,Evazoum sirigui,species,131587,,Evazoum sirigui,,species,131587,Norian,,228,208.5,27985,-103.152702,36.937901
+780851,occ,,IF,84061,n. gen. Senqutrisauropus n. sp. priscus,species,133282,,Senqutrisauropus priscus,,species,133282,Carnian,Norian,237,208.5,28154,27.51667,-30.366671
+780853,occ,,IF,56029,n. gen. Bosiutrisauropus n. sp. phuthiatsani,species,133300,,Bosiutrisauropus phuthiatsani,,species,133300,Carnian,Norian,237,208.5,28154,27.433331,-29.366671
+780854,occ,,IF,56029,Prototrisauropus n. sp. rectilineus,species,133309,recombined as,Grallator rectilineus,,species,133309,Carnian,Norian,237,208.5,28154,27.433331,-29.366671
+780855,occ,,,56029,Pseudotetrasauropus n. sp. acutunguis,species,133319,nomen dubium,Prosauropoda,,unranked clade,38634,Carnian,Norian,237,208.5,28154,27.433331,-29.366671
+780856,occ,,IF,56029,Pseudotetrasauropus n. sp. augustus,species,133318,subjective synonym of,Pseudotetrasauropus bipedoida,,species,133313,Carnian,Norian,237,208.5,28154,27.433331,-29.366671
+780857,occ,,IF,56029,Tetrasauropus n. sp. jaquesi,species,133323,recombined as,Lavinipes jaquesi,,species,133323,Carnian,Norian,237,208.5,28154,27.433331,-29.366671
+780928,occ,,IF,56020,n. gen. Mafatrisauropus n. sp. errans,species,133338,,Mafatrisauropus errans,,species,133338,Norian,Rhaetian,228,201.3,28154,27.516701,-30.2167
+781137,occ,,I,62767,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,28162,-75.839996,40.305832
+781138,occ,,I,84111,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,28162,-75.727936,40.263302
+781141,occ,,I,84111,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,28162,-75.727936,40.263302
+781145,occ,,I,84112,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,28162,-75.826721,40.3022
+781146,occ,,I,84113,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,28162,-75.786743,40.31139
+781150,occ,,I,84114,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,28162,-75.832649,40.31205
+781152,occ,,I,84115,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,28162,-75.839905,40.312778
+781155,occ,,I,62768,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,28162,-75.862228,40.273548
+781159,occ,,I,84116,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,28162,-75.588272,40.244633
+781162,occ,,I,84116,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,28162,-75.588272,40.244633
+781165,occ,,I,84117,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,28162,-75.833961,40.317619
+781502,occ,27908,I,84185,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,,228,208.5,27985,-102.96167,37.008244
+781506,occ,34806,IF,84187,Barrancapus sp.,genus,131588,,Barrancapus,,genus,131588,Norian,,228,208.5,27985,-109.875557,34.811111
+782182,occ,,,84268,Saurischia indet.,unranked clade,308839,,Saurischia,,unranked clade,38505,Norian,,228,208.5,12930,-109.80806,34.884724
+790083,occ,,,85500,cf. Coelophysoidea indet.,superfamily,55476,,Coelophysoidea,,superfamily,55476,Norian,Rhaetian,228,201.3,28888,18.645279,50.678612
+790488,occ,,,85568,Prosauropoda ? indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,62875,-67.633331,-30.049999
+800076,occ,,,87090,n. gen. Panphagia n. sp. protos,species,142534,,Panphagia protos,,species,142534,Carnian,,237,228,29302,-67.877502,-30.137222
+806350,occ,38999,,13273,Herrerasauridae indet.,family,38510,,Herrerasauridae,,family,38510,Norian,,228,208.5,78487,-101.315002,33.521389
+806351,occ,39000,,13273,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,78487,-101.315002,33.521389
+807111,occ,,,88206,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Carnian,Norian,237,208.5,29620,-53.447777,-29.64139
+807112,occ,,I,88206,Grallator ? sp.,genus,64079,,Grallator,,genus,64079,Carnian,Norian,237,208.5,29620,-53.447777,-29.64139
+811738,occ,,I,89117,n. gen. Saurischichnus n. sp. primitivus,species,85808,,Saurischichnus primitivus,,species,85808,Norian,,228,208.5,29902,9.08333,48.533329
+812268,occ,,,89256,Coelophysoidea indet.,superfamily,55476,,Coelophysoidea,,superfamily,55476,Norian,,228,208.5,29943,-106.495003,36.398609
+816652,occ,,I,89860,Grallator sp.,genus,64079,,Grallator,,genus,64079,Tuvalian,,232,221.5,30097,11.119181,46.226288
+816653,occ,,I,89860,Atreipus sp.,genus,68367,,Atreipus,,genus,68367,Tuvalian,,232,221.5,30097,11.119181,46.226288
+816654,occ,,IF,89860,Evazoum sp.,genus,131586,,Evazoum,,genus,131586,Tuvalian,,232,221.5,30097,11.119181,46.226288
+816673,occ,,,89862,Theropoda indet. C informal,unranked clade,91970,obsolete variant of,Theropoda,,unranked clade,38513,Alaunian,,215.56,212,30099,11.223207,45.778912
+816674,occ,,,89862,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Alaunian,,215.56,212,30099,11.223207,45.778912
+816675,occ,,,89862,Theropoda indet. B informal,unranked clade,91970,obsolete variant of,Theropoda,,unranked clade,38513,Alaunian,,215.56,212,30099,11.223207,45.778912
+824856,occ,,,90876,Megalosaurus n. sp. obtusus,species,57415,nomen dubium,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,30573,5.516667,47.200001
+824866,occ,,,90877,Megalosaurus ? sp.,genus,38583,,Megalosaurus,,genus,38583,Rhaetian,,208.5,201.3,30573,5.97,47.285
+826835,occ,,,51970,Ornithischia indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Rhaetian,,208.5,201.3,30681,-2.616667,51.469166
+826836,occ,,,51970,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,30681,-2.616667,51.469166
+826838,occ,,,51970,Sauropodomorpha indet.,unranked clade,38633,,Sauropodomorpha,,unranked clade,38633,Rhaetian,,208.5,201.3,30681,-2.616667,51.469166
+830382,occ,,,91635,Megalosaurus n. sp. cloacinus,species,72166,nomen dubium,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,24252,9.0667,48.549999
+830739,occ,,IF,91694,Brontozoum giganteum,species,67404,recombined as,Eubrontes giganteus,,species,67402,Late Triassic,,237,201.3,30910,-74.739334,40.964542
+830740,occ,,I,91694,Brontozoum minusculum,species,296494,recombined as,Eubrontes minusculus,,species,67386,Late Triassic,,237,201.3,30910,-74.739334,40.964542
+830741,occ,,IF,91694,Brontozoum sillimanium,species,96917,recombined as,Eubrontes sillimani,,species,67392,Late Triassic,,237,201.3,30910,-74.739334,40.964542
+830742,occ,,IF,91694,Grallator formosus,species,66096,subjective synonym of,Grallator tenuis,,species,67368,Late Triassic,,237,201.3,30910,-74.739334,40.964542
+830743,occ,,I,91694,Grallator parallelus,species,67398,subjective synonym of,Grallator cursorius,,species,64080,Late Triassic,,237,201.3,30910,-74.739334,40.964542
+830744,occ,,I,91694,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Late Triassic,,237,201.3,30910,-74.739334,40.964542
+830745,occ,,I,91694,Anomoepus intermedius,species,67389,subjective synonym of,Anomoepus scambus,,species,67417,Late Triassic,,237,201.3,30910,-74.739334,40.964542
+830748,occ,27486,I,46622,Anchisauripus milfordensis,species,85754,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,12444,-75.095001,40.568611
+830749,occ,27487,I,46622,Anchisauripus milfordensis,species,85754,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,12444,-75.095001,40.568611
+830750,occ,,IF,46622,Chimaerichnus n. sp. ingens,species,365821,recombined as,Sauropus ingens,,species,365821,Norian,,228,208.5,30910,-75.095001,40.568611
+830752,occ,,IF,46622,Argozoum disparidigitatum,species,141793,subjective synonym of,Argoides macrodactylus,,species,141794,Norian,,228,208.5,30910,-75.095001,40.568611
+830757,occ,,IF,55413,Brontozoum sillimanium,species,96917,recombined as,Eubrontes sillimani,,species,67392,Norian,,228,208.5,30910,-76.75,40.1525
+830758,occ,,I,55413,Anomoepus gracillimus,species,67423,subjective synonym of,Anomoepus scambus,,species,67417,Norian,,228,208.5,30910,-76.75,40.1525
+837369,occ,,,92850,Ornithischia indet.,unranked clade,91973,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,31343,-109.579445,34.68111
+837370,occ,,,92850,Coelophysidae ? indet.,family,55478,,Coelophysidae,,family,55478,Norian,,228,208.5,31343,-109.579445,34.68111
+837400,occ,,,92850,Ceratosauria ? indet.,suborder,84515,,Ceratosauria,,suborder,90100,Norian,,228,208.5,31343,-109.579445,34.68111
+837653,occ,,,74202,Tawa hallae,species,159719,,Tawa hallae,,species,159719,Norian,,228,208.5,31393,-106.47506,36.323849
+837654,occ,,,92938,n. gen. Tawa n. sp. hallae,species,159719,,Tawa hallae,,species,159719,Norian,,228,208.5,31393,-106.47506,36.323849
+837655,occ,,,92939,Tawa hallae,species,159719,,Tawa hallae,,species,159719,Norian,,228,208.5,31393,-106.47506,36.323849
+840624,occ,,,93229,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,14122,-109.805557,34.885834
+842945,occ,,,93565,Dinosauria ? indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,31694,-106.833336,36.583332
+842979,occ,,,93578,Theropoda ? indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,31704,-107.73333,34.900002
+846308,occ,,,62311,cf. Caseosaurus sp.,genus,66660,,Caseosaurus,,genus,66660,Lacian,Sevatian,221.5,205.6,24249,-106.473053,36.331669
+846455,occ,,,94158,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,Rhaetian,228,201.3,42569,101.883301,16.883333
+850008,occ,,,39160,Revueltosaurus hunti,species,69055,recombined as,Krzyzanowskisaurus hunti,,species,69055,Norian,,228,208.5,32141,-109.462486,34.43742
+853390,occ,,I,94784,Grallator sp.,genus,64079,,Grallator,,genus,64079,Carnian,,237,228,32308,28.274721,-30.97611
+853400,occ,27836,,94787,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Carnian,,237,228,32311,81.366669,23.916668
+869607,occ,,,96435,Zanclodon n. sp. silesiacus,species,167571,nomen dubium,Theropoda,,unranked clade,38513,Anisian,,247.2,242,32736,17.628889,50.577778
+869870,occ,24528,,96453,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,35696,27.383333,-28.983334
+872657,occ,,,96712,Ceratosauria indet.,suborder,84515,,Ceratosauria,,suborder,90100,Carnian,,237,228,32997,10.528333,43.703056
+882040,occ,,,97815,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.216667,49.483334
+882063,occ,,,97817,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.283333,49.5
+882064,occ,,,97818,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,,228,208.5,33788,11.266667,49.483334
+882065,occ,23390,,97819,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.25,49.516666
+882066,occ,23391,,97820,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.292222,49.46722
+882068,occ,,,97822,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.227778,49.53611
+882116,occ,,,97825,Plateosauridae ? indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.2875,49.460835
+882117,occ,,,97826,Plateosauridae ? indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.433333,49.5
+882118,occ,,,97827,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.25,49.400002
+882119,occ,28158,,97828,Plateosauridae ? indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.25,49.400002
+882120,occ,28159,,97829,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.166667,49.233334
+882164,occ,30847,,97830,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,44840,11.266667,49.5
+882165,occ,,,97831,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.25,49.516666
+882166,occ,,,97832,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,44840,11.233333,49.25
+882167,occ,,,97833,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.273889,49.490002
+882168,occ,,,97834,Plateosauridae ? indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.273889,49.490002
+882169,occ,,,97835,Plateosauridae ? indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.283333,49.483334
+882211,occ,,,97836,Plateosauridae ? indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.2,49.400002
+882212,occ,,,97837,Plateosauridae ? indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.283333,49.433334
+882213,occ,,,97838,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.083333,49.450001
+882240,occ,,,97839,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Rhaetian,,208.5,201.3,33788,11.45,50.099998
+882241,occ,,,97840,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.25,49.516666
+882242,occ,,,97841,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.25,49.516666
+890418,occ,,IF,55414,Anchisauripus sillimani,species,67393,recombined as,Eubrontes sillimani,,species,67392,Norian,,228,208.5,33998,-77.057899,40.001499
+890419,occ,,I,55414,Otozoum ? minus,species,67415,,Otozoum minus,,species,67415,Norian,,228,208.5,33998,-77.057899,40.001499
+890420,occ,,IF,55414,Grallator tenuis,species,67368,,Grallator tenuis,,species,67368,Norian,,228,208.5,33998,-77.057899,40.001499
+893426,occ,,,98905,n. gen. Sanjuansaurus n. sp. gordilloi,species,172073,,Sanjuansaurus gordilloi,,species,172073,Carnian,,237,228,34067,-67.897858,-30.119198
+896129,occ,,,72090,n. gen. Teyuwasu n. sp. barberenai,species,105787,subjective synonym of,Staurikosaurus pricei,,species,55001,Carnian,Norian,237,208.5,34120,-53.75,-29.666668
+897618,occ,24460,,99665,Guaibasaurus ? sp.,genus,66570,,Guaibasaurus,,genus,66570,Norian,,228,208.5,35591,-52.84111,-29.681389
+898195,occ,,,99815,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,34312,-53.400002,-29.533331
+905398,occ,,I,68779,Grallator n. sp. pisanus,species,64079,species not entered,Grallator,,genus,64079,Carnian,,237,228,32997,10.490556,43.742779
+905401,occ,,,68779,Ornithischia indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Carnian,,237,228,32997,10.490556,43.742779
+908663,occ,,,102380,n. gen. Eodromaeus n. sp. murphi,species,174879,,Eodromaeus murphi,,species,174879,Carnian,,237,228,34767,-67.936386,-30.067778
+920332,occ,38348,I,105096,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,,208.5,201.3,76668,-108.636002,39.027
+920351,occ,,I,105101,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,,228,208.5,35162,-77.53083,38.820557
+922190,occ,,I,84187,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,35162,-109.875557,34.811111
+922194,occ,,,105543,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Rhaetian,Hettangian,208.5,199.3,35162,-113.070557,37.168331
+922209,occ,,IF,105551,Kayentapus minor,species,94348,,Kayentapus minor,,species,67431,Norian,,228,208.5,35263,-77.475555,38.750832
+922210,occ,,I,105551,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,35263,-77.475555,38.750832
+922211,occ,,I,105551,Gregaripus sp.,genus,94345,,Gregaripus,,genus,94345,Norian,,228,208.5,35263,-77.475555,38.750832
+923085,occ,24324,,105691,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,13000,-68.150002,-29.85
+923097,occ,,,105697,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,13000,-67.916664,-29.966667
+923798,occ,,,105770,cf. Melanorosaurus sp.,genus,38648,,Melanorosaurus,,genus,38648,Norian,Rhaetian,228,201.3,25375,27.483334,-30.516666
+930849,occ,,,105831,Sellosaurus gracilis,species,54996,recombined as,Plateosaurus gracilis,,species,54996,Norian,,228,208.5,25583,8.636111,48.075001
+931121,occ,,,106563,Plateosaurus ? sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,Rhaetian,228,201.3,25375,27.183332,-30.733334
+931122,occ,,,106564,Euskelosaurus browni,species,85818,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.1,-30.75
+931123,occ,,,106565,Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.333332,-30.583332
+931124,occ,,,106566,Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.333332,-30.6
+931125,occ,,,106567,Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.466667,-30.633333
+931127,occ,,,106568,Melanorosaurus sp.,genus,38648,,Melanorosaurus,,genus,38648,Norian,Rhaetian,228,201.3,25375,28.066668,-28.833332
+931128,occ,,,106569,Blikanasaurus cromptoni,species,55644,,Blikanasaurus cromptoni,,species,55644,Norian,Rhaetian,228,201.3,35639,27.341667,-29.219999
+931129,occ,,,106569,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,35639,27.341667,-29.219999
+931162,occ,36102,,106571,Melanorosaurus readi,species,54980,,Melanorosaurus readi,,species,54980,Norian,Rhaetian,228,201.3,35640,27.341667,-29.219999
+932958,occ,,,107134,Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.566668,-30.433332
+932959,occ,,,107063,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.366667,-28.983334
+932960,occ,,,107062,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.516666,-28.516666
+932961,occ,,,107136,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.966667,-28.416668
+932969,occ,,,107137,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.5,-28.416668
+932972,occ,,,107138,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.5,-28.416668
+932973,occ,,,107139,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.416668,-28.483334
+932974,occ,,,107140,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.433332,-28.5
+932975,occ,,,107141,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.416668,-28.5
+932976,occ,,,107142,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.266666,-28.616667
+932977,occ,,,107143,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.266666,-28.616667
+932978,occ,,,107144,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.316668,-28.616667
+932979,occ,,,107145,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.25,-28.666668
+932981,occ,,,107146,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.283333,-28.666668
+932983,occ,,,107148,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.316668,-28.683332
+932993,occ,,,107149,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.316668,-28.683332
+932995,occ,,,107150,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.266666,-28.866667
+932996,occ,,,107151,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.433332,-28.950001
+932997,occ,,,107152,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.316668,-28.966667
+933000,occ,,,107154,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.483334,-29.033333
+933007,occ,,,107155,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.450001,-29.049999
+933008,occ,,,107156,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.433332,-29.049999
+933010,occ,,,107159,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.316668,-29.066668
+933020,occ,,,107160,cf. Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.5,-29.066668
+933032,occ,,,107165,Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,28.35,-30.033333
+933037,occ,,,107167,cf. Melanorosaurus sp.,genus,38648,,Melanorosaurus,,genus,38648,Norian,Rhaetian,228,201.3,25375,27.35,-29.883333
+933038,occ,,,107168,Euskelosaurus sp.,genus,38640,nomen dubium,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,25375,27.266666,-29.85
+933048,occ,,,107170,cf. Melanorosaurus sp.,genus,38648,,Melanorosaurus,,genus,38648,Norian,Rhaetian,228,201.3,25375,27.516666,-29.333332
+933075,occ,,,107176,Eucnemesaurus fortis,species,56614,,Eucnemesaurus fortis,,species,56614,Norian,Rhaetian,228,201.3,35696,27.933332,-28.5
+933077,occ,,,107177,Euskelosaurus browni,species,85818,nomen dubium,Sauropodomorpha,,unranked clade,38633,Late Triassic,,237,201.3,35697,31.061111,-22.493889
+933078,occ,,,107178,Euskelosaurus browni,species,85818,nomen dubium,Sauropodomorpha,,unranked clade,38633,Late Triassic,,237,201.3,35697,31.059999,-22.493055
+933079,occ,,,107179,Euskelosaurus browni,species,85818,nomen dubium,Sauropodomorpha,,unranked clade,38633,Late Triassic,,237,201.3,35697,31.065277,-22.5
+933080,occ,,,107180,Euskelosaurus browni,species,85818,nomen dubium,Sauropodomorpha,,unranked clade,38633,Late Triassic,,237,201.3,35697,31.029167,-22.483334
+933084,occ,,,107182,Prosauropoda indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Norian,Rhaetian,228,201.3,35700,101.75,16.883333
+935231,occ,,,48422,n. gen. Daemonosaurus n. sp. chauliodus,species,182713,,Daemonosaurus chauliodus,,species,182713,Rhaetian,,208.5,201.3,35814,-106.473099,36.331699
+942452,occ,,,59669,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Ladinian,,242,237,35582,-68.417778,-29.611668
+945501,occ,,,109711,Thecodontosaurus sp.,genus,53022,,Thecodontosaurus,,genus,53022,Rhaetian,,208.5,201.3,36266,4.67,46.900002
+947553,occ,,I,110468,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Carnian,,237,228,36360,19.046915,50.587448
+947554,occ,,I,110468,cf. Atreipus sp.,genus,68367,,Atreipus,,genus,68367,Carnian,,237,228,36360,19.046915,50.587448
+961540,occ,,,105292,Ornithischia indet.,unranked clade,91973,,Ornithischia,,unranked clade,38712,Carnian,,237,228,36672,81.330032,23.911783
+968594,occ,34697,IF,68780,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Carnian,,237,228,39735,9.882214,44.081387
+968661,occ,,,32325,Sauropoda indet.,unranked clade,95571,,Sauropoda,,unranked clade,38653,Norian,,228,208.5,37144,-68.096664,-29.860832
+968842,occ,,I,74806,Otozoum sp.,genus,64089,,Otozoum,,genus,64089,Late Triassic,,237,201.3,37185,-3.701282,51.490177
+999659,occ,,,121323,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Rhaetian,Hettangian,208.5,199.3,38719,-113.536224,37.100914
+1014760,occ,26410,IF,114771,Coelurosaurichnus n. sp. sassendorfensis,species,85793,,Coelurosaurichnus sassendorfensis,,species,85793,Rhaetian,Early Hettangian,208.5,196.5,40024,10.955,49.988998
+1033168,occ,,IF,126538,Shenmuichnus sp.,genus,231004,,Shenmuichnus,,genus,231004,Late Triassic,,237,201.3,41028,110.604721,38.758888
+1033169,occ,,,126538,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Late Triassic,,237,201.3,41028,110.604721,38.758888
+1033900,occ,,,126607,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Rhaetian,Hettangian,208.5,199.3,41099,-111.344406,36.077953
+1033902,occ,,IF,126609,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Rhaetian,Hettangian,208.5,199.3,41099,-111.112221,35.863056
+1033903,occ,,I,126609,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,Hettangian,208.5,199.3,41099,-111.112221,35.863056
+1033904,occ,,IF,126607,Dilophosauripus sp.,genus,231458,,Dilophosauripus,,genus,231458,Rhaetian,Hettangian,208.5,199.3,41099,-111.344406,36.077953
+1033905,occ,,,126610,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Rhaetian,Hettangian,208.5,199.3,41099,-111.316704,36.099998
+1063632,occ,,,131436,n. gen. Chromogisaurus n. sp. novasi,species,242722,,Chromogisaurus novasi,,species,242722,Carnian,,237,228,42426,-67.90126,-30.116928
+1066207,occ,,,131835,n. gen. Nambalia n. sp. roychowdhurii,species,243275,,Nambalia roychowdhurii,,species,243275,Norian,,228,208.5,42497,79.449997,19.266666
+1066208,occ,,,131836,n. gen. Jaklapallisaurus n. sp. asymmetrica,species,243277,,Jaklapallisaurus asymmetrica,,species,243277,Norian,,228,208.5,42497,79.550003,19.233334
+1066209,occ,,,131837,Guaibasauridae indet.,family,66572,,Guaibasauridae,,family,66572,Norian,,228,208.5,42497,79.51667,19.200001
+1066214,occ,,,131840,Jaklapallisaurus asymmetrica,species,243277,,Jaklapallisaurus asymmetrica,,species,243277,Norian,Rhaetian,228,201.3,42497,79.599998,19.166668
+1066215,occ,,,131840,Sauropodomorpha indet.,unranked clade,38633,,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,42497,79.599998,19.166668
+1066217,occ,,,131841,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,Rhaetian,228,201.3,42497,79.51667,19.200001
+1068454,occ,,I,132244,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,42584,-75.781937,40.313416
+1071220,occ,38197,,132933,Neotheropoda ? indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,Rhaetian,228,201.3,76305,18.876667,49.988335
+1071601,occ,,,98623,n. gen. Pampadromaeus n. sp. barberenai,species,243373,,Pampadromaeus barberenai,,species,243373,Carnian,Norian,237,208.5,42509,-53.292778,-29.653055
+1073646,occ,27490,I,46621,Grallator sulcatus,species,64081,subjective synonym of,Grallator cursorius,,species,64080,Norian,,228,208.5,12444,-75.095001,40.568611
+1073647,occ,27491,I,46621,Grallator sulcatus,species,64081,subjective synonym of,Grallator cursorius,,species,64080,Norian,,228,208.5,12444,-75.095001,40.568611
+1073648,occ,,I,46622,Anchisauripus parallelus,species,67399,subjective synonym of,Grallator cursorius,,species,64080,Norian,,228,208.5,12444,-75.095001,40.568611
+1088560,occ,,,112285,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Carnian,Norian,237,208.5,17140,79.583336,19.216667
+1088570,occ,27841,,112285,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Carnian,Norian,237,208.5,43744,79.583336,19.216667
+1088573,occ,30576,,112285,cf. Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Carnian,Norian,237,208.5,43744,79.583336,19.216667
+1089127,occ,27847,,136890,n. gen. Nyasasaurus n. sp. parringtoni,species,251932,,Nyasasaurus parringtoni,,species,251932,Anisian,,247.2,242,43766,35.233002,-10.283
+1089130,occ,,,136891,Thecodontosaurus n. sp. alophos,species,68500,subjective synonym of,Nyasasaurus parringtoni,,species,251932,Anisian,,247.2,242,6969,34.75,-10.533333
+1099950,occ,,,131422,"""Gresslyosaurus"" sp.",genus,57404,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,29871,9.066111,48.558613
+1100719,occ,,I,55416,Anchisauripus cf. milfordensis,species,85754,subjective synonym of,Grallator tuberosus,,species,67394,Carnian,,237,228,35886,-64.616669,45.200001
+1100720,occ,,IF,138975,Anchisauripus cf. hitchcocki,species,66091,subjective synonym of,Grallator tenuis,,species,67368,Norian,,228,208.5,35886,-65.908775,44.570038
+1100727,occ,,,83736,Ornithischia indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Carnian,,237,228,31721,-105.793999,35.2374
+1100729,occ,,,22718,Theropoda indet.,unranked clade,38513,,Theropoda,,unranked clade,38513,Carnian,,237,228,31721,-105.793999,35.2374
+1101334,occ,,,139198,Prosauropoda ? indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,44712,5.616667,49.708332
+1101355,occ,,,139199,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,44712,5.662348,49.697243
+1101375,occ,,,139202,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,44712,5.662348,49.697243
+1104033,occ,28161,,97829,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,33788,11.166667,49.233334
+1104034,occ,,,97829,Plateosauridae indet.,family,54157,,Plateosauridae,,family,54157,Norian,,228,208.5,44840,11.166667,49.233334
+1104047,occ,,,139478,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,,228,208.5,44840,11.11,49.504166
+1104050,occ,,,22684,cf. Halticosaurus longotarsus,species,56377,nomen dubium,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,44850,11.073611,51.897499
+1104051,occ,,,22684,Carnosauria indet.,infraorder,53943,,Carnosauria,,infraorder,53943,Rhaetian,,208.5,201.3,44850,11.073611,51.897499
+1104612,occ,28179,,139578,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,42432,-67.190567,-31.864876
+1104619,occ,37522,,139580,Heterodontosaurinae indet.,subfamily,248277,,Heterodontosaurinae,,subfamily,248277,Norian,,228,208.5,73943,-68.300003,-48.099998
+1105202,occ,,IF,139732,Dinosaurichnium n. sp. schlehenbergense,species,85802,recombined as,Coelurosaurichnus schlehenbergensis,,species,85802,Carnian,,237,228,44929,11.61935,49.896858
+1105214,occ,,IF,139738,n. gen. Dinosaurichnium n. sp. schlauersbachense,species,85799,recombined as,Coelurosaurichnus schlauersbachense,,species,85799,Carnian,,237,228,44936,10.751787,49.269287
+1105216,occ,,IF,139740,Coelurosaurichnus n. sp. tatricus,species,258987,recombined as,Eubrontes tatricus,,species,258987,Norian,Rhaetian,228,201.3,82711,19.941044,49.224201
+1106462,occ,,,139922,Thecodontosaurus n. sp. elisae,species,57417,recombined as,Plateosaurus elizae,,species,57417,Rhaetian,,208.5,201.3,45243,5.528845,48.009727
+1106806,occ,28442,,139922,Gresslyosaurus sp.,genus,57404,nomen dubium,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,45099,5.528845,48.009727
+1106817,occ,38525,,140023,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Rhaetian,,208.5,201.3,45099,5.440633,47.764595
+1106820,occ,,,137680,Thecodontosaurus n. sp. latespinatus,species,57413,nomen vanum,Thecodontosaurus,,genus,53022,Ladinian,,242,237,16920,6.405988,48.555828
+1106822,occ,,,137641,Thecodontosaurus latespinatus,species,57413,nomen vanum,Thecodontosaurus,,genus,53022,Anisian,,247.2,242,16920,11.64,49.959999
+1107323,occ,,,140077,n. gen. Velocipes n. sp. guerichi,species,56387,,Velocipes guerichi,,species,56387,Norian,,228,208.5,29483,18.420881,50.775135
+1112358,occ,,,52032,Coloradisaurus brevis,species,68584,,Coloradisaurus brevis,,species,66680,Norian,,228,208.5,45763,-67.933327,-29.783501
+1114165,occ,,,141243,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,45873,-53.549999,-29.35
+1116587,occ,33707,,39160,Ornithischia indet.,unranked clade,38712,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,46019,-109.462486,34.43742
+1119323,occ,,,137693,Thecodontosaurus ? sp.,genus,53022,,Thecodontosaurus,,genus,53022,Rhaetian,,208.5,201.3,46182,-2.32,51.23
+1125673,occ,,,142750,Plateosaurus cf. poligniensis,species,57403,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,46327,5.899167,46.910557
+1126079,occ,39456,IF,142852,Evazoum sp.,genus,131586,,Evazoum,,genus,131586,Norian,,228,208.5,79967,152.891937,-27.630945
+1136057,occ,,,144758,n. gen. Actiosaurus n. sp. gaudryi,species,268201,,Actiosaurus gaudryi,,species,268201,Rhaetian,,208.5,201.3,46686,4.409803,46.903538
+1139540,occ,32486,,145209,cf. Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,,228,208.5,59610,-68.300003,-48.099998
+1163995,occ,,,149708,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Norian,Rhaetian,228,201.3,28154,27.266666,-29.85
+1164029,occ,,,149732,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Late Triassic,,237,201.3,33897,9.932778,51.590279
+1164059,occ,,IF,149751,n. gen. Tetrasauropus n. sp. unguiferus,species,77114,,Tetrasauropus unguiferus,,species,77114,Norian,,228,208.5,28154,27.6,-30.35
+1164062,occ,,,149752,cf. Massospondylus sp.,genus,38642,,Massospondylus,,genus,38642,Norian,Rhaetian,228,201.3,25375,27.366667,-29.083332
+1193382,occ,,IF,154230,Plesiornis pilulatus,species,67378,,Plesiornis pilulatus,,species,67378,Norian,,228,208.5,50062,-77.435478,38.805447
+1193453,occ,,,154239,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,50085,-109.671387,38.859444
+1209936,occ,,I,157018,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Rhaetian,Hettangian,208.5,199.3,51461,-112.537674,37.122406
+1209937,occ,,I,157018,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,Hettangian,208.5,199.3,51461,-112.537674,37.122406
+1209938,occ,,IF,157018,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Rhaetian,Hettangian,208.5,199.3,51461,-112.537674,37.122406
+1209939,occ,,,157018,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Rhaetian,Hettangian,208.5,199.3,62895,-112.537674,37.122406
+1211188,occ,,I,157240,cf. Anomoepus sp.,genus,67049,,Anomoepus,,genus,67049,Norian,Rhaetian,228,201.3,51623,19.941044,49.229538
+1211189,occ,,I,157240,cf. Moyenisauropus sp.,genus,52872,subjective synonym of,Anomoepus,,genus,67049,Norian,Rhaetian,228,201.3,51623,19.941044,49.229538
+1211190,occ,,I,157240,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,51623,19.941044,49.229538
+1211191,occ,,IF,157240,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Norian,Rhaetian,228,201.3,51623,19.941044,49.229538
+1211192,occ,,IF,157240,cf. Kayentapus sp.,genus,68970,,Kayentapus,,genus,68970,Norian,Rhaetian,228,201.3,51623,19.941044,49.229538
+1211193,occ,,,157240,Sauropodomorpha ? indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,51623,19.941044,49.229538
+1211194,occ,,IF,139740,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Norian,Rhaetian,228,201.3,51623,19.941044,49.224201
+1211195,occ,,IF,139740,cf. Kayentapus sp.,genus,68970,,Kayentapus,,genus,68970,Norian,Rhaetian,228,201.3,51623,19.941044,49.224201
+1211196,occ,,I,139740,cf. Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,Rhaetian,228,201.3,51623,19.941044,49.224201
+1211197,occ,,,139740,Sauropodomorpha ? indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,51623,19.941044,49.224201
+1214508,occ,,I,157877,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,,228,208.5,51910,-53.446667,-29.5625
+1215206,occ,30124,,117821,Prosauropoda ? indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,37798,5.67,46.91
+1237916,occ,,,163062,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Sevatian,,212,205.6,53065,7.728677,47.507462
+1239705,occ,,,163271,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Norian,Sinemurian,228,190.8,30910,-74.407372,40.633713
+1239985,occ,,,120898,Thecodontosaurus sp.,genus,53022,,Thecodontosaurus,,genus,53022,Rhaetian,,208.5,201.3,53178,-2.391389,51.203056
+1249941,occ,,,164960,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Late Triassic,,237,201.3,53987,-76.86158,40.197353
+1254838,occ,,,166211,Prosauropoda ? indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Norian,Rhaetian,228,201.3,54299,14.092265,45.957523
+1282494,occ,,I,170320,Coelurosaurichnus n. sp. moeni,species,85791,,Coelurosaurichnus moeni,,species,85791,Norian,,228,208.5,55549,10.516975,50.034382
+1282495,occ,,I,170320,Coelurosaurichnus n. sp. kehli,species,85794,,Coelurosaurichnus kehli,,species,85794,Norian,,228,208.5,55549,10.516975,50.034382
+1283498,occ,,,170616,n. gen. Sefapanosaurus n. sp. zastronensis,species,322708,,Sefapanosaurus zastronensis,,species,322708,Norian,Hettangian,228,199.3,55582,27.083332,-30.299999
+1289747,occ,,IF,55259,Anchisauripus ? sp.,genus,64083,,Anchisauripus,,genus,64083,Norian,,228,208.5,55941,-108.914368,38.646606
+1293849,occ,,,172834,Eucnemesaurus n. sp. entaxonis,species,327194,,Eucnemesaurus entaxonis,,species,327194,Norian,Rhaetian,228,201.3,56187,26.910557,-30.884722
+1293850,occ,,,172835,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,Rhaetian,228,201.3,56187,26.910557,-30.884722
+1298933,occ,,,173353,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Norian,Rhaetian,228,201.3,56365,153.038757,-27.433254
+1298939,occ,,,173354,Dinosauria indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,56367,-72.751472,41.532688
+1302494,occ,38959,I,174107,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,78429,-111.607628,36.86356
+1304978,occ,,IF,174686,n. gen. Plesiothornipos n. sp. binneyi,species,85790,,Plesiothornipos binneyi,,species,85790,Late Triassic,,237,201.3,57079,-2.757227,53.329395
+1308716,occ,,,98623,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Carnian,Norian,237,208.5,57397,-53.292778,-29.653055
+1308718,occ,,,98623,cf. Pampadromaeus barberenai,species,243373,,Pampadromaeus barberenai,,species,243373,Carnian,Norian,237,208.5,57400,-53.292778,-29.653055
+1308743,occ,,,175577,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,57419,-53.264999,-29.612778
+1327346,occ,,,178451,Coelophysis ? sp.,genus,38520,,Coelophysis,,genus,38520,Norian,Rhaetian,228,201.3,59032,-108.907349,38.293118
+1328196,occ,32309,,52029,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Late Triassic,,237,201.3,23520,-70.917595,-47.444614
+1330155,occ,,I,179080,Agialopous sp.,genus,54518,subjective synonym of,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,63566,-108.886665,40.762222
+1330167,occ,,,179081,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Carnian,,237,228,13905,-106.934723,43.420555
+1330170,occ,,,71979,Coelophysis ? sp.,genus,38520,,Coelophysis,,genus,38520,Carnian,Norian,237,208.5,24343,-101.138519,33.606396
+1330171,occ,32384,,71979,n. gen. Caseosaurus n. sp. crosbyensis,species,66661,,Caseosaurus crosbyensis,,species,66661,Carnian,Norian,237,208.5,13905,-101.138519,33.606396
+1330172,occ,,,71979,Dinosauria indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Carnian,Norian,237,208.5,24343,-101.138519,33.606396
+1331527,occ,34685,I,179277,Agialopous ? sp.,genus,54518,subjective synonym of,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,65643,-109.295753,40.450798
+1332868,occ,,,179601,Saurischia ? indet.,unranked clade,38505,,Saurischia,,unranked clade,38505,Norian,,228,208.5,59489,-106.858597,35.603199
+1342719,occ,,IF,179277,Eosauropus cimarronensis,species,131585,,Eosauropus cimarronensis,,species,131585,Norian,Rhaetian,228,201.3,39735,-109.295753,40.450798
+1342720,occ,,IF,55259,Eosauropus cimarronensis,species,131585,,Eosauropus cimarronensis,,species,131585,Norian,,228,208.5,39735,-108.914368,38.646606
+1347762,occ,,,175578,n. gen. Buriolestes n. sp. schultzi,species,347522,,Buriolestes schultzi,,species,347522,Carnian,,237,228,60786,-53.435833,-29.658611
+1347830,occ,35573,,182613,n. gen. Lucianovenator n. sp. bonoi,species,370734,,Lucianovenator bonoi,,species,370734,Norian,,228,208.5,65741,-67.26667,-31.633333
+1347831,occ,38201,,182613,Sauropodiformes indet.,unranked clade,174880,,Sauropodiformes,,unranked clade,174880,Norian,,228,208.5,76315,-67.26667,-31.633333
+1347832,occ,,,182614,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,60799,-67.290558,-31.604445
+1355421,occ,,IF,184045,Coelurosaurichnus cf. ziegelangernensis,species,85792,,Coelurosaurichnus ziegelangernensis,,species,85792,Olenekian,,251.2,247.2,61484,-2.18215,52.389099
+1355422,occ,,I,184045,Coelurosaurichnus sp. A informal,genus,68186,obsolete variant of,Coelurosaurichnus,,genus,68186,Olenekian,,251.2,247.2,61484,-2.18215,52.389099
+1355423,occ,,I,184045,Coelurosaurichnus sp. B informal,genus,68186,obsolete variant of,Coelurosaurichnus,,genus,68186,Olenekian,,251.2,247.2,61484,-2.18215,52.389099
+1355599,occ,,,184078,Dinosauria indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Late Triassic,,237,201.3,61486,28.549999,-24.950001
+1356672,occ,,,54168,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Norian,,228,208.5,61566,-106.874496,36.339298
+1358594,occ,,,183201,Coelophysoidea indet.,superfamily,55476,,Coelophysoidea,,superfamily,55476,Late Triassic,Early Jurassic,237,174.1,61868,-109.237953,40.453594
+1358595,occ,,,183201,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Late Triassic,Early Jurassic,237,174.1,61868,-109.237953,40.453594
+1358598,occ,,I,183201,Grallator sp.,genus,64079,,Grallator,,genus,64079,Late Triassic,Early Jurassic,237,174.1,61868,-109.237953,40.453594
+1358686,occ,,IF,32300,Tetrasauropus sp.,genus,77113,,Tetrasauropus,,genus,77113,Late Triassic,,237,201.3,61886,-109.256828,40.434498
+1359051,occ,,I,184678,Atreipus milfordensis,species,68466,subjective synonym of,Grallator tuberosus,,species,67394,Norian,Rhaetian,228,201.3,61886,-110.475281,37.771667
+1359054,occ,34696,IF,46560,n. gen. Eosauropus n. sp. cimarronensis,species,131585,,Eosauropus cimarronensis,,species,131585,Norian,,228,208.5,39735,-103.350899,36.894199
+1359055,occ,34103,IF,46560,Pseudotetrasauropus sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Norian,,228,208.5,61886,-103.350899,36.894199
+1359056,occ,,I,46560,Coelurosaurichnus sp.,genus,68186,,Coelurosaurichnus,,genus,68186,Norian,,228,208.5,65433,-103.350899,36.894199
+1359058,occ,34698,IF,32300,Evazoum sp.,genus,131586,,Evazoum,,genus,131586,Late Triassic,,237,201.3,65678,-109.256828,40.434498
+1359059,occ,,I,184679,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,61886,-102.981071,36.897655
+1359060,occ,,I,32300,Grallator sp.,genus,64079,,Grallator,,genus,64079,Late Triassic,,237,201.3,61886,-109.256828,40.434498
+1359502,occ,,,184777,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Rhaetian,Hettangian,208.5,199.3,61945,-110.795219,37.293327
+1365954,occ,,IF,186039,Deuterotetrapous n. sp. plancus,species,355051,,Deuterotetrapous plancus,,species,355051,Anisian,,247.2,242,62424,-1.349473,52.945992
+1370795,occ,,,39219,Fabrosauridae indet.,family,38714,,Fabrosauridae,,family,38714,Norian,,228,208.5,10591,-109.462166,34.437237
+1371096,occ,,I,187199,"""Anchisauripus"" milfordensis",species,85754,subjective synonym of,Grallator tuberosus,,species,67394,Carnian,Norian,237,208.5,62791,-64.356766,45.188694
+1371692,occ,,,107286,cf. Halticosaurus sp.,genus,38516,nomen dubium,Theropoda,,unranked clade,38513,Carnian,,237,228,57902,-64,45.216667
+1371693,occ,,,107286,Prosauropoda indet.,unranked clade,38634,,Prosauropoda,,unranked clade,38634,Carnian,,237,228,57902,-64,45.216667
+1371698,occ,,I,187287,Anchisauripus minuscolus,species,357660,"misspelling of, recombined as",Eubrontes minusculus,,species,67386,Norian,,228,208.5,62821,-74.201317,40.867947
+1374080,occ,,,187582,Thecodontosaurus latespinatus,species,57413,nomen vanum,Thecodontosaurus,,genus,53022,Middle Triassic,,247.2,237,62966,10.055129,49.142696
+1378890,occ,,IF,68222,Coelurosaurichnus palissyi,species,92020,"misspelling of, obsolete variant of",Coelurosaurichnus palyssi,,species,92021,Anisian,Ladinian,247.2,237,63317,4.432778,46.841946
+1378892,occ,,IF,68223,Coelurosaurichnus n. sp. palissyi,species,92020,"misspelling of, obsolete variant of",Coelurosaurichnus palyssi,,species,92021,Anisian,Ladinian,247.2,237,63319,4.432778,46.841946
+1380878,occ,35500,IF,31310,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,8459,5.316667,45.25
+1380879,occ,35727,I,31310,aff. Coelurosaurichnus sp.,genus,68186,,Coelurosaurichnus,,genus,68186,Anisian,Ladinian,247.2,237,68923,5.316667,45.25
+1381627,occ,,IF,179080,Anchisauripus ? sp.,genus,64083,,Anchisauripus,,genus,64083,Norian,Rhaetian,228,201.3,63566,-108.886665,40.762222
+1382147,occ,,,68882,Ornithischia indet. 1 informal,species,91973,species not entered,Ornithischia,,unranked clade,38712,Rhaetian,,208.5,201.3,35280,5.616667,49.708332
+1382148,occ,,,68882,Ornithischia indet. 2 informal,species,91973,species not entered,Ornithischia,,unranked clade,38712,Rhaetian,,208.5,201.3,35280,5.616667,49.708332
+1382149,occ,,,68882,Ornithischia indet. 3 informal,species,91973,species not entered,Ornithischia,,unranked clade,38712,Rhaetian,,208.5,201.3,35280,5.616667,49.708332
+1382150,occ,,,68882,Eusauropoda indet.,unranked clade,57437,,Eusauropoda,,unranked clade,57437,Rhaetian,,208.5,201.3,35280,5.616667,49.708332
+1382151,occ,,,68882,Prosauropoda indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Rhaetian,,208.5,201.3,35280,5.616667,49.708332
+1382152,occ,,,68882,Theropoda indet. 1 informal,species,91970,species not entered,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,35280,5.616667,49.708332
+1382153,occ,,,68882,Theropoda indet. 2 informal,species,91970,species not entered,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,35280,5.616667,49.708332
+1383390,occ,,I,55414,Anomoepus sp.,genus,67049,,Anomoepus,,genus,67049,Norian,,228,208.5,63742,-77.057899,40.001499
+1383391,occ,,,189579,Dinosauria indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Late Triassic,,237,201.3,63742,-76.784668,40.162384
+1394191,occ,,,138123,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Anisian,,247.2,242,64860,11.767778,51.217499
+1396841,occ,,,67996,Dinosauria ? indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,65131,-110.321724,37.421185
+1398274,occ,38350,I,192751,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,,228,208.5,76668,-102.96167,37.008244
+1398276,occ,38349,I,192752,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Norian,,228,208.5,76668,-102.973404,37.997799
+1398894,occ,,,27006,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Alaunian,,215.56,212,7466,-22.678612,71.478615
+1398895,occ,,,27006,Prosauropoda indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Alaunian,,215.56,212,7466,-22.678612,71.478615
+1399126,occ,38344,I,192896,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,,208.5,201.3,76668,-109.607201,38.514999
+1399128,occ,,IF,192896,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,65483,-109.607201,38.514999
+1399129,occ,38345,I,192897,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,,208.5,201.3,76668,-109.607201,38.514999
+1399131,occ,,IF,192897,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,65483,-109.607201,38.514999
+1399323,occ,38346,I,192915,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,,208.5,201.3,76668,-109.694702,38.695099
+1399325,occ,38347,I,192916,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,,208.5,201.3,76668,-109.694702,38.695099
+1399327,occ,38351,I,192917,Grallator cursorius,species,64080,,Grallator cursorius,,species,64080,Rhaetian,,208.5,201.3,76668,-111.272911,35.907921
+1399328,occ,,IF,192917,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,65483,-111.272911,35.907921
+1400047,occ,,I,192941,Grallator ? sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,65483,-109.310753,40.457928
+1400048,occ,,IF,192941,Eosauropus ? sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,65483,-109.310753,40.457928
+1400049,occ,,IF,105096,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,65483,-108.636002,39.027
+1400051,occ,,I,192943,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,58631,-108.667137,39.056419
+1400053,occ,,I,192944,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,58631,-108.667137,39.056419
+1400054,occ,,I,192945,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,58631,-108.667137,39.056419
+1400055,occ,,I,192946,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,58631,-108.667137,39.056419
+1400931,occ,34682,IF,192947,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,65483,-108.91465,38.610184
+1400935,occ,,I,193012,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,65632,-108.940765,38.620537
+1401098,occ,,I,193015,Agialopous sp.,genus,54518,subjective synonym of,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,59355,-109.309349,40.456928
+1401108,occ,38975,,193016,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Norian,Rhaetian,228,201.3,78442,-109.327782,40.462502
+1401114,occ,,I,193019,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,65643,-109.335281,40.458057
+1401120,occ,,,193044,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,Rhaetian,228,201.3,65643,-109.285728,40.447193
+1401121,occ,,I,193045,Agialopous sp.,genus,54518,subjective synonym of,Grallator,,genus,64079,Norian,Rhaetian,228,201.3,65643,-109.241982,40.328472
+1401123,occ,,,193046,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,Rhaetian,228,201.3,65643,-109.602928,40.562374
+1401124,occ,,,193047,Dinosauria ? indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,Rhaetian,228,201.3,65643,-109.532074,40.583553
+1401707,occ,,,193242,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Rhaetian,,208.5,201.3,65643,-109.261047,40.444221
+1401708,occ,,,193243,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Rhaetian,,208.5,201.3,65643,-109.63517,40.542068
+1401733,occ,,IF,157018,Anomoepidae indet.,family,370232,"misspelling of, obsolete variant of",Anomoepodidae,,family,52874,Rhaetian,Hettangian,208.5,199.3,65669,-112.537674,37.122406
+1401765,occ,,IF,84184,Eosauropus cimarronensis,species,131585,,Eosauropus cimarronensis,,species,131585,Norian,,228,208.5,39735,-102.989723,37.012779
+1401766,occ,,IF,57949,Eosauropus ? sp.,genus,131584,,Eosauropus,,genus,131584,Norian,,228,208.5,39735,-3.250398,51.393559
+1401891,occ,,IF,68780,n. gen. Evazoum n. sp. sirigui,species,131587,,Evazoum sirigui,,species,131587,Carnian,,237,228,65679,9.882214,44.081387
+1403127,occ,,,98623,n. gen. Bagualosaurus n. sp. agudoensis,species,370986,,Bagualosaurus agudoensis,,species,370986,Carnian,Norian,237,208.5,65762,-53.292778,-29.653055
+1405232,occ,,IF,194070,Otozoum n. sp. grandcombensis,species,77383,,Otozoum grandcombensis,,species,77383,Norian,,228,208.5,65699,4.052634,44.220547
+1405233,occ,,IF,194070,Grallator n. sp. andeolensis,species,334330,,Grallator andeolensis,,species,334330,Norian,,228,208.5,65699,4.052634,44.220547
+1405234,occ,,I,194071,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,65699,4.052634,44.220547
+1405235,occ,,I,194071,cf. Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,,228,208.5,65699,4.052634,44.220547
+1405297,occ,,I,194093,Grallator parallelus,species,67398,subjective synonym of,Grallator cursorius,,species,64080,Rhaetian,,208.5,201.3,65922,-74.194168,40.88028
+1405298,occ,,IF,194093,Eubrontes giganteus,species,66095,,Eubrontes giganteus,,species,67402,Rhaetian,,208.5,201.3,65922,-74.194168,40.88028
+1405299,occ,,IF,194093,Anchisauripus sillimani,species,67393,recombined as,Eubrontes sillimani,,species,67392,Rhaetian,,208.5,201.3,65922,-74.194168,40.88028
+1405300,occ,,IF,194093,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Rhaetian,,208.5,201.3,65922,-74.194168,40.88028
+1405301,occ,,I,194093,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,65922,-74.194168,40.88028
+1405510,occ,,,194142,Theropoda ? indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Carnian,,237,228,65945,-113.6894,37.150173
+1405592,occ,,I,194149,Atreipus sp.,genus,68367,,Atreipus,,genus,68367,Norian,,228,208.5,35162,-77.244652,39.784885
+1405593,occ,,IF,194149,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Norian,,228,208.5,35162,-77.244652,39.784885
+1409299,occ,,,194710,Theropoda ? indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,28087,12.507383,46.290653
+1409300,occ,,,194711,"""Theropoda"" indet.",unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,28087,12.61,46.290001
+1410175,occ,,I,105542,Grallator sp.,genus,64079,,Grallator,,genus,64079,Smithian,,251.3,247.2,66229,-113.070557,37.168331
+1410176,occ,,I,105542,Eubrontes ? sp.,genus,66094,,Eubrontes,,genus,66094,Smithian,,251.3,247.2,66229,-113.070557,37.168331
+1412540,occ,,IF,195179,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,66410,-109.020386,39.132206
+1412541,occ,,IF,195180,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,66410,-109.07019,39.131302
+1412542,occ,,IF,195181,Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,66410,-109.124847,39.094193
+1412543,occ,,I,195181,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,66410,-109.124847,39.094193
+1415676,occ,,IF,195710,Parachirotherium sp.,genus,141556,,Parachirotherium,,genus,141556,Carnian,,237,228,66613,-8.971667,31.070833
+1415679,occ,,I,195710,Atreipus sp.,genus,68367,,Atreipus,,genus,68367,Carnian,,237,228,66613,-8.971667,31.070833
+1417824,occ,,,196354,Herrerasauridae indet.,family,38510,,Herrerasauridae,,family,38510,Norian,,228,208.5,66757,-101.440277,33.452499
+1417825,occ,,,196354,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,66757,-101.440277,33.452499
+1418645,occ,,,196537,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,60809,-101.449997,33.107777
+1419050,occ,,,196651,n. gen. Lepidus n. sp. praecisio,species,372124,,Lepidus praecisio,,species,372124,Late Triassic,,237,201.3,66070,-101.321587,32.180401
+1419303,occ,37705,,196738,n. gen. Erythrovenator n. sp. jacuiensis,species,430204,,Erythrovenator jacuiensis,,species,430204,Carnian,,237,228,74704,-53.234444,-29.673611
+1421955,occ,,,176414,n. gen. Ingentia n. sp. prima,species,378703,,Ingentia prima,,species,378703,Norian,,228,208.5,67318,-67.400002,-31.6
+1423604,occ,,,175577,n. gen. Macrocollum n. sp. itaquii,species,378960,,Macrocollum itaquii,,species,378960,Norian,,228,208.5,67405,-53.264999,-29.612778
+1429193,occ,,,92087,Dolichosuchus n. sp. cristatus,species,56376,nomen dubium,Coelophysoidea,,superfamily,55476,Norian,,228,208.5,29483,9.131944,48.744446
+1432599,occ,,I,74513,Coelurosaurichnus cf. perriauxi,species,82507,,Coelurosaurichnus perriauxi,,species,82507,Anisian,,247.2,242,67963,-1.633441,39.981533
+1433054,occ,,I,199901,Atreipus sp.,genus,68367,,Atreipus,,genus,68367,Anisian,,247.2,242,67964,-9.091944,30.818056
+1433077,occ,,IF,62182,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Anisian,Ladinian,247.2,237,67979,4.432778,46.841946
+1433090,occ,,IF,199909,Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,17967,4.432778,46.841946
+1433091,occ,,I,68223,Coelurosaurichnus perriauxi,species,82507,,Coelurosaurichnus perriauxi,,species,82507,Anisian,Ladinian,247.2,237,17967,4.432778,46.841946
+1433098,occ,36267,I,199911,Coelurosaurichnus perriauxi,species,82507,,Coelurosaurichnus perriauxi,,species,82507,Anisian,Ladinian,247.2,237,17967,4.306181,46.966526
+1433380,occ,,IF,192151,Coelurosaurichnus n. sp. largentierensis,species,92022,,Coelurosaurichnus largentierensis,,species,92022,Anisian,Ladinian,247.2,237,67993,4.2922,44.531506
+1433383,occ,,IF,199928,cf. Anchisauripus bibractensis,species,92019,,Anchisauripus bibractensis,,species,92019,Anisian,Ladinian,247.2,237,19626,4.735084,46.254669
+1433384,occ,,I,199928,Coelurosaurichnus sp.,genus,68186,,Coelurosaurichnus,,genus,68186,Anisian,Ladinian,247.2,237,19626,4.735084,46.254669
+1433390,occ,,IF,68226,Coelurosaurichnus largentierensis,species,92022,,Coelurosaurichnus largentierensis,,species,92022,Anisian,Ladinian,247.2,237,67995,4.651667,46.653332
+1433393,occ,,IF,31312,Coelurosaurichnus palissyi,species,92020,"misspelling of, obsolete variant of",Coelurosaurichnus palyssi,,species,92021,Anisian,Ladinian,247.2,237,67995,4.444111,46.94809
+1434074,occ,,I,199929,cf. Grallator sp.,genus,64079,,Grallator,,genus,64079,Anisian,Ladinian,247.2,237,68040,4.34121,44.598808
+1434075,occ,,,199929,Dinosauria indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Anisian,Ladinian,247.2,237,68040,4.34121,44.598808
+1441946,occ,,I,68226,aff. Coelurosaurichnus sp.,genus,68186,,Coelurosaurichnus,,genus,68186,Anisian,Ladinian,247.2,237,68923,4.651667,46.653332
+1441947,occ,,I,28462,aff. Coelurosaurichnus sp.,genus,68186,,Coelurosaurichnus,,genus,68186,Anisian,Ladinian,247.2,237,68923,4.416667,46.900002
+1442415,occ,,,201406,Dinosauria ? indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Middle Triassic,,247.2,237,68923,4.770421,46.496773
+1442416,occ,,,28091,Dinosauria ? indet. 1 informal,species,90099,species not entered,Dinosauria,,unranked clade,52775,Late Triassic,,237,201.3,68923,4.616667,47.183334
+1442417,occ,,,201286,Dinosauria ? indet. 1 informal,species,90099,species not entered,Dinosauria,,unranked clade,52775,Middle Triassic,,247.2,237,68923,4.714731,46.273716
+1453504,occ,,I,202704,Otozoum sp.,genus,64089,,Otozoum,,genus,64089,Carnian,Norian,237,208.5,69455,27.559723,-30.3825
+1454111,occ,,,174029,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Carnian,,237,228,69511,81.34861,23.920555
+1454112,occ,,,174029,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Carnian,,237,228,69511,81.34861,23.920555
+1456627,occ,,,203217,n. gen. Notatesseraeraptor n. sp. frickensis,species,391300,,Notatesseraeraptor frickensis,,species,391300,Norian,,228,208.5,69697,8.016667,47.5
+1456852,occ,,,72087,n. gen. Nhandumirim n. sp. waldsangae,species,391703,,Nhandumirim waldsangae,,species,391703,Norian,,228,208.5,69707,-53.774166,-29.697779
+1459725,occ,,,203745,cf. Pampadromaeus sp.,genus,243372,,Pampadromaeus,,genus,243372,Carnian,,237,228,69830,-52.81345,-29.656624
+1470901,occ,,I,205518,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Carnian,,237,228,70475,-9.1002,30.8146
+1470911,occ,,IF,205528,Grallatoridae indet.,family,54520,,Grallatoridae,,family,54520,Carnian,,237,228,70475,-9.1002,30.8146
+1470912,occ,,I,205528,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Carnian,,237,228,70475,-9.1002,30.8146
+1470913,occ,,IF,205534,Grallatoridae indet.,family,54520,,Grallatoridae,,family,54520,Carnian,,237,228,70475,-9.2354,30.688
+1477286,occ,,,206086,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Carnian,Norian,237,208.5,17074,-68.291397,-29.711399
+1477306,occ,,,59670,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Middle Triassic,,247.2,237,17074,-68.890282,-32.450832
+1477309,occ,36167,IF,206089,Rigalites sp.,genus,77111,,Rigalites,,genus,77111,Norian,,228,208.5,17074,-68.89167,-32.491669
+1477311,occ,,IF,206090,cf. Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Carnian,,237,228,17074,-68.699997,-29.216669
+1477312,occ,,,206091,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Carnian,,237,228,17074,-68.699997,-29.216669
+1483379,occ,,IF,206455,Dilophosauripus sp.,genus,231458,,Dilophosauripus,,genus,231458,Rhaetian,Early Hettangian,208.5,196.5,70951,2.8568,44.4459
+1484163,occ,,IF,206455,Eubrontes giganteus,species,66095,,Eubrontes giganteus,,species,67402,Rhaetian,Early Hettangian,208.5,196.5,70951,2.8568,44.4459
+1484164,occ,,I,206455,Grallator minusculus,species,276886,recombined as,Eubrontes minusculus,,species,67386,Rhaetian,Early Hettangian,208.5,196.5,70951,2.8568,44.4459
+1484209,occ,,IF,206537,n. gen. Trichristolopus n. sp. dubius,species,133277,,Trichristolopus dubius,,species,133277,Middle Triassic,,247.2,237,70980,29.0602,-29.035801
+1484768,occ,,IF,206547,n. gen. Rotodactylopus n. sp. archaeus,species,133278,,Rotodactylopus archaeus,,species,133278,Middle Triassic,,247.2,237,70980,26.7038,-30.674801
+1484788,occ,,IF,206548,Qemetrisauropus n. sp. minor,species,133286,recombined as,Grallator minor,,species,133286,Carnian,,237,228,28154,27.48333,-30.216669
+1484789,occ,,IF,206548,n. gen. Anatrisauropus n. sp. ginsburgi,species,133288,,Anatrisauropus ginsburgi,,species,133288,Carnian,,237,228,28154,27.48333,-30.216669
+1484791,occ,,IF,206548,n. gen. Pseudotrisauropus n. sp. humilis,species,133290,,Pseudotrisauropus humilis,,species,133290,Carnian,,237,228,28154,27.48333,-30.216669
+1484792,occ,,IF,206548,Pseudotrisauropus n. sp. minusculus,species,133291,,Pseudotrisauropus minusculus,,species,133291,Carnian,,237,228,28154,27.48333,-30.216669
+1484793,occ,,,206548,Pseudotetrasauropus n. sp. curtus,species,155159,nomen dubium,Prosauropoda,,unranked clade,38634,Carnian,,237,228,70980,27.48333,-30.216669
+1484815,occ,,IF,149751,Prototrisauropus n. sp. minimus,species,133306,recombined as,Grallator minimus,,species,133306,Norian,,228,208.5,28154,27.6,-30.35
+1484818,occ,,IF,84061,Pseudotrisauropus n. sp. molekoi,species,133301,,Pseudotrisauropus molekoi,,species,133301,Carnian,Norian,237,208.5,70980,27.51667,-30.366671
+1484824,occ,,IF,206555,Pseudotetrasauropus n. sp. mekalingensis,species,133314,nomen dubium,Pseudotetrasauropus,,genus,77385,Carnian,,237,228,28154,27.5056,-30.291
+1484825,occ,,,149751,Pseudotetrasauropus n. sp. elegans,species,133315,nomen dubium,Prosauropoda,,unranked clade,38634,Norian,,228,208.5,28154,27.6,-30.35
+1484829,occ,,IF,56020,Trisauropodiscus n. sp. superaviforma,species,133340,,Trisauropodiscus superaviforma,,species,133340,Norian,Rhaetian,228,201.3,28154,27.516701,-30.2167
+1484832,occ,,IF,206556,Pseudotrisauropus n. sp. maserui,species,133343,,Pseudotrisauropus maserui,,species,133343,Carnian,,237,228,28154,27.4837,-29.3361
+1485905,occ,36249,IF,70801,Grallator variabilis,species,96249,,Grallator variabilis,,species,96249,Rhaetian,,208.5,201.3,23532,-1.6644,46.4347
+1485907,occ,,I,206742,Grallator maximus,species,96250,,Grallator maximus,,species,96250,Rhaetian,,208.5,201.3,23532,-1.6702,46.437599
+1486218,occ,,,196709,n. gen. Gnathovorax n. sp. cabreirai,species,399808,,Gnathovorax cabreirai,,species,399808,Tuvalian,,232,221.5,71101,-53.450558,-29.631111
+1487848,occ,,,187422,Dinosauria indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Rhaetian,Hettangian,208.5,199.3,71257,-110.845215,37.167301
+1491293,occ,,,98596,Coelophysis sp.,genus,38520,,Coelophysis,,genus,38520,Carnian,Norian,237,208.5,71464,-101.17057,33.581253
+1491295,occ,,,98596,Dinosauria ? indet.,unranked clade,90099,,Dinosauria,,unranked clade,52775,Carnian,Norian,237,208.5,71464,-101.17057,33.581253
+1492044,occ,,,207533,Coelurosauria indet.,unranked clade,97931,,Coelurosauria,,unranked clade,53940,Carnian,,237,228,71512,11.074722,50.947224
+1492045,occ,,,207533,Coelurosauria ? indet.,unranked clade,97931,,Coelurosauria,,unranked clade,53940,Carnian,,237,228,71512,11.074722,50.947224
+1494774,occ,,,207798,Ornithischia indet.,unranked clade,91973,,Ornithischia,,unranked clade,38712,Carnian,,237,228,71703,81.350311,23.89806
+1494784,occ,,,173722,Ornithischia indet.,unranked clade,91973,,Ornithischia,,unranked clade,38712,Carnian,,237,228,71703,81.382774,23.933332
+1514433,occ,,,47806,n. gen. Schleitheimia n. sp. schutzi,species,423028,,Schleitheimia schutzi,,species,423028,Norian,,228,208.5,72985,8.486944,47.741669
+1514434,occ,,,47806,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,72985,8.486944,47.741669
+1514435,occ,,,194662,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,72985,8.449167,47.707222
+1546384,occ,,,175578,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Carnian,,237,228,75604,-53.435833,-29.658611
+1546524,occ,,,92811,Dinosauria indet.,unranked clade,52775,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,75605,-109.834099,35.110901
+1546784,occ,,,218116,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75605,-109.758598,35.146599
+1546785,occ,,,218116,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,75605,-109.758598,35.146599
+1546786,occ,,,218117,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,75605,-109.644897,34.930599
+1546787,occ,,,218118,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,75605,-109.695702,34.929901
+1546789,occ,,,218119,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Norian,,228,208.5,75605,-109.644897,34.930599
+1546790,occ,,,218119,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75605,-109.644897,34.930599
+1546791,occ,,,218119,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,75605,-109.644897,34.930599
+1546792,occ,,,218120,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75605,-109.644897,34.930599
+1546796,occ,,,218124,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Norian,,228,208.5,75605,-109.782204,35.032799
+1546798,occ,,,207035,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Norian,,228,208.5,75605,-109.806389,35.088055
+1546799,occ,,,207035,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75605,-109.806389,35.088055
+1546800,occ,,,207035,Neotheropoda indet.,unranked clade,56397,,Neotheropoda,,unranked clade,56397,Norian,,228,208.5,75605,-109.806389,35.088055
+1546801,occ,,,218125,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,75605,-109.794441,35.087502
+1546827,occ,,,218126,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Norian,,228,208.5,75649,-101.147003,32.995701
+1546932,occ,,,196354,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,75647,-101.440277,33.452499
+1546933,occ,,,196354,Saurischia indet.,unranked clade,308839,,Saurischia,,unranked clade,38505,Norian,,228,208.5,75647,-101.440277,33.452499
+1546934,occ,,,196354,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,75647,-101.440277,33.452499
+1546936,occ,37919,,218145,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,66757,-101.440277,33.452499
+1546939,occ,,,218145,Saurischia indet.,unranked clade,91969,,Saurischia,,unranked clade,38505,Norian,,228,208.5,75647,-101.440277,33.452499
+1546969,occ,,,218154,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,75660,-109.754097,38.8829
+1554246,occ,,,127084,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Norian,Rhaetian,228,201.3,76162,28.537001,-28.643
+1554274,occ,,IF,164930,n. gen. Deuterotetrapous n. sp. triassicus,species,85810,,Deuterotetrapous triassicus,,species,85810,Early Triassic,,252.17,247.2,19324,-3.046121,53.355362
+1555134,occ,,,132933,Herrerasauridae indet.,family,38510,,Herrerasauridae,,family,38510,Norian,Rhaetian,228,201.3,76305,18.876667,49.988335
+1555138,occ,,,132933,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,Rhaetian,228,201.3,76305,18.876667,49.988335
+1555173,occ,,,99665,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,76329,-52.84111,-29.681389
+1555177,occ,38209,,105691,n. gen. Powellvenator n. sp. podocitus,species,370732,,Powellvenator podocitus,,species,370732,Norian,,228,208.5,65740,-68.150002,-29.85
+1555649,occ,38233,,99665,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,65740,-52.84111,-29.681389
+1558113,occ,,I,219790,Grallator sp.,genus,64079,,Grallator,,genus,64079,Carnian,,237,228,35453,-79.223999,36.897999
+1558114,occ,,IF,219790,n. gen. Banisterobates n. sp. boisseaui,species,94353,,Banisterobates boisseaui,,species,94353,Carnian,,237,228,35453,-79.223999,36.897999
+1558115,occ,,I,55493,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,35453,-79.668999,36.540901
+1558330,occ,,IF,219851,cf. Eosauropus sp.,genus,131584,,Eosauropus,,genus,131584,Rhaetian,,208.5,201.3,76638,103.067497,28.663889
+1558747,occ,,IF,34701,Anomoepus n. sp. moghrebensis,species,436507,,Anomoepus moghrebensis,,species,436507,Carnian,,237,228,76667,-8.956,31.066999
+1558764,occ,,,219917,Coelurosauria ? indet.,unranked clade,97931,,Coelurosauria,,unranked clade,53940,Carnian,,237,228,76667,-7.65,31.316999
+1558895,occ,,IF,219952,Pseudotetrasauropus ? sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Late Triassic,,237,201.3,76684,-109.597,38.605
+1558896,occ,,I,219952,Grallator sp.,genus,64079,,Grallator,,genus,64079,Late Triassic,,237,201.3,81455,-109.597,38.605
+1558897,occ,,IF,219952,n. gen. Eoanomoepus n. sp. latus,species,436586,,Eoanomoepus latus,,species,436586,Late Triassic,,237,201.3,76684,-109.597,38.605
+1558910,occ,,IF,96875,Coelurosaurichnus n. sp. ratumensis,species,436608,,Coelurosaurichnus ratumensis,,species,436608,Anisian,,247.2,242,76686,6.725833,51.968334
+1559584,occ,38378,,220075,Prosauropoda indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Rhaetian,Hettangian,208.5,199.3,76755,28.383333,-28.549999
+1559618,occ,,,203217,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Norian,,228,208.5,69697,8.016667,47.5
+1559667,occ,,,220112,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Tuvalian,Lacian,232,215.56,76790,12.0527,46.339699
+1559671,occ,,,220114,Prosauropoda indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Alaunian,Sevatian,215.56,205.6,76800,9.6466,46.614201
+1559672,occ,,,220114,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Alaunian,Sevatian,215.56,205.6,76800,9.6466,46.614201
+1559673,occ,,I,220115,Grallator ? sp.,genus,64079,,Grallator,,genus,64079,Alaunian,Sevatian,215.56,205.6,76800,9.7076,46.602001
+1559674,occ,,I,220115,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Alaunian,Sevatian,215.56,205.6,76800,9.7076,46.602001
+1559675,occ,,,220115,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Alaunian,Sevatian,215.56,205.6,76800,9.7076,46.602001
+1559676,occ,,,220115,Prosauropoda indet.,unranked clade,162292,,Prosauropoda,,unranked clade,38634,Alaunian,Sevatian,215.56,205.6,76800,9.7076,46.602001
+1561142,occ,,,220328,Coelophysoidea indet.,superfamily,55476,,Coelophysoidea,,superfamily,55476,Alaunian,,215.56,212,76954,-22.568611,71.383614
+1561152,occ,,,220331,Megalosaurus cloacinus,species,72166,nomen dubium,Theropoda,,unranked clade,38513,Norian,,228,208.5,76960,17.521999,50.917999
+1562556,occ,,,220586,Massospondylus sp.,genus,38642,,Massospondylus,,genus,38642,Carnian,,237,228,77101,28.691,-16.729
+1562557,occ,,,220587,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Carnian,,237,228,77101,28.476999,-16.774
+1562561,occ,,,220589,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Carnian,,237,228,77101,28.576944,-16.759167
+1563368,occ,,,220710,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Carnian,,237,228,77101,28.352501,-16.836666
+1563373,occ,,,220712,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Carnian,,237,228,77101,28.692499,-16.731112
+1563374,occ,,,220712,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Carnian,,237,228,77101,28.692499,-16.731112
+1563375,occ,,,220712,Theropoda ? indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Carnian,,237,228,77101,28.692499,-16.731112
+1572442,occ,,I,68890,Anomoepus sp.,genus,67049,,Anomoepus,,genus,67049,Lacian,Alaunian,221.5,212,78032,-77.915054,38.439735
+1572634,occ,,IF,27008,Evazoum sp.,genus,131586,,Evazoum,,genus,131586,Alaunian,,215.56,212,78090,-22.552778,71.414719
+1574570,occ,,,27012,n. gen. Pendraig n. sp. milnerae,species,442504,,Pendraig milnerae,,species,442504,Rhaetian,,208.5,201.3,78307,-3.373889,51.459999
+1574709,occ,,,222645,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,,228,208.5,78332,-108.4673,35.413696
+1578530,occ,,,99665,n. gen. Guaibasaurus n. sp. candelariensis,species,66571,,Guaibasaurus candelariensis,,species,66571,Norian,,228,208.5,13866,-52.84111,-29.681389
+1578849,occ,,,222899,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,Rhaetian,228,201.3,78432,-110.452301,37.307701
+1578851,occ,38960,I,222901,Grallator cf. sulcatus,species,64081,subjective synonym of,Grallator cursorius,,species,64080,Rhaetian,Hettangian,208.5,199.3,78429,-110.468887,37.945614
+1578872,occ,,IF,74806,cf. Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Late Triassic,,237,201.3,78434,-3.701282,51.490177
+1578873,occ,,IF,57949,cf. Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Norian,,228,208.5,78434,-3.250398,51.393559
+1578874,occ,,I,222914,Grallator sp.,genus,64079,,Grallator,,genus,64079,Norian,,228,208.5,78434,-3.2,51.398998
+1578875,occ,,IF,222914,Tetrasauropus ? sp.,genus,77113,,Tetrasauropus,,genus,77113,Norian,,228,208.5,78434,-3.2,51.398998
+1578876,occ,,IF,222914,Pseudotetrasauropus ? sp.,genus,77385,,Pseudotetrasauropus,,genus,77385,Norian,,228,208.5,78434,-3.2,51.398998
+1579641,occ,,,223030,"""Chindesaurus"" sp.",genus,66908,,Chindesaurus,,genus,66908,Norian,,228,208.5,31961,-106.47506,36.323849
+1580067,occ,,,223083,Ornithischia indet.,unranked clade,91973,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,31634,-103.549698,35.104301
+1580068,occ,,,223084,Revueltosaurus n. sp. hunti,species,69055,recombined as,Krzyzanowskisaurus hunti,,species,69055,Carnian,,237,228,31634,-105.976501,35.5065
+1580069,occ,,,223084,aff. Revueltosaurus hunti,species,69055,recombined as,Krzyzanowskisaurus hunti,,species,69055,Carnian,,237,228,31634,-105.976501,35.5065
+1580213,occ,,IF,194710,Anchisauripus sp.,genus,64083,,Anchisauripus,,genus,64083,Norian,,228,208.5,78488,12.507383,46.290653
+1580214,occ,,I,194710,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Norian,,228,208.5,78488,12.507383,46.290653
+1580215,occ,,,194711,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,78488,12.61,46.290001
+1583185,occ,,I,223701,Eubrontes sp.,genus,66094,,Eubrontes,,genus,66094,Rhaetian,,208.5,201.3,78695,-113.07222,37.211109
+1583197,occ,,I,223706,Grallator sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,Hettangian,208.5,199.3,78695,-113.4039,37.0107
+1586156,occ,39365,,224097,Theropoda indet.,unranked clade,94209,,Theropoda,,unranked clade,38513,Carnian,Norian,237,208.5,79087,-108.830002,38.757999
+1586158,occ,,,22682,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Rhaetian,,208.5,201.3,79090,8.65,48.066669
+1586159,occ,,,22683,Plateosaurus sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,,228,208.5,79090,8.65,48.066669
+1586160,occ,,,22683,Plateosaurus ? sp.,genus,38644,,Plateosaurus,,genus,38644,Norian,,228,208.5,79090,8.65,48.066669
+1587532,occ,,IF,224334,Grallatoridae ? indet.,family,54520,,Grallatoridae,,family,54520,Norian,Rhaetian,228,201.3,79868,101.788002,26.528
+1587539,occ,,,224336,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Rhaetian,,208.5,201.3,79872,102.737,30.1
+1587540,occ,,,224337,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Rhaetian,,208.5,201.3,79872,102.737,30.1
+1589320,occ,,,80926,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Norian,,228,208.5,80962,-106.6241,36.2118
+1589658,occ,,IF,68889,Grallator sillimani,species,94350,recombined as,Eubrontes sillimani,,species,67392,Lacian,Alaunian,221.5,212,81036,-77.915054,38.439735
+1592250,occ,,I,219951,Grallator sp.,genus,64079,,Grallator,,genus,64079,Late Triassic,,237,201.3,81455,-109.569,38.602001
+1592313,occ,,I,192942,Grallator ? sp.,genus,64079,,Grallator,,genus,64079,Rhaetian,,208.5,201.3,81455,-108.636002,39.027
+1592328,occ,,,225135,Dinosauria indet.,unranked clade,91968,,Dinosauria,,unranked clade,52775,Norian,Rhaetian,228,201.3,81469,-109.531998,40.584
+1601924,occ,,,98623,Sauropodomorpha indet.,unranked clade,91972,,Sauropodomorpha,,unranked clade,38633,Carnian,Norian,237,208.5,82147,-53.292778,-29.653055
+1606642,occ,,,196537,Ornithischia indet.,unranked clade,91973,,Ornithischia,,unranked clade,38712,Norian,,228,208.5,82648,-101.449997,33.107777
+1606893,occ,,,227260,Theropoda indet.,unranked clade,91970,,Theropoda,,unranked clade,38513,Middle Triassic,Late Triassic,247.2,201.3,82709,16.0569,50.490398
