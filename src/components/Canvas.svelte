@@ -24,7 +24,9 @@
   let fossilSpots;
   let fossilSpots2;
   let fossilSpots3;  
-  let originalFossilSpots;
+  let originalJurassicSpots;
+  let originalTriassicSpots;
+  let originalCretaceousSpots;
   let switchValue;
   let mesozoic = {};
   
@@ -58,7 +60,8 @@
   fossilSpots = await loadFossilSpots();
   fossilSpots2 = await loadFossilSpots2();
   fossilSpots3 = await loadFossilSpots3();  
-  originalFossilSpots = await loadFossilSpots();
+  originalJurassicSpots = await loadFossilSpots();
+  originalCretaceousSpots = await loadFossilSpots3();
 
 
  // console.log(fossilSpots);
@@ -87,7 +90,7 @@ another way to redraw on updates
 
 
  // $: if (canvas && $countries.length > 0) {
-  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalFossilSpots) {
+  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalJurassicSpots && originalCretaceousSpots) {
   //  console.log('countries store', $countries)
  //   console.log('fossilSpots: ', fossilSpots)
 
@@ -156,7 +159,6 @@ let info = base.append("div")
 function createMap(dataset) {
 
 
-  ctx.globalAlpha = .2
   var dataBinding = locations.selectAll("points.arc")
 
     .data(dataset.jurassic)
@@ -166,7 +168,7 @@ function createMap(dataset) {
       .classed("arc", true)
       .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
       .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
-      .attr("radius", 9)
+      .attr("radius", 4)
       .attr("fillStyle", "#34B2C9")
 
 
@@ -180,8 +182,7 @@ function createMap(dataset) {
 function createTriassicMap(dataset) {
 
 
-  ctx.globalAlpha = .2
-var dataBinding = locations.selectAll("points.arc")
+locations.selectAll("points.arc")
 
   .data(dataset.triassic)
 
@@ -190,8 +191,8 @@ var dataBinding = locations.selectAll("points.arc")
     .classed("arc", true)
     .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
     .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
-    .attr("radius", 9)
-    .attr("fillStyle", "purple")
+    .attr("radius", 5)
+    .attr("fillStyle", "#BD8CC3")
 
 
     drawCanvas();
@@ -203,8 +204,7 @@ var dataBinding = locations.selectAll("points.arc")
 function createCretaceousMap(dataset) {
 
 
-ctx.globalAlpha = 0.015
-var dataBinding = locations.selectAll("points.arc")
+locations.selectAll("points.arc")
 
 .data(dataset.cretaceous)
 
@@ -213,8 +213,8 @@ var dataBinding = locations.selectAll("points.arc")
   .classed("arc", true)
   .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
   .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
-  .attr("radius", 9)
-  .attr("fillStyle", "yellow")
+  .attr("radius", 3)
+  .attr("fillStyle", "#678F66")
 
 
   drawCanvas();
@@ -296,14 +296,9 @@ ctx.clearRect(0, -$panelHeight, $width, $height);
 }
 
 
-
-
-// createCretaceousMap(mesozoic);
-
 createTriassicMap(mesozoic);
 
 createMap(mesozoic);
-
 
 createCretaceousMap(mesozoic);
 
@@ -390,7 +385,7 @@ function worldMap() {
     return fossilSpots;
     */
 
-    mesozoic.jurassic = mesozoic.jurassic.filter((d) => d.id < 20);
+    mesozoic.jurassic = [];
     reDraw();
     return mesozoic;
 
@@ -401,7 +396,35 @@ function worldMap() {
   //  console.log('fossilSpots: ', fossilSpots);
   //  console.log('fossilSpots2: ', fossilSpots2)
 
-    mesozoic.jurassic = originalFossilSpots;
+    mesozoic.jurassic = originalJurassicSpots;
+    reDraw();
+    return mesozoic;
+
+
+	}
+
+  function handleCretaceousClick() {
+	//	console.log('clear')
+  //  console.log('fossilSpots: ', fossilSpots);
+  //  console.log('fossilSpots2: ', fossilSpots2)
+/*
+    fossilSpots = fossilSpots.filter((d) => d.id < 20);
+    reDraw();
+    return fossilSpots;
+    */
+
+    mesozoic.cretaceous = [];
+    reDraw();
+    return mesozoic;
+
+	}
+
+  function handleNewCretaceousClick() {
+	//	console.log('clear')
+  //  console.log('fossilSpots: ', fossilSpots);
+  //  console.log('fossilSpots2: ', fossilSpots2)
+
+    mesozoic.cretaceous = originalCretaceousSpots;
     reDraw();
     return mesozoic;
 
@@ -458,6 +481,27 @@ var elements = locations.selectAll("points.arc");
   height: 400px;
 " on:click={handleNewClick}>
     Add Data
+  </button>
+
+  <button style="
+  position: absolute;
+  z-index: 199999999999;
+  right: 100px;
+  top: 0px;
+  width: 100px;
+  height: 400px;
+" on:click={handleCretaceousClick}>
+    Remove Cretaceous Data
+  </button>
+  <button style="
+  position: absolute;
+  z-index: 199999999999;
+  right: 100px;
+  top: 250px;
+  width: 100px;
+  height: 400px;
+" on:click={handleNewCretaceousClick}>
+    Add Cretaceous Data
   </button>
 
   <div style="

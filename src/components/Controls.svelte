@@ -6,6 +6,7 @@
     methodFilter,
     sourceFilter,
     sourceCategoryFilter,
+    dietFilter,
     attributionScoreFilter,
     attributionScoreDef,
     textSearchFilter,
@@ -79,6 +80,10 @@
                 label="Source Category"
                 on:itemsAdded={(e) => sourceCategoryFilter.select(e.detail)}
                 on:itemsRemoved={(e) => sourceCategoryFilter.unselect(e.detail)} />
+      <Dropdown items={addCount($dietFilter, 'diet', timePoints)}
+                label="Diet"
+                on:itemsAdded={(e) => dietFilter.select(e.detail)}
+                on:itemsRemoved={(e) => dietFilter.unselect(e.detail)} />
       <Dropdown items={addCount($methodFilter, 'methods', timePoints)}
                 label="Method"
                 superior

@@ -59,6 +59,8 @@ export const sourceFilter = createInclusiveFilter();
 
 export const sourceCategoryFilter = createInclusiveFilter();
 
+export const dietFilter = createInclusiveFilter();
+
 export const tagFilter = createInclusiveFilter();
 
 export const attributionScoreFilter = createRangeFilter();
@@ -73,6 +75,7 @@ export const unselectAllFilters = (disinformantNation = true) => {
   methodFilter.unselectAll();
   sourceFilter.unselectAll();
   sourceCategoryFilter.unselectAll();
+  dietFilter.unselectAll();
   tagFilter.unselectAll();
   attributionScoreFilter.set(attributionScoreDef);
   polarizationFilter.set(polarizationDef);
@@ -84,6 +87,7 @@ export const selectAllFilters = (disinformantNation = true) => {
   methodFilter.selectAll();
   sourceFilter.selectAll();
   sourceCategoryFilter.selectAll();
+  dietFilter.selectAll();
   tagFilter.selectAll();
   attributionScoreFilter.set(attributionScoreDef);
   polarizationFilter.set(polarizationDef);

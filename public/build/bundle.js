@@ -35152,8 +35152,10 @@ var app = (function () {
 	  }); //setting min date manually
 
 	  var minimumDate = '10/30/0000';
+	  var maximumDate = '10/30/0300';
 	  var minRange = parseDate(minimumDate);
-	  return [new Date(minRange), new Date(maxAttributionDate.getFullYear(), maxAttributionDate.getMonth() + 5)];
+	  var maxRange = parseDate(maximumDate);
+	  return [new Date(minRange), new Date(maxRange)];
 	}; // preload images
 
 	var preloadImages = function preloadImages(data) {
@@ -35736,6 +35738,7 @@ var app = (function () {
 	var methodFilter = createInclusiveFilter();
 	var sourceFilter$1 = createInclusiveFilter();
 	var sourceCategoryFilter = createInclusiveFilter();
+	var dietFilter = createInclusiveFilter();
 	var tagFilter = createInclusiveFilter();
 	var attributionScoreFilter = createRangeFilter();
 	var attributionScoreDef = [0, 18];
@@ -35748,6 +35751,7 @@ var app = (function () {
 	  methodFilter.unselectAll();
 	  sourceFilter$1.unselectAll();
 	  sourceCategoryFilter.unselectAll();
+	  dietFilter.unselectAll();
 	  tagFilter.unselectAll();
 	  attributionScoreFilter.set(attributionScoreDef);
 	  polarizationFilter.set(polarizationDef);
@@ -35759,6 +35763,7 @@ var app = (function () {
 	  methodFilter.selectAll();
 	  sourceFilter$1.selectAll();
 	  sourceCategoryFilter.selectAll();
+	  dietFilter.selectAll();
 	  tagFilter.selectAll();
 	  attributionScoreFilter.set(attributionScoreDef);
 	  polarizationFilter.set(polarizationDef);
@@ -42081,7 +42086,7 @@ var app = (function () {
 	  return Share;
 	}(SvelteComponentDev);
 
-	var file$f = "src/components/Controls.svelte"; // (48:0) {#if (timePoints)}
+	var file$f = "src/components/Controls.svelte"; // (49:0) {#if (timePoints)}
 
 	function create_if_block$7(ctx) {
 	  var div2;
@@ -42102,11 +42107,13 @@ var app = (function () {
 	  var t6;
 	  var dropdown5;
 	  var t7;
+	  var dropdown6;
+	  var t8;
 	  var button;
-	  var t9;
+	  var t10;
 	  var div1;
 	  var checkboxpanel;
-	  var t10;
+	  var t11;
 	  var share;
 	  var current;
 	  var mounted;
@@ -42122,10 +42129,10 @@ var app = (function () {
 	  });
 	  searchtext.$on("change",
 	  /*change_handler*/
-	  ctx[11]);
+	  ctx[12]);
 	  searchtext.$on("reset",
 	  /*reset_handler*/
-	  ctx[12]);
+	  ctx[13]);
 	  slider = new Slider({
 	    props: {
 	      value:
@@ -42146,7 +42153,7 @@ var app = (function () {
 	  });
 	  slider.$on("changed",
 	  /*changed_handler*/
-	  ctx[13]);
+	  ctx[14]);
 	  dropdown0 = new Dropdown({
 	    props: {
 	      items: addCount(
@@ -42161,10 +42168,10 @@ var app = (function () {
 	  });
 	  dropdown0.$on("itemsAdded",
 	  /*itemsAdded_handler*/
-	  ctx[14]);
+	  ctx[15]);
 	  dropdown0.$on("itemsRemoved",
 	  /*itemsRemoved_handler*/
-	  ctx[15]);
+	  ctx[16]);
 	  dropdown1 = new Dropdown({
 	    props: {
 	      items: addCount(
@@ -42178,10 +42185,10 @@ var app = (function () {
 	  });
 	  dropdown1.$on("itemsAdded",
 	  /*itemsAdded_handler_1*/
-	  ctx[16]);
+	  ctx[17]);
 	  dropdown1.$on("itemsRemoved",
 	  /*itemsRemoved_handler_1*/
-	  ctx[17]);
+	  ctx[18]);
 	  dropdown2 = new Dropdown({
 	    props: {
 	      items: addCount(
@@ -42197,10 +42204,10 @@ var app = (function () {
 	  });
 	  dropdown2.$on("itemsAdded",
 	  /*itemsAdded_handler_2*/
-	  ctx[18]);
+	  ctx[19]);
 	  dropdown2.$on("itemsRemoved",
 	  /*itemsRemoved_handler_2*/
-	  ctx[19]);
+	  ctx[20]);
 	  dropdown3 = new Dropdown({
 	    props: {
 	      items: addCount(
@@ -42214,15 +42221,32 @@ var app = (function () {
 	  });
 	  dropdown3.$on("itemsAdded",
 	  /*itemsAdded_handler_3*/
-	  ctx[20]);
+	  ctx[21]);
 	  dropdown3.$on("itemsRemoved",
 	  /*itemsRemoved_handler_3*/
-	  ctx[21]);
+	  ctx[22]);
 	  dropdown4 = new Dropdown({
 	    props: {
 	      items: addCount(
+	      /*$dietFilter*/
+	      ctx[8], "diet",
+	      /*timePoints*/
+	      ctx[0]),
+	      label: "Diet"
+	    },
+	    $$inline: true
+	  });
+	  dropdown4.$on("itemsAdded",
+	  /*itemsAdded_handler_4*/
+	  ctx[23]);
+	  dropdown4.$on("itemsRemoved",
+	  /*itemsRemoved_handler_4*/
+	  ctx[24]);
+	  dropdown5 = new Dropdown({
+	    props: {
+	      items: addCount(
 	      /*$methodFilter*/
-	      ctx[8], "methods",
+	      ctx[9], "methods",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Method",
@@ -42230,28 +42254,28 @@ var app = (function () {
 	    },
 	    $$inline: true
 	  });
-	  dropdown4.$on("itemsAdded",
-	  /*itemsAdded_handler_4*/
-	  ctx[22]);
-	  dropdown4.$on("itemsRemoved",
-	  /*itemsRemoved_handler_4*/
-	  ctx[23]);
-	  dropdown5 = new Dropdown({
+	  dropdown5.$on("itemsAdded",
+	  /*itemsAdded_handler_5*/
+	  ctx[25]);
+	  dropdown5.$on("itemsRemoved",
+	  /*itemsRemoved_handler_5*/
+	  ctx[26]);
+	  dropdown6 = new Dropdown({
 	    props: {
 	      items:
 	      /*$contextData*/
-	      ctx[9],
+	      ctx[10],
 	      label: "Context Dataset",
 	      nameField: "name"
 	    },
 	    $$inline: true
 	  });
-	  dropdown5.$on("itemsAdded",
-	  /*itemsAdded_handler_5*/
-	  ctx[24]);
-	  dropdown5.$on("itemsRemoved",
-	  /*itemsRemoved_handler_5*/
-	  ctx[25]);
+	  dropdown6.$on("itemsAdded",
+	  /*itemsAdded_handler_6*/
+	  ctx[27]);
+	  dropdown6.$on("itemsRemoved",
+	  /*itemsRemoved_handler_6*/
+	  ctx[28]);
 	  checkboxpanel = new CheckboxPanel({
 	    $$inline: true
 	  });
@@ -42278,21 +42302,23 @@ var app = (function () {
 	      t6 = space();
 	      create_component(dropdown5.$$.fragment);
 	      t7 = space();
+	      create_component(dropdown6.$$.fragment);
+	      t8 = space();
 	      button = element("button");
 	      button.textContent = "Reset";
-	      t9 = space();
+	      t10 = space();
 	      div1 = element("div");
 	      create_component(checkboxpanel.$$.fragment);
-	      t10 = space();
+	      t11 = space();
 	      create_component(share.$$.fragment);
 	      attr_dev(button, "class", "reset-filters svelte-5sdzpo");
-	      add_location(button, file$f, 91, 6, 3786);
+	      add_location(button, file$f, 96, 6, 4038);
 	      attr_dev(div0, "class", "controls svelte-5sdzpo");
-	      add_location(div0, file$f, 49, 4, 1401);
+	      add_location(div0, file$f, 50, 4, 1417);
 	      attr_dev(div1, "class", "checkbox-panel svelte-5sdzpo");
-	      add_location(div1, file$f, 96, 4, 3913);
+	      add_location(div1, file$f, 101, 4, 4165);
 	      attr_dev(div2, "class", "controls-inner-wrapper svelte-5sdzpo");
-	      add_location(div2, file$f, 48, 2, 1360);
+	      add_location(div2, file$f, 49, 2, 1376);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div2, anchor);
@@ -42313,48 +42339,50 @@ var app = (function () {
 	      append_dev(div0, t6);
 	      mount_component(dropdown5, div0, null);
 	      append_dev(div0, t7);
+	      mount_component(dropdown6, div0, null);
+	      append_dev(div0, t8);
 	      append_dev(div0, button);
-	      append_dev(div2, t9);
+	      append_dev(div2, t10);
 	      append_dev(div2, div1);
 	      mount_component(checkboxpanel, div1, null);
-	      append_dev(div1, t10);
+	      append_dev(div1, t11);
 	      mount_component(share, div1, null);
 	      current = true;
 
 	      if (!mounted) {
 	        dispose = listen_dev(button, "click",
 	        /*click_handler*/
-	        ctx[26], false, false, false);
+	        ctx[29], false, false, false);
 	        mounted = true;
 	      }
 	    },
 	    p: function update(ctx, dirty) {
 	      var searchtext_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$textSearchFilter*/
 	      2) searchtext_changes.searchString =
 	      /*$textSearchFilter*/
 	      ctx[1];
 	      searchtext.$set(searchtext_changes);
 	      var slider_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$attributionScoreFilter*/
 	      4) slider_changes.value =
 	      /*$attributionScoreFilter*/
 	      ctx[2];
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$attributionScoreScale*/
 	      8) slider_changes.startColor =
 	      /*$attributionScoreScale*/
 	      ctx[3](attributionScoreDef[0]);
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$attributionScoreScale*/
 	      8) slider_changes.stopColor =
 	      /*$attributionScoreScale*/
 	      ctx[3](attributionScoreDef[1]);
 	      slider.$set(slider_changes);
 	      var dropdown0_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$disinformantNationFilter, timePoints*/
 	      17) dropdown0_changes.items = addCount(
 	      /*$disinformantNationFilter*/
@@ -42363,7 +42391,7 @@ var app = (function () {
 	      ctx[0]);
 	      dropdown0.$set(dropdown0_changes);
 	      var dropdown1_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$platformFilter, timePoints*/
 	      33) dropdown1_changes.items = addCount(
 	      /*$platformFilter*/
@@ -42372,7 +42400,7 @@ var app = (function () {
 	      ctx[0]);
 	      dropdown1.$set(dropdown1_changes);
 	      var dropdown2_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$sourceFilter, timePoints*/
 	      65) dropdown2_changes.items = addCount(
 	      /*$sourceFilter*/
@@ -42381,7 +42409,7 @@ var app = (function () {
 	      ctx[0]);
 	      dropdown2.$set(dropdown2_changes);
 	      var dropdown3_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$sourceCategoryFilter, timePoints*/
 	      129) dropdown3_changes.items = addCount(
 	      /*$sourceCategoryFilter*/
@@ -42390,21 +42418,30 @@ var app = (function () {
 	      ctx[0]);
 	      dropdown3.$set(dropdown3_changes);
 	      var dropdown4_changes = {};
-	      if (dirty &
-	      /*$methodFilter, timePoints*/
+	      if (dirty[0] &
+	      /*$dietFilter, timePoints*/
 	      257) dropdown4_changes.items = addCount(
-	      /*$methodFilter*/
-	      ctx[8], "methods",
+	      /*$dietFilter*/
+	      ctx[8], "diet",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown4.$set(dropdown4_changes);
 	      var dropdown5_changes = {};
-	      if (dirty &
-	      /*$contextData*/
-	      512) dropdown5_changes.items =
-	      /*$contextData*/
-	      ctx[9];
+	      if (dirty[0] &
+	      /*$methodFilter, timePoints*/
+	      513) dropdown5_changes.items = addCount(
+	      /*$methodFilter*/
+	      ctx[9], "methods",
+	      /*timePoints*/
+	      ctx[0]);
 	      dropdown5.$set(dropdown5_changes);
+	      var dropdown6_changes = {};
+	      if (dirty[0] &
+	      /*$contextData*/
+	      1024) dropdown6_changes.items =
+	      /*$contextData*/
+	      ctx[10];
+	      dropdown6.$set(dropdown6_changes);
 	    },
 	    i: function intro(local) {
 	      if (current) return;
@@ -42416,6 +42453,7 @@ var app = (function () {
 	      transition_in(dropdown3.$$.fragment, local);
 	      transition_in(dropdown4.$$.fragment, local);
 	      transition_in(dropdown5.$$.fragment, local);
+	      transition_in(dropdown6.$$.fragment, local);
 	      transition_in(checkboxpanel.$$.fragment, local);
 	      transition_in(share.$$.fragment, local);
 	      current = true;
@@ -42429,6 +42467,7 @@ var app = (function () {
 	      transition_out(dropdown3.$$.fragment, local);
 	      transition_out(dropdown4.$$.fragment, local);
 	      transition_out(dropdown5.$$.fragment, local);
+	      transition_out(dropdown6.$$.fragment, local);
 	      transition_out(checkboxpanel.$$.fragment, local);
 	      transition_out(share.$$.fragment, local);
 	      current = false;
@@ -42443,6 +42482,7 @@ var app = (function () {
 	      destroy_component(dropdown3);
 	      destroy_component(dropdown4);
 	      destroy_component(dropdown5);
+	      destroy_component(dropdown6);
 	      destroy_component(checkboxpanel);
 	      destroy_component(share);
 	      mounted = false;
@@ -42453,7 +42493,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$7.name,
 	    type: "if",
-	    source: "(48:0) {#if (timePoints)}",
+	    source: "(49:0) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -42478,17 +42518,14 @@ var app = (function () {
 	      insert_dev(target, if_block_anchor, anchor);
 	      current = true;
 	    },
-	    p: function update(ctx, _ref) {
-	      var _ref2 = _slicedToArray(_ref, 1),
-	          dirty = _ref2[0];
-
+	    p: function update(ctx, dirty) {
 	      if (
 	      /*timePoints*/
 	      ctx[0]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
-	          if (dirty &
+	          if (dirty[0] &
 	          /*timePoints*/
 	          1) {
 	            transition_in(if_block, 1);
@@ -42562,23 +42599,24 @@ var app = (function () {
 	  var $platformFilter;
 	  var $sourceFilter;
 	  var $sourceCategoryFilter;
+	  var $dietFilter;
 	  var $methodFilter;
 	  var $contextData;
 	  validate_store(highlightPolarization, "highlightPolarization");
 	  component_subscribe($$self, highlightPolarization, function ($$value) {
-	    return $$invalidate(27, $highlightPolarization = $$value);
+	    return $$invalidate(30, $highlightPolarization = $$value);
 	  });
 	  validate_store(highlightCib, "highlightCib");
 	  component_subscribe($$self, highlightCib, function ($$value) {
-	    return $$invalidate(28, $highlightCib = $$value);
+	    return $$invalidate(31, $highlightCib = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
-	    return $$invalidate(29, $originalTimeDomain = $$value);
+	    return $$invalidate(32, $originalTimeDomain = $$value);
 	  });
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(30, $timeScale = $$value);
+	    return $$invalidate(33, $timeScale = $$value);
 	  });
 	  validate_store(textSearchFilter, "textSearchFilter");
 	  component_subscribe($$self, textSearchFilter, function ($$value) {
@@ -42608,13 +42646,17 @@ var app = (function () {
 	  component_subscribe($$self, sourceCategoryFilter, function ($$value) {
 	    return $$invalidate(7, $sourceCategoryFilter = $$value);
 	  });
+	  validate_store(dietFilter, "dietFilter");
+	  component_subscribe($$self, dietFilter, function ($$value) {
+	    return $$invalidate(8, $dietFilter = $$value);
+	  });
 	  validate_store(methodFilter, "methodFilter");
 	  component_subscribe($$self, methodFilter, function ($$value) {
-	    return $$invalidate(8, $methodFilter = $$value);
+	    return $$invalidate(9, $methodFilter = $$value);
 	  });
 	  validate_store(contextData, "contextData");
 	  component_subscribe($$self, contextData, function ($$value) {
-	    return $$invalidate(9, $contextData = $$value);
+	    return $$invalidate(10, $contextData = $$value);
 	  });
 	  var timePoints = $$props.timePoints;
 
@@ -42685,18 +42727,26 @@ var app = (function () {
 	  };
 
 	  var itemsAdded_handler_4 = function itemsAdded_handler_4(e) {
-	    return methodFilter.select(e.detail);
+	    return dietFilter.select(e.detail);
 	  };
 
 	  var itemsRemoved_handler_4 = function itemsRemoved_handler_4(e) {
-	    return methodFilter.unselect(e.detail);
+	    return dietFilter.unselect(e.detail);
 	  };
 
 	  var itemsAdded_handler_5 = function itemsAdded_handler_5(e) {
-	    return contextData.select(e.detail);
+	    return methodFilter.select(e.detail);
 	  };
 
 	  var itemsRemoved_handler_5 = function itemsRemoved_handler_5(e) {
+	    return methodFilter.unselect(e.detail);
+	  };
+
+	  var itemsAdded_handler_6 = function itemsAdded_handler_6(e) {
+	    return contextData.select(e.detail);
+	  };
+
+	  var itemsRemoved_handler_6 = function itemsRemoved_handler_6(e) {
 	    return contextData.unselect(e.detail);
 	  };
 
@@ -42715,6 +42765,7 @@ var app = (function () {
 	      methodFilter: methodFilter,
 	      sourceFilter: sourceFilter$1,
 	      sourceCategoryFilter: sourceCategoryFilter,
+	      dietFilter: dietFilter,
 	      attributionScoreFilter: attributionScoreFilter,
 	      attributionScoreDef: attributionScoreDef,
 	      textSearchFilter: textSearchFilter,
@@ -42744,6 +42795,7 @@ var app = (function () {
 	      $platformFilter: $platformFilter,
 	      $sourceFilter: $sourceFilter,
 	      $sourceCategoryFilter: $sourceCategoryFilter,
+	      $dietFilter: $dietFilter,
 	      $methodFilter: $methodFilter,
 	      $contextData: $contextData
 	    };
@@ -42757,7 +42809,7 @@ var app = (function () {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [timePoints, $textSearchFilter, $attributionScoreFilter, $attributionScoreScale, $disinformantNationFilter, $platformFilter, $sourceFilter, $sourceCategoryFilter, $methodFilter, $contextData, handleButtonClick, change_handler, reset_handler, changed_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, itemsAdded_handler_3, itemsRemoved_handler_3, itemsAdded_handler_4, itemsRemoved_handler_4, itemsAdded_handler_5, itemsRemoved_handler_5, click_handler];
+	  return [timePoints, $textSearchFilter, $attributionScoreFilter, $attributionScoreScale, $disinformantNationFilter, $platformFilter, $sourceFilter, $sourceCategoryFilter, $dietFilter, $methodFilter, $contextData, handleButtonClick, change_handler, reset_handler, changed_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, itemsAdded_handler_3, itemsRemoved_handler_3, itemsAdded_handler_4, itemsRemoved_handler_4, itemsAdded_handler_5, itemsRemoved_handler_5, itemsAdded_handler_6, itemsRemoved_handler_6, click_handler];
 	}
 
 	var Controls = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -42773,7 +42825,7 @@ var app = (function () {
 	    _this = _super.call(this, options);
 	    init(_assertThisInitialized(_this), options, instance$g, create_fragment$g, safe_not_equal, {
 	      timePoints: 0
-	    });
+	    }, [-1, -1]);
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
 	      tagName: "Controls",
@@ -51894,7 +51946,7 @@ var app = (function () {
 	      /*$panelHeight*/
 	      ctx[3] * 1.1);
 	      attr_dev(rect, "class", "svelte-16hx6sq");
-	      add_location(rect, file$x, 37, 2, 880);
+	      add_location(rect, file$x, 33, 2, 765);
 	      attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " +
 	      /*$width*/
 	      ctx[1] + " " +
@@ -51907,7 +51959,7 @@ var app = (function () {
 	      /*$height*/
 	      ctx[2]);
 	      attr_dev(svg, "class", "svelte-16hx6sq");
-	      add_location(svg, file$x, 30, 0, 720);
+	      add_location(svg, file$x, 26, 0, 605);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -52060,7 +52112,6 @@ var app = (function () {
 	    return $$invalidate(3, $panelHeight = $$value);
 	  });
 	  var timePoints = $$props.timePoints;
-	  var data;
 
 	  function handleMouseover() {
 	    set_store_value(hovered, $hovered = null);
@@ -52097,12 +52148,7 @@ var app = (function () {
 	      Timeline: Timeline,
 	      Legend: Legend,
 	      Labels: Labels,
-	      countries: countries,
-	      projection: projection$1,
-	      geoPath: geoPath,
-	      onMount: onMount,
 	      timePoints: timePoints,
-	      data: data,
 	      handleMouseover: handleMouseover,
 	      handleClick: handleClick,
 	      $hovered: $hovered,
@@ -52114,7 +52160,6 @@ var app = (function () {
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("timePoints" in $$props) $$invalidate(0, timePoints = $$props.timePoints);
-	    if ("data" in $$props) data = $$props.data;
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -53051,20 +53096,24 @@ var app = (function () {
 	  var t3;
 	  var button1;
 	  var t5;
+	  var button2;
+	  var t7;
+	  var button3;
+	  var t9;
 	  var div3;
 	  var switch_1;
 	  var updating_value;
-	  var t6;
+	  var t10;
 	  var p;
-	  var t7;
-	  var t8;
+	  var t11;
+	  var t12;
 	  var current;
 	  var mounted;
 	  var dispose;
 
 	  function switch_1_value_binding(value) {
 	    /*switch_1_value_binding*/
-	    ctx[5].call(null, value);
+	    ctx[7].call(null, value);
 	  }
 
 	  var switch_1_props = {
@@ -53101,42 +53150,62 @@ var app = (function () {
 	      button1 = element("button");
 	      button1.textContent = "Add Data";
 	      t5 = space();
+	      button2 = element("button");
+	      button2.textContent = "Remove Cretaceous Data";
+	      t7 = space();
+	      button3 = element("button");
+	      button3.textContent = "Add Cretaceous Data";
+	      t9 = space();
 	      div3 = element("div");
 	      create_component(switch_1.$$.fragment);
-	      t6 = space();
+	      t10 = space();
 	      p = element("p");
-	      t7 = text("Pangea is ");
-	      t8 = text(
+	      t11 = text("Pangea is ");
+	      t12 = text(
 	      /*switchValue*/
 	      ctx[1]);
 	      attr_dev(div0, "class", "layer");
-	      add_location(div0, file$z, 436, 1, 8716);
+	      add_location(div0, file$z, 459, 1, 9276);
 	      attr_dev(div1, "id", "points");
-	      add_location(div1, file$z, 438, 31, 8789);
+	      add_location(div1, file$z, 461, 31, 9349);
 	      attr_dev(canvas_1, "class", "svelte-5592ys");
-	      add_location(canvas_1, file$z, 438, 4, 8762);
+	      add_location(canvas_1, file$z, 461, 4, 9322);
 	      attr_dev(div2, "id", "map");
-	      add_location(div2, file$z, 437, 1, 8743);
+	      add_location(div2, file$z, 460, 1, 9303);
 	      set_style(button0, "position", "absolute");
 	      set_style(button0, "z-index", "199999999999");
 	      set_style(button0, "right", "0px");
 	      set_style(button0, "top", "0px");
 	      set_style(button0, "width", "100px");
 	      set_style(button0, "height", "400px");
-	      add_location(button0, file$z, 441, 2, 8833);
+	      add_location(button0, file$z, 464, 2, 9393);
 	      set_style(button1, "position", "absolute");
 	      set_style(button1, "z-index", "199999999999");
 	      set_style(button1, "right", "0px");
 	      set_style(button1, "top", "250px");
 	      set_style(button1, "width", "100px");
 	      set_style(button1, "height", "400px");
-	      add_location(button1, file$z, 451, 2, 9011);
-	      add_location(p, file$z, 469, 0, 9357);
+	      add_location(button1, file$z, 474, 2, 9571);
+	      set_style(button2, "position", "absolute");
+	      set_style(button2, "z-index", "199999999999");
+	      set_style(button2, "right", "100px");
+	      set_style(button2, "top", "0px");
+	      set_style(button2, "width", "100px");
+	      set_style(button2, "height", "400px");
+	      add_location(button2, file$z, 485, 2, 9752);
+	      set_style(button3, "position", "absolute");
+	      set_style(button3, "z-index", "199999999999");
+	      set_style(button3, "right", "100px");
+	      set_style(button3, "top", "250px");
+	      set_style(button3, "width", "100px");
+	      set_style(button3, "height", "400px");
+	      add_location(button3, file$z, 495, 2, 9953);
+	      add_location(p, file$z, 513, 0, 10322);
 	      set_style(div3, "position", "absolute");
 	      set_style(div3, "z-index", "199999999999");
 	      set_style(div3, "left", "670px");
 	      set_style(div3, "top", "180px");
-	      add_location(div3, file$z, 462, 2, 9192);
+	      add_location(div3, file$z, 506, 2, 10157);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53149,18 +53218,22 @@ var app = (function () {
 	      append_dev(canvas_1, div1);
 	      /*canvas_1_binding*/
 
-	      ctx[4](canvas_1);
+	      ctx[6](canvas_1);
 	      insert_dev(target, t1, anchor);
 	      insert_dev(target, button0, anchor);
 	      insert_dev(target, t3, anchor);
 	      insert_dev(target, button1, anchor);
 	      insert_dev(target, t5, anchor);
+	      insert_dev(target, button2, anchor);
+	      insert_dev(target, t7, anchor);
+	      insert_dev(target, button3, anchor);
+	      insert_dev(target, t9, anchor);
 	      insert_dev(target, div3, anchor);
 	      mount_component(switch_1, div3, null);
-	      append_dev(div3, t6);
+	      append_dev(div3, t10);
 	      append_dev(div3, p);
-	      append_dev(p, t7);
-	      append_dev(p, t8);
+	      append_dev(p, t11);
+	      append_dev(p, t12);
 	      current = true;
 
 	      if (!mounted) {
@@ -53168,7 +53241,11 @@ var app = (function () {
 	        /*handleClick*/
 	        ctx[2], false, false, false), listen_dev(button1, "click",
 	        /*handleNewClick*/
-	        ctx[3], false, false, false)];
+	        ctx[3], false, false, false), listen_dev(button2, "click",
+	        /*handleCretaceousClick*/
+	        ctx[4], false, false, false), listen_dev(button3, "click",
+	        /*handleNewCretaceousClick*/
+	        ctx[5], false, false, false)];
 	        mounted = true;
 	      }
 	    },
@@ -53193,7 +53270,7 @@ var app = (function () {
 	      switch_1.$set(switch_1_changes);
 	      if (!current || dirty &
 	      /*switchValue*/
-	      2) set_data_dev(t8,
+	      2) set_data_dev(t12,
 	      /*switchValue*/
 	      ctx[1]);
 	    },
@@ -53212,12 +53289,16 @@ var app = (function () {
 	      if (detaching) detach_dev(div2);
 	      /*canvas_1_binding*/
 
-	      ctx[4](null);
+	      ctx[6](null);
 	      if (detaching) detach_dev(t1);
 	      if (detaching) detach_dev(button0);
 	      if (detaching) detach_dev(t3);
 	      if (detaching) detach_dev(button1);
 	      if (detaching) detach_dev(t5);
+	      if (detaching) detach_dev(button2);
+	      if (detaching) detach_dev(t7);
+	      if (detaching) detach_dev(button3);
+	      if (detaching) detach_dev(t9);
 	      if (detaching) detach_dev(div3);
 	      destroy_component(switch_1);
 	      mounted = false;
@@ -53247,35 +53328,35 @@ var app = (function () {
 	  var $geoPath;
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(14, $width = $$value);
+	    return $$invalidate(17, $width = $$value);
 	  });
 	  validate_store(height, "height");
 	  component_subscribe($$self, height, function ($$value) {
-	    return $$invalidate(15, $height = $$value);
+	    return $$invalidate(18, $height = $$value);
 	  });
 	  validate_store(countries, "countries");
 	  component_subscribe($$self, countries, function ($$value) {
-	    return $$invalidate(16, $countries = $$value);
+	    return $$invalidate(19, $countries = $$value);
 	  });
 	  validate_store(mapHeight, "mapHeight");
 	  component_subscribe($$self, mapHeight, function ($$value) {
-	    return $$invalidate(17, $mapHeight = $$value);
+	    return $$invalidate(20, $mapHeight = $$value);
 	  });
 	  validate_store(projection$1, "projection");
 	  component_subscribe($$self, projection$1, function ($$value) {
-	    return $$invalidate(18, $projection = $$value);
+	    return $$invalidate(21, $projection = $$value);
 	  });
 	  validate_store(scaleFactor, "scaleFactor");
 	  component_subscribe($$self, scaleFactor, function ($$value) {
-	    return $$invalidate(19, $scaleFactor = $$value);
+	    return $$invalidate(22, $scaleFactor = $$value);
 	  });
 	  validate_store(panelHeight, "panelHeight");
 	  component_subscribe($$self, panelHeight, function ($$value) {
-	    return $$invalidate(20, $panelHeight = $$value);
+	    return $$invalidate(23, $panelHeight = $$value);
 	  });
 	  validate_store(geoPath, "geoPath");
 	  component_subscribe($$self, geoPath, function ($$value) {
-	    return $$invalidate(21, $geoPath = $$value);
+	    return $$invalidate(24, $geoPath = $$value);
 	  });
 	  var canvas;
 	  var worldFeature;
@@ -53284,7 +53365,9 @@ var app = (function () {
 	  var fossilSpots;
 	  var fossilSpots2;
 	  var fossilSpots3;
-	  var originalFossilSpots;
+	  var originalJurassicSpots;
+	  var originalTriassicSpots;
+	  var originalCretaceousSpots;
 	  var switchValue;
 	  var mesozoic = {};
 	  onMount( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -53314,9 +53397,9 @@ var app = (function () {
 
 	          case 12:
 	            _context.t1 = worldjson = _context.sent;
-	            (0, _context.t0)(7, _context.t1);
+	            (0, _context.t0)(9, _context.t1);
 	            //  console.log('worldjson: ', worldjson)
-	            $$invalidate(6, worldFeature = feature(worldjson, worldjson.objects.countries)); //  console.log('worldFeature: ', worldFeature)
+	            $$invalidate(8, worldFeature = feature(worldjson, worldjson.objects.countries)); //  console.log('worldFeature: ', worldFeature)
 	            // This removes antartica from the world map
 	            // worldFeature.features = worldFeature.features.filter((c) => c.properties.name !== 'Antarctica');
 	            //  console.log(worldFeature.features );
@@ -53327,34 +53410,41 @@ var app = (function () {
 
 	          case 18:
 	            _context.t3 = fossilSpots = _context.sent;
-	            (0, _context.t2)(9, _context.t3);
+	            (0, _context.t2)(11, _context.t3);
 	            _context.t4 = $$invalidate;
 	            _context.next = 23;
 	            return loadFossilSpots2();
 
 	          case 23:
 	            _context.t5 = fossilSpots2 = _context.sent;
-	            (0, _context.t4)(10, _context.t5);
+	            (0, _context.t4)(12, _context.t5);
 	            _context.t6 = $$invalidate;
 	            _context.next = 28;
 	            return loadFossilSpots3();
 
 	          case 28:
 	            _context.t7 = fossilSpots3 = _context.sent;
-	            (0, _context.t6)(11, _context.t7);
+	            (0, _context.t6)(13, _context.t7);
 	            _context.t8 = $$invalidate;
 	            _context.next = 33;
 	            return loadFossilSpots();
 
 	          case 33:
-	            _context.t9 = originalFossilSpots = _context.sent;
-	            (0, _context.t8)(12, _context.t9);
-	            // console.log(fossilSpots);
-	            $$invalidate(13, mesozoic.jurassic = fossilSpots, mesozoic);
-	            $$invalidate(13, mesozoic.triassic = fossilSpots2, mesozoic);
-	            $$invalidate(13, mesozoic.cretaceous = fossilSpots3, mesozoic);
+	            _context.t9 = originalJurassicSpots = _context.sent;
+	            (0, _context.t8)(14, _context.t9);
+	            _context.t10 = $$invalidate;
+	            _context.next = 38;
+	            return loadFossilSpots3();
 
 	          case 38:
+	            _context.t11 = originalCretaceousSpots = _context.sent;
+	            (0, _context.t10)(15, _context.t11);
+	            // console.log(fossilSpots);
+	            $$invalidate(16, mesozoic.jurassic = fossilSpots, mesozoic);
+	            $$invalidate(16, mesozoic.triassic = fossilSpots2, mesozoic);
+	            $$invalidate(16, mesozoic.cretaceous = fossilSpots3, mesozoic);
+
+	          case 43:
 	          case "end":
 	            return _context.stop();
 	        }
@@ -53372,9 +53462,7 @@ var app = (function () {
 	      reDraw();
 	      return fossilSpots;
 	      */
-	    $$invalidate(13, mesozoic.jurassic = mesozoic.jurassic.filter(function (d) {
-	      return d.id < 20;
-	    }), mesozoic);
+	    $$invalidate(16, mesozoic.jurassic = [], mesozoic);
 	    reDraw();
 	    return mesozoic;
 	  }
@@ -53383,7 +53471,31 @@ var app = (function () {
 	    //	console.log('clear')
 	    //  console.log('fossilSpots: ', fossilSpots);
 	    //  console.log('fossilSpots2: ', fossilSpots2)
-	    $$invalidate(13, mesozoic.jurassic = originalFossilSpots, mesozoic);
+	    $$invalidate(16, mesozoic.jurassic = originalJurassicSpots, mesozoic);
+	    reDraw();
+	    return mesozoic;
+	  }
+
+	  function handleCretaceousClick() {
+	    //	console.log('clear')
+	    //  console.log('fossilSpots: ', fossilSpots);
+	    //  console.log('fossilSpots2: ', fossilSpots2)
+
+	    /*
+	      fossilSpots = fossilSpots.filter((d) => d.id < 20);
+	      reDraw();
+	      return fossilSpots;
+	      */
+	    $$invalidate(16, mesozoic.cretaceous = [], mesozoic);
+	    reDraw();
+	    return mesozoic;
+	  }
+
+	  function handleNewCretaceousClick() {
+	    //	console.log('clear')
+	    //  console.log('fossilSpots: ', fossilSpots);
+	    //  console.log('fossilSpots2: ', fossilSpots2)
+	    $$invalidate(16, mesozoic.cretaceous = originalCretaceousSpots, mesozoic);
 	    reDraw();
 	    return mesozoic;
 	  }
@@ -53413,7 +53525,7 @@ var app = (function () {
 	  function canvas_1_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      canvas = $$value;
-	      (((((((((((((((($$invalidate(0, canvas), $$invalidate(16, $countries)), $$invalidate(7, worldjson)), $$invalidate(9, fossilSpots)), $$invalidate(10, fossilSpots2)), $$invalidate(11, fossilSpots3)), $$invalidate(12, originalFossilSpots)), $$invalidate(14, $width)), $$invalidate(17, $mapHeight)), $$invalidate(18, $projection)), $$invalidate(19, $scaleFactor)), $$invalidate(15, $height)), $$invalidate(20, $panelHeight)), $$invalidate(21, $geoPath)), $$invalidate(13, mesozoic)), $$invalidate(8, graticule$1)), $$invalidate(6, worldFeature)), $$invalidate(1, switchValue);
+	      ((((((((((((((((($$invalidate(0, canvas), $$invalidate(19, $countries)), $$invalidate(9, worldjson)), $$invalidate(11, fossilSpots)), $$invalidate(12, fossilSpots2)), $$invalidate(13, fossilSpots3)), $$invalidate(14, originalJurassicSpots)), $$invalidate(15, originalCretaceousSpots)), $$invalidate(17, $width)), $$invalidate(20, $mapHeight)), $$invalidate(21, $projection)), $$invalidate(22, $scaleFactor)), $$invalidate(18, $height)), $$invalidate(23, $panelHeight)), $$invalidate(24, $geoPath)), $$invalidate(16, mesozoic)), $$invalidate(10, graticule$1)), $$invalidate(8, worldFeature)), $$invalidate(1, switchValue);
 	    });
 	  }
 
@@ -53456,12 +53568,16 @@ var app = (function () {
 	      fossilSpots: fossilSpots,
 	      fossilSpots2: fossilSpots2,
 	      fossilSpots3: fossilSpots3,
-	      originalFossilSpots: originalFossilSpots,
+	      originalJurassicSpots: originalJurassicSpots,
+	      originalTriassicSpots: originalTriassicSpots,
+	      originalCretaceousSpots: originalCretaceousSpots,
 	      switchValue: switchValue,
 	      mesozoic: mesozoic,
 	      worldDataPath: worldDataPath,
 	      handleClick: handleClick,
 	      handleNewClick: handleNewClick,
+	      handleCretaceousClick: handleCretaceousClick,
+	      handleNewCretaceousClick: handleNewCretaceousClick,
 	      reDraw: reDraw,
 	      $width: $width,
 	      $height: $height,
@@ -53476,15 +53592,17 @@ var app = (function () {
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("canvas" in $$props) $$invalidate(0, canvas = $$props.canvas);
-	    if ("worldFeature" in $$props) $$invalidate(6, worldFeature = $$props.worldFeature);
-	    if ("worldjson" in $$props) $$invalidate(7, worldjson = $$props.worldjson);
-	    if ("graticule" in $$props) $$invalidate(8, graticule$1 = $$props.graticule);
-	    if ("fossilSpots" in $$props) $$invalidate(9, fossilSpots = $$props.fossilSpots);
-	    if ("fossilSpots2" in $$props) $$invalidate(10, fossilSpots2 = $$props.fossilSpots2);
-	    if ("fossilSpots3" in $$props) $$invalidate(11, fossilSpots3 = $$props.fossilSpots3);
-	    if ("originalFossilSpots" in $$props) $$invalidate(12, originalFossilSpots = $$props.originalFossilSpots);
+	    if ("worldFeature" in $$props) $$invalidate(8, worldFeature = $$props.worldFeature);
+	    if ("worldjson" in $$props) $$invalidate(9, worldjson = $$props.worldjson);
+	    if ("graticule" in $$props) $$invalidate(10, graticule$1 = $$props.graticule);
+	    if ("fossilSpots" in $$props) $$invalidate(11, fossilSpots = $$props.fossilSpots);
+	    if ("fossilSpots2" in $$props) $$invalidate(12, fossilSpots2 = $$props.fossilSpots2);
+	    if ("fossilSpots3" in $$props) $$invalidate(13, fossilSpots3 = $$props.fossilSpots3);
+	    if ("originalJurassicSpots" in $$props) $$invalidate(14, originalJurassicSpots = $$props.originalJurassicSpots);
+	    if ("originalTriassicSpots" in $$props) originalTriassicSpots = $$props.originalTriassicSpots;
+	    if ("originalCretaceousSpots" in $$props) $$invalidate(15, originalCretaceousSpots = $$props.originalCretaceousSpots);
 	    if ("switchValue" in $$props) $$invalidate(1, switchValue = $$props.switchValue);
-	    if ("mesozoic" in $$props) $$invalidate(13, mesozoic = $$props.mesozoic);
+	    if ("mesozoic" in $$props) $$invalidate(16, mesozoic = $$props.mesozoic);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -53494,7 +53612,7 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*$width, $height*/
-	    49152) {
+	    393216) {
 	      //to update the fossil locations on resize
 	       if ($width || $height) {
 	        reDraw();
@@ -53502,8 +53620,8 @@ var app = (function () {
 	    }
 
 	    if ($$self.$$.dirty &
-	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, fossilSpots3, originalFossilSpots, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, mesozoic, graticule, worldFeature, switchValue*/
-	    4194243) {
+	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, fossilSpots3, originalJurassicSpots, originalCretaceousSpots, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, mesozoic, graticule, worldFeature, switchValue*/
+	    33554179) {
 	      /*
 	      another way to redraw on updates
 	      afterUpdate(() => {
@@ -53512,7 +53630,7 @@ var app = (function () {
 	      });
 	      */
 	      // $: if (canvas && $countries.length > 0) {
-	       if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalFossilSpots) {
+	       if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalJurassicSpots && originalCretaceousSpots) {
 	        //  console.log('countries store', $countries)
 	        //   console.log('fossilSpots: ', fossilSpots)
 	        //  console.log($projection)
@@ -53544,32 +53662,29 @@ var app = (function () {
 	        var info = base.append("div").attr("class", "info");
 
 	        function createMap(dataset) {
-	          ctx.globalAlpha = 0.2;
 	          var dataBinding = locations.selectAll("points.arc").data(dataset.jurassic).enter().append("points").classed("arc", true).attr("x", function (d) {
 	            return testProjection([d.y, d.x])[0];
 	          }).attr("y", function (d) {
 	            return testProjection([d.y, d.x])[1];
-	          }).attr("radius", 9).attr("fillStyle", "#34B2C9");
+	          }).attr("radius", 4).attr("fillStyle", "#34B2C9");
 	          drawCanvas();
 	        }
 
 	        function createTriassicMap(dataset) {
-	          ctx.globalAlpha = 0.2;
-	          var dataBinding = locations.selectAll("points.arc").data(dataset.triassic).enter().append("points").classed("arc", true).attr("x", function (d) {
+	          locations.selectAll("points.arc").data(dataset.triassic).enter().append("points").classed("arc", true).attr("x", function (d) {
 	            return testProjection([d.y, d.x])[0];
 	          }).attr("y", function (d) {
 	            return testProjection([d.y, d.x])[1];
-	          }).attr("radius", 9).attr("fillStyle", "purple");
+	          }).attr("radius", 5).attr("fillStyle", "#BD8CC3");
 	          drawCanvas();
 	        }
 
 	        function createCretaceousMap(dataset) {
-	          ctx.globalAlpha = 0.015;
-	          var dataBinding = locations.selectAll("points.arc").data(dataset.cretaceous).enter().append("points").classed("arc", true).attr("x", function (d) {
+	          locations.selectAll("points.arc").data(dataset.cretaceous).enter().append("points").classed("arc", true).attr("x", function (d) {
 	            return testProjection([d.y, d.x])[0];
 	          }).attr("y", function (d) {
 	            return testProjection([d.y, d.x])[1];
-	          }).attr("radius", 9).attr("fillStyle", "yellow");
+	          }).attr("radius", 3).attr("fillStyle", "#678F66");
 	          drawCanvas();
 	        }
 
@@ -53588,7 +53703,6 @@ var app = (function () {
 	          });
 	        }
 
-
 	        createTriassicMap(mesozoic);
 	        createMap(mesozoic);
 	        createCretaceousMap(mesozoic);
@@ -53596,7 +53710,7 @@ var app = (function () {
 	        function makeGraticules() {
 	          var geoGenerator = d3geoPath().projection(geoNaturalEarth1projection).context(ctx); // Create and configure the graticule generator (one line every 20 degrees)
 
-	          $$invalidate(8, graticule$1 = graticule());
+	          $$invalidate(10, graticule$1 = graticule());
 	          ctx.beginPath(); //      ctx.globalAlpha = 0.45;
 
 	          ctx.strokeStyle = "#ccc";
@@ -53649,7 +53763,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [canvas, switchValue, handleClick, handleNewClick, canvas_1_binding, switch_1_value_binding];
+	  return [canvas, switchValue, handleClick, handleNewClick, handleCretaceousClick, handleNewCretaceousClick, canvas_1_binding, switch_1_value_binding];
 	}
 
 	var Canvas = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -54356,21 +54470,21 @@ var app = (function () {
 
 	function get_each_context$a(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[24] = list[i];
+	  child_ctx[26] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_1$4(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[27] = list[i];
+	  child_ctx[29] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_2$1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[30] = list[i];
+	  child_ctx[32] = list[i];
 	  return child_ctx;
-	} // (79:0) {#if ($tooltip)}
+	} // (84:0) {#if ($tooltip)}
 
 
 	function create_if_block$g(ctx) {
@@ -54429,7 +54543,7 @@ var app = (function () {
 	  var dispose;
 	  var if_block =
 	  /*$tooltip*/
-	  ctx[8].c.length > 5 && !
+	  ctx[8].c.length > 1 && !
 	  /*$originalTimeDomain*/
 	  ctx[9] && create_if_block_1$4(ctx);
 	  var each_value_2 =
@@ -54440,7 +54554,7 @@ var app = (function () {
 	  var get_key = function get_key(ctx) {
 	    return (
 	      /*platform*/
-	      ctx[30].id
+	      ctx[32].id
 	    );
 	  };
 
@@ -54460,7 +54574,7 @@ var app = (function () {
 	  var get_key_1 = function get_key_1(ctx) {
 	    return (
 	      /*method*/
-	      ctx[27].id
+	      ctx[29].id
 	    );
 	  };
 
@@ -54482,7 +54596,7 @@ var app = (function () {
 	  var get_key_2 = function get_key_2(ctx) {
 	    return (
 	      /*sourceCategory*/
-	      ctx[24].id
+	      ctx[26].id
 	    );
 	  };
 
@@ -54507,7 +54621,7 @@ var app = (function () {
 	      t1 = space();
 	      p = element("p");
 	      t2 = text(t2_value);
-	      t3 = text(" case");
+	      t3 = text(" Specie");
 	      t4 = text(t4_value);
 	      t5 = space();
 	      if (if_block) if_block.c();
@@ -54546,31 +54660,31 @@ var app = (function () {
 	      }
 
 	      attr_dev(h2, "class", "svelte-djvhn0");
-	      add_location(h2, file$C, 90, 10, 2736);
+	      add_location(h2, file$C, 95, 10, 2872);
 	      attr_dev(p, "class", "small no-break svelte-djvhn0");
-	      add_location(p, file$C, 91, 10, 2810);
+	      add_location(p, file$C, 96, 10, 2946);
 	      attr_dev(div0, "class", "title svelte-djvhn0");
-	      add_location(div0, file$C, 89, 8, 2706);
+	      add_location(div0, file$C, 94, 8, 2842);
 	      attr_dev(h30, "class", "svelte-djvhn0");
-	      add_location(h30, file$C, 104, 10, 3454);
+	      add_location(h30, file$C, 109, 10, 3600);
 	      attr_dev(ul0, "class", "svelte-djvhn0");
-	      add_location(ul0, file$C, 105, 10, 3488);
+	      add_location(ul0, file$C, 110, 10, 3634);
 	      attr_dev(div1, "class", "platforms-used svelte-djvhn0");
-	      add_location(div1, file$C, 103, 8, 3415);
+	      add_location(div1, file$C, 108, 8, 3561);
 	      attr_dev(h31, "class", "svelte-djvhn0");
-	      add_location(h31, file$C, 115, 10, 3860);
+	      add_location(h31, file$C, 120, 10, 4006);
 	      attr_dev(ul1, "class", "svelte-djvhn0");
-	      add_location(ul1, file$C, 116, 10, 3895);
+	      add_location(ul1, file$C, 121, 10, 4041);
 	      attr_dev(div2, "class", "methods-applied svelte-djvhn0");
-	      add_location(div2, file$C, 114, 8, 3820);
+	      add_location(div2, file$C, 119, 8, 3966);
 	      attr_dev(h32, "class", "svelte-djvhn0");
-	      add_location(h32, file$C, 126, 10, 4255);
+	      add_location(h32, file$C, 131, 10, 4401);
 	      attr_dev(ul2, "class", "svelte-djvhn0");
-	      add_location(ul2, file$C, 127, 10, 4334);
+	      add_location(ul2, file$C, 132, 10, 4480);
 	      attr_dev(div3, "class", "source-categories svelte-djvhn0");
-	      add_location(div3, file$C, 125, 8, 4213);
+	      add_location(div3, file$C, 130, 8, 4359);
 	      attr_dev(div4, "class", "scroll-wrapper svelte-djvhn0");
-	      add_location(div4, file$C, 88, 6, 2669);
+	      add_location(div4, file$C, 93, 6, 2805);
 	      attr_dev(div5, "class", "content svelte-djvhn0");
 	      set_style(div5, "top",
 	      /*contentTop*/
@@ -54578,10 +54692,10 @@ var app = (function () {
 	      add_render_callback(function () {
 	        return (
 	          /*div5_elementresize_handler*/
-	          ctx[18].call(div5)
+	          ctx[19].call(div5)
 	        );
 	      });
-	      add_location(div5, file$C, 85, 4, 2566);
+	      add_location(div5, file$C, 90, 4, 2702);
 	      attr_dev(div6, "class", "tooltip svelte-djvhn0");
 	      set_style(div6, "left",
 	      /*left*/
@@ -54592,10 +54706,10 @@ var app = (function () {
 	      add_render_callback(function () {
 	        return (
 	          /*div6_elementresize_handler*/
-	          ctx[19].call(div6)
+	          ctx[20].call(div6)
 	        );
 	      });
-	      add_location(div6, file$C, 79, 2, 2353);
+	      add_location(div6, file$C, 84, 2, 2489);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div6, anchor);
@@ -54645,18 +54759,18 @@ var app = (function () {
 
 	      div5_resize_listener = add_resize_listener(div5,
 	      /*div5_elementresize_handler*/
-	      ctx[18].bind(div5));
+	      ctx[19].bind(div5));
 	      div6_resize_listener = add_resize_listener(div6,
 	      /*div6_elementresize_handler*/
-	      ctx[19].bind(div6));
+	      ctx[20].bind(div6));
 	      current = true;
 
 	      if (!mounted) {
 	        dispose = [listen_dev(div6, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[13]), false, false, true), listen_dev(div6, "mouseover", stop_propagation(
+	        ctx[14]), false, false, true), listen_dev(div6, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
-	        ctx[14]), false, false, true)];
+	        ctx[15]), false, false, true)];
 	        mounted = true;
 	      }
 	    },
@@ -54679,7 +54793,7 @@ var app = (function () {
 
 	      if (
 	      /*$tooltip*/
-	      ctx[8].c.length > 5 && !
+	      ctx[8].c.length > 1 && !
 	      /*$originalTimeDomain*/
 	      ctx[9]) {
 	        if (if_block) {
@@ -54813,11 +54927,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$g.name,
 	    type: "if",
-	    source: "(79:0) {#if ($tooltip)}",
+	    source: "(84:0) {#if ($tooltip)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (94:8) {#if ($tooltip.c.length > 5 && !$originalTimeDomain)}
+	} // (99:8) {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}
 
 
 	function create_if_block_1$4(ctx) {
@@ -54842,7 +54956,9 @@ var app = (function () {
 	      minDate:
 	      /*$timeScale*/
 	      ctx[10].domain()[0],
-	      maxDate: new Date()
+	      maxDate: new Date(
+	      /*maxRange*/
+	      ctx[13])
 	    },
 	    $$inline: true
 	  });
@@ -54854,9 +54970,9 @@ var app = (function () {
 	      t1 = space();
 	      create_component(casedensity.$$.fragment);
 	      attr_dev(h3, "class", "svelte-djvhn0");
-	      add_location(h3, file$C, 95, 12, 3034);
+	      add_location(h3, file$C, 100, 12, 3172);
 	      attr_dev(div, "class", "case-density-vs-time svelte-djvhn0");
-	      add_location(div, file$C, 94, 10, 2987);
+	      add_location(div, file$C, 99, 10, 3125);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -54906,25 +55022,25 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$4.name,
 	    type: "if",
-	    source: "(94:8) {#if ($tooltip.c.length > 5 && !$originalTimeDomain)}",
+	    source: "(99:8) {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (107:12) {#each platforms as platform (platform.id)}
+	} // (112:12) {#each platforms as platform (platform.id)}
 
 
 	function create_each_block_2$1(key_1, ctx) {
 	  var li;
 	  var t0_value =
 	  /*platform*/
-	  ctx[30].name + "";
+	  ctx[32].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
 	  /*platform*/
-	  ctx[30].count + "";
+	  ctx[32].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -54940,9 +55056,9 @@ var app = (function () {
 
 	    return (
 	      /*click_handler_1*/
-	      (_ctx = ctx)[15].apply(_ctx, [
+	      (_ctx = ctx)[16].apply(_ctx, [
 	      /*platform*/
-	      ctx[30]].concat(args))
+	      ctx[32]].concat(args))
 	    );
 	  }
 
@@ -54959,9 +55075,9 @@ var app = (function () {
 	      t4 = text(")");
 	      t5 = space();
 	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$C, 109, 16, 3690);
+	      add_location(span, file$C, 114, 16, 3836);
 	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$C, 107, 14, 3563);
+	      add_location(li, file$C, 112, 14, 3709);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -54985,12 +55101,12 @@ var app = (function () {
 	      /*platforms*/
 	      32 && t0_value !== (t0_value =
 	      /*platform*/
-	      ctx[30].name + "")) set_data_dev(t0, t0_value);
+	      ctx[32].name + "")) set_data_dev(t0, t0_value);
 	      if (dirty[0] &
 	      /*platforms*/
 	      32 && t3_value !== (t3_value =
 	      /*platform*/
-	      ctx[30].count + "")) set_data_dev(t3, t3_value);
+	      ctx[32].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -55002,25 +55118,25 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_2$1.name,
 	    type: "each",
-	    source: "(107:12) {#each platforms as platform (platform.id)}",
+	    source: "(112:12) {#each platforms as platform (platform.id)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (118:12) {#each methods as method (method.id)}
+	} // (123:12) {#each methods as method (method.id)}
 
 
 	function create_each_block_1$4(key_1, ctx) {
 	  var li;
 	  var t0_value =
 	  /*method*/
-	  ctx[27].name + "";
+	  ctx[29].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
 	  /*method*/
-	  ctx[27].count + "";
+	  ctx[29].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -55036,9 +55152,9 @@ var app = (function () {
 
 	    return (
 	      /*click_handler_2*/
-	      (_ctx2 = ctx)[16].apply(_ctx2, [
+	      (_ctx2 = ctx)[17].apply(_ctx2, [
 	      /*method*/
-	      ctx[27]].concat(args))
+	      ctx[29]].concat(args))
 	    );
 	  }
 
@@ -55055,9 +55171,9 @@ var app = (function () {
 	      t4 = text(")");
 	      t5 = space();
 	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$C, 120, 16, 4085);
+	      add_location(span, file$C, 125, 16, 4231);
 	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$C, 118, 14, 3964);
+	      add_location(li, file$C, 123, 14, 4110);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -55081,12 +55197,12 @@ var app = (function () {
 	      /*methods*/
 	      64 && t0_value !== (t0_value =
 	      /*method*/
-	      ctx[27].name + "")) set_data_dev(t0, t0_value);
+	      ctx[29].name + "")) set_data_dev(t0, t0_value);
 	      if (dirty[0] &
 	      /*methods*/
 	      64 && t3_value !== (t3_value =
 	      /*method*/
-	      ctx[27].count + "")) set_data_dev(t3, t3_value);
+	      ctx[29].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -55098,25 +55214,25 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_1$4.name,
 	    type: "each",
-	    source: "(118:12) {#each methods as method (method.id)}",
+	    source: "(123:12) {#each methods as method (method.id)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (129:12) {#each sourceCategories as sourceCategory (sourceCategory.id)}
+	} // (134:12) {#each sourceCategories as sourceCategory (sourceCategory.id)}
 
 
 	function create_each_block$a(key_1, ctx) {
 	  var li;
 	  var t0_value =
 	  /*sourceCategory*/
-	  ctx[24].name + "";
+	  ctx[26].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
 	  /*sourceCategory*/
-	  ctx[24].count + "";
+	  ctx[26].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -55132,9 +55248,9 @@ var app = (function () {
 
 	    return (
 	      /*click_handler_3*/
-	      (_ctx3 = ctx)[17].apply(_ctx3, [
+	      (_ctx3 = ctx)[18].apply(_ctx3, [
 	      /*sourceCategory*/
-	      ctx[24]].concat(args))
+	      ctx[26]].concat(args))
 	    );
 	  }
 
@@ -55151,9 +55267,9 @@ var app = (function () {
 	      t4 = text(")");
 	      t5 = space();
 	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$C, 131, 16, 4573);
+	      add_location(span, file$C, 136, 16, 4719);
 	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$C, 129, 14, 4428);
+	      add_location(li, file$C, 134, 14, 4574);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -55177,12 +55293,12 @@ var app = (function () {
 	      /*sourceCategories*/
 	      128 && t0_value !== (t0_value =
 	      /*sourceCategory*/
-	      ctx[24].name + "")) set_data_dev(t0, t0_value);
+	      ctx[26].name + "")) set_data_dev(t0, t0_value);
 	      if (dirty[0] &
 	      /*sourceCategories*/
 	      128 && t3_value !== (t3_value =
 	      /*sourceCategory*/
-	      ctx[24].count + "")) set_data_dev(t3, t3_value);
+	      ctx[26].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -55194,7 +55310,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$a.name,
 	    type: "each",
-	    source: "(129:12) {#each sourceCategories as sourceCategory (sourceCategory.id)}",
+	    source: "(134:12) {#each sourceCategories as sourceCategory (sourceCategory.id)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -55270,6 +55386,7 @@ var app = (function () {
 	}
 
 	var contentOffset = 100;
+	var maximumDate = "10/30/0300";
 
 	var func$4 = function func(d) {
 	  return d.disNation;
@@ -55290,7 +55407,7 @@ var app = (function () {
 	  });
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(21, $width = $$value);
+	    return $$invalidate(22, $width = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
@@ -55300,6 +55417,7 @@ var app = (function () {
 	  component_subscribe($$self, timeScale, function ($$value) {
 	    return $$invalidate(10, $timeScale = $$value);
 	  });
+	  var parseDate = timeParse$1("%m/%d/%Y");
 	  var offset = {
 	    top: 10,
 	    right: 10,
@@ -55352,6 +55470,7 @@ var app = (function () {
 	    });
 	  }
 
+	  var maxRange = parseDate(maximumDate);
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<CentroidTooltip> was created with unknown prop '".concat(key, "'"));
@@ -55406,7 +55525,9 @@ var app = (function () {
 	      selectAllFilters: selectAllFilters,
 	      timeFormat: timeFormat$1,
 	      group: group,
+	      timeParse: timeParse$1,
 	      uniq: lodash.uniq,
+	      parseDate: parseDate,
 	      CaseDensity: CaseDensity,
 	      offset: offset,
 	      contentOffset: contentOffset,
@@ -55422,6 +55543,8 @@ var app = (function () {
 	      sourceCategories: sourceCategories,
 	      handleLiClick: handleLiClick,
 	      generateItemsArray: generateItemsArray,
+	      maximumDate: maximumDate,
+	      maxRange: maxRange,
 	      $tooltip: $tooltip,
 	      $width: $width,
 	      $originalTimeDomain: $originalTimeDomain,
@@ -55432,7 +55555,7 @@ var app = (function () {
 	  $$self.$inject_state = function ($$props) {
 	    if ("tWidth" in $$props) $$invalidate(0, tWidth = $$props.tWidth);
 	    if ("tHeight" in $$props) $$invalidate(1, tHeight = $$props.tHeight);
-	    if ("side" in $$props) $$invalidate(20, side = $$props.side);
+	    if ("side" in $$props) $$invalidate(21, side = $$props.side);
 	    if ("left" in $$props) $$invalidate(2, left = $$props.left);
 	    if ("top" in $$props) $$invalidate(3, top = $$props.top);
 	    if ("contentTop" in $$props) $$invalidate(4, contentTop = $$props.contentTop);
@@ -55448,9 +55571,9 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty[0] &
 	    /*$tooltip, $width, contentTop, tHeight, side, tWidth*/
-	    3146003) {
+	    6291731) {
 	       if ($tooltip) {
-	        $$invalidate(20, side = $width - $tooltip.c[0].xCountry < $width / 2 ? "left" : "right");
+	        $$invalidate(21, side = $width - $tooltip.c[0].xCountry < $width / 2 ? "left" : "right");
 	        $$invalidate(3, top = $tooltip.c[0].yCountry - offset.top);
 	        $$invalidate(4, contentTop = contentOffset - $tooltip.e.pageY + window.pageYOffset);
 
@@ -55477,7 +55600,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [tWidth, tHeight, left, top, contentTop, platforms, methods, sourceCategories, $tooltip, $originalTimeDomain, $timeScale, offset, handleLiClick, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, div5_elementresize_handler, div6_elementresize_handler];
+	  return [tWidth, tHeight, left, top, contentTop, platforms, methods, sourceCategories, $tooltip, $originalTimeDomain, $timeScale, offset, handleLiClick, maxRange, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, div5_elementresize_handler, div6_elementresize_handler];
 	}
 
 	var CentroidTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -56710,7 +56833,7 @@ var app = (function () {
 	  return Table;
 	}(SvelteComponentDev);
 
-	var file$F = "src/components/Visualization.svelte"; // (200:2) {#if (!timePoints)}
+	var file$F = "src/components/Visualization.svelte"; // (204:2) {#if (!timePoints)}
 
 	function create_if_block_1$6(ctx) {
 	  var loadinginfo;
@@ -56743,11 +56866,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$6.name,
 	    type: "if",
-	    source: "(200:2) {#if (!timePoints)}",
+	    source: "(204:2) {#if (!timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (208:6) {#if (timePoints)}
+	} // (212:6) {#if (timePoints)}
 
 
 	function create_if_block$i(ctx) {
@@ -56888,7 +57011,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$i.name,
 	    type: "if",
-	    source: "(208:6) {#if (timePoints)}",
+	    source: "(212:6) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -56971,7 +57094,7 @@ var app = (function () {
 	          ctx[9].call(div0)
 	        );
 	      });
-	      add_location(div0, file$F, 203, 4, 6965);
+	      add_location(div0, file$F, 207, 4, 7124);
 	      attr_dev(div1, "class", "draw-wrapper svelte-12ye563");
 	      add_render_callback(function () {
 	        return (
@@ -56979,11 +57102,11 @@ var app = (function () {
 	          ctx[11].call(div1)
 	        );
 	      });
-	      add_location(div1, file$F, 206, 4, 7079);
+	      add_location(div1, file$F, 210, 4, 7238);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-12ye563");
-	      add_location(div2, file$F, 202, 2, 6932);
+	      add_location(div2, file$F, 206, 2, 7091);
 	      attr_dev(div3, "class", "table-wrapper svelte-12ye563");
-	      add_location(div3, file$F, 219, 2, 7473);
+	      add_location(div3, file$F, 223, 2, 7632);
 	      attr_dev(div4, "id", "viz");
 	      attr_dev(div4, "class", "visualization-wrapper svelte-12ye563");
 	      add_render_callback(function () {
@@ -56992,7 +57115,7 @@ var app = (function () {
 	          ctx[12].call(div4)
 	        );
 	      });
-	      add_location(div4, file$F, 198, 0, 6809);
+	      add_location(div4, file$F, 202, 0, 6968);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -57172,6 +57295,7 @@ var app = (function () {
 	  var $methodFilter;
 	  var $sourceFilter;
 	  var $sourceCategoryFilter;
+	  var $dietFilter;
 	  var $tagFilter;
 	  var $controlsHeight;
 	  var $drawWrapper;
@@ -57261,9 +57385,13 @@ var app = (function () {
 	  component_subscribe($$self, sourceCategoryFilter, function ($$value) {
 	    return $$invalidate(30, $sourceCategoryFilter = $$value);
 	  });
+	  validate_store(dietFilter, "dietFilter");
+	  component_subscribe($$self, dietFilter, function ($$value) {
+	    return $$invalidate(31, $dietFilter = $$value);
+	  });
 	  validate_store(tagFilter, "tagFilter");
 	  component_subscribe($$self, tagFilter, function ($$value) {
-	    return $$invalidate(31, $tagFilter = $$value);
+	    return $$invalidate(32, $tagFilter = $$value);
 	  });
 	  validate_store(controlsHeight, "controlsHeight");
 	  component_subscribe($$self, controlsHeight, function ($$value) {
@@ -57297,7 +57425,7 @@ var app = (function () {
 	            _context.t1 = data = _context.sent.map(function (d) {
 	              return _objectSpread2(_objectSpread2({}, d), {}, {
 	                recentlyAdded: Math.ceil((new Date() - d.timestamp) / (1000 * 60 * 60 * 24)) <= observeDays,
-	                search: [d.shortTitle, d.shortDescription, d.platforms, d.methods, d.sourceNation, d.source, d.sourceCategory].flat().join("__").toLowerCase(),
+	                search: [d.shortTitle, d.shortDescription, d.platforms, d.methods, d.sourceNation, d.source, d.sourceCategory, d.diet].flat().join("__").toLowerCase(),
 	                show: false
 	              });
 	            });
@@ -57310,6 +57438,7 @@ var app = (function () {
 	            methodFilter.init(data, "methods");
 	            sourceFilter$1.init(data, "sourceFilter");
 	            sourceCategoryFilter.init(data, "sourceCategory");
+	            dietFilter.init(data, "diet");
 	            tagFilter.init(data, "tags");
 	            set_store_value(attributionScoreFilter, $attributionScoreFilter = attributionScoreDef);
 	            set_store_value(polarizationFilter, $polarizationFilter = polarizationDef);
@@ -57322,6 +57451,7 @@ var app = (function () {
 	              methodFilter.applyBoolArray(urlFilters.methods);
 	              sourceFilter$1.applyBoolArray(urlFilters.sources);
 	              sourceCategoryFilter.applyBoolArray(urlFilters.sourceCategories);
+	              dietFilter.applyBoolArray(urlFilters.diet);
 	              tagFilter.applyBoolArray(urlFilters.tags);
 	              contextData.applyBoolArray(urlFilters.contextData);
 	              set_store_value(attributionScoreFilter, $attributionScoreFilter = urlFilters.attributionScores);
@@ -57332,7 +57462,7 @@ var app = (function () {
 	              set_store_value(highlightCib, $highlightCib = urlFilters.highlightCib);
 	            }
 
-	          case 16:
+	          case 17:
 	          case "end":
 	            return _context.stop();
 	        }
@@ -57394,6 +57524,7 @@ var app = (function () {
 	      methodFilter: methodFilter,
 	      sourceFilter: sourceFilter$1,
 	      sourceCategoryFilter: sourceCategoryFilter,
+	      dietFilter: dietFilter,
 	      attributionScoreFilter: attributionScoreFilter,
 	      attributionScoreDef: attributionScoreDef,
 	      textSearchFilter: textSearchFilter,
@@ -57461,6 +57592,7 @@ var app = (function () {
 	      $methodFilter: $methodFilter,
 	      $sourceFilter: $sourceFilter,
 	      $sourceCategoryFilter: $sourceCategoryFilter,
+	      $dietFilter: $dietFilter,
 	      $tagFilter: $tagFilter,
 	      $controlsHeight: $controlsHeight,
 	      $drawWrapper: $drawWrapper,
@@ -57526,13 +57658,13 @@ var app = (function () {
 	    if ($$self.$$.dirty[0] &
 	    /*timePoints, $disinformantNationFilter, $platformFilter, $methodFilter, $sourceFilter, $sourceCategoryFilter, $textSearchFilter, $attributionScoreFilter, $polarizationFilter, $highlightPolarization, $caseIdFilter, $highlightCib*/
 	    2080890882 | $$self.$$.dirty[1] &
-	    /*$tagFilter*/
-	    1) {
+	    /*$dietFilter, $tagFilter*/
+	    3) {
 	      // translate filter values into show property state
 	       if (timePoints) {
 	        $$invalidate(1, timePoints = timePoints.map(function (d) {
 	          return _objectSpread2(_objectSpread2({}, d), {}, {
-	            show: haveOverlap($disinformantNationFilter, d.disinformantNation) && haveOverlap($platformFilter, d.platforms) && haveOverlap($methodFilter, d.methods) && haveOverlap($sourceFilter, d.sourceFilter) && haveOverlap($sourceCategoryFilter, d.sourceCategory) && haveOverlap($tagFilter, d.tags) && includesTextSearch($textSearchFilter, d.search) && withinRange($attributionScoreFilter, d.attributionScore) && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization) && isCaseId($caseIdFilter, d.id) && showPolarization($highlightPolarization, d.polarization) && showCib($highlightCib, d.cib)
+	            show: haveOverlap($disinformantNationFilter, d.disinformantNation) && haveOverlap($platformFilter, d.platforms) && haveOverlap($methodFilter, d.methods) && haveOverlap($sourceFilter, d.sourceFilter) && haveOverlap($sourceCategoryFilter, d.sourceCategory) && haveOverlap($dietFilter, d.diet) && haveOverlap($tagFilter, d.tags) && includesTextSearch($textSearchFilter, d.search) && withinRange($attributionScoreFilter, d.attributionScore) && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization) && isCaseId($caseIdFilter, d.id) && showPolarization($highlightPolarization, d.polarization) && showCib($highlightCib, d.cib)
 	          });
 	        }));
 	      }

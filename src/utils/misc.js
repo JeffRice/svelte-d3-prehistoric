@@ -9,11 +9,11 @@ const parseDate = timeParse('%m/%d/%Y');
 export const getTimeRange = (data) => {
     const maxAttributionDate = max(data, (d) => d.attributionDate);
     //setting min date manually
-    const minimumDate ='10/30/0000'; 
-  const minRange = parseDate(minimumDate);
-  return([new Date(minRange), new Date(
-    maxAttributionDate.getFullYear(), maxAttributionDate.getMonth() + 5
-  )]);
+    const minimumDate ='10/30/0000';
+    const maximumDate ='10/30/0300';
+    const minRange = parseDate(minimumDate);
+    const maxRange = parseDate(maximumDate);
+  return([new Date(minRange), new Date(maxRange)]);
 };
 
 // preload images

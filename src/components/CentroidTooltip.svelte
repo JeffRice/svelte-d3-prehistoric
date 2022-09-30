@@ -13,8 +13,10 @@
     sourceCategoryFilter,
     selectAllFilters
   } from '../stores/filters';
-  import { timeFormat, group } from 'd3';
+  import { timeFormat, group, timeParse } from 'd3';
   import { uniq } from 'lodash';
+
+  const parseDate = timeParse('%m/%d/%Y');
 
   import CaseDensity from './CaseDensity.svelte';
 
@@ -74,6 +76,9 @@
     methods = generateItemsArray($tooltip.c, 'methods');
     sourceCategories = generateItemsArray($tooltip.c, 'sourceCategory');
   }
+
+  const maximumDate ='10/30/0300';
+    const maxRange = parseDate(maximumDate);
 </script>
 
 {#if ($tooltip)}
@@ -89,16 +94,16 @@
       <div class="scroll-wrapper">
         <div class="title">
           <h2>{uniq($tooltip.c.map((d) => d.disNation)).join(' | ')}</h2>
-          <p class="small no-break">{$tooltip.c.length} case{$tooltip.c.length !== 1 ? 's': ''}</p>
+          <p class="small no-break">{$tooltip.c.length} Specie{$tooltip.c.length !== 1 ? 's': ''}</p>
         </div>
-        {#if ($tooltip.c.length > 5 && !$originalTimeDomain)}
+        {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}
           <div class="case-density-vs-time">
             <h3>Attributions over time</h3>
             <CaseDensity width={Math.max(0, tWidth - offset.left - offset.right - 2 * 16)} 
                          height={50}
                          dates={$tooltip.c.map((d) => d.attributionDate)}
                          minDate={$timeScale.domain()[0]}
-                         maxDate={new Date()} />
+                         maxDate={new Date(maxRange)} />
           </div>
         {/if}
         <div class="platforms-used">

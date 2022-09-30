@@ -30,6 +30,7 @@
     methodFilter,
     sourceFilter,
     sourceCategoryFilter,
+    dietFilter,
     attributionScoreFilter,
     attributionScoreDef,
     textSearchFilter,
@@ -88,7 +89,7 @@
             .map((d) => ({
               ...d,
               recentlyAdded: Math.ceil(((new Date()) - d.timestamp) / (1000 * 60 * 60 * 24)) <= observeDays,
-              search: [d.shortTitle, d.shortDescription, d.platforms, d.methods, d.sourceNation, d.source, d.sourceCategory].flat().join('__').toLowerCase(),
+              search: [d.shortTitle, d.shortDescription, d.platforms, d.methods, d.sourceNation, d.source, d.sourceCategory, d.diet].flat().join('__').toLowerCase(),
               show: false
             }));
 
@@ -101,6 +102,7 @@
     methodFilter.init(data, 'methods');
     sourceFilter.init(data, 'sourceFilter');
     sourceCategoryFilter.init(data, 'sourceCategory');
+    dietFilter.init(data, 'diet');
     tagFilter.init(data, 'tags');
     $attributionScoreFilter = attributionScoreDef;
     $polarizationFilter = polarizationDef;
@@ -115,6 +117,7 @@
       methodFilter.applyBoolArray(urlFilters.methods);
       sourceFilter.applyBoolArray(urlFilters.sources);
       sourceCategoryFilter.applyBoolArray(urlFilters.sourceCategories);
+      dietFilter.applyBoolArray(urlFilters.diet);
       tagFilter.applyBoolArray(urlFilters.tags);
       contextData.applyBoolArray(urlFilters.contextData);
       $attributionScoreFilter = urlFilters.attributionScores;
@@ -183,6 +186,7 @@
               && haveOverlap($methodFilter, d.methods)
               && haveOverlap($sourceFilter, d.sourceFilter)
               && haveOverlap($sourceCategoryFilter, d.sourceCategory)
+              && haveOverlap($dietFilter, d.diet)
               && haveOverlap($tagFilter, d.tags)
               && includesTextSearch($textSearchFilter, d.search)
               && withinRange($attributionScoreFilter, d.attributionScore)

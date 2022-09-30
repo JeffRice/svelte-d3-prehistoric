@@ -9,12 +9,8 @@
   import Timeline from './Timeline.svelte';
   import Legend from './Legend.svelte';
   import Labels from './Labels.svelte';
-  import { countries, projection, geoPath } from '../stores/map';
-
-  import { onMount } from "svelte";
 
   export let timePoints;
-  let data;
 
 
   function handleMouseover() {
@@ -37,9 +33,7 @@
  
   <rect x="0" y="0" width={$width} height={$panelHeight * 1.1}></rect>
   <Sources {timePoints} />
-    <Events {timePoints} />
-      <!-- 
-  -->
+  <Events {timePoints} />
   <Labels />
   <Brush />
 
