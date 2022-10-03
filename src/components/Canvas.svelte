@@ -5,6 +5,7 @@
   import { countries, projection, geoPath } from '../stores/map';
   import { scaleFactor } from '../stores/scales';
   import Switch from './Switch.svelte';
+  import { timeScale } from '../stores/scales';
 
 
   let canvas;
@@ -156,6 +157,8 @@ let layer = select('.layer');
 let info = base.append("div")
     .attr("class", "info");
 
+
+
 function createMap(dataset) {
 
 
@@ -234,7 +237,7 @@ function drawCanvas() {
 		ctx.fillStyle = node.attr("fillStyle");
     ctx.fill();
     ctx.lineWidth = 0.5;
-      ctx.strokeStyle = '#000000';
+      ctx.strokeStyle = '#fff';
       ctx.stroke();
     ctx.closePath();
 	})
@@ -304,7 +307,6 @@ createCretaceousMap(mesozoic);
 
 
 
-
 function makeGraticules() {
 
   let geoGenerator = d3geoPath()
@@ -363,6 +365,8 @@ function worldMap() {
     $countries.forEach($geoPath);
     ctx.fillStyle = preGreen;
     ctx.fill();
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 1.5;
     ctx.stroke();
     
     }
@@ -403,7 +407,10 @@ function worldMap() {
 
 	}
 
-  function handleCretaceousClick() {
+  let cvalue = 'remove';
+  let checked = false;
+
+  function handleCretaceousClick(event) {
 	//	console.log('clear')
   //  console.log('fossilSpots: ', fossilSpots);
   //  console.log('fossilSpots2: ', fossilSpots2)
@@ -412,12 +419,50 @@ function worldMap() {
     reDraw();
     return fossilSpots;
     */
+    const target = event.target
+    console.log('target: ', target)
 
-    mesozoic.cretaceous = [];
+
+    const state = target.getAttribute('cretaceous-checked')
+
+
+    checked = state === 'true' ? false : true
+
+    cvalue = checked === true ? 'add' : 'remove'
+
+    if (state  === 'false' ){
+      addCretaceousFossils();
+}
+    else {
+      removeCretaceousFossils();
+    }
+
+    console.log('state: ', state)
+  
+  //  mesozoic.cretaceous = [];
+   // reDraw();
+   // return mesozoic;
+
+
+
+	}
+
+  function addCretaceousFossils() {
+
+mesozoic.cretaceous = [];
+reDraw();
+return mesozoic;
+
+}
+
+function removeCretaceousFossils() {
+
+  mesozoic.cretaceous = originalCretaceousSpots;
     reDraw();
     return mesozoic;
 
-	}
+}
+
 
   function handleNewCretaceousClick() {
 	//	console.log('clear')
@@ -490,8 +535,10 @@ var elements = locations.selectAll("points.arc");
   top: 0px;
   width: 100px;
   height: 400px;
-" on:click={handleCretaceousClick}>
-    Remove Cretaceous Data
+" on:click={handleCretaceousClick}
+  cretaceous-checked={checked}
+>
+    {cvalue} Cretaceous Data
   </button>
   <button style="
   position: absolute;

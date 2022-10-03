@@ -3,6 +3,7 @@
     disinformantNationFilter,
     platformFilter,
     methodFilter,
+    timeperiodFilter,
     sourceFilter,
     sourceCategoryFilter,
     tagFilter,

@@ -9,6 +9,7 @@ const loadSpots = async () => {
       id: i,
       name: d.event_name,
       date: parseDate(d.date),
+      endDate: parseDate(d.endDate),
       description: d.description
     };
   });

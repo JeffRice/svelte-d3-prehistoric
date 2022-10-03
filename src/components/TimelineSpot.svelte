@@ -9,13 +9,19 @@
   export let spot;
 
   const x = createTweenedPos();
+  const x2 = createTweenedPos();
+
 
   const lineLength = 35;
   const offset = 5;
   let yScaleText, mapScaleText, timeScaleText;
+  let spotName = spot.name
+
 
 
   $: $x = $timeScale(spot.date);
+  $: $x2 = $timeScale(spot.endDate);
+
 
 
 </script>
@@ -28,7 +34,7 @@
     use:spottooltipable={{data: spot, target: $drawWrapper, top: $panelHeight + 20}}>
 
 
-            <rect x="0" y ="-20" width="35" height="40" rx="5" />
+            <rect x="0" y ="-20" width="{$x2 - $x}" height="40" rx="5" class="{spotName}" />
 
 
             <path d="M0 0l{lineLength} 0"></path>
@@ -77,9 +83,23 @@
     stroke: var(--dfrlab-gray);
     stroke-width: 0.13rem;
     stroke-opacity: 0.9;
-    fill: var(--bg);
     transition: all 200ms ease;
   }
+
+
+  .Cretaceous {
+    fill: #88af87;
+  }
+  .Jurassic {
+    fill: #77d4e5;
+  }
+  .Triassic {
+    fill: #e7b6ed;
+   }
+  .Paleogene {
+    fill:  #f1ba92;
+  }
+
 
   rect.bait {
     fill: none;

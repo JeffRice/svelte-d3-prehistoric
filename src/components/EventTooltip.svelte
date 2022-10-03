@@ -9,6 +9,7 @@
   import {
     platformFilter,
     methodFilter,
+    timeperiodFilter,
     sourceFilter,
     sourceCategoryFilter,
     tagFilter,

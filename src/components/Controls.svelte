@@ -4,6 +4,7 @@
     disinformantNationFilter,
     platformFilter,
     methodFilter,
+    timeperiodFilter,
     sourceFilter,
     sourceCategoryFilter,
     dietFilter,
@@ -62,10 +63,11 @@
               stopColor={$attributionScoreScale(attributionScoreDef[1])}
               on:changed={(e) => $attributionScoreFilter = e.detail} />
       <Dropdown items={addCount($disinformantNationFilter, 'disinformantNation', timePoints)}
-                label="Disinformant Nation"
+                label="Continent"
                 superior
                 on:itemsAdded={(e) => disinformantNationFilter.select(e.detail)}
                 on:itemsRemoved={(e) => disinformantNationFilter.unselect(e.detail)} />
+      <!--
       <Dropdown items={addCount($platformFilter, 'platforms', timePoints)}
                 label="Platform"
                 on:itemsAdded={(e) => platformFilter.select(e.detail)}
@@ -80,11 +82,7 @@
                 label="Source Category"
                 on:itemsAdded={(e) => sourceCategoryFilter.select(e.detail)}
                 on:itemsRemoved={(e) => sourceCategoryFilter.unselect(e.detail)} />
-      <Dropdown items={addCount($dietFilter, 'diet', timePoints)}
-                label="Diet"
-                on:itemsAdded={(e) => dietFilter.select(e.detail)}
-                on:itemsRemoved={(e) => dietFilter.unselect(e.detail)} />
-      <Dropdown items={addCount($methodFilter, 'methods', timePoints)}
+     <Dropdown items={addCount($methodFilter, 'methods', timePoints)}
                 label="Method"
                 superior
                 on:itemsAdded={(e) => methodFilter.select(e.detail)}
@@ -94,6 +92,19 @@
                 nameField="name"
                 on:itemsAdded={(e) => contextData.select(e.detail)}
                 on:itemsRemoved={(e) => contextData.unselect(e.detail)} />
+-->
+
+      <Dropdown items={addCount($dietFilter, 'diet', timePoints)}
+                label="Diet"
+                on:itemsAdded={(e) => dietFilter.select(e.detail)}
+                on:itemsRemoved={(e) => dietFilter.unselect(e.detail)} />
+
+      <Dropdown items={addCount($timeperiodFilter, 'periodEra', timePoints)}
+                label="Time Periods"
+                superior
+                on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
+                on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)} />
+
       <button class="reset-filters"
               on:click={() => handleButtonClick()}>
         Reset

@@ -55,6 +55,8 @@ export const platformFilter = createInclusiveFilter();
 
 export const methodFilter = createInclusiveFilter();
 
+export const timeperiodFilter = createInclusiveFilter();
+
 export const sourceFilter = createInclusiveFilter();
 
 export const sourceCategoryFilter = createInclusiveFilter();
@@ -73,6 +75,7 @@ export const unselectAllFilters = (disinformantNation = true) => {
   if (disinformantNation) disinformantNationFilter.unselectAll();
   platformFilter.unselectAll();
   methodFilter.unselectAll();
+  timeperiodFilter.unselectAll();
   sourceFilter.unselectAll();
   sourceCategoryFilter.unselectAll();
   dietFilter.unselectAll();
@@ -85,6 +88,7 @@ export const selectAllFilters = (disinformantNation = true) => {
   if (disinformantNation) disinformantNationFilter.selectAll();
   platformFilter.selectAll();
   methodFilter.selectAll();
+  timeperiodFilter.selectAll();
   sourceFilter.selectAll();
   sourceCategoryFilter.selectAll();
   dietFilter.selectAll();

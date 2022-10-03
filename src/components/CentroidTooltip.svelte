@@ -94,16 +94,17 @@
       <div class="scroll-wrapper">
         <div class="title">
           <h2>{uniq($tooltip.c.map((d) => d.disNation)).join(' | ')}</h2>
-          <p class="small no-break">{$tooltip.c.length} Specie{$tooltip.c.length !== 1 ? 's': ''}</p>
+          <p class="small no-break">{$tooltip.c.length} Species</p>
         </div>
         {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}
           <div class="case-density-vs-time">
-            <h3>Attributions over time</h3>
+            <h3>Species over time</h3>
             <CaseDensity width={Math.max(0, tWidth - offset.left - offset.right - 2 * 16)} 
                          height={50}
                          dates={$tooltip.c.map((d) => d.attributionDate)}
                          minDate={$timeScale.domain()[0]}
                          maxDate={new Date(maxRange)} />
+            <h6>(Not all prehistoric species, only those represented in the visualization)</h6>
           </div>
         {/if}
         <div class="platforms-used">

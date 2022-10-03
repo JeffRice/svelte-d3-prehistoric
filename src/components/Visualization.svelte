@@ -28,6 +28,7 @@
     disinformantNationFilter,
     platformFilter,
     methodFilter,
+    timeperiodFilter,
     sourceFilter,
     sourceCategoryFilter,
     dietFilter,
@@ -100,6 +101,7 @@
     disinformantNationFilter.init(data, 'disinformantNation');
     platformFilter.init(data, 'platforms');
     methodFilter.init(data, 'methods');
+    timeperiodFilter.init(data, 'periodEra');
     sourceFilter.init(data, 'sourceFilter');
     sourceCategoryFilter.init(data, 'sourceCategory');
     dietFilter.init(data, 'diet');
@@ -115,6 +117,7 @@
       disinformantNationFilter.applyBoolArray(urlFilters.disinformantNations);
       platformFilter.applyBoolArray(urlFilters.platforms);
       methodFilter.applyBoolArray(urlFilters.methods);
+      timeperiodFilter.applyBoolArray(urlFilters.methods);
       sourceFilter.applyBoolArray(urlFilters.sources);
       sourceCategoryFilter.applyBoolArray(urlFilters.sourceCategories);
       dietFilter.applyBoolArray(urlFilters.diet);
@@ -184,6 +187,7 @@
         show: haveOverlap($disinformantNationFilter, d.disinformantNation)
               && haveOverlap($platformFilter, d.platforms)
               && haveOverlap($methodFilter, d.methods)
+              && haveOverlap($timeperiodFilter, d.periodEra)
               && haveOverlap($sourceFilter, d.sourceFilter)
               && haveOverlap($sourceCategoryFilter, d.sourceCategory)
               && haveOverlap($dietFilter, d.diet)
