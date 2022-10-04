@@ -58,5 +58,13 @@
 <filter id="tyrannoskull_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/tyrannoskull.jpg"/>
 </filter>
+
+<filter id="aquatic_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/aquatic.svg"/>
+</filter>
+
+<filter id="pterodactyl_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/pterodactyl.svg"/>
+</filter>
   
 </defs>

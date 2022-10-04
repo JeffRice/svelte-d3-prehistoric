@@ -25,12 +25,11 @@
   let fossilSpots;
   let fossilSpots2;
   let fossilSpots3;  
-  let originalJurassicSpots;
-  let originalTriassicSpots;
-  let originalCretaceousSpots;
   let switchValue;
-  let mesozoic = {};
-  
+
+
+  import { fossilDatapoints } from '../stores/elements';
+
 
 
   const worldDataPath = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
@@ -61,19 +60,23 @@
   fossilSpots = await loadFossilSpots();
   fossilSpots2 = await loadFossilSpots2();
   fossilSpots3 = await loadFossilSpots3();  
-  originalJurassicSpots = await loadFossilSpots();
-  originalCretaceousSpots = await loadFossilSpots3();
+ // originalJurassicSpots = await loadFossilSpots();
+ // originalCretaceousSpots = await loadFossilSpots3();
 
 
  // console.log(fossilSpots);
 
 
 
-  mesozoic.jurassic = fossilSpots;
-  mesozoic.triassic = fossilSpots2;
-  mesozoic.cretaceous = fossilSpots3;
 
-  // console.log(mesozoic);
+  $fossilDatapoints.jurassic = fossilSpots;
+  $fossilDatapoints.originaljurassic = fossilSpots;
+  $fossilDatapoints.triassic = fossilSpots2;
+  $fossilDatapoints.originaltriassic = fossilSpots2;
+  $fossilDatapoints.cretaceous = fossilSpots3;
+  $fossilDatapoints.originalcretaceous = fossilSpots3;
+
+
 
   });
 
@@ -91,7 +94,7 @@ another way to redraw on updates
 
 
  // $: if (canvas && $countries.length > 0) {
-  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalJurassicSpots && originalCretaceousSpots) {
+  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints) {
   //  console.log('countries store', $countries)
  //   console.log('fossilSpots: ', fossilSpots)
 
@@ -164,7 +167,7 @@ function createMap(dataset) {
 
   var dataBinding = locations.selectAll("points.arc")
 
-    .data(dataset.jurassic)
+    .data(dataset)
   
   		.enter()
       .append("points")
@@ -187,7 +190,7 @@ function createTriassicMap(dataset) {
 
 locations.selectAll("points.arc")
 
-  .data(dataset.triassic)
+  .data(dataset)
 
     .enter()
     .append("points")
@@ -209,7 +212,7 @@ function createCretaceousMap(dataset) {
 
 locations.selectAll("points.arc")
 
-.data(dataset.cretaceous)
+.data(dataset)
 
   .enter()
   .append("points")
@@ -299,11 +302,11 @@ ctx.clearRect(0, -$panelHeight, $width, $height);
 }
 
 
-createTriassicMap(mesozoic);
+createTriassicMap($fossilDatapoints.triassic);
 
-createMap(mesozoic);
+createMap($fossilDatapoints.jurassic);
 
-createCretaceousMap(mesozoic);
+createCretaceousMap($fossilDatapoints.cretaceous);
 
 
 
@@ -374,123 +377,24 @@ function worldMap() {
     if(switchValue === 'on'){
       pangeaMap()
     }
-
-    
   }
 
 
-  function handleClick() {
-	//	console.log('clear')
-  //  console.log('fossilSpots: ', fossilSpots);
-  //  console.log('fossilSpots2: ', fossilSpots2)
-/*
-    fossilSpots = fossilSpots.filter((d) => d.id < 20);
-    reDraw();
-    return fossilSpots;
-    */
-
-    mesozoic.jurassic = [];
-    reDraw();
-    return mesozoic;
-
-	}
-
-  function handleNewClick() {
-	//	console.log('clear')
-  //  console.log('fossilSpots: ', fossilSpots);
-  //  console.log('fossilSpots2: ', fossilSpots2)
-
-    mesozoic.jurassic = originalJurassicSpots;
-    reDraw();
-    return mesozoic;
-
-
-	}
-
-  let cvalue = 'remove';
-  let checked = false;
-
-  function handleCretaceousClick(event) {
-	//	console.log('clear')
-  //  console.log('fossilSpots: ', fossilSpots);
-  //  console.log('fossilSpots2: ', fossilSpots2)
-/*
-    fossilSpots = fossilSpots.filter((d) => d.id < 20);
-    reDraw();
-    return fossilSpots;
-    */
-    const target = event.target
-    console.log('target: ', target)
-
-
-    const state = target.getAttribute('cretaceous-checked')
-
-
-    checked = state === 'true' ? false : true
-
-    cvalue = checked === true ? 'add' : 'remove'
-
-    if (state  === 'false' ){
-      addCretaceousFossils();
-}
-    else {
-      removeCretaceousFossils();
-    }
-
-    console.log('state: ', state)
-  
-  //  mesozoic.cretaceous = [];
-   // reDraw();
-   // return mesozoic;
-
-
-
-	}
-
-  function addCretaceousFossils() {
-
-mesozoic.cretaceous = [];
-reDraw();
-return mesozoic;
-
-}
-
-function removeCretaceousFossils() {
-
-  mesozoic.cretaceous = originalCretaceousSpots;
-    reDraw();
-    return mesozoic;
-
-}
-
-
-  function handleNewCretaceousClick() {
-	//	console.log('clear')
-  //  console.log('fossilSpots: ', fossilSpots);
-  //  console.log('fossilSpots2: ', fossilSpots2)
-
-    mesozoic.cretaceous = originalCretaceousSpots;
-    reDraw();
-    return mesozoic;
-
-
-	}
-
   function reDraw() {
 
-    let locations = select('#points');
+let locations = select('#points');
 var elements = locations.selectAll("points.arc");
 
 // console.log('elements: ', elements)
 
-  elements.each(function(d, i) {
-   // console.log('element: ', elements[i])
-  var node = select(this);
- // console.log(d, node, i, this)
+elements.each(function(d, i) {
+// console.log('element: ', elements[i])
+var node = select(this);
+// console.log(d, node, i, this)
 
-  this.remove();
+this.remove();
 
-  })
+})
 
 
 // console.log("redrawing")
@@ -506,50 +410,6 @@ var elements = locations.selectAll("points.arc");
 	<div id="map">
     <canvas bind:this={canvas}><div id="points"></div></canvas>
 	</div>
-
-  <button style="
-  position: absolute;
-  z-index: 199999999999;
-  right: 0px;
-  top: 0px;
-  width: 100px;
-  height: 400px;
-" on:click={handleClick}>
-    Remove Data
-  </button>
-  <button style="
-  position: absolute;
-  z-index: 199999999999;
-  right: 0px;
-  top: 250px;
-  width: 100px;
-  height: 400px;
-" on:click={handleNewClick}>
-    Add Data
-  </button>
-
-  <button style="
-  position: absolute;
-  z-index: 199999999999;
-  right: 100px;
-  top: 0px;
-  width: 100px;
-  height: 400px;
-" on:click={handleCretaceousClick}
-  cretaceous-checked={checked}
->
-    {cvalue} Cretaceous Data
-  </button>
-  <button style="
-  position: absolute;
-  z-index: 199999999999;
-  right: 100px;
-  top: 250px;
-  width: 100px;
-  height: 400px;
-" on:click={handleNewCretaceousClick}>
-    Add Cretaceous Data
-  </button>
 
   <div style="
   position: absolute;

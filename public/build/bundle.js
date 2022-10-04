@@ -35132,7 +35132,7 @@ var app = (function () {
 	}.call(commonjsGlobal));
 	});
 
-	var data$1 = 'dinosaurdata2.csv'; // export const fossilData = 'ftgreenetrees2.csv';
+	var data$1 = 'dinosaurdata.csv'; // export const fossilData = 'ftgreenetrees2.csv';
 	// export const fossilData = 'fossilsJurassic1.csv';
 
 	var fossilData = 'jurassic_bigdata.csv'; // export const fossilData = 'westernUSjurassicfossils.csv';
@@ -35290,6 +35290,7 @@ var app = (function () {
 	                image_location: d.image_location,
 	                periodEra: d.case_hash,
 	                sizeIndex: d.size_index,
+	                // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                source: splitString(source),
 	                sourceFilter: splitString(d.source_subcategory !== '' ? d.source_subcategory : source),
@@ -35820,6 +35821,14 @@ var app = (function () {
 	});
 
 	var drawWrapper = writable();
+	var fossilDatapoints = writable({
+	  "cretaceous": [],
+	  "jurassic": [],
+	  "triassic": [],
+	  "originalcretaceous": [],
+	  "originaljurassic": [],
+	  "originaltriassic": []
+	});
 
 	var baseUrl = 'https://interference2020.org'; // export const baseUrl = 'http://localhost:5000';
 
@@ -42090,7 +42099,8 @@ var app = (function () {
 	  return Share;
 	}(SvelteComponentDev);
 
-	var file$f = "src/components/Controls.svelte"; // (50:0) {#if (timePoints)}
+	var console_1$1 = globals.console;
+	var file$f = "src/components/Controls.svelte"; // (149:0) {#if (timePoints)}
 
 	function create_if_block$7(ctx) {
 	  var div2;
@@ -42105,11 +42115,25 @@ var app = (function () {
 	  var t3;
 	  var dropdown2;
 	  var t4;
-	  var button;
-	  var t6;
+	  var dropdown3;
+	  var t5;
+	  var button0;
+	  var t7;
+	  var button1;
+	  var t8;
+	  var t9;
+	  var t10;
+	  var button2;
+	  var t11;
+	  var t12;
+	  var t13;
+	  var button3;
+	  var t14;
+	  var t15;
+	  var t16;
 	  var div1;
 	  var checkboxpanel;
-	  var t7;
+	  var t17;
 	  var share;
 	  var current;
 	  var mounted;
@@ -42118,43 +42142,43 @@ var app = (function () {
 	    props: {
 	      searchString:
 	      /*$textSearchFilter*/
-	      ctx[1],
+	      ctx[8],
 	      label: "Search"
 	    },
 	    $$inline: true
 	  });
 	  searchtext.$on("change",
 	  /*change_handler*/
-	  ctx[8]);
+	  ctx[16]);
 	  searchtext.$on("reset",
 	  /*reset_handler*/
-	  ctx[9]);
+	  ctx[17]);
 	  slider = new Slider({
 	    props: {
 	      value:
 	      /*$attributionScoreFilter*/
-	      ctx[2],
+	      ctx[9],
 	      label: "Attribution Score",
 	      min: attributionScoreDef[0],
 	      max: attributionScoreDef[1],
 	      showHandleLabels: false,
 	      startColor:
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[0]),
+	      ctx[10](attributionScoreDef[0]),
 	      stopColor:
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[1])
+	      ctx[10](attributionScoreDef[1])
 	    },
 	    $$inline: true
 	  });
 	  slider.$on("changed",
 	  /*changed_handler*/
-	  ctx[10]);
+	  ctx[18]);
 	  dropdown0 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$disinformantNationFilter*/
-	      ctx[4], "disinformantNation",
+	      ctx[11], "disinformantNation",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Continent",
@@ -42164,15 +42188,15 @@ var app = (function () {
 	  });
 	  dropdown0.$on("itemsAdded",
 	  /*itemsAdded_handler*/
-	  ctx[11]);
+	  ctx[19]);
 	  dropdown0.$on("itemsRemoved",
 	  /*itemsRemoved_handler*/
-	  ctx[12]);
+	  ctx[20]);
 	  dropdown1 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$dietFilter*/
-	      ctx[5], "diet",
+	      ctx[12], "diet",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Diet"
@@ -42181,15 +42205,15 @@ var app = (function () {
 	  });
 	  dropdown1.$on("itemsAdded",
 	  /*itemsAdded_handler_1*/
-	  ctx[13]);
+	  ctx[21]);
 	  dropdown1.$on("itemsRemoved",
 	  /*itemsRemoved_handler_1*/
-	  ctx[14]);
+	  ctx[22]);
 	  dropdown2 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$timeperiodFilter*/
-	      ctx[6], "periodEra",
+	      ctx[13], "periodEra",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Time Periods",
@@ -42199,10 +42223,28 @@ var app = (function () {
 	  });
 	  dropdown2.$on("itemsAdded",
 	  /*itemsAdded_handler_2*/
-	  ctx[15]);
+	  ctx[23]);
 	  dropdown2.$on("itemsRemoved",
 	  /*itemsRemoved_handler_2*/
-	  ctx[16]);
+	  ctx[24]);
+	  dropdown3 = new Dropdown({
+	    props: {
+	      items: addCount(
+	      /*$fossilDatapoints*/
+	      ctx[7].triassic, "fossils",
+	      /*$fossilDatapoints*/
+	      ctx[7].triassic),
+	      label: "Fossil Data",
+	      superior: true
+	    },
+	    $$inline: true
+	  });
+	  dropdown3.$on("itemsAdded",
+	  /*itemsAdded_handler_3*/
+	  ctx[25]);
+	  dropdown3.$on("itemsRemoved",
+	  /*itemsRemoved_handler_3*/
+	  ctx[26]);
 	  checkboxpanel = new CheckboxPanel({
 	    $$inline: true
 	  });
@@ -42223,21 +42265,59 @@ var app = (function () {
 	      t3 = space();
 	      create_component(dropdown2.$$.fragment);
 	      t4 = space();
-	      button = element("button");
-	      button.textContent = "Reset";
-	      t6 = space();
+	      create_component(dropdown3.$$.fragment);
+	      t5 = space();
+	      button0 = element("button");
+	      button0.textContent = "Reset";
+	      t7 = space();
+	      button1 = element("button");
+	      t8 = text(
+	      /*addValue*/
+	      ctx[5]);
+	      t9 = text(" Cretaceous Fossil Data");
+	      t10 = space();
+	      button2 = element("button");
+	      t11 = text(
+	      /*addjurassicValue*/
+	      ctx[1]);
+	      t12 = text(" Jurassic Fossil Data");
+	      t13 = space();
+	      button3 = element("button");
+	      t14 = text(
+	      /*addtriassicValue*/
+	      ctx[3]);
+	      t15 = text(" Triassic Fossil Data");
+	      t16 = space();
 	      div1 = element("div");
 	      create_component(checkboxpanel.$$.fragment);
-	      t7 = space();
+	      t17 = space();
 	      create_component(share.$$.fragment);
-	      attr_dev(button, "class", "reset-filters svelte-5sdzpo");
-	      add_location(button, file$f, 107, 6, 4359);
+	      attr_dev(button0, "class", "reset-filters svelte-5sdzpo");
+	      add_location(button0, file$f, 213, 6, 6408);
+	      attr_dev(button1, "era-added",
+	      /*added*/
+	      ctx[6]);
+	      attr_dev(button1, "fossil-era", "cretaceous");
+	      attr_dev(button1, "class", "svelte-5sdzpo");
+	      add_location(button1, file$f, 220, 6, 6529);
+	      attr_dev(button2, "era-added",
+	      /*jurassicadded*/
+	      ctx[2]);
+	      attr_dev(button2, "fossil-era", "jurassic");
+	      attr_dev(button2, "class", "svelte-5sdzpo");
+	      add_location(button2, file$f, 225, 6, 6685);
+	      attr_dev(button3, "era-added",
+	      /*triassicadded*/
+	      ctx[4]);
+	      attr_dev(button3, "fossil-era", "triassic");
+	      attr_dev(button3, "class", "svelte-5sdzpo");
+	      add_location(button3, file$f, 230, 6, 6853);
 	      attr_dev(div0, "class", "controls svelte-5sdzpo");
-	      add_location(div0, file$f, 51, 4, 1439);
+	      add_location(div0, file$f, 150, 4, 3152);
 	      attr_dev(div1, "class", "checkbox-panel svelte-5sdzpo");
-	      add_location(div1, file$f, 112, 4, 4486);
+	      add_location(div1, file$f, 237, 4, 7031);
 	      attr_dev(div2, "class", "controls-inner-wrapper svelte-5sdzpo");
-	      add_location(div2, file$f, 50, 2, 1398);
+	      add_location(div2, file$f, 149, 2, 3111);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div2, anchor);
@@ -42252,73 +42332,143 @@ var app = (function () {
 	      append_dev(div0, t3);
 	      mount_component(dropdown2, div0, null);
 	      append_dev(div0, t4);
-	      append_dev(div0, button);
-	      append_dev(div2, t6);
+	      mount_component(dropdown3, div0, null);
+	      append_dev(div0, t5);
+	      append_dev(div0, button0);
+	      append_dev(div0, t7);
+	      append_dev(div0, button1);
+	      append_dev(button1, t8);
+	      append_dev(button1, t9);
+	      append_dev(div0, t10);
+	      append_dev(div0, button2);
+	      append_dev(button2, t11);
+	      append_dev(button2, t12);
+	      append_dev(div0, t13);
+	      append_dev(div0, button3);
+	      append_dev(button3, t14);
+	      append_dev(button3, t15);
+	      append_dev(div2, t16);
 	      append_dev(div2, div1);
 	      mount_component(checkboxpanel, div1, null);
-	      append_dev(div1, t7);
+	      append_dev(div1, t17);
 	      mount_component(share, div1, null);
 	      current = true;
 
 	      if (!mounted) {
-	        dispose = listen_dev(button, "click",
+	        dispose = [listen_dev(button0, "click",
 	        /*click_handler*/
-	        ctx[17], false, false, false);
+	        ctx[27], false, false, false), listen_dev(button1, "click",
+	        /*handleFossilClick*/
+	        ctx[15], false, false, false), listen_dev(button2, "click",
+	        /*handleFossilClick*/
+	        ctx[15], false, false, false), listen_dev(button3, "click",
+	        /*handleFossilClick*/
+	        ctx[15], false, false, false)];
 	        mounted = true;
 	      }
 	    },
 	    p: function update(ctx, dirty) {
 	      var searchtext_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$textSearchFilter*/
-	      2) searchtext_changes.searchString =
+	      256) searchtext_changes.searchString =
 	      /*$textSearchFilter*/
-	      ctx[1];
+	      ctx[8];
 	      searchtext.$set(searchtext_changes);
 	      var slider_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$attributionScoreFilter*/
-	      4) slider_changes.value =
+	      512) slider_changes.value =
 	      /*$attributionScoreFilter*/
-	      ctx[2];
-	      if (dirty &
+	      ctx[9];
+	      if (dirty[0] &
 	      /*$attributionScoreScale*/
-	      8) slider_changes.startColor =
+	      1024) slider_changes.startColor =
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[0]);
-	      if (dirty &
+	      ctx[10](attributionScoreDef[0]);
+	      if (dirty[0] &
 	      /*$attributionScoreScale*/
-	      8) slider_changes.stopColor =
+	      1024) slider_changes.stopColor =
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[1]);
+	      ctx[10](attributionScoreDef[1]);
 	      slider.$set(slider_changes);
 	      var dropdown0_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$disinformantNationFilter, timePoints*/
-	      17) dropdown0_changes.items = addCount(
+	      2049) dropdown0_changes.items = addCount(
 	      /*$disinformantNationFilter*/
-	      ctx[4], "disinformantNation",
+	      ctx[11], "disinformantNation",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown0.$set(dropdown0_changes);
 	      var dropdown1_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$dietFilter, timePoints*/
-	      33) dropdown1_changes.items = addCount(
+	      4097) dropdown1_changes.items = addCount(
 	      /*$dietFilter*/
-	      ctx[5], "diet",
+	      ctx[12], "diet",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown1.$set(dropdown1_changes);
 	      var dropdown2_changes = {};
-	      if (dirty &
+	      if (dirty[0] &
 	      /*$timeperiodFilter, timePoints*/
-	      65) dropdown2_changes.items = addCount(
+	      8193) dropdown2_changes.items = addCount(
 	      /*$timeperiodFilter*/
-	      ctx[6], "periodEra",
+	      ctx[13], "periodEra",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown2.$set(dropdown2_changes);
+	      var dropdown3_changes = {};
+	      if (dirty[0] &
+	      /*$fossilDatapoints*/
+	      128) dropdown3_changes.items = addCount(
+	      /*$fossilDatapoints*/
+	      ctx[7].triassic, "fossils",
+	      /*$fossilDatapoints*/
+	      ctx[7].triassic);
+	      dropdown3.$set(dropdown3_changes);
+	      if (!current || dirty[0] &
+	      /*addValue*/
+	      32) set_data_dev(t8,
+	      /*addValue*/
+	      ctx[5]);
+
+	      if (!current || dirty[0] &
+	      /*added*/
+	      64) {
+	        attr_dev(button1, "era-added",
+	        /*added*/
+	        ctx[6]);
+	      }
+
+	      if (!current || dirty[0] &
+	      /*addjurassicValue*/
+	      2) set_data_dev(t11,
+	      /*addjurassicValue*/
+	      ctx[1]);
+
+	      if (!current || dirty[0] &
+	      /*jurassicadded*/
+	      4) {
+	        attr_dev(button2, "era-added",
+	        /*jurassicadded*/
+	        ctx[2]);
+	      }
+
+	      if (!current || dirty[0] &
+	      /*addtriassicValue*/
+	      8) set_data_dev(t14,
+	      /*addtriassicValue*/
+	      ctx[3]);
+
+	      if (!current || dirty[0] &
+	      /*triassicadded*/
+	      16) {
+	        attr_dev(button3, "era-added",
+	        /*triassicadded*/
+	        ctx[4]);
+	      }
 	    },
 	    i: function intro(local) {
 	      if (current) return;
@@ -42327,6 +42477,7 @@ var app = (function () {
 	      transition_in(dropdown0.$$.fragment, local);
 	      transition_in(dropdown1.$$.fragment, local);
 	      transition_in(dropdown2.$$.fragment, local);
+	      transition_in(dropdown3.$$.fragment, local);
 	      transition_in(checkboxpanel.$$.fragment, local);
 	      transition_in(share.$$.fragment, local);
 	      current = true;
@@ -42337,6 +42488,7 @@ var app = (function () {
 	      transition_out(dropdown0.$$.fragment, local);
 	      transition_out(dropdown1.$$.fragment, local);
 	      transition_out(dropdown2.$$.fragment, local);
+	      transition_out(dropdown3.$$.fragment, local);
 	      transition_out(checkboxpanel.$$.fragment, local);
 	      transition_out(share.$$.fragment, local);
 	      current = false;
@@ -42348,17 +42500,18 @@ var app = (function () {
 	      destroy_component(dropdown0);
 	      destroy_component(dropdown1);
 	      destroy_component(dropdown2);
+	      destroy_component(dropdown3);
 	      destroy_component(checkboxpanel);
 	      destroy_component(share);
 	      mounted = false;
-	      dispose();
+	      run_all(dispose);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
 	    id: create_if_block$7.name,
 	    type: "if",
-	    source: "(50:0) {#if (timePoints)}",
+	    source: "(149:0) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -42383,17 +42536,14 @@ var app = (function () {
 	      insert_dev(target, if_block_anchor, anchor);
 	      current = true;
 	    },
-	    p: function update(ctx, _ref) {
-	      var _ref2 = _slicedToArray(_ref, 1),
-	          dirty = _ref2[0];
-
+	    p: function update(ctx, dirty) {
 	      if (
 	      /*timePoints*/
 	      ctx[0]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
-	          if (dirty &
+	          if (dirty[0] &
 	          /*timePoints*/
 	          1) {
 	            transition_in(if_block, 1);
@@ -42460,6 +42610,7 @@ var app = (function () {
 	  var $highlightCib;
 	  var $originalTimeDomain;
 	  var $timeScale;
+	  var $fossilDatapoints;
 	  var $textSearchFilter;
 	  var $attributionScoreFilter;
 	  var $attributionScoreScale;
@@ -42468,43 +42619,47 @@ var app = (function () {
 	  var $timeperiodFilter;
 	  validate_store(highlightPolarization, "highlightPolarization");
 	  component_subscribe($$self, highlightPolarization, function ($$value) {
-	    return $$invalidate(18, $highlightPolarization = $$value);
+	    return $$invalidate(28, $highlightPolarization = $$value);
 	  });
 	  validate_store(highlightCib, "highlightCib");
 	  component_subscribe($$self, highlightCib, function ($$value) {
-	    return $$invalidate(19, $highlightCib = $$value);
+	    return $$invalidate(29, $highlightCib = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
-	    return $$invalidate(20, $originalTimeDomain = $$value);
+	    return $$invalidate(30, $originalTimeDomain = $$value);
 	  });
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(21, $timeScale = $$value);
+	    return $$invalidate(31, $timeScale = $$value);
+	  });
+	  validate_store(fossilDatapoints, "fossilDatapoints");
+	  component_subscribe($$self, fossilDatapoints, function ($$value) {
+	    return $$invalidate(7, $fossilDatapoints = $$value);
 	  });
 	  validate_store(textSearchFilter, "textSearchFilter");
 	  component_subscribe($$self, textSearchFilter, function ($$value) {
-	    return $$invalidate(1, $textSearchFilter = $$value);
+	    return $$invalidate(8, $textSearchFilter = $$value);
 	  });
 	  validate_store(attributionScoreFilter, "attributionScoreFilter");
 	  component_subscribe($$self, attributionScoreFilter, function ($$value) {
-	    return $$invalidate(2, $attributionScoreFilter = $$value);
+	    return $$invalidate(9, $attributionScoreFilter = $$value);
 	  });
 	  validate_store(attributionScoreScale, "attributionScoreScale");
 	  component_subscribe($$self, attributionScoreScale, function ($$value) {
-	    return $$invalidate(3, $attributionScoreScale = $$value);
+	    return $$invalidate(10, $attributionScoreScale = $$value);
 	  });
 	  validate_store(disinformantNationFilter, "disinformantNationFilter");
 	  component_subscribe($$self, disinformantNationFilter, function ($$value) {
-	    return $$invalidate(4, $disinformantNationFilter = $$value);
+	    return $$invalidate(11, $disinformantNationFilter = $$value);
 	  });
 	  validate_store(dietFilter, "dietFilter");
 	  component_subscribe($$self, dietFilter, function ($$value) {
-	    return $$invalidate(5, $dietFilter = $$value);
+	    return $$invalidate(12, $dietFilter = $$value);
 	  });
 	  validate_store(timeperiodFilter, "timeperiodFilter");
 	  component_subscribe($$self, timeperiodFilter, function ($$value) {
-	    return $$invalidate(6, $timeperiodFilter = $$value);
+	    return $$invalidate(13, $timeperiodFilter = $$value);
 	  });
 	  var timePoints = $$props.timePoints;
 
@@ -42521,9 +42676,69 @@ var app = (function () {
 	    }
 	  }
 
+	  var addjurassicValue = "Remove";
+	  var jurassicadded = true;
+	  var addtriassicValue = "Remove";
+	  var triassicadded = true;
+	  var addValue = "Remove";
+	  var added = true;
+
+	  function handleFossilClick(event, fossilEra) {
+	    var target = event.target;
+	    console.log("target: ", target);
+	    fossilEra = target.getAttribute("fossil-era");
+	    var state = target.getAttribute("era-added");
+
+	    if (fossilEra === "jurassic") {
+	      $$invalidate(2, jurassicadded = state === "true" ? false : true);
+	      $$invalidate(1, addjurassicValue = jurassicadded === true ? "Remove" : "Add");
+	    } else if (fossilEra === "triassic") {
+	      $$invalidate(4, triassicadded = state === "true" ? false : true);
+	      $$invalidate(3, addtriassicValue = triassicadded === true ? "Remove" : "Add");
+	    } else {
+	      $$invalidate(6, added = state === "true" ? false : true);
+	      $$invalidate(5, addValue = added === true ? "Remove" : "Add");
+	    }
+
+	    if (state === "false") {
+	      addFossils(fossilEra);
+	    } else {
+	      removeFossils(fossilEra);
+	    }
+
+	    console.log("state: ", state);
+	  }
+
+	  function removeFossils(fossilEra) {
+	    // fossilEra = 'cretaceous';
+	    set_store_value(fossilDatapoints, $fossilDatapoints[fossilEra] = [], $fossilDatapoints);
+	    reDraw();
+	    return $fossilDatapoints;
+	  }
+
+	  function addFossils(fossilEra) {
+	    var originalEra = "original" + fossilEra;
+	    set_store_value(fossilDatapoints, $fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra], $fossilDatapoints);
+	    reDraw();
+	    return $fossilDatapoints;
+	  }
+
+	  function reDraw() {
+	    var locations = select("#points");
+	    var elements = locations.selectAll("points.arc"); // console.log('elements: ', elements)
+
+	    elements.each(function (d, i) {
+	      // console.log('element: ', elements[i])
+	      var node = select(this); // console.log(d, node, i, this)
+
+	      this.remove();
+	    });
+	  } // console.log("redrawing")
+
+
 	  var writable_props = ["timePoints"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Controls> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$1.warn("<Controls> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -42566,6 +42781,14 @@ var app = (function () {
 	    return timeperiodFilter.unselect(e.detail);
 	  };
 
+	  var itemsAdded_handler_3 = function itemsAdded_handler_3(e) {
+	    return timeperiodFilter.select(e.detail);
+	  };
+
+	  var itemsRemoved_handler_3 = function itemsRemoved_handler_3(e) {
+	    return timeperiodFilter.unselect(e.detail);
+	  };
+
 	  var click_handler = function click_handler() {
 	    return handleButtonClick();
 	  };
@@ -42593,6 +42816,8 @@ var app = (function () {
 	      highlightCib: highlightCib,
 	      timeScale: timeScale,
 	      attributionScoreScale: attributionScoreScale,
+	      select: select,
+	      fossilDatapoints: fossilDatapoints,
 	      Dropdown: Dropdown,
 	      Slider: Slider,
 	      SearchText: SearchText,
@@ -42601,10 +42826,21 @@ var app = (function () {
 	      timePoints: timePoints,
 	      addCount: addCount,
 	      handleButtonClick: handleButtonClick,
+	      addjurassicValue: addjurassicValue,
+	      jurassicadded: jurassicadded,
+	      addtriassicValue: addtriassicValue,
+	      triassicadded: triassicadded,
+	      addValue: addValue,
+	      added: added,
+	      handleFossilClick: handleFossilClick,
+	      removeFossils: removeFossils,
+	      addFossils: addFossils,
+	      reDraw: reDraw,
 	      $highlightPolarization: $highlightPolarization,
 	      $highlightCib: $highlightCib,
 	      $originalTimeDomain: $originalTimeDomain,
 	      $timeScale: $timeScale,
+	      $fossilDatapoints: $fossilDatapoints,
 	      $textSearchFilter: $textSearchFilter,
 	      $attributionScoreFilter: $attributionScoreFilter,
 	      $attributionScoreScale: $attributionScoreScale,
@@ -42616,13 +42852,19 @@ var app = (function () {
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("timePoints" in $$props) $$invalidate(0, timePoints = $$props.timePoints);
+	    if ("addjurassicValue" in $$props) $$invalidate(1, addjurassicValue = $$props.addjurassicValue);
+	    if ("jurassicadded" in $$props) $$invalidate(2, jurassicadded = $$props.jurassicadded);
+	    if ("addtriassicValue" in $$props) $$invalidate(3, addtriassicValue = $$props.addtriassicValue);
+	    if ("triassicadded" in $$props) $$invalidate(4, triassicadded = $$props.triassicadded);
+	    if ("addValue" in $$props) $$invalidate(5, addValue = $$props.addValue);
+	    if ("added" in $$props) $$invalidate(6, added = $$props.added);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [timePoints, $textSearchFilter, $attributionScoreFilter, $attributionScoreScale, $disinformantNationFilter, $dietFilter, $timeperiodFilter, handleButtonClick, change_handler, reset_handler, changed_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, click_handler];
+	  return [timePoints, addjurassicValue, jurassicadded, addtriassicValue, triassicadded, addValue, added, $fossilDatapoints, $textSearchFilter, $attributionScoreFilter, $attributionScoreScale, $disinformantNationFilter, $dietFilter, $timeperiodFilter, handleButtonClick, handleFossilClick, change_handler, reset_handler, changed_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, itemsAdded_handler_3, itemsRemoved_handler_3, click_handler];
 	}
 
 	var Controls = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -42638,7 +42880,7 @@ var app = (function () {
 	    _this = _super.call(this, options);
 	    init(_assertThisInitialized(_this), options, instance$g, create_fragment$g, safe_not_equal, {
 	      timePoints: 0
-	    });
+	    }, [-1, -1]);
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
 	      tagName: "Controls",
@@ -42651,7 +42893,7 @@ var app = (function () {
 	    if (
 	    /*timePoints*/
 	    ctx[0] === undefined && !("timePoints" in props)) {
-	      console.warn("<Controls> was created without expected prop 'timePoints'");
+	      console_1$1.warn("<Controls> was created without expected prop 'timePoints'");
 	    }
 
 	    return _this;
@@ -42700,6 +42942,10 @@ var app = (function () {
 	  var feImage2;
 	  var filter3;
 	  var feImage3;
+	  var filter4;
+	  var feImage4;
+	  var filter5;
+	  var feImage5;
 	  var block = {
 	    c: function create() {
 	      defs = svg_element("defs");
@@ -42728,6 +42974,10 @@ var app = (function () {
 	      feImage2 = svg_element("feImage");
 	      filter3 = svg_element("filter");
 	      feImage3 = svg_element("feImage");
+	      filter4 = svg_element("filter");
+	      feImage4 = svg_element("feImage");
+	      filter5 = svg_element("filter");
+	      feImage5 = svg_element("feImage");
 	      attr_dev(stop0, "offset", "40%");
 	      set_style(stop0, "stop-color", "var(--bg)");
 	      attr_dev(stop0, "stop-opacity", "0.7");
@@ -42833,6 +43083,22 @@ var app = (function () {
 	      attr_dev(filter3, "width", "100%");
 	      attr_dev(filter3, "height", "100%");
 	      add_location(filter3, file$g, 57, 0, 2104);
+	      xlink_attr(feImage4, "xlink:href", "/images/aquatic.svg");
+	      add_location(feImage4, file$g, 62, 2, 2311);
+	      attr_dev(filter4, "id", "aquatic_image");
+	      attr_dev(filter4, "x", "0%");
+	      attr_dev(filter4, "y", "0%");
+	      attr_dev(filter4, "width", "100%");
+	      attr_dev(filter4, "height", "100%");
+	      add_location(filter4, file$g, 61, 0, 2240);
+	      xlink_attr(feImage5, "xlink:href", "/images/pterodactyl.svg");
+	      add_location(feImage5, file$g, 66, 2, 2441);
+	      attr_dev(filter5, "id", "pterodactyl_image");
+	      attr_dev(filter5, "x", "0%");
+	      attr_dev(filter5, "y", "0%");
+	      attr_dev(filter5, "width", "100%");
+	      attr_dev(filter5, "height", "100%");
+	      add_location(filter5, file$g, 65, 0, 2366);
 	      add_location(defs, file$g, 5, 0, 105);
 	    },
 	    l: function claim(nodes) {
@@ -42865,6 +43131,10 @@ var app = (function () {
 	      append_dev(filter2, feImage2);
 	      append_dev(defs, filter3);
 	      append_dev(filter3, feImage3);
+	      append_dev(defs, filter4);
+	      append_dev(filter4, feImage4);
+	      append_dev(defs, filter5);
+	      append_dev(filter5, feImage5);
 	    },
 	    p: noop,
 	    i: noop,
@@ -43450,7 +43720,7 @@ var app = (function () {
 	var growDuration = 700;
 	var jitterFactor = 10;
 
-	var console_1$1 = globals.console;
+	var console_1$2 = globals.console;
 	var file$i = "src/components/ShinyCircle.svelte";
 
 	function get_each_context$2(ctx, list, i) {
@@ -43675,7 +43945,7 @@ var app = (function () {
 	  console.log(timePoint);
 	  var writable_props = ["timePoint", "tweenedPos", "selected", "hovered"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$1.warn("<ShinyCircle> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$2.warn("<ShinyCircle> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -43778,13 +44048,13 @@ var app = (function () {
 	    if (
 	    /*timePoint*/
 	    ctx[0] === undefined && !("timePoint" in props)) {
-	      console_1$1.warn("<ShinyCircle> was created without expected prop 'timePoint'");
+	      console_1$2.warn("<ShinyCircle> was created without expected prop 'timePoint'");
 	    }
 
 	    if (
 	    /*tweenedPos*/
 	    ctx[1] === undefined && !("tweenedPos" in props)) {
-	      console_1$1.warn("<ShinyCircle> was created without expected prop 'tweenedPos'");
+	      console_1$2.warn("<ShinyCircle> was created without expected prop 'tweenedPos'");
 	    }
 
 	    return _this;
@@ -48361,7 +48631,7 @@ var app = (function () {
 	  return SourceLink;
 	}(SvelteComponentDev);
 
-	var console_1$2 = globals.console;
+	var console_1$3 = globals.console;
 	var file$p = "src/components/Centroid.svelte"; // (31:2) {#if (centroid.length > 0)}
 
 	function create_if_block$d(ctx) {
@@ -48611,7 +48881,7 @@ var app = (function () {
 	  });
 	  var writable_props = ["centroid", "country", "selected"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$2.warn("<Centroid> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$3.warn("<Centroid> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -48695,13 +48965,13 @@ var app = (function () {
 	    if (
 	    /*centroid*/
 	    ctx[0] === undefined && !("centroid" in props)) {
-	      console_1$2.warn("<Centroid> was created without expected prop 'centroid'");
+	      console_1$3.warn("<Centroid> was created without expected prop 'centroid'");
 	    }
 
 	    if (
 	    /*country*/
 	    ctx[1] === undefined && !("country" in props)) {
-	      console_1$2.warn("<Centroid> was created without expected prop 'country'");
+	      console_1$3.warn("<Centroid> was created without expected prop 'country'");
 	    }
 
 	    return _this;
@@ -52932,7 +53202,7 @@ var app = (function () {
 	  };
 	}();
 
-	var console_1$3 = globals.console;
+	var console_1$4 = globals.console;
 	var file$z = "src/components/Canvas.svelte";
 
 	function create_fragment$A(ctx) {
@@ -52942,30 +53212,18 @@ var app = (function () {
 	  var canvas_1;
 	  var div1;
 	  var t1;
-	  var button0;
-	  var t3;
-	  var button1;
-	  var t5;
-	  var button2;
-	  var t6;
-	  var t7;
-	  var t8;
-	  var button3;
-	  var t10;
 	  var div3;
 	  var switch_1;
 	  var updating_value;
-	  var t11;
+	  var t2;
 	  var p;
-	  var t12;
-	  var t13;
+	  var t3;
+	  var t4;
 	  var current;
-	  var mounted;
-	  var dispose;
 
 	  function switch_1_value_binding(value) {
 	    /*switch_1_value_binding*/
-	    ctx[9].call(null, value);
+	    ctx[3].call(null, value);
 	  }
 
 	  var switch_1_props = {
@@ -52996,74 +53254,28 @@ var app = (function () {
 	      canvas_1 = element("canvas");
 	      div1 = element("div");
 	      t1 = space();
-	      button0 = element("button");
-	      button0.textContent = "Remove Data";
-	      t3 = space();
-	      button1 = element("button");
-	      button1.textContent = "Add Data";
-	      t5 = space();
-	      button2 = element("button");
-	      t6 = text(
-	      /*cvalue*/
-	      ctx[2]);
-	      t7 = text(" Cretaceous Data");
-	      t8 = space();
-	      button3 = element("button");
-	      button3.textContent = "Add Cretaceous Data";
-	      t10 = space();
 	      div3 = element("div");
 	      create_component(switch_1.$$.fragment);
-	      t11 = space();
+	      t2 = space();
 	      p = element("p");
-	      t12 = text("Pangea is ");
-	      t13 = text(
+	      t3 = text("Pangea is ");
+	      t4 = text(
 	      /*switchValue*/
 	      ctx[1]);
 	      attr_dev(div0, "class", "layer");
-	      add_location(div0, file$z, 504, 1, 10038);
+	      add_location(div0, file$z, 408, 1, 8302);
 	      attr_dev(div1, "id", "points");
-	      add_location(div1, file$z, 506, 31, 10111);
+	      add_location(div1, file$z, 410, 31, 8375);
 	      attr_dev(canvas_1, "class", "svelte-5592ys");
-	      add_location(canvas_1, file$z, 506, 4, 10084);
+	      add_location(canvas_1, file$z, 410, 4, 8348);
 	      attr_dev(div2, "id", "map");
-	      add_location(div2, file$z, 505, 1, 10065);
-	      set_style(button0, "position", "absolute");
-	      set_style(button0, "z-index", "199999999999");
-	      set_style(button0, "right", "0px");
-	      set_style(button0, "top", "0px");
-	      set_style(button0, "width", "100px");
-	      set_style(button0, "height", "400px");
-	      add_location(button0, file$z, 509, 2, 10155);
-	      set_style(button1, "position", "absolute");
-	      set_style(button1, "z-index", "199999999999");
-	      set_style(button1, "right", "0px");
-	      set_style(button1, "top", "250px");
-	      set_style(button1, "width", "100px");
-	      set_style(button1, "height", "400px");
-	      add_location(button1, file$z, 519, 2, 10333);
-	      set_style(button2, "position", "absolute");
-	      set_style(button2, "z-index", "199999999999");
-	      set_style(button2, "right", "100px");
-	      set_style(button2, "top", "0px");
-	      set_style(button2, "width", "100px");
-	      set_style(button2, "height", "400px");
-	      attr_dev(button2, "cretaceous-checked",
-	      /*checked*/
-	      ctx[3]);
-	      add_location(button2, file$z, 530, 2, 10514);
-	      set_style(button3, "position", "absolute");
-	      set_style(button3, "z-index", "199999999999");
-	      set_style(button3, "right", "100px");
-	      set_style(button3, "top", "250px");
-	      set_style(button3, "width", "100px");
-	      set_style(button3, "height", "400px");
-	      add_location(button3, file$z, 542, 2, 10749);
-	      add_location(p, file$z, 560, 0, 11118);
+	      add_location(div2, file$z, 409, 1, 8329);
+	      add_location(p, file$z, 420, 0, 8584);
 	      set_style(div3, "position", "absolute");
 	      set_style(div3, "z-index", "199999999999");
 	      set_style(div3, "left", "670px");
 	      set_style(div3, "top", "180px");
-	      add_location(div3, file$z, 553, 2, 10953);
+	      add_location(div3, file$z, 413, 2, 8419);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53076,56 +53288,19 @@ var app = (function () {
 	      append_dev(canvas_1, div1);
 	      /*canvas_1_binding*/
 
-	      ctx[8](canvas_1);
+	      ctx[2](canvas_1);
 	      insert_dev(target, t1, anchor);
-	      insert_dev(target, button0, anchor);
-	      insert_dev(target, t3, anchor);
-	      insert_dev(target, button1, anchor);
-	      insert_dev(target, t5, anchor);
-	      insert_dev(target, button2, anchor);
-	      append_dev(button2, t6);
-	      append_dev(button2, t7);
-	      insert_dev(target, t8, anchor);
-	      insert_dev(target, button3, anchor);
-	      insert_dev(target, t10, anchor);
 	      insert_dev(target, div3, anchor);
 	      mount_component(switch_1, div3, null);
-	      append_dev(div3, t11);
+	      append_dev(div3, t2);
 	      append_dev(div3, p);
-	      append_dev(p, t12);
-	      append_dev(p, t13);
+	      append_dev(p, t3);
+	      append_dev(p, t4);
 	      current = true;
-
-	      if (!mounted) {
-	        dispose = [listen_dev(button0, "click",
-	        /*handleClick*/
-	        ctx[4], false, false, false), listen_dev(button1, "click",
-	        /*handleNewClick*/
-	        ctx[5], false, false, false), listen_dev(button2, "click",
-	        /*handleCretaceousClick*/
-	        ctx[6], false, false, false), listen_dev(button3, "click",
-	        /*handleNewCretaceousClick*/
-	        ctx[7], false, false, false)];
-	        mounted = true;
-	      }
 	    },
 	    p: function update(ctx, _ref) {
 	      var _ref2 = _slicedToArray(_ref, 1),
 	          dirty = _ref2[0];
-
-	      if (!current || dirty &
-	      /*cvalue*/
-	      4) set_data_dev(t6,
-	      /*cvalue*/
-	      ctx[2]);
-
-	      if (!current || dirty &
-	      /*checked*/
-	      8) {
-	        attr_dev(button2, "cretaceous-checked",
-	        /*checked*/
-	        ctx[3]);
-	      }
 
 	      var switch_1_changes = {};
 
@@ -53144,7 +53319,7 @@ var app = (function () {
 	      switch_1.$set(switch_1_changes);
 	      if (!current || dirty &
 	      /*switchValue*/
-	      2) set_data_dev(t13,
+	      2) set_data_dev(t4,
 	      /*switchValue*/
 	      ctx[1]);
 	    },
@@ -53163,20 +53338,10 @@ var app = (function () {
 	      if (detaching) detach_dev(div2);
 	      /*canvas_1_binding*/
 
-	      ctx[8](null);
+	      ctx[2](null);
 	      if (detaching) detach_dev(t1);
-	      if (detaching) detach_dev(button0);
-	      if (detaching) detach_dev(t3);
-	      if (detaching) detach_dev(button1);
-	      if (detaching) detach_dev(t5);
-	      if (detaching) detach_dev(button2);
-	      if (detaching) detach_dev(t8);
-	      if (detaching) detach_dev(button3);
-	      if (detaching) detach_dev(t10);
 	      if (detaching) detach_dev(div3);
 	      destroy_component(switch_1);
-	      mounted = false;
-	      run_all(dispose);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -53192,6 +53357,7 @@ var app = (function () {
 	var worldDataPath = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
 
 	function instance$A($$self, $$props, $$invalidate) {
+	  var $fossilDatapoints;
 	  var $width;
 	  var $height;
 	  var $countries;
@@ -53200,37 +53366,41 @@ var app = (function () {
 	  var $scaleFactor;
 	  var $panelHeight;
 	  var $geoPath;
+	  validate_store(fossilDatapoints, "fossilDatapoints");
+	  component_subscribe($$self, fossilDatapoints, function ($$value) {
+	    return $$invalidate(10, $fossilDatapoints = $$value);
+	  });
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(19, $width = $$value);
+	    return $$invalidate(11, $width = $$value);
 	  });
 	  validate_store(height, "height");
 	  component_subscribe($$self, height, function ($$value) {
-	    return $$invalidate(20, $height = $$value);
+	    return $$invalidate(12, $height = $$value);
 	  });
 	  validate_store(countries, "countries");
 	  component_subscribe($$self, countries, function ($$value) {
-	    return $$invalidate(21, $countries = $$value);
+	    return $$invalidate(13, $countries = $$value);
 	  });
 	  validate_store(mapHeight, "mapHeight");
 	  component_subscribe($$self, mapHeight, function ($$value) {
-	    return $$invalidate(22, $mapHeight = $$value);
+	    return $$invalidate(14, $mapHeight = $$value);
 	  });
 	  validate_store(projection$1, "projection");
 	  component_subscribe($$self, projection$1, function ($$value) {
-	    return $$invalidate(23, $projection = $$value);
+	    return $$invalidate(15, $projection = $$value);
 	  });
 	  validate_store(scaleFactor, "scaleFactor");
 	  component_subscribe($$self, scaleFactor, function ($$value) {
-	    return $$invalidate(24, $scaleFactor = $$value);
+	    return $$invalidate(16, $scaleFactor = $$value);
 	  });
 	  validate_store(panelHeight, "panelHeight");
 	  component_subscribe($$self, panelHeight, function ($$value) {
-	    return $$invalidate(25, $panelHeight = $$value);
+	    return $$invalidate(17, $panelHeight = $$value);
 	  });
 	  validate_store(geoPath, "geoPath");
 	  component_subscribe($$self, geoPath, function ($$value) {
-	    return $$invalidate(26, $geoPath = $$value);
+	    return $$invalidate(18, $geoPath = $$value);
 	  });
 	  var canvas;
 	  var worldFeature;
@@ -53239,11 +53409,7 @@ var app = (function () {
 	  var fossilSpots;
 	  var fossilSpots2;
 	  var fossilSpots3;
-	  var originalJurassicSpots;
-	  var originalTriassicSpots;
-	  var originalCretaceousSpots;
 	  var switchValue;
-	  var mesozoic = {};
 	  onMount( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	    var response, json, worldResponse;
 	    return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -53271,9 +53437,9 @@ var app = (function () {
 
 	          case 12:
 	            _context.t1 = worldjson = _context.sent;
-	            (0, _context.t0)(11, _context.t1);
+	            (0, _context.t0)(5, _context.t1);
 	            //  console.log('worldjson: ', worldjson)
-	            $$invalidate(10, worldFeature = feature(worldjson, worldjson.objects.countries)); //  console.log('worldFeature: ', worldFeature)
+	            $$invalidate(4, worldFeature = feature(worldjson, worldjson.objects.countries)); //  console.log('worldFeature: ', worldFeature)
 	            // This removes antartica from the world map
 	            // worldFeature.features = worldFeature.features.filter((c) => c.properties.name !== 'Antarctica');
 	            //  console.log(worldFeature.features );
@@ -53284,123 +53450,38 @@ var app = (function () {
 
 	          case 18:
 	            _context.t3 = fossilSpots = _context.sent;
-	            (0, _context.t2)(13, _context.t3);
+	            (0, _context.t2)(7, _context.t3);
 	            _context.t4 = $$invalidate;
 	            _context.next = 23;
 	            return loadFossilSpots2();
 
 	          case 23:
 	            _context.t5 = fossilSpots2 = _context.sent;
-	            (0, _context.t4)(14, _context.t5);
+	            (0, _context.t4)(8, _context.t5);
 	            _context.t6 = $$invalidate;
 	            _context.next = 28;
 	            return loadFossilSpots3();
 
 	          case 28:
 	            _context.t7 = fossilSpots3 = _context.sent;
-	            (0, _context.t6)(15, _context.t7);
-	            _context.t8 = $$invalidate;
-	            _context.next = 33;
-	            return loadFossilSpots();
-
-	          case 33:
-	            _context.t9 = originalJurassicSpots = _context.sent;
-	            (0, _context.t8)(16, _context.t9);
-	            _context.t10 = $$invalidate;
-	            _context.next = 38;
-	            return loadFossilSpots3();
-
-	          case 38:
-	            _context.t11 = originalCretaceousSpots = _context.sent;
-	            (0, _context.t10)(17, _context.t11);
+	            (0, _context.t6)(9, _context.t7);
+	            // originalJurassicSpots = await loadFossilSpots();
+	            // originalCretaceousSpots = await loadFossilSpots3();
 	            // console.log(fossilSpots);
-	            $$invalidate(18, mesozoic.jurassic = fossilSpots, mesozoic);
-	            $$invalidate(18, mesozoic.triassic = fossilSpots2, mesozoic);
-	            $$invalidate(18, mesozoic.cretaceous = fossilSpots3, mesozoic);
+	            set_store_value(fossilDatapoints, $fossilDatapoints.jurassic = fossilSpots, $fossilDatapoints);
+	            set_store_value(fossilDatapoints, $fossilDatapoints.originaljurassic = fossilSpots, $fossilDatapoints);
+	            set_store_value(fossilDatapoints, $fossilDatapoints.triassic = fossilSpots2, $fossilDatapoints);
+	            set_store_value(fossilDatapoints, $fossilDatapoints.originaltriassic = fossilSpots2, $fossilDatapoints);
+	            set_store_value(fossilDatapoints, $fossilDatapoints.cretaceous = fossilSpots3, $fossilDatapoints);
+	            set_store_value(fossilDatapoints, $fossilDatapoints.originalcretaceous = fossilSpots3, $fossilDatapoints);
 
-	          case 43:
+	          case 36:
 	          case "end":
 	            return _context.stop();
 	        }
 	      }
 	    }, _callee);
-	  }))); // console.log(mesozoic);
-
-	  function handleClick() {
-	    //	console.log('clear')
-	    //  console.log('fossilSpots: ', fossilSpots);
-	    //  console.log('fossilSpots2: ', fossilSpots2)
-
-	    /*
-	      fossilSpots = fossilSpots.filter((d) => d.id < 20);
-	      reDraw();
-	      return fossilSpots;
-	      */
-	    $$invalidate(18, mesozoic.jurassic = [], mesozoic);
-	    reDraw();
-	    return mesozoic;
-	  }
-
-	  function handleNewClick() {
-	    //	console.log('clear')
-	    //  console.log('fossilSpots: ', fossilSpots);
-	    //  console.log('fossilSpots2: ', fossilSpots2)
-	    $$invalidate(18, mesozoic.jurassic = originalJurassicSpots, mesozoic);
-	    reDraw();
-	    return mesozoic;
-	  }
-
-	  var cvalue = "remove";
-	  var checked = false;
-
-	  function handleCretaceousClick(event) {
-	    //	console.log('clear')
-	    //  console.log('fossilSpots: ', fossilSpots);
-	    //  console.log('fossilSpots2: ', fossilSpots2)
-
-	    /*
-	      fossilSpots = fossilSpots.filter((d) => d.id < 20);
-	      reDraw();
-	      return fossilSpots;
-	      */
-	    var target = event.target;
-	    console.log("target: ", target);
-	    var state = target.getAttribute("cretaceous-checked");
-	    $$invalidate(3, checked = state === "true" ? false : true);
-	    $$invalidate(2, cvalue = checked === true ? "add" : "remove");
-
-	    if (state === "false") {
-	      addCretaceousFossils();
-	    } else {
-	      removeCretaceousFossils();
-	    }
-
-	    console.log("state: ", state);
-	  } //  mesozoic.cretaceous = [];
-	  // reDraw();
-	  // return mesozoic;
-
-
-	  function addCretaceousFossils() {
-	    $$invalidate(18, mesozoic.cretaceous = [], mesozoic);
-	    reDraw();
-	    return mesozoic;
-	  }
-
-	  function removeCretaceousFossils() {
-	    $$invalidate(18, mesozoic.cretaceous = originalCretaceousSpots, mesozoic);
-	    reDraw();
-	    return mesozoic;
-	  }
-
-	  function handleNewCretaceousClick() {
-	    //	console.log('clear')
-	    //  console.log('fossilSpots: ', fossilSpots);
-	    //  console.log('fossilSpots2: ', fossilSpots2)
-	    $$invalidate(18, mesozoic.cretaceous = originalCretaceousSpots, mesozoic);
-	    reDraw();
-	    return mesozoic;
-	  }
+	  })));
 
 	  function reDraw() {
 	    var locations = select("#points");
@@ -53417,7 +53498,7 @@ var app = (function () {
 
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$3.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$4.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -53427,7 +53508,7 @@ var app = (function () {
 	  function canvas_1_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      canvas = $$value;
-	      ((((((((((((((((($$invalidate(0, canvas), $$invalidate(21, $countries)), $$invalidate(11, worldjson)), $$invalidate(13, fossilSpots)), $$invalidate(14, fossilSpots2)), $$invalidate(15, fossilSpots3)), $$invalidate(16, originalJurassicSpots)), $$invalidate(17, originalCretaceousSpots)), $$invalidate(19, $width)), $$invalidate(22, $mapHeight)), $$invalidate(23, $projection)), $$invalidate(24, $scaleFactor)), $$invalidate(20, $height)), $$invalidate(25, $panelHeight)), $$invalidate(26, $geoPath)), $$invalidate(18, mesozoic)), $$invalidate(12, graticule$1)), $$invalidate(10, worldFeature)), $$invalidate(1, switchValue);
+	      ((((((((((((((($$invalidate(0, canvas), $$invalidate(13, $countries)), $$invalidate(5, worldjson)), $$invalidate(7, fossilSpots)), $$invalidate(8, fossilSpots2)), $$invalidate(9, fossilSpots3)), $$invalidate(11, $width)), $$invalidate(14, $mapHeight)), $$invalidate(15, $projection)), $$invalidate(16, $scaleFactor)), $$invalidate(12, $height)), $$invalidate(17, $panelHeight)), $$invalidate(18, $geoPath)), $$invalidate(10, $fossilDatapoints)), $$invalidate(6, graticule$1)), $$invalidate(4, worldFeature)), $$invalidate(1, switchValue);
 	    });
 	  }
 
@@ -53471,21 +53552,11 @@ var app = (function () {
 	      fossilSpots: fossilSpots,
 	      fossilSpots2: fossilSpots2,
 	      fossilSpots3: fossilSpots3,
-	      originalJurassicSpots: originalJurassicSpots,
-	      originalTriassicSpots: originalTriassicSpots,
-	      originalCretaceousSpots: originalCretaceousSpots,
 	      switchValue: switchValue,
-	      mesozoic: mesozoic,
+	      fossilDatapoints: fossilDatapoints,
 	      worldDataPath: worldDataPath,
-	      handleClick: handleClick,
-	      handleNewClick: handleNewClick,
-	      cvalue: cvalue,
-	      checked: checked,
-	      handleCretaceousClick: handleCretaceousClick,
-	      addCretaceousFossils: addCretaceousFossils,
-	      removeCretaceousFossils: removeCretaceousFossils,
-	      handleNewCretaceousClick: handleNewCretaceousClick,
 	      reDraw: reDraw,
+	      $fossilDatapoints: $fossilDatapoints,
 	      $width: $width,
 	      $height: $height,
 	      $countries: $countries,
@@ -53499,19 +53570,13 @@ var app = (function () {
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("canvas" in $$props) $$invalidate(0, canvas = $$props.canvas);
-	    if ("worldFeature" in $$props) $$invalidate(10, worldFeature = $$props.worldFeature);
-	    if ("worldjson" in $$props) $$invalidate(11, worldjson = $$props.worldjson);
-	    if ("graticule" in $$props) $$invalidate(12, graticule$1 = $$props.graticule);
-	    if ("fossilSpots" in $$props) $$invalidate(13, fossilSpots = $$props.fossilSpots);
-	    if ("fossilSpots2" in $$props) $$invalidate(14, fossilSpots2 = $$props.fossilSpots2);
-	    if ("fossilSpots3" in $$props) $$invalidate(15, fossilSpots3 = $$props.fossilSpots3);
-	    if ("originalJurassicSpots" in $$props) $$invalidate(16, originalJurassicSpots = $$props.originalJurassicSpots);
-	    if ("originalTriassicSpots" in $$props) originalTriassicSpots = $$props.originalTriassicSpots;
-	    if ("originalCretaceousSpots" in $$props) $$invalidate(17, originalCretaceousSpots = $$props.originalCretaceousSpots);
+	    if ("worldFeature" in $$props) $$invalidate(4, worldFeature = $$props.worldFeature);
+	    if ("worldjson" in $$props) $$invalidate(5, worldjson = $$props.worldjson);
+	    if ("graticule" in $$props) $$invalidate(6, graticule$1 = $$props.graticule);
+	    if ("fossilSpots" in $$props) $$invalidate(7, fossilSpots = $$props.fossilSpots);
+	    if ("fossilSpots2" in $$props) $$invalidate(8, fossilSpots2 = $$props.fossilSpots2);
+	    if ("fossilSpots3" in $$props) $$invalidate(9, fossilSpots3 = $$props.fossilSpots3);
 	    if ("switchValue" in $$props) $$invalidate(1, switchValue = $$props.switchValue);
-	    if ("mesozoic" in $$props) $$invalidate(18, mesozoic = $$props.mesozoic);
-	    if ("cvalue" in $$props) $$invalidate(2, cvalue = $$props.cvalue);
-	    if ("checked" in $$props) $$invalidate(3, checked = $$props.checked);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -53521,7 +53586,7 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*$width, $height*/
-	    1572864) {
+	    6144) {
 	      //to update the fossil locations on resize
 	       if ($width || $height) {
 	        reDraw();
@@ -53529,8 +53594,8 @@ var app = (function () {
 	    }
 
 	    if ($$self.$$.dirty &
-	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, fossilSpots3, originalJurassicSpots, originalCretaceousSpots, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, mesozoic, graticule, worldFeature, switchValue*/
-	    134216707) {
+	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, fossilSpots3, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, $fossilDatapoints, graticule, worldFeature, switchValue*/
+	    524275) {
 	      /*
 	      another way to redraw on updates
 	      afterUpdate(() => {
@@ -53539,7 +53604,7 @@ var app = (function () {
 	      });
 	      */
 	      // $: if (canvas && $countries.length > 0) {
-	       if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && originalJurassicSpots && originalCretaceousSpots) {
+	       if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints) {
 	        //  console.log('countries store', $countries)
 	        //   console.log('fossilSpots: ', fossilSpots)
 	        //  console.log($projection)
@@ -53571,7 +53636,7 @@ var app = (function () {
 	        var info = base.append("div").attr("class", "info");
 
 	        function createMap(dataset) {
-	          var dataBinding = locations.selectAll("points.arc").data(dataset.jurassic).enter().append("points").classed("arc", true).attr("x", function (d) {
+	          var dataBinding = locations.selectAll("points.arc").data(dataset).enter().append("points").classed("arc", true).attr("x", function (d) {
 	            return testProjection([d.y, d.x])[0];
 	          }).attr("y", function (d) {
 	            return testProjection([d.y, d.x])[1];
@@ -53580,7 +53645,7 @@ var app = (function () {
 	        }
 
 	        function createTriassicMap(dataset) {
-	          locations.selectAll("points.arc").data(dataset.triassic).enter().append("points").classed("arc", true).attr("x", function (d) {
+	          locations.selectAll("points.arc").data(dataset).enter().append("points").classed("arc", true).attr("x", function (d) {
 	            return testProjection([d.y, d.x])[0];
 	          }).attr("y", function (d) {
 	            return testProjection([d.y, d.x])[1];
@@ -53589,7 +53654,7 @@ var app = (function () {
 	        }
 
 	        function createCretaceousMap(dataset) {
-	          locations.selectAll("points.arc").data(dataset.cretaceous).enter().append("points").classed("arc", true).attr("x", function (d) {
+	          locations.selectAll("points.arc").data(dataset).enter().append("points").classed("arc", true).attr("x", function (d) {
 	            return testProjection([d.y, d.x])[0];
 	          }).attr("y", function (d) {
 	            return testProjection([d.y, d.x])[1];
@@ -53612,14 +53677,14 @@ var app = (function () {
 	          });
 	        }
 
-	        createTriassicMap(mesozoic);
-	        createMap(mesozoic);
-	        createCretaceousMap(mesozoic);
+	        createTriassicMap($fossilDatapoints.triassic);
+	        createMap($fossilDatapoints.jurassic);
+	        createCretaceousMap($fossilDatapoints.cretaceous);
 
 	        function makeGraticules() {
 	          var geoGenerator = d3geoPath().projection(geoNaturalEarth1projection).context(ctx); // Create and configure the graticule generator (one line every 20 degrees)
 
-	          $$invalidate(12, graticule$1 = graticule());
+	          $$invalidate(6, graticule$1 = graticule());
 	          ctx.beginPath(); //      ctx.globalAlpha = 0.45;
 
 	          ctx.strokeStyle = "#ccc";
@@ -53674,7 +53739,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [canvas, switchValue, cvalue, checked, handleClick, handleNewClick, handleCretaceousClick, handleNewCretaceousClick, canvas_1_binding, switch_1_value_binding];
+	  return [canvas, switchValue, canvas_1_binding, switch_1_value_binding];
 	}
 
 	var Canvas = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -57002,7 +57067,7 @@ var app = (function () {
 	          ctx[9].call(div0)
 	        );
 	      });
-	      add_location(div0, file$F, 211, 4, 7312);
+	      add_location(div0, file$F, 211, 4, 7426);
 	      attr_dev(div1, "class", "draw-wrapper svelte-12ye563");
 	      add_render_callback(function () {
 	        return (
@@ -57010,11 +57075,11 @@ var app = (function () {
 	          ctx[11].call(div1)
 	        );
 	      });
-	      add_location(div1, file$F, 214, 4, 7426);
+	      add_location(div1, file$F, 214, 4, 7540);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-12ye563");
-	      add_location(div2, file$F, 210, 2, 7279);
+	      add_location(div2, file$F, 210, 2, 7393);
 	      attr_dev(div3, "class", "table-wrapper svelte-12ye563");
-	      add_location(div3, file$F, 227, 2, 7820);
+	      add_location(div3, file$F, 227, 2, 7934);
 	      attr_dev(div4, "id", "viz");
 	      attr_dev(div4, "class", "visualization-wrapper svelte-12ye563");
 	      add_render_callback(function () {
@@ -57023,7 +57088,7 @@ var app = (function () {
 	          ctx[12].call(div4)
 	        );
 	      });
-	      add_location(div4, file$F, 206, 0, 7156);
+	      add_location(div4, file$F, 206, 0, 7270);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -57557,7 +57622,8 @@ var app = (function () {
 	        }));
 	        var simulationCharge = forceSimulation().force("x", forceX().x(function (d) {
 	          return d._x;
-	        })).force("charge", forceManyBody().strength(function (d) {
+	        })). //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 95).distanceMax(600).distanceMin(10));
+	        force("charge", forceManyBody().strength(function (d) {
 	          return -(d.rSmiTot + 1) * 10;
 	        }).distanceMax(500).distanceMin(50));
 	        simulation.nodes(scaledData).alpha(0.8).tick(300); // finally set the global timePoints variable
@@ -57727,7 +57793,7 @@ var app = (function () {
 	  return CookieBanner;
 	}(SvelteComponentDev);
 
-	var console_1$4 = globals.console;
+	var console_1$5 = globals.console;
 	var file$H = "src/App.svelte"; // (19:2) {:else}
 
 	function create_else_block$3(ctx) {
@@ -57960,7 +58026,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$4.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$5.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,

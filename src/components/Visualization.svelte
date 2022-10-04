@@ -113,7 +113,6 @@
     // apply filters from URL
     if (window.location.hash.length > 1) {
       const urlFilters = parseUrl(window.location.hash);
-
       disinformantNationFilter.applyBoolArray(urlFilters.disinformantNations);
       platformFilter.applyBoolArray(urlFilters.platforms);
       methodFilter.applyBoolArray(urlFilters.methods);
@@ -155,6 +154,7 @@
 
     const simulationCharge = forceSimulation()
       .force('x', forceX().x(d => d._x))
+   //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 95).distanceMax(600).distanceMin(10));
       .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
 
     simulation

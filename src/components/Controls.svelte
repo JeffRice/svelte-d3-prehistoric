@@ -17,12 +17,15 @@
     highlightPolarization,
     highlightCib } from '../stores/filters';
   import { timeScale, attributionScoreScale } from '../stores/scales';
+  import {select} from "d3";
+  import { fossilDatapoints } from '../stores/elements';
 
   import Dropdown from './Dropdown.svelte';
   import Slider from './Slider.svelte';
   import SearchText from './SearchText.svelte';
   import CheckboxPanel from './CheckboxPanel.svelte';
   import Share from './Share.svelte';
+
 
   export let timePoints;
 
@@ -45,6 +48,102 @@
       $originalTimeDomain = null;
     }
   }
+
+
+
+  let addjurassicValue = 'Remove';
+  let jurassicadded = true;
+
+  let addtriassicValue = 'Remove';
+  let triassicadded = true;
+
+
+
+  let addValue = 'Remove';
+  let added = true;
+
+function handleFossilClick(event, fossilEra) {
+
+const target = event.target
+console.log('target: ', target)
+
+fossilEra = target.getAttribute('fossil-era')
+const state = target.getAttribute('era-added')
+
+
+if(fossilEra === 'jurassic'){
+      jurassicadded = state === 'true' ? false : true
+
+      addjurassicValue = jurassicadded === true ? 'Remove' : 'Add'
+    }
+    else if(fossilEra === 'triassic'){
+      triassicadded = state === 'true' ? false : true
+
+      addtriassicValue = triassicadded === true ? 'Remove' : 'Add'
+    }
+    else {
+      added = state === 'true' ? false : true
+
+      addValue = added === true ? 'Remove' : 'Add'
+    }
+
+
+
+if (state  === 'false' ){
+  addFossils(fossilEra);
+}
+else {
+  removeFossils(fossilEra);
+
+}
+
+console.log('state: ', state)
+
+}
+
+function removeFossils(fossilEra) {
+
+// fossilEra = 'cretaceous';
+
+$fossilDatapoints[fossilEra] = [];
+reDraw();
+return $fossilDatapoints;
+
+}
+
+function addFossils(fossilEra) {
+
+let originalEra = 'original' + fossilEra
+
+$fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra];
+reDraw();
+return $fossilDatapoints;
+
+}
+
+
+
+  function reDraw() {
+
+    let locations = select('#points');
+var elements = locations.selectAll("points.arc");
+
+// console.log('elements: ', elements)
+
+  elements.each(function(d, i) {
+   // console.log('element: ', elements[i])
+  var node = select(this);
+ // console.log(d, node, i, this)
+
+  this.remove();
+
+  })
+
+
+// console.log("redrawing")
+
+}
+
 </script>
 
 {#if (timePoints)}
@@ -99,8 +198,15 @@
                 on:itemsAdded={(e) => dietFilter.select(e.detail)}
                 on:itemsRemoved={(e) => dietFilter.unselect(e.detail)} />
 
-      <Dropdown items={addCount($timeperiodFilter, 'periodEra', timePoints)}
+                <Dropdown items={addCount($timeperiodFilter, 'periodEra', timePoints)}
                 label="Time Periods"
+                superior
+                on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
+                on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)} />
+
+
+                <Dropdown items={addCount($fossilDatapoints.triassic, 'fossils', $fossilDatapoints.triassic)}
+                label="Fossil Data"
                 superior
                 on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
                 on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)} />
@@ -109,6 +215,25 @@
               on:click={() => handleButtonClick()}>
         Reset
       </button>
+
+
+
+      <button on:click={handleFossilClick}
+      era-added={added}
+      fossil-era='cretaceous'>
+        {addValue} Cretaceous Fossil Data
+      </button>
+      <button on:click={handleFossilClick}
+      era-added={jurassicadded}
+      fossil-era='jurassic'>
+        {addjurassicValue} Jurassic Fossil Data
+      </button>
+      <button on:click={handleFossilClick}
+      era-added={triassicadded}
+      fossil-era='triassic'>
+        {addtriassicValue} Triassic Fossil Data
+      </button>
+
     </div>
     <div class="checkbox-panel">
       <CheckboxPanel />

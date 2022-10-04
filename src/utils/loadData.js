@@ -1,5 +1,5 @@
 import { csv, timeParse } from 'd3';
-import { splitString } from './misc';
+import { splitString, cleanCountries } from './misc';
 import { data as dataPath } from '../inputs/dataPaths';
 
 const parseTimestamp = timeParse('%m/%d/%Y %H:%M %Z');
@@ -9,6 +9,7 @@ const loadData = async () => {
   const data = await csv(dataPath, (d, i) => {
 
     const smiTotal = d.total_engagement === '' ? Number.NaN : +d.total_engagement;
+    const smiPending = isNaN(smiTotal);
     const source = d.source_for_display !== '' ? d.source_for_display : d.source;
 
     return {
@@ -17,7 +18,8 @@ const loadData = async () => {
       image_location: d.image_location,
       periodEra: d.case_hash,
       sizeIndex: d.size_index,
-      timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
+     // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
+     timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
       source: splitString(source),
       sourceFilter: splitString(d.source_subcategory !== '' ? d.source_subcategory : source),
       sourceSubcategory: splitString(d.source_subcategory),
