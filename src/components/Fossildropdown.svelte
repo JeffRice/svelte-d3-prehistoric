@@ -3,8 +3,12 @@
   import { createEventDispatcher } from 'svelte';
   import { slide } from 'svelte/transition';
   import { sortConsistently } from '../utils/misc';
+  import {select} from "d3";
+  import { fossilDatapoints } from '../stores/elements';
 
   import Checkbox from './Checkbox.svelte';
+
+
 
   export let items = [];
   export let label = '';
@@ -44,9 +48,113 @@
       dispatch('itemsRemoved', id);
     }
   }
+
+
+
+  let addjurassicValue = 'Remove';
+  let jurassicadded = true;
+
+  let addtriassicValue = 'Remove';
+  let triassicadded = true;
+
+
+
+  let addValue = 'Remove';
+  let added = true;
+
+
+
+  function handleFossilClick(event, fossilEra) {
+
+const target = event.target
+console.log('target: ', target)
+
+fossilEra = target.getAttribute('fossilera')
+const state = target.getAttribute('eraadded')
+
+
+if(fossilEra === 'jurassic'){
+      jurassicadded = state === 'true' ? false : true
+
+      addjurassicValue = jurassicadded === true ? 'Remove' : 'Add'
+    }
+    else if(fossilEra === 'triassic'){
+      triassicadded = state === 'true' ? false : true
+
+      addtriassicValue = triassicadded === true ? 'Remove' : 'Add'
+    }
+    else {
+      added = state === 'true' ? false : true
+
+      addValue = added === true ? 'Remove' : 'Add'
+    }
+
+
+
+if (state  === 'false' ){
+  addFossils(fossilEra);
+
+
+  target.setAttribute("eraadded", "true");
+}
+else {
+  removeFossils(fossilEra);
+
+  target.setAttribute("eraadded", "false");
+
+}
+
+console.log('state: ', state)
+
+}
+
+function removeFossils(fossilEra) {
+
+// fossilEra = 'cretaceous';
+
+$fossilDatapoints[fossilEra] = [];
+reDraw();
+return $fossilDatapoints;
+
+}
+
+function addFossils(fossilEra) {
+
+let originalEra = 'original' + fossilEra
+
+$fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra];
+reDraw();
+return $fossilDatapoints;
+
+}
+
+
+
+  function reDraw() {
+
+    let locations = select('#points');
+var elements = locations.selectAll("points.arc");
+
+// console.log('elements: ', elements)
+
+  elements.each(function(d, i) {
+   // console.log('element: ', elements[i])
+  var node = select(this);
+ // console.log(d, node, i, this)
+
+  this.remove();
+
+  })
+
+
+// console.log("redrawing")
+
+}
+
 </script>
 
 <svelte:body on:click={(e) => handleBodyClick(e)}></svelte:body>
+
 
 <div class="dropdown" bind:this={elem}>
   <div class="label">
@@ -77,11 +185,15 @@
         <ul class="choice-list">
           {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
             {#if (!(hideOneHitWonders && item.count === 1))}
-              <li on:click|stopPropagation>
+              <li on:click|stopPropagation
+              >
                 <Checkbox id="{label}-{i}"
-                          checked={item.selected}
-                          on:click={() => handleChoiceClick(item.id)}>
-                  <span class="choice-entry-name">{item[nameField]}</span>
+                          checked={item.added}
+                          eraadded="true"
+                          fossilera={item.title}
+                          on:click={handleFossilClick}>
+                  <span class="choice-entry-name">{item.title}</span>
+
                   {#if (item.liveCount)}
                     <span class="choice-entry-count">({item.liveCount})</span>
                   {:else if (item.source)}

@@ -21,6 +21,7 @@
   import { fossilDatapoints } from '../stores/elements';
 
   import Dropdown from './Dropdown.svelte';
+  import Fossildropdown from './Fossildropdown.svelte';
   import Slider from './Slider.svelte';
   import SearchText from './SearchText.svelte';
   import CheckboxPanel from './CheckboxPanel.svelte';
@@ -34,6 +35,22 @@
       ...d,
       count: timePoints.map((d) => d[property]).flat().filter((a) => a === d.id).length,
       liveCount: timePoints.filter((d) => d.show).map((d) => d[property]).flat().filter((a) => a === d.id).length
+    }));
+  }
+
+  let fossilFilter = ['cretaceous', 'jurassic', 'triassic'];
+
+  function fossilCount(filter, property, dataPoints) {
+    console.log(dataPoints);
+    console.log(filter);
+    return filter.map((d, i) => ({
+      ...d,
+      id: i,
+      title: filter[i],
+      added: 'true',
+      addValue: 'Remove',
+      count: filter.length,
+      liveCount: dataPoints[d].length
     }));
   }
 
@@ -198,24 +215,27 @@ var elements = locations.selectAll("points.arc");
                 on:itemsAdded={(e) => dietFilter.select(e.detail)}
                 on:itemsRemoved={(e) => dietFilter.unselect(e.detail)} />
 
-                <Dropdown items={addCount($timeperiodFilter, 'periodEra', timePoints)}
+      <Dropdown items={addCount($timeperiodFilter, 'periodEra', timePoints)}
                 label="Time Periods"
                 superior
                 on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
                 on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)} />
 
 
-                <Dropdown items={addCount($fossilDatapoints.triassic, 'fossils', $fossilDatapoints.triassic)}
-                label="Fossil Data"
-                superior
-                on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
-                on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)} />
 
-      <button class="reset-filters"
-              on:click={() => handleButtonClick()}>
-        Reset
-      </button>
+      {#if ($fossilDatapoints)}
+      <Fossildropdown items={fossilCount(fossilFilter, 'test', $fossilDatapoints)}
+                label="Fossil Datapoints"
+                superior/>
+      {/if}
 
+       <button class="reset-filters"
+        on:click={() => handleButtonClick()}>
+          Reset
+        </button>
+  
+     
+  
 
 
       <button on:click={handleFossilClick}
@@ -233,6 +253,7 @@ var elements = locations.selectAll("points.arc");
       fossil-era='triassic'>
         {addtriassicValue} Triassic Fossil Data
       </button>
+  
 
     </div>
     <div class="checkbox-panel">
