@@ -6,7 +6,7 @@ export const drawWrapper = writable();
 export const fossilDatapoints = writable({"cretaceous": [], "jurassic": [], "triassic": [],
                                          "originalcretaceous": [], "originaljurassic": [], "originaltriassic": [], });
 
-
+export const switchValueStore = writable();
 
 export const cretaceous = writable();
 export const jurassic = writable();

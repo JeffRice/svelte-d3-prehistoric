@@ -1,6 +1,6 @@
 <script>
   // a custom dropdown
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher, onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { sortConsistently } from '../utils/misc';
   import {select} from "d3";
@@ -15,6 +15,7 @@
   export let nameField = 'id';
   export let hideOneHitWonders = false;
   export let superior = false;
+
 
   const dispatch = createEventDispatcher();
 
@@ -49,6 +50,8 @@
     }
   }
 
+  
+
 
 
   let addjurassicValue = 'Remove';
@@ -71,6 +74,7 @@ console.log('target: ', target)
 
 fossilEra = target.getAttribute('fossilera')
 const state = target.getAttribute('eraadded')
+const stateid = target.getAttribute('eraid')
 
 
 if(fossilEra === 'jurassic'){
@@ -84,9 +88,9 @@ if(fossilEra === 'jurassic'){
       addtriassicValue = triassicadded === true ? 'Remove' : 'Add'
     }
     else {
-      added = state === 'true' ? false : true
+      added = state === 'true' ? 'false' : 'true'
 
-      addValue = added === true ? 'Remove' : 'Add'
+      addValue = added === 'true' ? 'Remove' : 'Add'
     }
 
 
@@ -96,15 +100,22 @@ if (state  === 'false' ){
 
 
   target.setAttribute("eraadded", "true");
+  target.classList.add("checked");
+
+
 }
 else {
   removeFossils(fossilEra);
 
   target.setAttribute("eraadded", "false");
+  target.classList.remove("checked");
 
 }
 
-console.log('state: ', state)
+// console.log('state: ', state)
+  console.log('items: ', items)
+
+  items[stateid].added = state
 
 }
 
@@ -163,11 +174,11 @@ var elements = locations.selectAll("points.arc");
   <div class="selected-items" on:click|stopPropagation={handleDropdownClick}>
     <span class="selected-items-icon"></span>
     <span class="selected-items-text">
-      {items.filter((d) => d.selected).length === 0
+      {items.filter((d) => d.added).length === 0
         ? 'none'
-        : (items.every((d) => d.selected && items.length > 1)
+        : (items.every((d) => d.added && items.length > 1)
           ? 'all'
-          : items.filter((d) => d.selected).map((d) => d[nameField]).join(', '))}
+          : items.filter((d) => d.added).map((d) => d[nameField]).join(', '))}
     </span>
     <button class="selected-items-arrow">
       <svg class:expanded width="15" height="10">
@@ -190,6 +201,7 @@ var elements = locations.selectAll("points.arc");
                 <Checkbox id="{label}-{i}"
                           checked={item.added}
                           eraadded="true"
+                          eraid={i}
                           fossilera={item.title}
                           on:click={handleFossilClick}>
                   <span class="choice-entry-name">{item.title}</span>

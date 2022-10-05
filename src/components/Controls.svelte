@@ -18,7 +18,7 @@
     highlightCib } from '../stores/filters';
   import { timeScale, attributionScoreScale } from '../stores/scales';
   import {select} from "d3";
-  import { fossilDatapoints } from '../stores/elements';
+  import { fossilDatapoints, switchValueStore } from '../stores/elements';
 
   import Dropdown from './Dropdown.svelte';
   import Fossildropdown from './Fossildropdown.svelte';
@@ -26,6 +26,7 @@
   import SearchText from './SearchText.svelte';
   import CheckboxPanel from './CheckboxPanel.svelte';
   import Share from './Share.svelte';
+  import Switch from './Switch.svelte';
 
 
   export let timePoints;
@@ -40,15 +41,13 @@
 
   let fossilFilter = ['cretaceous', 'jurassic', 'triassic'];
 
-  function fossilCount(filter, property, dataPoints) {
+  function fossilCount(filter, dataPoints) {
     console.log(dataPoints);
     console.log(filter);
     return filter.map((d, i) => ({
-      ...d,
       id: i,
       title: filter[i],
-      added: 'true',
-      addValue: 'Remove',
+      added: true,
       count: filter.length,
       liveCount: dataPoints[d].length
     }));
@@ -66,100 +65,6 @@
     }
   }
 
-
-
-  let addjurassicValue = 'Remove';
-  let jurassicadded = true;
-
-  let addtriassicValue = 'Remove';
-  let triassicadded = true;
-
-
-
-  let addValue = 'Remove';
-  let added = true;
-
-function handleFossilClick(event, fossilEra) {
-
-const target = event.target
-console.log('target: ', target)
-
-fossilEra = target.getAttribute('fossil-era')
-const state = target.getAttribute('era-added')
-
-
-if(fossilEra === 'jurassic'){
-      jurassicadded = state === 'true' ? false : true
-
-      addjurassicValue = jurassicadded === true ? 'Remove' : 'Add'
-    }
-    else if(fossilEra === 'triassic'){
-      triassicadded = state === 'true' ? false : true
-
-      addtriassicValue = triassicadded === true ? 'Remove' : 'Add'
-    }
-    else {
-      added = state === 'true' ? false : true
-
-      addValue = added === true ? 'Remove' : 'Add'
-    }
-
-
-
-if (state  === 'false' ){
-  addFossils(fossilEra);
-}
-else {
-  removeFossils(fossilEra);
-
-}
-
-console.log('state: ', state)
-
-}
-
-function removeFossils(fossilEra) {
-
-// fossilEra = 'cretaceous';
-
-$fossilDatapoints[fossilEra] = [];
-reDraw();
-return $fossilDatapoints;
-
-}
-
-function addFossils(fossilEra) {
-
-let originalEra = 'original' + fossilEra
-
-$fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra];
-reDraw();
-return $fossilDatapoints;
-
-}
-
-
-
-  function reDraw() {
-
-    let locations = select('#points');
-var elements = locations.selectAll("points.arc");
-
-// console.log('elements: ', elements)
-
-  elements.each(function(d, i) {
-   // console.log('element: ', elements[i])
-  var node = select(this);
- // console.log(d, node, i, this)
-
-  this.remove();
-
-  })
-
-
-// console.log("redrawing")
-
-}
 
 </script>
 
@@ -221,40 +126,26 @@ var elements = locations.selectAll("points.arc");
                 on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
                 on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)} />
 
-
-
-      {#if ($fossilDatapoints)}
-      <Fossildropdown items={fossilCount(fossilFilter, 'test', $fossilDatapoints)}
-                label="Fossil Datapoints"
-                superior/>
-      {/if}
-
        <button class="reset-filters"
         on:click={() => handleButtonClick()}>
           Reset
         </button>
-  
-     
-  
 
 
-      <button on:click={handleFossilClick}
-      era-added={added}
-      fossil-era='cretaceous'>
-        {addValue} Cretaceous Fossil Data
-      </button>
-      <button on:click={handleFossilClick}
-      era-added={jurassicadded}
-      fossil-era='jurassic'>
-        {addjurassicValue} Jurassic Fossil Data
-      </button>
-      <button on:click={handleFossilClick}
-      era-added={triassicadded}
-      fossil-era='triassic'>
-        {addtriassicValue} Triassic Fossil Data
-      </button>
+        {#if ($fossilDatapoints)}
+        <Fossildropdown items={fossilCount(fossilFilter, $fossilDatapoints)}
+                  label="Fossil Datapoints"
+                  />
+        {/if}
   
 
+        <div class="dropdown svelte-cap7e8">
+          <Switch bind:value={$switchValueStore} label="Enable Pangea" design="inner" />
+          <p>
+            Pangea is {$switchValueStore}
+          </p>
+          </div>
+  
     </div>
     <div class="checkbox-panel">
       <CheckboxPanel />

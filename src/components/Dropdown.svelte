@@ -79,7 +79,7 @@
             {#if (!(hideOneHitWonders && item.count === 1))}
               <li on:click|stopPropagation>
                 <Checkbox id="{label}-{i}"
-                          checked={item.selected}
+                          checked=false
                           on:click={() => handleChoiceClick(item.id)}>
                   <span class="choice-entry-name">{item[nameField]}</span>
                   {#if (item.liveCount)}

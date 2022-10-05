@@ -8,14 +8,14 @@
     export let label;
     export let design = 'inner label'
     export let options = [];
-		export let fontSize = 16;
-	  export let value = 'off';
+	export let fontSize = 16;
+	export let value = 'off';
 
     let checked = false;
 
 
 		const uniqueID = Math.floor(Math.random() * 100)
-
+ 
     function handleClick(event){
         const target = event.target
 

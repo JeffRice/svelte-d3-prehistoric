@@ -4,7 +4,6 @@
   import { bg, usaRed, usaLightRed, usaLightLightRed, preGreen } from '../utils/colors';
   import { countries, projection, geoPath } from '../stores/map';
   import { scaleFactor } from '../stores/scales';
-  import Switch from './Switch.svelte';
   import { timeScale } from '../stores/scales';
 
 
@@ -25,10 +24,9 @@
   let fossilSpots;
   let fossilSpots2;
   let fossilSpots3;  
-  let switchValue;
 
 
-  import { fossilDatapoints } from '../stores/elements';
+  import { fossilDatapoints, switchValueStore } from '../stores/elements';
 
 
 
@@ -94,7 +92,7 @@ another way to redraw on updates
 
 
  // $: if (canvas && $countries.length > 0) {
-  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints) {
+  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints && $switchValueStore) {
   //  console.log('countries store', $countries)
  //   console.log('fossilSpots: ', fossilSpots)
 
@@ -374,7 +372,7 @@ function worldMap() {
     
     }
 
-    if(switchValue === 'on'){
+    if($switchValueStore === 'on'){
       pangeaMap()
     }
   }
@@ -406,21 +404,9 @@ this.remove();
 
 
 
-	<div class="layer"></div>
-	<div id="map">
-    <canvas bind:this={canvas}><div id="points"></div></canvas>
-	</div>
-
-  <div style="
-  position: absolute;
-  z-index: 199999999999;
-  left: 670px;
-  top: 180px;
-">
-<Switch bind:value={switchValue} label="Enable Pangea" design="inner" />
-<p>
-  Pangea is {switchValue}
-</p>
+<div class="layer"></div>
+<div id="map">
+   <canvas bind:this={canvas}><div id="points"></div></canvas>
 </div>
  
 
