@@ -2,11 +2,18 @@
   // custom checkbox
   export let id;
   export let checked = false;
+  export let fossilera = '';
+  export let eraadded = '';
+  export let eraid = '';
+
 </script>
 
 <input type="checkbox"
        id="checkbox-{id}"
        class:checked
+       fossilera={fossilera}
+       eraadded={eraadded}
+       eraid={eraid}
        on:click|stopPropagation />
 <label for="checkbox-{id}" class="choice-entry-name">
   <slot></slot>

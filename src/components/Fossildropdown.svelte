@@ -6,7 +6,7 @@
   import {select} from "d3";
   import { fossilDatapoints } from '../stores/elements';
 
-  import Checkbox from './Checkbox.svelte';
+  import FossilCheckbox from './FossilCheckbox.svelte';
 
 
 
@@ -198,7 +198,7 @@ var elements = locations.selectAll("points.arc");
             {#if (!(hideOneHitWonders && item.count === 1))}
               <li on:click|stopPropagation
               >
-                <Checkbox id="{label}-{i}"
+                <FossilCheckbox id="{label}-{i}"
                           checked={item.added}
                           eraadded="true"
                           eraid={i}
@@ -211,7 +211,7 @@ var elements = locations.selectAll("points.arc");
                   {:else if (item.source)}
                     <span class="choice-entry-source">({item.source})</span>
                   {/if}
-                </Checkbox>
+                </FossilCheckbox>
               </li>
             {/if}
           {/each}

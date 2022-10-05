@@ -38,6 +38,7 @@
   }
 
   function handleChoiceClick(id) {
+    console.log(id)
     if (!items.filter((d) => d.selected).map((d) => d.id).includes(id)) {
       dispatch('itemsAdded', id);
     } else {
@@ -79,7 +80,7 @@
             {#if (!(hideOneHitWonders && item.count === 1))}
               <li on:click|stopPropagation>
                 <Checkbox id="{label}-{i}"
-                          checked=false
+                          checked={item.selected}
                           on:click={() => handleChoiceClick(item.id)}>
                   <span class="choice-entry-name">{item[nameField]}</span>
                   {#if (item.liveCount)}
