@@ -16,8 +16,13 @@
   const offset = 5;
   let yScaleText, mapScaleText, timeScaleText;
   let spotName = spot.name
-
-
+  let displayName;
+  if (spotName === 'Neogene'){
+    displayName = 'Ng'
+  }
+  else {
+    displayName = spotName;
+  }
 
   $: $x = $timeScale(spot.date);
   $: $x2 = $timeScale(spot.endDate);
@@ -37,15 +42,17 @@
             <rect x="0" y ="-20" width="{$x2 - $x}" height="40" rx="5" class="{spotName}" />
 
 
-            <path d="M0 0l{lineLength} 0"></path>
+         <!--    <path d="M0 0l{lineLength} 0"></path>   -->
             <text class="bg"
-                  dx={lineLength + offset}
-                  dy="4">{spot.name} Era </text>
+                  dx={offset}
+                  dy="4">{displayName} </text>
             <text bind:this={timeScaleText}
-                  dx={lineLength + offset}
-                  dy="4">{spot.name} Era </text>
-            <path d="M{timeScaleText ? timeScaleText.getComputedTextLength() + lineLength + 2 * offset: 0} 0l{lineLength} 0"
+                  dx={offset}
+                  dy="4">{displayName} </text>
+                  {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }
+            <path d="M{timeScaleText ? timeScaleText.getComputedTextLength() + 2 * offset: 0} 0l{lineLength} 0"
                   marker-end="url(#arrow)"></path>
+                  {/if}
  <!--
   
   <circle cx="0" cy="0" r="5"></circle>
@@ -98,6 +105,9 @@
    }
   .Paleogene {
     fill:  #f1ba92;
+  }
+  .Neogene {
+    fill:  #F2FA8C;
   }
 
 

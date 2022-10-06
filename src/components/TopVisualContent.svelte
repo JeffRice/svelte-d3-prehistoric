@@ -12,6 +12,7 @@
   import { drawWrapper } from '../stores/elements';
   import { copytooltipable } from '../actions/copytooltipable';
   import { scrollTo } from '../utils/misc';
+  import { fossilDatapoints } from '../stores/elements';
 
   export let data = [];
 
@@ -41,7 +42,7 @@
   }
 </script>
 
-{#if (data.length > 0)}
+{#if (data.length > 0 && $fossilDatapoints)}
   <section class="content no-upper-margin">
     <input id="collapsible-status-quo" class="toggle" type="checkbox">
     <label for="collapsible-status-quo" class="lbl-toggle top">Overview</label>
@@ -50,8 +51,17 @@
         The Prehistoric Life Timeline Mapping is an interactive, open-source database that shows a variety of information about prehistoric creatures. It maps these creatures to their geographic location and period in time they existed. It also maps fossils to their current era discovery sites.
       </p>
       <p>
-        This dataset contains <em>{data.length} creatures</em> that existed from <em>30 - 300 million years ago </em>
+        This dataset contains <em>{data.length} creatures</em> that existed up to <em> 300 million years ago </em>
       </p>
+      <p>
+        The fossil dataset contains a total of <em>{$fossilDatapoints.originaljurassic.length + $fossilDatapoints.originalcretaceous.length + $fossilDatapoints.originaltriassic.length} Dinosaur fossils</em>:
+      </p>
+                                     <ul>
+                                      <li><em>{$fossilDatapoints.originalcretaceous.length} fossils</em> from the Cretaceous era </li>
+                                      <li><em>{$fossilDatapoints.originaljurassic.length} fossils</em> from the Jurassic era </li>
+                                      <li><em>{$fossilDatapoints.originaltriassic.length} and fossils</em> from the Triassic era  </li>
+                                     </ul>
+                                
     </div>
     <input id="collapsible-how-to" class="toggle" type="checkbox">
     <label for="collapsible-how-to" class="lbl-toggle top">How To Use This Tool</label>

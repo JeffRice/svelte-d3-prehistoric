@@ -130,6 +130,7 @@
     fill: black;
     pointer-events: all;
     cursor: ew-resize;
+    height: 150px;
   }
 
   .invisible {

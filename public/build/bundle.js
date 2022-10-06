@@ -35298,7 +35298,7 @@ var app = (function () {
 	                sourceCategory: splitString(d.source_category),
 	                sourceNation: d.source_nation,
 	                disinformant: d.disinformant,
-	                disinformantNation: splitString(d.disinformant_nation),
+	                disinformantNation: splitString(d.regions),
 	                disinformantAttribution: d.disinformant_attribution,
 	                shortTitle: d.short_title,
 	                shortDescription: d.short_description,
@@ -35539,7 +35539,7 @@ var app = (function () {
 	        switch (_context.prev = _context.next) {
 	          case 0:
 	            _context.next = 2;
-	            return fetch("mapgeo.json");
+	            return fetch("pangeanamed.json");
 
 	          case 2:
 	            response = _context.sent;
@@ -35780,6 +35780,7 @@ var app = (function () {
 	var caseIdFilter = writable();
 	var highlightPolarization = writable(false);
 	var highlightCib = writable(false);
+	var controlsFilter = writable(false);
 
 	function createSelected() {
 	  var _writable = writable([]),
@@ -36636,7 +36637,7 @@ var app = (function () {
 	  };
 	}
 
-	var file$3 = "src/components/TopVisualContent.svelte"; // (44:0) {#if (data.length > 0)}
+	var file$3 = "src/components/TopVisualContent.svelte"; // (45:0) {#if (data.length > 0 && $fossilDatapoints)}
 
 	function create_if_block$2(ctx) {
 	  var section0;
@@ -36658,58 +36659,100 @@ var app = (function () {
 	  var t8;
 	  var em1;
 	  var t10;
-	  var input1;
-	  var t11;
-	  var label1;
-	  var t13;
-	  var div1;
 	  var p2;
+	  var t11;
 	  var em2;
+	  var t12_value =
+	  /*$fossilDatapoints*/
+	  ctx[1].originaljurassic.length +
+	  /*$fossilDatapoints*/
+	  ctx[1].originalcretaceous.length +
+	  /*$fossilDatapoints*/
+	  ctx[1].originaltriassic.length + "";
+	  var t12;
+	  var t13;
+	  var t14;
 	  var t15;
+	  var ul0;
+	  var li0;
+	  var em3;
+	  var t16_value =
+	  /*$fossilDatapoints*/
+	  ctx[1].originalcretaceous.length + "";
+	  var t16;
+	  var t17;
+	  var t18;
+	  var t19;
+	  var li1;
+	  var em4;
+	  var t20_value =
+	  /*$fossilDatapoints*/
+	  ctx[1].originaljurassic.length + "";
+	  var t20;
+	  var t21;
+	  var t22;
+	  var t23;
+	  var li2;
+	  var em5;
+	  var t24_value =
+	  /*$fossilDatapoints*/
+	  ctx[1].originaltriassic.length + "";
+	  var t24;
+	  var t25;
+	  var t26;
+	  var t27;
+	  var input1;
+	  var t28;
+	  var label1;
+	  var t30;
+	  var div1;
+	  var p3;
+	  var em6;
+	  var t32;
 	  var span0;
 	  var copytooltipable_action;
-	  var t17;
+	  var t34;
 	  var span1;
 	  var copytooltipable_action_1;
-	  var t19;
+	  var t36;
 	  var span2;
 	  var copytooltipable_action_2;
-	  var t21;
+	  var t38;
 	  var span3;
 	  var copytooltipable_action_3;
-	  var t23;
+	  var t40;
 	  var span4;
 	  var copytooltipable_action_4;
-	  var t25;
+	  var t42;
 	  var span5;
 	  var copytooltipable_action_5;
-	  var t27;
-	  var t28;
-	  var p3;
-	  var em3;
-	  var t30;
-	  var t31;
-	  var p4;
-	  var em4;
-	  var t33;
-	  var t34;
-	  var p5;
-	  var em5;
-	  var t36;
-	  var em6;
-	  var t38;
-	  var a;
-	  var t40;
-	  var t41;
-	  var section1;
-	  var p6;
-	  var t43;
-	  var ul;
-	  var li0;
+	  var t44;
 	  var t45;
-	  var li1;
+	  var p4;
+	  var em7;
 	  var t47;
-	  var li2;
+	  var t48;
+	  var p5;
+	  var em8;
+	  var t50;
+	  var t51;
+	  var p6;
+	  var em9;
+	  var t53;
+	  var em10;
+	  var t55;
+	  var a;
+	  var t57;
+	  var t58;
+	  var section1;
+	  var p7;
+	  var t60;
+	  var ul1;
+	  var li3;
+	  var t62;
+	  var li4;
+	  var t64;
+	  var li5;
 	  var mounted;
 	  var dispose;
 	  var block = {
@@ -36729,128 +36772,163 @@ var app = (function () {
 	      em0 = element("em");
 	      t6 = text(t6_value);
 	      t7 = text(" creatures");
-	      t8 = text(" that existed from ");
+	      t8 = text(" that existed up to ");
 	      em1 = element("em");
-	      em1.textContent = "30 - 300 million years ago";
+	      em1.textContent = "300 million years ago";
 	      t10 = space();
+	      p2 = element("p");
+	      t11 = text("The fossil dataset contains a total of ");
+	      em2 = element("em");
+	      t12 = text(t12_value);
+	      t13 = text(" Dinosaur fossils");
+	      t14 = text(":");
+	      t15 = space();
+	      ul0 = element("ul");
+	      li0 = element("li");
+	      em3 = element("em");
+	      t16 = text(t16_value);
+	      t17 = text(" fossils");
+	      t18 = text(" from the Cretaceous era");
+	      t19 = space();
+	      li1 = element("li");
+	      em4 = element("em");
+	      t20 = text(t20_value);
+	      t21 = text(" fossils");
+	      t22 = text(" from the Jurassic era");
+	      t23 = space();
+	      li2 = element("li");
+	      em5 = element("em");
+	      t24 = text(t24_value);
+	      t25 = text(" and fossils");
+	      t26 = text(" from the Triassic era");
+	      t27 = space();
 	      input1 = element("input");
-	      t11 = space();
+	      t28 = space();
 	      label1 = element("label");
 	      label1.textContent = "How To Use This Tool";
-	      t13 = space();
+	      t30 = space();
 	      div1 = element("div");
-	      p2 = element("p");
-	      em2 = element("em");
-	      em2.textContent = "Filters";
-	      t15 = text(" enable users to adjust the visibility of cases by ");
+	      p3 = element("p");
+	      em6 = element("em");
+	      em6.textContent = "Filters";
+	      t32 = text(" enable users to adjust the visibility of cases by ");
 	      span0 = element("span");
 	      span0.textContent = "Attribution Score";
-	      t17 = text(", ");
+	      t34 = text(", ");
 	      span1 = element("span");
 	      span1.textContent = "Disinformant Nation";
-	      t19 = text(", ");
+	      t36 = text(", ");
 	      span2 = element("span");
 	      span2.textContent = "Platform";
-	      t21 = text(", ");
+	      t38 = text(", ");
 	      span3 = element("span");
 	      span3.textContent = "Method";
-	      t23 = text(", ");
+	      t40 = text(", ");
 	      span4 = element("span");
 	      span4.textContent = "Source";
-	      t25 = text(", and ");
+	      t42 = text(", and ");
 	      span5 = element("span");
 	      span5.textContent = "Source Category";
-	      t27 = text(". Free text search is also supported. This view also supports the addition of contextual datasets.");
-	      t28 = space();
-	      p3 = element("p");
-	      em3 = element("em");
-	      em3.textContent = "Timeline View";
-	      t30 = text(" enables cases to be ordered chronologically from left to right. Noteworthy U.S. events in the U.S. 2020 election cycle are plotted on the timeline for context and reference. Additional timeline elements can be introduced with the Context Datasets filter. By clicking and dragging on the timeline, users can filter their view to a particular date range. They can return to the default view by clicking \"Reset time scale\" on the left-hand side of the timeline.");
-	      t31 = space();
+	      t44 = text(". Free text search is also supported. This view also supports the addition of contextual datasets.");
+	      t45 = space();
 	      p4 = element("p");
-	      em4 = element("em");
-	      em4.textContent = "Map View";
-	      t33 = text(" shows a Mercator projection of the Earth. Cases are plotted on the map by means of tails connected to particular Disinformant Nations: the more lines a particular country has originating from it, the more it has been implicated in allegations of foreign interference. By hovering over a particular country, users can see a density plot of attributions over time (if n > 5), as well as breakdowns of Platform, Method, Source, and Source Category. Each of these can be auto-filtered together with the selected country.");
-	      t34 = space();
+	      em7 = element("em");
+	      em7.textContent = "Timeline View";
+	      t47 = text(" enables cases to be ordered chronologically from left to right. Noteworthy U.S. events in the U.S. 2020 election cycle are plotted on the timeline for context and reference. Additional timeline elements can be introduced with the Context Datasets filter. By clicking and dragging on the timeline, users can filter their view to a particular date range. They can return to the default view by clicking \"Reset time scale\" on the left-hand side of the timeline.");
+	      t48 = space();
 	      p5 = element("p");
-	      em5 = element("em");
-	      em5.textContent = "Dataset View";
-	      t36 = text(" presents a simplified spreadsheet view of the FIAT dataset. Cases are affected by all applied filters. By clicking on one or more cases in the Case View, users can \"pin\" them to the top of the Dataset View for easy comparison. The ");
-	      em6 = element("em");
-	      em6.textContent = "Dataset View";
-	      t38 = text(" for easy comparison. The ");
+	      em8 = element("em");
+	      em8.textContent = "Map View";
+	      t50 = text(" shows a Mercator projection of the Earth. Cases are plotted on the map by means of tails connected to particular Disinformant Nations: the more lines a particular country has originating from it, the more it has been implicated in allegations of foreign interference. By hovering over a particular country, users can see a density plot of attributions over time (if n > 5), as well as breakdowns of Platform, Method, Source, and Source Category. Each of these can be auto-filtered together with the selected country.");
+	      t51 = space();
+	      p6 = element("p");
+	      em9 = element("em");
+	      em9.textContent = "Dataset View";
+	      t53 = text(" presents a simplified spreadsheet view of the FIAT dataset. Cases are affected by all applied filters. By clicking on one or more cases in the Case View, users can \"pin\" them to the top of the Dataset View for easy comparison. The ");
+	      em10 = element("em");
+	      em10.textContent = "Dataset View";
+	      t55 = text(" for easy comparison. The ");
 	      a = element("a");
 	      a.textContent = "full dataset";
-	      t40 = text(" can also be downloaded from this view.");
-	      t41 = space();
+	      t57 = text(" can also be downloaded from this view.");
+	      t58 = space();
 	      section1 = element("section");
-	      p6 = element("p");
-	      p6.textContent = "enables users to filter and examine data in a multitude of ways. As you get started, consider filtering by:";
-	      t43 = space();
-	      ul = element("ul");
-	      li0 = element("li");
-	      li0.textContent = "Jurassic";
-	      t45 = space();
-	      li1 = element("li");
-	      li1.textContent = "Cretaceous";
-	      t47 = space();
-	      li2 = element("li");
-	      li2.textContent = "Triassic";
+	      p7 = element("p");
+	      p7.textContent = "enables users to filter and examine data in a multitude of ways. As you get started, consider filtering by:";
+	      t60 = space();
+	      ul1 = element("ul");
+	      li3 = element("li");
+	      li3.textContent = "Jurassic";
+	      t62 = space();
+	      li4 = element("li");
+	      li4.textContent = "Cretaceous";
+	      t64 = space();
+	      li5 = element("li");
+	      li5.textContent = "Triassic";
 	      attr_dev(input0, "id", "collapsible-status-quo");
 	      attr_dev(input0, "class", "toggle");
 	      attr_dev(input0, "type", "checkbox");
-	      add_location(input0, file$3, 45, 4, 1218);
+	      add_location(input0, file$3, 46, 4, 1296);
 	      attr_dev(label0, "for", "collapsible-status-quo");
 	      attr_dev(label0, "class", "lbl-toggle top");
-	      add_location(label0, file$3, 46, 4, 1289);
-	      add_location(p0, file$3, 48, 6, 1409);
-	      add_location(em0, file$3, 52, 30, 1760);
-	      add_location(em1, file$3, 52, 81, 1811);
-	      add_location(p1, file$3, 51, 6, 1726);
+	      add_location(label0, file$3, 47, 4, 1367);
+	      add_location(p0, file$3, 49, 6, 1487);
+	      add_location(em0, file$3, 53, 30, 1838);
+	      add_location(em1, file$3, 53, 82, 1890);
+	      add_location(p1, file$3, 52, 6, 1804);
+	      add_location(em2, file$3, 56, 47, 1991);
+	      add_location(p2, file$3, 55, 6, 1940);
+	      add_location(em3, file$3, 59, 42, 2247);
+	      add_location(li0, file$3, 59, 38, 2243);
+	      add_location(em4, file$3, 60, 42, 2382);
+	      add_location(li1, file$3, 60, 38, 2378);
+	      add_location(em5, file$3, 61, 42, 2513);
+	      add_location(li2, file$3, 61, 38, 2509);
+	      add_location(ul0, file$3, 58, 37, 2200);
 	      attr_dev(div0, "class", "collapsible-content");
-	      add_location(div0, file$3, 47, 4, 1369);
+	      add_location(div0, file$3, 48, 4, 1447);
 	      attr_dev(input1, "id", "collapsible-how-to");
 	      attr_dev(input1, "class", "toggle");
 	      attr_dev(input1, "type", "checkbox");
-	      add_location(input1, file$3, 55, 4, 1874);
+	      add_location(input1, file$3, 65, 4, 2698);
 	      attr_dev(label1, "for", "collapsible-how-to");
 	      attr_dev(label1, "class", "lbl-toggle top");
-	      add_location(label1, file$3, 56, 4, 1941);
-	      add_location(em2, file$3, 60, 8, 2082);
+	      add_location(label1, file$3, 66, 4, 2765);
+	      add_location(em6, file$3, 70, 8, 2906);
 	      attr_dev(span0, "class", "pseudolink copy-tooltip");
-	      add_location(span0, file$3, 60, 75, 2149);
+	      add_location(span0, file$3, 70, 75, 2973);
 	      attr_dev(span1, "class", "pseudolink copy-tooltip");
-	      add_location(span1, file$3, 60, 424, 2498);
+	      add_location(span1, file$3, 70, 424, 3322);
 	      attr_dev(span2, "class", "pseudolink copy-tooltip");
-	      add_location(span2, file$3, 60, 746, 2820);
+	      add_location(span2, file$3, 70, 746, 3644);
 	      attr_dev(span3, "class", "pseudolink copy-tooltip");
-	      add_location(span3, file$3, 60, 1074, 3148);
+	      add_location(span3, file$3, 70, 1074, 3972);
 	      attr_dev(span4, "class", "pseudolink copy-tooltip");
-	      add_location(span4, file$3, 60, 1390, 3464);
+	      add_location(span4, file$3, 70, 1390, 4288);
 	      attr_dev(span5, "class", "pseudolink copy-tooltip");
-	      add_location(span5, file$3, 60, 1630, 3704);
-	      add_location(p2, file$3, 59, 6, 2070);
-	      add_location(em3, file$3, 63, 8, 4100);
-	      add_location(p3, file$3, 62, 6, 4088);
-	      add_location(em4, file$3, 66, 8, 4612);
-	      add_location(p4, file$3, 65, 6, 4600);
-	      add_location(em5, file$3, 69, 8, 5176);
-	      add_location(em6, file$3, 69, 261, 5429);
+	      add_location(span5, file$3, 70, 1630, 4528);
+	      add_location(p3, file$3, 69, 6, 2894);
+	      add_location(em7, file$3, 73, 8, 4924);
+	      add_location(p4, file$3, 72, 6, 4912);
+	      add_location(em8, file$3, 76, 8, 5436);
+	      add_location(p5, file$3, 75, 6, 5424);
+	      add_location(em9, file$3, 79, 8, 6000);
+	      add_location(em10, file$3, 79, 261, 6253);
 	      attr_dev(a, "href", "https://github.com/DFRLab/Interference2020-Data");
-	      add_location(a, file$3, 69, 308, 5476);
-	      add_location(p5, file$3, 68, 6, 5164);
+	      add_location(a, file$3, 79, 308, 6300);
+	      add_location(p6, file$3, 78, 6, 5988);
 	      attr_dev(div1, "class", "collapsible-content");
-	      add_location(div1, file$3, 57, 4, 2029);
+	      add_location(div1, file$3, 67, 4, 2853);
 	      attr_dev(section0, "class", "content no-upper-margin");
-	      add_location(section0, file$3, 44, 2, 1172);
-	      add_location(p6, file$3, 74, 4, 5658);
-	      add_location(li0, file$3, 78, 6, 5822);
-	      add_location(li1, file$3, 79, 6, 5889);
-	      add_location(li2, file$3, 80, 6, 5958);
-	      attr_dev(ul, "class", "filter-list");
-	      add_location(ul, file$3, 77, 4, 5791);
+	      add_location(section0, file$3, 45, 2, 1250);
+	      add_location(p7, file$3, 84, 4, 6482);
+	      add_location(li3, file$3, 88, 6, 6646);
+	      add_location(li4, file$3, 89, 6, 6713);
+	      add_location(li5, file$3, 90, 6, 6782);
+	      attr_dev(ul1, "class", "filter-list");
+	      add_location(ul1, file$3, 87, 4, 6615);
 	      attr_dev(section1, "class", "content");
-	      add_location(section1, file$3, 73, 2, 5628);
+	      add_location(section1, file$3, 83, 2, 6452);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, section0, anchor);
@@ -36868,86 +36946,112 @@ var app = (function () {
 	      append_dev(em0, t7);
 	      append_dev(p1, t8);
 	      append_dev(p1, em1);
-	      append_dev(section0, t10);
-	      append_dev(section0, input1);
-	      append_dev(section0, t11);
-	      append_dev(section0, label1);
-	      append_dev(section0, t13);
-	      append_dev(section0, div1);
-	      append_dev(div1, p2);
+	      append_dev(div0, t10);
+	      append_dev(div0, p2);
+	      append_dev(p2, t11);
 	      append_dev(p2, em2);
-	      append_dev(p2, t15);
-	      append_dev(p2, span0);
-	      append_dev(p2, t17);
-	      append_dev(p2, span1);
-	      append_dev(p2, t19);
-	      append_dev(p2, span2);
-	      append_dev(p2, t21);
-	      append_dev(p2, span3);
-	      append_dev(p2, t23);
-	      append_dev(p2, span4);
-	      append_dev(p2, t25);
-	      append_dev(p2, span5);
-	      append_dev(p2, t27);
-	      append_dev(div1, t28);
+	      append_dev(em2, t12);
+	      append_dev(em2, t13);
+	      append_dev(p2, t14);
+	      append_dev(div0, t15);
+	      append_dev(div0, ul0);
+	      append_dev(ul0, li0);
+	      append_dev(li0, em3);
+	      append_dev(em3, t16);
+	      append_dev(em3, t17);
+	      append_dev(li0, t18);
+	      append_dev(ul0, t19);
+	      append_dev(ul0, li1);
+	      append_dev(li1, em4);
+	      append_dev(em4, t20);
+	      append_dev(em4, t21);
+	      append_dev(li1, t22);
+	      append_dev(ul0, t23);
+	      append_dev(ul0, li2);
+	      append_dev(li2, em5);
+	      append_dev(em5, t24);
+	      append_dev(em5, t25);
+	      append_dev(li2, t26);
+	      append_dev(section0, t27);
+	      append_dev(section0, input1);
+	      append_dev(section0, t28);
+	      append_dev(section0, label1);
+	      append_dev(section0, t30);
+	      append_dev(section0, div1);
 	      append_dev(div1, p3);
-	      append_dev(p3, em3);
-	      append_dev(p3, t30);
-	      append_dev(div1, t31);
+	      append_dev(p3, em6);
+	      append_dev(p3, t32);
+	      append_dev(p3, span0);
+	      append_dev(p3, t34);
+	      append_dev(p3, span1);
+	      append_dev(p3, t36);
+	      append_dev(p3, span2);
+	      append_dev(p3, t38);
+	      append_dev(p3, span3);
+	      append_dev(p3, t40);
+	      append_dev(p3, span4);
+	      append_dev(p3, t42);
+	      append_dev(p3, span5);
+	      append_dev(p3, t44);
+	      append_dev(div1, t45);
 	      append_dev(div1, p4);
-	      append_dev(p4, em4);
-	      append_dev(p4, t33);
-	      append_dev(div1, t34);
+	      append_dev(p4, em7);
+	      append_dev(p4, t47);
+	      append_dev(div1, t48);
 	      append_dev(div1, p5);
-	      append_dev(p5, em5);
-	      append_dev(p5, t36);
-	      append_dev(p5, em6);
-	      append_dev(p5, t38);
-	      append_dev(p5, a);
-	      append_dev(p5, t40);
-	      insert_dev(target, t41, anchor);
+	      append_dev(p5, em8);
+	      append_dev(p5, t50);
+	      append_dev(div1, t51);
+	      append_dev(div1, p6);
+	      append_dev(p6, em9);
+	      append_dev(p6, t53);
+	      append_dev(p6, em10);
+	      append_dev(p6, t55);
+	      append_dev(p6, a);
+	      append_dev(p6, t57);
+	      insert_dev(target, t58, anchor);
 	      insert_dev(target, section1, anchor);
-	      append_dev(section1, p6);
-	      append_dev(section1, t43);
-	      append_dev(section1, ul);
-	      append_dev(ul, li0);
-	      append_dev(ul, t45);
-	      append_dev(ul, li1);
-	      append_dev(ul, t47);
-	      append_dev(ul, li2);
+	      append_dev(section1, p7);
+	      append_dev(section1, t60);
+	      append_dev(section1, ul1);
+	      append_dev(ul1, li3);
+	      append_dev(ul1, t62);
+	      append_dev(ul1, li4);
+	      append_dev(ul1, t64);
+	      append_dev(ul1, li5);
 
 	      if (!mounted) {
 	        dispose = [listen_dev(span0, "click",
 	        /*click_handler*/
-	        ctx[2], false, false, false), action_destroyer(copytooltipable_action = copytooltipable.call(null, span0, {
+	        ctx[3], false, false, false), action_destroyer(copytooltipable_action = copytooltipable.call(null, span0, {
 	          content: "The Attribution Score is a framework of eighteen binary statements (true or false) intended to assess the credibility, objectivity, evidence, and transparency of a given case."
 	        })), listen_dev(span1, "click",
 	        /*click_handler_1*/
-	        ctx[3], false, false, false), action_destroyer(copytooltipable_action_1 = copytooltipable.call(null, span1, {
+	        ctx[4], false, false, false), action_destroyer(copytooltipable_action_1 = copytooltipable.call(null, span1, {
 	          content: "Disinformant Nation is the nation from which the case allegedly originated. This does not necessarily denote that the activity was associated with a government."
 	        })), listen_dev(span2, "click",
 	        /*click_handler_2*/
-	        ctx[4], false, false, false), action_destroyer(copytooltipable_action_2 = copytooltipable.call(null, span2, {
+	        ctx[5], false, false, false), action_destroyer(copytooltipable_action_2 = copytooltipable.call(null, span2, {
 	          content: "Platform(s) on which the case allegedly took place, divided between the open web, social media platforms, messaging platforms, and other platforms like email and forum boards."
 	        })), listen_dev(span3, "click",
 	        /*click_handler_3*/
-	        ctx[5], false, false, false), action_destroyer(copytooltipable_action_3 = copytooltipable.call(null, span3, {
+	        ctx[6], false, false, false), action_destroyer(copytooltipable_action_3 = copytooltipable.call(null, span3, {
 	          content: "Method(s) involved in both the creation and amplification of content related to the case. Sockpuppets are one method; hacking by means of data exfiltration is another."
 	        })), listen_dev(span4, "click",
 	        /*click_handler_4*/
-	        ctx[6], false, false, false), action_destroyer(copytooltipable_action_4 = copytooltipable.call(null, span4, {
+	        ctx[7], false, false, false), action_destroyer(copytooltipable_action_4 = copytooltipable.call(null, span4, {
 	          content: "Source describes the individual or entity that originated a foreign interference claim."
 	        })), listen_dev(span5, "click",
 	        /*click_handler_5*/
-	        ctx[7], false, false, false), action_destroyer(copytooltipable_action_5 = copytooltipable.call(null, span5, {
+	        ctx[8], false, false, false), action_destroyer(copytooltipable_action_5 = copytooltipable.call(null, span5, {
 	          content: "Source Category is the broad classification (e.g. Government, Technology Company) of the Source of a given case."
-	        })), listen_dev(li0, "click", self$1(
+	        })), listen_dev(li3, "click", self$1(
 	        /*click_handler_6*/
-	        ctx[8]), false, false, false), listen_dev(li1, "click", self$1(
+	        ctx[9]), false, false, false), listen_dev(li4, "click", self$1(
 	        /*click_handler_7*/
-	        ctx[9]), false, false, false), listen_dev(li2, "click", self$1(
+	        ctx[10]), false, false, false), listen_dev(li5, "click", self$1(
 	        /*click_handler_8*/
-	        ctx[10]), false, false, false)];
+	        ctx[11]), false, false, false)];
 	        mounted = true;
 	      }
 	    },
@@ -36957,10 +37061,34 @@ var app = (function () {
 	      1 && t6_value !== (t6_value =
 	      /*data*/
 	      ctx[0].length + "")) set_data_dev(t6, t6_value);
+	      if (dirty &
+	      /*$fossilDatapoints*/
+	      2 && t12_value !== (t12_value =
+	      /*$fossilDatapoints*/
+	      ctx[1].originaljurassic.length +
+	      /*$fossilDatapoints*/
+	      ctx[1].originalcretaceous.length +
+	      /*$fossilDatapoints*/
+	      ctx[1].originaltriassic.length + "")) set_data_dev(t12, t12_value);
+	      if (dirty &
+	      /*$fossilDatapoints*/
+	      2 && t16_value !== (t16_value =
+	      /*$fossilDatapoints*/
+	      ctx[1].originalcretaceous.length + "")) set_data_dev(t16, t16_value);
+	      if (dirty &
+	      /*$fossilDatapoints*/
+	      2 && t20_value !== (t20_value =
+	      /*$fossilDatapoints*/
+	      ctx[1].originaljurassic.length + "")) set_data_dev(t20, t20_value);
+	      if (dirty &
+	      /*$fossilDatapoints*/
+	      2 && t24_value !== (t24_value =
+	      /*$fossilDatapoints*/
+	      ctx[1].originaltriassic.length + "")) set_data_dev(t24, t24_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(section0);
-	      if (detaching) detach_dev(t41);
+	      if (detaching) detach_dev(t58);
 	      if (detaching) detach_dev(section1);
 	      mounted = false;
 	      run_all(dispose);
@@ -36970,7 +37098,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$2.name,
 	    type: "if",
-	    source: "(44:0) {#if (data.length > 0)}",
+	    source: "(45:0) {#if (data.length > 0 && $fossilDatapoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -36980,7 +37108,9 @@ var app = (function () {
 	  var if_block_anchor;
 	  var if_block =
 	  /*data*/
-	  ctx[0].length > 0 && create_if_block$2(ctx);
+	  ctx[0].length > 0 &&
+	  /*$fossilDatapoints*/
+	  ctx[1] && create_if_block$2(ctx);
 	  var block = {
 	    c: function create() {
 	      if (if_block) if_block.c();
@@ -36999,7 +37129,9 @@ var app = (function () {
 
 	      if (
 	      /*data*/
-	      ctx[0].length > 0) {
+	      ctx[0].length > 0 &&
+	      /*$fossilDatapoints*/
+	      ctx[1]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 	        } else {
@@ -37034,21 +37166,26 @@ var app = (function () {
 	  var $highlightCib;
 	  var $attributionScoreFilter;
 	  var $drawWrapper;
+	  var $fossilDatapoints;
 	  validate_store(highlightPolarization, "highlightPolarization");
 	  component_subscribe($$self, highlightPolarization, function ($$value) {
-	    return $$invalidate(11, $highlightPolarization = $$value);
+	    return $$invalidate(12, $highlightPolarization = $$value);
 	  });
 	  validate_store(highlightCib, "highlightCib");
 	  component_subscribe($$self, highlightCib, function ($$value) {
-	    return $$invalidate(12, $highlightCib = $$value);
+	    return $$invalidate(13, $highlightCib = $$value);
 	  });
 	  validate_store(attributionScoreFilter, "attributionScoreFilter");
 	  component_subscribe($$self, attributionScoreFilter, function ($$value) {
-	    return $$invalidate(13, $attributionScoreFilter = $$value);
+	    return $$invalidate(14, $attributionScoreFilter = $$value);
 	  });
 	  validate_store(drawWrapper, "drawWrapper");
 	  component_subscribe($$self, drawWrapper, function ($$value) {
-	    return $$invalidate(14, $drawWrapper = $$value);
+	    return $$invalidate(15, $drawWrapper = $$value);
+	  });
+	  validate_store(fossilDatapoints, "fossilDatapoints");
+	  component_subscribe($$self, fossilDatapoints, function ($$value) {
+	    return $$invalidate(1, $fossilDatapoints = $$value);
 	  });
 	  var _$$props$data = $$props.data,
 	      data = _$$props$data === void 0 ? [] : _$$props$data;
@@ -37145,6 +37282,7 @@ var app = (function () {
 	      drawWrapper: drawWrapper,
 	      copytooltipable: copytooltipable,
 	      scrollTo: scrollTo,
+	      fossilDatapoints: fossilDatapoints,
 	      data: data,
 	      commaFormat: commaFormat,
 	      tf: tf,
@@ -37152,7 +37290,8 @@ var app = (function () {
 	      $highlightPolarization: $highlightPolarization,
 	      $highlightCib: $highlightCib,
 	      $attributionScoreFilter: $attributionScoreFilter,
-	      $drawWrapper: $drawWrapper
+	      $drawWrapper: $drawWrapper,
+	      $fossilDatapoints: $fossilDatapoints
 	    };
 	  };
 
@@ -37164,7 +37303,7 @@ var app = (function () {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [data, handleApplyFilter, click_handler, click_handler_1, click_handler_2, click_handler_3, click_handler_4, click_handler_5, click_handler_6, click_handler_7, click_handler_8];
+	  return [data, $fossilDatapoints, handleApplyFilter, click_handler, click_handler_1, click_handler_2, click_handler_3, click_handler_4, click_handler_5, click_handler_6, click_handler_7, click_handler_8];
 	}
 
 	var TopVisualContent = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -38536,10 +38675,10 @@ var app = (function () {
 	  var dispose;
 	  var default_slot_template =
 	  /*$$slots*/
-	  ctx[6].default;
+	  ctx[5].default;
 	  var default_slot = create_slot(default_slot_template, ctx,
 	  /*$$scope*/
-	  ctx[5], null);
+	  ctx[4], null);
 	  var block = {
 	    c: function create() {
 	      input = element("input");
@@ -38553,22 +38692,19 @@ var app = (function () {
 	      attr_dev(input, "fossilera",
 	      /*fossilera*/
 	      ctx[2]);
-	      attr_dev(input, "eraadded",
-	      /*eraadded*/
+	      attr_dev(input, "added",
+	      /*added*/
 	      ctx[3]);
-	      attr_dev(input, "eraid",
-	      /*eraid*/
-	      ctx[4]);
 	      attr_dev(input, "class", "svelte-agwbpb");
 	      toggle_class(input, "checked",
 	      /*checked*/
 	      ctx[1]);
-	      add_location(input, file$7, 10, 0, 171);
+	      add_location(input, file$7, 10, 0, 144);
 	      attr_dev(label, "for", label_for_value = "checkbox-" +
 	      /*id*/
 	      ctx[0]);
 	      attr_dev(label, "class", "choice-entry-name svelte-agwbpb");
-	      add_location(label, file$7, 17, 0, 353);
+	      add_location(label, file$7, 16, 0, 299);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -38587,7 +38723,7 @@ var app = (function () {
 	      if (!mounted) {
 	        dispose = listen_dev(input, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[7]), false, false, true);
+	        ctx[6]), false, false, true);
 	        mounted = true;
 	      }
 	    },
@@ -38612,19 +38748,11 @@ var app = (function () {
 	      }
 
 	      if (!current || dirty &
-	      /*eraadded*/
+	      /*added*/
 	      8) {
-	        attr_dev(input, "eraadded",
-	        /*eraadded*/
+	        attr_dev(input, "added",
+	        /*added*/
 	        ctx[3]);
-	      }
-
-	      if (!current || dirty &
-	      /*eraid*/
-	      16) {
-	        attr_dev(input, "eraid",
-	        /*eraid*/
-	        ctx[4]);
 	      }
 
 	      if (dirty &
@@ -38638,10 +38766,10 @@ var app = (function () {
 	      if (default_slot) {
 	        if (default_slot.p && dirty &
 	        /*$$scope*/
-	        32) {
+	        16) {
 	          update_slot(default_slot, default_slot_template, ctx,
 	          /*$$scope*/
-	          ctx[5], dirty, null, null);
+	          ctx[4], dirty, null, null);
 	        }
 	      }
 
@@ -38687,11 +38815,9 @@ var app = (function () {
 	      checked = _$$props$checked === void 0 ? false : _$$props$checked;
 	  var _$$props$fossilera = $$props.fossilera,
 	      fossilera = _$$props$fossilera === void 0 ? "" : _$$props$fossilera;
-	  var _$$props$eraadded = $$props.eraadded,
-	      eraadded = _$$props$eraadded === void 0 ? "" : _$$props$eraadded;
-	  var _$$props$eraid = $$props.eraid,
-	      eraid = _$$props$eraid === void 0 ? "" : _$$props$eraid;
-	  var writable_props = ["id", "checked", "fossilera", "eraadded", "eraid"];
+	  var _$$props$added = $$props.added,
+	      added = _$$props$added === void 0 ? "" : _$$props$added;
+	  var writable_props = ["id", "checked", "fossilera", "added"];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<FossilCheckbox> was created with unknown prop '".concat(key, "'"));
 	  });
@@ -38708,9 +38834,8 @@ var app = (function () {
 	    if ("id" in $$props) $$invalidate(0, id = $$props.id);
 	    if ("checked" in $$props) $$invalidate(1, checked = $$props.checked);
 	    if ("fossilera" in $$props) $$invalidate(2, fossilera = $$props.fossilera);
-	    if ("eraadded" in $$props) $$invalidate(3, eraadded = $$props.eraadded);
-	    if ("eraid" in $$props) $$invalidate(4, eraid = $$props.eraid);
-	    if ("$$scope" in $$props) $$invalidate(5, $$scope = $$props.$$scope);
+	    if ("added" in $$props) $$invalidate(3, added = $$props.added);
+	    if ("$$scope" in $$props) $$invalidate(4, $$scope = $$props.$$scope);
 	  };
 
 	  $$self.$capture_state = function () {
@@ -38718,8 +38843,7 @@ var app = (function () {
 	      id: id,
 	      checked: checked,
 	      fossilera: fossilera,
-	      eraadded: eraadded,
-	      eraid: eraid
+	      added: added
 	    };
 	  };
 
@@ -38727,15 +38851,14 @@ var app = (function () {
 	    if ("id" in $$props) $$invalidate(0, id = $$props.id);
 	    if ("checked" in $$props) $$invalidate(1, checked = $$props.checked);
 	    if ("fossilera" in $$props) $$invalidate(2, fossilera = $$props.fossilera);
-	    if ("eraadded" in $$props) $$invalidate(3, eraadded = $$props.eraadded);
-	    if ("eraid" in $$props) $$invalidate(4, eraid = $$props.eraid);
+	    if ("added" in $$props) $$invalidate(3, added = $$props.added);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [id, checked, fossilera, eraadded, eraid, $$scope, $$slots, click_handler];
+	  return [id, checked, fossilera, added, $$scope, $$slots, click_handler];
 	}
 
 	var FossilCheckbox = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -38753,8 +38876,7 @@ var app = (function () {
 	      id: 0,
 	      checked: 1,
 	      fossilera: 2,
-	      eraadded: 3,
-	      eraid: 4
+	      added: 3
 	    });
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
@@ -38799,15 +38921,7 @@ var app = (function () {
 	      throw new Error("<FossilCheckbox>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 	    }
 	  }, {
-	    key: "eraadded",
-	    get: function get() {
-	      throw new Error("<FossilCheckbox>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-	    },
-	    set: function set(value) {
-	      throw new Error("<FossilCheckbox>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-	    }
-	  }, {
-	    key: "eraid",
+	    key: "added",
 	    get: function get() {
 	      throw new Error("<FossilCheckbox>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 	    },
@@ -38824,10 +38938,10 @@ var app = (function () {
 
 	function get_each_context$1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[31] = list[i];
-	  child_ctx[33] = i;
+	  child_ctx[25] = list[i];
+	  child_ctx[27] = i;
 	  return child_ctx;
-	} // (190:4) {#if (expanded)}
+	} // (152:4) {#if (expanded)}
 
 
 	function create_if_block$4(ctx) {
@@ -38855,7 +38969,7 @@ var app = (function () {
 	  var get_key = function get_key(ctx) {
 	    return (
 	      /*item*/
-	      ctx[31].id
+	      ctx[25].id
 	    );
 	  };
 
@@ -38889,18 +39003,18 @@ var app = (function () {
 	      t4 = space();
 	      if (if_block) if_block.c();
 	      attr_dev(button0, "class", "choice-controls-selectall svelte-cap7e8");
-	      add_location(button0, file$8, 192, 10, 3924);
+	      add_location(button0, file$8, 154, 10, 3108);
 	      attr_dev(button1, "class", "choice-controls-unselectall svelte-cap7e8");
-	      add_location(button1, file$8, 193, 10, 4033);
+	      add_location(button1, file$8, 155, 10, 3217);
 	      attr_dev(div0, "class", "choice-controls svelte-cap7e8");
-	      add_location(div0, file$8, 191, 8, 3884);
+	      add_location(div0, file$8, 153, 8, 3068);
 	      attr_dev(ul, "class", "choice-list svelte-cap7e8");
-	      add_location(ul, file$8, 195, 8, 4161);
+	      add_location(ul, file$8, 157, 8, 3345);
 	      attr_dev(div1, "class", "choice svelte-cap7e8");
 	      toggle_class(div1, "superior",
 	      /*superior*/
 	      ctx[4]);
-	      add_location(div1, file$8, 190, 6, 3823);
+	      add_location(div1, file$8, 152, 6, 3007);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div1, anchor);
@@ -38929,8 +39043,8 @@ var app = (function () {
 	      }
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*label, items, handleFossilClick, hideOneHitWonders*/
+	      if (dirty &
+	      /*label, items, sortConsistently, handleFossilClick, hideOneHitWonders*/
 	      2059) {
 	        var _each_value =
 	        /*items*/
@@ -38960,7 +39074,7 @@ var app = (function () {
 	        if_block = null;
 	      }
 
-	      if (dirty[0] &
+	      if (dirty &
 	      /*superior*/
 	      16) {
 	        toggle_class(div1, "superior",
@@ -39007,11 +39121,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$4.name,
 	    type: "if",
-	    source: "(190:4) {#if (expanded)}",
+	    source: "(152:4) {#if (expanded)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (198:12) {#if (!(hideOneHitWonders && item.count === 1))}
+	} // (160:12) {#if (!(hideOneHitWonders && item.count === 1))}
 
 
 	function create_if_block_2$1(ctx) {
@@ -39027,17 +39141,16 @@ var app = (function () {
 	      /*label*/
 	      ctx[1] + "-" +
 	      /*i*/
-	      ctx[33]),
+	      ctx[27]),
 	      checked:
 	      /*item*/
-	      ctx[31].added,
-	      eraadded: "true",
-	      eraid:
-	      /*i*/
-	      ctx[33],
+	      ctx[25].liveCount,
+	      added:
+	      /*item*/
+	      ctx[25].liveCount,
 	      fossilera:
 	      /*item*/
-	      ctx[31].title,
+	      ctx[25].title,
 	      $$slots: {
 	        default: [create_default_slot$1]
 	      },
@@ -39056,7 +39169,7 @@ var app = (function () {
 	      create_component(fossilcheckbox.$$.fragment);
 	      t = space();
 	      attr_dev(li, "class", "svelte-cap7e8");
-	      add_location(li, file$8, 198, 14, 4358);
+	      add_location(li, file$8, 160, 14, 3542);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, li, anchor);
@@ -39073,34 +39186,32 @@ var app = (function () {
 	    },
 	    p: function update(ctx, dirty) {
 	      var fossilcheckbox_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*label, items*/
 	      3) fossilcheckbox_changes.id = "" + (
 	      /*label*/
 	      ctx[1] + "-" +
 	      /*i*/
-	      ctx[33]);
-	      if (dirty[0] &
+	      ctx[27]);
+	      if (dirty &
 	      /*items*/
 	      1) fossilcheckbox_changes.checked =
 	      /*item*/
-	      ctx[31].added;
-	      if (dirty[0] &
+	      ctx[25].liveCount;
+	      if (dirty &
 	      /*items*/
-	      1) fossilcheckbox_changes.eraid =
-	      /*i*/
-	      ctx[33];
-	      if (dirty[0] &
+	      1) fossilcheckbox_changes.added =
+	      /*item*/
+	      ctx[25].liveCount;
+	      if (dirty &
 	      /*items*/
 	      1) fossilcheckbox_changes.fossilera =
 	      /*item*/
-	      ctx[31].title;
+	      ctx[25].title;
 
-	      if (dirty[0] &
-	      /*items*/
-	      1 | dirty[1] &
-	      /*$$scope*/
-	      8) {
+	      if (dirty &
+	      /*$$scope, items*/
+	      268435457) {
 	        fossilcheckbox_changes.$$scope = {
 	          dirty: dirty,
 	          ctx: ctx
@@ -39129,11 +39240,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$1.name,
 	    type: "if",
-	    source: "(198:12) {#if (!(hideOneHitWonders && item.count === 1))}",
+	    source: "(160:12) {#if (!(hideOneHitWonders && item.count === 1))}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (211:42) 
+	} // (172:42) 
 
 
 	function create_if_block_4$1(ctx) {
@@ -39141,7 +39252,7 @@ var app = (function () {
 	  var t0;
 	  var t1_value =
 	  /*item*/
-	  ctx[31].source + "";
+	  ctx[25].source + "";
 	  var t1;
 	  var t2;
 	  var block = {
@@ -39151,7 +39262,7 @@ var app = (function () {
 	      t1 = text(t1_value);
 	      t2 = text(")");
 	      attr_dev(span, "class", "choice-entry-source svelte-cap7e8");
-	      add_location(span, file$8, 211, 20, 4936);
+	      add_location(span, file$8, 172, 20, 4095);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
@@ -39160,11 +39271,11 @@ var app = (function () {
 	      append_dev(span, t2);
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
+	      if (dirty &
 	      /*items*/
 	      1 && t1_value !== (t1_value =
 	      /*item*/
-	      ctx[31].source + "")) set_data_dev(t1, t1_value);
+	      ctx[25].source + "")) set_data_dev(t1, t1_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(span);
@@ -39174,11 +39285,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$1.name,
 	    type: "if",
-	    source: "(211:42) ",
+	    source: "(172:42) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (209:18) {#if (item.liveCount)}
+	} // (170:18) {#if (item.liveCount)}
 
 
 	function create_if_block_3$1(ctx) {
@@ -39186,7 +39297,7 @@ var app = (function () {
 	  var t0;
 	  var t1_value =
 	  /*item*/
-	  ctx[31].liveCount + "";
+	  ctx[25].liveCount + "";
 	  var t1;
 	  var t2;
 	  var block = {
@@ -39196,7 +39307,7 @@ var app = (function () {
 	      t1 = text(t1_value);
 	      t2 = text(")");
 	      attr_dev(span, "class", "choice-entry-count svelte-cap7e8");
-	      add_location(span, file$8, 209, 20, 4814);
+	      add_location(span, file$8, 170, 20, 3973);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
@@ -39205,11 +39316,11 @@ var app = (function () {
 	      append_dev(span, t2);
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
+	      if (dirty &
 	      /*items*/
 	      1 && t1_value !== (t1_value =
 	      /*item*/
-	      ctx[31].liveCount + "")) set_data_dev(t1, t1_value);
+	      ctx[25].liveCount + "")) set_data_dev(t1, t1_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(span);
@@ -39219,18 +39330,18 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$1.name,
 	    type: "if",
-	    source: "(209:18) {#if (item.liveCount)}",
+	    source: "(170:18) {#if (item.liveCount)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (201:16) <FossilCheckbox id="{label}-{i}"                           checked={item.added}                           eraadded="true"                           eraid={i}                           fossilera={item.title}                           on:click={handleFossilClick}>
+	} // (163:16) <FossilCheckbox id="{label}-{i}"                           checked={item.liveCount}                           added={item.liveCount}                           fossilera={item.title}                           on:click={handleFossilClick}>
 
 
 	function create_default_slot$1(ctx) {
 	  var span;
 	  var t0_value =
 	  /*item*/
-	  ctx[31].title + "";
+	  ctx[25].title + "";
 	  var t0;
 	  var t1;
 	  var if_block_anchor;
@@ -39238,10 +39349,10 @@ var app = (function () {
 	  function select_block_type(ctx, dirty) {
 	    if (
 	    /*item*/
-	    ctx[31].liveCount) return create_if_block_3$1;
+	    ctx[25].liveCount) return create_if_block_3$1;
 	    if (
 	    /*item*/
-	    ctx[31].source) return create_if_block_4$1;
+	    ctx[25].source) return create_if_block_4$1;
 	  }
 
 	  var current_block_type = select_block_type(ctx);
@@ -39254,7 +39365,7 @@ var app = (function () {
 	      if (if_block) if_block.c();
 	      if_block_anchor = empty();
 	      attr_dev(span, "class", "choice-entry-name");
-	      add_location(span, file$8, 206, 18, 4700);
+	      add_location(span, file$8, 167, 18, 3859);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
@@ -39264,11 +39375,11 @@ var app = (function () {
 	      insert_dev(target, if_block_anchor, anchor);
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
+	      if (dirty &
 	      /*items*/
 	      1 && t0_value !== (t0_value =
 	      /*item*/
-	      ctx[31].title + "")) set_data_dev(t0, t0_value);
+	      ctx[25].title + "")) set_data_dev(t0, t0_value);
 
 	      if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
 	        if_block.p(ctx, dirty);
@@ -39297,11 +39408,11 @@ var app = (function () {
 	    block: block,
 	    id: create_default_slot$1.name,
 	    type: "slot",
-	    source: "(201:16) <FossilCheckbox id=\\\"{label}-{i}\\\"                           checked={item.added}                           eraadded=\\\"true\\\"                           eraid={i}                           fossilera={item.title}                           on:click={handleFossilClick}>",
+	    source: "(163:16) <FossilCheckbox id=\\\"{label}-{i}\\\"                           checked={item.liveCount}                           added={item.liveCount}                           fossilera={item.title}                           on:click={handleFossilClick}>",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (197:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
+	} // (159:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
 
 
 	function create_each_block$1(key_1, ctx) {
@@ -39312,7 +39423,7 @@ var app = (function () {
 	  /*hideOneHitWonders*/
 	  ctx[3] &&
 	  /*item*/
-	  ctx[31].count === 1) && create_if_block_2$1(ctx);
+	  ctx[25].count === 1) && create_if_block_2$1(ctx);
 	  var block = {
 	    key: key_1,
 	    first: null,
@@ -39333,11 +39444,11 @@ var app = (function () {
 	      /*hideOneHitWonders*/
 	      ctx[3] &&
 	      /*item*/
-	      ctx[31].count === 1)) {
+	      ctx[25].count === 1)) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
-	          if (dirty[0] &
+	          if (dirty &
 	          /*hideOneHitWonders, items*/
 	          9) {
 	            transition_in(if_block, 1);
@@ -39375,11 +39486,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$1.name,
 	    type: "each",
-	    source: "(197:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}",
+	    source: "(159:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (219:8) {#if (hideOneHitWonders)}
+	} // (180:8) {#if (hideOneHitWonders)}
 
 
 	function create_if_block_1$1(ctx) {
@@ -39394,7 +39505,7 @@ var app = (function () {
 	      ctx[1]);
 	      t1 = text("s with only one result in the dataset are hidden.");
 	      attr_dev(p, "class", "info svelte-cap7e8");
-	      add_location(p, file$8, 219, 10, 5165);
+	      add_location(p, file$8, 180, 10, 4324);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p, anchor);
@@ -39402,7 +39513,7 @@ var app = (function () {
 	      append_dev(p, t1);
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
+	      if (dirty &
 	      /*label*/
 	      2) set_data_dev(t0,
 	      /*label*/
@@ -39416,7 +39527,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$1.name,
 	    type: "if",
-	    source: "(219:8) {#if (hideOneHitWonders)}",
+	    source: "(180:8) {#if (hideOneHitWonders)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -39478,28 +39589,28 @@ var app = (function () {
 	      div2 = element("div");
 	      if (if_block) if_block.c();
 	      attr_dev(div0, "class", "label svelte-cap7e8");
-	      add_location(div0, file$8, 170, 2, 3155);
+	      add_location(div0, file$8, 132, 2, 2339);
 	      attr_dev(span0, "class", "selected-items-icon");
-	      add_location(span0, file$8, 174, 4, 3278);
+	      add_location(span0, file$8, 136, 4, 2462);
 	      attr_dev(span1, "class", "selected-items-text svelte-cap7e8");
-	      add_location(span1, file$8, 175, 4, 3324);
+	      add_location(span1, file$8, 137, 4, 2508);
 	      attr_dev(path, "d", "M0 0L15 0L7.5 10Z");
-	      add_location(path, file$8, 184, 8, 3693);
+	      add_location(path, file$8, 146, 8, 2877);
 	      attr_dev(svg, "width", "15");
 	      attr_dev(svg, "height", "10");
 	      attr_dev(svg, "class", "svelte-cap7e8");
 	      toggle_class(svg, "expanded",
 	      /*expanded*/
 	      ctx[6]);
-	      add_location(svg, file$8, 183, 6, 3641);
+	      add_location(svg, file$8, 145, 6, 2825);
 	      attr_dev(button, "class", "selected-items-arrow svelte-cap7e8");
-	      add_location(button, file$8, 182, 4, 3597);
+	      add_location(button, file$8, 144, 4, 2781);
 	      attr_dev(div1, "class", "selected-items svelte-cap7e8");
-	      add_location(div1, file$8, 173, 2, 3198);
+	      add_location(div1, file$8, 135, 2, 2382);
 	      attr_dev(div2, "class", "choice-wrapper svelte-cap7e8");
-	      add_location(div2, file$8, 188, 2, 3767);
+	      add_location(div2, file$8, 150, 2, 2951);
 	      attr_dev(div3, "class", "dropdown svelte-cap7e8");
-	      add_location(div3, file$8, 169, 0, 3113);
+	      add_location(div3, file$8, 131, 0, 2297);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39536,13 +39647,16 @@ var app = (function () {
 	        mounted = true;
 	      }
 	    },
-	    p: function update(ctx, dirty) {
-	      if (!current || dirty[0] &
+	    p: function update(ctx, _ref) {
+	      var _ref2 = _slicedToArray(_ref, 1),
+	          dirty = _ref2[0];
+
+	      if (!current || dirty &
 	      /*label*/
 	      2) set_data_dev(t1,
 	      /*label*/
 	      ctx[1]);
-	      if ((!current || dirty[0] &
+	      if ((!current || dirty &
 	      /*items, nameField*/
 	      5) && t4_value !== (t4_value = (
 	      /*items*/
@@ -39556,7 +39670,7 @@ var app = (function () {
 	      /*func_3*/
 	      ctx[15]).join(", ")) + "")) set_data_dev(t4, t4_value);
 
-	      if (dirty[0] &
+	      if (dirty &
 	      /*expanded*/
 	      64) {
 	        toggle_class(svg, "expanded",
@@ -39570,7 +39684,7 @@ var app = (function () {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
-	          if (dirty[0] &
+	          if (dirty &
 	          /*expanded*/
 	          64) {
 	            transition_in(if_block, 1);
@@ -39631,7 +39745,7 @@ var app = (function () {
 	  var $fossilDatapoints;
 	  validate_store(fossilDatapoints, "fossilDatapoints");
 	  component_subscribe($$self, fossilDatapoints, function ($$value) {
-	    return $$invalidate(24, $fossilDatapoints = $$value);
+	    return $$invalidate(18, $fossilDatapoints = $$value);
 	  });
 	  var _$$props$items = $$props.items,
 	      items = _$$props$items === void 0 ? [] : _$$props$items;
@@ -39683,44 +39797,21 @@ var app = (function () {
 	    }
 	  }
 
-	  var addjurassicValue = "Remove";
-	  var jurassicadded = true;
-	  var addtriassicValue = "Remove";
-	  var triassicadded = true;
-	  var addValue = "Remove";
-	  var added = true;
-
 	  function handleFossilClick(event, fossilEra) {
 	    var target = event.target;
 	    console.log("target: ", target);
 	    fossilEra = target.getAttribute("fossilera");
-	    var state = target.getAttribute("eraadded");
-	    var stateid = target.getAttribute("eraid");
+	    var state = target.getAttribute("added");
 
-	    if (fossilEra === "jurassic") {
-	      jurassicadded = state === "true" ? false : true;
-	      addjurassicValue = jurassicadded === true ? "Remove" : "Add";
-	    } else if (fossilEra === "triassic") {
-	      triassicadded = state === "true" ? false : true;
-	      addtriassicValue = triassicadded === true ? "Remove" : "Add";
-	    } else {
-	      added = state === "true" ? "false" : "true";
-	      addValue = added === "true" ? "Remove" : "Add";
-	    }
-
-	    if (state === "false") {
+	    if (state === "false" || state === "0") {
 	      addFossils(fossilEra);
-	      target.setAttribute("eraadded", "true");
 	      target.classList.add("checked");
 	    } else {
 	      removeFossils(fossilEra);
-	      target.setAttribute("eraadded", "false");
 	      target.classList.remove("checked");
-	    } // console.log('state: ', state)
-
+	    }
 
 	    console.log("items: ", items);
-	    $$invalidate(0, items[stateid].added = state, items);
 	  }
 
 	  function removeFossils(fossilEra) {
@@ -39817,12 +39908,6 @@ var app = (function () {
 	      unselectAll: unselectAll,
 	      handleDropdownClick: handleDropdownClick,
 	      handleChoiceClick: handleChoiceClick,
-	      addjurassicValue: addjurassicValue,
-	      jurassicadded: jurassicadded,
-	      addtriassicValue: addtriassicValue,
-	      triassicadded: triassicadded,
-	      addValue: addValue,
-	      added: added,
 	      handleFossilClick: handleFossilClick,
 	      removeFossils: removeFossils,
 	      addFossils: addFossils,
@@ -39839,12 +39924,6 @@ var app = (function () {
 	    if ("superior" in $$props) $$invalidate(4, superior = $$props.superior);
 	    if ("elem" in $$props) $$invalidate(5, elem = $$props.elem);
 	    if ("expanded" in $$props) $$invalidate(6, expanded = $$props.expanded);
-	    if ("addjurassicValue" in $$props) addjurassicValue = $$props.addjurassicValue;
-	    if ("jurassicadded" in $$props) jurassicadded = $$props.jurassicadded;
-	    if ("addtriassicValue" in $$props) addtriassicValue = $$props.addtriassicValue;
-	    if ("triassicadded" in $$props) triassicadded = $$props.triassicadded;
-	    if ("addValue" in $$props) addValue = $$props.addValue;
-	    if ("added" in $$props) added = $$props.added;
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -39871,7 +39950,7 @@ var app = (function () {
 	      nameField: 2,
 	      hideOneHitWonders: 3,
 	      superior: 4
-	    }, [-1, -1]);
+	    });
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
 	      tagName: "Fossildropdown",
@@ -40953,7 +41032,7 @@ var app = (function () {
 	  return SearchText;
 	}(SvelteComponentDev);
 
-	var file$b = "src/components/CheckboxPanel.svelte"; // (27:4) <Checkbox id="checkboxpanel-checkbox-polarization"               checked={$highlightPolarization}               on:click={() => handleClick('polarization')}>
+	var file$b = "src/components/CheckboxPanel.svelte"; // (21:4) <Checkbox id="checkboxpanel-checkbox-controlsFilter"               checked={$controlsFilter}               on:click={handleClick}              >
 
 	function create_default_slot$2(ctx) {
 	  var span;
@@ -40963,16 +41042,16 @@ var app = (function () {
 	  var block = {
 	    c: function create() {
 	      span = element("span");
-	      span.textContent = "Hidden Data Filter";
+	      span.textContent = "Show/Hide Filters";
 	      attr_dev(span, "class", "svelte-1f42r7e");
-	      add_location(span, file$b, 29, 6, 798);
+	      add_location(span, file$b, 24, 6, 646);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
 
 	      if (!mounted) {
 	        dispose = action_destroyer(copytooltipable_action = copytooltipable.call(null, span, {
-	          content: "Polarization filter.",
+	          content: "Toggles filter visibility.",
 	          showClickMessage: false
 	        }));
 	        mounted = true;
@@ -40989,7 +41068,7 @@ var app = (function () {
 	    block: block,
 	    id: create_default_slot$2.name,
 	    type: "slot",
-	    source: "(27:4) <Checkbox id=\\\"checkboxpanel-checkbox-polarization\\\"               checked={$highlightPolarization}               on:click={() => handleClick('polarization')}>",
+	    source: "(21:4) <Checkbox id=\\\"checkboxpanel-checkbox-controlsFilter\\\"               checked={$controlsFilter}               on:click={handleClick}              >",
 	    ctx: ctx
 	  });
 	  return block;
@@ -40997,17 +41076,14 @@ var app = (function () {
 
 	function create_fragment$b(ctx) {
 	  var ul;
-	  var li0;
+	  var li;
 	  var checkbox;
-	  var t;
-	  var li1;
-	  var slider;
 	  var current;
 	  checkbox = new Checkbox({
 	    props: {
-	      id: "checkboxpanel-checkbox-polarization",
+	      id: "checkboxpanel-checkbox-controlsFilter",
 	      checked:
-	      /*$highlightPolarization*/
+	      /*$controlsFilter*/
 	      ctx[0],
 	      $$slots: {
 	        default: [create_default_slot$2]
@@ -41019,63 +41095,25 @@ var app = (function () {
 	    $$inline: true
 	  });
 	  checkbox.$on("click",
-	  /*click_handler*/
-	  ctx[4]);
-	  slider = new Slider({
-	    props: {
-	      value:
-	      /*$polarizationFilter*/
-	      ctx[1],
-	      lockInMode: false,
-	      showLabel: false,
-	      min: polarizationDef[0],
-	      max: polarizationDef[1],
-	      showHandleLabels: false,
-	      barOpacity: 0.7,
-	      startColor:
-	      /*$polarizationScale*/
-	      ctx[2](polarizationDef[0]),
-	      middleColor:
-	      /*$polarizationScale*/
-	      ctx[2](0),
-	      stopColor:
-	      /*$polarizationScale*/
-	      ctx[2](polarizationDef[1]),
-	      showBorder: false
-	    },
-	    $$inline: true
-	  });
-	  slider.$on("changed",
-	  /*changed_handler*/
-	  ctx[5]);
+	  /*handleClick*/
+	  ctx[1]);
 	  var block = {
 	    c: function create() {
 	      ul = element("ul");
-	      li0 = element("li");
+	      li = element("li");
 	      create_component(checkbox.$$.fragment);
-	      t = space();
-	      li1 = element("li");
-	      create_component(slider.$$.fragment);
-	      attr_dev(li0, "class", "svelte-1f42r7e");
-	      add_location(li0, file$b, 25, 2, 625);
-	      attr_dev(li1, "class", "polarization-slider svelte-1f42r7e");
-	      toggle_class(li1, "hide", !
-	      /*$highlightPolarization*/
-	      ctx[0]);
-	      add_location(li1, file$b, 34, 2, 953);
+	      attr_dev(li, "class", "svelte-1f42r7e");
+	      add_location(li, file$b, 19, 2, 486);
 	      attr_dev(ul, "class", "checkboxpanel-wrapper svelte-1f42r7e");
-	      add_location(ul, file$b, 24, 0, 588);
+	      add_location(ul, file$b, 18, 0, 449);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, ul, anchor);
-	      append_dev(ul, li0);
-	      mount_component(checkbox, li0, null);
-	      append_dev(ul, t);
-	      append_dev(ul, li1);
-	      mount_component(slider, li1, null);
+	      append_dev(ul, li);
+	      mount_component(checkbox, li, null);
 	      current = true;
 	    },
 	    p: function update(ctx, _ref) {
@@ -41084,14 +41122,14 @@ var app = (function () {
 
 	      var checkbox_changes = {};
 	      if (dirty &
-	      /*$highlightPolarization*/
+	      /*$controlsFilter*/
 	      1) checkbox_changes.checked =
-	      /*$highlightPolarization*/
+	      /*$controlsFilter*/
 	      ctx[0];
 
 	      if (dirty &
 	      /*$$scope*/
-	      128) {
+	      4) {
 	        checkbox_changes.$$scope = {
 	          dirty: dirty,
 	          ctx: ctx
@@ -41099,52 +41137,19 @@ var app = (function () {
 	      }
 
 	      checkbox.$set(checkbox_changes);
-	      var slider_changes = {};
-	      if (dirty &
-	      /*$polarizationFilter*/
-	      2) slider_changes.value =
-	      /*$polarizationFilter*/
-	      ctx[1];
-	      if (dirty &
-	      /*$polarizationScale*/
-	      4) slider_changes.startColor =
-	      /*$polarizationScale*/
-	      ctx[2](polarizationDef[0]);
-	      if (dirty &
-	      /*$polarizationScale*/
-	      4) slider_changes.middleColor =
-	      /*$polarizationScale*/
-	      ctx[2](0);
-	      if (dirty &
-	      /*$polarizationScale*/
-	      4) slider_changes.stopColor =
-	      /*$polarizationScale*/
-	      ctx[2](polarizationDef[1]);
-	      slider.$set(slider_changes);
-
-	      if (dirty &
-	      /*$highlightPolarization*/
-	      1) {
-	        toggle_class(li1, "hide", !
-	        /*$highlightPolarization*/
-	        ctx[0]);
-	      }
 	    },
 	    i: function intro(local) {
 	      if (current) return;
 	      transition_in(checkbox.$$.fragment, local);
-	      transition_in(slider.$$.fragment, local);
 	      current = true;
 	    },
 	    o: function outro(local) {
 	      transition_out(checkbox.$$.fragment, local);
-	      transition_out(slider.$$.fragment, local);
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(ul);
 	      destroy_component(checkbox);
-	      destroy_component(slider);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -41158,37 +41163,14 @@ var app = (function () {
 	}
 
 	function instance$b($$self, $$props, $$invalidate) {
-	  var $highlightPolarization;
-	  var $highlightCib;
-	  var $polarizationFilter;
-	  var $polarizationScale;
-	  validate_store(highlightPolarization, "highlightPolarization");
-	  component_subscribe($$self, highlightPolarization, function ($$value) {
-	    return $$invalidate(0, $highlightPolarization = $$value);
-	  });
-	  validate_store(highlightCib, "highlightCib");
-	  component_subscribe($$self, highlightCib, function ($$value) {
-	    return $$invalidate(6, $highlightCib = $$value);
-	  });
-	  validate_store(polarizationFilter, "polarizationFilter");
-	  component_subscribe($$self, polarizationFilter, function ($$value) {
-	    return $$invalidate(1, $polarizationFilter = $$value);
-	  });
-	  validate_store(polarizationScale, "polarizationScale");
-	  component_subscribe($$self, polarizationScale, function ($$value) {
-	    return $$invalidate(2, $polarizationScale = $$value);
+	  var $controlsFilter;
+	  validate_store(controlsFilter, "controlsFilter");
+	  component_subscribe($$self, controlsFilter, function ($$value) {
+	    return $$invalidate(0, $controlsFilter = $$value);
 	  });
 
-	  function handleClick(type) {
-	    switch (type) {
-	      case "polarization":
-	        set_store_value(highlightPolarization, $highlightPolarization = !$highlightPolarization);
-	        break;
-
-	      case "cib":
-	        set_store_value(highlightCib, $highlightCib = !$highlightCib);
-	        break;
-	    }
+	  function handleClick() {
+	    set_store_value(controlsFilter, $controlsFilter = !$controlsFilter);
 	  }
 
 	  var writable_props = [];
@@ -41200,18 +41182,11 @@ var app = (function () {
 	      $$scope = $$props.$$scope;
 	  validate_slots("CheckboxPanel", $$slots, []);
 
-	  var click_handler = function click_handler() {
-	    return handleClick("polarization");
-	  };
-
-	  var changed_handler = function changed_handler(e) {
-	    return set_store_value(polarizationFilter, $polarizationFilter = e.detail);
-	  };
-
 	  $$self.$capture_state = function () {
 	    return {
 	      highlightPolarization: highlightPolarization,
 	      highlightCib: highlightCib,
+	      controlsFilter: controlsFilter,
 	      polarizationFilter: polarizationFilter,
 	      polarizationDef: polarizationDef,
 	      polarizationScale: polarizationScale,
@@ -41219,14 +41194,11 @@ var app = (function () {
 	      Checkbox: Checkbox,
 	      Slider: Slider,
 	      handleClick: handleClick,
-	      $highlightPolarization: $highlightPolarization,
-	      $highlightCib: $highlightCib,
-	      $polarizationFilter: $polarizationFilter,
-	      $polarizationScale: $polarizationScale
+	      $controlsFilter: $controlsFilter
 	    };
 	  };
 
-	  return [$highlightPolarization, $polarizationFilter, $polarizationScale, handleClick, click_handler, changed_handler];
+	  return [$controlsFilter, handleClick];
 	}
 
 	var CheckboxPanel = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -44179,7 +44151,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$3 = globals.console;
-	var file$i = "src/components/Controls.svelte"; // (73:0) {#if (timePoints)}
+	var file$i = "src/components/Controls.svelte"; // (74:0) {#if (timePoints)}
 
 	function create_if_block$9(ctx) {
 	  var div3;
@@ -44207,8 +44179,6 @@ var app = (function () {
 	  var t11;
 	  var div2;
 	  var checkboxpanel;
-	  var t12;
-	  var share;
 	  var current;
 	  var mounted;
 	  var dispose;
@@ -44216,43 +44186,43 @@ var app = (function () {
 	    props: {
 	      searchString:
 	      /*$textSearchFilter*/
-	      ctx[1],
+	      ctx[2],
 	      label: "Search"
 	    },
 	    $$inline: true
 	  });
 	  searchtext.$on("change",
 	  /*change_handler*/
-	  ctx[11]);
+	  ctx[12]);
 	  searchtext.$on("reset",
 	  /*reset_handler*/
-	  ctx[12]);
+	  ctx[13]);
 	  slider = new Slider({
 	    props: {
 	      value:
 	      /*$attributionScoreFilter*/
-	      ctx[2],
+	      ctx[3],
 	      label: "Attribution Score",
 	      min: attributionScoreDef[0],
 	      max: attributionScoreDef[1],
 	      showHandleLabels: false,
 	      startColor:
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[0]),
+	      ctx[4](attributionScoreDef[0]),
 	      stopColor:
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[1])
+	      ctx[4](attributionScoreDef[1])
 	    },
 	    $$inline: true
 	  });
 	  slider.$on("changed",
 	  /*changed_handler*/
-	  ctx[13]);
+	  ctx[14]);
 	  dropdown0 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$disinformantNationFilter*/
-	      ctx[4], "disinformantNation",
+	      ctx[5], "disinformantNation",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Continent",
@@ -44262,15 +44232,15 @@ var app = (function () {
 	  });
 	  dropdown0.$on("itemsAdded",
 	  /*itemsAdded_handler*/
-	  ctx[14]);
+	  ctx[15]);
 	  dropdown0.$on("itemsRemoved",
 	  /*itemsRemoved_handler*/
-	  ctx[15]);
+	  ctx[16]);
 	  dropdown1 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$dietFilter*/
-	      ctx[5], "diet",
+	      ctx[6], "diet",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Diet"
@@ -44279,15 +44249,15 @@ var app = (function () {
 	  });
 	  dropdown1.$on("itemsAdded",
 	  /*itemsAdded_handler_1*/
-	  ctx[16]);
+	  ctx[17]);
 	  dropdown1.$on("itemsRemoved",
 	  /*itemsRemoved_handler_1*/
-	  ctx[17]);
+	  ctx[18]);
 	  dropdown2 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$timeperiodFilter*/
-	      ctx[6], "periodEra",
+	      ctx[7], "periodEra",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Time Periods",
@@ -44297,30 +44267,30 @@ var app = (function () {
 	  });
 	  dropdown2.$on("itemsAdded",
 	  /*itemsAdded_handler_2*/
-	  ctx[18]);
+	  ctx[19]);
 	  dropdown2.$on("itemsRemoved",
 	  /*itemsRemoved_handler_2*/
-	  ctx[19]);
+	  ctx[20]);
 	  var if_block =
 	  /*$fossilDatapoints*/
-	  ctx[7] && create_if_block_1$4(ctx);
+	  ctx[8] && create_if_block_1$4(ctx);
 
 	  function switch_1_value_binding(value) {
 	    /*switch_1_value_binding*/
-	    ctx[21].call(null, value);
+	    ctx[22].call(null, value);
 	  }
 
 	  var switch_1_props = {
-	    label: "Enable Pangea",
+	    label: "Toggle Pangea",
 	    design: "inner"
 	  };
 
 	  if (
 	  /*$switchValueStore*/
-	  ctx[8] !== void 0) {
+	  ctx[9] !== void 0) {
 	    switch_1_props.value =
 	    /*$switchValueStore*/
-	    ctx[8];
+	    ctx[9];
 	  }
 
 	  switch_1 = new Switch({
@@ -44331,9 +44301,6 @@ var app = (function () {
 	    return bind$1(switch_1, "value", switch_1_value_binding);
 	  });
 	  checkboxpanel = new CheckboxPanel({
-	    $$inline: true
-	  });
-	  share = new Share({
 	    $$inline: true
 	  });
 	  var block = {
@@ -44362,23 +44329,24 @@ var app = (function () {
 	      t9 = text("Pangea is ");
 	      t10 = text(
 	      /*$switchValueStore*/
-	      ctx[8]);
+	      ctx[9]);
 	      t11 = space();
 	      div2 = element("div");
 	      create_component(checkboxpanel.$$.fragment);
-	      t12 = space();
-	      create_component(share.$$.fragment);
-	      attr_dev(button, "class", "reset-filters svelte-5sdzpo");
-	      add_location(button, file$i, 130, 7, 4897);
-	      add_location(p, file$i, 145, 10, 5347);
-	      attr_dev(div0, "class", "dropdown svelte-cap7e8");
-	      add_location(div0, file$i, 143, 8, 5211);
-	      attr_dev(div1, "class", "controls svelte-5sdzpo");
-	      add_location(div1, file$i, 74, 4, 1976);
-	      attr_dev(div2, "class", "checkbox-panel svelte-5sdzpo");
-	      add_location(div2, file$i, 151, 4, 5443);
-	      attr_dev(div3, "class", "controls-inner-wrapper svelte-5sdzpo");
-	      add_location(div3, file$i, 73, 2, 1935);
+	      attr_dev(button, "class", "reset-filters svelte-8kbhwc");
+	      add_location(button, file$i, 131, 7, 4951);
+	      add_location(p, file$i, 148, 10, 5407);
+	      attr_dev(div0, "class", "dropdown pangea-switch svelte-8kbhwc");
+	      add_location(div0, file$i, 146, 8, 5271);
+	      attr_dev(div1, "class", "controls svelte-8kbhwc");
+	      toggle_class(div1, "hidden",
+	      /*$controlsFilter*/
+	      ctx[1]);
+	      add_location(div1, file$i, 75, 4, 2000);
+	      attr_dev(div2, "class", "checkbox-panel svelte-8kbhwc");
+	      add_location(div2, file$i, 156, 4, 5511);
+	      attr_dev(div3, "class", "controls-inner-wrapper svelte-8kbhwc");
+	      add_location(div3, file$i, 74, 2, 1959);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div3, anchor);
@@ -44406,14 +44374,12 @@ var app = (function () {
 	      append_dev(div3, t11);
 	      append_dev(div3, div2);
 	      mount_component(checkboxpanel, div2, null);
-	      append_dev(div2, t12);
-	      mount_component(share, div2, null);
 	      current = true;
 
 	      if (!mounted) {
 	        dispose = listen_dev(button, "click",
 	        /*click_handler*/
-	        ctx[20], false, false, false);
+	        ctx[21], false, false, false);
 	        mounted = true;
 	      }
 	    },
@@ -44421,64 +44387,64 @@ var app = (function () {
 	      var searchtext_changes = {};
 	      if (dirty &
 	      /*$textSearchFilter*/
-	      2) searchtext_changes.searchString =
+	      4) searchtext_changes.searchString =
 	      /*$textSearchFilter*/
-	      ctx[1];
+	      ctx[2];
 	      searchtext.$set(searchtext_changes);
 	      var slider_changes = {};
 	      if (dirty &
 	      /*$attributionScoreFilter*/
-	      4) slider_changes.value =
+	      8) slider_changes.value =
 	      /*$attributionScoreFilter*/
-	      ctx[2];
+	      ctx[3];
 	      if (dirty &
 	      /*$attributionScoreScale*/
-	      8) slider_changes.startColor =
+	      16) slider_changes.startColor =
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[0]);
+	      ctx[4](attributionScoreDef[0]);
 	      if (dirty &
 	      /*$attributionScoreScale*/
-	      8) slider_changes.stopColor =
+	      16) slider_changes.stopColor =
 	      /*$attributionScoreScale*/
-	      ctx[3](attributionScoreDef[1]);
+	      ctx[4](attributionScoreDef[1]);
 	      slider.$set(slider_changes);
 	      var dropdown0_changes = {};
 	      if (dirty &
 	      /*$disinformantNationFilter, timePoints*/
-	      17) dropdown0_changes.items = addCount(
+	      33) dropdown0_changes.items = addCount(
 	      /*$disinformantNationFilter*/
-	      ctx[4], "disinformantNation",
+	      ctx[5], "disinformantNation",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown0.$set(dropdown0_changes);
 	      var dropdown1_changes = {};
 	      if (dirty &
 	      /*$dietFilter, timePoints*/
-	      33) dropdown1_changes.items = addCount(
+	      65) dropdown1_changes.items = addCount(
 	      /*$dietFilter*/
-	      ctx[5], "diet",
+	      ctx[6], "diet",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown1.$set(dropdown1_changes);
 	      var dropdown2_changes = {};
 	      if (dirty &
 	      /*$timeperiodFilter, timePoints*/
-	      65) dropdown2_changes.items = addCount(
+	      129) dropdown2_changes.items = addCount(
 	      /*$timeperiodFilter*/
-	      ctx[6], "periodEra",
+	      ctx[7], "periodEra",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown2.$set(dropdown2_changes);
 
 	      if (
 	      /*$fossilDatapoints*/
-	      ctx[7]) {
+	      ctx[8]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
 	          if (dirty &
 	          /*$fossilDatapoints*/
-	          128) {
+	          256) {
 	            transition_in(if_block, 1);
 	          }
 	        } else {
@@ -44499,11 +44465,11 @@ var app = (function () {
 
 	      if (!updating_value && dirty &
 	      /*$switchValueStore*/
-	      256) {
+	      512) {
 	        updating_value = true;
 	        switch_1_changes.value =
 	        /*$switchValueStore*/
-	        ctx[8];
+	        ctx[9];
 	        add_flush_callback(function () {
 	          return updating_value = false;
 	        });
@@ -44512,9 +44478,17 @@ var app = (function () {
 	      switch_1.$set(switch_1_changes);
 	      if (!current || dirty &
 	      /*$switchValueStore*/
-	      256) set_data_dev(t10,
+	      512) set_data_dev(t10,
 	      /*$switchValueStore*/
-	      ctx[8]);
+	      ctx[9]);
+
+	      if (dirty &
+	      /*$controlsFilter*/
+	      2) {
+	        toggle_class(div1, "hidden",
+	        /*$controlsFilter*/
+	        ctx[1]);
+	      }
 	    },
 	    i: function intro(local) {
 	      if (current) return;
@@ -44526,7 +44500,6 @@ var app = (function () {
 	      transition_in(if_block);
 	      transition_in(switch_1.$$.fragment, local);
 	      transition_in(checkboxpanel.$$.fragment, local);
-	      transition_in(share.$$.fragment, local);
 	      current = true;
 	    },
 	    o: function outro(local) {
@@ -44538,7 +44511,6 @@ var app = (function () {
 	      transition_out(if_block);
 	      transition_out(switch_1.$$.fragment, local);
 	      transition_out(checkboxpanel.$$.fragment, local);
-	      transition_out(share.$$.fragment, local);
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
@@ -44551,7 +44523,6 @@ var app = (function () {
 	      if (if_block) if_block.d();
 	      destroy_component(switch_1);
 	      destroy_component(checkboxpanel);
-	      destroy_component(share);
 	      mounted = false;
 	      dispose();
 	    }
@@ -44560,11 +44531,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$9.name,
 	    type: "if",
-	    source: "(73:0) {#if (timePoints)}",
+	    source: "(74:0) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (137:8) {#if ($fossilDatapoints)}
+	} // (140:8) {#if ($fossilDatapoints)}
 
 
 	function create_if_block_1$4(ctx) {
@@ -44574,9 +44545,9 @@ var app = (function () {
 	    props: {
 	      items: fossilCount(
 	      /*fossilFilter*/
-	      ctx[9],
+	      ctx[10],
 	      /*$fossilDatapoints*/
-	      ctx[7]),
+	      ctx[8]),
 	      label: "Fossil Datapoints"
 	    },
 	    $$inline: true
@@ -44593,11 +44564,11 @@ var app = (function () {
 	      var fossildropdown_changes = {};
 	      if (dirty &
 	      /*$fossilDatapoints*/
-	      128) fossildropdown_changes.items = fossilCount(
+	      256) fossildropdown_changes.items = fossilCount(
 	      /*fossilFilter*/
-	      ctx[9],
+	      ctx[10],
 	      /*$fossilDatapoints*/
-	      ctx[7]);
+	      ctx[8]);
 	      fossildropdown.$set(fossildropdown_changes);
 	    },
 	    i: function intro(local) {
@@ -44617,7 +44588,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$4.name,
 	    type: "if",
-	    source: "(137:8) {#if ($fossilDatapoints)}",
+	    source: "(140:8) {#if ($fossilDatapoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -44721,7 +44692,7 @@ var app = (function () {
 	    return {
 	      id: i,
 	      title: filter[i],
-	      added: true,
+	      //   added: 'true',
 	      count: filter.length,
 	      liveCount: dataPoints[d].length
 	    };
@@ -44733,6 +44704,7 @@ var app = (function () {
 	  var $highlightCib;
 	  var $originalTimeDomain;
 	  var $timeScale;
+	  var $controlsFilter;
 	  var $textSearchFilter;
 	  var $attributionScoreFilter;
 	  var $attributionScoreScale;
@@ -44743,51 +44715,55 @@ var app = (function () {
 	  var $switchValueStore;
 	  validate_store(highlightPolarization, "highlightPolarization");
 	  component_subscribe($$self, highlightPolarization, function ($$value) {
-	    return $$invalidate(22, $highlightPolarization = $$value);
+	    return $$invalidate(23, $highlightPolarization = $$value);
 	  });
 	  validate_store(highlightCib, "highlightCib");
 	  component_subscribe($$self, highlightCib, function ($$value) {
-	    return $$invalidate(23, $highlightCib = $$value);
+	    return $$invalidate(24, $highlightCib = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
-	    return $$invalidate(24, $originalTimeDomain = $$value);
+	    return $$invalidate(25, $originalTimeDomain = $$value);
 	  });
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(25, $timeScale = $$value);
+	    return $$invalidate(26, $timeScale = $$value);
+	  });
+	  validate_store(controlsFilter, "controlsFilter");
+	  component_subscribe($$self, controlsFilter, function ($$value) {
+	    return $$invalidate(1, $controlsFilter = $$value);
 	  });
 	  validate_store(textSearchFilter, "textSearchFilter");
 	  component_subscribe($$self, textSearchFilter, function ($$value) {
-	    return $$invalidate(1, $textSearchFilter = $$value);
+	    return $$invalidate(2, $textSearchFilter = $$value);
 	  });
 	  validate_store(attributionScoreFilter, "attributionScoreFilter");
 	  component_subscribe($$self, attributionScoreFilter, function ($$value) {
-	    return $$invalidate(2, $attributionScoreFilter = $$value);
+	    return $$invalidate(3, $attributionScoreFilter = $$value);
 	  });
 	  validate_store(attributionScoreScale, "attributionScoreScale");
 	  component_subscribe($$self, attributionScoreScale, function ($$value) {
-	    return $$invalidate(3, $attributionScoreScale = $$value);
+	    return $$invalidate(4, $attributionScoreScale = $$value);
 	  });
 	  validate_store(disinformantNationFilter, "disinformantNationFilter");
 	  component_subscribe($$self, disinformantNationFilter, function ($$value) {
-	    return $$invalidate(4, $disinformantNationFilter = $$value);
+	    return $$invalidate(5, $disinformantNationFilter = $$value);
 	  });
 	  validate_store(dietFilter, "dietFilter");
 	  component_subscribe($$self, dietFilter, function ($$value) {
-	    return $$invalidate(5, $dietFilter = $$value);
+	    return $$invalidate(6, $dietFilter = $$value);
 	  });
 	  validate_store(timeperiodFilter, "timeperiodFilter");
 	  component_subscribe($$self, timeperiodFilter, function ($$value) {
-	    return $$invalidate(6, $timeperiodFilter = $$value);
+	    return $$invalidate(7, $timeperiodFilter = $$value);
 	  });
 	  validate_store(fossilDatapoints, "fossilDatapoints");
 	  component_subscribe($$self, fossilDatapoints, function ($$value) {
-	    return $$invalidate(7, $fossilDatapoints = $$value);
+	    return $$invalidate(8, $fossilDatapoints = $$value);
 	  });
 	  validate_store(switchValueStore, "switchValueStore");
 	  component_subscribe($$self, switchValueStore, function ($$value) {
-	    return $$invalidate(8, $switchValueStore = $$value);
+	    return $$invalidate(9, $switchValueStore = $$value);
 	  });
 	  var timePoints = $$props.timePoints;
 	  var fossilFilter = ["cretaceous", "jurassic", "triassic"];
@@ -44880,6 +44856,7 @@ var app = (function () {
 	      originalTimeDomain: originalTimeDomain,
 	      highlightPolarization: highlightPolarization,
 	      highlightCib: highlightCib,
+	      controlsFilter: controlsFilter,
 	      timeScale: timeScale,
 	      attributionScoreScale: attributionScoreScale,
 	      select: select,
@@ -44901,6 +44878,7 @@ var app = (function () {
 	      $highlightCib: $highlightCib,
 	      $originalTimeDomain: $originalTimeDomain,
 	      $timeScale: $timeScale,
+	      $controlsFilter: $controlsFilter,
 	      $textSearchFilter: $textSearchFilter,
 	      $attributionScoreFilter: $attributionScoreFilter,
 	      $attributionScoreScale: $attributionScoreScale,
@@ -44914,14 +44892,14 @@ var app = (function () {
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("timePoints" in $$props) $$invalidate(0, timePoints = $$props.timePoints);
-	    if ("fossilFilter" in $$props) $$invalidate(9, fossilFilter = $$props.fossilFilter);
+	    if ("fossilFilter" in $$props) $$invalidate(10, fossilFilter = $$props.fossilFilter);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [timePoints, $textSearchFilter, $attributionScoreFilter, $attributionScoreScale, $disinformantNationFilter, $dietFilter, $timeperiodFilter, $fossilDatapoints, $switchValueStore, fossilFilter, handleButtonClick, change_handler, reset_handler, changed_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, click_handler, switch_1_value_binding];
+	  return [timePoints, $controlsFilter, $textSearchFilter, $attributionScoreFilter, $attributionScoreScale, $disinformantNationFilter, $dietFilter, $timeperiodFilter, $fossilDatapoints, $switchValueStore, fossilFilter, handleButtonClick, change_handler, reset_handler, changed_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, click_handler, switch_1_value_binding];
 	}
 
 	var Controls = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -45333,11 +45311,11 @@ var app = (function () {
 	      attr_dev(rect, "height", "20");
 	      attr_dev(rect, "rx", "3");
 	      attr_dev(rect, "ry", "3");
-	      attr_dev(rect, "class", "svelte-12b5wq1");
+	      attr_dev(rect, "class", "svelte-16ldr5n");
 	      add_location(rect, file$k, 109, 4, 2798);
-	      attr_dev(text_1, "class", "disable-select svelte-12b5wq1");
+	      attr_dev(text_1, "class", "disable-select svelte-16ldr5n");
 	      add_location(text_1, file$k, 115, 4, 2969);
-	      attr_dev(g, "class", "reset-brush svelte-12b5wq1");
+	      attr_dev(g, "class", "reset-brush svelte-16ldr5n");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$timeScale*/
 	      ctx[7].range()[0] -
@@ -45428,7 +45406,7 @@ var app = (function () {
 	      t = space();
 	      if (if_block) if_block.c();
 	      if_block_anchor = empty();
-	      attr_dev(rect0, "class", "brush-area svelte-12b5wq1");
+	      attr_dev(rect0, "class", "brush-area svelte-16ldr5n");
 	      attr_dev(rect0, "x",
 	      /*x*/
 	      ctx[0]);
@@ -45445,7 +45423,7 @@ var app = (function () {
 	      /*invisible*/
 	      ctx[6]);
 	      add_location(rect0, file$k, 87, 2, 2168);
-	      attr_dev(rect1, "class", "brush-catcher svelte-12b5wq1");
+	      attr_dev(rect1, "class", "brush-catcher svelte-16ldr5n");
 	      attr_dev(rect1, "x",
 	      /*fx*/
 	      ctx[1]);
@@ -52142,7 +52120,50 @@ var app = (function () {
 	  };
 	}
 
-	var file$v = "src/components/TimelineSpot.svelte";
+	var file$v = "src/components/TimelineSpot.svelte"; // (52:18) {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }
+
+	function create_if_block$g(ctx) {
+	  var path;
+	  var path_d_value;
+	  var block = {
+	    c: function create() {
+	      path = svg_element("path");
+	      attr_dev(path, "d", path_d_value = "M" + (
+	      /*timeScaleText*/
+	      ctx[1] ?
+	      /*timeScaleText*/
+	      ctx[1].getComputedTextLength() + 2 * offset : 0) + " 0l" + lineLength + " 0");
+	      attr_dev(path, "marker-end", "url(#arrow)");
+	      attr_dev(path, "class", "svelte-17wi8x0");
+	      add_location(path, file$v, 52, 12, 1452);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, path, anchor);
+	    },
+	    p: function update(ctx, dirty) {
+	      if (dirty &
+	      /*timeScaleText*/
+	      2 && path_d_value !== (path_d_value = "M" + (
+	      /*timeScaleText*/
+	      ctx[1] ?
+	      /*timeScaleText*/
+	      ctx[1].getComputedTextLength() + 2 * offset : 0) + " 0l" + lineLength + " 0")) {
+	        attr_dev(path, "d", path_d_value);
+	      }
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(path);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block$g.name,
+	    type: "if",
+	    source: "(52:18) {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }",
+	    ctx: ctx
+	  });
+	  return block;
+	}
 
 	function create_fragment$w(ctx) {
 	  var g2;
@@ -52151,83 +52172,66 @@ var app = (function () {
 	  var rect;
 	  var rect_width_value;
 	  var rect_class_value;
-	  var path0;
-	  var path0_d_value;
 	  var text0;
-	  var t0_value =
-	  /*spot*/
-	  ctx[0].name + "";
 	  var t0;
-	  var t1;
-	  var text0_dx_value;
 	  var text1;
-	  var t2_value =
-	  /*spot*/
-	  ctx[0].name + "";
-	  var t2;
-	  var t3;
-	  var text1_dx_value;
-	  var path1;
-	  var path1_d_value;
+	  var t1;
 	  var g0_transform_value;
 	  var spottooltipable_action;
 	  var mounted;
 	  var dispose;
+	  var if_block = (
+	  /*spot*/
+	  ctx[0].name === "Jurassic" ||
+	  /*spot*/
+	  ctx[0].name === "Triassic" ||
+	  /*spot*/
+	  ctx[0].name === "Cretaceous") && create_if_block$g(ctx);
 	  var block = {
 	    c: function create() {
 	      g2 = svg_element("g");
 	      g1 = svg_element("g");
 	      g0 = svg_element("g");
 	      rect = svg_element("rect");
-	      path0 = svg_element("path");
 	      text0 = svg_element("text");
-	      t0 = text(t0_value);
-	      t1 = text(" Era ");
+	      t0 = text(
+	      /*displayName*/
+	      ctx[2]);
 	      text1 = svg_element("text");
-	      t2 = text(t2_value);
-	      t3 = text(" Era ");
-	      path1 = svg_element("path");
+	      t1 = text(
+	      /*displayName*/
+	      ctx[2]);
+	      if (if_block) if_block.c();
 	      attr_dev(rect, "x", "0");
 	      attr_dev(rect, "y", "-20");
 	      attr_dev(rect, "width", rect_width_value =
 	      /*$x2*/
-	      ctx[3] -
+	      ctx[4] -
 	      /*$x*/
-	      ctx[2]);
+	      ctx[3]);
 	      attr_dev(rect, "height", "40");
 	      attr_dev(rect, "rx", "5");
 	      attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(
 	      /*spotName*/
-	      ctx[8]) + " svelte-1tzmtsu"));
-	      add_location(rect, file$v, 36, 12, 844);
-	      attr_dev(path0, "d", path0_d_value = "M0 0l" + lineLength + " 0");
-	      attr_dev(path0, "class", "svelte-1tzmtsu");
-	      add_location(path0, file$v, 39, 12, 939);
-	      attr_dev(text0, "class", "bg svelte-1tzmtsu");
-	      attr_dev(text0, "dx", text0_dx_value = lineLength + offset);
+	      ctx[9]) + " svelte-17wi8x0"));
+	      add_location(rect, file$v, 41, 12, 960);
+	      attr_dev(text0, "class", "bg svelte-17wi8x0");
+	      attr_dev(text0, "dx", offset);
 	      attr_dev(text0, "dy", "4");
-	      add_location(text0, file$v, 40, 12, 989);
-	      attr_dev(text1, "dx", text1_dx_value = lineLength + offset);
+	      add_location(text0, file$v, 45, 12, 1116);
+	      attr_dev(text1, "dx", offset);
 	      attr_dev(text1, "dy", "4");
-	      attr_dev(text1, "class", "svelte-1tzmtsu");
-	      add_location(text1, file$v, 43, 12, 1110);
-	      attr_dev(path1, "d", path1_d_value = "M" + (
-	      /*timeScaleText*/
-	      ctx[1] ?
-	      /*timeScaleText*/
-	      ctx[1].getComputedTextLength() + lineLength + 2 * offset : 0) + " 0l" + lineLength + " 0");
-	      attr_dev(path1, "marker-end", "url(#arrow)");
-	      attr_dev(path1, "class", "svelte-1tzmtsu");
-	      add_location(path1, file$v, 46, 12, 1246);
-	      attr_dev(g0, "class", "spot time-scale-label svelte-1tzmtsu");
+	      attr_dev(text1, "class", "svelte-17wi8x0");
+	      add_location(text1, file$v, 48, 12, 1222);
+	      attr_dev(g0, "class", "spot time-scale-label svelte-17wi8x0");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" +
 	      /*$x*/
-	      ctx[2] + " -20)");
-	      add_location(g0, file$v, 31, 0, 675);
-	      attr_dev(g1, "class", "time-scale svelte-1tzmtsu");
-	      add_location(g1, file$v, 30, 2, 652);
+	      ctx[3] + " -20)");
+	      add_location(g0, file$v, 36, 0, 791);
+	      attr_dev(g1, "class", "time-scale svelte-17wi8x0");
+	      add_location(g1, file$v, 35, 2, 768);
 	      attr_dev(g2, "class", "labels");
-	      add_location(g2, file$v, 29, 0, 631);
+	      add_location(g2, file$v, 34, 0, 747);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -52237,17 +52241,14 @@ var app = (function () {
 	      append_dev(g2, g1);
 	      append_dev(g1, g0);
 	      append_dev(g0, rect);
-	      append_dev(g0, path0);
 	      append_dev(g0, text0);
 	      append_dev(text0, t0);
-	      append_dev(text0, t1);
 	      append_dev(g0, text1);
-	      append_dev(text1, t2);
-	      append_dev(text1, t3);
+	      append_dev(text1, t1);
 	      /*text1_binding*/
 
-	      ctx[9](text1);
-	      append_dev(g0, path1);
+	      ctx[10](text1);
+	      if (if_block) if_block.m(g0, null);
 
 	      if (!mounted) {
 	        dispose = action_destroyer(spottooltipable_action = spottooltipable.call(null, g0, {
@@ -52256,10 +52257,10 @@ var app = (function () {
 	          ctx[0],
 	          target:
 	          /*$drawWrapper*/
-	          ctx[4],
+	          ctx[5],
 	          top:
 	          /*$panelHeight*/
-	          ctx[5] + 20
+	          ctx[6] + 20
 	        }));
 	        mounted = true;
 	      }
@@ -52270,55 +52271,64 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$x2, $x*/
-	      12 && rect_width_value !== (rect_width_value =
+	      24 && rect_width_value !== (rect_width_value =
 	      /*$x2*/
-	      ctx[3] -
+	      ctx[4] -
 	      /*$x*/
-	      ctx[2])) {
+	      ctx[3])) {
 	        attr_dev(rect, "width", rect_width_value);
 	      }
 
 	      if (dirty &
-	      /*spot*/
-	      1 && t0_value !== (t0_value =
-	      /*spot*/
-	      ctx[0].name + "")) set_data_dev(t0, t0_value);
+	      /*displayName*/
+	      4) set_data_dev(t0,
+	      /*displayName*/
+	      ctx[2]);
 	      if (dirty &
-	      /*spot*/
-	      1 && t2_value !== (t2_value =
-	      /*spot*/
-	      ctx[0].name + "")) set_data_dev(t2, t2_value);
+	      /*displayName*/
+	      4) set_data_dev(t1,
+	      /*displayName*/
+	      ctx[2]);
 
-	      if (dirty &
-	      /*timeScaleText*/
-	      2 && path1_d_value !== (path1_d_value = "M" + (
-	      /*timeScaleText*/
-	      ctx[1] ?
-	      /*timeScaleText*/
-	      ctx[1].getComputedTextLength() + lineLength + 2 * offset : 0) + " 0l" + lineLength + " 0")) {
-	        attr_dev(path1, "d", path1_d_value);
+	      if (
+	      /*spot*/
+	      ctx[0].name === "Jurassic" ||
+	      /*spot*/
+	      ctx[0].name === "Triassic" ||
+	      /*spot*/
+	      ctx[0].name === "Cretaceous") {
+	        if (if_block) {
+	          if_block.p(ctx, dirty);
+	        } else {
+	          if_block = create_if_block$g(ctx);
+	          if_block.c();
+	          if_block.m(g0, null);
+	        }
+	      } else if (if_block) {
+	        if_block.d(1);
+	        if_block = null;
 	      }
 
 	      if (dirty &
 	      /*$x*/
-	      4 && g0_transform_value !== (g0_transform_value = "translate(" +
+	      8 && g0_transform_value !== (g0_transform_value = "translate(" +
 	      /*$x*/
-	      ctx[2] + " -20)")) {
+	      ctx[3] + " -20)")) {
 	        attr_dev(g0, "transform", g0_transform_value);
 	      }
 
 	      if (spottooltipable_action && is_function(spottooltipable_action.update) && dirty &
 	      /*spot, $drawWrapper, $panelHeight*/
-	      49) spottooltipable_action.update.call(null, {
+	      97) spottooltipable_action.update.call(null, {
 	        data:
 	        /*spot*/
 	        ctx[0],
 	        target:
 	        /*$drawWrapper*/
-	        ctx[4],
+	        ctx[5],
 	        top:
 	        /*$panelHeight*/
-	        ctx[5] + 20
+	        ctx[6] + 20
 	      });
 	    },
 	    i: noop,
@@ -52327,7 +52337,8 @@ var app = (function () {
 	      if (detaching) detach_dev(g2);
 	      /*text1_binding*/
 
-	      ctx[9](null);
+	      ctx[10](null);
+	      if (if_block) if_block.d();
 	      mounted = false;
 	      dispose();
 	    }
@@ -52353,29 +52364,37 @@ var app = (function () {
 	  var $panelHeight;
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(10, $timeScale = $$value);
+	    return $$invalidate(11, $timeScale = $$value);
 	  });
 	  validate_store(drawWrapper, "drawWrapper");
 	  component_subscribe($$self, drawWrapper, function ($$value) {
-	    return $$invalidate(4, $drawWrapper = $$value);
+	    return $$invalidate(5, $drawWrapper = $$value);
 	  });
 	  validate_store(panelHeight, "panelHeight");
 	  component_subscribe($$self, panelHeight, function ($$value) {
-	    return $$invalidate(5, $panelHeight = $$value);
+	    return $$invalidate(6, $panelHeight = $$value);
 	  });
 	  var spot = $$props.spot;
 	  var x = createTweenedPos();
 	  validate_store(x, "x");
 	  component_subscribe($$self, x, function (value) {
-	    return $$invalidate(2, $x = value);
+	    return $$invalidate(3, $x = value);
 	  });
 	  var x2 = createTweenedPos();
 	  validate_store(x2, "x2");
 	  component_subscribe($$self, x2, function (value) {
-	    return $$invalidate(3, $x2 = value);
+	    return $$invalidate(4, $x2 = value);
 	  });
 	  var yScaleText, mapScaleText, timeScaleText;
 	  var spotName = spot.name;
+	  var displayName;
+
+	  if (spotName === "Neogene") {
+	    displayName = "Ng";
+	  } else {
+	    displayName = spotName;
+	  }
+
 	  var writable_props = ["spot"];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<TimelineSpot> was created with unknown prop '".concat(key, "'"));
@@ -52412,6 +52431,7 @@ var app = (function () {
 	      mapScaleText: mapScaleText,
 	      timeScaleText: timeScaleText,
 	      spotName: spotName,
+	      displayName: displayName,
 	      $x: $x,
 	      $timeScale: $timeScale,
 	      $x2: $x2,
@@ -52425,7 +52445,8 @@ var app = (function () {
 	    if ("yScaleText" in $$props) yScaleText = $$props.yScaleText;
 	    if ("mapScaleText" in $$props) mapScaleText = $$props.mapScaleText;
 	    if ("timeScaleText" in $$props) $$invalidate(1, timeScaleText = $$props.timeScaleText);
-	    if ("spotName" in $$props) $$invalidate(8, spotName = $$props.spotName);
+	    if ("spotName" in $$props) $$invalidate(9, spotName = $$props.spotName);
+	    if ("displayName" in $$props) $$invalidate(2, displayName = $$props.displayName);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -52435,18 +52456,18 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*$timeScale, spot*/
-	    1025) {
+	    2049) {
 	       set_store_value(x, $x = $timeScale(spot.date));
 	    }
 
 	    if ($$self.$$.dirty &
 	    /*$timeScale, spot*/
-	    1025) {
+	    2049) {
 	       set_store_value(x2, $x2 = $timeScale(spot.endDate));
 	    }
 	  };
 
-	  return [spot, timeScaleText, $x, $x2, $drawWrapper, $panelHeight, x, x2, spotName, text1_binding];
+	  return [spot, timeScaleText, displayName, $x, $x2, $drawWrapper, $panelHeight, x, x2, spotName, text1_binding];
 	}
 
 	var TimelineSpot = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -55059,7 +55080,7 @@ var app = (function () {
 
 	var file$C = "src/components/Info.svelte"; // (15:0) {#if (show && showCounter <= 2)}
 
-	function create_if_block$g(ctx) {
+	function create_if_block$h(ctx) {
 	  var div1;
 	  var div0;
 	  var t1;
@@ -55153,7 +55174,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block$g.name,
+	    id: create_if_block$h.name,
 	    type: "if",
 	    source: "(15:0) {#if (show && showCounter <= 2)}",
 	    ctx: ctx
@@ -55168,7 +55189,7 @@ var app = (function () {
 	  /*show*/
 	  ctx[3] &&
 	  /*showCounter*/
-	  ctx[2] <= 2 && create_if_block$g(ctx);
+	  ctx[2] <= 2 && create_if_block$h(ctx);
 	  var block = {
 	    c: function create() {
 	      if (if_block) if_block.c();
@@ -55200,7 +55221,7 @@ var app = (function () {
 	            transition_in(if_block, 1);
 	          }
 	        } else {
-	          if_block = create_if_block$g(ctx);
+	          if_block = create_if_block$h(ctx);
 	          if_block.c();
 	          transition_in(if_block, 1);
 	          if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -55754,7 +55775,7 @@ var app = (function () {
 	} // (84:0) {#if ($tooltip)}
 
 
-	function create_if_block$h(ctx) {
+	function create_if_block$i(ctx) {
 	  var div6;
 	  var div5;
 	  var div4;
@@ -56181,7 +56202,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block$h.name,
+	    id: create_if_block$i.name,
 	    type: "if",
 	    source: "(84:0) {#if ($tooltip)}",
 	    ctx: ctx
@@ -56585,7 +56606,7 @@ var app = (function () {
 	  var current;
 	  var if_block =
 	  /*$tooltip*/
-	  ctx[8] && create_if_block$h(ctx);
+	  ctx[8] && create_if_block$i(ctx);
 	  var block = {
 	    c: function create() {
 	      if (if_block) if_block.c();
@@ -56612,7 +56633,7 @@ var app = (function () {
 	            transition_in(if_block, 1);
 	          }
 	        } else {
-	          if_block = create_if_block$h(ctx);
+	          if_block = create_if_block$i(ctx);
 	          if_block.c();
 	          transition_in(if_block, 1);
 	          if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -57481,7 +57502,7 @@ var app = (function () {
 	} // (98:16) {#if (row[column.property] === undefined || row[column.property] === null)}
 
 
-	function create_if_block$i(ctx) {
+	function create_if_block$j(ctx) {
 	  var t_value = "" + "";
 	  var t;
 	  var block = {
@@ -57498,7 +57519,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block$i.name,
+	    id: create_if_block$j.name,
 	    type: "if",
 	    source: "(98:16) {#if (row[column.property] === undefined || row[column.property] === null)}",
 	    ctx: ctx
@@ -57521,7 +57542,7 @@ var app = (function () {
 	    /*row*/
 	    ctx[15][
 	    /*column*/
-	    ctx[18].property] === null) return create_if_block$i;
+	    ctx[18].property] === null) return create_if_block$j;
 	    if (
 	    /*column*/
 	    ctx[18].format) return create_if_block_1$7;
@@ -58137,7 +58158,7 @@ var app = (function () {
 	} // (216:6) {#if (timePoints)}
 
 
-	function create_if_block$j(ctx) {
+	function create_if_block$k(ctx) {
 	  var svg;
 	  var t0;
 	  var canvas;
@@ -58273,7 +58294,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block$j.name,
+	    id: create_if_block$k.name,
 	    type: "if",
 	    source: "(216:6) {#if (timePoints)}",
 	    ctx: ctx
@@ -58324,7 +58345,7 @@ var app = (function () {
 	  });
 	  var if_block1 =
 	  /*timePoints*/
-	  ctx[1] && create_if_block$j(ctx);
+	  ctx[1] && create_if_block$k(ctx);
 	  table = new Table({
 	    props: {
 	      timePoints:
@@ -58467,7 +58488,7 @@ var app = (function () {
 	            transition_in(if_block1, 1);
 	          }
 	        } else {
-	          if_block1 = create_if_block$j(ctx);
+	          if_block1 = create_if_block$k(ctx);
 	          if_block1.c();
 	          transition_in(if_block1, 1);
 	          if_block1.m(div1, null);
@@ -59166,7 +59187,7 @@ var app = (function () {
 	} // (15:2) {#if (width < 600)}
 
 
-	function create_if_block$k(ctx) {
+	function create_if_block$l(ctx) {
 	  var catch_1;
 	  var current;
 	  catch_1 = new Catch({
@@ -59198,7 +59219,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block$k.name,
+	    id: create_if_block$l.name,
 	    type: "if",
 	    source: "(15:2) {#if (width < 600)}",
 	    ctx: ctx
@@ -59218,7 +59239,7 @@ var app = (function () {
 	  cookiebanner = new CookieBanner({
 	    $$inline: true
 	  });
-	  var if_block_creators = [create_if_block$k, create_if_block_1$9, create_else_block$3];
+	  var if_block_creators = [create_if_block$l, create_if_block_1$9, create_else_block$3];
 	  var if_blocks = [];
 
 	  function select_block_type(ctx, dirty) {

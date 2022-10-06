@@ -50,72 +50,34 @@
     }
   }
 
-  
 
 
-
-  let addjurassicValue = 'Remove';
-  let jurassicadded = true;
-
-  let addtriassicValue = 'Remove';
-  let triassicadded = true;
-
-
-
-  let addValue = 'Remove';
-  let added = true;
-
-
-
-  function handleFossilClick(event, fossilEra) {
+function handleFossilClick(event, fossilEra) {
 
 const target = event.target
 console.log('target: ', target)
 
 fossilEra = target.getAttribute('fossilera')
-const state = target.getAttribute('eraadded')
-const stateid = target.getAttribute('eraid')
-
-
-if(fossilEra === 'jurassic'){
-      jurassicadded = state === 'true' ? false : true
-
-      addjurassicValue = jurassicadded === true ? 'Remove' : 'Add'
-    }
-    else if(fossilEra === 'triassic'){
-      triassicadded = state === 'true' ? false : true
-
-      addtriassicValue = triassicadded === true ? 'Remove' : 'Add'
-    }
-    else {
-      added = state === 'true' ? 'false' : 'true'
-
-      addValue = added === 'true' ? 'Remove' : 'Add'
-    }
+const state = target.getAttribute('added')
 
 
 
-if (state  === 'false' ){
+
+if (state  === 'false' || state  === '0' ){
   addFossils(fossilEra);
-
-
-  target.setAttribute("eraadded", "true");
   target.classList.add("checked");
 
 
 }
 else {
   removeFossils(fossilEra);
-
-  target.setAttribute("eraadded", "false");
   target.classList.remove("checked");
 
 }
 
-// console.log('state: ', state)
+
   console.log('items: ', items)
 
-  items[stateid].added = state
 
 }
 
@@ -199,9 +161,8 @@ var elements = locations.selectAll("points.arc");
               <li on:click|stopPropagation
               >
                 <FossilCheckbox id="{label}-{i}"
-                          checked={item.added}
-                          eraadded="true"
-                          eraid={i}
+                          checked={item.liveCount}
+                          added={item.liveCount}
                           fossilera={item.title}
                           on:click={handleFossilClick}>
                   <span class="choice-entry-name">{item.title}</span>

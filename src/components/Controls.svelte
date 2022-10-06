@@ -15,7 +15,8 @@
     contextData,
     originalTimeDomain,
     highlightPolarization,
-    highlightCib } from '../stores/filters';
+    highlightCib,
+    controlsFilter } from '../stores/filters';
   import { timeScale, attributionScoreScale } from '../stores/scales';
   import {select} from "d3";
   import { fossilDatapoints, switchValueStore } from '../stores/elements';
@@ -47,7 +48,7 @@
     return filter.map((d, i) => ({
       id: i,
       title: filter[i],
-      added: true,
+   //   added: 'true',
       count: filter.length,
       liveCount: dataPoints[d].length
     }));
@@ -72,7 +73,7 @@
 
 {#if (timePoints)}
   <div class="controls-inner-wrapper">
-    <div class="controls">
+    <div class="controls"class:hidden={$controlsFilter}>
       <SearchText searchString={$textSearchFilter}
                   label="Search"
                   on:change={(e) => $textSearchFilter = e.detail}
@@ -134,6 +135,8 @@
         </button>
 
 
+    
+
         {#if ($fossilDatapoints)}
         <Fossildropdown items={fossilCount(fossilFilter, $fossilDatapoints)}
                   label="Fossil Datapoints"
@@ -141,19 +144,21 @@
         {/if}
   
 
-        <div class="dropdown svelte-cap7e8">
-          <Switch bind:value={$switchValueStore} label="Enable Pangea" design="inner" />
+        <div class="dropdown pangea-switch">
+          <Switch bind:value={$switchValueStore} label="Toggle Pangea" design="inner" />
           <p>
             Pangea is {$switchValueStore}
           </p>
           </div>
+
+      
   
     </div>
     <div class="checkbox-panel">
       <CheckboxPanel />
-      <Share />
+    <!--  <Share />-->
     </div>
-    <!-- <Share /> -->
+
   </div>
 {/if}
 
@@ -224,5 +229,19 @@
   .checkbox-panel {
     display: flex;
     align-items: center;
+  }
+
+  .pangea-switch {
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-02);
+    position: relative;
+    pointer-events: all;
+    font-size: 0.75em;
+  }
+
+  .hidden {
+    display: none;
   }
 </style>

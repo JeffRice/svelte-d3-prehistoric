@@ -2,6 +2,7 @@
   import {
     highlightPolarization,
     highlightCib,
+    controlsFilter,
     polarizationFilter,
     polarizationDef } from '../stores/filters';
   import { polarizationScale } from '../stores/scales';
@@ -10,41 +11,21 @@
   import Checkbox from './Checkbox.svelte';
   import Slider from './Slider.svelte';
 
-  function handleClick(type) {
-    switch (type) {
-      case 'polarization':
-        $highlightPolarization = !$highlightPolarization;
-        break;
-      case 'cib':
-        $highlightCib = !$highlightCib;
-        break;
-    }
+  function handleClick() {
+        $controlsFilter = !$controlsFilter;
   }
 </script>
 
 <ul class="checkboxpanel-wrapper">
   <li>
-    <Checkbox id="checkboxpanel-checkbox-polarization"
-              checked={$highlightPolarization}
-              on:click={() => handleClick('polarization')}>
-      <span use:copytooltipable={{content: 'Polarization filter.', showClickMessage: false}}>
-        Hidden Data Filter
+    <Checkbox id="checkboxpanel-checkbox-controlsFilter"
+              checked={$controlsFilter}
+              on:click={handleClick}
+             >
+      <span use:copytooltipable={{content: 'Toggles filter visibility.', showClickMessage: false}}>
+        Show/Hide Filters
       </span>
     </Checkbox>
-  </li>
-  <li class="polarization-slider" class:hide={!$highlightPolarization}>
-    <Slider value={$polarizationFilter}
-            lockInMode={false}
-            showLabel={false}
-            min={polarizationDef[0]} 
-            max={polarizationDef[1]}
-            showHandleLabels={false}
-            barOpacity={0.7}
-            startColor={$polarizationScale(polarizationDef[0])}
-            middleColor={$polarizationScale(0)}
-            stopColor={$polarizationScale(polarizationDef[1])}
-            showBorder={false}
-            on:changed={(e) => $polarizationFilter = e.detail} />
   </li>
   <!-- <li>
     <Checkbox id="checkboxpanel-checkbox-cib"

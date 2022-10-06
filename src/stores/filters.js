@@ -111,3 +111,5 @@ export const caseIdFilter = writable();
 export const highlightPolarization = writable(false);
 
 export const highlightCib = writable(false);
+
+export const controlsFilter = writable(false);

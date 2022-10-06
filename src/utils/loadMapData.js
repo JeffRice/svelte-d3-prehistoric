@@ -2,7 +2,7 @@ import { countries } from '../stores/map';
 
 const loadMapData = async () => {
   const response = await fetch(
-    "mapgeo.json"
+    "pangeanamed.json"
   );
   const json = await response.json();
   console.log('json: ', json)

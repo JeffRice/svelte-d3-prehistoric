@@ -3,8 +3,8 @@
   export let id;
   export let checked = false;
   export let fossilera = '';
-  export let eraadded = '';
-  export let eraid = '';
+  export let added = '';
+
 
 </script>
 
@@ -12,8 +12,7 @@
        id="checkbox-{id}"
        class:checked
        fossilera={fossilera}
-       eraadded={eraadded}
-       eraid={eraid}
+       added={added}
        on:click|stopPropagation />
 <label for="checkbox-{id}" class="choice-entry-name">
   <slot></slot>
