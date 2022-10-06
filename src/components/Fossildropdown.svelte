@@ -83,8 +83,6 @@ else {
 
 function removeFossils(fossilEra) {
 
-// fossilEra = 'cretaceous';
-
 $fossilDatapoints[fossilEra] = [];
 reDraw();
 return $fossilDatapoints;
@@ -105,22 +103,14 @@ return $fossilDatapoints;
 
   function reDraw() {
 
-    let locations = select('#points');
-var elements = locations.selectAll("points.arc");
-
-// console.log('elements: ', elements)
+  let locations = select('#points');
+  var elements = locations.selectAll("points.arc");
 
   elements.each(function(d, i) {
-   // console.log('element: ', elements[i])
   var node = select(this);
- // console.log(d, node, i, this)
-
   this.remove();
 
   })
-
-
-// console.log("redrawing")
 
 }
 

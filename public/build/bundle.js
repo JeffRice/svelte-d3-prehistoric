@@ -38941,7 +38941,7 @@ var app = (function () {
 	  child_ctx[25] = list[i];
 	  child_ctx[27] = i;
 	  return child_ctx;
-	} // (152:4) {#if (expanded)}
+	} // (142:4) {#if (expanded)}
 
 
 	function create_if_block$4(ctx) {
@@ -39003,18 +39003,18 @@ var app = (function () {
 	      t4 = space();
 	      if (if_block) if_block.c();
 	      attr_dev(button0, "class", "choice-controls-selectall svelte-cap7e8");
-	      add_location(button0, file$8, 154, 10, 3108);
+	      add_location(button0, file$8, 144, 10, 2929);
 	      attr_dev(button1, "class", "choice-controls-unselectall svelte-cap7e8");
-	      add_location(button1, file$8, 155, 10, 3217);
+	      add_location(button1, file$8, 145, 10, 3038);
 	      attr_dev(div0, "class", "choice-controls svelte-cap7e8");
-	      add_location(div0, file$8, 153, 8, 3068);
+	      add_location(div0, file$8, 143, 8, 2889);
 	      attr_dev(ul, "class", "choice-list svelte-cap7e8");
-	      add_location(ul, file$8, 157, 8, 3345);
+	      add_location(ul, file$8, 147, 8, 3166);
 	      attr_dev(div1, "class", "choice svelte-cap7e8");
 	      toggle_class(div1, "superior",
 	      /*superior*/
 	      ctx[4]);
-	      add_location(div1, file$8, 152, 6, 3007);
+	      add_location(div1, file$8, 142, 6, 2828);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div1, anchor);
@@ -39121,11 +39121,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$4.name,
 	    type: "if",
-	    source: "(152:4) {#if (expanded)}",
+	    source: "(142:4) {#if (expanded)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (160:12) {#if (!(hideOneHitWonders && item.count === 1))}
+	} // (150:12) {#if (!(hideOneHitWonders && item.count === 1))}
 
 
 	function create_if_block_2$1(ctx) {
@@ -39169,7 +39169,7 @@ var app = (function () {
 	      create_component(fossilcheckbox.$$.fragment);
 	      t = space();
 	      attr_dev(li, "class", "svelte-cap7e8");
-	      add_location(li, file$8, 160, 14, 3542);
+	      add_location(li, file$8, 150, 14, 3363);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, li, anchor);
@@ -39240,11 +39240,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$1.name,
 	    type: "if",
-	    source: "(160:12) {#if (!(hideOneHitWonders && item.count === 1))}",
+	    source: "(150:12) {#if (!(hideOneHitWonders && item.count === 1))}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (172:42) 
+	} // (162:42) 
 
 
 	function create_if_block_4$1(ctx) {
@@ -39262,7 +39262,7 @@ var app = (function () {
 	      t1 = text(t1_value);
 	      t2 = text(")");
 	      attr_dev(span, "class", "choice-entry-source svelte-cap7e8");
-	      add_location(span, file$8, 172, 20, 4095);
+	      add_location(span, file$8, 162, 20, 3916);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
@@ -39285,11 +39285,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$1.name,
 	    type: "if",
-	    source: "(172:42) ",
+	    source: "(162:42) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (170:18) {#if (item.liveCount)}
+	} // (160:18) {#if (item.liveCount)}
 
 
 	function create_if_block_3$1(ctx) {
@@ -39307,7 +39307,7 @@ var app = (function () {
 	      t1 = text(t1_value);
 	      t2 = text(")");
 	      attr_dev(span, "class", "choice-entry-count svelte-cap7e8");
-	      add_location(span, file$8, 170, 20, 3973);
+	      add_location(span, file$8, 160, 20, 3794);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
@@ -39330,11 +39330,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$1.name,
 	    type: "if",
-	    source: "(170:18) {#if (item.liveCount)}",
+	    source: "(160:18) {#if (item.liveCount)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (163:16) <FossilCheckbox id="{label}-{i}"                           checked={item.liveCount}                           added={item.liveCount}                           fossilera={item.title}                           on:click={handleFossilClick}>
+	} // (153:16) <FossilCheckbox id="{label}-{i}"                           checked={item.liveCount}                           added={item.liveCount}                           fossilera={item.title}                           on:click={handleFossilClick}>
 
 
 	function create_default_slot$1(ctx) {
@@ -39365,7 +39365,7 @@ var app = (function () {
 	      if (if_block) if_block.c();
 	      if_block_anchor = empty();
 	      attr_dev(span, "class", "choice-entry-name");
-	      add_location(span, file$8, 167, 18, 3859);
+	      add_location(span, file$8, 157, 18, 3680);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
@@ -39408,11 +39408,11 @@ var app = (function () {
 	    block: block,
 	    id: create_default_slot$1.name,
 	    type: "slot",
-	    source: "(163:16) <FossilCheckbox id=\\\"{label}-{i}\\\"                           checked={item.liveCount}                           added={item.liveCount}                           fossilera={item.title}                           on:click={handleFossilClick}>",
+	    source: "(153:16) <FossilCheckbox id=\\\"{label}-{i}\\\"                           checked={item.liveCount}                           added={item.liveCount}                           fossilera={item.title}                           on:click={handleFossilClick}>",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (159:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
+	} // (149:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
 
 
 	function create_each_block$1(key_1, ctx) {
@@ -39486,11 +39486,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$1.name,
 	    type: "each",
-	    source: "(159:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}",
+	    source: "(149:10) {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (180:8) {#if (hideOneHitWonders)}
+	} // (170:8) {#if (hideOneHitWonders)}
 
 
 	function create_if_block_1$1(ctx) {
@@ -39505,7 +39505,7 @@ var app = (function () {
 	      ctx[1]);
 	      t1 = text("s with only one result in the dataset are hidden.");
 	      attr_dev(p, "class", "info svelte-cap7e8");
-	      add_location(p, file$8, 180, 10, 4324);
+	      add_location(p, file$8, 170, 10, 4145);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p, anchor);
@@ -39527,7 +39527,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$1.name,
 	    type: "if",
-	    source: "(180:8) {#if (hideOneHitWonders)}",
+	    source: "(170:8) {#if (hideOneHitWonders)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -39589,28 +39589,28 @@ var app = (function () {
 	      div2 = element("div");
 	      if (if_block) if_block.c();
 	      attr_dev(div0, "class", "label svelte-cap7e8");
-	      add_location(div0, file$8, 132, 2, 2339);
+	      add_location(div0, file$8, 122, 2, 2160);
 	      attr_dev(span0, "class", "selected-items-icon");
-	      add_location(span0, file$8, 136, 4, 2462);
+	      add_location(span0, file$8, 126, 4, 2283);
 	      attr_dev(span1, "class", "selected-items-text svelte-cap7e8");
-	      add_location(span1, file$8, 137, 4, 2508);
+	      add_location(span1, file$8, 127, 4, 2329);
 	      attr_dev(path, "d", "M0 0L15 0L7.5 10Z");
-	      add_location(path, file$8, 146, 8, 2877);
+	      add_location(path, file$8, 136, 8, 2698);
 	      attr_dev(svg, "width", "15");
 	      attr_dev(svg, "height", "10");
 	      attr_dev(svg, "class", "svelte-cap7e8");
 	      toggle_class(svg, "expanded",
 	      /*expanded*/
 	      ctx[6]);
-	      add_location(svg, file$8, 145, 6, 2825);
+	      add_location(svg, file$8, 135, 6, 2646);
 	      attr_dev(button, "class", "selected-items-arrow svelte-cap7e8");
-	      add_location(button, file$8, 144, 4, 2781);
+	      add_location(button, file$8, 134, 4, 2602);
 	      attr_dev(div1, "class", "selected-items svelte-cap7e8");
-	      add_location(div1, file$8, 135, 2, 2382);
+	      add_location(div1, file$8, 125, 2, 2203);
 	      attr_dev(div2, "class", "choice-wrapper svelte-cap7e8");
-	      add_location(div2, file$8, 150, 2, 2951);
+	      add_location(div2, file$8, 140, 2, 2772);
 	      attr_dev(div3, "class", "dropdown svelte-cap7e8");
-	      add_location(div3, file$8, 131, 0, 2297);
+	      add_location(div3, file$8, 121, 0, 2118);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -39815,7 +39815,6 @@ var app = (function () {
 	  }
 
 	  function removeFossils(fossilEra) {
-	    // fossilEra = 'cretaceous';
 	    set_store_value(fossilDatapoints, $fossilDatapoints[fossilEra] = [], $fossilDatapoints);
 	    reDraw();
 	    return $fossilDatapoints;
@@ -39830,16 +39829,12 @@ var app = (function () {
 
 	  function reDraw() {
 	    var locations = select("#points");
-	    var elements = locations.selectAll("points.arc"); // console.log('elements: ', elements)
-
+	    var elements = locations.selectAll("points.arc");
 	    elements.each(function (d, i) {
-	      // console.log('element: ', elements[i])
-	      var node = select(this); // console.log(d, node, i, this)
-
+	      var node = select(this);
 	      this.remove();
 	    });
-	  } // console.log("redrawing")
-
+	  }
 
 	  var writable_props = ["items", "label", "nameField", "hideOneHitWonders", "superior"];
 	  Object.keys($$props).forEach(function (key) {
@@ -50227,7 +50222,7 @@ var app = (function () {
 	  return oneLineTrim(_templateObject3(), xOffset / 2, xOffset / 2, yOffset, xOffset, yOffset, width - xOffset, yOffset, width - xOffset / 2, yOffset, width - xOffset / 2, width, width - xOffset / 2, width - xOffset / 2, -yOffset, width - xOffset, -yOffset, xOffset, -yOffset, xOffset / 2, -yOffset, xOffset / 2);
 	};
 
-	var file$r = "src/components/SourceLink.svelte"; // (38:0) {#if (source.show)}
+	var file$r = "src/components/SourceLink.svelte"; // (50:0) {#if (source.show)}
 
 	function create_if_block$e(ctx) {
 	  var g;
@@ -50245,8 +50240,10 @@ var app = (function () {
 	      attr_dev(path, "d", path_d_value = curvyDoubleLine(
 	      /*source*/
 	      ctx[0].xCountry,
+	      /*topMargin*/
+	      ctx[9](
 	      /*source*/
-	      ctx[0].yCountry,
+	      ctx[0].yCountry),
 	      /*$tweenedPos*/
 	      ctx[4]._x,
 	      /*$tweenedPos*/
@@ -50270,7 +50267,7 @@ var app = (function () {
 	      /*$minDim*/
 	      ctx[7] / 200);
 	      attr_dev(path, "class", "svelte-11qfvcx");
-	      add_location(path, file$r, 41, 4, 1345);
+	      add_location(path, file$r, 53, 4, 1465);
 	      attr_dev(g, "class", "source-link svelte-11qfvcx");
 	      set_style(g, "opacity",
 	      /*opacity*/
@@ -50281,7 +50278,7 @@ var app = (function () {
 	      ctx[1] ||
 	      /*hovered*/
 	      ctx[2]);
-	      add_location(g, file$r, 38, 2, 1214);
+	      add_location(g, file$r, 50, 2, 1334);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -50294,8 +50291,10 @@ var app = (function () {
 	      81 && path_d_value !== (path_d_value = curvyDoubleLine(
 	      /*source*/
 	      ctx[0].xCountry,
+	      /*topMargin*/
+	      ctx[9](
 	      /*source*/
-	      ctx[0].yCountry,
+	      ctx[0].yCountry),
 	      /*$tweenedPos*/
 	      ctx[4]._x,
 	      /*$tweenedPos*/
@@ -50392,7 +50391,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$e.name,
 	    type: "if",
-	    source: "(38:0) {#if (source.show)}",
+	    source: "(50:0) {#if (source.show)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -50492,6 +50491,14 @@ var app = (function () {
 	    return $$invalidate(4, $tweenedPos = value);
 	  });
 
+	  function topMargin(point) {
+	    if (source.disNation === "Eurasia") {
+	      point = point + 100;
+	    }
+
+	    return point;
+	  }
+
 	  function setOpacity(selected, hovered, extraFaint) {
 	    if (extraFaint) return 0.2 / 3 / 2;
 	    var opacity = 0.35 / source.disinformantNation.length;
@@ -50518,7 +50525,7 @@ var app = (function () {
 	    if ("source" in $$props) $$invalidate(0, source = $$props.source);
 	    if ("selected" in $$props) $$invalidate(1, selected = $$props.selected);
 	    if ("hovered" in $$props) $$invalidate(2, hovered = $$props.hovered);
-	    if ("extraFaint" in $$props) $$invalidate(9, extraFaint = $$props.extraFaint);
+	    if ("extraFaint" in $$props) $$invalidate(10, extraFaint = $$props.extraFaint);
 	    if ("showPolarizationColor" in $$props) $$invalidate(3, showPolarizationColor = $$props.showPolarizationColor);
 	  };
 
@@ -50540,6 +50547,7 @@ var app = (function () {
 	      extraFaint: extraFaint,
 	      showPolarizationColor: showPolarizationColor,
 	      tweenedPos: tweenedPos,
+	      topMargin: topMargin,
 	      setOpacity: setOpacity,
 	      $tweenedPos: $tweenedPos,
 	      opacity: opacity,
@@ -50552,7 +50560,7 @@ var app = (function () {
 	    if ("source" in $$props) $$invalidate(0, source = $$props.source);
 	    if ("selected" in $$props) $$invalidate(1, selected = $$props.selected);
 	    if ("hovered" in $$props) $$invalidate(2, hovered = $$props.hovered);
-	    if ("extraFaint" in $$props) $$invalidate(9, extraFaint = $$props.extraFaint);
+	    if ("extraFaint" in $$props) $$invalidate(10, extraFaint = $$props.extraFaint);
 	    if ("showPolarizationColor" in $$props) $$invalidate(3, showPolarizationColor = $$props.showPolarizationColor);
 	    if ("opacity" in $$props) $$invalidate(5, opacity = $$props.opacity);
 	  };
@@ -50577,12 +50585,12 @@ var app = (function () {
 
 	    if ($$self.$$.dirty &
 	    /*selected, hovered, extraFaint*/
-	    518) {
+	    1030) {
 	       $$invalidate(5, opacity = setOpacity(selected, hovered, extraFaint));
 	    }
 	  };
 
-	  return [source, selected, hovered, showPolarizationColor, $tweenedPos, opacity, $mapHeight, $minDim, tweenedPos, extraFaint];
+	  return [source, selected, hovered, showPolarizationColor, $tweenedPos, opacity, $mapHeight, $minDim, tweenedPos, topMargin, extraFaint];
 	}
 
 	var SourceLink = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -50600,7 +50608,7 @@ var app = (function () {
 	      source: 0,
 	      selected: 1,
 	      hovered: 2,
-	      extraFaint: 9,
+	      extraFaint: 10,
 	      showPolarizationColor: 3
 	    });
 	    dispatch_dev("SvelteRegisterComponent", {
@@ -50667,7 +50675,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$5 = globals.console;
-	var file$s = "src/components/Centroid.svelte"; // (31:2) {#if (centroid.length > 0)}
+	var file$s = "src/components/Centroid.svelte"; // (47:2) {#if (centroid.length > 0)}
 
 	function create_if_block$f(ctx) {
 	  var g;
@@ -50684,14 +50692,16 @@ var app = (function () {
 	      t = text(t_value);
 	      set_style(text_1, "transition", "opacity " + growDuration + "ms ease");
 	      attr_dev(text_1, "class", "svelte-1uk1imn");
-	      add_location(text_1, file$s, 33, 6, 1324);
+	      add_location(text_1, file$s, 49, 6, 1493);
 	      attr_dev(g, "class", "centroid-label svelte-1uk1imn");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*centroid*/
 	      ctx[0][0].xCountry + " " + (
+	      /*topMargin*/
+	      ctx[5](
 	      /*centroid*/
-	      ctx[0][0].yCountry + 5) + ")");
-	      add_location(g, file$s, 32, 4, 1218);
+	      ctx[0][0].yCountry) + 5) + ")");
+	      add_location(g, file$s, 48, 4, 1376);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -50710,8 +50720,10 @@ var app = (function () {
 	      1 && g_transform_value !== (g_transform_value = "translate(" +
 	      /*centroid*/
 	      ctx[0][0].xCountry + " " + (
+	      /*topMargin*/
+	      ctx[5](
 	      /*centroid*/
-	      ctx[0][0].yCountry + 5) + ")")) {
+	      ctx[0][0].yCountry) + 5) + ")")) {
 	        attr_dev(g, "transform", g_transform_value);
 	      }
 	    },
@@ -50723,7 +50735,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$f.name,
 	    type: "if",
-	    source: "(31:2) {#if (centroid.length > 0)}",
+	    source: "(47:2) {#if (centroid.length > 0)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -50760,31 +50772,35 @@ var app = (function () {
 	      /*centroid*/
 	      ctx[0][0].xCountry);
 	      attr_dev(circle, "cy", circle_cy_value =
+	      /*topMargin*/
+	      ctx[5](
 	      /*centroid*/
-	      ctx[0][0].yCountry);
+	      ctx[0][0].yCountry));
 	      attr_dev(circle, "r", circle_r_value =
 	      /*$centroidScale*/
 	      ctx[3](
 	      /*centroid*/
 	      ctx[0].length));
-	      add_location(circle, file$s, 19, 2, 673);
+	      add_location(circle, file$s, 33, 9, 807);
 	      set_style(text_1, "transition", "opacity " + growDuration + "ms ease");
 	      attr_dev(text_1, "class", "svelte-1uk1imn");
-	      add_location(text_1, file$s, 26, 5, 1060);
+	      add_location(text_1, file$s, 42, 5, 1218);
 	      attr_dev(g0, "class", "centroid-name-label");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" + (
 	      /*centroid*/
 	      ctx[0][0].xCountry -
 	      /*country*/
 	      ctx[1].length * 4) + " " + (
+	      /*topMargin*/
+	      ctx[5](
 	      /*centroid*/
-	      ctx[0][0].yCountry + 30) + ")");
-	      add_location(g0, file$s, 25, 2, 926);
+	      ctx[0][0].yCountry) + 30) + ")");
+	      add_location(g0, file$s, 41, 2, 1073);
 	      attr_dev(g1, "class", "centroid svelte-1uk1imn");
 	      toggle_class(g1, "selected",
 	      /*selected*/
 	      ctx[2]);
-	      add_location(g1, file$s, 15, 0, 452);
+	      add_location(g1, file$s, 27, 0, 577);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -50800,9 +50816,9 @@ var app = (function () {
 	      if (!mounted) {
 	        dispose = [listen_dev(g1, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[5]), false, false, true), listen_dev(g1, "mouseover", stop_propagation(
+	        ctx[6]), false, false, true), listen_dev(g1, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
-	        ctx[6]), false, false, true)];
+	        ctx[7]), false, false, true)];
 	        mounted = true;
 	      }
 	    },
@@ -50821,8 +50837,10 @@ var app = (function () {
 	      if (dirty &
 	      /*centroid*/
 	      1 && circle_cy_value !== (circle_cy_value =
+	      /*topMargin*/
+	      ctx[5](
 	      /*centroid*/
-	      ctx[0][0].yCountry)) {
+	      ctx[0][0].yCountry))) {
 	        attr_dev(circle, "cy", circle_cy_value);
 	      }
 
@@ -50849,8 +50867,10 @@ var app = (function () {
 	      ctx[0][0].xCountry -
 	      /*country*/
 	      ctx[1].length * 4) + " " + (
+	      /*topMargin*/
+	      ctx[5](
 	      /*centroid*/
-	      ctx[0][0].yCountry + 30) + ")")) {
+	      ctx[0][0].yCountry) + 30) + ")")) {
 	        attr_dev(g0, "transform", g0_transform_value);
 	      }
 
@@ -50914,6 +50934,15 @@ var app = (function () {
 	  console.log("centroid: ", {
 	    centroid: centroid
 	  });
+
+	  function topMargin(point) {
+	    if (centroid[0].disNation === "Eurasia") {
+	      point = point + 100;
+	    }
+
+	    return point;
+	  }
+
 	  var writable_props = ["centroid", "country", "selected"];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$5.warn("<Centroid> was created with unknown prop '".concat(key, "'"));
@@ -50955,6 +50984,7 @@ var app = (function () {
 	      country: country,
 	      selected: selected,
 	      dispatch: dispatch,
+	      topMargin: topMargin,
 	      $centroidScale: $centroidScale
 	    };
 	  };
@@ -50969,7 +50999,7 @@ var app = (function () {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [centroid, country, selected, $centroidScale, dispatch, click_handler, mouseover_handler];
+	  return [centroid, country, selected, $centroidScale, dispatch, topMargin, click_handler, mouseover_handler];
 	}
 
 	var Centroid = /*#__PURE__*/function (_SvelteComponentDev) {

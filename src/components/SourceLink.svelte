@@ -16,6 +16,18 @@
 
   const tweenedPos = createTweenedPos();
 
+
+
+
+  function topMargin (point){
+    if( source.disNation === 'Eurasia' ){
+
+
+  point = point + 100
+ }
+return point
+  }
+
   function setOpacity(selected, hovered, extraFaint) {
     if (extraFaint) return 0.2 / 3 / 2;
 
@@ -40,7 +52,7 @@
      style="opacity: {opacity}; transition: all 700ms ease;"
      class:selected={selected || hovered}>
     <path d={curvyDoubleLine(source.xCountry,
-                             source.yCountry,
+                             topMargin(source.yCountry),
                              $tweenedPos._x,
                              $tweenedPos._y,
                              $tweenedPos.x,
