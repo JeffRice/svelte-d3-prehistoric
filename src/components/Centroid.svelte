@@ -35,7 +35,7 @@ return point
           style="transition: stroke-opacity {growDuration}ms ease;"
           cx={centroid[0].xCountry}
           cy={topMargin(centroid[0].yCountry)}
-          r={$centroidScale(centroid.length)}></circle>
+          r={$centroidScale(10)}></circle>
 
 
    <!-- Centroid Label -->
@@ -45,8 +45,7 @@ return point
  
   <!-- Centroid Circle with count -->
   {#if (centroid.length > 0)}
-  
-    <g class="centroid-label" transform="translate({centroid[0].xCountry} {topMargin(centroid[0].yCountry) + 5})">
+      <g class="centroid-label" transform="translate({centroid[0].xCountry} {topMargin(centroid[0].yCountry) + 5})">
       <text style="transition: opacity {growDuration}ms ease;">{centroid.filter((c) => c.show).length}</text>
     </g>
   {/if}
@@ -70,7 +69,7 @@ return point
 
   .centroid-label text {
     font-family: var(--font-02);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: bold;
     text-anchor: middle;
     fill: var(--usa-blue);

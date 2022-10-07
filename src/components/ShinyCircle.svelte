@@ -15,24 +15,24 @@
     {
       id: 2,
       className: 'reddit',
-      r: (timePoint.sizeIndex * 0.10 + timePoint.sizeIndex * 0.30 + timePoint.sizeIndex * 0.85),
+      r: (timePoint.size * 0.10 + timePoint.size * 0.30 + timePoint.size * 0.85),
     },
     {
       id: 1,
       className: 'twitter',
-      r: (timePoint.sizeIndex * 0.30 + timePoint.sizeIndex * 0.85),
+      r: (timePoint.size * 0.30 + timePoint.size * 0.85),
     },
     {
       id: 0,
       className: 'facebook',
-      r: (timePoint.sizeIndex * 0.85),
+      r: (timePoint.size * 0.85),
     }
   ]
   .map((d) => ({...d, r: d.r * sizeFactor}));
 
   console.log(timePoint);
 
-  $: sizeFactor = 1.5;
+  $: sizeFactor = 1;
 </script>
 
 <g class="shiny-circle"
@@ -44,7 +44,7 @@
     <circle class={className}
             cx="0"
             cy="0"
-            r="{r + 19.62915626416653}" />
+            r="{r }" />
   {/each}
 </g>
 

@@ -142,11 +142,13 @@
         _x: $timeScale(d.attributionDate),
         _y: $smiTotalYScale.range()[0],
         color: $attributionScoreScale(d.attributionScore),
-        rSmiTot: isNaN(d.smiTotal) || d.smiTotal === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiTotal),
-        fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(d.smiTotal),
+        size: Math.max(d.size, 15),
+        rSmiTot: isNaN(d.size) || d.size === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.size),
+        fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(Math.max(d.smiTotal, 15)),
       };
+
     })
-    .sort((a, b) => sortConsistently(a, b, 'rSmiTot', 'id'));
+    .sort((a, b) => sortConsistently(a, b, 'size', 'id'));
 
     // for some reason these definitions need to be in here and not in a gobal scope or module
     const simulation = forceSimulation()
@@ -154,14 +156,15 @@
 
     const simulationCharge = forceSimulation()
       .force('x', forceX().x(d => d._x))
-   //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 95).distanceMax(600).distanceMin(10));
-      .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
-
+   //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
+    //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
+   //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
+   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
     simulation
       .nodes(scaledData)
       .alpha(0.8)
       .tick(300);
-
+console.log(scaledData)
     // finally set the global timePoints variable
     simulationCharge
       .nodes(scaledData)

@@ -34,14 +34,14 @@
     <circle class="glow"
             cx="0"
             cy="0"
-            r={timePoint.sizeIndex * 0.75}
+            r={timePoint.size}
             ></circle>
             
   {/if}
   <circle class="balloon-main"
           cx="0"
           cy="0"
-          r={timePoint.sizeIndex * 1.25}
+          r={timePoint.size * 0.75}
           filter="url(#{timePoint.image_location}_image)"
          ></circle>
           
@@ -49,7 +49,7 @@
           class:smi-pending={timePoint.smiPending}
           cx="0"
           cy="0"
-          r={timePoint.sizeIndex * 1.2}></circle>-->
+          r={timePoint.size * 1.2}></circle>-->
 </g>
 
 <style>

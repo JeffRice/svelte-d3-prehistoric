@@ -8,14 +8,15 @@
   import { format } from 'd3';
 
   const commaFormat = format(',');
-  const rTicks = [500000, 100000, 0];
+  const rTicks = [$smiTotalRScale(400), $smiTotalRScale(50), $smiTotalRScale(0)];
+
 </script>
 
 <g class="legend"
-   transform="translate({20 + $timeScale.range()[0] - $margin.left / 1.5 + $smiTotalRScale(rTicks[0])} {$smiTotalYScale.range()[1] - 20})">
+   transform="translate({20 + $timeScale.range()[0] - $margin.left / 1.5 + $smiTotalRScale(rTicks[0])} {$smiTotalYScale.range()[1] - 80})">
   <text transform="translate({-$smiTotalRScale(rTicks[0]) - 20} {$smiTotalRScale(rTicks.slice(-1)[0])}) rotate(270)"
         dy="4">
-    Dino Size
+    Size in feet
   </text>
   <g class="total-r-scale" transform="translate(0 {-2 * $smiTotalRScale(rTicks.slice(-1)[0])})">
     {#each rTicks as tick, i}
@@ -25,7 +26,7 @@
             y2={$smiTotalRScale(rTicks[0]) - 2 * $smiTotalRScale(tick)}></line>
       <text class="tick"
             transform="translate({$smiTotalRScale(rTicks[0]) + 18} {$smiTotalRScale(rTicks[0]) - 2 * $smiTotalRScale(tick)})">
-        {commaFormat(tick)}
+        {commaFormat(tick.toFixed(0))}
       </text>
       <circle cx="0"
               cy={$smiTotalRScale(rTicks[0]) - $smiTotalRScale(tick)}

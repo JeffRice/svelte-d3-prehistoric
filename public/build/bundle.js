@@ -35282,14 +35282,17 @@ var app = (function () {
 	          case 0:
 	            _context.next = 2;
 	            return csv$1(data$1, function (d, i) {
-	              var smiTotal = d.total_engagement === '' ? Number.NaN : +d.total_engagement;
+	              var smiTotal = d.size === '' ? Number.NaN : +d.size;
 	              var source = d.source_for_display !== '' ? d.source_for_display : d.source;
+	              var sizeTotal = d.size === '' ? Number.NaN : +d.size;
 	              return {
 	                id: i,
 	                diet: d.diet,
 	                image_location: d.image_location,
 	                periodEra: d.case_hash,
 	                sizeIndex: d.size_index,
+	                //     size: d.size,
+	                size: Math.max(d.size, 15),
 	                // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                source: splitString(source),
@@ -45778,8 +45781,8 @@ var app = (function () {
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", circle_r_value =
 	      /*r*/
-	      ctx[8] + 19.62915626416653);
-	      add_location(circle, file$l, 43, 4, 1230);
+	      ctx[8]);
+	      add_location(circle, file$l, 43, 4, 1198);
 	      this.first = circle;
 	    },
 	    m: function mount(target, anchor) {
@@ -45798,7 +45801,7 @@ var app = (function () {
 	      /*sortedRadii*/
 	      16 && circle_r_value !== (circle_r_value =
 	      /*r*/
-	      ctx[8] + 19.62915626416653)) {
+	      ctx[8])) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 	    },
@@ -45863,7 +45866,7 @@ var app = (function () {
 	      ctx[2] ||
 	      /*hovered*/
 	      ctx[3]);
-	      add_location(g, file$l, 37, 0, 877);
+	      add_location(g, file$l, 37, 0, 845);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -46027,15 +46030,15 @@ var app = (function () {
 	       if (timePoint) $$invalidate(4, sortedRadii = [{
 	        id: 2,
 	        className: "reddit",
-	        r: timePoint.sizeIndex * 0.1 + timePoint.sizeIndex * 0.3 + timePoint.sizeIndex * 0.85
+	        r: timePoint.size * 0.1 + timePoint.size * 0.3 + timePoint.size * 0.85
 	      }, {
 	        id: 1,
 	        className: "twitter",
-	        r: timePoint.sizeIndex * 0.3 + timePoint.sizeIndex * 0.85
+	        r: timePoint.size * 0.3 + timePoint.size * 0.85
 	      }, {
 	        id: 0,
 	        className: "facebook",
-	        r: timePoint.sizeIndex * 0.85
+	        r: timePoint.size * 0.85
 	      }].map(function (d) {
 	        return _objectSpread2(_objectSpread2({}, d), {}, {
 	          r: d.r * sizeFactor
@@ -46044,7 +46047,7 @@ var app = (function () {
 	    }
 	  };
 
-	   $$invalidate(5, sizeFactor = 1.5);
+	   $$invalidate(5, sizeFactor = 1);
 
 	  return [timePoint, tweenedPos, selected, hovered, sortedRadii];
 	}
@@ -49048,7 +49051,7 @@ var app = (function () {
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", circle_r_value =
 	      /*timePoint*/
-	      ctx[0].sizeIndex * 0.75);
+	      ctx[0].size);
 	      add_location(circle, file$o, 33, 4, 1108);
 	    },
 	    m: function mount(target, anchor) {
@@ -49059,7 +49062,7 @@ var app = (function () {
 	      /*timePoint*/
 	      1 && circle_r_value !== (circle_r_value =
 	      /*timePoint*/
-	      ctx[0].sizeIndex * 0.75)) {
+	      ctx[0].size)) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 	    },
@@ -49101,11 +49104,11 @@ var app = (function () {
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", circle_r_value =
 	      /*timePoint*/
-	      ctx[0].sizeIndex * 1.25);
+	      ctx[0].size * 0.75);
 	      attr_dev(circle, "filter", circle_filter_value = "url(#" +
 	      /*timePoint*/
 	      ctx[0].image_location + "_image)");
-	      add_location(circle, file$o, 40, 2, 1256);
+	      add_location(circle, file$o, 40, 2, 1244);
 	      attr_dev(g, "class", "balloon svelte-yzgw9m");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*tweenedPos*/
@@ -49158,7 +49161,7 @@ var app = (function () {
 	      /*timePoint*/
 	      1 && circle_r_value !== (circle_r_value =
 	      /*timePoint*/
-	      ctx[0].sizeIndex * 1.25)) {
+	      ctx[0].size * 0.75)) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 
@@ -50691,9 +50694,9 @@ var app = (function () {
 	      text_1 = svg_element("text");
 	      t = text(t_value);
 	      set_style(text_1, "transition", "opacity " + growDuration + "ms ease");
-	      attr_dev(text_1, "class", "svelte-1uk1imn");
-	      add_location(text_1, file$s, 49, 6, 1493);
-	      attr_dev(g, "class", "centroid-label svelte-1uk1imn");
+	      attr_dev(text_1, "class", "svelte-5cofbe");
+	      add_location(text_1, file$s, 48, 6, 1479);
+	      attr_dev(g, "class", "centroid-label svelte-5cofbe");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*centroid*/
 	      ctx[0][0].xCountry + " " + (
@@ -50701,7 +50704,7 @@ var app = (function () {
 	      ctx[5](
 	      /*centroid*/
 	      ctx[0][0].yCountry) + 5) + ")");
-	      add_location(g, file$s, 48, 4, 1376);
+	      add_location(g, file$s, 47, 6, 1362);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -50766,7 +50769,7 @@ var app = (function () {
 	      /*country*/
 	      ctx[1]);
 	      if (if_block) if_block.c();
-	      attr_dev(circle, "class", "centroid-fg svelte-1uk1imn");
+	      attr_dev(circle, "class", "centroid-fg svelte-5cofbe");
 	      set_style(circle, "transition", "stroke-opacity " + growDuration + "ms ease");
 	      attr_dev(circle, "cx", circle_cx_value =
 	      /*centroid*/
@@ -50778,13 +50781,11 @@ var app = (function () {
 	      ctx[0][0].yCountry));
 	      attr_dev(circle, "r", circle_r_value =
 	      /*$centroidScale*/
-	      ctx[3](
-	      /*centroid*/
-	      ctx[0].length));
+	      ctx[3](10));
 	      add_location(circle, file$s, 33, 9, 807);
 	      set_style(text_1, "transition", "opacity " + growDuration + "ms ease");
-	      attr_dev(text_1, "class", "svelte-1uk1imn");
-	      add_location(text_1, file$s, 42, 5, 1218);
+	      attr_dev(text_1, "class", "svelte-5cofbe");
+	      add_location(text_1, file$s, 42, 5, 1205);
 	      attr_dev(g0, "class", "centroid-name-label");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" + (
 	      /*centroid*/
@@ -50795,8 +50796,8 @@ var app = (function () {
 	      ctx[5](
 	      /*centroid*/
 	      ctx[0][0].yCountry) + 30) + ")");
-	      add_location(g0, file$s, 41, 2, 1073);
-	      attr_dev(g1, "class", "centroid svelte-1uk1imn");
+	      add_location(g0, file$s, 41, 2, 1060);
+	      attr_dev(g1, "class", "centroid svelte-5cofbe");
 	      toggle_class(g1, "selected",
 	      /*selected*/
 	      ctx[2]);
@@ -50845,12 +50846,10 @@ var app = (function () {
 	      }
 
 	      if (dirty &
-	      /*$centroidScale, centroid*/
-	      9 && circle_r_value !== (circle_r_value =
 	      /*$centroidScale*/
-	      ctx[3](
-	      /*centroid*/
-	      ctx[0].length))) {
+	      8 && circle_r_value !== (circle_r_value =
+	      /*$centroidScale*/
+	      ctx[3](10))) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 
@@ -52980,7 +52979,7 @@ var app = (function () {
 	  child_ctx[6] = list[i];
 	  child_ctx[8] = i;
 	  return child_ctx;
-	} // (21:4) {#each rTicks as tick, i}
+	} // (22:4) {#each rTicks as tick, i}
 
 
 	function create_each_block$9(ctx) {
@@ -52993,7 +52992,7 @@ var app = (function () {
 	  /*commaFormat*/
 	  ctx[4](
 	  /*tick*/
-	  ctx[6]) + "";
+	  ctx[6].toFixed(0)) + "";
 	  var t;
 	  var text_1_transform_value;
 	  var circle;
@@ -53008,61 +53007,61 @@ var app = (function () {
 	      attr_dev(line, "x1", "0");
 	      attr_dev(line, "y1", line_y__value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]));
 	      attr_dev(line, "x2", line_x__value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) + 15);
 	      attr_dev(line, "y2", line_y__value_1 =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]));
 	      attr_dev(line, "class", "svelte-10o78mj");
-	      add_location(line, file$y, 21, 6, 798);
+	      add_location(line, file$y, 22, 6, 846);
 	      attr_dev(text_1, "class", "tick svelte-10o78mj");
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) + 18) + " " + (
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6])) + ")");
-	      add_location(text_1, file$y, 25, 6, 1018);
+	      add_location(text_1, file$y, 26, 6, 1066);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", circle_cy_value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) -
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]));
 	      attr_dev(circle, "r", circle_r_value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]));
 	      attr_dev(circle, "class", "svelte-10o78mj");
-	      add_location(circle, file$y, 29, 6, 1212);
+	      add_location(circle, file$y, 30, 6, 1271);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, line, anchor);
@@ -53073,13 +53072,13 @@ var app = (function () {
 	    p: function update(ctx, dirty) {
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && line_y__value !== (line_y__value =
+	      1 && line_y__value !== (line_y__value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]))) {
 	        attr_dev(line, "y1", line_y__value);
@@ -53087,9 +53086,9 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && line_x__value !== (line_x__value =
+	      1 && line_x__value !== (line_x__value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) + 15)) {
 	        attr_dev(line, "x2", line_x__value);
@@ -53097,13 +53096,13 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && line_y__value_1 !== (line_y__value_1 =
+	      1 && line_y__value_1 !== (line_y__value_1 =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]))) {
 	        attr_dev(line, "y2", line_y__value_1);
@@ -53111,17 +53110,17 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && text_1_transform_value !== (text_1_transform_value = "translate(" + (
+	      1 && text_1_transform_value !== (text_1_transform_value = "translate(" + (
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) + 18) + " " + (
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6])) + ")")) {
 	        attr_dev(text_1, "transform", text_1_transform_value);
@@ -53129,13 +53128,13 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && circle_cy_value !== (circle_cy_value =
+	      1 && circle_cy_value !== (circle_cy_value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) -
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]))) {
 	        attr_dev(circle, "cy", circle_cy_value);
@@ -53143,9 +53142,9 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && circle_r_value !== (circle_r_value =
+	      1 && circle_r_value !== (circle_r_value =
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*tick*/
 	      ctx[6]))) {
 	        attr_dev(circle, "r", circle_r_value);
@@ -53161,7 +53160,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$9.name,
 	    type: "each",
-	    source: "(21:4) {#each rTicks as tick, i}",
+	    source: "(22:4) {#each rTicks as tick, i}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -53189,7 +53188,7 @@ var app = (function () {
 	    c: function create() {
 	      g1 = svg_element("g");
 	      text_1 = svg_element("text");
-	      t = text("Dino Size\n  ");
+	      t = text("Size in feet\n  ");
 	      g0 = svg_element("g");
 
 	      for (var _i = 0; _i < each_blocks.length; _i += 1) {
@@ -53198,36 +53197,36 @@ var app = (function () {
 
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (-
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 20) + " " +
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5].slice(-1)[0]) + ") rotate(270)");
 	      attr_dev(text_1, "dy", "4");
 	      attr_dev(text_1, "class", "svelte-10o78mj");
-	      add_location(text_1, file$y, 15, 2, 510);
+	      add_location(text_1, file$y, 16, 2, 555);
 	      attr_dev(g0, "class", "total-r-scale svelte-10o78mj");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(0 " + -2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5].slice(-1)[0]) + ")");
-	      add_location(g0, file$y, 19, 2, 667);
+	      add_location(g0, file$y, 20, 2, 715);
 	      attr_dev(g1, "class", "legend");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(" + (20 +
 	      /*$timeScale*/
-	      ctx[0].range()[0] -
+	      ctx[1].range()[0] -
 	      /*$margin*/
-	      ctx[1].left / 1.5 +
+	      ctx[2].left / 1.5 +
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0])) + " " + (
 	      /*$smiTotalYScale*/
-	      ctx[3].range()[1] - 20) + ")");
-	      add_location(g1, file$y, 13, 0, 350);
+	      ctx[3].range()[1] - 80) + ")");
+	      add_location(g1, file$y, 14, 0, 395);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53248,13 +53247,13 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && text_1_transform_value !== (text_1_transform_value = "translate(" + (-
+	      1 && text_1_transform_value !== (text_1_transform_value = "translate(" + (-
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0]) - 20) + " " +
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5].slice(-1)[0]) + ") rotate(270)")) {
 	        attr_dev(text_1, "transform", text_1_transform_value);
@@ -53262,7 +53261,7 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale, rTicks, commaFormat*/
-	      52) {
+	      49) {
 	        each_value =
 	        /*rTicks*/
 	        ctx[5];
@@ -53293,9 +53292,9 @@ var app = (function () {
 
 	      if (dirty &
 	      /*$smiTotalRScale*/
-	      4 && g0_transform_value !== (g0_transform_value = "translate(0 " + -2 *
+	      1 && g0_transform_value !== (g0_transform_value = "translate(0 " + -2 *
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5].slice(-1)[0]) + ")")) {
 	        attr_dev(g0, "transform", g0_transform_value);
@@ -53305,15 +53304,15 @@ var app = (function () {
 	      /*$timeScale, $margin, $smiTotalRScale, $smiTotalYScale*/
 	      15 && g1_transform_value !== (g1_transform_value = "translate(" + (20 +
 	      /*$timeScale*/
-	      ctx[0].range()[0] -
+	      ctx[1].range()[0] -
 	      /*$margin*/
-	      ctx[1].left / 1.5 +
+	      ctx[2].left / 1.5 +
 	      /*$smiTotalRScale*/
-	      ctx[2](
+	      ctx[0](
 	      /*rTicks*/
 	      ctx[5][0])) + " " + (
 	      /*$smiTotalYScale*/
-	      ctx[3].range()[1] - 20) + ")")) {
+	      ctx[3].range()[1] - 80) + ")")) {
 	        attr_dev(g1, "transform", g1_transform_value);
 	      }
 	    },
@@ -53335,28 +53334,28 @@ var app = (function () {
 	}
 
 	function instance$z($$self, $$props, $$invalidate) {
+	  var $smiTotalRScale;
 	  var $timeScale;
 	  var $margin;
-	  var $smiTotalRScale;
 	  var $smiTotalYScale;
+	  validate_store(smiTotalRScale, "smiTotalRScale");
+	  component_subscribe($$self, smiTotalRScale, function ($$value) {
+	    return $$invalidate(0, $smiTotalRScale = $$value);
+	  });
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(0, $timeScale = $$value);
+	    return $$invalidate(1, $timeScale = $$value);
 	  });
 	  validate_store(margin, "margin");
 	  component_subscribe($$self, margin, function ($$value) {
-	    return $$invalidate(1, $margin = $$value);
-	  });
-	  validate_store(smiTotalRScale, "smiTotalRScale");
-	  component_subscribe($$self, smiTotalRScale, function ($$value) {
-	    return $$invalidate(2, $smiTotalRScale = $$value);
+	    return $$invalidate(2, $margin = $$value);
 	  });
 	  validate_store(smiTotalYScale, "smiTotalYScale");
 	  component_subscribe($$self, smiTotalYScale, function ($$value) {
 	    return $$invalidate(3, $smiTotalYScale = $$value);
 	  });
 	  var commaFormat = format(",");
-	  var rTicks = [500000, 100000, 0];
+	  var rTicks = [$smiTotalRScale(400), $smiTotalRScale(50), $smiTotalRScale(0)];
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Legend> was created with unknown prop '".concat(key, "'"));
@@ -53375,14 +53374,14 @@ var app = (function () {
 	      format: format,
 	      commaFormat: commaFormat,
 	      rTicks: rTicks,
+	      $smiTotalRScale: $smiTotalRScale,
 	      $timeScale: $timeScale,
 	      $margin: $margin,
-	      $smiTotalRScale: $smiTotalRScale,
 	      $smiTotalYScale: $smiTotalYScale
 	    };
 	  };
 
-	  return [$timeScale, $margin, $smiTotalRScale, $smiTotalYScale, commaFormat, rTicks];
+	  return [$smiTotalRScale, $timeScale, $margin, $smiTotalYScale, commaFormat, rTicks];
 	}
 
 	var Legend = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -58148,7 +58147,8 @@ var app = (function () {
 	  return Table;
 	}(SvelteComponentDev);
 
-	var file$H = "src/components/Visualization.svelte"; // (208:2) {#if (!timePoints)}
+	var console_1$7 = globals.console;
+	var file$H = "src/components/Visualization.svelte"; // (211:2) {#if (!timePoints)}
 
 	function create_if_block_1$8(ctx) {
 	  var loadinginfo;
@@ -58181,11 +58181,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$8.name,
 	    type: "if",
-	    source: "(208:2) {#if (!timePoints)}",
+	    source: "(211:2) {#if (!timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (216:6) {#if (timePoints)}
+	} // (219:6) {#if (timePoints)}
 
 
 	function create_if_block$k(ctx) {
@@ -58326,7 +58326,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$k.name,
 	    type: "if",
-	    source: "(216:6) {#if (timePoints)}",
+	    source: "(219:6) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -58409,7 +58409,7 @@ var app = (function () {
 	          ctx[9].call(div0)
 	        );
 	      });
-	      add_location(div0, file$H, 211, 4, 7426);
+	      add_location(div0, file$H, 214, 4, 7709);
 	      attr_dev(div1, "class", "draw-wrapper svelte-12ye563");
 	      add_render_callback(function () {
 	        return (
@@ -58417,11 +58417,11 @@ var app = (function () {
 	          ctx[11].call(div1)
 	        );
 	      });
-	      add_location(div1, file$H, 214, 4, 7540);
+	      add_location(div1, file$H, 217, 4, 7823);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-12ye563");
-	      add_location(div2, file$H, 210, 2, 7393);
+	      add_location(div2, file$H, 213, 2, 7676);
 	      attr_dev(div3, "class", "table-wrapper svelte-12ye563");
-	      add_location(div3, file$H, 227, 2, 7934);
+	      add_location(div3, file$H, 230, 2, 8217);
 	      attr_dev(div4, "id", "viz");
 	      attr_dev(div4, "class", "visualization-wrapper svelte-12ye563");
 	      add_render_callback(function () {
@@ -58430,7 +58430,7 @@ var app = (function () {
 	          ctx[12].call(div4)
 	        );
 	      });
-	      add_location(div4, file$H, 206, 0, 7270);
+	      add_location(div4, file$H, 209, 0, 7553);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -58793,7 +58793,7 @@ var app = (function () {
 	  })));
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -58952,11 +58952,12 @@ var app = (function () {
 	            _x: $timeScale(d.attributionDate),
 	            _y: $smiTotalYScale.range()[0],
 	            color: $attributionScoreScale(d.attributionScore),
-	            rSmiTot: isNaN(d.smiTotal) || d.smiTotal === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.smiTotal),
-	            fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(d.smiTotal)
+	            size: Math.max(d.size, 15),
+	            rSmiTot: isNaN(d.size) || d.size === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.size),
+	            fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(Math.max(d.smiTotal, 15))
 	          });
 	        }).sort(function (a, b) {
-	          return sortConsistently(a, b, "rSmiTot", "id");
+	          return sortConsistently(a, b, "size", "id");
 	        }); // for some reason these definitions need to be in here and not in a gobal scope or module
 
 	        var simulation = forceSimulation().force("x", forceX().x(function (d) {
@@ -58964,11 +58965,14 @@ var app = (function () {
 	        }));
 	        var simulationCharge = forceSimulation().force("x", forceX().x(function (d) {
 	          return d._x;
-	        })). //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 95).distanceMax(600).distanceMin(10));
+	        })). //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
+	        //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
+	        //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
 	        force("charge", forceManyBody().strength(function (d) {
 	          return -(d.rSmiTot + 1) * 10;
 	        }).distanceMax(500).distanceMin(50));
-	        simulation.nodes(scaledData).alpha(0.8).tick(300); // finally set the global timePoints variable
+	        simulation.nodes(scaledData).alpha(0.8).tick(300);
+	        console.log(scaledData); // finally set the global timePoints variable
 
 	        simulationCharge.nodes(scaledData).alpha(0.8).tick(300).on("end", function () {
 	          $$invalidate(1, timePoints = scaledData.map(function (d) {
@@ -59135,7 +59139,7 @@ var app = (function () {
 	  return CookieBanner;
 	}(SvelteComponentDev);
 
-	var console_1$7 = globals.console;
+	var console_1$8 = globals.console;
 	var file$J = "src/App.svelte"; // (19:2) {:else}
 
 	function create_else_block$3(ctx) {
@@ -59368,7 +59372,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
