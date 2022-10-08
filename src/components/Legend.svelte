@@ -4,33 +4,34 @@
     timeScale,
     smiTotalYScale,
     smiTotalRScale } from '../stores/scales';
-  import { margin } from '../stores/dimensions';
+  import { margin, width } from '../stores/dimensions';
   import { format } from 'd3';
 
   const commaFormat = format(',');
-  const rTicks = [$smiTotalRScale(400), $smiTotalRScale(50), $smiTotalRScale(0)];
+  const rTicks = [$smiTotalYScale(115), $smiTotalYScale(40), $smiTotalYScale(15)];
+  const unscaled = [115, 40, 15]
 
 </script>
 
 <g class="legend"
-   transform="translate({20 + $timeScale.range()[0] - $margin.left / 1.5 + $smiTotalRScale(rTicks[0])} {$smiTotalYScale.range()[1] - 80})">
-  <text transform="translate({-$smiTotalRScale(rTicks[0]) - 20} {$smiTotalRScale(rTicks.slice(-1)[0])}) rotate(270)"
+   transform="translate({$width - ((($smiTotalYScale(rTicks[0]) + 15) * 2))  + 65  } {$smiTotalYScale.range()[1] - 60})">
+  <text transform="translate({-$smiTotalYScale(rTicks[0]) - 20} {$smiTotalYScale(rTicks.slice(-1)[0])}) rotate(270)"
         dy="4">
     Size in feet
   </text>
-  <g class="total-r-scale" transform="translate(0 {-2 * $smiTotalRScale(rTicks.slice(-1)[0])})">
+  <g class="total-r-scale" transform="translate(0 {-2 * $smiTotalYScale(rTicks.slice(-1)[0])})">
     {#each rTicks as tick, i}
       <line x1="0"
-            y1={$smiTotalRScale(rTicks[0]) - 2 * $smiTotalRScale(tick)}
-            x2={$smiTotalRScale(rTicks[0]) + 15}
-            y2={$smiTotalRScale(rTicks[0]) - 2 * $smiTotalRScale(tick)}></line>
+            y1={$smiTotalYScale(rTicks[0]) - 2 * $smiTotalYScale(tick)}
+            x2={$smiTotalYScale(rTicks[0]) + 15}
+            y2={$smiTotalYScale(rTicks[0]) - 2 * $smiTotalYScale(tick)}></line>
       <text class="tick"
-            transform="translate({$smiTotalRScale(rTicks[0]) + 18} {$smiTotalRScale(rTicks[0]) - 2 * $smiTotalRScale(tick)})">
-        {commaFormat(tick.toFixed(0))}
+            transform="translate({$smiTotalYScale(rTicks[0]) + 18} {$smiTotalYScale(rTicks[0]) - 2 * $smiTotalYScale(tick)})">
+        {unscaled[i]}
       </text>
       <circle cx="0"
-              cy={$smiTotalRScale(rTicks[0]) - $smiTotalRScale(tick)}
-              r={$smiTotalRScale(tick)}></circle>
+              cy={$smiTotalYScale(rTicks[0]) - $smiTotalYScale(tick)}
+              r={$smiTotalYScale(tick)}></circle>
     {/each}
   </g>
   <!-- <g class="smi-pending">

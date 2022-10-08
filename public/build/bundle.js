@@ -52976,10 +52976,10 @@ var app = (function () {
 
 	function get_each_context$9(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[6] = list[i];
-	  child_ctx[8] = i;
+	  child_ctx[5] = list[i];
+	  child_ctx[7] = i;
 	  return child_ctx;
-	} // (22:4) {#each rTicks as tick, i}
+	} // (23:4) {#each rTicks as tick, i}
 
 
 	function create_each_block$9(ctx) {
@@ -52989,10 +52989,10 @@ var app = (function () {
 	  var line_y__value_1;
 	  var text_1;
 	  var t_value =
-	  /*commaFormat*/
-	  ctx[4](
-	  /*tick*/
-	  ctx[6].toFixed(0)) + "";
+	  /*unscaled*/
+	  ctx[3][
+	  /*i*/
+	  ctx[7]] + "";
 	  var t;
 	  var text_1_transform_value;
 	  var circle;
@@ -53006,62 +53006,62 @@ var app = (function () {
 	      circle = svg_element("circle");
 	      attr_dev(line, "x1", "0");
 	      attr_dev(line, "y1", line_y__value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 2 *
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 2 *
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]));
+	      ctx[5]));
 	      attr_dev(line, "x2", line_x__value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) + 15);
+	      ctx[2][0]) + 15);
 	      attr_dev(line, "y2", line_y__value_1 =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 2 *
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 2 *
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]));
+	      ctx[5]));
 	      attr_dev(line, "class", "svelte-10o78mj");
-	      add_location(line, file$y, 22, 6, 846);
+	      add_location(line, file$y, 23, 6, 869);
 	      attr_dev(text_1, "class", "tick svelte-10o78mj");
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) + 18) + " " + (
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) + 18) + " " + (
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 2 *
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 2 *
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6])) + ")");
-	      add_location(text_1, file$y, 26, 6, 1066);
+	      ctx[5])) + ")");
+	      add_location(text_1, file$y, 27, 6, 1089);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", circle_cy_value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) -
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) -
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]));
+	      ctx[5]));
 	      attr_dev(circle, "r", circle_r_value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]));
+	      ctx[5]));
 	      attr_dev(circle, "class", "svelte-10o78mj");
-	      add_location(circle, file$y, 30, 6, 1271);
+	      add_location(circle, file$y, 31, 6, 1277);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, line, anchor);
@@ -53071,82 +53071,82 @@ var app = (function () {
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && line_y__value !== (line_y__value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 2 *
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 2 *
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]))) {
+	      ctx[5]))) {
 	        attr_dev(line, "y1", line_y__value);
 	      }
 
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && line_x__value !== (line_x__value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) + 15)) {
+	      ctx[2][0]) + 15)) {
 	        attr_dev(line, "x2", line_x__value);
 	      }
 
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && line_y__value_1 !== (line_y__value_1 =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 2 *
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 2 *
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]))) {
+	      ctx[5]))) {
 	        attr_dev(line, "y2", line_y__value_1);
 	      }
 
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && text_1_transform_value !== (text_1_transform_value = "translate(" + (
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) + 18) + " " + (
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) + 18) + " " + (
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 2 *
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 2 *
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6])) + ")")) {
+	      ctx[5])) + ")")) {
 	        attr_dev(text_1, "transform", text_1_transform_value);
 	      }
 
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && circle_cy_value !== (circle_cy_value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) -
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) -
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]))) {
+	      ctx[5]))) {
 	        attr_dev(circle, "cy", circle_cy_value);
 	      }
 
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && circle_r_value !== (circle_r_value =
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*tick*/
-	      ctx[6]))) {
+	      ctx[5]))) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 	    },
@@ -53160,7 +53160,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$9.name,
 	    type: "each",
-	    source: "(22:4) {#each rTicks as tick, i}",
+	    source: "(23:4) {#each rTicks as tick, i}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -53176,7 +53176,7 @@ var app = (function () {
 	  var g1_transform_value;
 	  var each_value =
 	  /*rTicks*/
-	  ctx[5];
+	  ctx[2];
 	  validate_each_argument(each_value);
 	  var each_blocks = [];
 
@@ -53196,37 +53196,35 @@ var app = (function () {
 	      }
 
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (-
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 20) + " " +
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 20) + " " +
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5].slice(-1)[0]) + ") rotate(270)");
+	      ctx[2].slice(-1)[0]) + ") rotate(270)");
 	      attr_dev(text_1, "dy", "4");
 	      attr_dev(text_1, "class", "svelte-10o78mj");
-	      add_location(text_1, file$y, 16, 2, 555);
+	      add_location(text_1, file$y, 17, 2, 578);
 	      attr_dev(g0, "class", "total-r-scale svelte-10o78mj");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(0 " + -2 *
-	      /*$smiTotalRScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[5].slice(-1)[0]) + ")");
-	      add_location(g0, file$y, 20, 2, 715);
-	      attr_dev(g1, "class", "legend");
-	      attr_dev(g1, "transform", g1_transform_value = "translate(" + (20 +
-	      /*$timeScale*/
-	      ctx[1].range()[0] -
-	      /*$margin*/
-	      ctx[2].left / 1.5 +
-	      /*$smiTotalRScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[5][0])) + " " + (
 	      /*$smiTotalYScale*/
-	      ctx[3].range()[1] - 80) + ")");
-	      add_location(g1, file$y, 14, 0, 395);
+	      ctx[0](
+	      /*rTicks*/
+	      ctx[2].slice(-1)[0]) + ")");
+	      add_location(g0, file$y, 21, 2, 738);
+	      attr_dev(g1, "class", "legend");
+	      attr_dev(g1, "transform", g1_transform_value = "translate(" + (
+	      /*$width*/
+	      ctx[1] - (
+	      /*$smiTotalYScale*/
+	      ctx[0](
+	      /*rTicks*/
+	      ctx[2][0]) + 15) * 2 + 65) + " " + (
+	      /*$smiTotalYScale*/
+	      ctx[0].range()[1] - 60) + ")");
+	      add_location(g1, file$y, 15, 0, 436);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53246,25 +53244,25 @@ var app = (function () {
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && text_1_transform_value !== (text_1_transform_value = "translate(" + (-
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0]) - 20) + " " +
-	      /*$smiTotalRScale*/
+	      ctx[2][0]) - 20) + " " +
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5].slice(-1)[0]) + ") rotate(270)")) {
+	      ctx[2].slice(-1)[0]) + ") rotate(270)")) {
 	        attr_dev(text_1, "transform", text_1_transform_value);
 	      }
 
 	      if (dirty &
-	      /*$smiTotalRScale, rTicks, commaFormat*/
-	      49) {
+	      /*$smiTotalYScale, rTicks, unscaled*/
+	      13) {
 	        each_value =
 	        /*rTicks*/
-	        ctx[5];
+	        ctx[2];
 	        validate_each_argument(each_value);
 
 	        var _i3;
@@ -53291,28 +53289,26 @@ var app = (function () {
 	      }
 
 	      if (dirty &
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      1 && g0_transform_value !== (g0_transform_value = "translate(0 " + -2 *
-	      /*$smiTotalRScale*/
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5].slice(-1)[0]) + ")")) {
+	      ctx[2].slice(-1)[0]) + ")")) {
 	        attr_dev(g0, "transform", g0_transform_value);
 	      }
 
 	      if (dirty &
-	      /*$timeScale, $margin, $smiTotalRScale, $smiTotalYScale*/
-	      15 && g1_transform_value !== (g1_transform_value = "translate(" + (20 +
-	      /*$timeScale*/
-	      ctx[1].range()[0] -
-	      /*$margin*/
-	      ctx[2].left / 1.5 +
-	      /*$smiTotalRScale*/
+	      /*$width, $smiTotalYScale*/
+	      3 && g1_transform_value !== (g1_transform_value = "translate(" + (
+	      /*$width*/
+	      ctx[1] - (
+	      /*$smiTotalYScale*/
 	      ctx[0](
 	      /*rTicks*/
-	      ctx[5][0])) + " " + (
+	      ctx[2][0]) + 15) * 2 + 65) + " " + (
 	      /*$smiTotalYScale*/
-	      ctx[3].range()[1] - 80) + ")")) {
+	      ctx[0].range()[1] - 60) + ")")) {
 	        attr_dev(g1, "transform", g1_transform_value);
 	      }
 	    },
@@ -53334,28 +53330,19 @@ var app = (function () {
 	}
 
 	function instance$z($$self, $$props, $$invalidate) {
-	  var $smiTotalRScale;
-	  var $timeScale;
-	  var $margin;
 	  var $smiTotalYScale;
-	  validate_store(smiTotalRScale, "smiTotalRScale");
-	  component_subscribe($$self, smiTotalRScale, function ($$value) {
-	    return $$invalidate(0, $smiTotalRScale = $$value);
-	  });
-	  validate_store(timeScale, "timeScale");
-	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(1, $timeScale = $$value);
-	  });
-	  validate_store(margin, "margin");
-	  component_subscribe($$self, margin, function ($$value) {
-	    return $$invalidate(2, $margin = $$value);
-	  });
+	  var $width;
 	  validate_store(smiTotalYScale, "smiTotalYScale");
 	  component_subscribe($$self, smiTotalYScale, function ($$value) {
-	    return $$invalidate(3, $smiTotalYScale = $$value);
+	    return $$invalidate(0, $smiTotalYScale = $$value);
+	  });
+	  validate_store(width, "width");
+	  component_subscribe($$self, width, function ($$value) {
+	    return $$invalidate(1, $width = $$value);
 	  });
 	  var commaFormat = format(",");
-	  var rTicks = [$smiTotalRScale(400), $smiTotalRScale(50), $smiTotalRScale(0)];
+	  var rTicks = [$smiTotalYScale(115), $smiTotalYScale(40), $smiTotalYScale(15)];
+	  var unscaled = [115, 40, 15];
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Legend> was created with unknown prop '".concat(key, "'"));
@@ -53371,17 +53358,17 @@ var app = (function () {
 	      smiTotalYScale: smiTotalYScale,
 	      smiTotalRScale: smiTotalRScale,
 	      margin: margin,
+	      width: width,
 	      format: format,
 	      commaFormat: commaFormat,
 	      rTicks: rTicks,
-	      $smiTotalRScale: $smiTotalRScale,
-	      $timeScale: $timeScale,
-	      $margin: $margin,
-	      $smiTotalYScale: $smiTotalYScale
+	      unscaled: unscaled,
+	      $smiTotalYScale: $smiTotalYScale,
+	      $width: $width
 	    };
 	  };
 
-	  return [$smiTotalRScale, $timeScale, $margin, $smiTotalYScale, commaFormat, rTicks];
+	  return [$smiTotalYScale, $width, rTicks, unscaled];
 	}
 
 	var Legend = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -53659,7 +53646,7 @@ var app = (function () {
 	      g3 = svg_element("g");
 	      path2 = svg_element("path");
 	      text2 = svg_element("text");
-	      t2 = text("Dinosaur Size");
+	      t2 = text("Dinosaur Size in feet");
 	      path3 = svg_element("path");
 	      g4 = svg_element("g");
 	      path4 = svg_element("path");
@@ -53719,7 +53706,7 @@ var app = (function () {
 	      ctx[0].getComputedTextLength() - lineLength$1 - 2 * offset$1 : 0) + "l0 " + -lineLength$1);
 	      attr_dev(path3, "marker-end", "url(#arrow)");
 	      attr_dev(path3, "class", "svelte-1ay65iw");
-	      add_location(path3, file$z, 62, 4, 2274);
+	      add_location(path3, file$z, 62, 4, 2282);
 	      attr_dev(g3, "class", "y-scale svelte-1ay65iw");
 	      attr_dev(g3, "transform", g3_transform_value = "translate(" + (
 	      /*$timeScale*/
@@ -53731,7 +53718,7 @@ var app = (function () {
 	      add_location(g3, file$z, 55, 2, 1958);
 	      attr_dev(path4, "d", path4_d_value = "M0 0l0 " + lineLength$1);
 	      attr_dev(path4, "class", "svelte-1ay65iw");
-	      add_location(path4, file$z, 67, 4, 2556);
+	      add_location(path4, file$z, 67, 4, 2564);
 	      attr_dev(text3, "transform", "rotate(270)");
 	      attr_dev(text3, "dx", text3_dx_value =
 	      /*mapScaleText*/
@@ -53740,14 +53727,14 @@ var app = (function () {
 	      ctx[1].getComputedTextLength() - lineLength$1 - offset$1 : 0);
 	      attr_dev(text3, "dy", "4");
 	      attr_dev(text3, "class", "svelte-1ay65iw");
-	      add_location(text3, file$z, 68, 4, 2598);
+	      add_location(text3, file$z, 68, 4, 2606);
 	      attr_dev(path5, "d", path5_d_value = "M0 " + (
 	      /*mapScaleText*/
 	      ctx[1] ?
 	      /*mapScaleText*/
 	      ctx[1].getComputedTextLength() + lineLength$1 + 2 * offset$1 : 0) + "l0 " + lineLength$1);
 	      attr_dev(path5, "class", "svelte-1ay65iw");
-	      add_location(path5, file$z, 72, 4, 2803);
+	      add_location(path5, file$z, 72, 4, 2811);
 	      attr_dev(g4, "class", "map-scale svelte-1ay65iw");
 	      attr_dev(g4, "transform", g4_transform_value = "translate(" + (
 	      /*$timeScale*/
@@ -53756,7 +53743,7 @@ var app = (function () {
 	      ctx[5].left / 1.5) + " " + 1.05 *
 	      /*$panelHeight*/
 	      ctx[6] + ")");
-	      add_location(g4, file$z, 65, 2, 2435);
+	      add_location(g4, file$z, 65, 2, 2443);
 	      attr_dev(g5, "class", "labels disable-select");
 	      add_location(g5, file$z, 16, 0, 428);
 	    },

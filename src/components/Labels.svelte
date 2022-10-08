@@ -59,7 +59,7 @@
     <text bind:this={yScaleText}
           transform="rotate(270)"
           dx={lineLength + offset}
-          dy="4">Dinosaur Size</text>
+          dy="4">Dinosaur Size in feet</text>
     <path d="M0 {yScaleText ? -yScaleText.getComputedTextLength() - lineLength - 2 * offset: 0}l0 {-lineLength}"
           marker-end="url(#arrow)"></path>
   </g>
