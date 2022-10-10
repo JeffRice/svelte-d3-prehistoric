@@ -1,8 +1,8 @@
 import {
   timeScale,
-  smiTotalYScale,
-  smiTotalRScale,
-  smiShareRScale,
+  sizeTotalYScale,
+  sizeTotalRScale,
+  sizeShareRScale,
   attributionScoreScale,
   centroidScale,
   polarizationScale } from '../stores/scales';
@@ -31,18 +31,18 @@ export const setScales = (data, width, minDim, maxDim, panelHeight, margin) => {
     .domain(getTimeRange(data))
     .range([margin.left, width - margin.right]));
 
-  // smi total scale for the y axis
-  smiTotalYScale.set(scaleLog()
-    .domain([10, max(data, (d) => d.smiTotal)])
+  // total scale for the y axis
+  sizeTotalYScale.set(scaleLog()
+    .domain([10, max(data, (d) => d.sizeTotal) ])
     .range([panelHeight - margin.bottom, margin.top]));
 
-  // smi total scale for the radii
-  smiTotalRScale.set(scaleSqrt()
-    .domain([0, max(data, (d) => d.smiTotal)])
+  // total scale for the radii
+  sizeTotalRScale.set(scaleSqrt()
+    .domain([0, max(data, (d) => d.sizeTotal)])
     .range([width * 0.009, width * 0.04]));
 
-  // smi share scale for the radii
-  smiShareRScale.set(scaleLinear()
+  // share scale for the radii
+  sizeShareRScale.set(scaleLinear()
     .domain([0, 1])
     .range([0, minDim * 0.15]));
 

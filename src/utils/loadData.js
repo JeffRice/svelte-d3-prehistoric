@@ -8,8 +8,7 @@ const parseDate = timeParse('%m/%d/%Y');
 const loadData = async () => {
   const data = await csv(dataPath, (d, i) => {
 
-    const smiTotal = d.size === '' ? Number.NaN : +d.size;
-    const smiPending = isNaN(smiTotal);
+
     const source = d.source_for_display !== '' ? d.source_for_display : d.source;
 
     const sizeTotal = d.size === '' ? Number.NaN : +d.size;
@@ -45,7 +44,7 @@ const loadData = async () => {
       endDate: parseDate(d.end_date),
       attributionDate: parseDate(d.attribution_date),
       methods: splitString(d.methods),
-      smiTotal,
+      sizeTotal,
       attributionScore: +d.attribution_total_score,
       tags: splitString(d.tags),
       articleCount: +d.articleCount,

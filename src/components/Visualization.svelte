@@ -19,9 +19,9 @@
     controlsHeight } from '../stores/dimensions';
   import {
     timeScale,
-    smiTotalYScale,
-    smiTotalRScale,
-    smiShareRScale,
+    sizeTotalYScale,
+    sizeTotalRScale,
+    sizeShareRScale,
     attributionScoreScale,
     polarizationScale } from '../stores/scales';
   import {
@@ -140,15 +140,17 @@
       return {
         ...d,
         _x: $timeScale(d.attributionDate),
-        _y: $smiTotalYScale.range()[0],
+        _y: $sizeTotalYScale.range()[0],
         color: $attributionScoreScale(d.attributionScore),
         size: d.size,
-        rSmiTot: isNaN(d.size) || d.size === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.size),
-        fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(Math.max(d.smiTotal, 15)),
+        rSizeTot: isNaN(d.size) || d.size === 0 ? $sizeTotalRScale.range()[0] : $sizeTotalRScale(d.size),
+        fy: d.sizePending ? Math.min($sizeTotalYScale.range()[0], $sizeTotalYScale.range()[0] - 2 * $sizeTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $sizeTotalYScale(Math.max(d.sizeTotal, 15)),
       };
 
     })
     .sort((a, b) => sortConsistently(a, b, 'size', 'id'));
+
+    console.log('scaled data: ', scaledData)
 
     // for some reason these definitions need to be in here and not in a gobal scope or module
     const simulation = forceSimulation()
@@ -156,10 +158,10 @@
 
     const simulationCharge = forceSimulation()
       .force('x', forceX().x(d => d._x))
-   //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
+   //   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
     //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
    //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
-   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
+   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
     simulation
       .nodes(scaledData)
       .alpha(0.8)
@@ -221,7 +223,7 @@ console.log(scaledData)
         <Canvas />
         <Info selectedItems={$selected}
               x={2 * $timeScale.range()[0]}
-              y={$smiTotalYScale.range()[1]} />
+              y={$sizeTotalYScale.range()[1]} />
         <EventTooltip />
         <CentroidTooltip />
         <CreatedBy />
@@ -252,7 +254,7 @@ console.log(scaledData)
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 180vmin;
+    height: 280vmin;
     min-height: 1200px;
     max-height: 80vmax;
     margin: 2rem 0 0 0;

@@ -1,6 +1,6 @@
 <script>
   // collection of viz labels
-  import { timeScale, smiTotalYScale } from '../stores/scales';
+  import { timeScale, sizeTotalYScale } from '../stores/scales';
   import { margin } from '../stores/dimensions';
   import { timeFormat, format } from 'd3';
   import { panelHeight } from '../stores/dimensions';
@@ -16,7 +16,7 @@
 
 <g class="labels disable-select">
   <g class="time-scale"
-     transform="translate(0 {$smiTotalYScale.range()[0]})">
+     transform="translate(0 {$sizeTotalYScale.range()[0]})">
     {#each $timeScale.ticks(8) as tick}
       <g class="tick"
          transform="translate({$timeScale(tick)} 20)">
@@ -46,15 +46,15 @@
   </g>
   <g class="y-scale-ticks"
      transform="translate({15 + $timeScale.range()[0] - $margin.left / 1.5} 0)">
-    {#each $smiTotalYScale.ticks(4).slice(1) as tick}
+    {#each $sizeTotalYScale.ticks(4).slice(1) as tick}
       <g class="tick"
-          transform="translate(0 {$smiTotalYScale(tick)})">
+          transform="translate(0 {$sizeTotalYScale(tick)})">
         <text>{commaFormat(tick)}</text>
       </g>
     {/each}
   </g>
   <g class="y-scale"
-     transform="translate({$timeScale.range()[0] - $margin.left / 1.5} {0.95 * $smiTotalYScale.range()[0]})">
+     transform="translate({$timeScale.range()[0] - $margin.left / 1.5} {0.95 * $sizeTotalYScale.range()[0]})">
     <path d="M0 0l0 {-lineLength}"></path>
     <text bind:this={yScaleText}
           transform="rotate(270)"

@@ -35282,7 +35282,6 @@ var app = (function () {
 	          case 0:
 	            _context.next = 2;
 	            return csv$1(data$1, function (d, i) {
-	              var smiTotal = d.size === '' ? Number.NaN : +d.size;
 	              var source = d.source_for_display !== '' ? d.source_for_display : d.source;
 	              var sizeTotal = d.size === '' ? Number.NaN : +d.size;
 	              return {
@@ -35315,7 +35314,7 @@ var app = (function () {
 	                endDate: parseDate$1(d.end_date),
 	                attributionDate: parseDate$1(d.attribution_date),
 	                methods: splitString(d.methods),
-	                smiTotal: smiTotal,
+	                sizeTotal: sizeTotal,
 	                attributionScore: +d.attribution_total_score,
 	                tags: splitString(d.tags),
 	                articleCount: +d.articleCount
@@ -35475,7 +35474,7 @@ var app = (function () {
 	var width = writable();
 	var height = writable();
 	var panelHeight = derived(height, function ($height) {
-	  return $height / 2;
+	  return $height / 1.5;
 	});
 	var mapHeight = derived([height, panelHeight], function (_ref) {
 	  var _ref2 = _slicedToArray(_ref, 2),
@@ -35572,9 +35571,9 @@ var app = (function () {
 	}();
 
 	var timeScale = writable();
-	var smiTotalYScale = writable();
-	var smiTotalRScale = writable();
-	var smiShareRScale = writable();
+	var sizeTotalYScale = writable();
+	var sizeTotalRScale = writable();
+	var sizeShareRScale = writable();
 	var attributionScoreScale = writable();
 	var centroidScale = writable();
 	var polarizationScale = writable();
@@ -35593,17 +35592,17 @@ var app = (function () {
 	var setScales = function setScales(data, width, minDim, maxDim, panelHeight, margin) {
 	  if (!data) return; // time scale
 
-	  timeScale.set(scaleTime().domain(getTimeRange(data)).range([margin.left, width - margin.right])); // smi total scale for the y axis
+	  timeScale.set(scaleTime().domain(getTimeRange(data)).range([margin.left, width - margin.right])); // total scale for the y axis
 
-	  smiTotalYScale.set(log$5().domain([10, max$4(data, function (d) {
-	    return d.smiTotal;
-	  })]).range([panelHeight - margin.bottom, margin.top])); // smi total scale for the radii
+	  sizeTotalYScale.set(log$5().domain([10, max$4(data, function (d) {
+	    return d.sizeTotal;
+	  })]).range([panelHeight - margin.bottom, margin.top])); // total scale for the radii
 
-	  smiTotalRScale.set(sqrt$2().domain([0, max$4(data, function (d) {
-	    return d.smiTotal;
-	  })]).range([width * 0.009, width * 0.04])); // smi share scale for the radii
+	  sizeTotalRScale.set(sqrt$2().domain([0, max$4(data, function (d) {
+	    return d.sizeTotal;
+	  })]).range([width * 0.009, width * 0.04])); // share scale for the radii
 
-	  smiShareRScale.set(linear$1().domain([0, 1]).range([0, minDim * 0.15])); // attribution score scale
+	  sizeShareRScale.set(linear$1().domain([0, 1]).range([0, minDim * 0.15])); // attribution score scale
 
 	  attributionScoreScale.set(linear$1().domain([-1, 1.1 * max$4(data, function (d) {
 	    return d.attributionScore;
@@ -47407,7 +47406,7 @@ var app = (function () {
 	      /*contentTop*/
 	      ctx[6]) -
 	      /*$tooltip*/
-	      ctx[10].tp.rSmiTot + 25) + "px");
+	      ctx[10].tp.rSizeTot + 25) + "px");
 	      set_style(div0, "position", "absolute");
 	      set_style(div0, "top",
 	      /*contentTop*/
@@ -47425,109 +47424,109 @@ var app = (function () {
 	      set_style(div1, "position", "absolute");
 	      set_style(div1, "top",
 	      /*$tooltip*/
-	      ctx[10].tp.rSmiTot + 5 + "px");
-	      add_location(div1, file$n, 130, 4, 4278);
-	      attr_dev(h2, "class", "svelte-1fhbai8");
-	      add_location(h2, file$n, 143, 10, 4821);
-	      add_location(strong0, file$n, 150, 44, 4976);
-	      add_location(span0, file$n, 150, 38, 4970);
-	      attr_dev(div2, "class", "stats-item svelte-1fhbai8");
-	      add_location(div2, file$n, 150, 14, 4946);
-	      add_location(strong1, file$n, 151, 44, 5080);
-	      add_location(span1, file$n, 151, 38, 5074);
-	      attr_dev(div3, "class", "stats-item svelte-1fhbai8");
-	      add_location(div3, file$n, 151, 14, 5050);
-	      add_location(strong2, file$n, 152, 44, 5187);
-	      add_location(span2, file$n, 152, 38, 5181);
-	      attr_dev(div4, "class", "stats-item svelte-1fhbai8");
-	      add_location(div4, file$n, 152, 14, 5157);
-	      add_location(strong3, file$n, 153, 44, 5325);
-	      add_location(span3, file$n, 153, 38, 5319);
-	      attr_dev(div5, "class", "stats-item svelte-1fhbai8");
-	      add_location(div5, file$n, 153, 14, 5295);
-	      add_location(strong4, file$n, 154, 44, 5461);
-	      add_location(span4, file$n, 154, 38, 5455);
-	      attr_dev(div6, "class", "stats-item svelte-1fhbai8");
-	      add_location(div6, file$n, 154, 14, 5431);
-	      add_location(strong5, file$n, 155, 44, 5560);
-	      add_location(span5, file$n, 155, 38, 5554);
-	      attr_dev(div7, "class", "stats-item svelte-1fhbai8");
-	      add_location(div7, file$n, 155, 14, 5530);
-	      attr_dev(section, "class", "dino-stats svelte-1fhbai8");
-	      add_location(section, file$n, 147, 12, 4897);
-	      attr_dev(div8, "class", "title-top svelte-1fhbai8");
-	      add_location(div8, file$n, 144, 10, 4859);
-	      attr_dev(span6, "class", "tag-label Cretaceous svelte-1fhbai8");
-	      add_location(span6, file$n, 166, 10, 5756);
-	      attr_dev(span7, "class", "tag-label Jurassic svelte-1fhbai8");
-	      add_location(span7, file$n, 167, 10, 5822);
-	      attr_dev(span8, "class", "tag-label Triassic svelte-1fhbai8");
-	      add_location(span8, file$n, 168, 10, 5884);
-	      attr_dev(span9, "class", "tag-label Paleogene svelte-1fhbai8");
-	      add_location(span9, file$n, 169, 10, 5946);
-	      attr_dev(span10, "class", "tag-label Neogene svelte-1fhbai8");
-	      add_location(span10, file$n, 170, 10, 6010);
+	      ctx[10].tp.rSizeTot + 5 + "px");
+	      add_location(div1, file$n, 130, 4, 4279);
+	      attr_dev(h2, "class", "svelte-fd4l8c");
+	      add_location(h2, file$n, 143, 10, 4824);
+	      add_location(strong0, file$n, 150, 44, 4979);
+	      add_location(span0, file$n, 150, 38, 4973);
+	      attr_dev(div2, "class", "stats-item svelte-fd4l8c");
+	      add_location(div2, file$n, 150, 14, 4949);
+	      add_location(strong1, file$n, 151, 44, 5083);
+	      add_location(span1, file$n, 151, 38, 5077);
+	      attr_dev(div3, "class", "stats-item svelte-fd4l8c");
+	      add_location(div3, file$n, 151, 14, 5053);
+	      add_location(strong2, file$n, 152, 44, 5190);
+	      add_location(span2, file$n, 152, 38, 5184);
+	      attr_dev(div4, "class", "stats-item svelte-fd4l8c");
+	      add_location(div4, file$n, 152, 14, 5160);
+	      add_location(strong3, file$n, 153, 44, 5328);
+	      add_location(span3, file$n, 153, 38, 5322);
+	      attr_dev(div5, "class", "stats-item svelte-fd4l8c");
+	      add_location(div5, file$n, 153, 14, 5298);
+	      add_location(strong4, file$n, 154, 44, 5464);
+	      add_location(span4, file$n, 154, 38, 5458);
+	      attr_dev(div6, "class", "stats-item svelte-fd4l8c");
+	      add_location(div6, file$n, 154, 14, 5434);
+	      add_location(strong5, file$n, 155, 44, 5563);
+	      add_location(span5, file$n, 155, 38, 5557);
+	      attr_dev(div7, "class", "stats-item svelte-fd4l8c");
+	      add_location(div7, file$n, 155, 14, 5533);
+	      attr_dev(section, "class", "dino-stats svelte-fd4l8c");
+	      add_location(section, file$n, 147, 12, 4900);
+	      attr_dev(div8, "class", "title-top svelte-fd4l8c");
+	      add_location(div8, file$n, 144, 10, 4862);
+	      attr_dev(span6, "class", "tag-label Cretaceous svelte-fd4l8c");
+	      add_location(span6, file$n, 166, 10, 5759);
+	      attr_dev(span7, "class", "tag-label Jurassic svelte-fd4l8c");
+	      add_location(span7, file$n, 167, 10, 5825);
+	      attr_dev(span8, "class", "tag-label Triassic svelte-fd4l8c");
+	      add_location(span8, file$n, 168, 10, 5887);
+	      attr_dev(span9, "class", "tag-label Paleogene svelte-fd4l8c");
+	      add_location(span9, file$n, 169, 10, 5949);
+	      attr_dev(span10, "class", "tag-label Neogene svelte-fd4l8c");
+	      add_location(span10, file$n, 170, 10, 6013);
 	      if (img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-1fhbai8");
-	      add_location(img, file$n, 172, 12, 6102);
-	      attr_dev(div9, "class", "image svelte-1fhbai8");
-	      add_location(div9, file$n, 171, 10, 6070);
-	      attr_dev(div10, "class", "title title-bg svelte-1fhbai8");
-	      add_location(div10, file$n, 142, 8, 4782);
-	      attr_dev(h30, "class", "svelte-1fhbai8");
-	      add_location(h30, file$n, 199, 10, 6880);
-	      attr_dev(p, "class", "svelte-1fhbai8");
-	      add_location(p, file$n, 200, 10, 6911);
-	      attr_dev(div11, "class", "description svelte-1fhbai8");
-	      add_location(div11, file$n, 198, 8, 6844);
-	      attr_dev(h31, "class", "svelte-1fhbai8");
-	      add_location(h31, file$n, 213, 10, 7417);
-	      attr_dev(ul0, "class", "svelte-1fhbai8");
-	      add_location(ul0, file$n, 214, 10, 7446);
-	      attr_dev(div12, "class", "platforms svelte-1fhbai8");
-	      add_location(div12, file$n, 212, 8, 7383);
-	      attr_dev(h32, "class", "svelte-1fhbai8");
-	      add_location(h32, file$n, 221, 10, 7729);
-	      attr_dev(ul1, "class", "svelte-1fhbai8");
-	      add_location(ul1, file$n, 222, 10, 7756);
-	      attr_dev(div13, "class", "methods svelte-1fhbai8");
-	      add_location(div13, file$n, 220, 8, 7697);
-	      attr_dev(h33, "class", "svelte-1fhbai8");
-	      add_location(h33, file$n, 229, 10, 8026);
-	      attr_dev(ul2, "class", "svelte-1fhbai8");
-	      add_location(ul2, file$n, 230, 10, 8096);
-	      attr_dev(div14, "class", "source svelte-1fhbai8");
-	      add_location(div14, file$n, 228, 8, 7995);
-	      attr_dev(h34, "class", "svelte-1fhbai8");
-	      add_location(h34, file$n, 247, 10, 9101);
-	      attr_dev(ul3, "class", "svelte-1fhbai8");
-	      add_location(ul3, file$n, 248, 10, 9190);
-	      attr_dev(div15, "class", "source-category svelte-1fhbai8");
-	      add_location(div15, file$n, 246, 8, 9061);
-	      attr_dev(h35, "class", "svelte-1fhbai8");
-	      add_location(h35, file$n, 255, 10, 9461);
+	      attr_dev(img, "class", "svelte-fd4l8c");
+	      add_location(img, file$n, 172, 12, 6105);
+	      attr_dev(div9, "class", "image svelte-fd4l8c");
+	      add_location(div9, file$n, 171, 10, 6073);
+	      attr_dev(div10, "class", "title title-bg svelte-fd4l8c");
+	      add_location(div10, file$n, 142, 8, 4785);
+	      attr_dev(h30, "class", "svelte-fd4l8c");
+	      add_location(h30, file$n, 199, 10, 6883);
+	      attr_dev(p, "class", "svelte-fd4l8c");
+	      add_location(p, file$n, 200, 10, 6914);
+	      attr_dev(div11, "class", "description svelte-fd4l8c");
+	      add_location(div11, file$n, 198, 8, 6847);
+	      attr_dev(h31, "class", "svelte-fd4l8c");
+	      add_location(h31, file$n, 213, 10, 7420);
+	      attr_dev(ul0, "class", "svelte-fd4l8c");
+	      add_location(ul0, file$n, 214, 10, 7449);
+	      attr_dev(div12, "class", "platforms svelte-fd4l8c");
+	      add_location(div12, file$n, 212, 8, 7386);
+	      attr_dev(h32, "class", "svelte-fd4l8c");
+	      add_location(h32, file$n, 221, 10, 7732);
+	      attr_dev(ul1, "class", "svelte-fd4l8c");
+	      add_location(ul1, file$n, 222, 10, 7759);
+	      attr_dev(div13, "class", "methods svelte-fd4l8c");
+	      add_location(div13, file$n, 220, 8, 7700);
+	      attr_dev(h33, "class", "svelte-fd4l8c");
+	      add_location(h33, file$n, 229, 10, 8029);
+	      attr_dev(ul2, "class", "svelte-fd4l8c");
+	      add_location(ul2, file$n, 230, 10, 8099);
+	      attr_dev(div14, "class", "source svelte-fd4l8c");
+	      add_location(div14, file$n, 228, 8, 7998);
+	      attr_dev(h34, "class", "svelte-fd4l8c");
+	      add_location(h34, file$n, 247, 10, 9104);
+	      attr_dev(ul3, "class", "svelte-fd4l8c");
+	      add_location(ul3, file$n, 248, 10, 9193);
+	      attr_dev(div15, "class", "source-category svelte-fd4l8c");
+	      add_location(div15, file$n, 246, 8, 9064);
+	      attr_dev(h35, "class", "svelte-fd4l8c");
+	      add_location(h35, file$n, 255, 10, 9464);
 	      attr_dev(a, "href", a_href_value =
 	      /*$tooltip*/
 	      ctx[10].tp.attributionUrl);
 	      attr_dev(a, "target", "_blank");
-	      attr_dev(a, "class", "no-float svelte-1fhbai8");
-	      add_location(a, file$n, 256, 10, 9485);
-	      attr_dev(div16, "class", "link svelte-1fhbai8");
-	      add_location(div16, file$n, 254, 8, 9432);
-	      attr_dev(div17, "class", "scroll-wrapper svelte-1fhbai8");
-	      add_location(div17, file$n, 139, 6, 4696);
-	      attr_dev(div18, "class", "content svelte-1fhbai8");
+	      attr_dev(a, "class", "no-float svelte-fd4l8c");
+	      add_location(a, file$n, 256, 10, 9488);
+	      attr_dev(div16, "class", "link svelte-fd4l8c");
+	      add_location(div16, file$n, 254, 8, 9435);
+	      attr_dev(div17, "class", "scroll-wrapper svelte-fd4l8c");
+	      add_location(div17, file$n, 139, 6, 4699);
+	      attr_dev(div18, "class", "content svelte-fd4l8c");
 	      set_style(div18, "top",
 	      /*contentTop*/
 	      ctx[6] + "px");
 	      set_style(div18, "margin", "0px " + (
 	      /*$tooltip*/
-	      ctx[10].tp.rSmiTot / 3 +
+	      ctx[10].tp.rSizeTot / 3 +
 	      /*offset*/
 	      ctx[11].left) + "px");
 	      add_render_callback(function () {
@@ -47536,8 +47535,8 @@ var app = (function () {
 	          ctx[24].call(div18)
 	        );
 	      });
-	      add_location(div18, file$n, 135, 4, 4512);
-	      attr_dev(div19, "class", "tooltip svelte-1fhbai8");
+	      add_location(div18, file$n, 135, 4, 4514);
+	      attr_dev(div19, "class", "tooltip svelte-fd4l8c");
 	      set_style(div19, "left",
 	      /*left*/
 	      ctx[4] + "px");
@@ -47736,7 +47735,7 @@ var app = (function () {
 	        /*contentTop*/
 	        ctx[6]) -
 	        /*$tooltip*/
-	        ctx[10].tp.rSmiTot + 25) + "px");
+	        ctx[10].tp.rSizeTot + 25) + "px");
 	      }
 
 	      if (!current || dirty[0] &
@@ -47770,7 +47769,7 @@ var app = (function () {
 	      1024) {
 	        set_style(div1, "top",
 	        /*$tooltip*/
-	        ctx[10].tp.rSmiTot + 5 + "px");
+	        ctx[10].tp.rSizeTot + 5 + "px");
 	      }
 
 	      if ((!current || dirty[0] &
@@ -47974,7 +47973,7 @@ var app = (function () {
 	      1024) {
 	        set_style(div18, "margin", "0px " + (
 	        /*$tooltip*/
-	        ctx[10].tp.rSmiTot / 3 +
+	        ctx[10].tp.rSizeTot / 3 +
 	        /*offset*/
 	        ctx[11].left) + "px");
 	      }
@@ -48084,8 +48083,8 @@ var app = (function () {
 	        each_blocks[_i16].c();
 	      }
 
-	      attr_dev(div, "class", "description svelte-1fhbai8");
-	      add_location(div, file$n, 180, 8, 6278);
+	      attr_dev(div, "class", "description svelte-fd4l8c");
+	      add_location(div, file$n, 180, 8, 6281);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -48162,8 +48161,8 @@ var app = (function () {
 	      div = element("div");
 	      img = element("img");
 	      t2 = space();
-	      attr_dev(p, "class", "svelte-1fhbai8");
-	      add_location(p, file$n, 182, 12, 6363);
+	      attr_dev(p, "class", "svelte-fd4l8c");
+	      add_location(p, file$n, 182, 12, 6366);
 	      if (img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase() + (
@@ -48172,10 +48171,10 @@ var app = (function () {
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-1fhbai8");
-	      add_location(img, file$n, 184, 16, 6432);
-	      attr_dev(div, "class", "image svelte-1fhbai8");
-	      add_location(div, file$n, 183, 14, 6396);
+	      attr_dev(img, "class", "svelte-fd4l8c");
+	      add_location(img, file$n, 184, 16, 6435);
+	      attr_dev(div, "class", "image svelte-fd4l8c");
+	      add_location(div, file$n, 183, 14, 6399);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p, anchor);
@@ -48251,12 +48250,12 @@ var app = (function () {
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-1fhbai8");
-	      add_location(img, file$n, 193, 12, 6680);
-	      attr_dev(p, "class", "svelte-1fhbai8");
-	      add_location(p, file$n, 194, 12, 6771);
-	      attr_dev(div, "class", "image svelte-1fhbai8");
-	      add_location(div, file$n, 192, 10, 6648);
+	      attr_dev(img, "class", "svelte-fd4l8c");
+	      add_location(img, file$n, 193, 12, 6683);
+	      attr_dev(p, "class", "svelte-fd4l8c");
+	      add_location(p, file$n, 194, 12, 6774);
+	      attr_dev(div, "class", "image svelte-fd4l8c");
+	      add_location(div, file$n, 192, 10, 6651);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -48342,12 +48341,12 @@ var app = (function () {
 	        each_blocks[_i19].c();
 	      }
 
-	      attr_dev(h3, "class", "svelte-1fhbai8");
-	      add_location(h3, file$n, 204, 12, 7112);
-	      attr_dev(ul, "class", "svelte-1fhbai8");
-	      add_location(ul, file$n, 205, 12, 7138);
-	      attr_dev(div, "class", "tags svelte-1fhbai8");
-	      add_location(div, file$n, 203, 10, 7081);
+	      attr_dev(h3, "class", "svelte-fd4l8c");
+	      add_location(h3, file$n, 204, 12, 7115);
+	      attr_dev(ul, "class", "svelte-fd4l8c");
+	      add_location(ul, file$n, 205, 12, 7141);
+	      attr_dev(div, "class", "tags svelte-fd4l8c");
+	      add_location(div, file$n, 203, 10, 7084);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -48420,8 +48419,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1fhbai8");
-	      add_location(li, file$n, 207, 16, 7211);
+	      attr_dev(li, "class", "card svelte-fd4l8c");
+	      add_location(li, file$n, 207, 16, 7214);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48490,8 +48489,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1fhbai8");
-	      add_location(li, file$n, 216, 14, 7530);
+	      attr_dev(li, "class", "card svelte-fd4l8c");
+	      add_location(li, file$n, 216, 14, 7533);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48560,8 +48559,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1fhbai8");
-	      add_location(li, file$n, 224, 14, 7834);
+	      attr_dev(li, "class", "card svelte-fd4l8c");
+	      add_location(li, file$n, 224, 14, 7837);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48880,8 +48879,8 @@ var app = (function () {
 	      li = element("li");
 	      if_block.c();
 	      t = space();
-	      attr_dev(li, "class", "card svelte-1fhbai8");
-	      add_location(li, file$n, 232, 14, 8176);
+	      attr_dev(li, "class", "card svelte-fd4l8c");
+	      add_location(li, file$n, 232, 14, 8179);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48957,8 +48956,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1fhbai8");
-	      add_location(li, file$n, 250, 14, 9269);
+	      attr_dev(li, "class", "card svelte-fd4l8c");
+	      add_location(li, file$n, 250, 14, 9272);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -49353,7 +49352,7 @@ var app = (function () {
 	  var block = {
 	    c: function create() {
 	      circle = svg_element("circle");
-	      attr_dev(circle, "class", "glow svelte-yzgw9m");
+	      attr_dev(circle, "class", "glow svelte-1sqtyh4");
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", circle_r_value =
@@ -49406,7 +49405,7 @@ var app = (function () {
 	      g = svg_element("g");
 	      if (if_block) if_block.c();
 	      circle = svg_element("circle");
-	      attr_dev(circle, "class", "balloon-main svelte-yzgw9m");
+	      attr_dev(circle, "class", "balloon-main svelte-1sqtyh4");
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", circle_r_value = setRadius(
@@ -49416,7 +49415,7 @@ var app = (function () {
 	      /*timePoint*/
 	      ctx[0].image_location + "_image)");
 	      add_location(circle, file$o, 49, 2, 1356);
-	      attr_dev(g, "class", "balloon svelte-yzgw9m");
+	      attr_dev(g, "class", "balloon svelte-1sqtyh4");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*tweenedPos*/
 	      ctx[1].x + " " +
@@ -50573,7 +50572,7 @@ var app = (function () {
 	      /*$tweenedPos*/
 	      ctx[4].fy +
 	      /*source*/
-	      ctx[0].rSmiTot - 10,
+	      ctx[0].rSizeTot - 10,
 	      /*source*/
 	      ctx[0].shift,
 	      /*$mapHeight*/
@@ -50624,7 +50623,7 @@ var app = (function () {
 	      /*$tweenedPos*/
 	      ctx[4].fy +
 	      /*source*/
-	      ctx[0].rSmiTot - 10,
+	      ctx[0].rSizeTot - 10,
 	      /*source*/
 	      ctx[0].shift,
 	      /*$mapHeight*/
@@ -53293,10 +53292,10 @@ var app = (function () {
 
 	function get_each_context$9(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[5] = list[i];
-	  child_ctx[7] = i;
+	  child_ctx[6] = list[i];
+	  child_ctx[8] = i;
 	  return child_ctx;
-	} // (23:4) {#each rTicks as tick, i}
+	} // (53:4) {#each rTicks as tick, i}
 
 
 	function create_each_block$9(ctx) {
@@ -53306,10 +53305,10 @@ var app = (function () {
 	  var line_y__value_1;
 	  var text_1;
 	  var t_value =
-	  /*unscaled*/
-	  ctx[3][
-	  /*i*/
-	  ctx[7]] + "";
+	  /*commaFormat*/
+	  ctx[2](
+	  /*tick*/
+	  ctx[6]) + "";
 	  var t;
 	  var text_1_transform_value;
 	  var circle;
@@ -53323,62 +53322,62 @@ var app = (function () {
 	      circle = svg_element("circle");
 	      attr_dev(line, "x1", "0");
 	      attr_dev(line, "y1", line_y__value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
 	      /*rTicks*/
-	      ctx[2][0]) - 2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] - 2 * (
 	      /*tick*/
-	      ctx[5]));
+	      ctx[6] *
+	      /*circleScale*/
+	      ctx[4]));
 	      attr_dev(line, "x2", line_x__value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
 	      /*rTicks*/
-	      ctx[2][0]) + 15);
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] + 15);
 	      attr_dev(line, "y2", line_y__value_1 =
-	      /*$smiTotalYScale*/
-	      ctx[0](
 	      /*rTicks*/
-	      ctx[2][0]) - 2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] - 2 * (
 	      /*tick*/
-	      ctx[5]));
-	      attr_dev(line, "class", "svelte-10o78mj");
-	      add_location(line, file$y, 23, 6, 869);
-	      attr_dev(text_1, "class", "tick svelte-10o78mj");
+	      ctx[6] *
+	      /*circleScale*/
+	      ctx[4]));
+	      attr_dev(line, "class", "svelte-1jr8m9r");
+	      add_location(line, file$y, 53, 6, 1977);
+	      attr_dev(text_1, "class", "tick svelte-1jr8m9r");
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (
-	      /*$smiTotalYScale*/
-	      ctx[0](
 	      /*rTicks*/
-	      ctx[2][0]) + 18) + " " + (
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] + 18) + " " + (
 	      /*rTicks*/
-	      ctx[2][0]) - 2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] - 2 * (
 	      /*tick*/
-	      ctx[5])) + ")");
-	      add_location(text_1, file$y, 27, 6, 1089);
+	      ctx[6] *
+	      /*circleScale*/
+	      ctx[4])) + ")");
+	      add_location(text_1, file$y, 57, 6, 2192);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", circle_cy_value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
 	      /*rTicks*/
-	      ctx[2][0]) -
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] -
 	      /*tick*/
-	      ctx[5]));
+	      ctx[6] *
+	      /*circleScale*/
+	      ctx[4]);
 	      attr_dev(circle, "r", circle_r_value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
 	      /*tick*/
-	      ctx[5]));
-	      attr_dev(circle, "class", "svelte-10o78mj");
-	      add_location(circle, file$y, 31, 6, 1277);
+	      ctx[6] *
+	      /*circleScale*/
+	      ctx[4]);
+	      attr_dev(circle, "class", "svelte-1jr8m9r");
+	      add_location(circle, file$y, 61, 6, 2383);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, line, anchor);
@@ -53386,87 +53385,7 @@ var app = (function () {
 	      append_dev(text_1, t);
 	      insert_dev(target, circle, anchor);
 	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && line_y__value !== (line_y__value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2][0]) - 2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*tick*/
-	      ctx[5]))) {
-	        attr_dev(line, "y1", line_y__value);
-	      }
-
-	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && line_x__value !== (line_x__value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2][0]) + 15)) {
-	        attr_dev(line, "x2", line_x__value);
-	      }
-
-	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && line_y__value_1 !== (line_y__value_1 =
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2][0]) - 2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*tick*/
-	      ctx[5]))) {
-	        attr_dev(line, "y2", line_y__value_1);
-	      }
-
-	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && text_1_transform_value !== (text_1_transform_value = "translate(" + (
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2][0]) + 18) + " " + (
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2][0]) - 2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*tick*/
-	      ctx[5])) + ")")) {
-	        attr_dev(text_1, "transform", text_1_transform_value);
-	      }
-
-	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && circle_cy_value !== (circle_cy_value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2][0]) -
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*tick*/
-	      ctx[5]))) {
-	        attr_dev(circle, "cy", circle_cy_value);
-	      }
-
-	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && circle_r_value !== (circle_r_value =
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*tick*/
-	      ctx[5]))) {
-	        attr_dev(circle, "r", circle_r_value);
-	      }
-	    },
+	    p: noop,
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(line);
 	      if (detaching) detach_dev(text_1);
@@ -53477,7 +53396,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$9.name,
 	    type: "each",
-	    source: "(23:4) {#each rTicks as tick, i}",
+	    source: "(53:4) {#each rTicks as tick, i}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -53493,7 +53412,7 @@ var app = (function () {
 	  var g1_transform_value;
 	  var each_value =
 	  /*rTicks*/
-	  ctx[2];
+	  ctx[3];
 	  validate_each_argument(each_value);
 	  var each_blocks = [];
 
@@ -53512,36 +53431,36 @@ var app = (function () {
 	        each_blocks[_i].c();
 	      }
 
-	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (-
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (-(
 	      /*rTicks*/
-	      ctx[2][0]) - 20) + " " +
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4]) - 20) + " " +
 	      /*rTicks*/
-	      ctx[2].slice(-1)[0]) + ") rotate(270)");
+	      ctx[3].slice(-1)[0] *
+	      /*circleScale*/
+	      ctx[4] + ") rotate(270)");
 	      attr_dev(text_1, "dy", "4");
-	      attr_dev(text_1, "class", "svelte-10o78mj");
-	      add_location(text_1, file$y, 17, 2, 578);
-	      attr_dev(g0, "class", "total-r-scale svelte-10o78mj");
-	      attr_dev(g0, "transform", g0_transform_value = "translate(0 " + -2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      attr_dev(text_1, "class", "svelte-1jr8m9r");
+	      add_location(text_1, file$y, 47, 2, 1683);
+	      attr_dev(g0, "class", "total-r-scale svelte-1jr8m9r");
+	      attr_dev(g0, "transform", g0_transform_value = "translate(0 " + -2 * (
 	      /*rTicks*/
-	      ctx[2].slice(-1)[0]) + ")");
-	      add_location(g0, file$y, 21, 2, 738);
+	      ctx[3].slice(-1)[0] *
+	      /*circleScale*/
+	      ctx[4]) + ")");
+	      add_location(g0, file$y, 51, 2, 1846);
 	      attr_dev(g1, "class", "legend");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(" + (
 	      /*$width*/
-	      ctx[1] - (
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[0] -
 	      /*rTicks*/
-	      ctx[2][0]) + 15) * 2 + 65) + " " + (
-	      /*$smiTotalYScale*/
-	      ctx[0].range()[1] - 60) + ")");
-	      add_location(g1, file$y, 15, 0, 436);
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] - 65) + " " + (
+	      /*$sizeTotalYScale*/
+	      ctx[1].range()[1] - 20) + ")");
+	      add_location(g1, file$y, 45, 0, 1557);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53561,25 +53480,11 @@ var app = (function () {
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && text_1_transform_value !== (text_1_transform_value = "translate(" + (-
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2][0]) - 20) + " " +
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2].slice(-1)[0]) + ") rotate(270)")) {
-	        attr_dev(text_1, "transform", text_1_transform_value);
-	      }
-
-	      if (dirty &
-	      /*$smiTotalYScale, rTicks, unscaled*/
-	      13) {
+	      /*rTicks, circleScale, commaFormat*/
+	      28) {
 	        each_value =
 	        /*rTicks*/
-	        ctx[2];
+	        ctx[3];
 	        validate_each_argument(each_value);
 
 	        var _i3;
@@ -53606,26 +53511,16 @@ var app = (function () {
 	      }
 
 	      if (dirty &
-	      /*$smiTotalYScale*/
-	      1 && g0_transform_value !== (g0_transform_value = "translate(0 " + -2 *
-	      /*$smiTotalYScale*/
-	      ctx[0](
-	      /*rTicks*/
-	      ctx[2].slice(-1)[0]) + ")")) {
-	        attr_dev(g0, "transform", g0_transform_value);
-	      }
-
-	      if (dirty &
-	      /*$width, $smiTotalYScale*/
+	      /*$width, $sizeTotalYScale*/
 	      3 && g1_transform_value !== (g1_transform_value = "translate(" + (
 	      /*$width*/
-	      ctx[1] - (
-	      /*$smiTotalYScale*/
-	      ctx[0](
+	      ctx[0] -
 	      /*rTicks*/
-	      ctx[2][0]) + 15) * 2 + 65) + " " + (
-	      /*$smiTotalYScale*/
-	      ctx[0].range()[1] - 60) + ")")) {
+	      ctx[3][0] *
+	      /*circleScale*/
+	      ctx[4] - 65) + " " + (
+	      /*$sizeTotalYScale*/
+	      ctx[1].range()[1] - 20) + ")")) {
 	        attr_dev(g1, "transform", g1_transform_value);
 	      }
 	    },
@@ -53647,19 +53542,21 @@ var app = (function () {
 	}
 
 	function instance$z($$self, $$props, $$invalidate) {
-	  var $smiTotalYScale;
 	  var $width;
-	  validate_store(smiTotalYScale, "smiTotalYScale");
-	  component_subscribe($$self, smiTotalYScale, function ($$value) {
-	    return $$invalidate(0, $smiTotalYScale = $$value);
-	  });
+	  var $sizeTotalYScale;
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(1, $width = $$value);
+	    return $$invalidate(0, $width = $$value);
 	  });
-	  var commaFormat = format(",");
-	  var rTicks = [$smiTotalYScale(115), $smiTotalYScale(40), $smiTotalYScale(20)];
+	  validate_store(sizeTotalYScale, "sizeTotalYScale");
+	  component_subscribe($$self, sizeTotalYScale, function ($$value) {
+	    return $$invalidate(1, $sizeTotalYScale = $$value);
+	  });
+	  var commaFormat = format(","); // const rTicks = [$sizeTotalYScale(115), $sizeTotalYScale(40), $sizeTotalYScale(20)];
+
+	  var rTicks = [115, 50, 15];
 	  var unscaled = [115, 40, 20];
+	  var circleScale = 1.25;
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Legend> was created with unknown prop '".concat(key, "'"));
@@ -53672,20 +53569,30 @@ var app = (function () {
 	  $$self.$capture_state = function () {
 	    return {
 	      timeScale: timeScale,
-	      smiTotalYScale: smiTotalYScale,
-	      smiTotalRScale: smiTotalRScale,
+	      sizeTotalYScale: sizeTotalYScale,
+	      sizeTotalRScale: sizeTotalRScale,
+	      sizeShareRScale: sizeShareRScale,
 	      margin: margin,
 	      width: width,
 	      format: format,
 	      commaFormat: commaFormat,
 	      rTicks: rTicks,
 	      unscaled: unscaled,
-	      $smiTotalYScale: $smiTotalYScale,
-	      $width: $width
+	      circleScale: circleScale,
+	      $width: $width,
+	      $sizeTotalYScale: $sizeTotalYScale
 	    };
 	  };
 
-	  return [$smiTotalYScale, $width, rTicks, unscaled];
+	  $$self.$inject_state = function ($$props) {
+	    if ("circleScale" in $$props) $$invalidate(4, circleScale = $$props.circleScale);
+	  };
+
+	  if ($$props && "$$inject" in $$props) {
+	    $$self.$inject_state($$props.$$inject);
+	  }
+
+	  return [$width, $sizeTotalYScale, commaFormat, rTicks, circleScale];
 	}
 
 	var Legend = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -53757,18 +53664,18 @@ var app = (function () {
 	      attr_dev(circle, "cy", "-20");
 	      attr_dev(circle, "r", "5");
 	      attr_dev(circle, "class", "svelte-1ay65iw");
-	      add_location(circle, file$z, 22, 8, 671);
+	      add_location(circle, file$z, 22, 8, 673);
 	      attr_dev(text0, "class", "bg svelte-1ay65iw");
-	      add_location(text0, file$z, 23, 8, 712);
+	      add_location(text0, file$z, 23, 8, 714);
 	      attr_dev(text1, "class", "svelte-1ay65iw");
-	      add_location(text1, file$z, 24, 8, 779);
+	      add_location(text1, file$z, 24, 8, 781);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*$timeScale*/
 	      ctx[4](
 	      /*tick*/
 	      ctx[12]) + " 20)");
-	      add_location(g, file$z, 20, 6, 592);
+	      add_location(g, file$z, 20, 6, 594);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -53816,7 +53723,7 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
-	} // (49:4) {#each $smiTotalYScale.ticks(4).slice(1) as tick}
+	} // (49:4) {#each $sizeTotalYScale.ticks(4).slice(1) as tick}
 
 
 	function create_each_block$a(ctx) {
@@ -53835,14 +53742,14 @@ var app = (function () {
 	      text_1 = svg_element("text");
 	      t = text(t_value);
 	      attr_dev(text_1, "class", "svelte-1ay65iw");
-	      add_location(text_1, file$z, 51, 8, 1893);
+	      add_location(text_1, file$z, 51, 8, 1897);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(0 " +
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[3](
 	      /*tick*/
 	      ctx[12]) + ")");
-	      add_location(g, file$z, 49, 6, 1809);
+	      add_location(g, file$z, 49, 6, 1812);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -53851,7 +53758,7 @@ var app = (function () {
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty &
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      8 && t_value !== (t_value =
 	      /*commaFormat*/
 	      ctx[7](
@@ -53859,9 +53766,9 @@ var app = (function () {
 	      ctx[12]) + "")) set_data_dev(t, t_value);
 
 	      if (dirty &
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      8 && g_transform_value !== (g_transform_value = "translate(0 " +
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[3](
 	      /*tick*/
 	      ctx[12]) + ")")) {
@@ -53876,7 +53783,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$a.name,
 	    type: "each",
-	    source: "(49:4) {#each $smiTotalYScale.ticks(4).slice(1) as tick}",
+	    source: "(49:4) {#each $sizeTotalYScale.ticks(4).slice(1) as tick}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -53929,7 +53836,7 @@ var app = (function () {
 	  }
 
 	  var each_value =
-	  /*$smiTotalYScale*/
+	  /*$sizeTotalYScale*/
 	  ctx[3].ticks(4).slice(1);
 	  validate_each_argument(each_value);
 	  var each_blocks = [];
@@ -53972,15 +53879,15 @@ var app = (function () {
 	      path5 = svg_element("path");
 	      attr_dev(path0, "d", path0_d_value = "M0 0l" + lineLength$1 + " 0");
 	      attr_dev(path0, "class", "svelte-1ay65iw");
-	      add_location(path0, file$z, 35, 6, 1192);
+	      add_location(path0, file$z, 35, 6, 1194);
 	      attr_dev(text0, "class", "bg svelte-1ay65iw");
 	      attr_dev(text0, "dx", text0_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text0, "dy", "4");
-	      add_location(text0, file$z, 36, 6, 1236);
+	      add_location(text0, file$z, 36, 6, 1238);
 	      attr_dev(text1, "dx", text1_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text1, "dy", "4");
 	      attr_dev(text1, "class", "svelte-1ay65iw");
-	      add_location(text1, file$z, 39, 6, 1344);
+	      add_location(text1, file$z, 39, 6, 1346);
 	      attr_dev(path1, "d", path1_d_value = "M" + (
 	      /*timeScaleText*/
 	      ctx[2] ?
@@ -53988,34 +53895,34 @@ var app = (function () {
 	      ctx[2].getComputedTextLength() + lineLength$1 + 2 * offset$1 : 0) + " 0l" + lineLength$1 + " 0");
 	      attr_dev(path1, "marker-end", "url(#arrow)");
 	      attr_dev(path1, "class", "svelte-1ay65iw");
-	      add_location(path1, file$z, 42, 6, 1467);
+	      add_location(path1, file$z, 42, 6, 1469);
 	      attr_dev(g0, "class", "time-scale-label svelte-1ay65iw");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" + (15 +
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
 	      /*$margin*/
 	      ctx[5].left / 1.5) + " -15)");
-	      add_location(g0, file$z, 34, 4, 1080);
+	      add_location(g0, file$z, 34, 4, 1082);
 	      attr_dev(g1, "class", "time-scale svelte-1ay65iw");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(0 " +
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[3].range()[0] + ")");
-	      add_location(g1, file$z, 17, 2, 464);
+	      add_location(g1, file$z, 17, 2, 465);
 	      attr_dev(g2, "class", "y-scale-ticks svelte-1ay65iw");
 	      attr_dev(g2, "transform", g2_transform_value = "translate(" + (15 +
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
 	      /*$margin*/
 	      ctx[5].left / 1.5) + " 0)");
-	      add_location(g2, file$z, 46, 2, 1643);
+	      add_location(g2, file$z, 46, 2, 1645);
 	      attr_dev(path2, "d", path2_d_value = "M0 0l0 " + -lineLength$1);
 	      attr_dev(path2, "class", "svelte-1ay65iw");
-	      add_location(path2, file$z, 57, 4, 2091);
+	      add_location(path2, file$z, 57, 4, 2096);
 	      attr_dev(text2, "transform", "rotate(270)");
 	      attr_dev(text2, "dx", text2_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text2, "dy", "4");
 	      attr_dev(text2, "class", "svelte-1ay65iw");
-	      add_location(text2, file$z, 58, 4, 2134);
+	      add_location(text2, file$z, 58, 4, 2139);
 	      attr_dev(path3, "d", path3_d_value = "M0 " + (
 	      /*yScaleText*/
 	      ctx[0] ? -
@@ -54023,19 +53930,19 @@ var app = (function () {
 	      ctx[0].getComputedTextLength() - lineLength$1 - 2 * offset$1 : 0) + "l0 " + -lineLength$1);
 	      attr_dev(path3, "marker-end", "url(#arrow)");
 	      attr_dev(path3, "class", "svelte-1ay65iw");
-	      add_location(path3, file$z, 62, 4, 2282);
+	      add_location(path3, file$z, 62, 4, 2287);
 	      attr_dev(g3, "class", "y-scale svelte-1ay65iw");
 	      attr_dev(g3, "transform", g3_transform_value = "translate(" + (
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
 	      /*$margin*/
 	      ctx[5].left / 1.5) + " " + 0.95 *
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[3].range()[0] + ")");
-	      add_location(g3, file$z, 55, 2, 1958);
+	      add_location(g3, file$z, 55, 2, 1962);
 	      attr_dev(path4, "d", path4_d_value = "M0 0l0 " + lineLength$1);
 	      attr_dev(path4, "class", "svelte-1ay65iw");
-	      add_location(path4, file$z, 67, 4, 2564);
+	      add_location(path4, file$z, 67, 4, 2569);
 	      attr_dev(text3, "transform", "rotate(270)");
 	      attr_dev(text3, "dx", text3_dx_value =
 	      /*mapScaleText*/
@@ -54044,14 +53951,14 @@ var app = (function () {
 	      ctx[1].getComputedTextLength() - lineLength$1 - offset$1 : 0);
 	      attr_dev(text3, "dy", "4");
 	      attr_dev(text3, "class", "svelte-1ay65iw");
-	      add_location(text3, file$z, 68, 4, 2606);
+	      add_location(text3, file$z, 68, 4, 2611);
 	      attr_dev(path5, "d", path5_d_value = "M0 " + (
 	      /*mapScaleText*/
 	      ctx[1] ?
 	      /*mapScaleText*/
 	      ctx[1].getComputedTextLength() + lineLength$1 + 2 * offset$1 : 0) + "l0 " + lineLength$1);
 	      attr_dev(path5, "class", "svelte-1ay65iw");
-	      add_location(path5, file$z, 72, 4, 2811);
+	      add_location(path5, file$z, 72, 4, 2816);
 	      attr_dev(g4, "class", "map-scale svelte-1ay65iw");
 	      attr_dev(g4, "transform", g4_transform_value = "translate(" + (
 	      /*$timeScale*/
@@ -54060,9 +53967,9 @@ var app = (function () {
 	      ctx[5].left / 1.5) + " " + 1.05 *
 	      /*$panelHeight*/
 	      ctx[6] + ")");
-	      add_location(g4, file$z, 65, 2, 2443);
+	      add_location(g4, file$z, 65, 2, 2448);
 	      attr_dev(g5, "class", "labels disable-select");
-	      add_location(g5, file$z, 16, 0, 428);
+	      add_location(g5, file$z, 16, 0, 429);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -54164,18 +54071,18 @@ var app = (function () {
 	      }
 
 	      if (dirty &
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      8 && g1_transform_value !== (g1_transform_value = "translate(0 " +
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[3].range()[0] + ")")) {
 	        attr_dev(g1, "transform", g1_transform_value);
 	      }
 
 	      if (dirty &
-	      /*$smiTotalYScale, commaFormat*/
+	      /*$sizeTotalYScale, commaFormat*/
 	      136) {
 	        each_value =
-	        /*$smiTotalYScale*/
+	        /*$sizeTotalYScale*/
 	        ctx[3].ticks(4).slice(1);
 	        validate_each_argument(each_value);
 
@@ -54223,13 +54130,13 @@ var app = (function () {
 	      }
 
 	      if (dirty &
-	      /*$timeScale, $margin, $smiTotalYScale*/
+	      /*$timeScale, $margin, $sizeTotalYScale*/
 	      56 && g3_transform_value !== (g3_transform_value = "translate(" + (
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
 	      /*$margin*/
 	      ctx[5].left / 1.5) + " " + 0.95 *
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[3].range()[0] + ")")) {
 	        attr_dev(g3, "transform", g3_transform_value);
 	      }
@@ -54297,13 +54204,13 @@ var app = (function () {
 	var offset$1 = 5;
 
 	function instance$A($$self, $$props, $$invalidate) {
-	  var $smiTotalYScale;
+	  var $sizeTotalYScale;
 	  var $timeScale;
 	  var $margin;
 	  var $panelHeight;
-	  validate_store(smiTotalYScale, "smiTotalYScale");
-	  component_subscribe($$self, smiTotalYScale, function ($$value) {
-	    return $$invalidate(3, $smiTotalYScale = $$value);
+	  validate_store(sizeTotalYScale, "sizeTotalYScale");
+	  component_subscribe($$self, sizeTotalYScale, function ($$value) {
+	    return $$invalidate(3, $sizeTotalYScale = $$value);
 	  });
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
@@ -54353,7 +54260,7 @@ var app = (function () {
 	  $$self.$capture_state = function () {
 	    return {
 	      timeScale: timeScale,
-	      smiTotalYScale: smiTotalYScale,
+	      sizeTotalYScale: sizeTotalYScale,
 	      margin: margin,
 	      timeFormat: timeFormat$1,
 	      format: format,
@@ -54365,7 +54272,7 @@ var app = (function () {
 	      yScaleText: yScaleText,
 	      mapScaleText: mapScaleText,
 	      timeScaleText: timeScaleText,
-	      $smiTotalYScale: $smiTotalYScale,
+	      $sizeTotalYScale: $sizeTotalYScale,
 	      $timeScale: $timeScale,
 	      $margin: $margin,
 	      $panelHeight: $panelHeight
@@ -54382,7 +54289,7 @@ var app = (function () {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [yScaleText, mapScaleText, timeScaleText, $smiTotalYScale, $timeScale, $margin, $panelHeight, commaFormat, tf, text1_binding, text2_binding, text3_binding];
+	  return [yScaleText, mapScaleText, timeScaleText, $sizeTotalYScale, $timeScale, $margin, $panelHeight, commaFormat, tf, text1_binding, text2_binding, text3_binding];
 	}
 
 	var Labels = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -58452,7 +58359,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$9 = globals.console;
-	var file$H = "src/components/Visualization.svelte"; // (211:2) {#if (!timePoints)}
+	var file$H = "src/components/Visualization.svelte"; // (213:2) {#if (!timePoints)}
 
 	function create_if_block_1$8(ctx) {
 	  var loadinginfo;
@@ -58485,11 +58392,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$8.name,
 	    type: "if",
-	    source: "(211:2) {#if (!timePoints)}",
+	    source: "(213:2) {#if (!timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (219:6) {#if (timePoints)}
+	} // (221:6) {#if (timePoints)}
 
 
 	function create_if_block$k(ctx) {
@@ -58525,7 +58432,7 @@ var app = (function () {
 	      /*$timeScale*/
 	      ctx[3].range()[0],
 	      y:
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[4].range()[1]
 	    },
 	    $$inline: true
@@ -58587,9 +58494,9 @@ var app = (function () {
 	      /*$timeScale*/
 	      ctx[3].range()[0];
 	      if (dirty[0] &
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      16) info_changes.y =
-	      /*$smiTotalYScale*/
+	      /*$sizeTotalYScale*/
 	      ctx[4].range()[1];
 	      info.$set(info_changes);
 	    },
@@ -58630,7 +58537,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$k.name,
 	    type: "if",
-	    source: "(219:6) {#if (timePoints)}",
+	    source: "(221:6) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -58706,35 +58613,35 @@ var app = (function () {
 	      t4 = space();
 	      div3 = element("div");
 	      create_component(table.$$.fragment);
-	      attr_dev(div0, "class", "controls-wrapper svelte-12ye563");
+	      attr_dev(div0, "class", "controls-wrapper svelte-1bpl1k4");
 	      add_render_callback(function () {
 	        return (
 	          /*div0_elementresize_handler*/
 	          ctx[9].call(div0)
 	        );
 	      });
-	      add_location(div0, file$H, 214, 4, 7695);
-	      attr_dev(div1, "class", "draw-wrapper svelte-12ye563");
+	      add_location(div0, file$H, 216, 4, 7756);
+	      attr_dev(div1, "class", "draw-wrapper svelte-1bpl1k4");
 	      add_render_callback(function () {
 	        return (
 	          /*div1_elementresize_handler*/
 	          ctx[11].call(div1)
 	        );
 	      });
-	      add_location(div1, file$H, 217, 4, 7809);
-	      attr_dev(div2, "class", "sticky-wrapper svelte-12ye563");
-	      add_location(div2, file$H, 213, 2, 7662);
-	      attr_dev(div3, "class", "table-wrapper svelte-12ye563");
-	      add_location(div3, file$H, 230, 2, 8203);
+	      add_location(div1, file$H, 219, 4, 7870);
+	      attr_dev(div2, "class", "sticky-wrapper svelte-1bpl1k4");
+	      add_location(div2, file$H, 215, 2, 7723);
+	      attr_dev(div3, "class", "table-wrapper svelte-1bpl1k4");
+	      add_location(div3, file$H, 232, 2, 8265);
 	      attr_dev(div4, "id", "viz");
-	      attr_dev(div4, "class", "visualization-wrapper svelte-12ye563");
+	      attr_dev(div4, "class", "visualization-wrapper svelte-1bpl1k4");
 	      add_render_callback(function () {
 	        return (
 	          /*div4_elementresize_handler*/
 	          ctx[12].call(div4)
 	        );
 	      });
-	      add_location(div4, file$H, 209, 0, 7539);
+	      add_location(div4, file$H, 211, 0, 7600);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -58905,9 +58812,9 @@ var app = (function () {
 	  var $panelHeight;
 	  var $margin;
 	  var $timeScale;
-	  var $smiTotalYScale;
+	  var $sizeTotalYScale;
 	  var $attributionScoreScale;
-	  var $smiTotalRScale;
+	  var $sizeTotalRScale;
 	  var $originalTimeDomain;
 	  var $disinformantNationFilter;
 	  var $platformFilter;
@@ -58969,17 +58876,17 @@ var app = (function () {
 	  component_subscribe($$self, timeScale, function ($$value) {
 	    return $$invalidate(3, $timeScale = $$value);
 	  });
-	  validate_store(smiTotalYScale, "smiTotalYScale");
-	  component_subscribe($$self, smiTotalYScale, function ($$value) {
-	    return $$invalidate(4, $smiTotalYScale = $$value);
+	  validate_store(sizeTotalYScale, "sizeTotalYScale");
+	  component_subscribe($$self, sizeTotalYScale, function ($$value) {
+	    return $$invalidate(4, $sizeTotalYScale = $$value);
 	  });
 	  validate_store(attributionScoreScale, "attributionScoreScale");
 	  component_subscribe($$self, attributionScoreScale, function ($$value) {
 	    return $$invalidate(23, $attributionScoreScale = $$value);
 	  });
-	  validate_store(smiTotalRScale, "smiTotalRScale");
-	  component_subscribe($$self, smiTotalRScale, function ($$value) {
-	    return $$invalidate(24, $smiTotalRScale = $$value);
+	  validate_store(sizeTotalRScale, "sizeTotalRScale");
+	  component_subscribe($$self, sizeTotalRScale, function ($$value) {
+	    return $$invalidate(24, $sizeTotalRScale = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
@@ -59140,9 +59047,9 @@ var app = (function () {
 	      margin: margin,
 	      controlsHeight: controlsHeight,
 	      timeScale: timeScale,
-	      smiTotalYScale: smiTotalYScale,
-	      smiTotalRScale: smiTotalRScale,
-	      smiShareRScale: smiShareRScale,
+	      sizeTotalYScale: sizeTotalYScale,
+	      sizeTotalRScale: sizeTotalRScale,
+	      sizeShareRScale: sizeShareRScale,
 	      attributionScoreScale: attributionScoreScale,
 	      polarizationScale: polarizationScale,
 	      disinformantNationFilter: disinformantNationFilter,
@@ -59210,9 +59117,9 @@ var app = (function () {
 	      $panelHeight: $panelHeight,
 	      $margin: $margin,
 	      $timeScale: $timeScale,
-	      $smiTotalYScale: $smiTotalYScale,
+	      $sizeTotalYScale: $sizeTotalYScale,
 	      $attributionScoreScale: $attributionScoreScale,
-	      $smiTotalRScale: $smiTotalRScale,
+	      $sizeTotalRScale: $sizeTotalRScale,
 	      $originalTimeDomain: $originalTimeDomain,
 	      $disinformantNationFilter: $disinformantNationFilter,
 	      $platformFilter: $platformFilter,
@@ -59247,33 +59154,34 @@ var app = (function () {
 	    }
 
 	    if ($$self.$$.dirty[0] &
-	    /*data, $timeScale, $smiTotalYScale, $attributionScoreScale, $smiTotalRScale, $originalTimeDomain, $margin, $width*/
+	    /*data, $timeScale, $sizeTotalYScale, $attributionScoreScale, $sizeTotalRScale, $originalTimeDomain, $margin, $width*/
 	    62914589) {
 	       if (data) {
 	        // calculate scaled data points
 	        var scaledData = data.map(function (d) {
 	          return _objectSpread2(_objectSpread2({}, d), {}, {
 	            _x: $timeScale(d.attributionDate),
-	            _y: $smiTotalYScale.range()[0],
+	            _y: $sizeTotalYScale.range()[0],
 	            color: $attributionScoreScale(d.attributionScore),
 	            size: d.size,
-	            rSmiTot: isNaN(d.size) || d.size === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.size),
-	            fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(Math.max(d.smiTotal, 15))
+	            rSizeTot: isNaN(d.size) || d.size === 0 ? $sizeTotalRScale.range()[0] : $sizeTotalRScale(d.size),
+	            fy: d.sizePending ? Math.min($sizeTotalYScale.range()[0], $sizeTotalYScale.range()[0] - 2 * $sizeTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $sizeTotalYScale(Math.max(d.sizeTotal, 15))
 	          });
 	        }).sort(function (a, b) {
 	          return sortConsistently(a, b, "size", "id");
-	        }); // for some reason these definitions need to be in here and not in a gobal scope or module
+	        });
+	        console.log("scaled data: ", scaledData); // for some reason these definitions need to be in here and not in a gobal scope or module
 
 	        var simulation = forceSimulation().force("x", forceX().x(function (d) {
 	          return d._x;
 	        }));
 	        var simulationCharge = forceSimulation().force("x", forceX().x(function (d) {
 	          return d._x;
-	        })). //   .force('charge', forceManyBody().strength((d) => -(d.rSmiTot + 1) * 10).distanceMax(500).distanceMin(50));
+	        })). //   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
 	        //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
 	        //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
 	        force("charge", forceManyBody().strength(function (d) {
-	          return -(d.rSmiTot + 1) * 10;
+	          return -(d.rSizeTot + 1) * 10;
 	        }).distanceMax(500).distanceMin(50));
 	        simulation.nodes(scaledData).alpha(0.8).tick(300);
 	        console.log(scaledData); // finally set the global timePoints variable
@@ -59304,7 +59212,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [data, timePoints, $width, $timeScale, $smiTotalYScale, $controlsHeight, $drawWrapper, $height, $selected, div0_elementresize_handler, div1_binding, div1_elementresize_handler, div4_elementresize_handler];
+	  return [data, timePoints, $width, $timeScale, $sizeTotalYScale, $controlsHeight, $drawWrapper, $height, $selected, div0_elementresize_handler, div1_binding, div1_elementresize_handler, div4_elementresize_handler];
 	}
 
 	var Visualization = /*#__PURE__*/function (_SvelteComponentDev) {

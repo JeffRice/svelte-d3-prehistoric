@@ -56,7 +56,7 @@ return point
                              $tweenedPos._x,
                              $tweenedPos._y,
                              $tweenedPos.x,
-                             $tweenedPos.fy + source.rSmiTot - 10,
+                             $tweenedPos.fy + source.rSizeTot - 10,
                              source.shift,
                              $mapHeight / 15)}
           stroke={showPolarizationColor ? source.polarizationColor : usaBlue}

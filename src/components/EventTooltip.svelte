@@ -125,18 +125,18 @@
     <EventTooltipCross {tWidth} {offset} {side} />
     <div class="mouse-catcher"
           style="width: {tWidth}px;
-                 height: {Math.max(10, Math.abs(contentTop) - $tooltip.tp.rSmiTot + 25)}px;
+                 height: {Math.max(10, Math.abs(contentTop) - $tooltip.tp.rSizeTot + 25)}px;
                  position: absolute;
                  top: {contentTop - 10}px;"></div>
     <div class="mouse-catcher"
           style="width: {tWidth}px;
                  height: {Math.abs(tHeight - Math.abs(contentTop))}px;
                  position: absolute;
-                 top: {$tooltip.tp.rSmiTot + 5}px;"></div>
+                 top: {$tooltip.tp.rSizeTot + 5}px;"></div>
     <div class="content"
          bind:this={elem}
          bind:clientHeight={tHeight}
-         style="top: {contentTop}px; margin: 0px {$tooltip.tp.rSmiTot / 3 + offset.left}px;">
+         style="top: {contentTop}px; margin: 0px {$tooltip.tp.rSizeTot / 3 + offset.left}px;">
       <div class="scroll-wrapper"
            bind:this={scrollWrapper}>
            
@@ -445,7 +445,7 @@
                 0 2px 4px rgba(0,0,0,0.07);
   }
 
-  .smi ul {
+  .size ul {
     display: flex;
   }
 

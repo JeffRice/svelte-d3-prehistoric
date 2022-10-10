@@ -55,7 +55,7 @@
          ></circle>
           
   <!--<circle class="balloon-effect"
-          class:smi-pending={timePoint.smiPending}
+          class:size-pending={timePoint.sizePending}
           cx="0"
           cy="0"
           r={timePoint.size * 1.2}></circle>-->
@@ -90,7 +90,7 @@
     fill: url('#radial-gradient');
   }
 
-  .balloon-effect.smi-pending {
+  .balloon-effect.size-pending {
     stroke: var(--usa-lightblue);
     stroke-width: 0.18rem;
     stroke-linecap: round;
