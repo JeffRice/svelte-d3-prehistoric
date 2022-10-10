@@ -1,4 +1,4 @@
-export const data = 'dinosaurdata.csv';
+export const data = 'dinosaurdata24.csv';
 // export const fossilData = 'ftgreenetrees2.csv';
 // export const fossilData = 'fossilsJurassic1.csv';
  export const fossilData = 'jurassic_bigdata.csv';

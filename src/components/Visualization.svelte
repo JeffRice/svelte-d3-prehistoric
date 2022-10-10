@@ -142,7 +142,7 @@
         _x: $timeScale(d.attributionDate),
         _y: $smiTotalYScale.range()[0],
         color: $attributionScoreScale(d.attributionScore),
-        size: Math.max(d.size, 15),
+        size: d.size,
         rSmiTot: isNaN(d.size) || d.size === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.size),
         fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(Math.max(d.smiTotal, 15)),
       };

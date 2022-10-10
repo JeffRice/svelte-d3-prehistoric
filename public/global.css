@@ -9,6 +9,14 @@
   --dfrlab-white: #ffffff;
   --dfrlab-black: #000000;
 
+  /* time era colors*/
+
+  --cretaceous: #88af87;
+  --jurassic: #77d4e5;
+  --triassic: #e7b6ed;
+  --paleogene: #f1ba92;
+  --neogene: #F2FA8C;
+
   /* possible text colors */
   --text-black: #2a3035;
   --text-darkgray: #5e4a4a;
@@ -497,3 +505,4 @@ footer a, footer p {
   text-align: center;
   text-decoration: none;
 }
+

@@ -11,6 +11,15 @@
   export let tweenedPos;
   export let selected = false;
 
+  if (timePoint.size < 15){
+    console.log('wtf')
+  }
+
+  function setRadius (size) {
+   return Math.max(size, 15)
+  }
+
+
   const dispatch = createEventDispatcher();
 
   function handleMouseOver(e) {
@@ -36,12 +45,12 @@
             cy="0"
             r={timePoint.size}
             ></circle>
-            
+   
   {/if}
   <circle class="balloon-main"
           cx="0"
           cy="0"
-          r={timePoint.size * 0.75}
+          r={setRadius(timePoint.size) * 1.55}
           filter="url(#{timePoint.image_location}_image)"
          ></circle>
           

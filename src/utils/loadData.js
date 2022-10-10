@@ -17,12 +17,15 @@ const loadData = async () => {
 
     return {
       id: i,
+      name: d.name,
       diet: d.diet,
       image_location: d.image_location,
       periodEra: d.case_hash,
       sizeIndex: d.size_index,
+      tooltipContent: d.tooltip_content,
  //     size: d.size,
-      size: Math.max(d.size, 15),
+      weight: d.weight, 
+      size: d.size,
      // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
       timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
       source: splitString(source),

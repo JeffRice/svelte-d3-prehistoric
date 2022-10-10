@@ -8,8 +8,8 @@
   import { format } from 'd3';
 
   const commaFormat = format(',');
-  const rTicks = [$smiTotalYScale(115), $smiTotalYScale(40), $smiTotalYScale(15)];
-  const unscaled = [115, 40, 15]
+  const rTicks = [$smiTotalYScale(115), $smiTotalYScale(40), $smiTotalYScale(20)];
+  const unscaled = [115, 40, 20]
 
 </script>
 

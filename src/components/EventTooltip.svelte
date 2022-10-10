@@ -45,6 +45,7 @@
   let side;
   let left, top, contentTop;
   let scrollWrapper;
+  let paragraphs;
 
   let scoreQuestionsExpanded = false;
 
@@ -102,6 +103,13 @@
     }
 
     if (scrollWrapper) scrollWrapper.scrollTo(0, 0);
+
+    // translate tooltip content to html
+    let tooltipText = $tooltip.tp.tooltipContent;
+    paragraphs = tooltipText.split("<p>");
+    let numberOfParagraphs = paragraphs.length;
+     console.log(paragraphs[0],paragraphs[1],paragraphs[2] );
+     console.log(numberOfParagraphs);
   }
 
   $: showTooltip = ($tooltip && $tooltip.tp && $tooltip.tp.show);
@@ -131,36 +139,63 @@
          style="top: {contentTop}px; margin: 0px {$tooltip.tp.rSmiTot / 3 + offset.left}px;">
       <div class="scroll-wrapper"
            bind:this={scrollWrapper}>
-        <div class="title">
+           
+        <div class="title title-bg">
+          <h2>{$tooltip.tp.name}</h2>
           <div class="title-top">
-            <div class="title-dates">
-              <p>{attributionTf($tooltip.tp.attributionDate)} | {@html highlight($tooltip.tp.disinformantAttribution)}</p>
-              <p>Active: 
-                {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}
-                  {activityTf($tooltip.tp.startDate)} <span class="small">(approx.)</span>
-                {:else if (!$tooltip.tp.startDate && $tooltip.tp.endDate)}
-                  {activityTf($tooltip.tp.endDate)} <span class="small">(approx.)</span>
-                {:else if ($tooltip.tp.startDate && $tooltip.tp.endDate)}
-                  {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}
-                    {activityTf($tooltip.tp.startDate)}
-                  {:else}
-                    {activityTf($tooltip.tp.startDate)} to {activityTf($tooltip.tp.endDate)}
-                  {/if}
-                {:else}
-                  unspecified
-                {/if}
-              </p>
-            </div>
-            <Share text="" caseId={$tooltip.tp.id} mode="tooltip" />
+
+
+            <section class="dino-stats">
+  
+  
+              <div class="stats-item"><span><strong>Length:</strong> {$tooltip.tp.size} ft</span></div>
+              <div class="stats-item"><span><strong>Weight:</strong> {$tooltip.tp.weight} lbs</span></div>
+              <div class="stats-item"><span><strong>Earliest Date:</strong> {attributionTf($tooltip.tp.attributionDate)} MYA</span></div>
+              <div class="stats-item"><span><strong>Latest Date:</strong> {attributionTf($tooltip.tp.attributionDate)} MYA</span></div>
+              <div class="stats-item"><span><strong>Diet:</strong> {$tooltip.tp.diet}</span></div>
+              <div class="stats-item"><span><strong>Regions:</strong> {$tooltip.tp.disinformantNation}</span></div>
+            </section>
+
+
+
           </div>
-          <h2>{@html highlight($tooltip.tp.shortTitle)}</h2>
+
+          <Share text="" caseId={$tooltip.tp.id} mode="tooltip" />
+
+
+
+          <span class="tag-label Cretaceous"> Cretaceous  </span>
+          <span class="tag-label Jurassic"> Jurassic  </span>
+          <span class="tag-label Triassic"> Triassic  </span>
+          <span class="tag-label Paleogene"> Paleogene  </span>
+          <span class="tag-label Neogene"> Neogene  </span>
+          <div class="image">
+            <img src="{images}{$tooltip.tp.name.toLowerCase()}3.jpg" alt={$tooltip.tp.shortTitle} />
+          </div>
+
         </div>
+
+
+
+        {#if ($tooltip.tp.tooltipContent)}
+        <div class="description">
+            {#each paragraphs as paragraph, i}
+            <p>{paragraph}</p>
+              <div class="image">
+                <img src="{images}{$tooltip.tp.name.toLowerCase()}{i + 1}.jpg" alt={$tooltip.tp.shortTitle} />
+              </div>
+
+            {/each}
+         </div>
+        {/if}
+
         {#if ($tooltip.tp.periodEra)}
           <div class="image">
             <img src="{images}{$tooltip.tp.periodEra}.jpg" alt={$tooltip.tp.shortTitle} />
             <p>{$tooltip.tp.imageCredit}</p>
           </div>
         {/if}
+
         <div class="description">
           <h3>Description</h3>
           <p>{@html highlight($tooltip.tp.shortDescription)}</p>
@@ -228,24 +263,25 @@
 
 <style>
   .tooltip {
-    width: 70%;
+    width: 40%;
     /* min-width: 550px; */
     font-family: var(--font-02);
     position: absolute;
     z-index: 10000;
   }
 
+  /*
   @media (min-width: 800px) {
     .tooltip {
       width: 21%;
       min-width: 550px;
     }
   }
+  */
 
   .content {
     display: flex;
     flex-direction: column;
-    max-width: 550px;
     max-height: 60vh;
     color: var(--text-black);
     background-color: var(--bg);
@@ -267,7 +303,7 @@
 
   .scroll-wrapper .title {
     padding: 1rem;
-    background-image: linear-gradient(var(--usa-lightlightred), var(--usa-lightred));
+  /*  background-image: linear-gradient(var(--usa-lightlightred), var(--usa-lightred)); */
     position: relative;
   }
 
@@ -296,7 +332,7 @@
   }
 
   h2 {
-    margin: 1rem 0;
+    margin: 0 0 0 0;
     font-size: 1.1rem;
     font-weight: bold;
   }
@@ -347,6 +383,33 @@
   .store-questions-wrapper {
     position: relative;
   }
+
+  .title-bg {
+  background-color: var(--cretaceous);
+}
+
+/* Time Era Styling */
+.Cretaceous {
+  color: var(--cretaceous);
+}
+.Jurassic {
+  color: var(--jurassic);
+}
+.Triassic {
+  color: var(--triassic);
+ }
+.Paleogene {
+  color:  var(--paleogene);
+}
+.Neogene {
+  color:  var(--neogene);
+}
+.tag-label {
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: #577863;;
+}
+
 
   h3 {
     margin: 0 0 0.1rem 0;
@@ -416,4 +479,23 @@
   .no-float {
     float: none;
   }
+
+  .dino-stats{
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 0.3rem;
+    flex-direction: column;
+    align-items: center;
+    grid-template-rows: repeat(2,1fr);
+    margin-left: 16px;
+    margin-bottom: 16px;
+  }
+
+  .stats-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+  }
+
 </style>

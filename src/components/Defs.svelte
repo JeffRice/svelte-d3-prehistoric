@@ -55,8 +55,16 @@
   <feImage xlink:href="/images/herbivore.svg"/>
 </filter>
 
+<filter id="spinosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/spinosaurus.jpg"/>
+</filter>
+
 <filter id="tyrannoskull_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/tyrannoskull.jpg"/>
+</filter>
+
+<filter id="trexskull_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/trexskull.jpeg"/>
 </filter>
 
 <filter id="aquatic_image" x="0%" y="0%" width="100%" height="100%">
@@ -66,5 +74,53 @@
 <filter id="pterodactyl_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/pterodactyl.svg"/>
 </filter>
+
+<filter id="stegosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/stegosaurus.svg"/>
+</filter>
+
+<filter id="stegosaurus2_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/stegosaurus2.svg"/>
+</filter>
+
+<filter id="lizard_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/lizard.svg"/>
+</filter>
+
+<filter id="smallraptor_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/smallraptor.svg"/>
+</filter>
+
+<filter id="seaskeleton_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/seaskeleton.svg"/>
+</filter>
+
+<filter id="armored_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/armored.svg"/>
+</filter>
+
+<filter id="tyrannosaurskeleton_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/tyrannosaurskeleton.svg"/>
+</filter>
+
+<filter id="triceratops_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/triceratops.svg"/>
+</filter>
+
+<filter id="talons_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/talons.svg"/>
+</filter>
+
+<filter id="basilosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/basilosaurus.svg"/>
+</filter>
+
+<filter id="duckbilled_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/duckbilled.svg"/>
+</filter>
+
+
+
+
   
 </defs>

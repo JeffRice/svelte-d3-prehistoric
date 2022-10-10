@@ -35132,7 +35132,7 @@ var app = (function () {
 	}.call(commonjsGlobal));
 	});
 
-	var data$1 = 'dinosaurdata.csv'; // export const fossilData = 'ftgreenetrees2.csv';
+	var data$1 = 'dinosaurdata24.csv'; // export const fossilData = 'ftgreenetrees2.csv';
 	// export const fossilData = 'fossilsJurassic1.csv';
 
 	var fossilData = 'jurassic_bigdata.csv'; // export const fossilData = 'westernUSjurassicfossils.csv';
@@ -35287,12 +35287,15 @@ var app = (function () {
 	              var sizeTotal = d.size === '' ? Number.NaN : +d.size;
 	              return {
 	                id: i,
+	                name: d.name,
 	                diet: d.diet,
 	                image_location: d.image_location,
 	                periodEra: d.case_hash,
 	                sizeIndex: d.size_index,
+	                tooltipContent: d.tooltip_content,
 	                //     size: d.size,
-	                size: Math.max(d.size, 15),
+	                weight: d.weight,
+	                size: d.size,
 	                // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                source: splitString(source),
@@ -44979,6 +44982,32 @@ var app = (function () {
 	  var feImage4;
 	  var filter5;
 	  var feImage5;
+	  var filter6;
+	  var feImage6;
+	  var filter7;
+	  var feImage7;
+	  var filter8;
+	  var feImage8;
+	  var filter9;
+	  var feImage9;
+	  var filter10;
+	  var feImage10;
+	  var filter11;
+	  var feImage11;
+	  var filter12;
+	  var feImage12;
+	  var filter13;
+	  var feImage13;
+	  var filter14;
+	  var feImage14;
+	  var filter15;
+	  var feImage15;
+	  var filter16;
+	  var feImage16;
+	  var filter17;
+	  var feImage17;
+	  var filter18;
+	  var feImage18;
 	  var block = {
 	    c: function create() {
 	      defs = svg_element("defs");
@@ -45011,6 +45040,32 @@ var app = (function () {
 	      feImage4 = svg_element("feImage");
 	      filter5 = svg_element("filter");
 	      feImage5 = svg_element("feImage");
+	      filter6 = svg_element("filter");
+	      feImage6 = svg_element("feImage");
+	      filter7 = svg_element("filter");
+	      feImage7 = svg_element("feImage");
+	      filter8 = svg_element("filter");
+	      feImage8 = svg_element("feImage");
+	      filter9 = svg_element("filter");
+	      feImage9 = svg_element("feImage");
+	      filter10 = svg_element("filter");
+	      feImage10 = svg_element("feImage");
+	      filter11 = svg_element("filter");
+	      feImage11 = svg_element("feImage");
+	      filter12 = svg_element("filter");
+	      feImage12 = svg_element("feImage");
+	      filter13 = svg_element("filter");
+	      feImage13 = svg_element("feImage");
+	      filter14 = svg_element("filter");
+	      feImage14 = svg_element("feImage");
+	      filter15 = svg_element("filter");
+	      feImage15 = svg_element("feImage");
+	      filter16 = svg_element("filter");
+	      feImage16 = svg_element("feImage");
+	      filter17 = svg_element("filter");
+	      feImage17 = svg_element("feImage");
+	      filter18 = svg_element("filter");
+	      feImage18 = svg_element("feImage");
 	      attr_dev(stop0, "offset", "40%");
 	      set_style(stop0, "stop-color", "var(--bg)");
 	      attr_dev(stop0, "stop-opacity", "0.7");
@@ -45108,30 +45163,134 @@ var app = (function () {
 	      attr_dev(filter2, "width", "100%");
 	      attr_dev(filter2, "height", "100%");
 	      add_location(filter2, file$j, 53, 0, 1974);
-	      xlink_attr(feImage3, "xlink:href", "/images/tyrannoskull.jpg");
-	      add_location(feImage3, file$j, 58, 2, 2180);
-	      attr_dev(filter3, "id", "tyrannoskull_image");
+	      xlink_attr(feImage3, "xlink:href", "/images/spinosaurus.jpg");
+	      add_location(feImage3, file$j, 58, 2, 2179);
+	      attr_dev(filter3, "id", "spinosaurus_image");
 	      attr_dev(filter3, "x", "0%");
 	      attr_dev(filter3, "y", "0%");
 	      attr_dev(filter3, "width", "100%");
 	      attr_dev(filter3, "height", "100%");
 	      add_location(filter3, file$j, 57, 0, 2104);
-	      xlink_attr(feImage4, "xlink:href", "/images/aquatic.svg");
-	      add_location(feImage4, file$j, 62, 2, 2311);
-	      attr_dev(filter4, "id", "aquatic_image");
+	      xlink_attr(feImage4, "xlink:href", "/images/tyrannoskull.jpg");
+	      add_location(feImage4, file$j, 62, 2, 2314);
+	      attr_dev(filter4, "id", "tyrannoskull_image");
 	      attr_dev(filter4, "x", "0%");
 	      attr_dev(filter4, "y", "0%");
 	      attr_dev(filter4, "width", "100%");
 	      attr_dev(filter4, "height", "100%");
-	      add_location(filter4, file$j, 61, 0, 2240);
-	      xlink_attr(feImage5, "xlink:href", "/images/pterodactyl.svg");
-	      add_location(feImage5, file$j, 66, 2, 2441);
-	      attr_dev(filter5, "id", "pterodactyl_image");
+	      add_location(filter4, file$j, 61, 0, 2238);
+	      xlink_attr(feImage5, "xlink:href", "/images/trexskull.jpeg");
+	      add_location(feImage5, file$j, 66, 2, 2447);
+	      attr_dev(filter5, "id", "trexskull_image");
 	      attr_dev(filter5, "x", "0%");
 	      attr_dev(filter5, "y", "0%");
 	      attr_dev(filter5, "width", "100%");
 	      attr_dev(filter5, "height", "100%");
-	      add_location(filter5, file$j, 65, 0, 2366);
+	      add_location(filter5, file$j, 65, 0, 2374);
+	      xlink_attr(feImage6, "xlink:href", "/images/aquatic.svg");
+	      add_location(feImage6, file$j, 70, 2, 2576);
+	      attr_dev(filter6, "id", "aquatic_image");
+	      attr_dev(filter6, "x", "0%");
+	      attr_dev(filter6, "y", "0%");
+	      attr_dev(filter6, "width", "100%");
+	      attr_dev(filter6, "height", "100%");
+	      add_location(filter6, file$j, 69, 0, 2505);
+	      xlink_attr(feImage7, "xlink:href", "/images/pterodactyl.svg");
+	      add_location(feImage7, file$j, 74, 2, 2706);
+	      attr_dev(filter7, "id", "pterodactyl_image");
+	      attr_dev(filter7, "x", "0%");
+	      attr_dev(filter7, "y", "0%");
+	      attr_dev(filter7, "width", "100%");
+	      attr_dev(filter7, "height", "100%");
+	      add_location(filter7, file$j, 73, 0, 2631);
+	      xlink_attr(feImage8, "xlink:href", "/images/stegosaurus.svg");
+	      add_location(feImage8, file$j, 78, 2, 2840);
+	      attr_dev(filter8, "id", "stegosaurus_image");
+	      attr_dev(filter8, "x", "0%");
+	      attr_dev(filter8, "y", "0%");
+	      attr_dev(filter8, "width", "100%");
+	      attr_dev(filter8, "height", "100%");
+	      add_location(filter8, file$j, 77, 0, 2765);
+	      xlink_attr(feImage9, "xlink:href", "/images/stegosaurus2.svg");
+	      add_location(feImage9, file$j, 82, 2, 2975);
+	      attr_dev(filter9, "id", "stegosaurus2_image");
+	      attr_dev(filter9, "x", "0%");
+	      attr_dev(filter9, "y", "0%");
+	      attr_dev(filter9, "width", "100%");
+	      attr_dev(filter9, "height", "100%");
+	      add_location(filter9, file$j, 81, 0, 2899);
+	      xlink_attr(feImage10, "xlink:href", "/images/lizard.svg");
+	      add_location(feImage10, file$j, 86, 2, 3105);
+	      attr_dev(filter10, "id", "lizard_image");
+	      attr_dev(filter10, "x", "0%");
+	      attr_dev(filter10, "y", "0%");
+	      attr_dev(filter10, "width", "100%");
+	      attr_dev(filter10, "height", "100%");
+	      add_location(filter10, file$j, 85, 0, 3035);
+	      xlink_attr(feImage11, "xlink:href", "/images/smallraptor.svg");
+	      add_location(feImage11, file$j, 90, 2, 3234);
+	      attr_dev(filter11, "id", "smallraptor_image");
+	      attr_dev(filter11, "x", "0%");
+	      attr_dev(filter11, "y", "0%");
+	      attr_dev(filter11, "width", "100%");
+	      attr_dev(filter11, "height", "100%");
+	      add_location(filter11, file$j, 89, 0, 3159);
+	      xlink_attr(feImage12, "xlink:href", "/images/seaskeleton.svg");
+	      add_location(feImage12, file$j, 94, 2, 3368);
+	      attr_dev(filter12, "id", "seaskeleton_image");
+	      attr_dev(filter12, "x", "0%");
+	      attr_dev(filter12, "y", "0%");
+	      attr_dev(filter12, "width", "100%");
+	      attr_dev(filter12, "height", "100%");
+	      add_location(filter12, file$j, 93, 0, 3293);
+	      xlink_attr(feImage13, "xlink:href", "/images/armored.svg");
+	      add_location(feImage13, file$j, 98, 2, 3498);
+	      attr_dev(filter13, "id", "armored_image");
+	      attr_dev(filter13, "x", "0%");
+	      attr_dev(filter13, "y", "0%");
+	      attr_dev(filter13, "width", "100%");
+	      attr_dev(filter13, "height", "100%");
+	      add_location(filter13, file$j, 97, 0, 3427);
+	      xlink_attr(feImage14, "xlink:href", "/images/tyrannosaurskeleton.svg");
+	      add_location(feImage14, file$j, 102, 2, 3636);
+	      attr_dev(filter14, "id", "tyrannosaurskeleton_image");
+	      attr_dev(filter14, "x", "0%");
+	      attr_dev(filter14, "y", "0%");
+	      attr_dev(filter14, "width", "100%");
+	      attr_dev(filter14, "height", "100%");
+	      add_location(filter14, file$j, 101, 0, 3553);
+	      xlink_attr(feImage15, "xlink:href", "/images/triceratops.svg");
+	      add_location(feImage15, file$j, 106, 2, 3778);
+	      attr_dev(filter15, "id", "triceratops_image");
+	      attr_dev(filter15, "x", "0%");
+	      attr_dev(filter15, "y", "0%");
+	      attr_dev(filter15, "width", "100%");
+	      attr_dev(filter15, "height", "100%");
+	      add_location(filter15, file$j, 105, 0, 3703);
+	      xlink_attr(feImage16, "xlink:href", "/images/talons.svg");
+	      add_location(feImage16, file$j, 110, 2, 3907);
+	      attr_dev(filter16, "id", "talons_image");
+	      attr_dev(filter16, "x", "0%");
+	      attr_dev(filter16, "y", "0%");
+	      attr_dev(filter16, "width", "100%");
+	      attr_dev(filter16, "height", "100%");
+	      add_location(filter16, file$j, 109, 0, 3837);
+	      xlink_attr(feImage17, "xlink:href", "/images/basilosaurus.svg");
+	      add_location(feImage17, file$j, 114, 2, 4037);
+	      attr_dev(filter17, "id", "basilosaurus_image");
+	      attr_dev(filter17, "x", "0%");
+	      attr_dev(filter17, "y", "0%");
+	      attr_dev(filter17, "width", "100%");
+	      attr_dev(filter17, "height", "100%");
+	      add_location(filter17, file$j, 113, 0, 3961);
+	      xlink_attr(feImage18, "xlink:href", "/images/duckbilled.svg");
+	      add_location(feImage18, file$j, 118, 2, 4171);
+	      attr_dev(filter18, "id", "duckbilled_image");
+	      attr_dev(filter18, "x", "0%");
+	      attr_dev(filter18, "y", "0%");
+	      attr_dev(filter18, "width", "100%");
+	      attr_dev(filter18, "height", "100%");
+	      add_location(filter18, file$j, 117, 0, 4097);
 	      add_location(defs, file$j, 5, 0, 105);
 	    },
 	    l: function claim(nodes) {
@@ -45168,6 +45327,32 @@ var app = (function () {
 	      append_dev(filter4, feImage4);
 	      append_dev(defs, filter5);
 	      append_dev(filter5, feImage5);
+	      append_dev(defs, filter6);
+	      append_dev(filter6, feImage6);
+	      append_dev(defs, filter7);
+	      append_dev(filter7, feImage7);
+	      append_dev(defs, filter8);
+	      append_dev(filter8, feImage8);
+	      append_dev(defs, filter9);
+	      append_dev(filter9, feImage9);
+	      append_dev(defs, filter10);
+	      append_dev(filter10, feImage10);
+	      append_dev(defs, filter11);
+	      append_dev(filter11, feImage11);
+	      append_dev(defs, filter12);
+	      append_dev(filter12, feImage12);
+	      append_dev(defs, filter13);
+	      append_dev(filter13, feImage13);
+	      append_dev(defs, filter14);
+	      append_dev(filter14, feImage14);
+	      append_dev(defs, filter15);
+	      append_dev(filter15, feImage15);
+	      append_dev(defs, filter16);
+	      append_dev(filter16, feImage16);
+	      append_dev(defs, filter17);
+	      append_dev(filter17, feImage17);
+	      append_dev(defs, filter18);
+	      append_dev(filter18, feImage18);
 	    },
 	    p: noop,
 	    i: noop,
@@ -46740,142 +46925,209 @@ var app = (function () {
 	  return EventTooltipCross;
 	}(SvelteComponentDev);
 
+	var console_1$5 = globals.console;
 	var file$n = "src/components/EventTooltip.svelte";
 
 	function get_each_context$5(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[31] = list[i];
+	  child_ctx[32] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_1$1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[34] = list[i];
-	  child_ctx[36] = i;
+	  child_ctx[35] = list[i];
+	  child_ctx[37] = i;
 	  return child_ctx;
 	}
 
 	function get_each_context_2(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[37] = list[i];
+	  child_ctx[38] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_3(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[40] = list[i];
+	  child_ctx[41] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_4(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[43] = list[i];
+	  child_ctx[44] = list[i];
 	  return child_ctx;
-	} // (110:0) {#if (showTooltip)}
+	}
+
+	function get_each_context_5(ctx, list, i) {
+	  var child_ctx = ctx.slice();
+	  child_ctx[47] = list[i];
+	  child_ctx[37] = i;
+	  return child_ctx;
+	} // (118:0) {#if (showTooltip)}
 
 
 	function create_if_block$b(ctx) {
-	  var div13;
+	  var div19;
 	  var eventtooltipcross;
 	  var t0;
 	  var div0;
 	  var t1;
 	  var div1;
 	  var t2;
-	  var div12;
-	  var div11;
-	  var div4;
-	  var div3;
-	  var div2;
-	  var p0;
+	  var div18;
+	  var div17;
+	  var div10;
+	  var h2;
 	  var t3_value =
-	  /*attributionTf*/
-	  ctx[11](
 	  /*$tooltip*/
-	  ctx[9].tp.attributionDate) + "";
+	  ctx[10].tp.name + "";
 	  var t3;
 	  var t4;
-	  var html_tag;
-	  var raw0_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*$tooltip*/
-	  ctx[9].tp.disinformantAttribution) + "";
-	  var t5;
-	  var p1;
+	  var div8;
+	  var section;
+	  var div2;
+	  var span0;
+	  var strong0;
 	  var t6;
+	  var t7_value =
+	  /*$tooltip*/
+	  ctx[10].tp.size + "";
 	  var t7;
-	  var share;
 	  var t8;
-	  var h2;
-	  var raw1_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*$tooltip*/
-	  ctx[9].tp.shortTitle) + "";
 	  var t9;
-	  var t10;
-	  var div5;
-	  var h30;
-	  var t12;
-	  var p2;
-	  var raw2_value =
-	  /*highlight*/
-	  ctx[14](
+	  var div3;
+	  var span1;
+	  var strong1;
+	  var t11;
+	  var t12_value =
 	  /*$tooltip*/
-	  ctx[9].tp.shortDescription) + "";
+	  ctx[10].tp.weight + "";
+	  var t12;
 	  var t13;
 	  var t14;
-	  var div6;
-	  var h31;
+	  var div4;
+	  var span2;
+	  var strong2;
 	  var t16;
+	  var t17_value =
+	  /*attributionTf*/
+	  ctx[12](
+	  /*$tooltip*/
+	  ctx[10].tp.attributionDate) + "";
+	  var t17;
+	  var t18;
+	  var t19;
+	  var div5;
+	  var span3;
+	  var strong3;
+	  var t21;
+	  var t22_value =
+	  /*attributionTf*/
+	  ctx[12](
+	  /*$tooltip*/
+	  ctx[10].tp.attributionDate) + "";
+	  var t22;
+	  var t23;
+	  var t24;
+	  var div6;
+	  var span4;
+	  var strong4;
+	  var t26;
+	  var t27_value =
+	  /*$tooltip*/
+	  ctx[10].tp.diet + "";
+	  var t27;
+	  var t28;
+	  var div7;
+	  var span5;
+	  var strong5;
+	  var t30;
+	  var t31_value =
+	  /*$tooltip*/
+	  ctx[10].tp.disinformantNation + "";
+	  var t31;
+	  var t32;
+	  var share;
+	  var t33;
+	  var span6;
+	  var t35;
+	  var span7;
+	  var t37;
+	  var span8;
+	  var t39;
+	  var span9;
+	  var t41;
+	  var span10;
+	  var t43;
+	  var div9;
+	  var img;
+	  var img_src_value;
+	  var img_alt_value;
+	  var t44;
+	  var t45;
+	  var t46;
+	  var div11;
+	  var h30;
+	  var t48;
+	  var p;
+	  var raw_value =
+	  /*highlight*/
+	  ctx[14](
+	  /*$tooltip*/
+	  ctx[10].tp.shortDescription) + "";
+	  var t49;
+	  var t50;
+	  var div12;
+	  var h31;
+	  var t52;
 	  var ul0;
 	  var each_blocks_3 = [];
 	  var each0_lookup = new Map();
-	  var t17;
-	  var div7;
+	  var t53;
+	  var div13;
 	  var h32;
-	  var t19;
+	  var t55;
 	  var ul1;
 	  var each_blocks_2 = [];
 	  var each1_lookup = new Map();
-	  var t20;
-	  var div8;
+	  var t56;
+	  var div14;
 	  var h33;
-	  var t21;
-	  var t22_value = (
+	  var t57;
+	  var t58_value = (
 	  /*$tooltip*/
-	  ctx[9].tp.source.length !== 1 ? "s" : "") + "";
-	  var t22;
-	  var t23;
+	  ctx[10].tp.source.length !== 1 ? "s" : "") + "";
+	  var t58;
+	  var t59;
 	  var ul2;
 	  var each_blocks_1 = [];
 	  var each2_lookup = new Map();
-	  var t24;
-	  var div9;
+	  var t60;
+	  var div15;
 	  var h34;
-	  var t25;
-	  var t26_value = (
+	  var t61;
+	  var t62_value = (
 	  /*$tooltip*/
-	  ctx[9].tp.sourceCategory.length !== 1 ? "ies" : "y") + "";
-	  var t26;
-	  var t27;
+	  ctx[10].tp.sourceCategory.length !== 1 ? "ies" : "y") + "";
+	  var t62;
+	  var t63;
 	  var ul3;
 	  var each_blocks = [];
 	  var each3_lookup = new Map();
-	  var t28;
-	  var div10;
+	  var t64;
+	  var div16;
 	  var h35;
-	  var t30;
+	  var t66;
 	  var a;
-	  var t31_value = extractHostname(
+	  var t67_value = extractHostname(
 	  /*$tooltip*/
-	  ctx[9].tp.attributionUrl) + "";
-	  var t31;
+	  ctx[10].tp.attributionUrl) + "";
+	  var t67;
 	  var a_href_value;
-	  var div12_resize_listener;
-	  var div13_resize_listener;
-	  var div13_transition;
+	  var div18_resize_listener;
+	  var div19_resize_listener;
+	  var div19_transition;
 	  var current;
 	  var mounted;
 	  var dispose;
@@ -46886,62 +47138,43 @@ var app = (function () {
 	      ctx[1],
 	      offset:
 	      /*offset*/
-	      ctx[10],
+	      ctx[11],
 	      side:
 	      /*side*/
 	      ctx[3]
 	    },
 	    $$inline: true
 	  });
-
-	  function select_block_type(ctx, dirty) {
-	    if (
-	    /*$tooltip*/
-	    ctx[9].tp.startDate && !
-	    /*$tooltip*/
-	    ctx[9].tp.endDate) return create_if_block_6;
-	    if (!
-	    /*$tooltip*/
-	    ctx[9].tp.startDate &&
-	    /*$tooltip*/
-	    ctx[9].tp.endDate) return create_if_block_7;
-	    if (
-	    /*$tooltip*/
-	    ctx[9].tp.startDate &&
-	    /*$tooltip*/
-	    ctx[9].tp.endDate) return create_if_block_8;
-	    return create_else_block_2;
-	  }
-
-	  var current_block_type = select_block_type(ctx);
-	  var if_block0 = current_block_type(ctx);
 	  share = new Share({
 	    props: {
 	      text: "",
 	      caseId:
 	      /*$tooltip*/
-	      ctx[9].tp.id,
+	      ctx[10].tp.id,
 	      mode: "tooltip"
 	    },
 	    $$inline: true
 	  });
+	  var if_block0 =
+	  /*$tooltip*/
+	  ctx[10].tp.tooltipContent && create_if_block_6(ctx);
 	  var if_block1 =
 	  /*$tooltip*/
-	  ctx[9].tp.periodEra && create_if_block_5(ctx);
+	  ctx[10].tp.periodEra && create_if_block_5(ctx);
 	  var if_block2 = !(
 	  /*$tooltip*/
-	  ctx[9].tp.tags.length === 1 &&
+	  ctx[10].tp.tags.length === 1 &&
 	  /*$tooltip*/
-	  ctx[9].tp.tags[0] === "unspecified") && create_if_block_4$2(ctx);
+	  ctx[10].tp.tags[0] === "unspecified") && create_if_block_4$2(ctx);
 	  var each_value_3 =
 	  /*$tooltip*/
-	  ctx[9].tp.platforms;
+	  ctx[10].tp.platforms;
 	  validate_each_argument(each_value_3);
 
 	  var get_key = function get_key(ctx) {
 	    return (
 	      /*platform*/
-	      ctx[40]
+	      ctx[41]
 	    );
 	  };
 
@@ -46955,13 +47188,13 @@ var app = (function () {
 
 	  var each_value_2 =
 	  /*$tooltip*/
-	  ctx[9].tp.methods;
+	  ctx[10].tp.methods;
 	  validate_each_argument(each_value_2);
 
 	  var get_key_1 = function get_key_1(ctx) {
 	    return (
 	      /*method*/
-	      ctx[37]
+	      ctx[38]
 	    );
 	  };
 
@@ -46977,13 +47210,13 @@ var app = (function () {
 
 	  var each_value_1 =
 	  /*$tooltip*/
-	  ctx[9].tp.source;
+	  ctx[10].tp.source;
 	  validate_each_argument(each_value_1);
 
 	  var get_key_2 = function get_key_2(ctx) {
 	    return (
 	      /*source*/
-	      ctx[34]
+	      ctx[35]
 	    );
 	  };
 
@@ -46999,13 +47232,13 @@ var app = (function () {
 
 	  var each_value =
 	  /*$tooltip*/
-	  ctx[9].tp.sourceCategory;
+	  ctx[10].tp.sourceCategory;
 	  validate_each_argument(each_value);
 
 	  var get_key_3 = function get_key_3(ctx) {
 	    return (
 	      /*cat*/
-	      ctx[31]
+	      ctx[32]
 	    );
 	  };
 
@@ -47021,92 +47254,151 @@ var app = (function () {
 
 	  var block = {
 	    c: function create() {
-	      div13 = element("div");
+	      div19 = element("div");
 	      create_component(eventtooltipcross.$$.fragment);
 	      t0 = space();
 	      div0 = element("div");
 	      t1 = space();
 	      div1 = element("div");
 	      t2 = space();
-	      div12 = element("div");
-	      div11 = element("div");
-	      div4 = element("div");
-	      div3 = element("div");
-	      div2 = element("div");
-	      p0 = element("p");
-	      t3 = text(t3_value);
-	      t4 = text(" | ");
-	      t5 = space();
-	      p1 = element("p");
-	      t6 = text("Active: \n                ");
-	      if_block0.c();
-	      t7 = space();
-	      create_component(share.$$.fragment);
-	      t8 = space();
+	      div18 = element("div");
+	      div17 = element("div");
+	      div10 = element("div");
 	      h2 = element("h2");
+	      t3 = text(t3_value);
+	      t4 = space();
+	      div8 = element("div");
+	      section = element("section");
+	      div2 = element("div");
+	      span0 = element("span");
+	      strong0 = element("strong");
+	      strong0.textContent = "Length:";
+	      t6 = space();
+	      t7 = text(t7_value);
+	      t8 = text(" ft");
 	      t9 = space();
-	      if (if_block1) if_block1.c();
-	      t10 = space();
+	      div3 = element("div");
+	      span1 = element("span");
+	      strong1 = element("strong");
+	      strong1.textContent = "Weight:";
+	      t11 = space();
+	      t12 = text(t12_value);
+	      t13 = text(" lbs");
+	      t14 = space();
+	      div4 = element("div");
+	      span2 = element("span");
+	      strong2 = element("strong");
+	      strong2.textContent = "Earliest Date:";
+	      t16 = space();
+	      t17 = text(t17_value);
+	      t18 = text(" MYA");
+	      t19 = space();
 	      div5 = element("div");
+	      span3 = element("span");
+	      strong3 = element("strong");
+	      strong3.textContent = "Latest Date:";
+	      t21 = space();
+	      t22 = text(t22_value);
+	      t23 = text(" MYA");
+	      t24 = space();
+	      div6 = element("div");
+	      span4 = element("span");
+	      strong4 = element("strong");
+	      strong4.textContent = "Diet:";
+	      t26 = space();
+	      t27 = text(t27_value);
+	      t28 = space();
+	      div7 = element("div");
+	      span5 = element("span");
+	      strong5 = element("strong");
+	      strong5.textContent = "Regions:";
+	      t30 = space();
+	      t31 = text(t31_value);
+	      t32 = space();
+	      create_component(share.$$.fragment);
+	      t33 = space();
+	      span6 = element("span");
+	      span6.textContent = "Cretaceous";
+	      t35 = space();
+	      span7 = element("span");
+	      span7.textContent = "Jurassic";
+	      t37 = space();
+	      span8 = element("span");
+	      span8.textContent = "Triassic";
+	      t39 = space();
+	      span9 = element("span");
+	      span9.textContent = "Paleogene";
+	      t41 = space();
+	      span10 = element("span");
+	      span10.textContent = "Neogene";
+	      t43 = space();
+	      div9 = element("div");
+	      img = element("img");
+	      t44 = space();
+	      if (if_block0) if_block0.c();
+	      t45 = space();
+	      if (if_block1) if_block1.c();
+	      t46 = space();
+	      div11 = element("div");
 	      h30 = element("h3");
 	      h30.textContent = "Description";
-	      t12 = space();
-	      p2 = element("p");
-	      t13 = space();
+	      t48 = space();
+	      p = element("p");
+	      t49 = space();
 	      if (if_block2) if_block2.c();
-	      t14 = space();
-	      div6 = element("div");
+	      t50 = space();
+	      div12 = element("div");
 	      h31 = element("h3");
 	      h31.textContent = "Platforms";
-	      t16 = space();
+	      t52 = space();
 	      ul0 = element("ul");
 
 	      for (var _i4 = 0; _i4 < each_blocks_3.length; _i4 += 1) {
 	        each_blocks_3[_i4].c();
 	      }
 
-	      t17 = space();
-	      div7 = element("div");
+	      t53 = space();
+	      div13 = element("div");
 	      h32 = element("h3");
 	      h32.textContent = "Methods";
-	      t19 = space();
+	      t55 = space();
 	      ul1 = element("ul");
 
 	      for (var _i5 = 0; _i5 < each_blocks_2.length; _i5 += 1) {
 	        each_blocks_2[_i5].c();
 	      }
 
-	      t20 = space();
-	      div8 = element("div");
+	      t56 = space();
+	      div14 = element("div");
 	      h33 = element("h3");
-	      t21 = text("Source");
-	      t22 = text(t22_value);
-	      t23 = space();
+	      t57 = text("Source");
+	      t58 = text(t58_value);
+	      t59 = space();
 	      ul2 = element("ul");
 
 	      for (var _i6 = 0; _i6 < each_blocks_1.length; _i6 += 1) {
 	        each_blocks_1[_i6].c();
 	      }
 
-	      t24 = space();
-	      div9 = element("div");
+	      t60 = space();
+	      div15 = element("div");
 	      h34 = element("h3");
-	      t25 = text("Source Categor");
-	      t26 = text(t26_value);
-	      t27 = space();
+	      t61 = text("Source Categor");
+	      t62 = text(t62_value);
+	      t63 = space();
 	      ul3 = element("ul");
 
 	      for (var _i7 = 0; _i7 < each_blocks.length; _i7 += 1) {
 	        each_blocks[_i7].c();
 	      }
 
-	      t28 = space();
-	      div10 = element("div");
+	      t64 = space();
+	      div16 = element("div");
 	      h35 = element("h3");
 	      h35.textContent = "Link";
-	      t30 = space();
+	      t66 = space();
 	      a = element("a");
-	      t31 = text(t31_value);
+	      t67 = text(t67_value);
 	      attr_dev(div0, "class", "mouse-catcher");
 	      set_style(div0, "width",
 	      /*tWidth*/
@@ -47115,12 +47407,12 @@ var app = (function () {
 	      /*contentTop*/
 	      ctx[6]) -
 	      /*$tooltip*/
-	      ctx[9].tp.rSmiTot + 25) + "px");
+	      ctx[10].tp.rSmiTot + 25) + "px");
 	      set_style(div0, "position", "absolute");
 	      set_style(div0, "top",
 	      /*contentTop*/
 	      ctx[6] - 10 + "px");
-	      add_location(div0, file$n, 117, 4, 3730);
+	      add_location(div0, file$n, 125, 4, 4031);
 	      attr_dev(div1, "class", "mouse-catcher");
 	      set_style(div1, "width",
 	      /*tWidth*/
@@ -47133,198 +47425,283 @@ var app = (function () {
 	      set_style(div1, "position", "absolute");
 	      set_style(div1, "top",
 	      /*$tooltip*/
-	      ctx[9].tp.rSmiTot + 5 + "px");
-	      add_location(div1, file$n, 122, 4, 3977);
-	      html_tag = new HtmlTag(null);
-	      attr_dev(p0, "class", "svelte-1bmcl4u");
-	      add_location(p0, file$n, 136, 14, 4575);
-	      attr_dev(p1, "class", "svelte-1bmcl4u");
-	      add_location(p1, file$n, 137, 14, 4698);
-	      attr_dev(div2, "class", "title-dates svelte-1bmcl4u");
-	      add_location(div2, file$n, 135, 12, 4535);
-	      attr_dev(div3, "class", "title-top svelte-1bmcl4u");
-	      add_location(div3, file$n, 134, 10, 4499);
-	      attr_dev(h2, "class", "svelte-1bmcl4u");
-	      add_location(h2, file$n, 155, 10, 5614);
-	      attr_dev(div4, "class", "title svelte-1bmcl4u");
-	      add_location(div4, file$n, 133, 8, 4469);
-	      attr_dev(h30, "class", "svelte-1bmcl4u");
-	      add_location(h30, file$n, 164, 10, 5959);
-	      attr_dev(p2, "class", "svelte-1bmcl4u");
-	      add_location(p2, file$n, 165, 10, 5990);
-	      attr_dev(div5, "class", "description svelte-1bmcl4u");
-	      add_location(div5, file$n, 163, 8, 5923);
-	      attr_dev(h31, "class", "svelte-1bmcl4u");
-	      add_location(h31, file$n, 178, 10, 6496);
-	      attr_dev(ul0, "class", "svelte-1bmcl4u");
-	      add_location(ul0, file$n, 179, 10, 6525);
-	      attr_dev(div6, "class", "platforms svelte-1bmcl4u");
-	      add_location(div6, file$n, 177, 8, 6462);
-	      attr_dev(h32, "class", "svelte-1bmcl4u");
-	      add_location(h32, file$n, 186, 10, 6808);
-	      attr_dev(ul1, "class", "svelte-1bmcl4u");
-	      add_location(ul1, file$n, 187, 10, 6835);
-	      attr_dev(div7, "class", "methods svelte-1bmcl4u");
-	      add_location(div7, file$n, 185, 8, 6776);
-	      attr_dev(h33, "class", "svelte-1bmcl4u");
-	      add_location(h33, file$n, 194, 10, 7105);
-	      attr_dev(ul2, "class", "svelte-1bmcl4u");
-	      add_location(ul2, file$n, 195, 10, 7175);
-	      attr_dev(div8, "class", "source svelte-1bmcl4u");
-	      add_location(div8, file$n, 193, 8, 7074);
-	      attr_dev(h34, "class", "svelte-1bmcl4u");
-	      add_location(h34, file$n, 212, 10, 8180);
-	      attr_dev(ul3, "class", "svelte-1bmcl4u");
-	      add_location(ul3, file$n, 213, 10, 8269);
-	      attr_dev(div9, "class", "source-category svelte-1bmcl4u");
-	      add_location(div9, file$n, 211, 8, 8140);
-	      attr_dev(h35, "class", "svelte-1bmcl4u");
-	      add_location(h35, file$n, 220, 10, 8540);
+	      ctx[10].tp.rSmiTot + 5 + "px");
+	      add_location(div1, file$n, 130, 4, 4278);
+	      attr_dev(h2, "class", "svelte-1fhbai8");
+	      add_location(h2, file$n, 143, 10, 4821);
+	      add_location(strong0, file$n, 150, 44, 4976);
+	      add_location(span0, file$n, 150, 38, 4970);
+	      attr_dev(div2, "class", "stats-item svelte-1fhbai8");
+	      add_location(div2, file$n, 150, 14, 4946);
+	      add_location(strong1, file$n, 151, 44, 5080);
+	      add_location(span1, file$n, 151, 38, 5074);
+	      attr_dev(div3, "class", "stats-item svelte-1fhbai8");
+	      add_location(div3, file$n, 151, 14, 5050);
+	      add_location(strong2, file$n, 152, 44, 5187);
+	      add_location(span2, file$n, 152, 38, 5181);
+	      attr_dev(div4, "class", "stats-item svelte-1fhbai8");
+	      add_location(div4, file$n, 152, 14, 5157);
+	      add_location(strong3, file$n, 153, 44, 5325);
+	      add_location(span3, file$n, 153, 38, 5319);
+	      attr_dev(div5, "class", "stats-item svelte-1fhbai8");
+	      add_location(div5, file$n, 153, 14, 5295);
+	      add_location(strong4, file$n, 154, 44, 5461);
+	      add_location(span4, file$n, 154, 38, 5455);
+	      attr_dev(div6, "class", "stats-item svelte-1fhbai8");
+	      add_location(div6, file$n, 154, 14, 5431);
+	      add_location(strong5, file$n, 155, 44, 5560);
+	      add_location(span5, file$n, 155, 38, 5554);
+	      attr_dev(div7, "class", "stats-item svelte-1fhbai8");
+	      add_location(div7, file$n, 155, 14, 5530);
+	      attr_dev(section, "class", "dino-stats svelte-1fhbai8");
+	      add_location(section, file$n, 147, 12, 4897);
+	      attr_dev(div8, "class", "title-top svelte-1fhbai8");
+	      add_location(div8, file$n, 144, 10, 4859);
+	      attr_dev(span6, "class", "tag-label Cretaceous svelte-1fhbai8");
+	      add_location(span6, file$n, 166, 10, 5756);
+	      attr_dev(span7, "class", "tag-label Jurassic svelte-1fhbai8");
+	      add_location(span7, file$n, 167, 10, 5822);
+	      attr_dev(span8, "class", "tag-label Triassic svelte-1fhbai8");
+	      add_location(span8, file$n, 168, 10, 5884);
+	      attr_dev(span9, "class", "tag-label Paleogene svelte-1fhbai8");
+	      add_location(span9, file$n, 169, 10, 5946);
+	      attr_dev(span10, "class", "tag-label Neogene svelte-1fhbai8");
+	      add_location(span10, file$n, 170, 10, 6010);
+	      if (img.src !== (img_src_value = "" + (images +
+	      /*$tooltip*/
+	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) attr_dev(img, "src", img_src_value);
+	      attr_dev(img, "alt", img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle);
+	      attr_dev(img, "class", "svelte-1fhbai8");
+	      add_location(img, file$n, 172, 12, 6102);
+	      attr_dev(div9, "class", "image svelte-1fhbai8");
+	      add_location(div9, file$n, 171, 10, 6070);
+	      attr_dev(div10, "class", "title title-bg svelte-1fhbai8");
+	      add_location(div10, file$n, 142, 8, 4782);
+	      attr_dev(h30, "class", "svelte-1fhbai8");
+	      add_location(h30, file$n, 199, 10, 6880);
+	      attr_dev(p, "class", "svelte-1fhbai8");
+	      add_location(p, file$n, 200, 10, 6911);
+	      attr_dev(div11, "class", "description svelte-1fhbai8");
+	      add_location(div11, file$n, 198, 8, 6844);
+	      attr_dev(h31, "class", "svelte-1fhbai8");
+	      add_location(h31, file$n, 213, 10, 7417);
+	      attr_dev(ul0, "class", "svelte-1fhbai8");
+	      add_location(ul0, file$n, 214, 10, 7446);
+	      attr_dev(div12, "class", "platforms svelte-1fhbai8");
+	      add_location(div12, file$n, 212, 8, 7383);
+	      attr_dev(h32, "class", "svelte-1fhbai8");
+	      add_location(h32, file$n, 221, 10, 7729);
+	      attr_dev(ul1, "class", "svelte-1fhbai8");
+	      add_location(ul1, file$n, 222, 10, 7756);
+	      attr_dev(div13, "class", "methods svelte-1fhbai8");
+	      add_location(div13, file$n, 220, 8, 7697);
+	      attr_dev(h33, "class", "svelte-1fhbai8");
+	      add_location(h33, file$n, 229, 10, 8026);
+	      attr_dev(ul2, "class", "svelte-1fhbai8");
+	      add_location(ul2, file$n, 230, 10, 8096);
+	      attr_dev(div14, "class", "source svelte-1fhbai8");
+	      add_location(div14, file$n, 228, 8, 7995);
+	      attr_dev(h34, "class", "svelte-1fhbai8");
+	      add_location(h34, file$n, 247, 10, 9101);
+	      attr_dev(ul3, "class", "svelte-1fhbai8");
+	      add_location(ul3, file$n, 248, 10, 9190);
+	      attr_dev(div15, "class", "source-category svelte-1fhbai8");
+	      add_location(div15, file$n, 246, 8, 9061);
+	      attr_dev(h35, "class", "svelte-1fhbai8");
+	      add_location(h35, file$n, 255, 10, 9461);
 	      attr_dev(a, "href", a_href_value =
 	      /*$tooltip*/
-	      ctx[9].tp.attributionUrl);
+	      ctx[10].tp.attributionUrl);
 	      attr_dev(a, "target", "_blank");
-	      attr_dev(a, "class", "no-float svelte-1bmcl4u");
-	      add_location(a, file$n, 221, 10, 8564);
-	      attr_dev(div10, "class", "link svelte-1bmcl4u");
-	      add_location(div10, file$n, 219, 8, 8511);
-	      attr_dev(div11, "class", "scroll-wrapper svelte-1bmcl4u");
-	      add_location(div11, file$n, 131, 6, 4395);
-	      attr_dev(div12, "class", "content svelte-1bmcl4u");
-	      set_style(div12, "top",
+	      attr_dev(a, "class", "no-float svelte-1fhbai8");
+	      add_location(a, file$n, 256, 10, 9485);
+	      attr_dev(div16, "class", "link svelte-1fhbai8");
+	      add_location(div16, file$n, 254, 8, 9432);
+	      attr_dev(div17, "class", "scroll-wrapper svelte-1fhbai8");
+	      add_location(div17, file$n, 139, 6, 4696);
+	      attr_dev(div18, "class", "content svelte-1fhbai8");
+	      set_style(div18, "top",
 	      /*contentTop*/
 	      ctx[6] + "px");
-	      set_style(div12, "margin", "0px " + (
+	      set_style(div18, "margin", "0px " + (
 	      /*$tooltip*/
-	      ctx[9].tp.rSmiTot / 3 +
+	      ctx[10].tp.rSmiTot / 3 +
 	      /*offset*/
-	      ctx[10].left) + "px");
+	      ctx[11].left) + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div12_elementresize_handler*/
-	          ctx[24].call(div12)
+	          /*div18_elementresize_handler*/
+	          ctx[24].call(div18)
 	        );
 	      });
-	      add_location(div12, file$n, 127, 4, 4211);
-	      attr_dev(div13, "class", "tooltip svelte-1bmcl4u");
-	      set_style(div13, "left",
+	      add_location(div18, file$n, 135, 4, 4512);
+	      attr_dev(div19, "class", "tooltip svelte-1fhbai8");
+	      set_style(div19, "left",
 	      /*left*/
 	      ctx[4] + "px");
-	      set_style(div13, "top",
+	      set_style(div19, "top",
 	      /*top*/
 	      ctx[5] + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div13_elementresize_handler*/
-	          ctx[25].call(div13)
+	          /*div19_elementresize_handler*/
+	          ctx[25].call(div19)
 	        );
 	      });
-	      add_location(div13, file$n, 110, 2, 3466);
+	      add_location(div19, file$n, 118, 2, 3767);
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, div13, anchor);
-	      mount_component(eventtooltipcross, div13, null);
-	      append_dev(div13, t0);
-	      append_dev(div13, div0);
-	      append_dev(div13, t1);
-	      append_dev(div13, div1);
-	      append_dev(div13, t2);
-	      append_dev(div13, div12);
-	      append_dev(div12, div11);
-	      append_dev(div11, div4);
-	      append_dev(div4, div3);
-	      append_dev(div3, div2);
-	      append_dev(div2, p0);
-	      append_dev(p0, t3);
-	      append_dev(p0, t4);
-	      html_tag.m(raw0_value, p0);
-	      append_dev(div2, t5);
-	      append_dev(div2, p1);
-	      append_dev(p1, t6);
-	      if_block0.m(p1, null);
-	      append_dev(div3, t7);
-	      mount_component(share, div3, null);
-	      append_dev(div4, t8);
-	      append_dev(div4, h2);
-	      h2.innerHTML = raw1_value;
-	      append_dev(div11, t9);
-	      if (if_block1) if_block1.m(div11, null);
-	      append_dev(div11, t10);
-	      append_dev(div11, div5);
-	      append_dev(div5, h30);
-	      append_dev(div5, t12);
-	      append_dev(div5, p2);
-	      p2.innerHTML = raw2_value;
-	      append_dev(div11, t13);
-	      if (if_block2) if_block2.m(div11, null);
-	      append_dev(div11, t14);
-	      append_dev(div11, div6);
-	      append_dev(div6, h31);
-	      append_dev(div6, t16);
-	      append_dev(div6, ul0);
+	      insert_dev(target, div19, anchor);
+	      mount_component(eventtooltipcross, div19, null);
+	      append_dev(div19, t0);
+	      append_dev(div19, div0);
+	      append_dev(div19, t1);
+	      append_dev(div19, div1);
+	      append_dev(div19, t2);
+	      append_dev(div19, div18);
+	      append_dev(div18, div17);
+	      append_dev(div17, div10);
+	      append_dev(div10, h2);
+	      append_dev(h2, t3);
+	      append_dev(div10, t4);
+	      append_dev(div10, div8);
+	      append_dev(div8, section);
+	      append_dev(section, div2);
+	      append_dev(div2, span0);
+	      append_dev(span0, strong0);
+	      append_dev(span0, t6);
+	      append_dev(span0, t7);
+	      append_dev(span0, t8);
+	      append_dev(section, t9);
+	      append_dev(section, div3);
+	      append_dev(div3, span1);
+	      append_dev(span1, strong1);
+	      append_dev(span1, t11);
+	      append_dev(span1, t12);
+	      append_dev(span1, t13);
+	      append_dev(section, t14);
+	      append_dev(section, div4);
+	      append_dev(div4, span2);
+	      append_dev(span2, strong2);
+	      append_dev(span2, t16);
+	      append_dev(span2, t17);
+	      append_dev(span2, t18);
+	      append_dev(section, t19);
+	      append_dev(section, div5);
+	      append_dev(div5, span3);
+	      append_dev(span3, strong3);
+	      append_dev(span3, t21);
+	      append_dev(span3, t22);
+	      append_dev(span3, t23);
+	      append_dev(section, t24);
+	      append_dev(section, div6);
+	      append_dev(div6, span4);
+	      append_dev(span4, strong4);
+	      append_dev(span4, t26);
+	      append_dev(span4, t27);
+	      append_dev(section, t28);
+	      append_dev(section, div7);
+	      append_dev(div7, span5);
+	      append_dev(span5, strong5);
+	      append_dev(span5, t30);
+	      append_dev(span5, t31);
+	      append_dev(div10, t32);
+	      mount_component(share, div10, null);
+	      append_dev(div10, t33);
+	      append_dev(div10, span6);
+	      append_dev(div10, t35);
+	      append_dev(div10, span7);
+	      append_dev(div10, t37);
+	      append_dev(div10, span8);
+	      append_dev(div10, t39);
+	      append_dev(div10, span9);
+	      append_dev(div10, t41);
+	      append_dev(div10, span10);
+	      append_dev(div10, t43);
+	      append_dev(div10, div9);
+	      append_dev(div9, img);
+	      append_dev(div17, t44);
+	      if (if_block0) if_block0.m(div17, null);
+	      append_dev(div17, t45);
+	      if (if_block1) if_block1.m(div17, null);
+	      append_dev(div17, t46);
+	      append_dev(div17, div11);
+	      append_dev(div11, h30);
+	      append_dev(div11, t48);
+	      append_dev(div11, p);
+	      p.innerHTML = raw_value;
+	      append_dev(div17, t49);
+	      if (if_block2) if_block2.m(div17, null);
+	      append_dev(div17, t50);
+	      append_dev(div17, div12);
+	      append_dev(div12, h31);
+	      append_dev(div12, t52);
+	      append_dev(div12, ul0);
 
 	      for (var _i8 = 0; _i8 < each_blocks_3.length; _i8 += 1) {
 	        each_blocks_3[_i8].m(ul0, null);
 	      }
 
-	      append_dev(div11, t17);
-	      append_dev(div11, div7);
-	      append_dev(div7, h32);
-	      append_dev(div7, t19);
-	      append_dev(div7, ul1);
+	      append_dev(div17, t53);
+	      append_dev(div17, div13);
+	      append_dev(div13, h32);
+	      append_dev(div13, t55);
+	      append_dev(div13, ul1);
 
 	      for (var _i9 = 0; _i9 < each_blocks_2.length; _i9 += 1) {
 	        each_blocks_2[_i9].m(ul1, null);
 	      }
 
-	      append_dev(div11, t20);
-	      append_dev(div11, div8);
-	      append_dev(div8, h33);
-	      append_dev(h33, t21);
-	      append_dev(h33, t22);
-	      append_dev(div8, t23);
-	      append_dev(div8, ul2);
+	      append_dev(div17, t56);
+	      append_dev(div17, div14);
+	      append_dev(div14, h33);
+	      append_dev(h33, t57);
+	      append_dev(h33, t58);
+	      append_dev(div14, t59);
+	      append_dev(div14, ul2);
 
 	      for (var _i10 = 0; _i10 < each_blocks_1.length; _i10 += 1) {
 	        each_blocks_1[_i10].m(ul2, null);
 	      }
 
-	      append_dev(div11, t24);
-	      append_dev(div11, div9);
-	      append_dev(div9, h34);
-	      append_dev(h34, t25);
-	      append_dev(h34, t26);
-	      append_dev(div9, t27);
-	      append_dev(div9, ul3);
+	      append_dev(div17, t60);
+	      append_dev(div17, div15);
+	      append_dev(div15, h34);
+	      append_dev(h34, t61);
+	      append_dev(h34, t62);
+	      append_dev(div15, t63);
+	      append_dev(div15, ul3);
 
 	      for (var _i11 = 0; _i11 < each_blocks.length; _i11 += 1) {
 	        each_blocks[_i11].m(ul3, null);
 	      }
 
-	      append_dev(div11, t28);
-	      append_dev(div11, div10);
-	      append_dev(div10, h35);
-	      append_dev(div10, t30);
-	      append_dev(div10, a);
-	      append_dev(a, t31);
-	      /*div11_binding*/
+	      append_dev(div17, t64);
+	      append_dev(div17, div16);
+	      append_dev(div16, h35);
+	      append_dev(div16, t66);
+	      append_dev(div16, a);
+	      append_dev(a, t67);
+	      /*div17_binding*/
 
-	      ctx[22](div11);
-	      /*div12_binding*/
+	      ctx[22](div17);
+	      /*div18_binding*/
 
-	      ctx[23](div12);
-	      div12_resize_listener = add_resize_listener(div12,
-	      /*div12_elementresize_handler*/
-	      ctx[24].bind(div12));
-	      div13_resize_listener = add_resize_listener(div13,
-	      /*div13_elementresize_handler*/
-	      ctx[25].bind(div13));
+	      ctx[23](div18);
+	      div18_resize_listener = add_resize_listener(div18,
+	      /*div18_elementresize_handler*/
+	      ctx[24].bind(div18));
+	      div19_resize_listener = add_resize_listener(div19,
+	      /*div19_elementresize_handler*/
+	      ctx[25].bind(div19));
 	      current = true;
 
 	      if (!mounted) {
-	        dispose = [listen_dev(div13, "click", stop_propagation(
+	        dispose = [listen_dev(div19, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[15]), false, false, true), listen_dev(div13, "mouseover", stop_propagation(
+	        ctx[15]), false, false, true), listen_dev(div19, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
 	        ctx[16]), false, false, true)];
 	        mounted = true;
@@ -47354,12 +47731,12 @@ var app = (function () {
 
 	      if (!current || dirty[0] &
 	      /*contentTop, $tooltip*/
-	      576) {
+	      1088) {
 	        set_style(div0, "height", Math.max(10, Math.abs(
 	        /*contentTop*/
 	        ctx[6]) -
 	        /*$tooltip*/
-	        ctx[9].tp.rSmiTot + 25) + "px");
+	        ctx[10].tp.rSmiTot + 25) + "px");
 	      }
 
 	      if (!current || dirty[0] &
@@ -47390,63 +47767,99 @@ var app = (function () {
 
 	      if (!current || dirty[0] &
 	      /*$tooltip*/
-	      512) {
+	      1024) {
 	        set_style(div1, "top",
 	        /*$tooltip*/
-	        ctx[9].tp.rSmiTot + 5 + "px");
+	        ctx[10].tp.rSmiTot + 5 + "px");
 	      }
 
 	      if ((!current || dirty[0] &
 	      /*$tooltip*/
-	      512) && t3_value !== (t3_value =
+	      1024) && t3_value !== (t3_value =
+	      /*$tooltip*/
+	      ctx[10].tp.name + "")) set_data_dev(t3, t3_value);
+	      if ((!current || dirty[0] &
+	      /*$tooltip*/
+	      1024) && t7_value !== (t7_value =
+	      /*$tooltip*/
+	      ctx[10].tp.size + "")) set_data_dev(t7, t7_value);
+	      if ((!current || dirty[0] &
+	      /*$tooltip*/
+	      1024) && t12_value !== (t12_value =
+	      /*$tooltip*/
+	      ctx[10].tp.weight + "")) set_data_dev(t12, t12_value);
+	      if ((!current || dirty[0] &
+	      /*$tooltip*/
+	      1024) && t17_value !== (t17_value =
 	      /*attributionTf*/
-	      ctx[11](
+	      ctx[12](
 	      /*$tooltip*/
-	      ctx[9].tp.attributionDate) + "")) set_data_dev(t3, t3_value);
+	      ctx[10].tp.attributionDate) + "")) set_data_dev(t17, t17_value);
 	      if ((!current || dirty[0] &
 	      /*$tooltip*/
-	      512) && raw0_value !== (raw0_value =
-	      /*highlight*/
-	      ctx[14](
+	      1024) && t22_value !== (t22_value =
+	      /*attributionTf*/
+	      ctx[12](
 	      /*$tooltip*/
-	      ctx[9].tp.disinformantAttribution) + "")) html_tag.p(raw0_value);
-
-	      if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block0) {
-	        if_block0.p(ctx, dirty);
-	      } else {
-	        if_block0.d(1);
-	        if_block0 = current_block_type(ctx);
-
-	        if (if_block0) {
-	          if_block0.c();
-	          if_block0.m(p1, null);
-	        }
-	      }
-
+	      ctx[10].tp.attributionDate) + "")) set_data_dev(t22, t22_value);
+	      if ((!current || dirty[0] &
+	      /*$tooltip*/
+	      1024) && t27_value !== (t27_value =
+	      /*$tooltip*/
+	      ctx[10].tp.diet + "")) set_data_dev(t27, t27_value);
+	      if ((!current || dirty[0] &
+	      /*$tooltip*/
+	      1024) && t31_value !== (t31_value =
+	      /*$tooltip*/
+	      ctx[10].tp.disinformantNation + "")) set_data_dev(t31, t31_value);
 	      var share_changes = {};
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512) share_changes.caseId =
+	      1024) share_changes.caseId =
 	      /*$tooltip*/
-	      ctx[9].tp.id;
+	      ctx[10].tp.id;
 	      share.$set(share_changes);
-	      if ((!current || dirty[0] &
+
+	      if (!current || dirty[0] &
 	      /*$tooltip*/
-	      512) && raw1_value !== (raw1_value =
-	      /*highlight*/
-	      ctx[14](
+	      1024 && img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
-	      ctx[9].tp.shortTitle) + "")) h2.innerHTML = raw1_value;
+	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) {
+	        attr_dev(img, "src", img_src_value);
+	      }
+
+	      if (!current || dirty[0] &
+	      /*$tooltip*/
+	      1024 && img_alt_value !== (img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle)) {
+	        attr_dev(img, "alt", img_alt_value);
+	      }
 
 	      if (
 	      /*$tooltip*/
-	      ctx[9].tp.periodEra) {
+	      ctx[10].tp.tooltipContent) {
+	        if (if_block0) {
+	          if_block0.p(ctx, dirty);
+	        } else {
+	          if_block0 = create_if_block_6(ctx);
+	          if_block0.c();
+	          if_block0.m(div17, t45);
+	        }
+	      } else if (if_block0) {
+	        if_block0.d(1);
+	        if_block0 = null;
+	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra) {
 	        if (if_block1) {
 	          if_block1.p(ctx, dirty);
 	        } else {
 	          if_block1 = create_if_block_5(ctx);
 	          if_block1.c();
-	          if_block1.m(div11, t10);
+	          if_block1.m(div17, t46);
 	        }
 	      } else if (if_block1) {
 	        if_block1.d(1);
@@ -47455,23 +47868,23 @@ var app = (function () {
 
 	      if ((!current || dirty[0] &
 	      /*$tooltip*/
-	      512) && raw2_value !== (raw2_value =
+	      1024) && raw_value !== (raw_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*$tooltip*/
-	      ctx[9].tp.shortDescription) + "")) p2.innerHTML = raw2_value;
+	      ctx[10].tp.shortDescription) + "")) p.innerHTML = raw_value;
 
 	      if (!(
 	      /*$tooltip*/
-	      ctx[9].tp.tags.length === 1 &&
+	      ctx[10].tp.tags.length === 1 &&
 	      /*$tooltip*/
-	      ctx[9].tp.tags[0] === "unspecified")) {
+	      ctx[10].tp.tags[0] === "unspecified")) {
 	        if (if_block2) {
 	          if_block2.p(ctx, dirty);
 	        } else {
 	          if_block2 = create_if_block_4$2(ctx);
 	          if_block2.c();
-	          if_block2.m(div11, t14);
+	          if_block2.m(div17, t50);
 	        }
 	      } else if (if_block2) {
 	        if_block2.d(1);
@@ -47480,10 +47893,10 @@ var app = (function () {
 
 	      if (dirty[0] &
 	      /*handleLiClick, $tooltip, highlight*/
-	      25088) {
+	      25600) {
 	        var _each_value_ =
 	        /*$tooltip*/
-	        ctx[9].tp.platforms;
+	        ctx[10].tp.platforms;
 	        validate_each_argument(_each_value_);
 	        validate_each_keys(ctx, _each_value_, get_each_context_3, get_key);
 	        each_blocks_3 = update_keyed_each(each_blocks_3, dirty, get_key, 1, ctx, _each_value_, each0_lookup, ul0, destroy_block, create_each_block_3, null, get_each_context_3);
@@ -47491,10 +47904,10 @@ var app = (function () {
 
 	      if (dirty[0] &
 	      /*handleLiClick, $tooltip, highlight*/
-	      25088) {
+	      25600) {
 	        var _each_value_2 =
 	        /*$tooltip*/
-	        ctx[9].tp.methods;
+	        ctx[10].tp.methods;
 	        validate_each_argument(_each_value_2);
 	        validate_each_keys(ctx, _each_value_2, get_each_context_2, get_key_1);
 	        each_blocks_2 = update_keyed_each(each_blocks_2, dirty, get_key_1, 1, ctx, _each_value_2, each1_lookup, ul1, destroy_block, create_each_block_2, null, get_each_context_2);
@@ -47502,16 +47915,16 @@ var app = (function () {
 
 	      if ((!current || dirty[0] &
 	      /*$tooltip*/
-	      512) && t22_value !== (t22_value = (
+	      1024) && t58_value !== (t58_value = (
 	      /*$tooltip*/
-	      ctx[9].tp.source.length !== 1 ? "s" : "") + "")) set_data_dev(t22, t22_value);
+	      ctx[10].tp.source.length !== 1 ? "s" : "") + "")) set_data_dev(t58, t58_value);
 
 	      if (dirty[0] &
 	      /*handleLiClick, $tooltip, highlight*/
-	      25088) {
+	      25600) {
 	        var _each_value_3 =
 	        /*$tooltip*/
-	        ctx[9].tp.source;
+	        ctx[10].tp.source;
 	        validate_each_argument(_each_value_3);
 	        validate_each_keys(ctx, _each_value_3, get_each_context_1$1, get_key_2);
 	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key_2, 1, ctx, _each_value_3, each2_lookup, ul2, destroy_block, create_each_block_1$1, null, get_each_context_1$1);
@@ -47519,16 +47932,16 @@ var app = (function () {
 
 	      if ((!current || dirty[0] &
 	      /*$tooltip*/
-	      512) && t26_value !== (t26_value = (
+	      1024) && t62_value !== (t62_value = (
 	      /*$tooltip*/
-	      ctx[9].tp.sourceCategory.length !== 1 ? "ies" : "y") + "")) set_data_dev(t26, t26_value);
+	      ctx[10].tp.sourceCategory.length !== 1 ? "ies" : "y") + "")) set_data_dev(t62, t62_value);
 
 	      if (dirty[0] &
 	      /*handleLiClick, $tooltip, highlight*/
-	      25088) {
+	      25600) {
 	        var _each_value =
 	        /*$tooltip*/
-	        ctx[9].tp.sourceCategory;
+	        ctx[10].tp.sourceCategory;
 	        validate_each_argument(_each_value);
 	        validate_each_keys(ctx, _each_value, get_each_context$5, get_key_3);
 	        each_blocks = update_keyed_each(each_blocks, dirty, get_key_3, 1, ctx, _each_value, each3_lookup, ul3, destroy_block, create_each_block$5, null, get_each_context$5);
@@ -47536,40 +47949,40 @@ var app = (function () {
 
 	      if ((!current || dirty[0] &
 	      /*$tooltip*/
-	      512) && t31_value !== (t31_value = extractHostname(
+	      1024) && t67_value !== (t67_value = extractHostname(
 	      /*$tooltip*/
-	      ctx[9].tp.attributionUrl) + "")) set_data_dev(t31, t31_value);
+	      ctx[10].tp.attributionUrl) + "")) set_data_dev(t67, t67_value);
 
 	      if (!current || dirty[0] &
 	      /*$tooltip*/
-	      512 && a_href_value !== (a_href_value =
+	      1024 && a_href_value !== (a_href_value =
 	      /*$tooltip*/
-	      ctx[9].tp.attributionUrl)) {
+	      ctx[10].tp.attributionUrl)) {
 	        attr_dev(a, "href", a_href_value);
 	      }
 
 	      if (!current || dirty[0] &
 	      /*contentTop*/
 	      64) {
-	        set_style(div12, "top",
+	        set_style(div18, "top",
 	        /*contentTop*/
 	        ctx[6] + "px");
 	      }
 
 	      if (!current || dirty[0] &
 	      /*$tooltip*/
-	      512) {
-	        set_style(div12, "margin", "0px " + (
+	      1024) {
+	        set_style(div18, "margin", "0px " + (
 	        /*$tooltip*/
-	        ctx[9].tp.rSmiTot / 3 +
+	        ctx[10].tp.rSmiTot / 3 +
 	        /*offset*/
-	        ctx[10].left) + "px");
+	        ctx[11].left) + "px");
 	      }
 
 	      if (!current || dirty[0] &
 	      /*left*/
 	      16) {
-	        set_style(div13, "left",
+	        set_style(div19, "left",
 	        /*left*/
 	        ctx[4] + "px");
 	      }
@@ -47577,7 +47990,7 @@ var app = (function () {
 	      if (!current || dirty[0] &
 	      /*top*/
 	      32) {
-	        set_style(div13, "top",
+	        set_style(div19, "top",
 	        /*top*/
 	        ctx[5] + "px");
 	      }
@@ -47587,27 +48000,27 @@ var app = (function () {
 	      transition_in(eventtooltipcross.$$.fragment, local);
 	      transition_in(share.$$.fragment, local);
 	      add_render_callback(function () {
-	        if (!div13_transition) div13_transition = create_bidirectional_transition(div13, fade, {
+	        if (!div19_transition) div19_transition = create_bidirectional_transition(div19, fade, {
 	          duration: 200
 	        }, true);
-	        div13_transition.run(1);
+	        div19_transition.run(1);
 	      });
 	      current = true;
 	    },
 	    o: function outro(local) {
 	      transition_out(eventtooltipcross.$$.fragment, local);
 	      transition_out(share.$$.fragment, local);
-	      if (!div13_transition) div13_transition = create_bidirectional_transition(div13, fade, {
+	      if (!div19_transition) div19_transition = create_bidirectional_transition(div19, fade, {
 	        duration: 200
 	      }, false);
-	      div13_transition.run(0);
+	      div19_transition.run(0);
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div13);
+	      if (detaching) detach_dev(div19);
 	      destroy_component(eventtooltipcross);
-	      if_block0.d();
 	      destroy_component(share);
+	      if (if_block0) if_block0.d();
 	      if (if_block1) if_block1.d();
 	      if (if_block2) if_block2.d();
 
@@ -47626,16 +48039,16 @@ var app = (function () {
 	      for (var _i15 = 0; _i15 < each_blocks.length; _i15 += 1) {
 	        each_blocks[_i15].d();
 	      }
-	      /*div11_binding*/
+	      /*div17_binding*/
 
 
 	      ctx[22](null);
-	      /*div12_binding*/
+	      /*div18_binding*/
 
 	      ctx[23](null);
-	      div12_resize_listener();
-	      div13_resize_listener();
-	      if (detaching && div13_transition) div13_transition.end();
+	      div18_resize_listener();
+	      div19_resize_listener();
+	      if (detaching && div19_transition) div19_transition.end();
 	      mounted = false;
 	      run_all(dispose);
 	    }
@@ -47644,290 +48057,174 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$b.name,
 	    type: "if",
-	    source: "(110:0) {#if (showTooltip)}",
+	    source: "(118:0) {#if (showTooltip)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (149:16) {:else}
-
-
-	function create_else_block_2(ctx) {
-	  var t;
-	  var block = {
-	    c: function create() {
-	      t = text("unspecified");
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, t, anchor);
-	    },
-	    p: noop,
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(t);
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_else_block_2.name,
-	    type: "else",
-	    source: "(149:16) {:else}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (143:73) 
-
-
-	function create_if_block_8(ctx) {
-	  var show_if;
-	  var if_block_anchor;
-
-	  function select_block_type_1(ctx, dirty) {
-	    if (show_if == null || dirty[0] &
-	    /*$tooltip*/
-	    512) show_if = !!(
-	    /*activityTf*/
-	    ctx[12](
-	    /*$tooltip*/
-	    ctx[9].tp.startDate) ===
-	    /*activityTf*/
-	    ctx[12](
-	    /*$tooltip*/
-	    ctx[9].tp.endDate));
-	    if (show_if) return create_if_block_9;
-	    return create_else_block_1;
-	  }
-
-	  var current_block_type = select_block_type_1(ctx, [-1]);
-	  var if_block = current_block_type(ctx);
-	  var block = {
-	    c: function create() {
-	      if_block.c();
-	      if_block_anchor = empty();
-	    },
-	    m: function mount(target, anchor) {
-	      if_block.m(target, anchor);
-	      insert_dev(target, if_block_anchor, anchor);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (current_block_type === (current_block_type = select_block_type_1(ctx, dirty)) && if_block) {
-	        if_block.p(ctx, dirty);
-	      } else {
-	        if_block.d(1);
-	        if_block = current_block_type(ctx);
-
-	        if (if_block) {
-	          if_block.c();
-	          if_block.m(if_block_anchor.parentNode, if_block_anchor);
-	        }
-	      }
-	    },
-	    d: function destroy(detaching) {
-	      if_block.d(detaching);
-	      if (detaching) detach_dev(if_block_anchor);
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_if_block_8.name,
-	    type: "if",
-	    source: "(143:73) ",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (141:74) 
-
-
-	function create_if_block_7(ctx) {
-	  var t0_value =
-	  /*activityTf*/
-	  ctx[12](
-	  /*$tooltip*/
-	  ctx[9].tp.endDate) + "";
-	  var t0;
-	  var t1;
-	  var span;
-	  var block = {
-	    c: function create() {
-	      t0 = text(t0_value);
-	      t1 = space();
-	      span = element("span");
-	      span.textContent = "(approx.)";
-	      attr_dev(span, "class", "small svelte-1bmcl4u");
-	      add_location(span, file$n, 141, 52, 4998);
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, t0, anchor);
-	      insert_dev(target, t1, anchor);
-	      insert_dev(target, span, anchor);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      512 && t0_value !== (t0_value =
-	      /*activityTf*/
-	      ctx[12](
-	      /*$tooltip*/
-	      ctx[9].tp.endDate) + "")) set_data_dev(t0, t0_value);
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(t0);
-	      if (detaching) detach_dev(t1);
-	      if (detaching) detach_dev(span);
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_if_block_7.name,
-	    type: "if",
-	    source: "(141:74) ",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (139:16) {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}
+	} // (180:8) {#if ($tooltip.tp.tooltipContent)}
 
 
 	function create_if_block_6(ctx) {
-	  var t0_value =
-	  /*activityTf*/
-	  ctx[12](
-	  /*$tooltip*/
-	  ctx[9].tp.startDate) + "";
-	  var t0;
-	  var t1;
-	  var span;
+	  var div;
+	  var each_value_5 =
+	  /*paragraphs*/
+	  ctx[8];
+	  validate_each_argument(each_value_5);
+	  var each_blocks = [];
+
+	  for (var i = 0; i < each_value_5.length; i += 1) {
+	    each_blocks[i] = create_each_block_5(get_each_context_5(ctx, each_value_5, i));
+	  }
+
 	  var block = {
 	    c: function create() {
-	      t0 = text(t0_value);
-	      t1 = space();
-	      span = element("span");
-	      span.textContent = "(approx.)";
-	      attr_dev(span, "class", "small svelte-1bmcl4u");
-	      add_location(span, file$n, 139, 54, 4834);
+	      div = element("div");
+
+	      for (var _i16 = 0; _i16 < each_blocks.length; _i16 += 1) {
+	        each_blocks[_i16].c();
+	      }
+
+	      attr_dev(div, "class", "description svelte-1fhbai8");
+	      add_location(div, file$n, 180, 8, 6278);
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, t0, anchor);
-	      insert_dev(target, t1, anchor);
-	      insert_dev(target, span, anchor);
+	      insert_dev(target, div, anchor);
+
+	      for (var _i17 = 0; _i17 < each_blocks.length; _i17 += 1) {
+	        each_blocks[_i17].m(div, null);
+	      }
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
-	      /*$tooltip*/
-	      512 && t0_value !== (t0_value =
-	      /*activityTf*/
-	      ctx[12](
-	      /*$tooltip*/
-	      ctx[9].tp.startDate) + "")) set_data_dev(t0, t0_value);
+	      /*$tooltip, paragraphs*/
+	      1280) {
+	        each_value_5 =
+	        /*paragraphs*/
+	        ctx[8];
+	        validate_each_argument(each_value_5);
+
+	        var _i18;
+
+	        for (_i18 = 0; _i18 < each_value_5.length; _i18 += 1) {
+	          var child_ctx = get_each_context_5(ctx, each_value_5, _i18);
+
+	          if (each_blocks[_i18]) {
+	            each_blocks[_i18].p(child_ctx, dirty);
+	          } else {
+	            each_blocks[_i18] = create_each_block_5(child_ctx);
+
+	            each_blocks[_i18].c();
+
+	            each_blocks[_i18].m(div, null);
+	          }
+	        }
+
+	        for (; _i18 < each_blocks.length; _i18 += 1) {
+	          each_blocks[_i18].d(1);
+	        }
+
+	        each_blocks.length = each_value_5.length;
+	      }
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(t0);
-	      if (detaching) detach_dev(t1);
-	      if (detaching) detach_dev(span);
+	      if (detaching) detach_dev(div);
+	      destroy_each(each_blocks, detaching);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
 	    id: create_if_block_6.name,
 	    type: "if",
-	    source: "(139:16) {#if ($tooltip.tp.startDate && !$tooltip.tp.endDate)}",
+	    source: "(180:8) {#if ($tooltip.tp.tooltipContent)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (146:18) {:else}
+	} // (182:12) {#each paragraphs as paragraph, i}
 
 
-	function create_else_block_1(ctx) {
+	function create_each_block_5(ctx) {
+	  var p;
 	  var t0_value =
-	  /*activityTf*/
-	  ctx[12](
-	  /*$tooltip*/
-	  ctx[9].tp.startDate) + "";
+	  /*paragraph*/
+	  ctx[47] + "";
 	  var t0;
 	  var t1;
-	  var t2_value =
-	  /*activityTf*/
-	  ctx[12](
-	  /*$tooltip*/
-	  ctx[9].tp.endDate) + "";
+	  var div;
+	  var img;
+	  var img_src_value;
+	  var img_alt_value;
 	  var t2;
 	  var block = {
 	    c: function create() {
+	      p = element("p");
 	      t0 = text(t0_value);
-	      t1 = text(" to ");
-	      t2 = text(t2_value);
+	      t1 = space();
+	      div = element("div");
+	      img = element("img");
+	      t2 = space();
+	      attr_dev(p, "class", "svelte-1fhbai8");
+	      add_location(p, file$n, 182, 12, 6363);
+	      if (img.src !== (img_src_value = "" + (images +
+	      /*$tooltip*/
+	      ctx[10].tp.name.toLowerCase() + (
+	      /*i*/
+	      ctx[37] + 1) + ".jpg"))) attr_dev(img, "src", img_src_value);
+	      attr_dev(img, "alt", img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle);
+	      attr_dev(img, "class", "svelte-1fhbai8");
+	      add_location(img, file$n, 184, 16, 6432);
+	      attr_dev(div, "class", "image svelte-1fhbai8");
+	      add_location(div, file$n, 183, 14, 6396);
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, t0, anchor);
+	      insert_dev(target, p, anchor);
+	      append_dev(p, t0);
 	      insert_dev(target, t1, anchor);
-	      insert_dev(target, t2, anchor);
+	      insert_dev(target, div, anchor);
+	      append_dev(div, img);
+	      append_dev(div, t2);
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
-	      /*$tooltip*/
-	      512 && t0_value !== (t0_value =
-	      /*activityTf*/
-	      ctx[12](
-	      /*$tooltip*/
-	      ctx[9].tp.startDate) + "")) set_data_dev(t0, t0_value);
+	      /*paragraphs*/
+	      256 && t0_value !== (t0_value =
+	      /*paragraph*/
+	      ctx[47] + "")) set_data_dev(t0, t0_value);
+
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && t2_value !== (t2_value =
-	      /*activityTf*/
-	      ctx[12](
+	      1024 && img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
-	      ctx[9].tp.endDate) + "")) set_data_dev(t2, t2_value);
+	      ctx[10].tp.name.toLowerCase() + (
+	      /*i*/
+	      ctx[37] + 1) + ".jpg"))) {
+	        attr_dev(img, "src", img_src_value);
+	      }
+
+	      if (dirty[0] &
+	      /*$tooltip*/
+	      1024 && img_alt_value !== (img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle)) {
+	        attr_dev(img, "alt", img_alt_value);
+	      }
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(t0);
+	      if (detaching) detach_dev(p);
 	      if (detaching) detach_dev(t1);
-	      if (detaching) detach_dev(t2);
+	      if (detaching) detach_dev(div);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_else_block_1.name,
-	    type: "else",
-	    source: "(146:18) {:else}",
+	    id: create_each_block_5.name,
+	    type: "each",
+	    source: "(182:12) {#each paragraphs as paragraph, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (144:18) {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}
-
-
-	function create_if_block_9(ctx) {
-	  var t_value =
-	  /*activityTf*/
-	  ctx[12](
-	  /*$tooltip*/
-	  ctx[9].tp.startDate) + "";
-	  var t;
-	  var block = {
-	    c: function create() {
-	      t = text(t_value);
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, t, anchor);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      512 && t_value !== (t_value =
-	      /*activityTf*/
-	      ctx[12](
-	      /*$tooltip*/
-	      ctx[9].tp.startDate) + "")) set_data_dev(t, t_value);
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(t);
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_if_block_9.name,
-	    type: "if",
-	    source: "(144:18) {#if (activityTf($tooltip.tp.startDate) === activityTf($tooltip.tp.endDate))}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (158:8) {#if ($tooltip.tp.periodEra)}
+	} // (192:8) {#if ($tooltip.tp.periodEra)}
 
 
 	function create_if_block_5(ctx) {
@@ -47939,7 +48236,7 @@ var app = (function () {
 	  var p;
 	  var t1_value =
 	  /*$tooltip*/
-	  ctx[9].tp.imageCredit + "";
+	  ctx[10].tp.imageCredit + "";
 	  var t1;
 	  var block = {
 	    c: function create() {
@@ -47950,16 +48247,16 @@ var app = (function () {
 	      t1 = text(t1_value);
 	      if (img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
-	      ctx[9].tp.periodEra + ".jpg"))) attr_dev(img, "src", img_src_value);
+	      ctx[10].tp.periodEra + ".jpg"))) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
-	      ctx[9].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-1bmcl4u");
-	      add_location(img, file$n, 159, 12, 5760);
-	      attr_dev(p, "class", "svelte-1bmcl4u");
-	      add_location(p, file$n, 160, 12, 5851);
-	      attr_dev(div, "class", "image svelte-1bmcl4u");
-	      add_location(div, file$n, 158, 10, 5728);
+	      ctx[10].tp.shortTitle);
+	      attr_dev(img, "class", "svelte-1fhbai8");
+	      add_location(img, file$n, 193, 12, 6680);
+	      attr_dev(p, "class", "svelte-1fhbai8");
+	      add_location(p, file$n, 194, 12, 6771);
+	      attr_dev(div, "class", "image svelte-1fhbai8");
+	      add_location(div, file$n, 192, 10, 6648);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47971,25 +48268,25 @@ var app = (function () {
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && img.src !== (img_src_value = "" + (images +
+	      1024 && img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
-	      ctx[9].tp.periodEra + ".jpg"))) {
+	      ctx[10].tp.periodEra + ".jpg"))) {
 	        attr_dev(img, "src", img_src_value);
 	      }
 
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && img_alt_value !== (img_alt_value =
+	      1024 && img_alt_value !== (img_alt_value =
 	      /*$tooltip*/
-	      ctx[9].tp.shortTitle)) {
+	      ctx[10].tp.shortTitle)) {
 	        attr_dev(img, "alt", img_alt_value);
 	      }
 
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && t1_value !== (t1_value =
+	      1024 && t1_value !== (t1_value =
 	      /*$tooltip*/
-	      ctx[9].tp.imageCredit + "")) set_data_dev(t1, t1_value);
+	      ctx[10].tp.imageCredit + "")) set_data_dev(t1, t1_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(div);
@@ -47999,11 +48296,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_5.name,
 	    type: "if",
-	    source: "(158:8) {#if ($tooltip.tp.periodEra)}",
+	    source: "(192:8) {#if ($tooltip.tp.periodEra)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (168:8) {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
+	} // (203:8) {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
 
 
 	function create_if_block_4$2(ctx) {
@@ -48015,13 +48312,13 @@ var app = (function () {
 	  var each_1_lookup = new Map();
 	  var each_value_4 =
 	  /*$tooltip*/
-	  ctx[9].tp.tags;
+	  ctx[10].tp.tags;
 	  validate_each_argument(each_value_4);
 
 	  var get_key = function get_key(ctx) {
 	    return (
 	      /*tag*/
-	      ctx[43]
+	      ctx[44]
 	    );
 	  };
 
@@ -48041,16 +48338,16 @@ var app = (function () {
 	      t1 = space();
 	      ul = element("ul");
 
-	      for (var _i16 = 0; _i16 < each_blocks.length; _i16 += 1) {
-	        each_blocks[_i16].c();
+	      for (var _i19 = 0; _i19 < each_blocks.length; _i19 += 1) {
+	        each_blocks[_i19].c();
 	      }
 
-	      attr_dev(h3, "class", "svelte-1bmcl4u");
-	      add_location(h3, file$n, 169, 12, 6191);
-	      attr_dev(ul, "class", "svelte-1bmcl4u");
-	      add_location(ul, file$n, 170, 12, 6217);
-	      attr_dev(div, "class", "tags svelte-1bmcl4u");
-	      add_location(div, file$n, 168, 10, 6160);
+	      attr_dev(h3, "class", "svelte-1fhbai8");
+	      add_location(h3, file$n, 204, 12, 7112);
+	      attr_dev(ul, "class", "svelte-1fhbai8");
+	      add_location(ul, file$n, 205, 12, 7138);
+	      attr_dev(div, "class", "tags svelte-1fhbai8");
+	      add_location(div, file$n, 203, 10, 7081);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -48058,17 +48355,17 @@ var app = (function () {
 	      append_dev(div, t1);
 	      append_dev(div, ul);
 
-	      for (var _i17 = 0; _i17 < each_blocks.length; _i17 += 1) {
-	        each_blocks[_i17].m(ul, null);
+	      for (var _i20 = 0; _i20 < each_blocks.length; _i20 += 1) {
+	        each_blocks[_i20].m(ul, null);
 	      }
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
 	      /*handleLiClick, $tooltip, highlight*/
-	      25088) {
+	      25600) {
 	        var _each_value_4 =
 	        /*$tooltip*/
-	        ctx[9].tp.tags;
+	        ctx[10].tp.tags;
 	        validate_each_argument(_each_value_4);
 	        validate_each_keys(ctx, _each_value_4, get_each_context_4, get_key);
 	        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, _each_value_4, each_1_lookup, ul, destroy_block, create_each_block_4, null, get_each_context_4);
@@ -48077,8 +48374,8 @@ var app = (function () {
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(div);
 
-	      for (var _i18 = 0; _i18 < each_blocks.length; _i18 += 1) {
-	        each_blocks[_i18].d();
+	      for (var _i21 = 0; _i21 < each_blocks.length; _i21 += 1) {
+	        each_blocks[_i21].d();
 	      }
 	    }
 	  };
@@ -48086,11 +48383,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$2.name,
 	    type: "if",
-	    source: "(168:8) {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}",
+	    source: "(203:8) {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (172:14) {#each $tooltip.tp.tags as tag (tag)}
+	} // (207:14) {#each $tooltip.tp.tags as tag (tag)}
 
 
 	function create_each_block_4(key_1, ctx) {
@@ -48099,7 +48396,7 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*tag*/
-	  ctx[43]) + "";
+	  ctx[44]) + "";
 	  var mounted;
 	  var dispose;
 
@@ -48114,7 +48411,7 @@ var app = (function () {
 	      /*click_handler_1*/
 	      (_ctx = ctx)[17].apply(_ctx, [
 	      /*tag*/
-	      ctx[43]].concat(args))
+	      ctx[44]].concat(args))
 	    );
 	  }
 
@@ -48123,8 +48420,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1bmcl4u");
-	      add_location(li, file$n, 172, 16, 6290);
+	      attr_dev(li, "class", "card svelte-1fhbai8");
+	      add_location(li, file$n, 207, 16, 7211);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48140,11 +48437,11 @@ var app = (function () {
 	      ctx = new_ctx;
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw_value !== (raw_value =
+	      1024 && raw_value !== (raw_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*tag*/
-	      ctx[43]) + "")) li.innerHTML = raw_value;
+	      ctx[44]) + "")) li.innerHTML = raw_value;
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -48156,11 +48453,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_4.name,
 	    type: "each",
-	    source: "(172:14) {#each $tooltip.tp.tags as tag (tag)}",
+	    source: "(207:14) {#each $tooltip.tp.tags as tag (tag)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (181:12) {#each $tooltip.tp.platforms as platform (platform)}
+	} // (216:12) {#each $tooltip.tp.platforms as platform (platform)}
 
 
 	function create_each_block_3(key_1, ctx) {
@@ -48169,7 +48466,7 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*platform*/
-	  ctx[40]) + "";
+	  ctx[41]) + "";
 	  var mounted;
 	  var dispose;
 
@@ -48184,7 +48481,7 @@ var app = (function () {
 	      /*click_handler_2*/
 	      (_ctx2 = ctx)[18].apply(_ctx2, [
 	      /*platform*/
-	      ctx[40]].concat(args))
+	      ctx[41]].concat(args))
 	    );
 	  }
 
@@ -48193,8 +48490,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1bmcl4u");
-	      add_location(li, file$n, 181, 14, 6609);
+	      attr_dev(li, "class", "card svelte-1fhbai8");
+	      add_location(li, file$n, 216, 14, 7530);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48210,11 +48507,11 @@ var app = (function () {
 	      ctx = new_ctx;
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw_value !== (raw_value =
+	      1024 && raw_value !== (raw_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*platform*/
-	      ctx[40]) + "")) li.innerHTML = raw_value;
+	      ctx[41]) + "")) li.innerHTML = raw_value;
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -48226,11 +48523,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_3.name,
 	    type: "each",
-	    source: "(181:12) {#each $tooltip.tp.platforms as platform (platform)}",
+	    source: "(216:12) {#each $tooltip.tp.platforms as platform (platform)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (189:12) {#each $tooltip.tp.methods as method (method)}
+	} // (224:12) {#each $tooltip.tp.methods as method (method)}
 
 
 	function create_each_block_2(key_1, ctx) {
@@ -48239,7 +48536,7 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*method*/
-	  ctx[37]) + "";
+	  ctx[38]) + "";
 	  var mounted;
 	  var dispose;
 
@@ -48254,7 +48551,7 @@ var app = (function () {
 	      /*click_handler_3*/
 	      (_ctx3 = ctx)[19].apply(_ctx3, [
 	      /*method*/
-	      ctx[37]].concat(args))
+	      ctx[38]].concat(args))
 	    );
 	  }
 
@@ -48263,8 +48560,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1bmcl4u");
-	      add_location(li, file$n, 189, 14, 6913);
+	      attr_dev(li, "class", "card svelte-1fhbai8");
+	      add_location(li, file$n, 224, 14, 7834);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48280,11 +48577,11 @@ var app = (function () {
 	      ctx = new_ctx;
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw_value !== (raw_value =
+	      1024 && raw_value !== (raw_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*method*/
-	      ctx[37]) + "")) li.innerHTML = raw_value;
+	      ctx[38]) + "")) li.innerHTML = raw_value;
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -48296,11 +48593,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_2.name,
 	    type: "each",
-	    source: "(189:12) {#each $tooltip.tp.methods as method (method)}",
+	    source: "(224:12) {#each $tooltip.tp.methods as method (method)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (205:16) {:else}
+	} // (240:16) {:else}
 
 
 	function create_else_block$1(ctx) {
@@ -48309,7 +48606,7 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*$tooltip*/
-	  ctx[9].tp.sourceFilter.slice(-1)[0]) + "";
+	  ctx[10].tp.sourceFilter.slice(-1)[0]) + "";
 	  var html_anchor;
 	  var block = {
 	    c: function create() {
@@ -48323,11 +48620,11 @@ var app = (function () {
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw_value !== (raw_value =
+	      1024 && raw_value !== (raw_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*$tooltip*/
-	      ctx[9].tp.sourceFilter.slice(-1)[0]) + "")) html_tag.p(raw_value);
+	      ctx[10].tp.sourceFilter.slice(-1)[0]) + "")) html_tag.p(raw_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(html_anchor);
@@ -48338,11 +48635,11 @@ var app = (function () {
 	    block: block,
 	    id: create_else_block$1.name,
 	    type: "else",
-	    source: "(205:16) {:else}",
+	    source: "(240:16) {:else}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (203:56) 
+	} // (238:56) 
 
 
 	function create_if_block_3$3(ctx) {
@@ -48351,9 +48648,9 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*$tooltip*/
-	  ctx[9].tp.sourceFilter[
+	  ctx[10].tp.sourceFilter[
 	  /*i*/
-	  ctx[36]]) + "";
+	  ctx[37]]) + "";
 	  var html_anchor;
 	  var block = {
 	    c: function create() {
@@ -48367,13 +48664,13 @@ var app = (function () {
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw_value !== (raw_value =
+	      1024 && raw_value !== (raw_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*$tooltip*/
-	      ctx[9].tp.sourceFilter[
+	      ctx[10].tp.sourceFilter[
 	      /*i*/
-	      ctx[36]]) + "")) html_tag.p(raw_value);
+	      ctx[37]]) + "")) html_tag.p(raw_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(html_anchor);
@@ -48384,11 +48681,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$3.name,
 	    type: "if",
-	    source: "(203:56) ",
+	    source: "(238:56) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (201:109) 
+	} // (236:109) 
 
 
 	function create_if_block_2$3(ctx) {
@@ -48397,14 +48694,14 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*source*/
-	  ctx[34]) + "";
+	  ctx[35]) + "";
 	  var t;
 	  var html_tag_1;
 	  var raw1_value =
 	  /*highlight*/
 	  ctx[14](
 	  /*$tooltip*/
-	  ctx[9].tp.sourceFilter.slice(-1)[0]) + "";
+	  ctx[10].tp.sourceFilter.slice(-1)[0]) + "";
 	  var html_anchor;
 	  var block = {
 	    c: function create() {
@@ -48422,18 +48719,18 @@ var app = (function () {
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw0_value !== (raw0_value =
+	      1024 && raw0_value !== (raw0_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*source*/
-	      ctx[34]) + "")) html_tag.p(raw0_value);
+	      ctx[35]) + "")) html_tag.p(raw0_value);
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw1_value !== (raw1_value =
+	      1024 && raw1_value !== (raw1_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*$tooltip*/
-	      ctx[9].tp.sourceFilter.slice(-1)[0]) + "")) html_tag_1.p(raw1_value);
+	      ctx[10].tp.sourceFilter.slice(-1)[0]) + "")) html_tag_1.p(raw1_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) html_tag.d();
@@ -48446,11 +48743,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$3.name,
 	    type: "if",
-	    source: "(201:109) ",
+	    source: "(236:109) ",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (199:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}
+	} // (234:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}
 
 
 	function create_if_block_1$5(ctx) {
@@ -48459,16 +48756,16 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*source*/
-	  ctx[34]) + "";
+	  ctx[35]) + "";
 	  var t;
 	  var html_tag_1;
 	  var raw1_value =
 	  /*highlight*/
 	  ctx[14](
 	  /*$tooltip*/
-	  ctx[9].tp.sourceFilter[
+	  ctx[10].tp.sourceFilter[
 	  /*i*/
-	  ctx[36]]) + "";
+	  ctx[37]]) + "";
 	  var html_anchor;
 	  var block = {
 	    c: function create() {
@@ -48486,20 +48783,20 @@ var app = (function () {
 	    p: function update(ctx, dirty) {
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw0_value !== (raw0_value =
+	      1024 && raw0_value !== (raw0_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*source*/
-	      ctx[34]) + "")) html_tag.p(raw0_value);
+	      ctx[35]) + "")) html_tag.p(raw0_value);
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw1_value !== (raw1_value =
+	      1024 && raw1_value !== (raw1_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*$tooltip*/
-	      ctx[9].tp.sourceFilter[
+	      ctx[10].tp.sourceFilter[
 	      /*i*/
-	      ctx[36]]) + "")) html_tag_1.p(raw1_value);
+	      ctx[37]]) + "")) html_tag_1.p(raw1_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) html_tag.d();
@@ -48512,11 +48809,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$5.name,
 	    type: "if",
-	    source: "(199:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}",
+	    source: "(234:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (197:12) {#each $tooltip.tp.source as source, i (source)}
+	} // (232:12) {#each $tooltip.tp.source as source, i (source)}
 
 
 	function create_each_block_1$1(key_1, ctx) {
@@ -48526,39 +48823,39 @@ var app = (function () {
 	  var mounted;
 	  var dispose;
 
-	  function select_block_type_2(ctx, dirty) {
+	  function select_block_type(ctx, dirty) {
 	    if (
 	    /*$tooltip*/
-	    ctx[9].tp.sourceFilter[
+	    ctx[10].tp.sourceFilter[
 	    /*i*/
-	    ctx[36]] &&
+	    ctx[37]] &&
 	    /*$tooltip*/
-	    ctx[9].tp.sourceFilter[
+	    ctx[10].tp.sourceFilter[
 	    /*i*/
-	    ctx[36]] !==
+	    ctx[37]] !==
 	    /*source*/
-	    ctx[34]) return create_if_block_1$5;
+	    ctx[35]) return create_if_block_1$5;
 	    if (show_if == null || dirty[0] &
 	    /*$tooltip*/
-	    512) show_if = !!(!
+	    1024) show_if = !!(!
 	    /*$tooltip*/
-	    ctx[9].tp.sourceFilter[
+	    ctx[10].tp.sourceFilter[
 	    /*i*/
-	    ctx[36]] &&
+	    ctx[37]] &&
 	    /*$tooltip*/
-	    ctx[9].tp.sourceFilter.slice(-1)[0] !==
+	    ctx[10].tp.sourceFilter.slice(-1)[0] !==
 	    /*source*/
-	    ctx[34]);
+	    ctx[35]);
 	    if (show_if) return create_if_block_2$3;
 	    if (
 	    /*$tooltip*/
-	    ctx[9].tp.sourceFilter[
+	    ctx[10].tp.sourceFilter[
 	    /*i*/
-	    ctx[36]]) return create_if_block_3$3;
+	    ctx[37]]) return create_if_block_3$3;
 	    return create_else_block$1;
 	  }
 
-	  var current_block_type = select_block_type_2(ctx, [-1]);
+	  var current_block_type = select_block_type(ctx, [-1]);
 	  var if_block = current_block_type(ctx);
 
 	  function click_handler_4() {
@@ -48572,7 +48869,7 @@ var app = (function () {
 	      /*click_handler_4*/
 	      (_ctx4 = ctx)[20].apply(_ctx4, [
 	      /*i*/
-	      ctx[36]].concat(args))
+	      ctx[37]].concat(args))
 	    );
 	  }
 
@@ -48583,8 +48880,8 @@ var app = (function () {
 	      li = element("li");
 	      if_block.c();
 	      t = space();
-	      attr_dev(li, "class", "card svelte-1bmcl4u");
-	      add_location(li, file$n, 197, 14, 7255);
+	      attr_dev(li, "class", "card svelte-1fhbai8");
+	      add_location(li, file$n, 232, 14, 8176);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48600,7 +48897,7 @@ var app = (function () {
 	    p: function update(new_ctx, dirty) {
 	      ctx = new_ctx;
 
-	      if (current_block_type === (current_block_type = select_block_type_2(ctx, dirty)) && if_block) {
+	      if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block) {
 	        if_block.p(ctx, dirty);
 	      } else {
 	        if_block.d(1);
@@ -48623,11 +48920,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_1$1.name,
 	    type: "each",
-	    source: "(197:12) {#each $tooltip.tp.source as source, i (source)}",
+	    source: "(232:12) {#each $tooltip.tp.source as source, i (source)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (215:12) {#each $tooltip.tp.sourceCategory as cat (cat)}
+	} // (250:12) {#each $tooltip.tp.sourceCategory as cat (cat)}
 
 
 	function create_each_block$5(key_1, ctx) {
@@ -48636,7 +48933,7 @@ var app = (function () {
 	  /*highlight*/
 	  ctx[14](
 	  /*cat*/
-	  ctx[31]) + "";
+	  ctx[32]) + "";
 	  var mounted;
 	  var dispose;
 
@@ -48651,7 +48948,7 @@ var app = (function () {
 	      /*click_handler_5*/
 	      (_ctx5 = ctx)[21].apply(_ctx5, [
 	      /*cat*/
-	      ctx[31]].concat(args))
+	      ctx[32]].concat(args))
 	    );
 	  }
 
@@ -48660,8 +48957,8 @@ var app = (function () {
 	    first: null,
 	    c: function create() {
 	      li = element("li");
-	      attr_dev(li, "class", "card svelte-1bmcl4u");
-	      add_location(li, file$n, 215, 14, 8348);
+	      attr_dev(li, "class", "card svelte-1fhbai8");
+	      add_location(li, file$n, 250, 14, 9269);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -48677,11 +48974,11 @@ var app = (function () {
 	      ctx = new_ctx;
 	      if (dirty[0] &
 	      /*$tooltip*/
-	      512 && raw_value !== (raw_value =
+	      1024 && raw_value !== (raw_value =
 	      /*highlight*/
 	      ctx[14](
 	      /*cat*/
-	      ctx[31]) + "")) li.innerHTML = raw_value;
+	      ctx[32]) + "")) li.innerHTML = raw_value;
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -48693,7 +48990,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$5.name,
 	    type: "each",
-	    source: "(215:12) {#each $tooltip.tp.sourceCategory as cat (cat)}",
+	    source: "(250:12) {#each $tooltip.tp.sourceCategory as cat (cat)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -48704,7 +49001,7 @@ var app = (function () {
 	  var current;
 	  var if_block =
 	  /*showTooltip*/
-	  ctx[8] && create_if_block$b(ctx);
+	  ctx[9] && create_if_block$b(ctx);
 	  var block = {
 	    c: function create() {
 	      if (if_block) if_block.c();
@@ -48721,13 +49018,13 @@ var app = (function () {
 	    p: function update(ctx, dirty) {
 	      if (
 	      /*showTooltip*/
-	      ctx[8]) {
+	      ctx[9]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
 	          if (dirty[0] &
 	          /*showTooltip*/
-	          256) {
+	          512) {
 	            transition_in(if_block, 1);
 	          }
 	        } else {
@@ -48783,7 +49080,7 @@ var app = (function () {
 	  });
 	  validate_store(tooltip, "tooltip");
 	  component_subscribe($$self, tooltip, function ($$value) {
-	    return $$invalidate(9, $tooltip = $$value);
+	    return $$invalidate(10, $tooltip = $$value);
 	  });
 	  validate_store(controlsHeight, "controlsHeight");
 	  component_subscribe($$self, controlsHeight, function ($$value) {
@@ -48803,6 +49100,7 @@ var app = (function () {
 	  var side;
 	  var left, top, contentTop;
 	  var scrollWrapper;
+	  var paragraphs;
 	  var scoreQuestionsExpanded = false;
 
 	  function handleLiClick(type, item) {
@@ -48840,7 +49138,7 @@ var app = (function () {
 
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<EventTooltip> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$5.warn("<EventTooltip> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -48875,26 +49173,26 @@ var app = (function () {
 	    return handleLiClick("sourceCategory", cat);
 	  };
 
-	  function div11_binding($$value) {
+	  function div17_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      scrollWrapper = $$value;
 	      $$invalidate(7, scrollWrapper);
 	    });
 	  }
 
-	  function div12_binding($$value) {
+	  function div18_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      elem = $$value;
 	      $$invalidate(0, elem);
 	    });
 	  }
 
-	  function div12_elementresize_handler() {
+	  function div18_elementresize_handler() {
 	    tHeight = this.clientHeight;
 	    $$invalidate(2, tHeight);
 	  }
 
-	  function div13_elementresize_handler() {
+	  function div19_elementresize_handler() {
 	    tWidth = this.clientWidth;
 	    $$invalidate(1, tWidth);
 	  }
@@ -48934,6 +49232,7 @@ var app = (function () {
 	      top: top,
 	      contentTop: contentTop,
 	      scrollWrapper: scrollWrapper,
+	      paragraphs: paragraphs,
 	      scoreQuestionsExpanded: scoreQuestionsExpanded,
 	      handleLiClick: handleLiClick,
 	      highlight: highlight,
@@ -48954,8 +49253,9 @@ var app = (function () {
 	    if ("top" in $$props) $$invalidate(5, top = $$props.top);
 	    if ("contentTop" in $$props) $$invalidate(6, contentTop = $$props.contentTop);
 	    if ("scrollWrapper" in $$props) $$invalidate(7, scrollWrapper = $$props.scrollWrapper);
+	    if ("paragraphs" in $$props) $$invalidate(8, paragraphs = $$props.paragraphs);
 	    if ("scoreQuestionsExpanded" in $$props) scoreQuestionsExpanded = $$props.scoreQuestionsExpanded;
-	    if ("showTooltip" in $$props) $$invalidate(8, showTooltip = $$props.showTooltip);
+	    if ("showTooltip" in $$props) $$invalidate(9, showTooltip = $$props.showTooltip);
 	  };
 
 	  var showTooltip;
@@ -48967,13 +49267,13 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty[0] &
 	    /*$tooltip*/
-	    512) {
-	       $$invalidate(8, showTooltip = $tooltip && $tooltip.tp && $tooltip.tp.show);
+	    1024) {
+	       $$invalidate(9, showTooltip = $tooltip && $tooltip.tp && $tooltip.tp.show);
 	    }
 
 	    if ($$self.$$.dirty[0] &
-	    /*showTooltip, $width, $tooltip, contentTop, tHeight, $controlsHeight, side, tWidth, scrollWrapper*/
-	    805307342) {
+	    /*showTooltip, $width, $tooltip, contentTop, tHeight, $controlsHeight, side, tWidth, scrollWrapper, paragraphs*/
+	    805308366) {
 	       if (showTooltip) {
 	        scoreQuestionsExpanded = false;
 	        $$invalidate(3, side = $width - $tooltip.tp.x < $width / 2 ? "left" : "right");
@@ -49006,12 +49306,18 @@ var app = (function () {
 	          $$invalidate(4, left = $tooltip.tp.x - offset.left);
 	        }
 
-	        if (scrollWrapper) scrollWrapper.scrollTo(0, 0);
+	        if (scrollWrapper) scrollWrapper.scrollTo(0, 0); // translate tooltip content to html
+
+	        var tooltipText = $tooltip.tp.tooltipContent;
+	        $$invalidate(8, paragraphs = tooltipText.split("<p>"));
+	        var numberOfParagraphs = paragraphs.length;
+	        console.log(paragraphs[0], paragraphs[1], paragraphs[2]);
+	        console.log(numberOfParagraphs);
 	      }
 	    }
 	  };
 
-	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, showTooltip, $tooltip, offset, attributionTf, activityTf, handleLiClick, highlight, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, click_handler_4, click_handler_5, div11_binding, div12_binding, div12_elementresize_handler, div13_elementresize_handler];
+	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, paragraphs, showTooltip, $tooltip, offset, attributionTf, handleLiClick, highlight, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, click_handler_4, click_handler_5, div17_binding, div18_binding, div18_elementresize_handler, div19_elementresize_handler];
 	}
 
 	var EventTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -49038,7 +49344,8 @@ var app = (function () {
 	  return EventTooltip;
 	}(SvelteComponentDev);
 
-	var file$o = "src/components/Balloon.svelte"; // (33:2) {#if (timePoint.recentlyAdded)}
+	var console_1$6 = globals.console;
+	var file$o = "src/components/Balloon.svelte"; // (42:2) {#if (timePoint.recentlyAdded)}
 
 	function create_if_block$c(ctx) {
 	  var circle;
@@ -49052,7 +49359,7 @@ var app = (function () {
 	      attr_dev(circle, "r", circle_r_value =
 	      /*timePoint*/
 	      ctx[0].size);
-	      add_location(circle, file$o, 33, 4, 1108);
+	      add_location(circle, file$o, 42, 4, 1229);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, circle, anchor);
@@ -49074,7 +49381,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$c.name,
 	    type: "if",
-	    source: "(33:2) {#if (timePoint.recentlyAdded)}",
+	    source: "(42:2) {#if (timePoint.recentlyAdded)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -49102,13 +49409,13 @@ var app = (function () {
 	      attr_dev(circle, "class", "balloon-main svelte-yzgw9m");
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", "0");
-	      attr_dev(circle, "r", circle_r_value =
+	      attr_dev(circle, "r", circle_r_value = setRadius(
 	      /*timePoint*/
-	      ctx[0].size * 0.75);
+	      ctx[0].size) * 1.55);
 	      attr_dev(circle, "filter", circle_filter_value = "url(#" +
 	      /*timePoint*/
 	      ctx[0].image_location + "_image)");
-	      add_location(circle, file$o, 40, 2, 1244);
+	      add_location(circle, file$o, 49, 2, 1356);
 	      attr_dev(g, "class", "balloon svelte-yzgw9m");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*tweenedPos*/
@@ -49118,7 +49425,7 @@ var app = (function () {
 	      toggle_class(g, "selected",
 	      /*selected*/
 	      ctx[2]);
-	      add_location(g, file$o, 25, 0, 700);
+	      add_location(g, file$o, 34, 0, 821);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49159,9 +49466,9 @@ var app = (function () {
 
 	      if (!current || dirty &
 	      /*timePoint*/
-	      1 && circle_r_value !== (circle_r_value =
+	      1 && circle_r_value !== (circle_r_value = setRadius(
 	      /*timePoint*/
-	      ctx[0].size * 0.75)) {
+	      ctx[0].size) * 1.55)) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 
@@ -49241,11 +49548,20 @@ var app = (function () {
 	  return block;
 	}
 
+	function setRadius(size) {
+	  return Math.max(size, 15);
+	}
+
 	function instance$p($$self, $$props, $$invalidate) {
 	  var timePoint = $$props.timePoint;
 	  var tweenedPos = $$props.tweenedPos;
 	  var _$$props$selected = $$props.selected,
 	      selected = _$$props$selected === void 0 ? false : _$$props$selected;
+
+	  if (timePoint.size < 15) {
+	    console.log("wtf");
+	  }
+
 	  var dispatch = createEventDispatcher();
 
 	  function handleMouseOver(e) {
@@ -49267,7 +49583,7 @@ var app = (function () {
 
 	  var writable_props = ["timePoint", "tweenedPos", "selected"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Balloon> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<Balloon> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -49292,6 +49608,7 @@ var app = (function () {
 	      timePoint: timePoint,
 	      tweenedPos: tweenedPos,
 	      selected: selected,
+	      setRadius: setRadius,
 	      dispatch: dispatch,
 	      handleMouseOver: handleMouseOver,
 	      handleMouseClick: handleMouseClick
@@ -49339,13 +49656,13 @@ var app = (function () {
 	    if (
 	    /*timePoint*/
 	    ctx[0] === undefined && !("timePoint" in props)) {
-	      console.warn("<Balloon> was created without expected prop 'timePoint'");
+	      console_1$6.warn("<Balloon> was created without expected prop 'timePoint'");
 	    }
 
 	    if (
 	    /*tweenedPos*/
 	    ctx[1] === undefined && !("tweenedPos" in props)) {
-	      console.warn("<Balloon> was created without expected prop 'tweenedPos'");
+	      console_1$6.warn("<Balloon> was created without expected prop 'tweenedPos'");
 	    }
 
 	    return _this;
@@ -50677,7 +50994,7 @@ var app = (function () {
 	  return SourceLink;
 	}(SvelteComponentDev);
 
-	var console_1$5 = globals.console;
+	var console_1$7 = globals.console;
 	var file$s = "src/components/Centroid.svelte"; // (47:2) {#if (centroid.length > 0)}
 
 	function create_if_block$f(ctx) {
@@ -50944,7 +51261,7 @@ var app = (function () {
 
 	  var writable_props = ["centroid", "country", "selected"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$5.warn("<Centroid> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<Centroid> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -51029,13 +51346,13 @@ var app = (function () {
 	    if (
 	    /*centroid*/
 	    ctx[0] === undefined && !("centroid" in props)) {
-	      console_1$5.warn("<Centroid> was created without expected prop 'centroid'");
+	      console_1$7.warn("<Centroid> was created without expected prop 'centroid'");
 	    }
 
 	    if (
 	    /*country*/
 	    ctx[1] === undefined && !("country" in props)) {
-	      console_1$5.warn("<Centroid> was created without expected prop 'country'");
+	      console_1$7.warn("<Centroid> was created without expected prop 'country'");
 	    }
 
 	    return _this;
@@ -52163,7 +52480,7 @@ var app = (function () {
 	      /*timeScaleText*/
 	      ctx[1].getComputedTextLength() + 2 * offset : 0) + " 0l" + lineLength + " 0");
 	      attr_dev(path, "marker-end", "url(#arrow)");
-	      attr_dev(path, "class", "svelte-17wi8x0");
+	      attr_dev(path, "class", "svelte-thtvro");
 	      add_location(path, file$v, 52, 12, 1452);
 	    },
 	    m: function mount(target, anchor) {
@@ -52242,22 +52559,22 @@ var app = (function () {
 	      attr_dev(rect, "rx", "5");
 	      attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(
 	      /*spotName*/
-	      ctx[9]) + " svelte-17wi8x0"));
+	      ctx[9]) + " svelte-thtvro"));
 	      add_location(rect, file$v, 41, 12, 960);
-	      attr_dev(text0, "class", "bg svelte-17wi8x0");
+	      attr_dev(text0, "class", "bg svelte-thtvro");
 	      attr_dev(text0, "dx", offset);
 	      attr_dev(text0, "dy", "4");
 	      add_location(text0, file$v, 45, 12, 1116);
 	      attr_dev(text1, "dx", offset);
 	      attr_dev(text1, "dy", "4");
-	      attr_dev(text1, "class", "svelte-17wi8x0");
+	      attr_dev(text1, "class", "svelte-thtvro");
 	      add_location(text1, file$v, 48, 12, 1222);
-	      attr_dev(g0, "class", "spot time-scale-label svelte-17wi8x0");
+	      attr_dev(g0, "class", "spot time-scale-label svelte-thtvro");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" +
 	      /*$x*/
 	      ctx[3] + " -20)");
 	      add_location(g0, file$v, 36, 0, 791);
-	      attr_dev(g1, "class", "time-scale svelte-17wi8x0");
+	      attr_dev(g1, "class", "time-scale svelte-thtvro");
 	      add_location(g1, file$v, 35, 2, 768);
 	      attr_dev(g2, "class", "labels");
 	      add_location(g2, file$v, 34, 0, 747);
@@ -53341,8 +53658,8 @@ var app = (function () {
 	    return $$invalidate(1, $width = $$value);
 	  });
 	  var commaFormat = format(",");
-	  var rTicks = [$smiTotalYScale(115), $smiTotalYScale(40), $smiTotalYScale(15)];
-	  var unscaled = [115, 40, 15];
+	  var rTicks = [$smiTotalYScale(115), $smiTotalYScale(40), $smiTotalYScale(20)];
+	  var unscaled = [115, 40, 20];
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Legend> was created with unknown prop '".concat(key, "'"));
@@ -54624,7 +54941,7 @@ var app = (function () {
 	  };
 	}();
 
-	var console_1$6 = globals.console;
+	var console_1$8 = globals.console;
 	var file$B = "src/components/Canvas.svelte";
 
 	function create_fragment$C(ctx) {
@@ -54832,7 +55149,7 @@ var app = (function () {
 
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -58134,7 +58451,7 @@ var app = (function () {
 	  return Table;
 	}(SvelteComponentDev);
 
-	var console_1$7 = globals.console;
+	var console_1$9 = globals.console;
 	var file$H = "src/components/Visualization.svelte"; // (211:2) {#if (!timePoints)}
 
 	function create_if_block_1$8(ctx) {
@@ -58396,7 +58713,7 @@ var app = (function () {
 	          ctx[9].call(div0)
 	        );
 	      });
-	      add_location(div0, file$H, 214, 4, 7709);
+	      add_location(div0, file$H, 214, 4, 7695);
 	      attr_dev(div1, "class", "draw-wrapper svelte-12ye563");
 	      add_render_callback(function () {
 	        return (
@@ -58404,11 +58721,11 @@ var app = (function () {
 	          ctx[11].call(div1)
 	        );
 	      });
-	      add_location(div1, file$H, 217, 4, 7823);
+	      add_location(div1, file$H, 217, 4, 7809);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-12ye563");
-	      add_location(div2, file$H, 213, 2, 7676);
+	      add_location(div2, file$H, 213, 2, 7662);
 	      attr_dev(div3, "class", "table-wrapper svelte-12ye563");
-	      add_location(div3, file$H, 230, 2, 8217);
+	      add_location(div3, file$H, 230, 2, 8203);
 	      attr_dev(div4, "id", "viz");
 	      attr_dev(div4, "class", "visualization-wrapper svelte-12ye563");
 	      add_render_callback(function () {
@@ -58417,7 +58734,7 @@ var app = (function () {
 	          ctx[12].call(div4)
 	        );
 	      });
-	      add_location(div4, file$H, 209, 0, 7553);
+	      add_location(div4, file$H, 209, 0, 7539);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -58780,7 +59097,7 @@ var app = (function () {
 	  })));
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$9.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -58939,7 +59256,7 @@ var app = (function () {
 	            _x: $timeScale(d.attributionDate),
 	            _y: $smiTotalYScale.range()[0],
 	            color: $attributionScoreScale(d.attributionScore),
-	            size: Math.max(d.size, 15),
+	            size: d.size,
 	            rSmiTot: isNaN(d.size) || d.size === 0 ? $smiTotalRScale.range()[0] : $smiTotalRScale(d.size),
 	            fy: d.smiPending ? Math.min($smiTotalYScale.range()[0], $smiTotalYScale.range()[0] - 2 * $smiTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $smiTotalYScale(Math.max(d.smiTotal, 15))
 	          });
@@ -59126,7 +59443,7 @@ var app = (function () {
 	  return CookieBanner;
 	}(SvelteComponentDev);
 
-	var console_1$8 = globals.console;
+	var console_1$a = globals.console;
 	var file$J = "src/App.svelte"; // (19:2) {:else}
 
 	function create_else_block$3(ctx) {
@@ -59359,7 +59676,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$a.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,

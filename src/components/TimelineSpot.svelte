@@ -95,19 +95,19 @@
 
 
   .Cretaceous {
-    fill: #88af87;
+    fill: var(--cretaceous);
   }
   .Jurassic {
-    fill: #77d4e5;
+    fill: var(--jurassic);
   }
   .Triassic {
-    fill: #e7b6ed;
+    fill: var(--triassic);
    }
   .Paleogene {
-    fill:  #f1ba92;
+    fill:  var(--paleogene);
   }
   .Neogene {
-    fill:  #F2FA8C;
+    fill:  var(--neogene);
   }
 
 
