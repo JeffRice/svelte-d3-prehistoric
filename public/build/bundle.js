@@ -53345,7 +53345,7 @@ var app = (function () {
 	      /*circleScale*/
 	      ctx[4]));
 	      attr_dev(line, "class", "svelte-1jr8m9r");
-	      add_location(line, file$y, 53, 6, 1977);
+	      add_location(line, file$y, 53, 6, 1976);
 	      attr_dev(text_1, "class", "tick svelte-1jr8m9r");
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (
 	      /*rTicks*/
@@ -53360,7 +53360,7 @@ var app = (function () {
 	      ctx[6] *
 	      /*circleScale*/
 	      ctx[4])) + ")");
-	      add_location(text_1, file$y, 57, 6, 2192);
+	      add_location(text_1, file$y, 57, 6, 2191);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", circle_cy_value =
 	      /*rTicks*/
@@ -53377,7 +53377,7 @@ var app = (function () {
 	      /*circleScale*/
 	      ctx[4]);
 	      attr_dev(circle, "class", "svelte-1jr8m9r");
-	      add_location(circle, file$y, 61, 6, 2383);
+	      add_location(circle, file$y, 61, 6, 2382);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, line, anchor);
@@ -53449,7 +53449,7 @@ var app = (function () {
 	      ctx[3].slice(-1)[0] *
 	      /*circleScale*/
 	      ctx[4]) + ")");
-	      add_location(g0, file$y, 51, 2, 1846);
+	      add_location(g0, file$y, 51, 2, 1845);
 	      attr_dev(g1, "class", "legend");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(" + (
 	      /*$width*/

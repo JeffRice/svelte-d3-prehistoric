@@ -47,7 +47,7 @@
    transform="translate({$width - (rTicks[0] * circleScale) - 65  } {$sizeTotalYScale.range()[1] - 20})">
   <text transform="translate({-(rTicks[0] * circleScale) - 20} {(rTicks.slice(-1)[0]  * circleScale)}) rotate(270)"
         dy="4">
-        Size in feet
+       Size in feet
   </text>
   <g class="total-r-scale" transform="translate(0 {-2 * (rTicks.slice(-1)[0]  * circleScale)})">
     {#each rTicks as tick, i}
