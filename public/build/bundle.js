@@ -58613,7 +58613,7 @@ var app = (function () {
 	      t4 = space();
 	      div3 = element("div");
 	      create_component(table.$$.fragment);
-	      attr_dev(div0, "class", "controls-wrapper svelte-1bpl1k4");
+	      attr_dev(div0, "class", "controls-wrapper svelte-1q18g8x");
 	      add_render_callback(function () {
 	        return (
 	          /*div0_elementresize_handler*/
@@ -58621,7 +58621,7 @@ var app = (function () {
 	        );
 	      });
 	      add_location(div0, file$H, 216, 4, 7756);
-	      attr_dev(div1, "class", "draw-wrapper svelte-1bpl1k4");
+	      attr_dev(div1, "class", "draw-wrapper svelte-1q18g8x");
 	      add_render_callback(function () {
 	        return (
 	          /*div1_elementresize_handler*/
@@ -58629,12 +58629,12 @@ var app = (function () {
 	        );
 	      });
 	      add_location(div1, file$H, 219, 4, 7870);
-	      attr_dev(div2, "class", "sticky-wrapper svelte-1bpl1k4");
+	      attr_dev(div2, "class", "sticky-wrapper svelte-1q18g8x");
 	      add_location(div2, file$H, 215, 2, 7723);
-	      attr_dev(div3, "class", "table-wrapper svelte-1bpl1k4");
+	      attr_dev(div3, "class", "table-wrapper svelte-1q18g8x");
 	      add_location(div3, file$H, 232, 2, 8265);
 	      attr_dev(div4, "id", "viz");
-	      attr_dev(div4, "class", "visualization-wrapper svelte-1bpl1k4");
+	      attr_dev(div4, "class", "visualization-wrapper svelte-1q18g8x");
 	      add_render_callback(function () {
 	        return (
 	          /*div4_elementresize_handler*/

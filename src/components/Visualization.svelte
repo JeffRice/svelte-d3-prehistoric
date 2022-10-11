@@ -254,9 +254,9 @@ console.log(scaledData)
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 280vmin;
+    height: 180vmin;
     min-height: 1200px;
-    max-height: 80vmax;
+/*    max-height: 80vmax; */
     margin: 2rem 0 0 0;
     position: relative;
   }
