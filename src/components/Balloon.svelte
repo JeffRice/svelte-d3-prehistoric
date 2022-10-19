@@ -11,10 +11,8 @@
   export let tweenedPos;
   export let selected = false;
 
-  if (timePoint.size < 15){
-    console.log('wtf')
-  }
 
+  //making a minimum size 
   function setRadius (size) {
    return Math.max(size, 15)
   }

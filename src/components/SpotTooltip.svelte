@@ -34,7 +34,7 @@
      transition:fade={{duration: 200}}>
   <div class="content">
     <p class="date">
-      {tf(data.date)}
+      {data.date} - {data.endDate} Million Years Ago
     </p>
     <h2 class="name">
       {data.name}

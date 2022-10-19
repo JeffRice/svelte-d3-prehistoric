@@ -8,8 +8,8 @@ const loadSpots = async () => {
     return {
       id: i,
       name: d.event_name,
-      date: parseDate(d.date),
-      endDate: parseDate(d.endDate),
+      date: d.date,
+      endDate: d.endDate,
       description: d.description
     };
   });

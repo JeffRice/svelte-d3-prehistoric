@@ -21,8 +21,8 @@
       <g class="tick"
          transform="translate({$timeScale(tick)} 20)">
         <circle cx="0" cy="-20" r="5" />
-        <text class="bg">{tf(tick).replace('Jan 01, ', '')}</text>
-        <text>{tf(tick).replace('Jan 01, ', '')}</text>
+        <text class="bg">{tick}</text>
+        <text>{tick}</text>
       </g>
     {/each}
     <!-- <g class="today" transform="translate({$timeScale(new Date())} 20)">

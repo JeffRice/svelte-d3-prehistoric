@@ -26,9 +26,16 @@ import { getTimeRange } from '../utils/misc';
 export const setScales = (data, width, minDim, maxDim, panelHeight, margin) => {
   if (!data) return;
   
+
+  /*
   // time scale
   timeScale.set(scaleTime()
     .domain(getTimeRange(data))
+    .range([margin.left, width - margin.right]));
+ */
+  // time scale
+  timeScale.set(scaleLinear()
+    .domain([-25,  max(data, (d) => d.testDate + 25)])
     .range([margin.left, width - margin.right]));
 
   // total scale for the y axis

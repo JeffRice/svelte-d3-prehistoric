@@ -150,8 +150,8 @@
   
               <div class="stats-item"><span><strong>Length:</strong> {$tooltip.tp.size} ft</span></div>
               <div class="stats-item"><span><strong>Weight:</strong> {$tooltip.tp.weight} lbs</span></div>
-              <div class="stats-item"><span><strong>Earliest Date:</strong> {attributionTf($tooltip.tp.attributionDate)} MYA</span></div>
-              <div class="stats-item"><span><strong>Latest Date:</strong> {attributionTf($tooltip.tp.attributionDate)} MYA</span></div>
+              <div class="stats-item"><span><strong>Earliest Date:</strong> {$tooltip.tp.testDate} MYA</span></div>
+              <div class="stats-item"><span><strong>Latest Date:</strong> {$tooltip.tp.testDate} MYA</span></div>
               <div class="stats-item"><span><strong>Diet:</strong> {$tooltip.tp.diet}</span></div>
               <div class="stats-item"><span><strong>Regions:</strong> {$tooltip.tp.disinformantNation}</span></div>
             </section>
@@ -198,8 +198,9 @@
 
         <div class="description">
           <h3>Description</h3>
-          <p>{@html highlight($tooltip.tp.shortDescription)}</p>
+          <p> short description here</p>
         </div>
+<!--
         {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
           <div class="tags">
             <h3>Tags</h3>
@@ -226,6 +227,7 @@
             {/each}
           </ul>
         </div>
+
         <div class="source">
           <h3>Source{$tooltip.tp.source.length !== 1 ? 's' : ''}</h3>
           <ul>
@@ -244,6 +246,7 @@
             {/each}
           </ul>
         </div>
+
         <div class="source-category">
           <h3>Source Categor{$tooltip.tp.sourceCategory.length !== 1 ? 'ies' : 'y'}</h3>
           <ul>
@@ -252,9 +255,11 @@
             {/each}
           </ul>
         </div>
+
+        -->
         <div class="link">
           <h3>Link</h3>
-          <a href={$tooltip.tp.attributionUrl} target="_blank" class="no-float">{extractHostname($tooltip.tp.attributionUrl)}</a>
+          <a href="http://www.wikipedia.org" target="_blank" class="no-float">wikipedia link</a>
         </div>
       </div>
     </div>

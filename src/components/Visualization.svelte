@@ -139,7 +139,7 @@
     const scaledData = data.map((d) => {
       return {
         ...d,
-        _x: $timeScale(d.attributionDate),
+        _x: $timeScale(d.testDate),
         _y: $sizeTotalYScale.range()[0],
         color: $attributionScoreScale(d.attributionScore),
         size: d.size,
@@ -190,13 +190,13 @@ console.log(scaledData)
       timePoints = timePoints.map((d) => ({
         ...d,
         show: haveOverlap($disinformantNationFilter, d.disinformantNation)
-              && haveOverlap($platformFilter, d.platforms)
-              && haveOverlap($methodFilter, d.methods)
+        //      && haveOverlap($platformFilter, d.platforms)
+        //      && haveOverlap($methodFilter, d.methods)
               && haveOverlap($timeperiodFilter, d.periodEra)
-              && haveOverlap($sourceFilter, d.sourceFilter)
-              && haveOverlap($sourceCategoryFilter, d.sourceCategory)
+        //      && haveOverlap($sourceFilter, d.sourceFilter)
+        //      && haveOverlap($sourceCategoryFilter, d.sourceCategory)
               && haveOverlap($dietFilter, d.diet)
-              && haveOverlap($tagFilter, d.tags)
+        //      && haveOverlap($tagFilter, d.tags)
               && includesTextSearch($textSearchFilter, d.search)
               && withinRange($attributionScoreFilter, d.attributionScore)
               && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization)
@@ -256,7 +256,7 @@ console.log(scaledData)
     width: 100%;
     height: 180vmin;
     min-height: 1200px;
-/*    max-height: 80vmax; */
+    max-height: 100vmax;
     margin: 2rem 0 0 0;
     position: relative;
   }

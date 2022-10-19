@@ -4381,59 +4381,6 @@ var app = (function () {
 	  return e;
 	}
 
-	var HtmlTag = /*#__PURE__*/function () {
-	  function HtmlTag() {
-	    var anchor = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-
-	    _classCallCheck(this, HtmlTag);
-
-	    this.a = anchor;
-	    this.e = this.n = null;
-	  }
-
-	  _createClass(HtmlTag, [{
-	    key: "m",
-	    value: function m(html, target) {
-	      var anchor = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-
-	      if (!this.e) {
-	        this.e = element(target.nodeName);
-	        this.t = target;
-	        this.h(html);
-	      }
-
-	      this.i(anchor);
-	    }
-	  }, {
-	    key: "h",
-	    value: function h(html) {
-	      this.e.innerHTML = html;
-	      this.n = Array.from(this.e.childNodes);
-	    }
-	  }, {
-	    key: "i",
-	    value: function i(anchor) {
-	      for (var i = 0; i < this.n.length; i += 1) {
-	        insert(this.t, this.n[i], anchor);
-	      }
-	    }
-	  }, {
-	    key: "p",
-	    value: function p(html) {
-	      this.d();
-	      this.h(html);
-	      this.i(this.a);
-	    }
-	  }, {
-	    key: "d",
-	    value: function d() {
-	      this.n.forEach(detach);
-	    }
-	  }]);
-
-	  return HtmlTag;
-	}();
-
 	var active_docs = new Set();
 	var active = 0; // https://github.com/darkskyapp/string-hash/blob/master/index.js
 
@@ -15772,6 +15719,183 @@ var app = (function () {
 	  return pow$2.apply(null, arguments).exponent(0.5);
 	}
 
+	function constant$4 (x) {
+	  return function constant() {
+	    return x;
+	  };
+	}
+
+	function array$1 (x) {
+	  return _typeof(x) === "object" && "length" in x ? x // Array, TypedArray, NodeList, array-like
+	  : Array.from(x); // Map, Set, iterable, string, or anything else
+	}
+
+	function Linear(context) {
+	  this._context = context;
+	}
+
+	Linear.prototype = {
+	  areaStart: function areaStart() {
+	    this._line = 0;
+	  },
+	  areaEnd: function areaEnd() {
+	    this._line = NaN;
+	  },
+	  lineStart: function lineStart() {
+	    this._point = 0;
+	  },
+	  lineEnd: function lineEnd() {
+	    if (this._line || this._line !== 0 && this._point === 1) this._context.closePath();
+	    this._line = 1 - this._line;
+	  },
+	  point: function point(x, y) {
+	    x = +x, y = +y;
+
+	    switch (this._point) {
+	      case 0:
+	        this._point = 1;
+	        this._line ? this._context.lineTo(x, y) : this._context.moveTo(x, y);
+	        break;
+
+	      case 1:
+	        this._point = 2;
+	      // proceed
+
+	      default:
+	        this._context.lineTo(x, y);
+
+	        break;
+	    }
+	  }
+	};
+	function curveLinear (context) {
+	  return new Linear(context);
+	}
+
+	function x$2(p) {
+	  return p[0];
+	}
+	function y$2(p) {
+	  return p[1];
+	}
+
+	function d3line (x, y) {
+	  var defined = constant$4(true),
+	      context = null,
+	      curve = curveLinear,
+	      output = null;
+	  x = typeof x === "function" ? x : x === undefined ? x$2 : constant$4(x);
+	  y = typeof y === "function" ? y : y === undefined ? y$2 : constant$4(y);
+
+	  function line(data) {
+	    var i,
+	        n = (data = array$1(data)).length,
+	        d,
+	        defined0 = false,
+	        buffer;
+	    if (context == null) output = curve(buffer = path$1());
+
+	    for (i = 0; i <= n; ++i) {
+	      if (!(i < n && defined(d = data[i], i, data)) === defined0) {
+	        if (defined0 = !defined0) output.lineStart();else output.lineEnd();
+	      }
+
+	      if (defined0) output.point(+x(d, i, data), +y(d, i, data));
+	    }
+
+	    if (buffer) return output = null, buffer + "" || null;
+	  }
+
+	  line.x = function (_) {
+	    return arguments.length ? (x = typeof _ === "function" ? _ : constant$4(+_), line) : x;
+	  };
+
+	  line.y = function (_) {
+	    return arguments.length ? (y = typeof _ === "function" ? _ : constant$4(+_), line) : y;
+	  };
+
+	  line.defined = function (_) {
+	    return arguments.length ? (defined = typeof _ === "function" ? _ : constant$4(!!_), line) : defined;
+	  };
+
+	  line.curve = function (_) {
+	    return arguments.length ? (curve = _, context != null && (output = curve(context)), line) : curve;
+	  };
+
+	  line.context = function (_) {
+	    return arguments.length ? (_ == null ? context = output = null : output = curve(context = _), line) : context;
+	  };
+
+	  return line;
+	}
+
+	function _point(that, x, y) {
+	  that._context.bezierCurveTo((2 * that._x0 + that._x1) / 3, (2 * that._y0 + that._y1) / 3, (that._x0 + 2 * that._x1) / 3, (that._y0 + 2 * that._y1) / 3, (that._x0 + 4 * that._x1 + x) / 6, (that._y0 + 4 * that._y1 + y) / 6);
+	}
+	function Basis(context) {
+	  this._context = context;
+	}
+	Basis.prototype = {
+	  areaStart: function areaStart() {
+	    this._line = 0;
+	  },
+	  areaEnd: function areaEnd() {
+	    this._line = NaN;
+	  },
+	  lineStart: function lineStart() {
+	    this._x0 = this._x1 = this._y0 = this._y1 = NaN;
+	    this._point = 0;
+	  },
+	  lineEnd: function lineEnd() {
+	    switch (this._point) {
+	      case 3:
+	        _point(this, this._x1, this._y1);
+
+	      // proceed
+
+	      case 2:
+	        this._context.lineTo(this._x1, this._y1);
+
+	        break;
+	    }
+
+	    if (this._line || this._line !== 0 && this._point === 1) this._context.closePath();
+	    this._line = 1 - this._line;
+	  },
+	  point: function point(x, y) {
+	    x = +x, y = +y;
+
+	    switch (this._point) {
+	      case 0:
+	        this._point = 1;
+	        this._line ? this._context.lineTo(x, y) : this._context.moveTo(x, y);
+	        break;
+
+	      case 1:
+	        this._point = 2;
+	        break;
+
+	      case 2:
+	        this._point = 3;
+
+	        this._context.lineTo((5 * this._x0 + this._x1) / 6, (5 * this._y0 + this._y1) / 6);
+
+	      // proceed
+
+	      default:
+	        _point(this, x, y);
+
+	        break;
+	    }
+
+	    this._x0 = this._x1, this._x1 = x;
+	    this._y0 = this._y1, this._y1 = y;
+	  }
+	};
+	function curveBasis (context) {
+	  return new Basis(context);
+	}
+
 	var t0 = new Date(),
 	    t1 = new Date();
 	function newInterval(floori, offseti, count, field) {
@@ -15849,66 +15973,14 @@ var app = (function () {
 	  return interval;
 	}
 
-	var millisecond = newInterval(function () {// noop
-	}, function (date, step) {
-	  date.setTime(+date + step);
-	}, function (start, end) {
-	  return end - start;
-	}); // An optimized implementation for this simple case.
-
-	millisecond.every = function (k) {
-	  k = Math.floor(k);
-	  if (!isFinite(k) || !(k > 0)) return null;
-	  if (!(k > 1)) return millisecond;
-	  return newInterval(function (date) {
-	    date.setTime(Math.floor(date / k) * k);
-	  }, function (date, step) {
-	    date.setTime(+date + step * k);
-	  }, function (start, end) {
-	    return (end - start) / k;
-	  });
-	};
-
-	var durationSecond = 1e3;
 	var durationMinute = 6e4;
-	var durationHour = 36e5;
 	var durationDay = 864e5;
 	var durationWeek = 6048e5;
 
-	var second = newInterval(function (date) {
-	  date.setTime(date - date.getMilliseconds());
-	}, function (date, step) {
-	  date.setTime(+date + step * durationSecond);
-	}, function (start, end) {
-	  return (end - start) / durationSecond;
-	}, function (date) {
-	  return date.getUTCSeconds();
-	});
-
-	var minute = newInterval(function (date) {
-	  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond);
-	}, function (date, step) {
-	  date.setTime(+date + step * durationMinute);
-	}, function (start, end) {
-	  return (end - start) / durationMinute;
-	}, function (date) {
-	  return date.getMinutes();
-	});
-
-	var hour = newInterval(function (date) {
-	  date.setTime(date - date.getMilliseconds() - date.getSeconds() * durationSecond - date.getMinutes() * durationMinute);
-	}, function (date, step) {
-	  date.setTime(+date + step * durationHour);
-	}, function (start, end) {
-	  return (end - start) / durationHour;
-	}, function (date) {
-	  return date.getHours();
-	});
-
 	var day = newInterval(function (date) {
-	  date.setHours(0, 0, 0, 0);
+	  return date.setHours(0, 0, 0, 0);
 	}, function (date, step) {
-	  date.setDate(date.getDate() + step);
+	  return date.setDate(date.getDate() + step);
 	}, function (start, end) {
 	  return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute) / durationDay;
 	}, function (date) {
@@ -15933,17 +16005,6 @@ var app = (function () {
 	var thursday = weekday(4);
 	var friday = weekday(5);
 	var saturday = weekday(6);
-
-	var month = newInterval(function (date) {
-	  date.setDate(1);
-	  date.setHours(0, 0, 0, 0);
-	}, function (date, step) {
-	  date.setMonth(date.getMonth() + step);
-	}, function (start, end) {
-	  return end.getMonth() - start.getMonth() + (end.getFullYear() - start.getFullYear()) * 12;
-	}, function (date) {
-	  return date.getMonth();
-	});
 
 	var year = newInterval(function (date) {
 	  date.setMonth(0, 1);
@@ -16284,27 +16345,27 @@ var app = (function () {
 
 	  function parsePeriod(d, string, i) {
 	    var n = periodRe.exec(string.slice(i));
-	    return n ? (d.p = periodLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+	    return n ? (d.p = periodLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
 	  }
 
 	  function parseShortWeekday(d, string, i) {
 	    var n = shortWeekdayRe.exec(string.slice(i));
-	    return n ? (d.w = shortWeekdayLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+	    return n ? (d.w = shortWeekdayLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
 	  }
 
 	  function parseWeekday(d, string, i) {
 	    var n = weekdayRe.exec(string.slice(i));
-	    return n ? (d.w = weekdayLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+	    return n ? (d.w = weekdayLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
 	  }
 
 	  function parseShortMonth(d, string, i) {
 	    var n = shortMonthRe.exec(string.slice(i));
-	    return n ? (d.m = shortMonthLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+	    return n ? (d.m = shortMonthLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
 	  }
 
 	  function parseMonth(d, string, i) {
 	    var n = monthRe.exec(string.slice(i));
-	    return n ? (d.m = monthLookup[n[0].toLowerCase()], i + n[0].length) : -1;
+	    return n ? (d.m = monthLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
 	  }
 
 	  function parseLocaleDateTime(d, string, i) {
@@ -16432,15 +16493,9 @@ var app = (function () {
 	}
 
 	function formatLookup(names) {
-	  var map = {},
-	      i = -1,
-	      n = names.length;
-
-	  while (++i < n) {
-	    map[names[i].toLowerCase()] = i;
-	  }
-
-	  return map;
+	  return new Map(names.map(function (name, i) {
+	    return [name.toLowerCase(), i];
+	  }));
 	}
 
 	function parseWeekdayNumberSunday(d, string, i) {
@@ -16750,1198 +16805,6 @@ var app = (function () {
 	  utcFormat = locale$2.utcFormat;
 	  utcParse = locale$2.utcParse;
 	  return locale$2;
-	}
-
-	var durationSecond$1 = 1000,
-	    durationMinute$1 = durationSecond$1 * 60,
-	    durationHour$1 = durationMinute$1 * 60,
-	    durationDay$1 = durationHour$1 * 24,
-	    durationWeek$1 = durationDay$1 * 7,
-	    durationMonth = durationDay$1 * 30,
-	    durationYear = durationDay$1 * 365;
-
-	function date$1(t) {
-	  return new Date(t);
-	}
-
-	function number$1(t) {
-	  return t instanceof Date ? +t : +new Date(+t);
-	}
-
-	function calendar(year, month, week, day, hour, minute, second, millisecond, format) {
-	  var scale = continuous(),
-	      invert = scale.invert,
-	      domain = scale.domain;
-	  var formatMillisecond = format(".%L"),
-	      formatSecond = format(":%S"),
-	      formatMinute = format("%I:%M"),
-	      formatHour = format("%I %p"),
-	      formatDay = format("%a %d"),
-	      formatWeek = format("%b %d"),
-	      formatMonth = format("%B"),
-	      formatYear = format("%Y");
-	  var tickIntervals = [[second, 1, durationSecond$1], [second, 5, 5 * durationSecond$1], [second, 15, 15 * durationSecond$1], [second, 30, 30 * durationSecond$1], [minute, 1, durationMinute$1], [minute, 5, 5 * durationMinute$1], [minute, 15, 15 * durationMinute$1], [minute, 30, 30 * durationMinute$1], [hour, 1, durationHour$1], [hour, 3, 3 * durationHour$1], [hour, 6, 6 * durationHour$1], [hour, 12, 12 * durationHour$1], [day, 1, durationDay$1], [day, 2, 2 * durationDay$1], [week, 1, durationWeek$1], [month, 1, durationMonth], [month, 3, 3 * durationMonth], [year, 1, durationYear]];
-
-	  function tickFormat(date) {
-	    return (second(date) < date ? formatMillisecond : minute(date) < date ? formatSecond : hour(date) < date ? formatMinute : day(date) < date ? formatHour : month(date) < date ? week(date) < date ? formatDay : formatWeek : year(date) < date ? formatMonth : formatYear)(date);
-	  }
-
-	  function tickInterval(interval, start, stop) {
-	    if (interval == null) interval = 10; // If a desired tick count is specified, pick a reasonable tick interval
-	    // based on the extent of the domain and a rough estimate of tick size.
-	    // Otherwise, assume interval is already a time interval and use it.
-
-	    if (typeof interval === "number") {
-	      var target = Math.abs(stop - start) / interval,
-	          i = bisector(function (i) {
-	        return i[2];
-	      }).right(tickIntervals, target),
-	          step;
-
-	      if (i === tickIntervals.length) {
-	        step = tickStep(start / durationYear, stop / durationYear, interval);
-	        interval = year;
-	      } else if (i) {
-	        i = tickIntervals[target / tickIntervals[i - 1][2] < tickIntervals[i][2] / target ? i - 1 : i];
-	        step = i[1];
-	        interval = i[0];
-	      } else {
-	        step = Math.max(tickStep(start, stop, interval), 1);
-	        interval = millisecond;
-	      }
-
-	      return interval.every(step);
-	    }
-
-	    return interval;
-	  }
-
-	  scale.invert = function (y) {
-	    return new Date(invert(y));
-	  };
-
-	  scale.domain = function (_) {
-	    return arguments.length ? domain(Array.from(_, number$1)) : domain().map(date$1);
-	  };
-
-	  scale.ticks = function (interval) {
-	    var d = domain(),
-	        t0 = d[0],
-	        t1 = d[d.length - 1],
-	        r = t1 < t0,
-	        t;
-	    if (r) t = t0, t0 = t1, t1 = t;
-	    t = tickInterval(interval, t0, t1);
-	    t = t ? t.range(t0, t1 + 1) : []; // inclusive stop
-
-	    return r ? t.reverse() : t;
-	  };
-
-	  scale.tickFormat = function (count, specifier) {
-	    return specifier == null ? tickFormat : format(specifier);
-	  };
-
-	  scale.nice = function (interval) {
-	    var d = domain();
-	    return (interval = tickInterval(interval, d[0], d[d.length - 1])) ? domain(nice(d, interval)) : scale;
-	  };
-
-	  scale.copy = function () {
-	    return copy(scale, calendar(year, month, week, day, hour, minute, second, millisecond, format));
-	  };
-
-	  return scale;
-	}
-	function scaleTime () {
-	  return initRange.apply(calendar(year, month, sunday, day, hour, minute, second, millisecond, timeFormat).domain([new Date(2000, 0, 1), new Date(2000, 0, 2)]), arguments);
-	}
-
-	function constant$4 (x) {
-	  return function constant() {
-	    return x;
-	  };
-	}
-
-	function array$1 (x) {
-	  return _typeof(x) === "object" && "length" in x ? x // Array, TypedArray, NodeList, array-like
-	  : Array.from(x); // Map, Set, iterable, string, or anything else
-	}
-
-	function Linear(context) {
-	  this._context = context;
-	}
-
-	Linear.prototype = {
-	  areaStart: function areaStart() {
-	    this._line = 0;
-	  },
-	  areaEnd: function areaEnd() {
-	    this._line = NaN;
-	  },
-	  lineStart: function lineStart() {
-	    this._point = 0;
-	  },
-	  lineEnd: function lineEnd() {
-	    if (this._line || this._line !== 0 && this._point === 1) this._context.closePath();
-	    this._line = 1 - this._line;
-	  },
-	  point: function point(x, y) {
-	    x = +x, y = +y;
-
-	    switch (this._point) {
-	      case 0:
-	        this._point = 1;
-	        this._line ? this._context.lineTo(x, y) : this._context.moveTo(x, y);
-	        break;
-
-	      case 1:
-	        this._point = 2;
-	      // proceed
-
-	      default:
-	        this._context.lineTo(x, y);
-
-	        break;
-	    }
-	  }
-	};
-	function curveLinear (context) {
-	  return new Linear(context);
-	}
-
-	function x$2(p) {
-	  return p[0];
-	}
-	function y$2(p) {
-	  return p[1];
-	}
-
-	function d3line (x, y) {
-	  var defined = constant$4(true),
-	      context = null,
-	      curve = curveLinear,
-	      output = null;
-	  x = typeof x === "function" ? x : x === undefined ? x$2 : constant$4(x);
-	  y = typeof y === "function" ? y : y === undefined ? y$2 : constant$4(y);
-
-	  function line(data) {
-	    var i,
-	        n = (data = array$1(data)).length,
-	        d,
-	        defined0 = false,
-	        buffer;
-	    if (context == null) output = curve(buffer = path$1());
-
-	    for (i = 0; i <= n; ++i) {
-	      if (!(i < n && defined(d = data[i], i, data)) === defined0) {
-	        if (defined0 = !defined0) output.lineStart();else output.lineEnd();
-	      }
-
-	      if (defined0) output.point(+x(d, i, data), +y(d, i, data));
-	    }
-
-	    if (buffer) return output = null, buffer + "" || null;
-	  }
-
-	  line.x = function (_) {
-	    return arguments.length ? (x = typeof _ === "function" ? _ : constant$4(+_), line) : x;
-	  };
-
-	  line.y = function (_) {
-	    return arguments.length ? (y = typeof _ === "function" ? _ : constant$4(+_), line) : y;
-	  };
-
-	  line.defined = function (_) {
-	    return arguments.length ? (defined = typeof _ === "function" ? _ : constant$4(!!_), line) : defined;
-	  };
-
-	  line.curve = function (_) {
-	    return arguments.length ? (curve = _, context != null && (output = curve(context)), line) : curve;
-	  };
-
-	  line.context = function (_) {
-	    return arguments.length ? (_ == null ? context = output = null : output = curve(context = _), line) : context;
-	  };
-
-	  return line;
-	}
-
-	function _point(that, x, y) {
-	  that._context.bezierCurveTo((2 * that._x0 + that._x1) / 3, (2 * that._y0 + that._y1) / 3, (that._x0 + 2 * that._x1) / 3, (that._y0 + 2 * that._y1) / 3, (that._x0 + 4 * that._x1 + x) / 6, (that._y0 + 4 * that._y1 + y) / 6);
-	}
-	function Basis(context) {
-	  this._context = context;
-	}
-	Basis.prototype = {
-	  areaStart: function areaStart() {
-	    this._line = 0;
-	  },
-	  areaEnd: function areaEnd() {
-	    this._line = NaN;
-	  },
-	  lineStart: function lineStart() {
-	    this._x0 = this._x1 = this._y0 = this._y1 = NaN;
-	    this._point = 0;
-	  },
-	  lineEnd: function lineEnd() {
-	    switch (this._point) {
-	      case 3:
-	        _point(this, this._x1, this._y1);
-
-	      // proceed
-
-	      case 2:
-	        this._context.lineTo(this._x1, this._y1);
-
-	        break;
-	    }
-
-	    if (this._line || this._line !== 0 && this._point === 1) this._context.closePath();
-	    this._line = 1 - this._line;
-	  },
-	  point: function point(x, y) {
-	    x = +x, y = +y;
-
-	    switch (this._point) {
-	      case 0:
-	        this._point = 1;
-	        this._line ? this._context.lineTo(x, y) : this._context.moveTo(x, y);
-	        break;
-
-	      case 1:
-	        this._point = 2;
-	        break;
-
-	      case 2:
-	        this._point = 3;
-
-	        this._context.lineTo((5 * this._x0 + this._x1) / 6, (5 * this._y0 + this._y1) / 6);
-
-	      // proceed
-
-	      default:
-	        _point(this, x, y);
-
-	        break;
-	    }
-
-	    this._x0 = this._x1, this._x1 = x;
-	    this._y0 = this._y1, this._y1 = y;
-	  }
-	};
-	function curveBasis (context) {
-	  return new Basis(context);
-	}
-
-	var t0$1 = new Date(),
-	    t1$1 = new Date();
-	function newInterval$1(floori, offseti, count, field) {
-	  function interval(date) {
-	    return floori(date = arguments.length === 0 ? new Date() : new Date(+date)), date;
-	  }
-
-	  interval.floor = function (date) {
-	    return floori(date = new Date(+date)), date;
-	  };
-
-	  interval.ceil = function (date) {
-	    return floori(date = new Date(date - 1)), offseti(date, 1), floori(date), date;
-	  };
-
-	  interval.round = function (date) {
-	    var d0 = interval(date),
-	        d1 = interval.ceil(date);
-	    return date - d0 < d1 - date ? d0 : d1;
-	  };
-
-	  interval.offset = function (date, step) {
-	    return offseti(date = new Date(+date), step == null ? 1 : Math.floor(step)), date;
-	  };
-
-	  interval.range = function (start, stop, step) {
-	    var range = [],
-	        previous;
-	    start = interval.ceil(start);
-	    step = step == null ? 1 : Math.floor(step);
-	    if (!(start < stop) || !(step > 0)) return range; // also handles Invalid Date
-
-	    do {
-	      range.push(previous = new Date(+start)), offseti(start, step), floori(start);
-	    } while (previous < start && start < stop);
-
-	    return range;
-	  };
-
-	  interval.filter = function (test) {
-	    return newInterval$1(function (date) {
-	      if (date >= date) while (floori(date), !test(date)) {
-	        date.setTime(date - 1);
-	      }
-	    }, function (date, step) {
-	      if (date >= date) {
-	        if (step < 0) while (++step <= 0) {
-	          while (offseti(date, -1), !test(date)) {} // eslint-disable-line no-empty
-
-	        } else while (--step >= 0) {
-	          while (offseti(date, +1), !test(date)) {} // eslint-disable-line no-empty
-
-	        }
-	      }
-	    });
-	  };
-
-	  if (count) {
-	    interval.count = function (start, end) {
-	      t0$1.setTime(+start), t1$1.setTime(+end);
-	      floori(t0$1), floori(t1$1);
-	      return Math.floor(count(t0$1, t1$1));
-	    };
-
-	    interval.every = function (step) {
-	      step = Math.floor(step);
-	      return !isFinite(step) || !(step > 0) ? null : !(step > 1) ? interval : interval.filter(field ? function (d) {
-	        return field(d) % step === 0;
-	      } : function (d) {
-	        return interval.count(0, d) % step === 0;
-	      });
-	    };
-	  }
-
-	  return interval;
-	}
-
-	var durationMinute$2 = 6e4;
-	var durationDay$2 = 864e5;
-	var durationWeek$2 = 6048e5;
-
-	var day$1 = newInterval$1(function (date) {
-	  return date.setHours(0, 0, 0, 0);
-	}, function (date, step) {
-	  return date.setDate(date.getDate() + step);
-	}, function (start, end) {
-	  return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute$2) / durationDay$2;
-	}, function (date) {
-	  return date.getDate() - 1;
-	});
-
-	function weekday$1(i) {
-	  return newInterval$1(function (date) {
-	    date.setDate(date.getDate() - (date.getDay() + 7 - i) % 7);
-	    date.setHours(0, 0, 0, 0);
-	  }, function (date, step) {
-	    date.setDate(date.getDate() + step * 7);
-	  }, function (start, end) {
-	    return (end - start - (end.getTimezoneOffset() - start.getTimezoneOffset()) * durationMinute$2) / durationWeek$2;
-	  });
-	}
-
-	var sunday$1 = weekday$1(0);
-	var monday$1 = weekday$1(1);
-	var tuesday$1 = weekday$1(2);
-	var wednesday$1 = weekday$1(3);
-	var thursday$1 = weekday$1(4);
-	var friday$1 = weekday$1(5);
-	var saturday$1 = weekday$1(6);
-
-	var year$1 = newInterval$1(function (date) {
-	  date.setMonth(0, 1);
-	  date.setHours(0, 0, 0, 0);
-	}, function (date, step) {
-	  date.setFullYear(date.getFullYear() + step);
-	}, function (start, end) {
-	  return end.getFullYear() - start.getFullYear();
-	}, function (date) {
-	  return date.getFullYear();
-	}); // An optimized implementation for this simple case.
-
-	year$1.every = function (k) {
-	  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval$1(function (date) {
-	    date.setFullYear(Math.floor(date.getFullYear() / k) * k);
-	    date.setMonth(0, 1);
-	    date.setHours(0, 0, 0, 0);
-	  }, function (date, step) {
-	    date.setFullYear(date.getFullYear() + step * k);
-	  });
-	};
-
-	var utcDay$1 = newInterval$1(function (date) {
-	  date.setUTCHours(0, 0, 0, 0);
-	}, function (date, step) {
-	  date.setUTCDate(date.getUTCDate() + step);
-	}, function (start, end) {
-	  return (end - start) / durationDay$2;
-	}, function (date) {
-	  return date.getUTCDate() - 1;
-	});
-
-	function utcWeekday$1(i) {
-	  return newInterval$1(function (date) {
-	    date.setUTCDate(date.getUTCDate() - (date.getUTCDay() + 7 - i) % 7);
-	    date.setUTCHours(0, 0, 0, 0);
-	  }, function (date, step) {
-	    date.setUTCDate(date.getUTCDate() + step * 7);
-	  }, function (start, end) {
-	    return (end - start) / durationWeek$2;
-	  });
-	}
-
-	var utcSunday$1 = utcWeekday$1(0);
-	var utcMonday$1 = utcWeekday$1(1);
-	var utcTuesday$1 = utcWeekday$1(2);
-	var utcWednesday$1 = utcWeekday$1(3);
-	var utcThursday$1 = utcWeekday$1(4);
-	var utcFriday$1 = utcWeekday$1(5);
-	var utcSaturday$1 = utcWeekday$1(6);
-
-	var utcYear$1 = newInterval$1(function (date) {
-	  date.setUTCMonth(0, 1);
-	  date.setUTCHours(0, 0, 0, 0);
-	}, function (date, step) {
-	  date.setUTCFullYear(date.getUTCFullYear() + step);
-	}, function (start, end) {
-	  return end.getUTCFullYear() - start.getUTCFullYear();
-	}, function (date) {
-	  return date.getUTCFullYear();
-	}); // An optimized implementation for this simple case.
-
-	utcYear$1.every = function (k) {
-	  return !isFinite(k = Math.floor(k)) || !(k > 0) ? null : newInterval$1(function (date) {
-	    date.setUTCFullYear(Math.floor(date.getUTCFullYear() / k) * k);
-	    date.setUTCMonth(0, 1);
-	    date.setUTCHours(0, 0, 0, 0);
-	  }, function (date, step) {
-	    date.setUTCFullYear(date.getUTCFullYear() + step * k);
-	  });
-	};
-
-	function localDate$1(d) {
-	  if (0 <= d.y && d.y < 100) {
-	    var date = new Date(-1, d.m, d.d, d.H, d.M, d.S, d.L);
-	    date.setFullYear(d.y);
-	    return date;
-	  }
-
-	  return new Date(d.y, d.m, d.d, d.H, d.M, d.S, d.L);
-	}
-
-	function utcDate$1(d) {
-	  if (0 <= d.y && d.y < 100) {
-	    var date = new Date(Date.UTC(-1, d.m, d.d, d.H, d.M, d.S, d.L));
-	    date.setUTCFullYear(d.y);
-	    return date;
-	  }
-
-	  return new Date(Date.UTC(d.y, d.m, d.d, d.H, d.M, d.S, d.L));
-	}
-
-	function newDate$1(y, m, d) {
-	  return {
-	    y: y,
-	    m: m,
-	    d: d,
-	    H: 0,
-	    M: 0,
-	    S: 0,
-	    L: 0
-	  };
-	}
-
-	function formatLocale$3(locale) {
-	  var locale_dateTime = locale.dateTime,
-	      locale_date = locale.date,
-	      locale_time = locale.time,
-	      locale_periods = locale.periods,
-	      locale_weekdays = locale.days,
-	      locale_shortWeekdays = locale.shortDays,
-	      locale_months = locale.months,
-	      locale_shortMonths = locale.shortMonths;
-	  var periodRe = formatRe$1(locale_periods),
-	      periodLookup = formatLookup$1(locale_periods),
-	      weekdayRe = formatRe$1(locale_weekdays),
-	      weekdayLookup = formatLookup$1(locale_weekdays),
-	      shortWeekdayRe = formatRe$1(locale_shortWeekdays),
-	      shortWeekdayLookup = formatLookup$1(locale_shortWeekdays),
-	      monthRe = formatRe$1(locale_months),
-	      monthLookup = formatLookup$1(locale_months),
-	      shortMonthRe = formatRe$1(locale_shortMonths),
-	      shortMonthLookup = formatLookup$1(locale_shortMonths);
-	  var formats = {
-	    "a": formatShortWeekday,
-	    "A": formatWeekday,
-	    "b": formatShortMonth,
-	    "B": formatMonth,
-	    "c": null,
-	    "d": formatDayOfMonth$1,
-	    "e": formatDayOfMonth$1,
-	    "f": formatMicroseconds$1,
-	    "g": formatYearISO$1,
-	    "G": formatFullYearISO$1,
-	    "H": formatHour24$1,
-	    "I": formatHour12$1,
-	    "j": formatDayOfYear$1,
-	    "L": formatMilliseconds$1,
-	    "m": formatMonthNumber$1,
-	    "M": formatMinutes$1,
-	    "p": formatPeriod,
-	    "q": formatQuarter,
-	    "Q": formatUnixTimestamp$1,
-	    "s": formatUnixTimestampSeconds$1,
-	    "S": formatSeconds$1,
-	    "u": formatWeekdayNumberMonday$1,
-	    "U": formatWeekNumberSunday$1,
-	    "V": formatWeekNumberISO$1,
-	    "w": formatWeekdayNumberSunday$1,
-	    "W": formatWeekNumberMonday$1,
-	    "x": null,
-	    "X": null,
-	    "y": formatYear$2,
-	    "Y": formatFullYear$1,
-	    "Z": formatZone$1,
-	    "%": formatLiteralPercent$1
-	  };
-	  var utcFormats = {
-	    "a": formatUTCShortWeekday,
-	    "A": formatUTCWeekday,
-	    "b": formatUTCShortMonth,
-	    "B": formatUTCMonth,
-	    "c": null,
-	    "d": formatUTCDayOfMonth$1,
-	    "e": formatUTCDayOfMonth$1,
-	    "f": formatUTCMicroseconds$1,
-	    "g": formatUTCYearISO$1,
-	    "G": formatUTCFullYearISO$1,
-	    "H": formatUTCHour24$1,
-	    "I": formatUTCHour12$1,
-	    "j": formatUTCDayOfYear$1,
-	    "L": formatUTCMilliseconds$1,
-	    "m": formatUTCMonthNumber$1,
-	    "M": formatUTCMinutes$1,
-	    "p": formatUTCPeriod,
-	    "q": formatUTCQuarter,
-	    "Q": formatUnixTimestamp$1,
-	    "s": formatUnixTimestampSeconds$1,
-	    "S": formatUTCSeconds$1,
-	    "u": formatUTCWeekdayNumberMonday$1,
-	    "U": formatUTCWeekNumberSunday$1,
-	    "V": formatUTCWeekNumberISO$1,
-	    "w": formatUTCWeekdayNumberSunday$1,
-	    "W": formatUTCWeekNumberMonday$1,
-	    "x": null,
-	    "X": null,
-	    "y": formatUTCYear$1,
-	    "Y": formatUTCFullYear$1,
-	    "Z": formatUTCZone$1,
-	    "%": formatLiteralPercent$1
-	  };
-	  var parses = {
-	    "a": parseShortWeekday,
-	    "A": parseWeekday,
-	    "b": parseShortMonth,
-	    "B": parseMonth,
-	    "c": parseLocaleDateTime,
-	    "d": parseDayOfMonth$1,
-	    "e": parseDayOfMonth$1,
-	    "f": parseMicroseconds$1,
-	    "g": parseYear$1,
-	    "G": parseFullYear$1,
-	    "H": parseHour24$1,
-	    "I": parseHour24$1,
-	    "j": parseDayOfYear$1,
-	    "L": parseMilliseconds$1,
-	    "m": parseMonthNumber$1,
-	    "M": parseMinutes$1,
-	    "p": parsePeriod,
-	    "q": parseQuarter$1,
-	    "Q": parseUnixTimestamp$1,
-	    "s": parseUnixTimestampSeconds$1,
-	    "S": parseSeconds$1,
-	    "u": parseWeekdayNumberMonday$1,
-	    "U": parseWeekNumberSunday$1,
-	    "V": parseWeekNumberISO$1,
-	    "w": parseWeekdayNumberSunday$1,
-	    "W": parseWeekNumberMonday$1,
-	    "x": parseLocaleDate,
-	    "X": parseLocaleTime,
-	    "y": parseYear$1,
-	    "Y": parseFullYear$1,
-	    "Z": parseZone$1,
-	    "%": parseLiteralPercent$1
-	  }; // These recursive directive definitions must be deferred.
-
-	  formats.x = newFormat(locale_date, formats);
-	  formats.X = newFormat(locale_time, formats);
-	  formats.c = newFormat(locale_dateTime, formats);
-	  utcFormats.x = newFormat(locale_date, utcFormats);
-	  utcFormats.X = newFormat(locale_time, utcFormats);
-	  utcFormats.c = newFormat(locale_dateTime, utcFormats);
-
-	  function newFormat(specifier, formats) {
-	    return function (date) {
-	      var string = [],
-	          i = -1,
-	          j = 0,
-	          n = specifier.length,
-	          c,
-	          pad,
-	          format;
-	      if (!(date instanceof Date)) date = new Date(+date);
-
-	      while (++i < n) {
-	        if (specifier.charCodeAt(i) === 37) {
-	          string.push(specifier.slice(j, i));
-	          if ((pad = pads$1[c = specifier.charAt(++i)]) != null) c = specifier.charAt(++i);else pad = c === "e" ? " " : "0";
-	          if (format = formats[c]) c = format(date, pad);
-	          string.push(c);
-	          j = i + 1;
-	        }
-	      }
-
-	      string.push(specifier.slice(j, i));
-	      return string.join("");
-	    };
-	  }
-
-	  function newParse(specifier, Z) {
-	    return function (string) {
-	      var d = newDate$1(1900, undefined, 1),
-	          i = parseSpecifier(d, specifier, string += "", 0),
-	          week,
-	          day;
-	      if (i != string.length) return null; // If a UNIX timestamp is specified, return it.
-
-	      if ("Q" in d) return new Date(d.Q);
-	      if ("s" in d) return new Date(d.s * 1000 + ("L" in d ? d.L : 0)); // If this is utcParse, never use the local timezone.
-
-	      if (Z && !("Z" in d)) d.Z = 0; // The am-pm flag is 0 for AM, and 1 for PM.
-
-	      if ("p" in d) d.H = d.H % 12 + d.p * 12; // If the month was not specified, inherit from the quarter.
-
-	      if (d.m === undefined) d.m = "q" in d ? d.q : 0; // Convert day-of-week and week-of-year to day-of-year.
-
-	      if ("V" in d) {
-	        if (d.V < 1 || d.V > 53) return null;
-	        if (!("w" in d)) d.w = 1;
-
-	        if ("Z" in d) {
-	          week = utcDate$1(newDate$1(d.y, 0, 1)), day = week.getUTCDay();
-	          week = day > 4 || day === 0 ? utcMonday$1.ceil(week) : utcMonday$1(week);
-	          week = utcDay$1.offset(week, (d.V - 1) * 7);
-	          d.y = week.getUTCFullYear();
-	          d.m = week.getUTCMonth();
-	          d.d = week.getUTCDate() + (d.w + 6) % 7;
-	        } else {
-	          week = localDate$1(newDate$1(d.y, 0, 1)), day = week.getDay();
-	          week = day > 4 || day === 0 ? monday$1.ceil(week) : monday$1(week);
-	          week = day$1.offset(week, (d.V - 1) * 7);
-	          d.y = week.getFullYear();
-	          d.m = week.getMonth();
-	          d.d = week.getDate() + (d.w + 6) % 7;
-	        }
-	      } else if ("W" in d || "U" in d) {
-	        if (!("w" in d)) d.w = "u" in d ? d.u % 7 : "W" in d ? 1 : 0;
-	        day = "Z" in d ? utcDate$1(newDate$1(d.y, 0, 1)).getUTCDay() : localDate$1(newDate$1(d.y, 0, 1)).getDay();
-	        d.m = 0;
-	        d.d = "W" in d ? (d.w + 6) % 7 + d.W * 7 - (day + 5) % 7 : d.w + d.U * 7 - (day + 6) % 7;
-	      } // If a time zone is specified, all fields are interpreted as UTC and then
-	      // offset according to the specified time zone.
-
-
-	      if ("Z" in d) {
-	        d.H += d.Z / 100 | 0;
-	        d.M += d.Z % 100;
-	        return utcDate$1(d);
-	      } // Otherwise, all fields are in local time.
-
-
-	      return localDate$1(d);
-	    };
-	  }
-
-	  function parseSpecifier(d, specifier, string, j) {
-	    var i = 0,
-	        n = specifier.length,
-	        m = string.length,
-	        c,
-	        parse;
-
-	    while (i < n) {
-	      if (j >= m) return -1;
-	      c = specifier.charCodeAt(i++);
-
-	      if (c === 37) {
-	        c = specifier.charAt(i++);
-	        parse = parses[c in pads$1 ? specifier.charAt(i++) : c];
-	        if (!parse || (j = parse(d, string, j)) < 0) return -1;
-	      } else if (c != string.charCodeAt(j++)) {
-	        return -1;
-	      }
-	    }
-
-	    return j;
-	  }
-
-	  function parsePeriod(d, string, i) {
-	    var n = periodRe.exec(string.slice(i));
-	    return n ? (d.p = periodLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
-	  }
-
-	  function parseShortWeekday(d, string, i) {
-	    var n = shortWeekdayRe.exec(string.slice(i));
-	    return n ? (d.w = shortWeekdayLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
-	  }
-
-	  function parseWeekday(d, string, i) {
-	    var n = weekdayRe.exec(string.slice(i));
-	    return n ? (d.w = weekdayLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
-	  }
-
-	  function parseShortMonth(d, string, i) {
-	    var n = shortMonthRe.exec(string.slice(i));
-	    return n ? (d.m = shortMonthLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
-	  }
-
-	  function parseMonth(d, string, i) {
-	    var n = monthRe.exec(string.slice(i));
-	    return n ? (d.m = monthLookup.get(n[0].toLowerCase()), i + n[0].length) : -1;
-	  }
-
-	  function parseLocaleDateTime(d, string, i) {
-	    return parseSpecifier(d, locale_dateTime, string, i);
-	  }
-
-	  function parseLocaleDate(d, string, i) {
-	    return parseSpecifier(d, locale_date, string, i);
-	  }
-
-	  function parseLocaleTime(d, string, i) {
-	    return parseSpecifier(d, locale_time, string, i);
-	  }
-
-	  function formatShortWeekday(d) {
-	    return locale_shortWeekdays[d.getDay()];
-	  }
-
-	  function formatWeekday(d) {
-	    return locale_weekdays[d.getDay()];
-	  }
-
-	  function formatShortMonth(d) {
-	    return locale_shortMonths[d.getMonth()];
-	  }
-
-	  function formatMonth(d) {
-	    return locale_months[d.getMonth()];
-	  }
-
-	  function formatPeriod(d) {
-	    return locale_periods[+(d.getHours() >= 12)];
-	  }
-
-	  function formatQuarter(d) {
-	    return 1 + ~~(d.getMonth() / 3);
-	  }
-
-	  function formatUTCShortWeekday(d) {
-	    return locale_shortWeekdays[d.getUTCDay()];
-	  }
-
-	  function formatUTCWeekday(d) {
-	    return locale_weekdays[d.getUTCDay()];
-	  }
-
-	  function formatUTCShortMonth(d) {
-	    return locale_shortMonths[d.getUTCMonth()];
-	  }
-
-	  function formatUTCMonth(d) {
-	    return locale_months[d.getUTCMonth()];
-	  }
-
-	  function formatUTCPeriod(d) {
-	    return locale_periods[+(d.getUTCHours() >= 12)];
-	  }
-
-	  function formatUTCQuarter(d) {
-	    return 1 + ~~(d.getUTCMonth() / 3);
-	  }
-
-	  return {
-	    format: function format(specifier) {
-	      var f = newFormat(specifier += "", formats);
-
-	      f.toString = function () {
-	        return specifier;
-	      };
-
-	      return f;
-	    },
-	    parse: function parse(specifier) {
-	      var p = newParse(specifier += "", false);
-
-	      p.toString = function () {
-	        return specifier;
-	      };
-
-	      return p;
-	    },
-	    utcFormat: function utcFormat(specifier) {
-	      var f = newFormat(specifier += "", utcFormats);
-
-	      f.toString = function () {
-	        return specifier;
-	      };
-
-	      return f;
-	    },
-	    utcParse: function utcParse(specifier) {
-	      var p = newParse(specifier += "", true);
-
-	      p.toString = function () {
-	        return specifier;
-	      };
-
-	      return p;
-	    }
-	  };
-	}
-	var pads$1 = {
-	  "-": "",
-	  "_": " ",
-	  "0": "0"
-	},
-	    numberRe$1 = /^\s*\d+/,
-	    // note: ignores next directive
-	percentRe$1 = /^%/,
-	    requoteRe$1 = /[\\^$*+?|[\]().{}]/g;
-
-	function pad$2(value, fill, width) {
-	  var sign = value < 0 ? "-" : "",
-	      string = (sign ? -value : value) + "",
-	      length = string.length;
-	  return sign + (length < width ? new Array(width - length + 1).join(fill) + string : string);
-	}
-
-	function requote$1(s) {
-	  return s.replace(requoteRe$1, "\\$&");
-	}
-
-	function formatRe$1(names) {
-	  return new RegExp("^(?:" + names.map(requote$1).join("|") + ")", "i");
-	}
-
-	function formatLookup$1(names) {
-	  return new Map(names.map(function (name, i) {
-	    return [name.toLowerCase(), i];
-	  }));
-	}
-
-	function parseWeekdayNumberSunday$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 1));
-	  return n ? (d.w = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseWeekdayNumberMonday$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 1));
-	  return n ? (d.u = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseWeekNumberSunday$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.U = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseWeekNumberISO$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.V = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseWeekNumberMonday$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.W = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseFullYear$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 4));
-	  return n ? (d.y = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseYear$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.y = +n[0] + (+n[0] > 68 ? 1900 : 2000), i + n[0].length) : -1;
-	}
-
-	function parseZone$1(d, string, i) {
-	  var n = /^(Z)|([+-]\d\d)(?::?(\d\d))?/.exec(string.slice(i, i + 6));
-	  return n ? (d.Z = n[1] ? 0 : -(n[2] + (n[3] || "00")), i + n[0].length) : -1;
-	}
-
-	function parseQuarter$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 1));
-	  return n ? (d.q = n[0] * 3 - 3, i + n[0].length) : -1;
-	}
-
-	function parseMonthNumber$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.m = n[0] - 1, i + n[0].length) : -1;
-	}
-
-	function parseDayOfMonth$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.d = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseDayOfYear$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 3));
-	  return n ? (d.m = 0, d.d = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseHour24$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.H = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseMinutes$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.M = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseSeconds$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 2));
-	  return n ? (d.S = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseMilliseconds$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 3));
-	  return n ? (d.L = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseMicroseconds$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i, i + 6));
-	  return n ? (d.L = Math.floor(n[0] / 1000), i + n[0].length) : -1;
-	}
-
-	function parseLiteralPercent$1(d, string, i) {
-	  var n = percentRe$1.exec(string.slice(i, i + 1));
-	  return n ? i + n[0].length : -1;
-	}
-
-	function parseUnixTimestamp$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i));
-	  return n ? (d.Q = +n[0], i + n[0].length) : -1;
-	}
-
-	function parseUnixTimestampSeconds$1(d, string, i) {
-	  var n = numberRe$1.exec(string.slice(i));
-	  return n ? (d.s = +n[0], i + n[0].length) : -1;
-	}
-
-	function formatDayOfMonth$1(d, p) {
-	  return pad$2(d.getDate(), p, 2);
-	}
-
-	function formatHour24$1(d, p) {
-	  return pad$2(d.getHours(), p, 2);
-	}
-
-	function formatHour12$1(d, p) {
-	  return pad$2(d.getHours() % 12 || 12, p, 2);
-	}
-
-	function formatDayOfYear$1(d, p) {
-	  return pad$2(1 + day$1.count(year$1(d), d), p, 3);
-	}
-
-	function formatMilliseconds$1(d, p) {
-	  return pad$2(d.getMilliseconds(), p, 3);
-	}
-
-	function formatMicroseconds$1(d, p) {
-	  return formatMilliseconds$1(d, p) + "000";
-	}
-
-	function formatMonthNumber$1(d, p) {
-	  return pad$2(d.getMonth() + 1, p, 2);
-	}
-
-	function formatMinutes$1(d, p) {
-	  return pad$2(d.getMinutes(), p, 2);
-	}
-
-	function formatSeconds$1(d, p) {
-	  return pad$2(d.getSeconds(), p, 2);
-	}
-
-	function formatWeekdayNumberMonday$1(d) {
-	  var day = d.getDay();
-	  return day === 0 ? 7 : day;
-	}
-
-	function formatWeekNumberSunday$1(d, p) {
-	  return pad$2(sunday$1.count(year$1(d) - 1, d), p, 2);
-	}
-
-	function dISO$1(d) {
-	  var day = d.getDay();
-	  return day >= 4 || day === 0 ? thursday$1(d) : thursday$1.ceil(d);
-	}
-
-	function formatWeekNumberISO$1(d, p) {
-	  d = dISO$1(d);
-	  return pad$2(thursday$1.count(year$1(d), d) + (year$1(d).getDay() === 4), p, 2);
-	}
-
-	function formatWeekdayNumberSunday$1(d) {
-	  return d.getDay();
-	}
-
-	function formatWeekNumberMonday$1(d, p) {
-	  return pad$2(monday$1.count(year$1(d) - 1, d), p, 2);
-	}
-
-	function formatYear$2(d, p) {
-	  return pad$2(d.getFullYear() % 100, p, 2);
-	}
-
-	function formatYearISO$1(d, p) {
-	  d = dISO$1(d);
-	  return pad$2(d.getFullYear() % 100, p, 2);
-	}
-
-	function formatFullYear$1(d, p) {
-	  return pad$2(d.getFullYear() % 10000, p, 4);
-	}
-
-	function formatFullYearISO$1(d, p) {
-	  var day = d.getDay();
-	  d = day >= 4 || day === 0 ? thursday$1(d) : thursday$1.ceil(d);
-	  return pad$2(d.getFullYear() % 10000, p, 4);
-	}
-
-	function formatZone$1(d) {
-	  var z = d.getTimezoneOffset();
-	  return (z > 0 ? "-" : (z *= -1, "+")) + pad$2(z / 60 | 0, "0", 2) + pad$2(z % 60, "0", 2);
-	}
-
-	function formatUTCDayOfMonth$1(d, p) {
-	  return pad$2(d.getUTCDate(), p, 2);
-	}
-
-	function formatUTCHour24$1(d, p) {
-	  return pad$2(d.getUTCHours(), p, 2);
-	}
-
-	function formatUTCHour12$1(d, p) {
-	  return pad$2(d.getUTCHours() % 12 || 12, p, 2);
-	}
-
-	function formatUTCDayOfYear$1(d, p) {
-	  return pad$2(1 + utcDay$1.count(utcYear$1(d), d), p, 3);
-	}
-
-	function formatUTCMilliseconds$1(d, p) {
-	  return pad$2(d.getUTCMilliseconds(), p, 3);
-	}
-
-	function formatUTCMicroseconds$1(d, p) {
-	  return formatUTCMilliseconds$1(d, p) + "000";
-	}
-
-	function formatUTCMonthNumber$1(d, p) {
-	  return pad$2(d.getUTCMonth() + 1, p, 2);
-	}
-
-	function formatUTCMinutes$1(d, p) {
-	  return pad$2(d.getUTCMinutes(), p, 2);
-	}
-
-	function formatUTCSeconds$1(d, p) {
-	  return pad$2(d.getUTCSeconds(), p, 2);
-	}
-
-	function formatUTCWeekdayNumberMonday$1(d) {
-	  var dow = d.getUTCDay();
-	  return dow === 0 ? 7 : dow;
-	}
-
-	function formatUTCWeekNumberSunday$1(d, p) {
-	  return pad$2(utcSunday$1.count(utcYear$1(d) - 1, d), p, 2);
-	}
-
-	function UTCdISO$1(d) {
-	  var day = d.getUTCDay();
-	  return day >= 4 || day === 0 ? utcThursday$1(d) : utcThursday$1.ceil(d);
-	}
-
-	function formatUTCWeekNumberISO$1(d, p) {
-	  d = UTCdISO$1(d);
-	  return pad$2(utcThursday$1.count(utcYear$1(d), d) + (utcYear$1(d).getUTCDay() === 4), p, 2);
-	}
-
-	function formatUTCWeekdayNumberSunday$1(d) {
-	  return d.getUTCDay();
-	}
-
-	function formatUTCWeekNumberMonday$1(d, p) {
-	  return pad$2(utcMonday$1.count(utcYear$1(d) - 1, d), p, 2);
-	}
-
-	function formatUTCYear$1(d, p) {
-	  return pad$2(d.getUTCFullYear() % 100, p, 2);
-	}
-
-	function formatUTCYearISO$1(d, p) {
-	  d = UTCdISO$1(d);
-	  return pad$2(d.getUTCFullYear() % 100, p, 2);
-	}
-
-	function formatUTCFullYear$1(d, p) {
-	  return pad$2(d.getUTCFullYear() % 10000, p, 4);
-	}
-
-	function formatUTCFullYearISO$1(d, p) {
-	  var day = d.getUTCDay();
-	  d = day >= 4 || day === 0 ? utcThursday$1(d) : utcThursday$1.ceil(d);
-	  return pad$2(d.getUTCFullYear() % 10000, p, 4);
-	}
-
-	function formatUTCZone$1() {
-	  return "+0000";
-	}
-
-	function formatLiteralPercent$1() {
-	  return "%";
-	}
-
-	function formatUnixTimestamp$1(d) {
-	  return +d;
-	}
-
-	function formatUnixTimestampSeconds$1(d) {
-	  return Math.floor(+d / 1000);
-	}
-
-	var locale$3;
-	var timeFormat$1;
-	var timeParse$1;
-	var utcFormat$1;
-	var utcParse$1;
-	defaultLocale$3({
-	  dateTime: "%x, %X",
-	  date: "%-m/%-d/%Y",
-	  time: "%-I:%M:%S %p",
-	  periods: ["AM", "PM"],
-	  days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-	  shortDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-	  months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-	  shortMonths: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-	});
-	function defaultLocale$3(definition) {
-	  locale$3 = formatLocale$3(definition);
-	  timeFormat$1 = locale$3.format;
-	  timeParse$1 = locale$3.parse;
-	  utcFormat$1 = locale$3.utcFormat;
-	  utcParse$1 = locale$3.utcParse;
-	  return locale$3;
 	}
 
 	var $includes$1 = arrayIncludes.includes;
@@ -35132,7 +33995,7 @@ var app = (function () {
 	}.call(commonjsGlobal));
 	});
 
-	var data$1 = 'dinosaurdata24.csv'; // export const fossilData = 'ftgreenetrees2.csv';
+	var data$1 = 'dinosaurdata66.csv'; // export const fossilData = 'ftgreenetrees2.csv';
 	// export const fossilData = 'fossilsJurassic1.csv';
 
 	var fossilData = 'jurassic_bigdata.csv'; // export const fossilData = 'westernUSjurassicfossils.csv';
@@ -35144,19 +34007,7 @@ var app = (function () {
 
 	var images = 'images/'; // export const googleTrendsApiPath = '-cove-42135.herokuapp.com/keyword/';
 
-	var parseDate = timeParse$1('%m/%d/%Y'); // extract attribution date range from data
-
-	var getTimeRange = function getTimeRange(data) {
-	  var maxAttributionDate = max$4(data, function (d) {
-	    return d.attributionDate;
-	  }); //setting min date manually
-
-	  var minimumDate = '10/30/0000';
-	  var maximumDate = '10/30/0300';
-	  var minRange = parseDate(minimumDate);
-	  var maxRange = parseDate(maximumDate);
-	  return [new Date(minRange), new Date(maxRange)];
-	}; // preload images
+	var parseDate = timeParse('%m/%d/%Y'); // extract attribution date range from data
 
 	var preloadImages = function preloadImages(data) {
 	  data.forEach(function (d) {
@@ -35270,8 +34121,8 @@ var app = (function () {
 	};
 	window.scrollsmooth = scrollTo;
 
-	var parseTimestamp = timeParse$1('%m/%d/%Y %H:%M %Z');
-	var parseDate$1 = timeParse$1('%m/%d/%Y');
+	var parseTimestamp = timeParse('%m/%d/%Y %H:%M %Z');
+	var parseDate$1 = timeParse('%m/%d/%Y');
 
 	var loadData = /*#__PURE__*/function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -35292,31 +34143,32 @@ var app = (function () {
 	                periodEra: d.case_hash,
 	                sizeIndex: d.size_index,
 	                tooltipContent: d.tooltip_content,
+	                testDate: parseInt(d.test_date),
 	                //     size: d.size,
 	                weight: d.weight,
 	                size: d.size,
 	                // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
-	                source: splitString(source),
-	                sourceFilter: splitString(d.source_subcategory !== '' ? d.source_subcategory : source),
-	                sourceSubcategory: splitString(d.source_subcategory),
-	                sourceCategory: splitString(d.source_category),
-	                sourceNation: d.source_nation,
-	                disinformant: d.disinformant,
+	                //   source: splitString(source),
+	                //   sourceFilter: splitString(d.source_subcategory !== '' ? d.source_subcategory : source),
+	                //   sourceSubcategory: splitString(d.source_subcategory),
+	                //   sourceCategory: splitString(d.source_category),
+	                //   sourceNation: d.source_nation,
+	                //   disinformant: d.disinformant,
 	                disinformantNation: splitString(d.regions),
-	                disinformantAttribution: d.disinformant_attribution,
+	                //   disinformantAttribution: d.disinformant_attribution,
 	                shortTitle: d.short_title,
 	                shortDescription: d.short_description,
-	                attributionUrl: d.attribution_url,
-	                attributionArchiveUrl: d.archived_attribution_url,
-	                platforms: splitString([d.social_media, d.messaging_platforms].join(',')),
+	                //    attributionUrl: d.attribution_url,
+	                //    attributionArchiveUrl: d.archived_attribution_url,
+	                //    platforms: splitString([d.social_media, d.messaging_platforms].join(',')),
 	                startDate: parseDate$1(d.start_date),
 	                endDate: parseDate$1(d.end_date),
 	                attributionDate: parseDate$1(d.attribution_date),
-	                methods: splitString(d.methods),
+	                //     methods: splitString(d.methods),
 	                sizeTotal: sizeTotal,
 	                attributionScore: +d.attribution_total_score,
-	                tags: splitString(d.tags),
+	                //   tags: splitString(d.tags),
 	                articleCount: +d.articleCount
 	              };
 	            });
@@ -35590,9 +34442,18 @@ var app = (function () {
 	var polRed = '#ca0800';
 
 	var setScales = function setScales(data, width, minDim, maxDim, panelHeight, margin) {
-	  if (!data) return; // time scale
+	  if (!data) return;
+	  /*
+	  // time scale
+	  timeScale.set(scaleTime()
+	    .domain(getTimeRange(data))
+	    .range([margin.left, width - margin.right]));
+	  */
+	  // time scale
 
-	  timeScale.set(scaleTime().domain(getTimeRange(data)).range([margin.left, width - margin.right])); // total scale for the y axis
+	  timeScale.set(linear$1().domain([-25, max$4(data, function (d) {
+	    return d.testDate + 25;
+	  })]).range([margin.left, width - margin.right])); // total scale for the y axis
 
 	  sizeTotalYScale.set(log$5().domain([10, max$4(data, function (d) {
 	    return d.sizeTotal;
@@ -37195,7 +36056,7 @@ var app = (function () {
 	  var _$$props$data = $$props.data,
 	      data = _$$props$data === void 0 ? [] : _$$props$data;
 	  var commaFormat = format(",");
-	  var tf = timeFormat$1("%B %d, %Y");
+	  var tf = timeFormat("%B %d, %Y");
 
 	  function handleApplyFilter(id) {
 	    selectAllFilters();
@@ -37283,7 +36144,7 @@ var app = (function () {
 	      highlightPolarization: highlightPolarization,
 	      highlightCib: highlightCib,
 	      format: format,
-	      timeFormat: timeFormat$1,
+	      timeFormat: timeFormat,
 	      drawWrapper: drawWrapper,
 	      copytooltipable: copytooltipable,
 	      scrollTo: scrollTo,
@@ -46929,53 +45790,22 @@ var app = (function () {
 
 	function get_each_context$5(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[32] = list[i];
-	  return child_ctx;
-	}
-
-	function get_each_context_1$1(ctx, list, i) {
-	  var child_ctx = ctx.slice();
-	  child_ctx[35] = list[i];
-	  child_ctx[37] = i;
-	  return child_ctx;
-	}
-
-	function get_each_context_2(ctx, list, i) {
-	  var child_ctx = ctx.slice();
-	  child_ctx[38] = list[i];
-	  return child_ctx;
-	}
-
-	function get_each_context_3(ctx, list, i) {
-	  var child_ctx = ctx.slice();
-	  child_ctx[41] = list[i];
-	  return child_ctx;
-	}
-
-	function get_each_context_4(ctx, list, i) {
-	  var child_ctx = ctx.slice();
-	  child_ctx[44] = list[i];
-	  return child_ctx;
-	}
-
-	function get_each_context_5(ctx, list, i) {
-	  var child_ctx = ctx.slice();
-	  child_ctx[47] = list[i];
-	  child_ctx[37] = i;
+	  child_ctx[27] = list[i];
+	  child_ctx[29] = i;
 	  return child_ctx;
 	} // (118:0) {#if (showTooltip)}
 
 
 	function create_if_block$b(ctx) {
-	  var div19;
+	  var div15;
 	  var eventtooltipcross;
 	  var t0;
 	  var div0;
 	  var t1;
 	  var div1;
 	  var t2;
-	  var div18;
-	  var div17;
+	  var div14;
+	  var div13;
 	  var div10;
 	  var h2;
 	  var t3_value =
@@ -47010,10 +45840,8 @@ var app = (function () {
 	  var strong2;
 	  var t16;
 	  var t17_value =
-	  /*attributionTf*/
-	  ctx[12](
 	  /*$tooltip*/
-	  ctx[10].tp.attributionDate) + "";
+	  ctx[10].tp.testDate + "";
 	  var t17;
 	  var t18;
 	  var t19;
@@ -47022,10 +45850,8 @@ var app = (function () {
 	  var strong3;
 	  var t21;
 	  var t22_value =
-	  /*attributionTf*/
-	  ctx[12](
 	  /*$tooltip*/
-	  ctx[10].tp.attributionDate) + "";
+	  ctx[10].tp.testDate + "";
 	  var t22;
 	  var t23;
 	  var t24;
@@ -47070,63 +45896,14 @@ var app = (function () {
 	  var h30;
 	  var t48;
 	  var p;
-	  var raw_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*$tooltip*/
-	  ctx[10].tp.shortDescription) + "";
-	  var t49;
 	  var t50;
 	  var div12;
 	  var h31;
 	  var t52;
-	  var ul0;
-	  var each_blocks_3 = [];
-	  var each0_lookup = new Map();
-	  var t53;
-	  var div13;
-	  var h32;
-	  var t55;
-	  var ul1;
-	  var each_blocks_2 = [];
-	  var each1_lookup = new Map();
-	  var t56;
-	  var div14;
-	  var h33;
-	  var t57;
-	  var t58_value = (
-	  /*$tooltip*/
-	  ctx[10].tp.source.length !== 1 ? "s" : "") + "";
-	  var t58;
-	  var t59;
-	  var ul2;
-	  var each_blocks_1 = [];
-	  var each2_lookup = new Map();
-	  var t60;
-	  var div15;
-	  var h34;
-	  var t61;
-	  var t62_value = (
-	  /*$tooltip*/
-	  ctx[10].tp.sourceCategory.length !== 1 ? "ies" : "y") + "";
-	  var t62;
-	  var t63;
-	  var ul3;
-	  var each_blocks = [];
-	  var each3_lookup = new Map();
-	  var t64;
-	  var div16;
-	  var h35;
-	  var t66;
 	  var a;
-	  var t67_value = extractHostname(
-	  /*$tooltip*/
-	  ctx[10].tp.attributionUrl) + "";
-	  var t67;
-	  var a_href_value;
-	  var div18_resize_listener;
-	  var div19_resize_listener;
-	  var div19_transition;
+	  var div14_resize_listener;
+	  var div15_resize_listener;
+	  var div15_transition;
 	  var current;
 	  var mounted;
 	  var dispose;
@@ -47156,112 +45933,21 @@ var app = (function () {
 	  });
 	  var if_block0 =
 	  /*$tooltip*/
-	  ctx[10].tp.tooltipContent && create_if_block_6(ctx);
+	  ctx[10].tp.tooltipContent && create_if_block_2$3(ctx);
 	  var if_block1 =
 	  /*$tooltip*/
-	  ctx[10].tp.periodEra && create_if_block_5(ctx);
-	  var if_block2 = !(
-	  /*$tooltip*/
-	  ctx[10].tp.tags.length === 1 &&
-	  /*$tooltip*/
-	  ctx[10].tp.tags[0] === "unspecified") && create_if_block_4$2(ctx);
-	  var each_value_3 =
-	  /*$tooltip*/
-	  ctx[10].tp.platforms;
-	  validate_each_argument(each_value_3);
-
-	  var get_key = function get_key(ctx) {
-	    return (
-	      /*platform*/
-	      ctx[41]
-	    );
-	  };
-
-	  validate_each_keys(ctx, each_value_3, get_each_context_3, get_key);
-
-	  for (var i = 0; i < each_value_3.length; i += 1) {
-	    var child_ctx = get_each_context_3(ctx, each_value_3, i);
-	    var key = get_key(child_ctx);
-	    each0_lookup.set(key, each_blocks_3[i] = create_each_block_3(key, child_ctx));
-	  }
-
-	  var each_value_2 =
-	  /*$tooltip*/
-	  ctx[10].tp.methods;
-	  validate_each_argument(each_value_2);
-
-	  var get_key_1 = function get_key_1(ctx) {
-	    return (
-	      /*method*/
-	      ctx[38]
-	    );
-	  };
-
-	  validate_each_keys(ctx, each_value_2, get_each_context_2, get_key_1);
-
-	  for (var _i = 0; _i < each_value_2.length; _i += 1) {
-	    var _child_ctx = get_each_context_2(ctx, each_value_2, _i);
-
-	    var _key = get_key_1(_child_ctx);
-
-	    each1_lookup.set(_key, each_blocks_2[_i] = create_each_block_2(_key, _child_ctx));
-	  }
-
-	  var each_value_1 =
-	  /*$tooltip*/
-	  ctx[10].tp.source;
-	  validate_each_argument(each_value_1);
-
-	  var get_key_2 = function get_key_2(ctx) {
-	    return (
-	      /*source*/
-	      ctx[35]
-	    );
-	  };
-
-	  validate_each_keys(ctx, each_value_1, get_each_context_1$1, get_key_2);
-
-	  for (var _i2 = 0; _i2 < each_value_1.length; _i2 += 1) {
-	    var _child_ctx2 = get_each_context_1$1(ctx, each_value_1, _i2);
-
-	    var _key2 = get_key_2(_child_ctx2);
-
-	    each2_lookup.set(_key2, each_blocks_1[_i2] = create_each_block_1$1(_key2, _child_ctx2));
-	  }
-
-	  var each_value =
-	  /*$tooltip*/
-	  ctx[10].tp.sourceCategory;
-	  validate_each_argument(each_value);
-
-	  var get_key_3 = function get_key_3(ctx) {
-	    return (
-	      /*cat*/
-	      ctx[32]
-	    );
-	  };
-
-	  validate_each_keys(ctx, each_value, get_each_context$5, get_key_3);
-
-	  for (var _i3 = 0; _i3 < each_value.length; _i3 += 1) {
-	    var _child_ctx3 = get_each_context$5(ctx, each_value, _i3);
-
-	    var _key3 = get_key_3(_child_ctx3);
-
-	    each3_lookup.set(_key3, each_blocks[_i3] = create_each_block$5(_key3, _child_ctx3));
-	  }
-
+	  ctx[10].tp.periodEra && create_if_block_1$5(ctx);
 	  var block = {
 	    c: function create() {
-	      div19 = element("div");
+	      div15 = element("div");
 	      create_component(eventtooltipcross.$$.fragment);
 	      t0 = space();
 	      div0 = element("div");
 	      t1 = space();
 	      div1 = element("div");
 	      t2 = space();
-	      div18 = element("div");
-	      div17 = element("div");
+	      div14 = element("div");
+	      div13 = element("div");
 	      div10 = element("div");
 	      h2 = element("h2");
 	      t3 = text(t3_value);
@@ -47343,61 +46029,14 @@ var app = (function () {
 	      h30.textContent = "Description";
 	      t48 = space();
 	      p = element("p");
-	      t49 = space();
-	      if (if_block2) if_block2.c();
+	      p.textContent = "short description here";
 	      t50 = space();
 	      div12 = element("div");
 	      h31 = element("h3");
-	      h31.textContent = "Platforms";
+	      h31.textContent = "Link";
 	      t52 = space();
-	      ul0 = element("ul");
-
-	      for (var _i4 = 0; _i4 < each_blocks_3.length; _i4 += 1) {
-	        each_blocks_3[_i4].c();
-	      }
-
-	      t53 = space();
-	      div13 = element("div");
-	      h32 = element("h3");
-	      h32.textContent = "Methods";
-	      t55 = space();
-	      ul1 = element("ul");
-
-	      for (var _i5 = 0; _i5 < each_blocks_2.length; _i5 += 1) {
-	        each_blocks_2[_i5].c();
-	      }
-
-	      t56 = space();
-	      div14 = element("div");
-	      h33 = element("h3");
-	      t57 = text("Source");
-	      t58 = text(t58_value);
-	      t59 = space();
-	      ul2 = element("ul");
-
-	      for (var _i6 = 0; _i6 < each_blocks_1.length; _i6 += 1) {
-	        each_blocks_1[_i6].c();
-	      }
-
-	      t60 = space();
-	      div15 = element("div");
-	      h34 = element("h3");
-	      t61 = text("Source Categor");
-	      t62 = text(t62_value);
-	      t63 = space();
-	      ul3 = element("ul");
-
-	      for (var _i7 = 0; _i7 < each_blocks.length; _i7 += 1) {
-	        each_blocks[_i7].c();
-	      }
-
-	      t64 = space();
-	      div16 = element("div");
-	      h35 = element("h3");
-	      h35.textContent = "Link";
-	      t66 = space();
 	      a = element("a");
-	      t67 = text(t67_value);
+	      a.textContent = "wikipedia link";
 	      attr_dev(div0, "class", "mouse-catcher");
 	      set_style(div0, "width",
 	      /*tWidth*/
@@ -47440,32 +46079,32 @@ var app = (function () {
 	      add_location(span2, file$n, 152, 38, 5184);
 	      attr_dev(div4, "class", "stats-item svelte-fd4l8c");
 	      add_location(div4, file$n, 152, 14, 5160);
-	      add_location(strong3, file$n, 153, 44, 5328);
-	      add_location(span3, file$n, 153, 38, 5322);
+	      add_location(strong3, file$n, 153, 44, 5306);
+	      add_location(span3, file$n, 153, 38, 5300);
 	      attr_dev(div5, "class", "stats-item svelte-fd4l8c");
-	      add_location(div5, file$n, 153, 14, 5298);
-	      add_location(strong4, file$n, 154, 44, 5464);
-	      add_location(span4, file$n, 154, 38, 5458);
+	      add_location(div5, file$n, 153, 14, 5276);
+	      add_location(strong4, file$n, 154, 44, 5420);
+	      add_location(span4, file$n, 154, 38, 5414);
 	      attr_dev(div6, "class", "stats-item svelte-fd4l8c");
-	      add_location(div6, file$n, 154, 14, 5434);
-	      add_location(strong5, file$n, 155, 44, 5563);
-	      add_location(span5, file$n, 155, 38, 5557);
+	      add_location(div6, file$n, 154, 14, 5390);
+	      add_location(strong5, file$n, 155, 44, 5519);
+	      add_location(span5, file$n, 155, 38, 5513);
 	      attr_dev(div7, "class", "stats-item svelte-fd4l8c");
-	      add_location(div7, file$n, 155, 14, 5533);
+	      add_location(div7, file$n, 155, 14, 5489);
 	      attr_dev(section, "class", "dino-stats svelte-fd4l8c");
 	      add_location(section, file$n, 147, 12, 4900);
 	      attr_dev(div8, "class", "title-top svelte-fd4l8c");
 	      add_location(div8, file$n, 144, 10, 4862);
 	      attr_dev(span6, "class", "tag-label Cretaceous svelte-fd4l8c");
-	      add_location(span6, file$n, 166, 10, 5759);
+	      add_location(span6, file$n, 166, 10, 5715);
 	      attr_dev(span7, "class", "tag-label Jurassic svelte-fd4l8c");
-	      add_location(span7, file$n, 167, 10, 5825);
+	      add_location(span7, file$n, 167, 10, 5781);
 	      attr_dev(span8, "class", "tag-label Triassic svelte-fd4l8c");
-	      add_location(span8, file$n, 168, 10, 5887);
+	      add_location(span8, file$n, 168, 10, 5843);
 	      attr_dev(span9, "class", "tag-label Paleogene svelte-fd4l8c");
-	      add_location(span9, file$n, 169, 10, 5949);
+	      add_location(span9, file$n, 169, 10, 5905);
 	      attr_dev(span10, "class", "tag-label Neogene svelte-fd4l8c");
-	      add_location(span10, file$n, 170, 10, 6013);
+	      add_location(span10, file$n, 170, 10, 5969);
 	      if (img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) attr_dev(img, "src", img_src_value);
@@ -47473,95 +46112,69 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-fd4l8c");
-	      add_location(img, file$n, 172, 12, 6105);
+	      add_location(img, file$n, 172, 12, 6061);
 	      attr_dev(div9, "class", "image svelte-fd4l8c");
-	      add_location(div9, file$n, 171, 10, 6073);
+	      add_location(div9, file$n, 171, 10, 6029);
 	      attr_dev(div10, "class", "title title-bg svelte-fd4l8c");
 	      add_location(div10, file$n, 142, 8, 4785);
 	      attr_dev(h30, "class", "svelte-fd4l8c");
-	      add_location(h30, file$n, 199, 10, 6883);
+	      add_location(h30, file$n, 199, 10, 6839);
 	      attr_dev(p, "class", "svelte-fd4l8c");
-	      add_location(p, file$n, 200, 10, 6914);
+	      add_location(p, file$n, 200, 10, 6870);
 	      attr_dev(div11, "class", "description svelte-fd4l8c");
-	      add_location(div11, file$n, 198, 8, 6847);
+	      add_location(div11, file$n, 198, 8, 6803);
 	      attr_dev(h31, "class", "svelte-fd4l8c");
-	      add_location(h31, file$n, 213, 10, 7420);
-	      attr_dev(ul0, "class", "svelte-fd4l8c");
-	      add_location(ul0, file$n, 214, 10, 7449);
-	      attr_dev(div12, "class", "platforms svelte-fd4l8c");
-	      add_location(div12, file$n, 212, 8, 7386);
-	      attr_dev(h32, "class", "svelte-fd4l8c");
-	      add_location(h32, file$n, 221, 10, 7732);
-	      attr_dev(ul1, "class", "svelte-fd4l8c");
-	      add_location(ul1, file$n, 222, 10, 7759);
-	      attr_dev(div13, "class", "methods svelte-fd4l8c");
-	      add_location(div13, file$n, 220, 8, 7700);
-	      attr_dev(h33, "class", "svelte-fd4l8c");
-	      add_location(h33, file$n, 229, 10, 8029);
-	      attr_dev(ul2, "class", "svelte-fd4l8c");
-	      add_location(ul2, file$n, 230, 10, 8099);
-	      attr_dev(div14, "class", "source svelte-fd4l8c");
-	      add_location(div14, file$n, 228, 8, 7998);
-	      attr_dev(h34, "class", "svelte-fd4l8c");
-	      add_location(h34, file$n, 247, 10, 9104);
-	      attr_dev(ul3, "class", "svelte-fd4l8c");
-	      add_location(ul3, file$n, 248, 10, 9193);
-	      attr_dev(div15, "class", "source-category svelte-fd4l8c");
-	      add_location(div15, file$n, 246, 8, 9064);
-	      attr_dev(h35, "class", "svelte-fd4l8c");
-	      add_location(h35, file$n, 255, 10, 9464);
-	      attr_dev(a, "href", a_href_value =
-	      /*$tooltip*/
-	      ctx[10].tp.attributionUrl);
+	      add_location(h31, file$n, 260, 10, 9416);
+	      attr_dev(a, "href", "http://www.wikipedia.org");
 	      attr_dev(a, "target", "_blank");
 	      attr_dev(a, "class", "no-float svelte-fd4l8c");
-	      add_location(a, file$n, 256, 10, 9488);
-	      attr_dev(div16, "class", "link svelte-fd4l8c");
-	      add_location(div16, file$n, 254, 8, 9435);
-	      attr_dev(div17, "class", "scroll-wrapper svelte-fd4l8c");
-	      add_location(div17, file$n, 139, 6, 4699);
-	      attr_dev(div18, "class", "content svelte-fd4l8c");
-	      set_style(div18, "top",
+	      add_location(a, file$n, 261, 10, 9440);
+	      attr_dev(div12, "class", "link svelte-fd4l8c");
+	      add_location(div12, file$n, 259, 8, 9387);
+	      attr_dev(div13, "class", "scroll-wrapper svelte-fd4l8c");
+	      add_location(div13, file$n, 139, 6, 4699);
+	      attr_dev(div14, "class", "content svelte-fd4l8c");
+	      set_style(div14, "top",
 	      /*contentTop*/
 	      ctx[6] + "px");
-	      set_style(div18, "margin", "0px " + (
+	      set_style(div14, "margin", "0px " + (
 	      /*$tooltip*/
 	      ctx[10].tp.rSizeTot / 3 +
 	      /*offset*/
 	      ctx[11].left) + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div18_elementresize_handler*/
-	          ctx[24].call(div18)
+	          /*div14_elementresize_handler*/
+	          ctx[16].call(div14)
 	        );
 	      });
-	      add_location(div18, file$n, 135, 4, 4514);
-	      attr_dev(div19, "class", "tooltip svelte-fd4l8c");
-	      set_style(div19, "left",
+	      add_location(div14, file$n, 135, 4, 4514);
+	      attr_dev(div15, "class", "tooltip svelte-fd4l8c");
+	      set_style(div15, "left",
 	      /*left*/
 	      ctx[4] + "px");
-	      set_style(div19, "top",
+	      set_style(div15, "top",
 	      /*top*/
 	      ctx[5] + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div19_elementresize_handler*/
-	          ctx[25].call(div19)
+	          /*div15_elementresize_handler*/
+	          ctx[17].call(div15)
 	        );
 	      });
-	      add_location(div19, file$n, 118, 2, 3767);
+	      add_location(div15, file$n, 118, 2, 3767);
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, div19, anchor);
-	      mount_component(eventtooltipcross, div19, null);
-	      append_dev(div19, t0);
-	      append_dev(div19, div0);
-	      append_dev(div19, t1);
-	      append_dev(div19, div1);
-	      append_dev(div19, t2);
-	      append_dev(div19, div18);
-	      append_dev(div18, div17);
-	      append_dev(div17, div10);
+	      insert_dev(target, div15, anchor);
+	      mount_component(eventtooltipcross, div15, null);
+	      append_dev(div15, t0);
+	      append_dev(div15, div0);
+	      append_dev(div15, t1);
+	      append_dev(div15, div1);
+	      append_dev(div15, t2);
+	      append_dev(div15, div14);
+	      append_dev(div14, div13);
+	      append_dev(div13, div10);
 	      append_dev(div10, h2);
 	      append_dev(h2, t3);
 	      append_dev(div10, t4);
@@ -47621,106 +46234,58 @@ var app = (function () {
 	      append_dev(div10, t43);
 	      append_dev(div10, div9);
 	      append_dev(div9, img);
-	      append_dev(div17, t44);
-	      if (if_block0) if_block0.m(div17, null);
-	      append_dev(div17, t45);
-	      if (if_block1) if_block1.m(div17, null);
-	      append_dev(div17, t46);
-	      append_dev(div17, div11);
+	      append_dev(div13, t44);
+	      if (if_block0) if_block0.m(div13, null);
+	      append_dev(div13, t45);
+	      if (if_block1) if_block1.m(div13, null);
+	      append_dev(div13, t46);
+	      append_dev(div13, div11);
 	      append_dev(div11, h30);
 	      append_dev(div11, t48);
 	      append_dev(div11, p);
-	      p.innerHTML = raw_value;
-	      append_dev(div17, t49);
-	      if (if_block2) if_block2.m(div17, null);
-	      append_dev(div17, t50);
-	      append_dev(div17, div12);
+	      append_dev(div13, t50);
+	      append_dev(div13, div12);
 	      append_dev(div12, h31);
 	      append_dev(div12, t52);
-	      append_dev(div12, ul0);
+	      append_dev(div12, a);
+	      /*div13_binding*/
 
-	      for (var _i8 = 0; _i8 < each_blocks_3.length; _i8 += 1) {
-	        each_blocks_3[_i8].m(ul0, null);
-	      }
+	      ctx[14](div13);
+	      /*div14_binding*/
 
-	      append_dev(div17, t53);
-	      append_dev(div17, div13);
-	      append_dev(div13, h32);
-	      append_dev(div13, t55);
-	      append_dev(div13, ul1);
-
-	      for (var _i9 = 0; _i9 < each_blocks_2.length; _i9 += 1) {
-	        each_blocks_2[_i9].m(ul1, null);
-	      }
-
-	      append_dev(div17, t56);
-	      append_dev(div17, div14);
-	      append_dev(div14, h33);
-	      append_dev(h33, t57);
-	      append_dev(h33, t58);
-	      append_dev(div14, t59);
-	      append_dev(div14, ul2);
-
-	      for (var _i10 = 0; _i10 < each_blocks_1.length; _i10 += 1) {
-	        each_blocks_1[_i10].m(ul2, null);
-	      }
-
-	      append_dev(div17, t60);
-	      append_dev(div17, div15);
-	      append_dev(div15, h34);
-	      append_dev(h34, t61);
-	      append_dev(h34, t62);
-	      append_dev(div15, t63);
-	      append_dev(div15, ul3);
-
-	      for (var _i11 = 0; _i11 < each_blocks.length; _i11 += 1) {
-	        each_blocks[_i11].m(ul3, null);
-	      }
-
-	      append_dev(div17, t64);
-	      append_dev(div17, div16);
-	      append_dev(div16, h35);
-	      append_dev(div16, t66);
-	      append_dev(div16, a);
-	      append_dev(a, t67);
-	      /*div17_binding*/
-
-	      ctx[22](div17);
-	      /*div18_binding*/
-
-	      ctx[23](div18);
-	      div18_resize_listener = add_resize_listener(div18,
-	      /*div18_elementresize_handler*/
-	      ctx[24].bind(div18));
-	      div19_resize_listener = add_resize_listener(div19,
-	      /*div19_elementresize_handler*/
-	      ctx[25].bind(div19));
+	      ctx[15](div14);
+	      div14_resize_listener = add_resize_listener(div14,
+	      /*div14_elementresize_handler*/
+	      ctx[16].bind(div14));
+	      div15_resize_listener = add_resize_listener(div15,
+	      /*div15_elementresize_handler*/
+	      ctx[17].bind(div15));
 	      current = true;
 
 	      if (!mounted) {
-	        dispose = [listen_dev(div19, "click", stop_propagation(
+	        dispose = [listen_dev(div15, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[15]), false, false, true), listen_dev(div19, "mouseover", stop_propagation(
+	        ctx[12]), false, false, true), listen_dev(div15, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
-	        ctx[16]), false, false, true)];
+	        ctx[13]), false, false, true)];
 	        mounted = true;
 	      }
 	    },
 	    p: function update(ctx, dirty) {
 	      var eventtooltipcross_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*tWidth*/
 	      2) eventtooltipcross_changes.tWidth =
 	      /*tWidth*/
 	      ctx[1];
-	      if (dirty[0] &
+	      if (dirty &
 	      /*side*/
 	      8) eventtooltipcross_changes.side =
 	      /*side*/
 	      ctx[3];
 	      eventtooltipcross.$set(eventtooltipcross_changes);
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*tWidth*/
 	      2) {
 	        set_style(div0, "width",
@@ -47728,7 +46293,7 @@ var app = (function () {
 	        ctx[1] + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*contentTop, $tooltip*/
 	      1088) {
 	        set_style(div0, "height", Math.max(10, Math.abs(
@@ -47738,7 +46303,7 @@ var app = (function () {
 	        ctx[10].tp.rSizeTot + 25) + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*contentTop*/
 	      64) {
 	        set_style(div0, "top",
@@ -47746,7 +46311,7 @@ var app = (function () {
 	        ctx[6] - 10 + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*tWidth*/
 	      2) {
 	        set_style(div1, "width",
@@ -47754,7 +46319,7 @@ var app = (function () {
 	        ctx[1] + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*tHeight, contentTop*/
 	      68) {
 	        set_style(div1, "height", Math.abs(
@@ -47764,7 +46329,7 @@ var app = (function () {
 	        ctx[6])) + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*$tooltip*/
 	      1024) {
 	        set_style(div1, "top",
@@ -47772,54 +46337,50 @@ var app = (function () {
 	        ctx[10].tp.rSizeTot + 5 + "px");
 	      }
 
-	      if ((!current || dirty[0] &
+	      if ((!current || dirty &
 	      /*$tooltip*/
 	      1024) && t3_value !== (t3_value =
 	      /*$tooltip*/
 	      ctx[10].tp.name + "")) set_data_dev(t3, t3_value);
-	      if ((!current || dirty[0] &
+	      if ((!current || dirty &
 	      /*$tooltip*/
 	      1024) && t7_value !== (t7_value =
 	      /*$tooltip*/
 	      ctx[10].tp.size + "")) set_data_dev(t7, t7_value);
-	      if ((!current || dirty[0] &
+	      if ((!current || dirty &
 	      /*$tooltip*/
 	      1024) && t12_value !== (t12_value =
 	      /*$tooltip*/
 	      ctx[10].tp.weight + "")) set_data_dev(t12, t12_value);
-	      if ((!current || dirty[0] &
+	      if ((!current || dirty &
 	      /*$tooltip*/
 	      1024) && t17_value !== (t17_value =
-	      /*attributionTf*/
-	      ctx[12](
 	      /*$tooltip*/
-	      ctx[10].tp.attributionDate) + "")) set_data_dev(t17, t17_value);
-	      if ((!current || dirty[0] &
+	      ctx[10].tp.testDate + "")) set_data_dev(t17, t17_value);
+	      if ((!current || dirty &
 	      /*$tooltip*/
 	      1024) && t22_value !== (t22_value =
-	      /*attributionTf*/
-	      ctx[12](
 	      /*$tooltip*/
-	      ctx[10].tp.attributionDate) + "")) set_data_dev(t22, t22_value);
-	      if ((!current || dirty[0] &
+	      ctx[10].tp.testDate + "")) set_data_dev(t22, t22_value);
+	      if ((!current || dirty &
 	      /*$tooltip*/
 	      1024) && t27_value !== (t27_value =
 	      /*$tooltip*/
 	      ctx[10].tp.diet + "")) set_data_dev(t27, t27_value);
-	      if ((!current || dirty[0] &
+	      if ((!current || dirty &
 	      /*$tooltip*/
 	      1024) && t31_value !== (t31_value =
 	      /*$tooltip*/
 	      ctx[10].tp.disinformantNation + "")) set_data_dev(t31, t31_value);
 	      var share_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$tooltip*/
 	      1024) share_changes.caseId =
 	      /*$tooltip*/
 	      ctx[10].tp.id;
 	      share.$set(share_changes);
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*$tooltip*/
 	      1024 && img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
@@ -47827,7 +46388,7 @@ var app = (function () {
 	        attr_dev(img, "src", img_src_value);
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*$tooltip*/
 	      1024 && img_alt_value !== (img_alt_value =
 	      /*$tooltip*/
@@ -47841,9 +46402,9 @@ var app = (function () {
 	        if (if_block0) {
 	          if_block0.p(ctx, dirty);
 	        } else {
-	          if_block0 = create_if_block_6(ctx);
+	          if_block0 = create_if_block_2$3(ctx);
 	          if_block0.c();
-	          if_block0.m(div17, t45);
+	          if_block0.m(div13, t45);
 	        }
 	      } else if (if_block0) {
 	        if_block0.d(1);
@@ -47856,140 +46417,45 @@ var app = (function () {
 	        if (if_block1) {
 	          if_block1.p(ctx, dirty);
 	        } else {
-	          if_block1 = create_if_block_5(ctx);
+	          if_block1 = create_if_block_1$5(ctx);
 	          if_block1.c();
-	          if_block1.m(div17, t46);
+	          if_block1.m(div13, t46);
 	        }
 	      } else if (if_block1) {
 	        if_block1.d(1);
 	        if_block1 = null;
 	      }
 
-	      if ((!current || dirty[0] &
-	      /*$tooltip*/
-	      1024) && raw_value !== (raw_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*$tooltip*/
-	      ctx[10].tp.shortDescription) + "")) p.innerHTML = raw_value;
-
-	      if (!(
-	      /*$tooltip*/
-	      ctx[10].tp.tags.length === 1 &&
-	      /*$tooltip*/
-	      ctx[10].tp.tags[0] === "unspecified")) {
-	        if (if_block2) {
-	          if_block2.p(ctx, dirty);
-	        } else {
-	          if_block2 = create_if_block_4$2(ctx);
-	          if_block2.c();
-	          if_block2.m(div17, t50);
-	        }
-	      } else if (if_block2) {
-	        if_block2.d(1);
-	        if_block2 = null;
-	      }
-
-	      if (dirty[0] &
-	      /*handleLiClick, $tooltip, highlight*/
-	      25600) {
-	        var _each_value_ =
-	        /*$tooltip*/
-	        ctx[10].tp.platforms;
-	        validate_each_argument(_each_value_);
-	        validate_each_keys(ctx, _each_value_, get_each_context_3, get_key);
-	        each_blocks_3 = update_keyed_each(each_blocks_3, dirty, get_key, 1, ctx, _each_value_, each0_lookup, ul0, destroy_block, create_each_block_3, null, get_each_context_3);
-	      }
-
-	      if (dirty[0] &
-	      /*handleLiClick, $tooltip, highlight*/
-	      25600) {
-	        var _each_value_2 =
-	        /*$tooltip*/
-	        ctx[10].tp.methods;
-	        validate_each_argument(_each_value_2);
-	        validate_each_keys(ctx, _each_value_2, get_each_context_2, get_key_1);
-	        each_blocks_2 = update_keyed_each(each_blocks_2, dirty, get_key_1, 1, ctx, _each_value_2, each1_lookup, ul1, destroy_block, create_each_block_2, null, get_each_context_2);
-	      }
-
-	      if ((!current || dirty[0] &
-	      /*$tooltip*/
-	      1024) && t58_value !== (t58_value = (
-	      /*$tooltip*/
-	      ctx[10].tp.source.length !== 1 ? "s" : "") + "")) set_data_dev(t58, t58_value);
-
-	      if (dirty[0] &
-	      /*handleLiClick, $tooltip, highlight*/
-	      25600) {
-	        var _each_value_3 =
-	        /*$tooltip*/
-	        ctx[10].tp.source;
-	        validate_each_argument(_each_value_3);
-	        validate_each_keys(ctx, _each_value_3, get_each_context_1$1, get_key_2);
-	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key_2, 1, ctx, _each_value_3, each2_lookup, ul2, destroy_block, create_each_block_1$1, null, get_each_context_1$1);
-	      }
-
-	      if ((!current || dirty[0] &
-	      /*$tooltip*/
-	      1024) && t62_value !== (t62_value = (
-	      /*$tooltip*/
-	      ctx[10].tp.sourceCategory.length !== 1 ? "ies" : "y") + "")) set_data_dev(t62, t62_value);
-
-	      if (dirty[0] &
-	      /*handleLiClick, $tooltip, highlight*/
-	      25600) {
-	        var _each_value =
-	        /*$tooltip*/
-	        ctx[10].tp.sourceCategory;
-	        validate_each_argument(_each_value);
-	        validate_each_keys(ctx, _each_value, get_each_context$5, get_key_3);
-	        each_blocks = update_keyed_each(each_blocks, dirty, get_key_3, 1, ctx, _each_value, each3_lookup, ul3, destroy_block, create_each_block$5, null, get_each_context$5);
-	      }
-
-	      if ((!current || dirty[0] &
-	      /*$tooltip*/
-	      1024) && t67_value !== (t67_value = extractHostname(
-	      /*$tooltip*/
-	      ctx[10].tp.attributionUrl) + "")) set_data_dev(t67, t67_value);
-
-	      if (!current || dirty[0] &
-	      /*$tooltip*/
-	      1024 && a_href_value !== (a_href_value =
-	      /*$tooltip*/
-	      ctx[10].tp.attributionUrl)) {
-	        attr_dev(a, "href", a_href_value);
-	      }
-
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*contentTop*/
 	      64) {
-	        set_style(div18, "top",
+	        set_style(div14, "top",
 	        /*contentTop*/
 	        ctx[6] + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*$tooltip*/
 	      1024) {
-	        set_style(div18, "margin", "0px " + (
+	        set_style(div14, "margin", "0px " + (
 	        /*$tooltip*/
 	        ctx[10].tp.rSizeTot / 3 +
 	        /*offset*/
 	        ctx[11].left) + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*left*/
 	      16) {
-	        set_style(div19, "left",
+	        set_style(div15, "left",
 	        /*left*/
 	        ctx[4] + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*top*/
 	      32) {
-	        set_style(div19, "top",
+	        set_style(div15, "top",
 	        /*top*/
 	        ctx[5] + "px");
 	      }
@@ -47999,55 +46465,37 @@ var app = (function () {
 	      transition_in(eventtooltipcross.$$.fragment, local);
 	      transition_in(share.$$.fragment, local);
 	      add_render_callback(function () {
-	        if (!div19_transition) div19_transition = create_bidirectional_transition(div19, fade, {
+	        if (!div15_transition) div15_transition = create_bidirectional_transition(div15, fade, {
 	          duration: 200
 	        }, true);
-	        div19_transition.run(1);
+	        div15_transition.run(1);
 	      });
 	      current = true;
 	    },
 	    o: function outro(local) {
 	      transition_out(eventtooltipcross.$$.fragment, local);
 	      transition_out(share.$$.fragment, local);
-	      if (!div19_transition) div19_transition = create_bidirectional_transition(div19, fade, {
+	      if (!div15_transition) div15_transition = create_bidirectional_transition(div15, fade, {
 	        duration: 200
 	      }, false);
-	      div19_transition.run(0);
+	      div15_transition.run(0);
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div19);
+	      if (detaching) detach_dev(div15);
 	      destroy_component(eventtooltipcross);
 	      destroy_component(share);
 	      if (if_block0) if_block0.d();
 	      if (if_block1) if_block1.d();
-	      if (if_block2) if_block2.d();
+	      /*div13_binding*/
 
-	      for (var _i12 = 0; _i12 < each_blocks_3.length; _i12 += 1) {
-	        each_blocks_3[_i12].d();
-	      }
+	      ctx[14](null);
+	      /*div14_binding*/
 
-	      for (var _i13 = 0; _i13 < each_blocks_2.length; _i13 += 1) {
-	        each_blocks_2[_i13].d();
-	      }
-
-	      for (var _i14 = 0; _i14 < each_blocks_1.length; _i14 += 1) {
-	        each_blocks_1[_i14].d();
-	      }
-
-	      for (var _i15 = 0; _i15 < each_blocks.length; _i15 += 1) {
-	        each_blocks[_i15].d();
-	      }
-	      /*div17_binding*/
-
-
-	      ctx[22](null);
-	      /*div18_binding*/
-
-	      ctx[23](null);
-	      div18_resize_listener();
-	      div19_resize_listener();
-	      if (detaching && div19_transition) div19_transition.end();
+	      ctx[15](null);
+	      div14_resize_listener();
+	      div15_resize_listener();
+	      if (detaching && div15_transition) div15_transition.end();
 	      mounted = false;
 	      run_all(dispose);
 	    }
@@ -48063,66 +46511,66 @@ var app = (function () {
 	} // (180:8) {#if ($tooltip.tp.tooltipContent)}
 
 
-	function create_if_block_6(ctx) {
+	function create_if_block_2$3(ctx) {
 	  var div;
-	  var each_value_5 =
+	  var each_value =
 	  /*paragraphs*/
 	  ctx[8];
-	  validate_each_argument(each_value_5);
+	  validate_each_argument(each_value);
 	  var each_blocks = [];
 
-	  for (var i = 0; i < each_value_5.length; i += 1) {
-	    each_blocks[i] = create_each_block_5(get_each_context_5(ctx, each_value_5, i));
+	  for (var i = 0; i < each_value.length; i += 1) {
+	    each_blocks[i] = create_each_block$5(get_each_context$5(ctx, each_value, i));
 	  }
 
 	  var block = {
 	    c: function create() {
 	      div = element("div");
 
-	      for (var _i16 = 0; _i16 < each_blocks.length; _i16 += 1) {
-	        each_blocks[_i16].c();
+	      for (var _i = 0; _i < each_blocks.length; _i += 1) {
+	        each_blocks[_i].c();
 	      }
 
 	      attr_dev(div, "class", "description svelte-fd4l8c");
-	      add_location(div, file$n, 180, 8, 6281);
+	      add_location(div, file$n, 180, 8, 6237);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
 
-	      for (var _i17 = 0; _i17 < each_blocks.length; _i17 += 1) {
-	        each_blocks[_i17].m(div, null);
+	      for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
+	        each_blocks[_i2].m(div, null);
 	      }
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*$tooltip, paragraphs*/
+	      if (dirty &
+	      /*images, $tooltip, paragraphs*/
 	      1280) {
-	        each_value_5 =
+	        each_value =
 	        /*paragraphs*/
 	        ctx[8];
-	        validate_each_argument(each_value_5);
+	        validate_each_argument(each_value);
 
-	        var _i18;
+	        var _i3;
 
-	        for (_i18 = 0; _i18 < each_value_5.length; _i18 += 1) {
-	          var child_ctx = get_each_context_5(ctx, each_value_5, _i18);
+	        for (_i3 = 0; _i3 < each_value.length; _i3 += 1) {
+	          var child_ctx = get_each_context$5(ctx, each_value, _i3);
 
-	          if (each_blocks[_i18]) {
-	            each_blocks[_i18].p(child_ctx, dirty);
+	          if (each_blocks[_i3]) {
+	            each_blocks[_i3].p(child_ctx, dirty);
 	          } else {
-	            each_blocks[_i18] = create_each_block_5(child_ctx);
+	            each_blocks[_i3] = create_each_block$5(child_ctx);
 
-	            each_blocks[_i18].c();
+	            each_blocks[_i3].c();
 
-	            each_blocks[_i18].m(div, null);
+	            each_blocks[_i3].m(div, null);
 	          }
 	        }
 
-	        for (; _i18 < each_blocks.length; _i18 += 1) {
-	          each_blocks[_i18].d(1);
+	        for (; _i3 < each_blocks.length; _i3 += 1) {
+	          each_blocks[_i3].d(1);
 	        }
 
-	        each_blocks.length = each_value_5.length;
+	        each_blocks.length = each_value.length;
 	      }
 	    },
 	    d: function destroy(detaching) {
@@ -48132,7 +46580,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block_6.name,
+	    id: create_if_block_2$3.name,
 	    type: "if",
 	    source: "(180:8) {#if ($tooltip.tp.tooltipContent)}",
 	    ctx: ctx
@@ -48141,11 +46589,11 @@ var app = (function () {
 	} // (182:12) {#each paragraphs as paragraph, i}
 
 
-	function create_each_block_5(ctx) {
+	function create_each_block$5(ctx) {
 	  var p;
 	  var t0_value =
 	  /*paragraph*/
-	  ctx[47] + "";
+	  ctx[27] + "";
 	  var t0;
 	  var t1;
 	  var div;
@@ -48162,19 +46610,19 @@ var app = (function () {
 	      img = element("img");
 	      t2 = space();
 	      attr_dev(p, "class", "svelte-fd4l8c");
-	      add_location(p, file$n, 182, 12, 6366);
+	      add_location(p, file$n, 182, 12, 6322);
 	      if (img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase() + (
 	      /*i*/
-	      ctx[37] + 1) + ".jpg"))) attr_dev(img, "src", img_src_value);
+	      ctx[29] + 1) + ".jpg"))) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-fd4l8c");
-	      add_location(img, file$n, 184, 16, 6435);
+	      add_location(img, file$n, 184, 16, 6391);
 	      attr_dev(div, "class", "image svelte-fd4l8c");
-	      add_location(div, file$n, 183, 14, 6399);
+	      add_location(div, file$n, 183, 14, 6355);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p, anchor);
@@ -48185,23 +46633,23 @@ var app = (function () {
 	      append_dev(div, t2);
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
+	      if (dirty &
 	      /*paragraphs*/
 	      256 && t0_value !== (t0_value =
 	      /*paragraph*/
-	      ctx[47] + "")) set_data_dev(t0, t0_value);
+	      ctx[27] + "")) set_data_dev(t0, t0_value);
 
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$tooltip*/
 	      1024 && img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase() + (
 	      /*i*/
-	      ctx[37] + 1) + ".jpg"))) {
+	      ctx[29] + 1) + ".jpg"))) {
 	        attr_dev(img, "src", img_src_value);
 	      }
 
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$tooltip*/
 	      1024 && img_alt_value !== (img_alt_value =
 	      /*$tooltip*/
@@ -48217,7 +46665,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_5.name,
+	    id: create_each_block$5.name,
 	    type: "each",
 	    source: "(182:12) {#each paragraphs as paragraph, i}",
 	    ctx: ctx
@@ -48226,7 +46674,7 @@ var app = (function () {
 	} // (192:8) {#if ($tooltip.tp.periodEra)}
 
 
-	function create_if_block_5(ctx) {
+	function create_if_block_1$5(ctx) {
 	  var div;
 	  var img;
 	  var img_src_value;
@@ -48251,11 +46699,11 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-fd4l8c");
-	      add_location(img, file$n, 193, 12, 6683);
+	      add_location(img, file$n, 193, 12, 6639);
 	      attr_dev(p, "class", "svelte-fd4l8c");
-	      add_location(p, file$n, 194, 12, 6774);
+	      add_location(p, file$n, 194, 12, 6730);
 	      attr_dev(div, "class", "image svelte-fd4l8c");
-	      add_location(div, file$n, 192, 10, 6651);
+	      add_location(div, file$n, 192, 10, 6607);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -48265,7 +46713,7 @@ var app = (function () {
 	      append_dev(p, t1);
 	    },
 	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$tooltip*/
 	      1024 && img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
@@ -48273,7 +46721,7 @@ var app = (function () {
 	        attr_dev(img, "src", img_src_value);
 	      }
 
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$tooltip*/
 	      1024 && img_alt_value !== (img_alt_value =
 	      /*$tooltip*/
@@ -48281,7 +46729,7 @@ var app = (function () {
 	        attr_dev(img, "alt", img_alt_value);
 	      }
 
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$tooltip*/
 	      1024 && t1_value !== (t1_value =
 	      /*$tooltip*/
@@ -48293,703 +46741,9 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block_5.name,
-	    type: "if",
-	    source: "(192:8) {#if ($tooltip.tp.periodEra)}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (203:8) {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
-
-
-	function create_if_block_4$2(ctx) {
-	  var div;
-	  var h3;
-	  var t1;
-	  var ul;
-	  var each_blocks = [];
-	  var each_1_lookup = new Map();
-	  var each_value_4 =
-	  /*$tooltip*/
-	  ctx[10].tp.tags;
-	  validate_each_argument(each_value_4);
-
-	  var get_key = function get_key(ctx) {
-	    return (
-	      /*tag*/
-	      ctx[44]
-	    );
-	  };
-
-	  validate_each_keys(ctx, each_value_4, get_each_context_4, get_key);
-
-	  for (var i = 0; i < each_value_4.length; i += 1) {
-	    var child_ctx = get_each_context_4(ctx, each_value_4, i);
-	    var key = get_key(child_ctx);
-	    each_1_lookup.set(key, each_blocks[i] = create_each_block_4(key, child_ctx));
-	  }
-
-	  var block = {
-	    c: function create() {
-	      div = element("div");
-	      h3 = element("h3");
-	      h3.textContent = "Tags";
-	      t1 = space();
-	      ul = element("ul");
-
-	      for (var _i19 = 0; _i19 < each_blocks.length; _i19 += 1) {
-	        each_blocks[_i19].c();
-	      }
-
-	      attr_dev(h3, "class", "svelte-fd4l8c");
-	      add_location(h3, file$n, 204, 12, 7115);
-	      attr_dev(ul, "class", "svelte-fd4l8c");
-	      add_location(ul, file$n, 205, 12, 7141);
-	      attr_dev(div, "class", "tags svelte-fd4l8c");
-	      add_location(div, file$n, 203, 10, 7084);
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, div, anchor);
-	      append_dev(div, h3);
-	      append_dev(div, t1);
-	      append_dev(div, ul);
-
-	      for (var _i20 = 0; _i20 < each_blocks.length; _i20 += 1) {
-	        each_blocks[_i20].m(ul, null);
-	      }
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*handleLiClick, $tooltip, highlight*/
-	      25600) {
-	        var _each_value_4 =
-	        /*$tooltip*/
-	        ctx[10].tp.tags;
-	        validate_each_argument(_each_value_4);
-	        validate_each_keys(ctx, _each_value_4, get_each_context_4, get_key);
-	        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, _each_value_4, each_1_lookup, ul, destroy_block, create_each_block_4, null, get_each_context_4);
-	      }
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div);
-
-	      for (var _i21 = 0; _i21 < each_blocks.length; _i21 += 1) {
-	        each_blocks[_i21].d();
-	      }
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_if_block_4$2.name,
-	    type: "if",
-	    source: "(203:8) {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (207:14) {#each $tooltip.tp.tags as tag (tag)}
-
-
-	function create_each_block_4(key_1, ctx) {
-	  var li;
-	  var raw_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*tag*/
-	  ctx[44]) + "";
-	  var mounted;
-	  var dispose;
-
-	  function click_handler_1() {
-	    var _ctx;
-
-	    for (var _len = arguments.length, args = new Array(_len), _key4 = 0; _key4 < _len; _key4++) {
-	      args[_key4] = arguments[_key4];
-	    }
-
-	    return (
-	      /*click_handler_1*/
-	      (_ctx = ctx)[17].apply(_ctx, [
-	      /*tag*/
-	      ctx[44]].concat(args))
-	    );
-	  }
-
-	  var block = {
-	    key: key_1,
-	    first: null,
-	    c: function create() {
-	      li = element("li");
-	      attr_dev(li, "class", "card svelte-fd4l8c");
-	      add_location(li, file$n, 207, 16, 7214);
-	      this.first = li;
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, li, anchor);
-	      li.innerHTML = raw_value;
-
-	      if (!mounted) {
-	        dispose = listen_dev(li, "click", self$1(click_handler_1), false, false, false);
-	        mounted = true;
-	      }
-	    },
-	    p: function update(new_ctx, dirty) {
-	      ctx = new_ctx;
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw_value !== (raw_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*tag*/
-	      ctx[44]) + "")) li.innerHTML = raw_value;
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(li);
-	      mounted = false;
-	      dispose();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_each_block_4.name,
-	    type: "each",
-	    source: "(207:14) {#each $tooltip.tp.tags as tag (tag)}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (216:12) {#each $tooltip.tp.platforms as platform (platform)}
-
-
-	function create_each_block_3(key_1, ctx) {
-	  var li;
-	  var raw_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*platform*/
-	  ctx[41]) + "";
-	  var mounted;
-	  var dispose;
-
-	  function click_handler_2() {
-	    var _ctx2;
-
-	    for (var _len2 = arguments.length, args = new Array(_len2), _key5 = 0; _key5 < _len2; _key5++) {
-	      args[_key5] = arguments[_key5];
-	    }
-
-	    return (
-	      /*click_handler_2*/
-	      (_ctx2 = ctx)[18].apply(_ctx2, [
-	      /*platform*/
-	      ctx[41]].concat(args))
-	    );
-	  }
-
-	  var block = {
-	    key: key_1,
-	    first: null,
-	    c: function create() {
-	      li = element("li");
-	      attr_dev(li, "class", "card svelte-fd4l8c");
-	      add_location(li, file$n, 216, 14, 7533);
-	      this.first = li;
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, li, anchor);
-	      li.innerHTML = raw_value;
-
-	      if (!mounted) {
-	        dispose = listen_dev(li, "click", self$1(click_handler_2), false, false, false);
-	        mounted = true;
-	      }
-	    },
-	    p: function update(new_ctx, dirty) {
-	      ctx = new_ctx;
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw_value !== (raw_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*platform*/
-	      ctx[41]) + "")) li.innerHTML = raw_value;
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(li);
-	      mounted = false;
-	      dispose();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_each_block_3.name,
-	    type: "each",
-	    source: "(216:12) {#each $tooltip.tp.platforms as platform (platform)}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (224:12) {#each $tooltip.tp.methods as method (method)}
-
-
-	function create_each_block_2(key_1, ctx) {
-	  var li;
-	  var raw_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*method*/
-	  ctx[38]) + "";
-	  var mounted;
-	  var dispose;
-
-	  function click_handler_3() {
-	    var _ctx3;
-
-	    for (var _len3 = arguments.length, args = new Array(_len3), _key6 = 0; _key6 < _len3; _key6++) {
-	      args[_key6] = arguments[_key6];
-	    }
-
-	    return (
-	      /*click_handler_3*/
-	      (_ctx3 = ctx)[19].apply(_ctx3, [
-	      /*method*/
-	      ctx[38]].concat(args))
-	    );
-	  }
-
-	  var block = {
-	    key: key_1,
-	    first: null,
-	    c: function create() {
-	      li = element("li");
-	      attr_dev(li, "class", "card svelte-fd4l8c");
-	      add_location(li, file$n, 224, 14, 7837);
-	      this.first = li;
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, li, anchor);
-	      li.innerHTML = raw_value;
-
-	      if (!mounted) {
-	        dispose = listen_dev(li, "click", self$1(click_handler_3), false, false, false);
-	        mounted = true;
-	      }
-	    },
-	    p: function update(new_ctx, dirty) {
-	      ctx = new_ctx;
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw_value !== (raw_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*method*/
-	      ctx[38]) + "")) li.innerHTML = raw_value;
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(li);
-	      mounted = false;
-	      dispose();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_each_block_2.name,
-	    type: "each",
-	    source: "(224:12) {#each $tooltip.tp.methods as method (method)}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (240:16) {:else}
-
-
-	function create_else_block$1(ctx) {
-	  var html_tag;
-	  var raw_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*$tooltip*/
-	  ctx[10].tp.sourceFilter.slice(-1)[0]) + "";
-	  var html_anchor;
-	  var block = {
-	    c: function create() {
-	      html_anchor = empty();
-	      html_tag = new HtmlTag(html_anchor);
-	    },
-	    m: function mount(target, anchor) {
-	      html_tag.m(raw_value, target, anchor);
-	      insert_dev(target, html_anchor, anchor);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw_value !== (raw_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*$tooltip*/
-	      ctx[10].tp.sourceFilter.slice(-1)[0]) + "")) html_tag.p(raw_value);
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(html_anchor);
-	      if (detaching) html_tag.d();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_else_block$1.name,
-	    type: "else",
-	    source: "(240:16) {:else}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (238:56) 
-
-
-	function create_if_block_3$3(ctx) {
-	  var html_tag;
-	  var raw_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*$tooltip*/
-	  ctx[10].tp.sourceFilter[
-	  /*i*/
-	  ctx[37]]) + "";
-	  var html_anchor;
-	  var block = {
-	    c: function create() {
-	      html_anchor = empty();
-	      html_tag = new HtmlTag(html_anchor);
-	    },
-	    m: function mount(target, anchor) {
-	      html_tag.m(raw_value, target, anchor);
-	      insert_dev(target, html_anchor, anchor);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw_value !== (raw_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*$tooltip*/
-	      ctx[10].tp.sourceFilter[
-	      /*i*/
-	      ctx[37]]) + "")) html_tag.p(raw_value);
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(html_anchor);
-	      if (detaching) html_tag.d();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_if_block_3$3.name,
-	    type: "if",
-	    source: "(238:56) ",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (236:109) 
-
-
-	function create_if_block_2$3(ctx) {
-	  var html_tag;
-	  var raw0_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*source*/
-	  ctx[35]) + "";
-	  var t;
-	  var html_tag_1;
-	  var raw1_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*$tooltip*/
-	  ctx[10].tp.sourceFilter.slice(-1)[0]) + "";
-	  var html_anchor;
-	  var block = {
-	    c: function create() {
-	      t = text(" / ");
-	      html_anchor = empty();
-	      html_tag = new HtmlTag(t);
-	      html_tag_1 = new HtmlTag(html_anchor);
-	    },
-	    m: function mount(target, anchor) {
-	      html_tag.m(raw0_value, target, anchor);
-	      insert_dev(target, t, anchor);
-	      html_tag_1.m(raw1_value, target, anchor);
-	      insert_dev(target, html_anchor, anchor);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw0_value !== (raw0_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*source*/
-	      ctx[35]) + "")) html_tag.p(raw0_value);
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw1_value !== (raw1_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*$tooltip*/
-	      ctx[10].tp.sourceFilter.slice(-1)[0]) + "")) html_tag_1.p(raw1_value);
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) html_tag.d();
-	      if (detaching) detach_dev(t);
-	      if (detaching) detach_dev(html_anchor);
-	      if (detaching) html_tag_1.d();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_if_block_2$3.name,
-	    type: "if",
-	    source: "(236:109) ",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (234:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}
-
-
-	function create_if_block_1$5(ctx) {
-	  var html_tag;
-	  var raw0_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*source*/
-	  ctx[35]) + "";
-	  var t;
-	  var html_tag_1;
-	  var raw1_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*$tooltip*/
-	  ctx[10].tp.sourceFilter[
-	  /*i*/
-	  ctx[37]]) + "";
-	  var html_anchor;
-	  var block = {
-	    c: function create() {
-	      t = text(" / ");
-	      html_anchor = empty();
-	      html_tag = new HtmlTag(t);
-	      html_tag_1 = new HtmlTag(html_anchor);
-	    },
-	    m: function mount(target, anchor) {
-	      html_tag.m(raw0_value, target, anchor);
-	      insert_dev(target, t, anchor);
-	      html_tag_1.m(raw1_value, target, anchor);
-	      insert_dev(target, html_anchor, anchor);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw0_value !== (raw0_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*source*/
-	      ctx[35]) + "")) html_tag.p(raw0_value);
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw1_value !== (raw1_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*$tooltip*/
-	      ctx[10].tp.sourceFilter[
-	      /*i*/
-	      ctx[37]]) + "")) html_tag_1.p(raw1_value);
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) html_tag.d();
-	      if (detaching) detach_dev(t);
-	      if (detaching) detach_dev(html_anchor);
-	      if (detaching) html_tag_1.d();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
 	    id: create_if_block_1$5.name,
 	    type: "if",
-	    source: "(234:16) {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (232:12) {#each $tooltip.tp.source as source, i (source)}
-
-
-	function create_each_block_1$1(key_1, ctx) {
-	  var li;
-	  var show_if;
-	  var t;
-	  var mounted;
-	  var dispose;
-
-	  function select_block_type(ctx, dirty) {
-	    if (
-	    /*$tooltip*/
-	    ctx[10].tp.sourceFilter[
-	    /*i*/
-	    ctx[37]] &&
-	    /*$tooltip*/
-	    ctx[10].tp.sourceFilter[
-	    /*i*/
-	    ctx[37]] !==
-	    /*source*/
-	    ctx[35]) return create_if_block_1$5;
-	    if (show_if == null || dirty[0] &
-	    /*$tooltip*/
-	    1024) show_if = !!(!
-	    /*$tooltip*/
-	    ctx[10].tp.sourceFilter[
-	    /*i*/
-	    ctx[37]] &&
-	    /*$tooltip*/
-	    ctx[10].tp.sourceFilter.slice(-1)[0] !==
-	    /*source*/
-	    ctx[35]);
-	    if (show_if) return create_if_block_2$3;
-	    if (
-	    /*$tooltip*/
-	    ctx[10].tp.sourceFilter[
-	    /*i*/
-	    ctx[37]]) return create_if_block_3$3;
-	    return create_else_block$1;
-	  }
-
-	  var current_block_type = select_block_type(ctx, [-1]);
-	  var if_block = current_block_type(ctx);
-
-	  function click_handler_4() {
-	    var _ctx4;
-
-	    for (var _len4 = arguments.length, args = new Array(_len4), _key7 = 0; _key7 < _len4; _key7++) {
-	      args[_key7] = arguments[_key7];
-	    }
-
-	    return (
-	      /*click_handler_4*/
-	      (_ctx4 = ctx)[20].apply(_ctx4, [
-	      /*i*/
-	      ctx[37]].concat(args))
-	    );
-	  }
-
-	  var block = {
-	    key: key_1,
-	    first: null,
-	    c: function create() {
-	      li = element("li");
-	      if_block.c();
-	      t = space();
-	      attr_dev(li, "class", "card svelte-fd4l8c");
-	      add_location(li, file$n, 232, 14, 8179);
-	      this.first = li;
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, li, anchor);
-	      if_block.m(li, null);
-	      append_dev(li, t);
-
-	      if (!mounted) {
-	        dispose = listen_dev(li, "click", self$1(click_handler_4), false, false, false);
-	        mounted = true;
-	      }
-	    },
-	    p: function update(new_ctx, dirty) {
-	      ctx = new_ctx;
-
-	      if (current_block_type === (current_block_type = select_block_type(ctx, dirty)) && if_block) {
-	        if_block.p(ctx, dirty);
-	      } else {
-	        if_block.d(1);
-	        if_block = current_block_type(ctx);
-
-	        if (if_block) {
-	          if_block.c();
-	          if_block.m(li, t);
-	        }
-	      }
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(li);
-	      if_block.d();
-	      mounted = false;
-	      dispose();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_each_block_1$1.name,
-	    type: "each",
-	    source: "(232:12) {#each $tooltip.tp.source as source, i (source)}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (250:12) {#each $tooltip.tp.sourceCategory as cat (cat)}
-
-
-	function create_each_block$5(key_1, ctx) {
-	  var li;
-	  var raw_value =
-	  /*highlight*/
-	  ctx[14](
-	  /*cat*/
-	  ctx[32]) + "";
-	  var mounted;
-	  var dispose;
-
-	  function click_handler_5() {
-	    var _ctx5;
-
-	    for (var _len5 = arguments.length, args = new Array(_len5), _key8 = 0; _key8 < _len5; _key8++) {
-	      args[_key8] = arguments[_key8];
-	    }
-
-	    return (
-	      /*click_handler_5*/
-	      (_ctx5 = ctx)[21].apply(_ctx5, [
-	      /*cat*/
-	      ctx[32]].concat(args))
-	    );
-	  }
-
-	  var block = {
-	    key: key_1,
-	    first: null,
-	    c: function create() {
-	      li = element("li");
-	      attr_dev(li, "class", "card svelte-fd4l8c");
-	      add_location(li, file$n, 250, 14, 9272);
-	      this.first = li;
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, li, anchor);
-	      li.innerHTML = raw_value;
-
-	      if (!mounted) {
-	        dispose = listen_dev(li, "click", self$1(click_handler_5), false, false, false);
-	        mounted = true;
-	      }
-	    },
-	    p: function update(new_ctx, dirty) {
-	      ctx = new_ctx;
-	      if (dirty[0] &
-	      /*$tooltip*/
-	      1024 && raw_value !== (raw_value =
-	      /*highlight*/
-	      ctx[14](
-	      /*cat*/
-	      ctx[32]) + "")) li.innerHTML = raw_value;
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(li);
-	      mounted = false;
-	      dispose();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_each_block$5.name,
-	    type: "each",
-	    source: "(250:12) {#each $tooltip.tp.sourceCategory as cat (cat)}",
+	    source: "(192:8) {#if ($tooltip.tp.periodEra)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -49014,14 +46768,17 @@ var app = (function () {
 	      insert_dev(target, if_block_anchor, anchor);
 	      current = true;
 	    },
-	    p: function update(ctx, dirty) {
+	    p: function update(ctx, _ref) {
+	      var _ref2 = _slicedToArray(_ref, 1),
+	          dirty = _ref2[0];
+
 	      if (
 	      /*showTooltip*/
 	      ctx[9]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
-	          if (dirty[0] &
+	          if (dirty &
 	          /*showTooltip*/
 	          512) {
 	            transition_in(if_block, 1);
@@ -49071,11 +46828,11 @@ var app = (function () {
 	  var $controlsHeight;
 	  validate_store(textSearchFilter, "textSearchFilter");
 	  component_subscribe($$self, textSearchFilter, function ($$value) {
-	    return $$invalidate(27, $textSearchFilter = $$value);
+	    return $$invalidate(19, $textSearchFilter = $$value);
 	  });
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(28, $width = $$value);
+	    return $$invalidate(20, $width = $$value);
 	  });
 	  validate_store(tooltip, "tooltip");
 	  component_subscribe($$self, tooltip, function ($$value) {
@@ -49083,7 +46840,7 @@ var app = (function () {
 	  });
 	  validate_store(controlsHeight, "controlsHeight");
 	  component_subscribe($$self, controlsHeight, function ($$value) {
-	    return $$invalidate(29, $controlsHeight = $$value);
+	    return $$invalidate(21, $controlsHeight = $$value);
 	  });
 	  var offset = {
 	    top: 10,
@@ -49092,8 +46849,8 @@ var app = (function () {
 	    left: 10
 	  };
 	  var contentOffset = -20;
-	  var attributionTf = timeFormat$1("%B %d, %Y");
-	  var activityTf = timeFormat$1("%B %Y");
+	  var attributionTf = timeFormat("%B %d, %Y");
+	  var activityTf = timeFormat("%B %Y");
 	  var elem;
 	  var tWidth, tHeight;
 	  var side;
@@ -49152,46 +46909,26 @@ var app = (function () {
 	    bubble($$self, event);
 	  }
 
-	  var click_handler_1 = function click_handler_1(tag) {
-	    return handleLiClick("tag", tag);
-	  };
-
-	  var click_handler_2 = function click_handler_2(platform) {
-	    return handleLiClick("platform", platform);
-	  };
-
-	  var click_handler_3 = function click_handler_3(method) {
-	    return handleLiClick("method", method);
-	  };
-
-	  var click_handler_4 = function click_handler_4(i) {
-	    return handleLiClick("source", $tooltip.tp.sourceFilter[i] ? $tooltip.tp.sourceFilter[i] : $tooltip.tp.sourceFilter.slice(-1)[0]);
-	  };
-
-	  var click_handler_5 = function click_handler_5(cat) {
-	    return handleLiClick("sourceCategory", cat);
-	  };
-
-	  function div17_binding($$value) {
+	  function div13_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      scrollWrapper = $$value;
 	      $$invalidate(7, scrollWrapper);
 	    });
 	  }
 
-	  function div18_binding($$value) {
+	  function div14_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      elem = $$value;
 	      $$invalidate(0, elem);
 	    });
 	  }
 
-	  function div18_elementresize_handler() {
+	  function div14_elementresize_handler() {
 	    tHeight = this.clientHeight;
 	    $$invalidate(2, tHeight);
 	  }
 
-	  function div19_elementresize_handler() {
+	  function div15_elementresize_handler() {
 	    tWidth = this.clientWidth;
 	    $$invalidate(1, tWidth);
 	  }
@@ -49205,7 +46942,7 @@ var app = (function () {
 	      tooltip: tooltip,
 	      fade: fade,
 	      slide: slide,
-	      timeFormat: timeFormat$1,
+	      timeFormat: timeFormat,
 	      extractHostname: extractHostname,
 	      platformFilter: platformFilter,
 	      methodFilter: methodFilter,
@@ -49264,15 +47001,15 @@ var app = (function () {
 	  }
 
 	  $$self.$$.update = function () {
-	    if ($$self.$$.dirty[0] &
+	    if ($$self.$$.dirty &
 	    /*$tooltip*/
 	    1024) {
 	       $$invalidate(9, showTooltip = $tooltip && $tooltip.tp && $tooltip.tp.show);
 	    }
 
-	    if ($$self.$$.dirty[0] &
+	    if ($$self.$$.dirty &
 	    /*showTooltip, $width, $tooltip, contentTop, tHeight, $controlsHeight, side, tWidth, scrollWrapper, paragraphs*/
-	    805308366) {
+	    3147726) {
 	       if (showTooltip) {
 	        scoreQuestionsExpanded = false;
 	        $$invalidate(3, side = $width - $tooltip.tp.x < $width / 2 ? "left" : "right");
@@ -49316,7 +47053,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, paragraphs, showTooltip, $tooltip, offset, attributionTf, handleLiClick, highlight, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, click_handler_4, click_handler_5, div17_binding, div18_binding, div18_elementresize_handler, div19_elementresize_handler];
+	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, paragraphs, showTooltip, $tooltip, offset, click_handler, mouseover_handler, div13_binding, div14_binding, div14_elementresize_handler, div15_elementresize_handler];
 	}
 
 	var EventTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -49330,7 +47067,7 @@ var app = (function () {
 	    _classCallCheck(this, EventTooltip);
 
 	    _this = _super.call(this, options);
-	    init(_assertThisInitialized(_this), options, instance$o, create_fragment$o, safe_not_equal, {}, [-1, -1]);
+	    init(_assertThisInitialized(_this), options, instance$o, create_fragment$o, safe_not_equal, {});
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
 	      tagName: "EventTooltip",
@@ -49343,8 +47080,7 @@ var app = (function () {
 	  return EventTooltip;
 	}(SvelteComponentDev);
 
-	var console_1$6 = globals.console;
-	var file$o = "src/components/Balloon.svelte"; // (42:2) {#if (timePoint.recentlyAdded)}
+	var file$o = "src/components/Balloon.svelte"; // (40:2) {#if (timePoint.recentlyAdded)}
 
 	function create_if_block$c(ctx) {
 	  var circle;
@@ -49358,7 +47094,7 @@ var app = (function () {
 	      attr_dev(circle, "r", circle_r_value =
 	      /*timePoint*/
 	      ctx[0].size);
-	      add_location(circle, file$o, 42, 4, 1229);
+	      add_location(circle, file$o, 40, 4, 1201);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, circle, anchor);
@@ -49380,7 +47116,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$c.name,
 	    type: "if",
-	    source: "(42:2) {#if (timePoint.recentlyAdded)}",
+	    source: "(40:2) {#if (timePoint.recentlyAdded)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -49414,7 +47150,7 @@ var app = (function () {
 	      attr_dev(circle, "filter", circle_filter_value = "url(#" +
 	      /*timePoint*/
 	      ctx[0].image_location + "_image)");
-	      add_location(circle, file$o, 49, 2, 1356);
+	      add_location(circle, file$o, 47, 2, 1328);
 	      attr_dev(g, "class", "balloon svelte-1sqtyh4");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*tweenedPos*/
@@ -49424,7 +47160,7 @@ var app = (function () {
 	      toggle_class(g, "selected",
 	      /*selected*/
 	      ctx[2]);
-	      add_location(g, file$o, 34, 0, 821);
+	      add_location(g, file$o, 32, 0, 793);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49556,11 +47292,6 @@ var app = (function () {
 	  var tweenedPos = $$props.tweenedPos;
 	  var _$$props$selected = $$props.selected,
 	      selected = _$$props$selected === void 0 ? false : _$$props$selected;
-
-	  if (timePoint.size < 15) {
-	    console.log("wtf");
-	  }
-
 	  var dispatch = createEventDispatcher();
 
 	  function handleMouseOver(e) {
@@ -49582,7 +47313,7 @@ var app = (function () {
 
 	  var writable_props = ["timePoint", "tweenedPos", "selected"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<Balloon> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Balloon> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -49655,13 +47386,13 @@ var app = (function () {
 	    if (
 	    /*timePoint*/
 	    ctx[0] === undefined && !("timePoint" in props)) {
-	      console_1$6.warn("<Balloon> was created without expected prop 'timePoint'");
+	      console.warn("<Balloon> was created without expected prop 'timePoint'");
 	    }
 
 	    if (
 	    /*tweenedPos*/
 	    ctx[1] === undefined && !("tweenedPos" in props)) {
-	      console_1$6.warn("<Balloon> was created without expected prop 'tweenedPos'");
+	      console.warn("<Balloon> was created without expected prop 'tweenedPos'");
 	    }
 
 	    return _this;
@@ -50993,7 +48724,7 @@ var app = (function () {
 	  return SourceLink;
 	}(SvelteComponentDev);
 
-	var console_1$7 = globals.console;
+	var console_1$6 = globals.console;
 	var file$s = "src/components/Centroid.svelte"; // (47:2) {#if (centroid.length > 0)}
 
 	function create_if_block$f(ctx) {
@@ -51260,7 +48991,7 @@ var app = (function () {
 
 	  var writable_props = ["centroid", "country", "selected"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<Centroid> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<Centroid> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -51345,13 +49076,13 @@ var app = (function () {
 	    if (
 	    /*centroid*/
 	    ctx[0] === undefined && !("centroid" in props)) {
-	      console_1$7.warn("<Centroid> was created without expected prop 'centroid'");
+	      console_1$6.warn("<Centroid> was created without expected prop 'centroid'");
 	    }
 
 	    if (
 	    /*country*/
 	    ctx[1] === undefined && !("country" in props)) {
-	      console_1$7.warn("<Centroid> was created without expected prop 'country'");
+	      console_1$6.warn("<Centroid> was created without expected prop 'country'");
 	    }
 
 	    return _this;
@@ -51395,14 +49126,14 @@ var app = (function () {
 	  return child_ctx;
 	}
 
-	function get_each_context_1$2(ctx, list, i) {
+	function get_each_context_1$1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[22] = list[i];
 	  return child_ctx;
 	} // (102:2) {#each sources as source (source.idNation)}
 
 
-	function create_each_block_1$2(key_1, ctx) {
+	function create_each_block_1$1(key_1, ctx) {
 	  var first;
 	  var sourcelink;
 	  var current;
@@ -51512,7 +49243,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_1$2.name,
+	    id: create_each_block_1$1.name,
 	    type: "each",
 	    source: "(102:2) {#each sources as source (source.idNation)}",
 	    ctx: ctx
@@ -51619,12 +49350,12 @@ var app = (function () {
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value_1, get_each_context_1$2, get_key);
+	  validate_each_keys(ctx, each_value_1, get_each_context_1$1, get_key);
 
 	  for (var i = 0; i < each_value_1.length; i += 1) {
-	    var child_ctx = get_each_context_1$2(ctx, each_value_1, i);
+	    var child_ctx = get_each_context_1$1(ctx, each_value_1, i);
 	    var key = get_key(child_ctx);
-	    each0_lookup.set(key, each_blocks_1[i] = create_each_block_1$2(key, child_ctx));
+	    each0_lookup.set(key, each_blocks_1[i] = create_each_block_1$1(key, child_ctx));
 	  }
 
 	  var each_value =
@@ -51699,8 +49430,8 @@ var app = (function () {
 	        ctx[1];
 	        validate_each_argument(_each_value_);
 	        group_outros();
-	        validate_each_keys(ctx, _each_value_, get_each_context_1$2, get_key);
-	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, _each_value_, each0_lookup, g, outro_and_destroy_block, create_each_block_1$2, each0_anchor, get_each_context_1$2);
+	        validate_each_keys(ctx, _each_value_, get_each_context_1$1, get_key);
+	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, _each_value_, each0_lookup, g, outro_and_destroy_block, create_each_block_1$1, each0_anchor, get_each_context_1$1);
 	        check_outros();
 	      }
 
@@ -52074,7 +49805,7 @@ var app = (function () {
 	  return Sources;
 	}(SvelteComponentDev);
 
-	var parseDate$2 = timeParse$1('%m/%d/%Y');
+	var parseDate$2 = timeParse('%m/%d/%Y');
 
 	var loadSpots = /*#__PURE__*/function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -52088,8 +49819,8 @@ var app = (function () {
 	              return {
 	                id: i,
 	                name: d.event_name,
-	                date: parseDate$2(d.date),
-	                endDate: parseDate$2(d.endDate),
+	                date: d.date,
+	                endDate: d.endDate,
 	                description: d.description
 	              };
 	            });
@@ -52118,26 +49849,30 @@ var app = (function () {
 	  var div0;
 	  var p0;
 	  var t0_value =
-	  /*tf*/
-	  ctx[4](
 	  /*data*/
-	  ctx[0].date) + "";
+	  ctx[0].date + "";
 	  var t0;
 	  var t1;
-	  var h2;
 	  var t2_value =
 	  /*data*/
-	  ctx[0].name + "";
+	  ctx[0].endDate + "";
 	  var t2;
 	  var t3;
-	  var img;
-	  var img_src_value;
 	  var t4;
-	  var p1;
+	  var h2;
 	  var t5_value =
 	  /*data*/
-	  ctx[0].description + "";
+	  ctx[0].name + "";
 	  var t5;
+	  var t6;
+	  var img;
+	  var img_src_value;
+	  var t7;
+	  var p1;
+	  var t8_value =
+	  /*data*/
+	  ctx[0].description + "";
+	  var t8;
 	  var div1_resize_listener;
 	  var div1_transition;
 	  var current;
@@ -52147,25 +49882,28 @@ var app = (function () {
 	      div0 = element("div");
 	      p0 = element("p");
 	      t0 = text(t0_value);
-	      t1 = space();
-	      h2 = element("h2");
+	      t1 = text(" - ");
 	      t2 = text(t2_value);
-	      t3 = space();
-	      img = element("img");
+	      t3 = text(" Million Years Ago");
 	      t4 = space();
-	      p1 = element("p");
+	      h2 = element("h2");
 	      t5 = text(t5_value);
+	      t6 = space();
+	      img = element("img");
+	      t7 = space();
+	      p1 = element("p");
+	      t8 = text(t8_value);
 	      attr_dev(p0, "class", "date svelte-t89rcg");
 	      add_location(p0, file$u, 35, 4, 732);
 	      attr_dev(h2, "class", "name svelte-t89rcg");
-	      add_location(h2, file$u, 38, 4, 784);
+	      add_location(h2, file$u, 38, 4, 815);
 	      if (img.src !== (img_src_value = "images/" +
 	      /*data*/
 	      ctx[0].name + ".jpg")) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", "timeline era");
-	      add_location(img, file$u, 41, 4, 834);
+	      add_location(img, file$u, 41, 4, 865);
 	      attr_dev(p1, "class", " description svelte-t89rcg");
-	      add_location(p1, file$u, 42, 4, 894);
+	      add_location(p1, file$u, 42, 4, 925);
 	      attr_dev(div0, "class", "content svelte-t89rcg");
 	      add_location(div0, file$u, 34, 2, 706);
 	      attr_dev(div1, "class", "spot-tooltip svelte-t89rcg");
@@ -52179,7 +49917,7 @@ var app = (function () {
 	      add_render_callback(function () {
 	        return (
 	          /*div1_elementresize_handler*/
-	          ctx[6].call(div1)
+	          ctx[5].call(div1)
 	        );
 	      });
 	      add_location(div1, file$u, 30, 0, 546);
@@ -52192,17 +49930,20 @@ var app = (function () {
 	      append_dev(div1, div0);
 	      append_dev(div0, p0);
 	      append_dev(p0, t0);
-	      append_dev(div0, t1);
-	      append_dev(div0, h2);
-	      append_dev(h2, t2);
-	      append_dev(div0, t3);
-	      append_dev(div0, img);
+	      append_dev(p0, t1);
+	      append_dev(p0, t2);
+	      append_dev(p0, t3);
 	      append_dev(div0, t4);
+	      append_dev(div0, h2);
+	      append_dev(h2, t5);
+	      append_dev(div0, t6);
+	      append_dev(div0, img);
+	      append_dev(div0, t7);
 	      append_dev(div0, p1);
-	      append_dev(p1, t5);
+	      append_dev(p1, t8);
 	      div1_resize_listener = add_resize_listener(div1,
 	      /*div1_elementresize_handler*/
-	      ctx[6].bind(div1));
+	      ctx[5].bind(div1));
 	      current = true;
 	    },
 	    p: function update(ctx, _ref) {
@@ -52212,15 +49953,18 @@ var app = (function () {
 	      if ((!current || dirty &
 	      /*data*/
 	      1) && t0_value !== (t0_value =
-	      /*tf*/
-	      ctx[4](
 	      /*data*/
-	      ctx[0].date) + "")) set_data_dev(t0, t0_value);
+	      ctx[0].date + "")) set_data_dev(t0, t0_value);
 	      if ((!current || dirty &
 	      /*data*/
 	      1) && t2_value !== (t2_value =
 	      /*data*/
-	      ctx[0].name + "")) set_data_dev(t2, t2_value);
+	      ctx[0].endDate + "")) set_data_dev(t2, t2_value);
+	      if ((!current || dirty &
+	      /*data*/
+	      1) && t5_value !== (t5_value =
+	      /*data*/
+	      ctx[0].name + "")) set_data_dev(t5, t5_value);
 
 	      if (!current || dirty &
 	      /*data*/
@@ -52232,9 +49976,9 @@ var app = (function () {
 
 	      if ((!current || dirty &
 	      /*data*/
-	      1) && t5_value !== (t5_value =
+	      1) && t8_value !== (t8_value =
 	      /*data*/
-	      ctx[0].description + "")) set_data_dev(t5, t5_value);
+	      ctx[0].description + "")) set_data_dev(t8, t8_value);
 
 	      if (!current || dirty &
 	      /*left*/
@@ -52294,7 +50038,7 @@ var app = (function () {
 	      x = _$$props$x === void 0 ? 0 : _$$props$x;
 	  var _$$props$y = $$props.y,
 	      y = _$$props$y === void 0 ? 0 : _$$props$y;
-	  var tf = timeFormat$1("%B %d, %Y");
+	  var tf = timeFormat("%B %d, %Y");
 	  var width = maxWidth$1;
 	  var left = 0;
 	  var writable_props = ["data", "x", "y"];
@@ -52313,14 +50057,14 @@ var app = (function () {
 
 	  $$self.$$set = function ($$props) {
 	    if ("data" in $$props) $$invalidate(0, data = $$props.data);
-	    if ("x" in $$props) $$invalidate(5, x = $$props.x);
+	    if ("x" in $$props) $$invalidate(4, x = $$props.x);
 	    if ("y" in $$props) $$invalidate(1, y = $$props.y);
 	  };
 
 	  $$self.$capture_state = function () {
 	    return {
 	      fade: fade,
-	      timeFormat: timeFormat$1,
+	      timeFormat: timeFormat,
 	      data: data,
 	      x: x,
 	      y: y,
@@ -52334,7 +50078,7 @@ var app = (function () {
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("data" in $$props) $$invalidate(0, data = $$props.data);
-	    if ("x" in $$props) $$invalidate(5, x = $$props.x);
+	    if ("x" in $$props) $$invalidate(4, x = $$props.x);
 	    if ("y" in $$props) $$invalidate(1, y = $$props.y);
 	    if ("width" in $$props) $$invalidate(2, width = $$props.width);
 	    if ("left" in $$props) $$invalidate(3, left = $$props.left);
@@ -52347,7 +50091,7 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*x, width*/
-	    36) {
+	    20) {
 	       {
 	        if (x - width / 2 < 0) {
 	          $$invalidate(3, left = margin$2);
@@ -52362,7 +50106,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [data, y, width, left, tf, x, div1_elementresize_handler];
+	  return [data, y, width, left, x, div1_elementresize_handler];
 	}
 
 	var SpotTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -52378,7 +50122,7 @@ var app = (function () {
 	    _this = _super.call(this, options);
 	    init(_assertThisInitialized(_this), options, instance$v, create_fragment$v, safe_not_equal, {
 	      data: 0,
-	      x: 5,
+	      x: 4,
 	      y: 1
 	    });
 	    dispatch_dev("SvelteRegisterComponent", {
@@ -53627,29 +51371,25 @@ var app = (function () {
 	  return child_ctx;
 	}
 
-	function get_each_context_1$3(ctx, list, i) {
+	function get_each_context_1$2(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[12] = list[i];
 	  return child_ctx;
 	} // (20:4) {#each $timeScale.ticks(8) as tick}
 
 
-	function create_each_block_1$3(ctx) {
+	function create_each_block_1$2(ctx) {
 	  var g;
 	  var circle;
 	  var text0;
 	  var t0_value =
-	  /*tf*/
-	  ctx[8](
 	  /*tick*/
-	  ctx[12]).replace("Jan 01, ", "") + "";
+	  ctx[12] + "";
 	  var t0;
 	  var text1;
 	  var t1_value =
-	  /*tf*/
-	  ctx[8](
 	  /*tick*/
-	  ctx[12]).replace("Jan 01, ", "") + "";
+	  ctx[12] + "";
 	  var t1;
 	  var g_transform_value;
 	  var block = {
@@ -53668,7 +51408,7 @@ var app = (function () {
 	      attr_dev(text0, "class", "bg svelte-1ay65iw");
 	      add_location(text0, file$z, 23, 8, 714);
 	      attr_dev(text1, "class", "svelte-1ay65iw");
-	      add_location(text1, file$z, 24, 8, 781);
+	      add_location(text1, file$z, 24, 8, 753);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*$timeScale*/
@@ -53689,17 +51429,13 @@ var app = (function () {
 	      if (dirty &
 	      /*$timeScale*/
 	      16 && t0_value !== (t0_value =
-	      /*tf*/
-	      ctx[8](
 	      /*tick*/
-	      ctx[12]).replace("Jan 01, ", "") + "")) set_data_dev(t0, t0_value);
+	      ctx[12] + "")) set_data_dev(t0, t0_value);
 	      if (dirty &
 	      /*$timeScale*/
 	      16 && t1_value !== (t1_value =
-	      /*tf*/
-	      ctx[8](
 	      /*tick*/
-	      ctx[12]).replace("Jan 01, ", "") + "")) set_data_dev(t1, t1_value);
+	      ctx[12] + "")) set_data_dev(t1, t1_value);
 
 	      if (dirty &
 	      /*$timeScale*/
@@ -53717,7 +51453,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_1$3.name,
+	    id: create_each_block_1$2.name,
 	    type: "each",
 	    source: "(20:4) {#each $timeScale.ticks(8) as tick}",
 	    ctx: ctx
@@ -53742,14 +51478,14 @@ var app = (function () {
 	      text_1 = svg_element("text");
 	      t = text(t_value);
 	      attr_dev(text_1, "class", "svelte-1ay65iw");
-	      add_location(text_1, file$z, 51, 8, 1897);
+	      add_location(text_1, file$z, 51, 8, 1841);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(0 " +
 	      /*$sizeTotalYScale*/
 	      ctx[3](
 	      /*tick*/
 	      ctx[12]) + ")");
-	      add_location(g, file$z, 49, 6, 1812);
+	      add_location(g, file$z, 49, 6, 1756);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -53832,7 +51568,7 @@ var app = (function () {
 	  var each_blocks_1 = [];
 
 	  for (var i = 0; i < each_value_1.length; i += 1) {
-	    each_blocks_1[i] = create_each_block_1$3(get_each_context_1$3(ctx, each_value_1, i));
+	    each_blocks_1[i] = create_each_block_1$2(get_each_context_1$2(ctx, each_value_1, i));
 	  }
 
 	  var each_value =
@@ -53879,15 +51615,15 @@ var app = (function () {
 	      path5 = svg_element("path");
 	      attr_dev(path0, "d", path0_d_value = "M0 0l" + lineLength$1 + " 0");
 	      attr_dev(path0, "class", "svelte-1ay65iw");
-	      add_location(path0, file$z, 35, 6, 1194);
+	      add_location(path0, file$z, 35, 6, 1138);
 	      attr_dev(text0, "class", "bg svelte-1ay65iw");
 	      attr_dev(text0, "dx", text0_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text0, "dy", "4");
-	      add_location(text0, file$z, 36, 6, 1238);
+	      add_location(text0, file$z, 36, 6, 1182);
 	      attr_dev(text1, "dx", text1_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text1, "dy", "4");
 	      attr_dev(text1, "class", "svelte-1ay65iw");
-	      add_location(text1, file$z, 39, 6, 1346);
+	      add_location(text1, file$z, 39, 6, 1290);
 	      attr_dev(path1, "d", path1_d_value = "M" + (
 	      /*timeScaleText*/
 	      ctx[2] ?
@@ -53895,14 +51631,14 @@ var app = (function () {
 	      ctx[2].getComputedTextLength() + lineLength$1 + 2 * offset$1 : 0) + " 0l" + lineLength$1 + " 0");
 	      attr_dev(path1, "marker-end", "url(#arrow)");
 	      attr_dev(path1, "class", "svelte-1ay65iw");
-	      add_location(path1, file$z, 42, 6, 1469);
+	      add_location(path1, file$z, 42, 6, 1413);
 	      attr_dev(g0, "class", "time-scale-label svelte-1ay65iw");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" + (15 +
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
 	      /*$margin*/
 	      ctx[5].left / 1.5) + " -15)");
-	      add_location(g0, file$z, 34, 4, 1082);
+	      add_location(g0, file$z, 34, 4, 1026);
 	      attr_dev(g1, "class", "time-scale svelte-1ay65iw");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(0 " +
 	      /*$sizeTotalYScale*/
@@ -53914,15 +51650,15 @@ var app = (function () {
 	      ctx[4].range()[0] -
 	      /*$margin*/
 	      ctx[5].left / 1.5) + " 0)");
-	      add_location(g2, file$z, 46, 2, 1645);
+	      add_location(g2, file$z, 46, 2, 1589);
 	      attr_dev(path2, "d", path2_d_value = "M0 0l0 " + -lineLength$1);
 	      attr_dev(path2, "class", "svelte-1ay65iw");
-	      add_location(path2, file$z, 57, 4, 2096);
+	      add_location(path2, file$z, 57, 4, 2040);
 	      attr_dev(text2, "transform", "rotate(270)");
 	      attr_dev(text2, "dx", text2_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text2, "dy", "4");
 	      attr_dev(text2, "class", "svelte-1ay65iw");
-	      add_location(text2, file$z, 58, 4, 2139);
+	      add_location(text2, file$z, 58, 4, 2083);
 	      attr_dev(path3, "d", path3_d_value = "M0 " + (
 	      /*yScaleText*/
 	      ctx[0] ? -
@@ -53930,7 +51666,7 @@ var app = (function () {
 	      ctx[0].getComputedTextLength() - lineLength$1 - 2 * offset$1 : 0) + "l0 " + -lineLength$1);
 	      attr_dev(path3, "marker-end", "url(#arrow)");
 	      attr_dev(path3, "class", "svelte-1ay65iw");
-	      add_location(path3, file$z, 62, 4, 2287);
+	      add_location(path3, file$z, 62, 4, 2231);
 	      attr_dev(g3, "class", "y-scale svelte-1ay65iw");
 	      attr_dev(g3, "transform", g3_transform_value = "translate(" + (
 	      /*$timeScale*/
@@ -53939,10 +51675,10 @@ var app = (function () {
 	      ctx[5].left / 1.5) + " " + 0.95 *
 	      /*$sizeTotalYScale*/
 	      ctx[3].range()[0] + ")");
-	      add_location(g3, file$z, 55, 2, 1962);
+	      add_location(g3, file$z, 55, 2, 1906);
 	      attr_dev(path4, "d", path4_d_value = "M0 0l0 " + lineLength$1);
 	      attr_dev(path4, "class", "svelte-1ay65iw");
-	      add_location(path4, file$z, 67, 4, 2569);
+	      add_location(path4, file$z, 67, 4, 2513);
 	      attr_dev(text3, "transform", "rotate(270)");
 	      attr_dev(text3, "dx", text3_dx_value =
 	      /*mapScaleText*/
@@ -53951,14 +51687,14 @@ var app = (function () {
 	      ctx[1].getComputedTextLength() - lineLength$1 - offset$1 : 0);
 	      attr_dev(text3, "dy", "4");
 	      attr_dev(text3, "class", "svelte-1ay65iw");
-	      add_location(text3, file$z, 68, 4, 2611);
+	      add_location(text3, file$z, 68, 4, 2555);
 	      attr_dev(path5, "d", path5_d_value = "M0 " + (
 	      /*mapScaleText*/
 	      ctx[1] ?
 	      /*mapScaleText*/
 	      ctx[1].getComputedTextLength() + lineLength$1 + 2 * offset$1 : 0) + "l0 " + lineLength$1);
 	      attr_dev(path5, "class", "svelte-1ay65iw");
-	      add_location(path5, file$z, 72, 4, 2816);
+	      add_location(path5, file$z, 72, 4, 2760);
 	      attr_dev(g4, "class", "map-scale svelte-1ay65iw");
 	      attr_dev(g4, "transform", g4_transform_value = "translate(" + (
 	      /*$timeScale*/
@@ -53967,7 +51703,7 @@ var app = (function () {
 	      ctx[5].left / 1.5) + " " + 1.05 *
 	      /*$panelHeight*/
 	      ctx[6] + ")");
-	      add_location(g4, file$z, 65, 2, 2448);
+	      add_location(g4, file$z, 65, 2, 2392);
 	      attr_dev(g5, "class", "labels disable-select");
 	      add_location(g5, file$z, 16, 0, 429);
 	    },
@@ -53990,7 +51726,7 @@ var app = (function () {
 	      append_dev(text1, t1);
 	      /*text1_binding*/
 
-	      ctx[9](text1);
+	      ctx[8](text1);
 	      append_dev(g0, path1);
 	      append_dev(g5, g2);
 
@@ -54004,7 +51740,7 @@ var app = (function () {
 	      append_dev(text2, t2);
 	      /*text2_binding*/
 
-	      ctx[10](text2);
+	      ctx[9](text2);
 	      append_dev(g3, path3);
 	      append_dev(g5, g4);
 	      append_dev(g4, path4);
@@ -54012,7 +51748,7 @@ var app = (function () {
 	      append_dev(text3, t3);
 	      /*text3_binding*/
 
-	      ctx[11](text3);
+	      ctx[10](text3);
 	      append_dev(g4, path5);
 	    },
 	    p: function update(ctx, _ref) {
@@ -54020,8 +51756,8 @@ var app = (function () {
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*$timeScale, tf*/
-	      272) {
+	      /*$timeScale*/
+	      16) {
 	        each_value_1 =
 	        /*$timeScale*/
 	        ctx[4].ticks(8);
@@ -54030,12 +51766,12 @@ var app = (function () {
 	        var _i6;
 
 	        for (_i6 = 0; _i6 < each_value_1.length; _i6 += 1) {
-	          var child_ctx = get_each_context_1$3(ctx, each_value_1, _i6);
+	          var child_ctx = get_each_context_1$2(ctx, each_value_1, _i6);
 
 	          if (each_blocks_1[_i6]) {
 	            each_blocks_1[_i6].p(child_ctx, dirty);
 	          } else {
-	            each_blocks_1[_i6] = create_each_block_1$3(child_ctx);
+	            each_blocks_1[_i6] = create_each_block_1$2(child_ctx);
 
 	            each_blocks_1[_i6].c();
 
@@ -54180,14 +51916,14 @@ var app = (function () {
 	      destroy_each(each_blocks_1, detaching);
 	      /*text1_binding*/
 
-	      ctx[9](null);
+	      ctx[8](null);
 	      destroy_each(each_blocks, detaching);
 	      /*text2_binding*/
 
-	      ctx[10](null);
+	      ctx[9](null);
 	      /*text3_binding*/
 
-	      ctx[11](null);
+	      ctx[10](null);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -54225,7 +51961,7 @@ var app = (function () {
 	    return $$invalidate(6, $panelHeight = $$value);
 	  });
 	  var commaFormat = format(",");
-	  var tf = timeFormat$1("%b %d, %Y");
+	  var tf = timeFormat("%b %d, %Y");
 	  var yScaleText, mapScaleText, timeScaleText;
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
@@ -54262,7 +51998,7 @@ var app = (function () {
 	      timeScale: timeScale,
 	      sizeTotalYScale: sizeTotalYScale,
 	      margin: margin,
-	      timeFormat: timeFormat$1,
+	      timeFormat: timeFormat,
 	      format: format,
 	      panelHeight: panelHeight,
 	      lineLength: lineLength$1,
@@ -54289,7 +52025,7 @@ var app = (function () {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [yScaleText, mapScaleText, timeScaleText, $sizeTotalYScale, $timeScale, $margin, $panelHeight, commaFormat, tf, text1_binding, text2_binding, text3_binding];
+	  return [yScaleText, mapScaleText, timeScaleText, $sizeTotalYScale, $timeScale, $margin, $panelHeight, commaFormat, text1_binding, text2_binding, text3_binding];
 	}
 
 	var Labels = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -54848,7 +52584,7 @@ var app = (function () {
 	  };
 	}();
 
-	var console_1$8 = globals.console;
+	var console_1$7 = globals.console;
 	var file$B = "src/components/Canvas.svelte";
 
 	function create_fragment$C(ctx) {
@@ -55056,7 +52792,7 @@ var app = (function () {
 
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -55652,27 +53388,27 @@ var app = (function () {
 	      circle = svg_element("circle");
 	      attr_dev(stop0, "offset", "0");
 	      set_style(stop0, "stop-color", "var(--usa-lightlightblue)");
-	      add_location(stop0, file$D, 45, 6, 1195);
+	      add_location(stop0, file$D, 45, 6, 1179);
 	      attr_dev(stop1, "offset", "0.8");
 	      set_style(stop1, "stop-color", "var(--usa-lightblue)");
-	      add_location(stop1, file$D, 46, 6, 1268);
+	      add_location(stop1, file$D, 46, 6, 1252);
 	      attr_dev(stop2, "offset", "1");
 	      set_style(stop2, "stop-color", "var(--usa-lightblue)");
-	      add_location(stop2, file$D, 47, 6, 1338);
+	      add_location(stop2, file$D, 47, 6, 1322);
 	      attr_dev(linearGradient, "id", "density-gradient");
 	      attr_dev(linearGradient, "x1", "0");
 	      attr_dev(linearGradient, "y1", "0");
 	      attr_dev(linearGradient, "x2", "1");
 	      attr_dev(linearGradient, "y2", "0");
-	      add_location(linearGradient, file$D, 44, 4, 1122);
-	      add_location(defs, file$D, 43, 2, 1111);
+	      add_location(linearGradient, file$D, 44, 4, 1106);
+	      add_location(defs, file$D, 43, 2, 1095);
 	      attr_dev(path, "d", path_d_value =
 	      /*line*/
 	      ctx[3](
 	      /*data*/
 	      ctx[2]));
 	      attr_dev(path, "class", "svelte-ltflmu");
-	      add_location(path, file$D, 51, 4, 1455);
+	      add_location(path, file$D, 51, 4, 1439);
 	      attr_dev(circle, "cx", circle_cx_value =
 	      /*data*/
 	      ctx[2][
@@ -55685,9 +53421,9 @@ var app = (function () {
 	      ctx[2].length - 1][1]);
 	      attr_dev(circle, "r", "5");
 	      attr_dev(circle, "class", "svelte-ltflmu");
-	      add_location(circle, file$D, 52, 4, 1488);
+	      add_location(circle, file$D, 52, 4, 1472);
 	      attr_dev(g, "class", "line svelte-ltflmu");
-	      add_location(g, file$D, 50, 2, 1434);
+	      add_location(g, file$D, 50, 2, 1418);
 	      attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " +
 	      /*width*/
 	      ctx[0] + " " +
@@ -55699,7 +53435,7 @@ var app = (function () {
 	      attr_dev(svg, "height",
 	      /*height*/
 	      ctx[1]);
-	      add_location(svg, file$D, 40, 0, 1032);
+	      add_location(svg, file$D, 40, 0, 1016);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -55799,9 +53535,9 @@ var app = (function () {
 	  var _$$props$dates = $$props.dates,
 	      dates = _$$props$dates === void 0 ? [] : _$$props$dates;
 	  var _$$props$minDate = $$props.minDate,
-	      minDate = _$$props$minDate === void 0 ? new Date() : _$$props$minDate;
+	      minDate = _$$props$minDate === void 0 ? 0 : _$$props$minDate;
 	  var _$$props$maxDate = $$props.maxDate,
-	      maxDate = _$$props$maxDate === void 0 ? new Date() : _$$props$maxDate;
+	      maxDate = _$$props$maxDate === void 0 ? 350 : _$$props$maxDate;
 	  var margin = {
 	    top: 10,
 	    right: 6,
@@ -56002,13 +53738,13 @@ var app = (function () {
 	  return child_ctx;
 	}
 
-	function get_each_context_1$4(ctx, list, i) {
+	function get_each_context_1$3(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[29] = list[i];
 	  return child_ctx;
 	}
 
-	function get_each_context_2$1(ctx, list, i) {
+	function get_each_context_2(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[32] = list[i];
 	  return child_ctx;
@@ -56082,12 +53818,12 @@ var app = (function () {
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value_2, get_each_context_2$1, get_key);
+	  validate_each_keys(ctx, each_value_2, get_each_context_2, get_key);
 
 	  for (var i = 0; i < each_value_2.length; i += 1) {
-	    var child_ctx = get_each_context_2$1(ctx, each_value_2, i);
+	    var child_ctx = get_each_context_2(ctx, each_value_2, i);
 	    var key = get_key(child_ctx);
-	    each0_lookup.set(key, each_blocks_2[i] = create_each_block_2$1(key, child_ctx));
+	    each0_lookup.set(key, each_blocks_2[i] = create_each_block_2(key, child_ctx));
 	  }
 
 	  var each_value_1 =
@@ -56102,14 +53838,14 @@ var app = (function () {
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value_1, get_each_context_1$4, get_key_1);
+	  validate_each_keys(ctx, each_value_1, get_each_context_1$3, get_key_1);
 
 	  for (var _i = 0; _i < each_value_1.length; _i += 1) {
-	    var _child_ctx = get_each_context_1$4(ctx, each_value_1, _i);
+	    var _child_ctx = get_each_context_1$3(ctx, each_value_1, _i);
 
 	    var _key = get_key_1(_child_ctx);
 
-	    each1_lookup.set(_key, each_blocks_1[_i] = create_each_block_1$4(_key, _child_ctx));
+	    each1_lookup.set(_key, each_blocks_1[_i] = create_each_block_1$3(_key, _child_ctx));
 	  }
 
 	  var each_value =
@@ -56342,8 +54078,8 @@ var app = (function () {
 	        /*platforms*/
 	        ctx[5];
 	        validate_each_argument(_each_value_);
-	        validate_each_keys(ctx, _each_value_, get_each_context_2$1, get_key);
-	        each_blocks_2 = update_keyed_each(each_blocks_2, dirty, get_key, 1, ctx, _each_value_, each0_lookup, ul0, destroy_block, create_each_block_2$1, null, get_each_context_2$1);
+	        validate_each_keys(ctx, _each_value_, get_each_context_2, get_key);
+	        each_blocks_2 = update_keyed_each(each_blocks_2, dirty, get_key, 1, ctx, _each_value_, each0_lookup, ul0, destroy_block, create_each_block_2, null, get_each_context_2);
 	      }
 
 	      if (dirty[0] &
@@ -56353,8 +54089,8 @@ var app = (function () {
 	        /*methods*/
 	        ctx[6];
 	        validate_each_argument(_each_value_2);
-	        validate_each_keys(ctx, _each_value_2, get_each_context_1$4, get_key_1);
-	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key_1, 1, ctx, _each_value_2, each1_lookup, ul1, destroy_block, create_each_block_1$4, null, get_each_context_1$4);
+	        validate_each_keys(ctx, _each_value_2, get_each_context_1$3, get_key_1);
+	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key_1, 1, ctx, _each_value_2, each1_lookup, ul1, destroy_block, create_each_block_1$3, null, get_each_context_1$3);
 	      }
 
 	      if ((!current || dirty[0] &
@@ -56554,7 +54290,7 @@ var app = (function () {
 	} // (113:12) {#each platforms as platform (platform.id)}
 
 
-	function create_each_block_2$1(key_1, ctx) {
+	function create_each_block_2(key_1, ctx) {
 	  var li;
 	  var t0_value =
 	  /*platform*/
@@ -56641,7 +54377,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_2$1.name,
+	    id: create_each_block_2.name,
 	    type: "each",
 	    source: "(113:12) {#each platforms as platform (platform.id)}",
 	    ctx: ctx
@@ -56650,7 +54386,7 @@ var app = (function () {
 	} // (124:12) {#each methods as method (method.id)}
 
 
-	function create_each_block_1$4(key_1, ctx) {
+	function create_each_block_1$3(key_1, ctx) {
 	  var li;
 	  var t0_value =
 	  /*method*/
@@ -56737,7 +54473,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_1$4.name,
+	    id: create_each_block_1$3.name,
 	    type: "each",
 	    source: "(124:12) {#each methods as method (method.id)}",
 	    ctx: ctx
@@ -56942,14 +54678,14 @@ var app = (function () {
 	  component_subscribe($$self, timeScale, function ($$value) {
 	    return $$invalidate(10, $timeScale = $$value);
 	  });
-	  var parseDate = timeParse$1("%m/%d/%Y");
+	  var parseDate = timeParse("%m/%d/%Y");
 	  var offset = {
 	    top: 10,
 	    right: 10,
 	    bottom: 10,
 	    left: 10
 	  };
-	  var tf = timeFormat$1("%B %d, %Y");
+	  var tf = timeFormat("%B %d, %Y");
 	  var tWidth = 0;
 	  var tHeight = 0;
 	  var side;
@@ -57048,9 +54784,9 @@ var app = (function () {
 	      methodFilter: methodFilter,
 	      sourceCategoryFilter: sourceCategoryFilter,
 	      selectAllFilters: selectAllFilters,
-	      timeFormat: timeFormat$1,
+	      timeFormat: timeFormat,
 	      group: group,
-	      timeParse: timeParse$1,
+	      timeParse: timeParse,
 	      uniq: lodash.uniq,
 	      parseDate: parseDate,
 	      CaseDensity: CaseDensity,
@@ -57358,21 +55094,21 @@ var app = (function () {
 	  property: 'startDate',
 	  name: 'Start Date',
 	  sortable: true,
-	  format: timeFormat$1('%B %d, %Y'),
+	  format: timeFormat('%B %d, %Y'),
 	  classes: 'left',
 	  minWidth: '200px'
 	}, {
 	  property: 'endDate',
 	  name: 'End Date',
 	  sortable: true,
-	  format: timeFormat$1('%B %d, %Y'),
+	  format: timeFormat('%B %d, %Y'),
 	  classes: 'left',
 	  minWidth: '200px'
 	}, {
 	  property: 'attributionDate',
 	  name: 'Attribution Date',
 	  sortable: true,
-	  format: timeFormat$1('%B %d, %Y'),
+	  format: timeFormat('%B %d, %Y'),
 	  classes: 'left',
 	  minWidth: '200px'
 	}, {
@@ -57454,7 +55190,7 @@ var app = (function () {
 
 	var file$G = "src/components/Table.svelte";
 
-	function get_each_context_1$5(ctx, list, i) {
+	function get_each_context_1$4(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[18] = list[i];
 	  return child_ctx;
@@ -57467,14 +55203,14 @@ var app = (function () {
 	  return child_ctx;
 	}
 
-	function get_each_context_2$2(ctx, list, i) {
+	function get_each_context_2$1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[18] = list[i];
 	  return child_ctx;
 	} // (79:14) {#if (column.sortable)}
 
 
-	function create_if_block_3$4(ctx) {
+	function create_if_block_3$3(ctx) {
 	  var svg;
 	  var path;
 	  var svg_class_value;
@@ -57538,7 +55274,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block_3$4.name,
+	    id: create_if_block_3$3.name,
 	    type: "if",
 	    source: "(79:14) {#if (column.sortable)}",
 	    ctx: ctx
@@ -57547,7 +55283,7 @@ var app = (function () {
 	} // (76:10) {#each columns as column (column.property)}
 
 
-	function create_each_block_2$2(key_1, ctx) {
+	function create_each_block_2$1(key_1, ctx) {
 	  var th;
 	  var t0_value =
 	  /*column*/
@@ -57557,7 +55293,7 @@ var app = (function () {
 	  var t2;
 	  var if_block =
 	  /*column*/
-	  ctx[18].sortable && create_if_block_3$4(ctx);
+	  ctx[18].sortable && create_if_block_3$3(ctx);
 	  var block = {
 	    key: key_1,
 	    first: null,
@@ -57591,7 +55327,7 @@ var app = (function () {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 	        } else {
-	          if_block = create_if_block_3$4(ctx);
+	          if_block = create_if_block_3$3(ctx);
 	          if_block.c();
 	          if_block.m(th, t2);
 	        }
@@ -57607,7 +55343,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_2$2.name,
+	    id: create_each_block_2$1.name,
 	    type: "each",
 	    source: "(76:10) {#each columns as column (column.property)}",
 	    ctx: ctx
@@ -57616,7 +55352,7 @@ var app = (function () {
 	} // (104:16) {:else}
 
 
-	function create_else_block$2(ctx) {
+	function create_else_block$1(ctx) {
 	  var t_value =
 	  /*row*/
 	  ctx[15][
@@ -57645,7 +55381,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_else_block$2.name,
+	    id: create_else_block$1.name,
 	    type: "else",
 	    source: "(104:16) {:else}",
 	    ctx: ctx
@@ -57768,7 +55504,7 @@ var app = (function () {
 	} // (96:12) {#each columns as column (column.property)}
 
 
-	function create_each_block_1$5(key_1, ctx) {
+	function create_each_block_1$4(key_1, ctx) {
 	  var td;
 	  var td_class_value;
 	  var td_style_value;
@@ -57789,7 +55525,7 @@ var app = (function () {
 	    if (
 	    /*column*/
 	    ctx[18].hyperlink) return create_if_block_2$4;
-	    return create_else_block$2;
+	    return create_else_block$1;
 	  }
 
 	  var current_block_type = select_block_type(ctx);
@@ -57853,7 +55589,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_1$5.name,
+	    id: create_each_block_1$4.name,
 	    type: "each",
 	    source: "(96:12) {#each columns as column (column.property)}",
 	    ctx: ctx
@@ -57879,12 +55615,12 @@ var app = (function () {
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value_1, get_each_context_1$5, get_key);
+	  validate_each_keys(ctx, each_value_1, get_each_context_1$4, get_key);
 
 	  for (var i = 0; i < each_value_1.length; i += 1) {
-	    var child_ctx = get_each_context_1$5(ctx, each_value_1, i);
+	    var child_ctx = get_each_context_1$4(ctx, each_value_1, i);
 	    var key = get_key(child_ctx);
-	    each_1_lookup.set(key, each_blocks[i] = create_each_block_1$5(key, child_ctx));
+	    each_1_lookup.set(key, each_blocks[i] = create_each_block_1$4(key, child_ctx));
 	  }
 
 	  var block = {
@@ -57927,8 +55663,8 @@ var app = (function () {
 	        /*columns*/
 	        ctx[0];
 	        validate_each_argument(_each_value_);
-	        validate_each_keys(ctx, _each_value_, get_each_context_1$5, get_key);
-	        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, _each_value_, each_1_lookup, tr, destroy_block, create_each_block_1$5, t, get_each_context_1$5);
+	        validate_each_keys(ctx, _each_value_, get_each_context_1$4, get_key);
+	        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, _each_value_, each_1_lookup, tr, destroy_block, create_each_block_1$4, t, get_each_context_1$4);
 	      }
 
 	      if (dirty &
@@ -57997,12 +55733,12 @@ var app = (function () {
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value_2, get_each_context_2$2, get_key);
+	  validate_each_keys(ctx, each_value_2, get_each_context_2$1, get_key);
 
 	  for (var i = 0; i < each_value_2.length; i += 1) {
-	    var child_ctx = get_each_context_2$2(ctx, each_value_2, i);
+	    var child_ctx = get_each_context_2$1(ctx, each_value_2, i);
 	    var key = get_key(child_ctx);
-	    each0_lookup.set(key, each_blocks_1[i] = create_each_block_2$2(key, child_ctx));
+	    each0_lookup.set(key, each_blocks_1[i] = create_each_block_2$1(key, child_ctx));
 	  }
 
 	  var each_value =
@@ -58117,8 +55853,8 @@ var app = (function () {
 	        /*columns*/
 	        ctx[0];
 	        validate_each_argument(_each_value_2);
-	        validate_each_keys(ctx, _each_value_2, get_each_context_2$2, get_key);
-	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, _each_value_2, each0_lookup, tr, destroy_block, create_each_block_2$2, null, get_each_context_2$2);
+	        validate_each_keys(ctx, _each_value_2, get_each_context_2$1, get_key);
+	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, _each_value_2, each0_lookup, tr, destroy_block, create_each_block_2$1, null, get_each_context_2$1);
 	      }
 
 	      if (dirty &
@@ -58358,7 +56094,7 @@ var app = (function () {
 	  return Table;
 	}(SvelteComponentDev);
 
-	var console_1$9 = globals.console;
+	var console_1$8 = globals.console;
 	var file$H = "src/components/Visualization.svelte"; // (213:2) {#if (!timePoints)}
 
 	function create_if_block_1$8(ctx) {
@@ -58476,24 +56212,24 @@ var app = (function () {
 	    },
 	    p: function update(ctx, dirty) {
 	      var svg_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*timePoints*/
 	      2) svg_changes.timePoints =
 	      /*timePoints*/
 	      ctx[1];
 	      svg.$set(svg_changes);
 	      var info_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$selected*/
 	      256) info_changes.selectedItems =
 	      /*$selected*/
 	      ctx[8];
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$timeScale*/
 	      8) info_changes.x = 2 *
 	      /*$timeScale*/
 	      ctx[3].range()[0];
-	      if (dirty[0] &
+	      if (dirty &
 	      /*$sizeTotalYScale*/
 	      16) info_changes.y =
 	      /*$sizeTotalYScale*/
@@ -58613,35 +56349,35 @@ var app = (function () {
 	      t4 = space();
 	      div3 = element("div");
 	      create_component(table.$$.fragment);
-	      attr_dev(div0, "class", "controls-wrapper svelte-1q18g8x");
+	      attr_dev(div0, "class", "controls-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
 	        return (
 	          /*div0_elementresize_handler*/
 	          ctx[9].call(div0)
 	        );
 	      });
-	      add_location(div0, file$H, 216, 4, 7756);
-	      attr_dev(div1, "class", "draw-wrapper svelte-1q18g8x");
+	      add_location(div0, file$H, 216, 4, 7759);
+	      attr_dev(div1, "class", "draw-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
 	        return (
 	          /*div1_elementresize_handler*/
 	          ctx[11].call(div1)
 	        );
 	      });
-	      add_location(div1, file$H, 219, 4, 7870);
-	      attr_dev(div2, "class", "sticky-wrapper svelte-1q18g8x");
-	      add_location(div2, file$H, 215, 2, 7723);
-	      attr_dev(div3, "class", "table-wrapper svelte-1q18g8x");
-	      add_location(div3, file$H, 232, 2, 8265);
+	      add_location(div1, file$H, 219, 4, 7873);
+	      attr_dev(div2, "class", "sticky-wrapper svelte-1k0l8ja");
+	      add_location(div2, file$H, 215, 2, 7726);
+	      attr_dev(div3, "class", "table-wrapper svelte-1k0l8ja");
+	      add_location(div3, file$H, 232, 2, 8268);
 	      attr_dev(div4, "id", "viz");
-	      attr_dev(div4, "class", "visualization-wrapper svelte-1q18g8x");
+	      attr_dev(div4, "class", "visualization-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
 	        return (
 	          /*div4_elementresize_handler*/
 	          ctx[12].call(div4)
 	        );
 	      });
-	      add_location(div4, file$H, 211, 0, 7600);
+	      add_location(div4, file$H, 211, 0, 7603);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -58677,9 +56413,12 @@ var app = (function () {
 	      ctx[12].bind(div4));
 	      current = true;
 	    },
-	    p: function update(ctx, dirty) {
+	    p: function update(ctx, _ref) {
+	      var _ref2 = _slicedToArray(_ref, 1),
+	          dirty = _ref2[0];
+
 	      var topvisualcontent_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*data*/
 	      1) topvisualcontent_changes.data =
 	      /*data*/
@@ -58690,7 +56429,7 @@ var app = (function () {
 	      /*timePoints*/
 	      ctx[1]) {
 	        if (if_block0) {
-	          if (dirty[0] &
+	          if (dirty &
 	          /*timePoints*/
 	          2) {
 	            transition_in(if_block0, 1);
@@ -58710,7 +56449,7 @@ var app = (function () {
 	      }
 
 	      var controls_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*timePoints*/
 	      2) controls_changes.timePoints =
 	      /*timePoints*/
@@ -58723,7 +56462,7 @@ var app = (function () {
 	        if (if_block1) {
 	          if_block1.p(ctx, dirty);
 
-	          if (dirty[0] &
+	          if (dirty &
 	          /*timePoints*/
 	          2) {
 	            transition_in(if_block1, 1);
@@ -58743,7 +56482,7 @@ var app = (function () {
 	      }
 
 	      var table_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*timePoints*/
 	      2) table_changes.timePoints =
 	      /*timePoints*/
@@ -58817,13 +56556,8 @@ var app = (function () {
 	  var $sizeTotalRScale;
 	  var $originalTimeDomain;
 	  var $disinformantNationFilter;
-	  var $platformFilter;
-	  var $methodFilter;
 	  var $timeperiodFilter;
-	  var $sourceFilter;
-	  var $sourceCategoryFilter;
 	  var $dietFilter;
-	  var $tagFilter;
 	  var $controlsHeight;
 	  var $drawWrapper;
 	  var $height;
@@ -58896,33 +56630,13 @@ var app = (function () {
 	  component_subscribe($$self, disinformantNationFilter, function ($$value) {
 	    return $$invalidate(26, $disinformantNationFilter = $$value);
 	  });
-	  validate_store(platformFilter, "platformFilter");
-	  component_subscribe($$self, platformFilter, function ($$value) {
-	    return $$invalidate(27, $platformFilter = $$value);
-	  });
-	  validate_store(methodFilter, "methodFilter");
-	  component_subscribe($$self, methodFilter, function ($$value) {
-	    return $$invalidate(28, $methodFilter = $$value);
-	  });
 	  validate_store(timeperiodFilter, "timeperiodFilter");
 	  component_subscribe($$self, timeperiodFilter, function ($$value) {
-	    return $$invalidate(29, $timeperiodFilter = $$value);
-	  });
-	  validate_store(sourceFilter$1, "sourceFilter");
-	  component_subscribe($$self, sourceFilter$1, function ($$value) {
-	    return $$invalidate(30, $sourceFilter = $$value);
-	  });
-	  validate_store(sourceCategoryFilter, "sourceCategoryFilter");
-	  component_subscribe($$self, sourceCategoryFilter, function ($$value) {
-	    return $$invalidate(31, $sourceCategoryFilter = $$value);
+	    return $$invalidate(27, $timeperiodFilter = $$value);
 	  });
 	  validate_store(dietFilter, "dietFilter");
 	  component_subscribe($$self, dietFilter, function ($$value) {
-	    return $$invalidate(32, $dietFilter = $$value);
-	  });
-	  validate_store(tagFilter, "tagFilter");
-	  component_subscribe($$self, tagFilter, function ($$value) {
-	    return $$invalidate(33, $tagFilter = $$value);
+	    return $$invalidate(28, $dietFilter = $$value);
 	  });
 	  validate_store(controlsHeight, "controlsHeight");
 	  component_subscribe($$self, controlsHeight, function ($$value) {
@@ -58940,7 +56654,7 @@ var app = (function () {
 	  component_subscribe($$self, selected, function ($$value) {
 	    return $$invalidate(8, $selected = $$value);
 	  });
-	  var tf = timeFormat$1("%B %d, %Y");
+	  var tf = timeFormat("%B %d, %Y");
 	  var data, timePoints;
 	  onMount( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	    var urlFilters;
@@ -59004,7 +56718,7 @@ var app = (function () {
 	  })));
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$9.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -59087,7 +56801,7 @@ var app = (function () {
 	      forceManyBody: forceManyBody,
 	      forceCenter: forceCenter,
 	      forceCollide: forceCollide,
-	      timeFormat: timeFormat$1,
+	      timeFormat: timeFormat,
 	      sortConsistently: sortConsistently,
 	      parseUrl: parseUrl,
 	      ToTop: ToTop,
@@ -59122,13 +56836,8 @@ var app = (function () {
 	      $sizeTotalRScale: $sizeTotalRScale,
 	      $originalTimeDomain: $originalTimeDomain,
 	      $disinformantNationFilter: $disinformantNationFilter,
-	      $platformFilter: $platformFilter,
-	      $methodFilter: $methodFilter,
 	      $timeperiodFilter: $timeperiodFilter,
-	      $sourceFilter: $sourceFilter,
-	      $sourceCategoryFilter: $sourceCategoryFilter,
 	      $dietFilter: $dietFilter,
-	      $tagFilter: $tagFilter,
 	      $controlsHeight: $controlsHeight,
 	      $drawWrapper: $drawWrapper,
 	      $height: $height,
@@ -59146,21 +56855,21 @@ var app = (function () {
 	  }
 
 	  $$self.$$.update = function () {
-	    if ($$self.$$.dirty[0] &
+	    if ($$self.$$.dirty &
 	    /*data, $width, $minDim, $maxDim, $panelHeight, $margin*/
 	    7864325) {
 	      // set the scales
 	       setScales(data, $width, $minDim, $maxDim, $panelHeight, $margin);
 	    }
 
-	    if ($$self.$$.dirty[0] &
+	    if ($$self.$$.dirty &
 	    /*data, $timeScale, $sizeTotalYScale, $attributionScoreScale, $sizeTotalRScale, $originalTimeDomain, $margin, $width*/
 	    62914589) {
 	       if (data) {
 	        // calculate scaled data points
 	        var scaledData = data.map(function (d) {
 	          return _objectSpread2(_objectSpread2({}, d), {}, {
-	            _x: $timeScale(d.attributionDate),
+	            _x: $timeScale(d.testDate),
 	            _y: $sizeTotalYScale.range()[0],
 	            color: $attributionScoreScale(d.attributionScore),
 	            size: d.size,
@@ -59196,16 +56905,19 @@ var app = (function () {
 	      }
 	    }
 
-	    if ($$self.$$.dirty[0] &
-	    /*timePoints, $disinformantNationFilter, $platformFilter, $methodFilter, $timeperiodFilter, $sourceFilter, $textSearchFilter, $attributionScoreFilter, $polarizationFilter, $highlightPolarization, $caseIdFilter, $highlightCib*/
-	    2080890882 | $$self.$$.dirty[1] &
-	    /*$sourceCategoryFilter, $dietFilter, $tagFilter*/
-	    7) {
+	    if ($$self.$$.dirty &
+	    /*timePoints, $disinformantNationFilter, $timeperiodFilter, $dietFilter, $textSearchFilter, $attributionScoreFilter, $polarizationFilter, $highlightPolarization, $caseIdFilter, $highlightCib*/
+	    470278146) {
 	      // translate filter values into show property state
 	       if (timePoints) {
 	        $$invalidate(1, timePoints = timePoints.map(function (d) {
 	          return _objectSpread2(_objectSpread2({}, d), {}, {
-	            show: haveOverlap($disinformantNationFilter, d.disinformantNation) && haveOverlap($platformFilter, d.platforms) && haveOverlap($methodFilter, d.methods) && haveOverlap($timeperiodFilter, d.periodEra) && haveOverlap($sourceFilter, d.sourceFilter) && haveOverlap($sourceCategoryFilter, d.sourceCategory) && haveOverlap($dietFilter, d.diet) && haveOverlap($tagFilter, d.tags) && includesTextSearch($textSearchFilter, d.search) && withinRange($attributionScoreFilter, d.attributionScore) && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization) && isCaseId($caseIdFilter, d.id) && showPolarization($highlightPolarization, d.polarization) && showCib($highlightCib, d.cib)
+	            show: haveOverlap($disinformantNationFilter, d.disinformantNation) && //      && haveOverlap($platformFilter, d.platforms)
+	            //      && haveOverlap($methodFilter, d.methods)
+	            haveOverlap($timeperiodFilter, d.periodEra) && //      && haveOverlap($sourceFilter, d.sourceFilter)
+	            //      && haveOverlap($sourceCategoryFilter, d.sourceCategory)
+	            haveOverlap($dietFilter, d.diet) && //      && haveOverlap($tagFilter, d.tags)
+	            includesTextSearch($textSearchFilter, d.search) && withinRange($attributionScoreFilter, d.attributionScore) && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization) && isCaseId($caseIdFilter, d.id) && showPolarization($highlightPolarization, d.polarization) && showCib($highlightCib, d.cib)
 	          });
 	        }));
 	      }
@@ -59226,7 +56938,7 @@ var app = (function () {
 	    _classCallCheck(this, Visualization);
 
 	    _this = _super.call(this, options);
-	    init(_assertThisInitialized(_this), options, instance$I, create_fragment$I, safe_not_equal, {}, [-1, -1]);
+	    init(_assertThisInitialized(_this), options, instance$I, create_fragment$I, safe_not_equal, {});
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
 	      tagName: "Visualization",
@@ -59351,10 +57063,10 @@ var app = (function () {
 	  return CookieBanner;
 	}(SvelteComponentDev);
 
-	var console_1$a = globals.console;
+	var console_1$9 = globals.console;
 	var file$J = "src/App.svelte"; // (19:2) {:else}
 
-	function create_else_block$3(ctx) {
+	function create_else_block$2(ctx) {
 	  var visualization;
 	  var current;
 	  visualization = new Visualization({
@@ -59383,7 +57095,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_else_block$3.name,
+	    id: create_else_block$2.name,
 	    type: "else",
 	    source: "(19:2) {:else}",
 	    ctx: ctx
@@ -59485,7 +57197,7 @@ var app = (function () {
 	  cookiebanner = new CookieBanner({
 	    $$inline: true
 	  });
-	  var if_block_creators = [create_if_block$l, create_if_block_1$9, create_else_block$3];
+	  var if_block_creators = [create_if_block$l, create_if_block_1$9, create_else_block$2];
 	  var if_blocks = [];
 
 	  function select_block_type(ctx, dirty) {
@@ -59584,7 +57296,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$a.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$9.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,

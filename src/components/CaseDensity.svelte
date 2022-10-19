@@ -10,8 +10,8 @@
   export let width = 0;
   export let height = 0;
   export let dates = [];
-  export let minDate = new Date();
-  export let maxDate = new Date();
+  export let minDate = 0;
+  export let maxDate = 350;
 
   const margin = {
     top: 10,
