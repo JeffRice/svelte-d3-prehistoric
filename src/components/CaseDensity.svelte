@@ -22,10 +22,10 @@
 
   const line = d3line().curve(curveBasis);
 
-  $: ms = dates.map((d) => d.getTime() - minDate.getTime());
+  $: ms = dates.map((d) => d - minDate);
 
   $: xScale = scaleLinear()
-      .domain([0, maxDate.getTime() - minDate.getTime()])
+      .domain([0, maxDate - minDate])
       .range([margin.left, width - margin.right]);
 
   $: kde = kernelDensityEstimator(kernelEpanechnikov(Math.max(...ms) / ms.length), xScale.ticks(ms.length))

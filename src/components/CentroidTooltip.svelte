@@ -101,9 +101,9 @@
             <h3>Species over time</h3>
             <CaseDensity width={Math.max(0, tWidth - offset.left - offset.right - 2 * 16)} 
                          height={50}
-                         dates={$tooltip.c.map((d) => d.attributionDate)}
-                         minDate={$timeScale.domain()[0]}
-                         maxDate={new Date(maxRange)} />
+                         dates={$tooltip.c.map((d) => d.testDate)}
+                         minDate={0}
+                         maxDate={350} />
             <h6>(Not all prehistoric species, only those represented in the visualization)</h6>
           </div>
         {/if}

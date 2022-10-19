@@ -53388,27 +53388,27 @@ var app = (function () {
 	      circle = svg_element("circle");
 	      attr_dev(stop0, "offset", "0");
 	      set_style(stop0, "stop-color", "var(--usa-lightlightblue)");
-	      add_location(stop0, file$D, 45, 6, 1179);
+	      add_location(stop0, file$D, 45, 6, 1139);
 	      attr_dev(stop1, "offset", "0.8");
 	      set_style(stop1, "stop-color", "var(--usa-lightblue)");
-	      add_location(stop1, file$D, 46, 6, 1252);
+	      add_location(stop1, file$D, 46, 6, 1212);
 	      attr_dev(stop2, "offset", "1");
 	      set_style(stop2, "stop-color", "var(--usa-lightblue)");
-	      add_location(stop2, file$D, 47, 6, 1322);
+	      add_location(stop2, file$D, 47, 6, 1282);
 	      attr_dev(linearGradient, "id", "density-gradient");
 	      attr_dev(linearGradient, "x1", "0");
 	      attr_dev(linearGradient, "y1", "0");
 	      attr_dev(linearGradient, "x2", "1");
 	      attr_dev(linearGradient, "y2", "0");
-	      add_location(linearGradient, file$D, 44, 4, 1106);
-	      add_location(defs, file$D, 43, 2, 1095);
+	      add_location(linearGradient, file$D, 44, 4, 1066);
+	      add_location(defs, file$D, 43, 2, 1055);
 	      attr_dev(path, "d", path_d_value =
 	      /*line*/
 	      ctx[3](
 	      /*data*/
 	      ctx[2]));
 	      attr_dev(path, "class", "svelte-ltflmu");
-	      add_location(path, file$D, 51, 4, 1439);
+	      add_location(path, file$D, 51, 4, 1399);
 	      attr_dev(circle, "cx", circle_cx_value =
 	      /*data*/
 	      ctx[2][
@@ -53421,9 +53421,9 @@ var app = (function () {
 	      ctx[2].length - 1][1]);
 	      attr_dev(circle, "r", "5");
 	      attr_dev(circle, "class", "svelte-ltflmu");
-	      add_location(circle, file$D, 52, 4, 1472);
+	      add_location(circle, file$D, 52, 4, 1432);
 	      attr_dev(g, "class", "line svelte-ltflmu");
-	      add_location(g, file$D, 50, 2, 1418);
+	      add_location(g, file$D, 50, 2, 1378);
 	      attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " +
 	      /*width*/
 	      ctx[0] + " " +
@@ -53435,7 +53435,7 @@ var app = (function () {
 	      attr_dev(svg, "height",
 	      /*height*/
 	      ctx[1]);
-	      add_location(svg, file$D, 40, 0, 1016);
+	      add_location(svg, file$D, 40, 0, 976);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53616,14 +53616,14 @@ var app = (function () {
 	    /*dates, minDate*/
 	    48) {
 	       $$invalidate(7, ms = dates.map(function (d) {
-	        return d.getTime() - minDate.getTime();
+	        return d - minDate;
 	      }));
 	    }
 
 	    if ($$self.$$.dirty &
 	    /*maxDate, minDate, width*/
 	    97) {
-	       $$invalidate(8, xScale = linear$1().domain([0, maxDate.getTime() - minDate.getTime()]).range([margin.left, width - margin.right]));
+	       $$invalidate(8, xScale = linear$1().domain([0, maxDate - minDate]).range([margin.left, width - margin.right]));
 	    }
 
 	    if ($$self.$$.dirty &
@@ -53734,19 +53734,19 @@ var app = (function () {
 
 	function get_each_context$b(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[26] = list[i];
+	  child_ctx[25] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_1$3(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[29] = list[i];
+	  child_ctx[28] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_2(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[32] = list[i];
+	  child_ctx[31] = list[i];
 	  return child_ctx;
 	} // (84:0) {#if ($tooltip)}
 
@@ -53814,7 +53814,7 @@ var app = (function () {
 	  var get_key = function get_key(ctx) {
 	    return (
 	      /*platform*/
-	      ctx[32].id
+	      ctx[31].id
 	    );
 	  };
 
@@ -53834,7 +53834,7 @@ var app = (function () {
 	  var get_key_1 = function get_key_1(ctx) {
 	    return (
 	      /*method*/
-	      ctx[29].id
+	      ctx[28].id
 	    );
 	  };
 
@@ -53856,7 +53856,7 @@ var app = (function () {
 	  var get_key_2 = function get_key_2(ctx) {
 	    return (
 	      /*sourceCategory*/
-	      ctx[26].id
+	      ctx[25].id
 	    );
 	  };
 
@@ -53925,23 +53925,23 @@ var app = (function () {
 	      attr_dev(div0, "class", "title svelte-djvhn0");
 	      add_location(div0, file$E, 94, 8, 2842);
 	      attr_dev(h30, "class", "svelte-djvhn0");
-	      add_location(h30, file$E, 110, 10, 3657);
+	      add_location(h30, file$E, 110, 10, 3614);
 	      attr_dev(ul0, "class", "svelte-djvhn0");
-	      add_location(ul0, file$E, 111, 10, 3691);
+	      add_location(ul0, file$E, 111, 10, 3648);
 	      attr_dev(div1, "class", "platforms-used svelte-djvhn0");
-	      add_location(div1, file$E, 109, 8, 3618);
+	      add_location(div1, file$E, 109, 8, 3575);
 	      attr_dev(h31, "class", "svelte-djvhn0");
-	      add_location(h31, file$E, 121, 10, 4063);
+	      add_location(h31, file$E, 121, 10, 4020);
 	      attr_dev(ul1, "class", "svelte-djvhn0");
-	      add_location(ul1, file$E, 122, 10, 4098);
+	      add_location(ul1, file$E, 122, 10, 4055);
 	      attr_dev(div2, "class", "methods-applied svelte-djvhn0");
-	      add_location(div2, file$E, 120, 8, 4023);
+	      add_location(div2, file$E, 120, 8, 3980);
 	      attr_dev(h32, "class", "svelte-djvhn0");
-	      add_location(h32, file$E, 132, 10, 4458);
+	      add_location(h32, file$E, 132, 10, 4415);
 	      attr_dev(ul2, "class", "svelte-djvhn0");
-	      add_location(ul2, file$E, 133, 10, 4537);
+	      add_location(ul2, file$E, 133, 10, 4494);
 	      attr_dev(div3, "class", "source-categories svelte-djvhn0");
-	      add_location(div3, file$E, 131, 8, 4416);
+	      add_location(div3, file$E, 131, 8, 4373);
 	      attr_dev(div4, "class", "scroll-wrapper svelte-djvhn0");
 	      add_location(div4, file$E, 93, 6, 2805);
 	      attr_dev(div5, "class", "content svelte-djvhn0");
@@ -53951,7 +53951,7 @@ var app = (function () {
 	      add_render_callback(function () {
 	        return (
 	          /*div5_elementresize_handler*/
-	          ctx[19].call(div5)
+	          ctx[17].call(div5)
 	        );
 	      });
 	      add_location(div5, file$E, 90, 4, 2702);
@@ -53965,7 +53965,7 @@ var app = (function () {
 	      add_render_callback(function () {
 	        return (
 	          /*div6_elementresize_handler*/
-	          ctx[20].call(div6)
+	          ctx[18].call(div6)
 	        );
 	      });
 	      add_location(div6, file$E, 84, 2, 2489);
@@ -54017,18 +54017,18 @@ var app = (function () {
 
 	      div5_resize_listener = add_resize_listener(div5,
 	      /*div5_elementresize_handler*/
-	      ctx[19].bind(div5));
+	      ctx[17].bind(div5));
 	      div6_resize_listener = add_resize_listener(div6,
 	      /*div6_elementresize_handler*/
-	      ctx[20].bind(div6));
+	      ctx[18].bind(div6));
 	      current = true;
 
 	      if (!mounted) {
 	        dispose = [listen_dev(div6, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[14]), false, false, true), listen_dev(div6, "mouseover", stop_propagation(
+	        ctx[12]), false, false, true), listen_dev(div6, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
-	        ctx[15]), false, false, true)];
+	        ctx[13]), false, false, true)];
 	        mounted = true;
 	      }
 	    },
@@ -54073,7 +54073,7 @@ var app = (function () {
 
 	      if (dirty[0] &
 	      /*handleLiClick, platforms*/
-	      4128) {
+	      2080) {
 	        var _each_value_ =
 	        /*platforms*/
 	        ctx[5];
@@ -54084,7 +54084,7 @@ var app = (function () {
 
 	      if (dirty[0] &
 	      /*handleLiClick, methods*/
-	      4160) {
+	      2112) {
 	        var _each_value_2 =
 	        /*methods*/
 	        ctx[6];
@@ -54101,7 +54101,7 @@ var app = (function () {
 
 	      if (dirty[0] &
 	      /*handleLiClick, sourceCategories*/
-	      4224) {
+	      2176) {
 	        var _each_value =
 	        /*sourceCategories*/
 	        ctx[7];
@@ -54201,19 +54201,15 @@ var app = (function () {
 	      /*tWidth*/
 	      ctx[0] -
 	      /*offset*/
-	      ctx[11].left -
+	      ctx[10].left -
 	      /*offset*/
-	      ctx[11].right - 2 * 16),
+	      ctx[10].right - 2 * 16),
 	      height: 50,
 	      dates:
 	      /*$tooltip*/
 	      ctx[8].c.map(func_1$1),
-	      minDate:
-	      /*$timeScale*/
-	      ctx[10].domain()[0],
-	      maxDate: new Date(
-	      /*maxRange*/
-	      ctx[13])
+	      minDate: 0,
+	      maxDate: 350
 	    },
 	    $$inline: true
 	  });
@@ -54229,7 +54225,7 @@ var app = (function () {
 	      h6.textContent = "(Not all prehistoric species, only those represented in the visualization)";
 	      attr_dev(h3, "class", "svelte-djvhn0");
 	      add_location(h3, file$E, 100, 12, 3138);
-	      add_location(h6, file$E, 106, 12, 3495);
+	      add_location(h6, file$E, 106, 12, 3452);
 	      attr_dev(div, "class", "case-density-vs-time svelte-djvhn0");
 	      add_location(div, file$E, 99, 10, 3091);
 	    },
@@ -54250,19 +54246,14 @@ var app = (function () {
 	      /*tWidth*/
 	      ctx[0] -
 	      /*offset*/
-	      ctx[11].left -
+	      ctx[10].left -
 	      /*offset*/
-	      ctx[11].right - 2 * 16);
+	      ctx[10].right - 2 * 16);
 	      if (dirty[0] &
 	      /*$tooltip*/
 	      256) casedensity_changes.dates =
 	      /*$tooltip*/
 	      ctx[8].c.map(func_1$1);
-	      if (dirty[0] &
-	      /*$timeScale*/
-	      1024) casedensity_changes.minDate =
-	      /*$timeScale*/
-	      ctx[10].domain()[0];
 	      casedensity.$set(casedensity_changes);
 	    },
 	    i: function intro(local) {
@@ -54294,14 +54285,14 @@ var app = (function () {
 	  var li;
 	  var t0_value =
 	  /*platform*/
-	  ctx[32].name + "";
+	  ctx[31].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
 	  /*platform*/
-	  ctx[32].count + "";
+	  ctx[31].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -54317,9 +54308,9 @@ var app = (function () {
 
 	    return (
 	      /*click_handler_1*/
-	      (_ctx = ctx)[16].apply(_ctx, [
+	      (_ctx = ctx)[14].apply(_ctx, [
 	      /*platform*/
-	      ctx[32]].concat(args))
+	      ctx[31]].concat(args))
 	    );
 	  }
 
@@ -54336,9 +54327,9 @@ var app = (function () {
 	      t4 = text(")");
 	      t5 = space();
 	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$E, 115, 16, 3893);
+	      add_location(span, file$E, 115, 16, 3850);
 	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$E, 113, 14, 3766);
+	      add_location(li, file$E, 113, 14, 3723);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -54362,12 +54353,12 @@ var app = (function () {
 	      /*platforms*/
 	      32 && t0_value !== (t0_value =
 	      /*platform*/
-	      ctx[32].name + "")) set_data_dev(t0, t0_value);
+	      ctx[31].name + "")) set_data_dev(t0, t0_value);
 	      if (dirty[0] &
 	      /*platforms*/
 	      32 && t3_value !== (t3_value =
 	      /*platform*/
-	      ctx[32].count + "")) set_data_dev(t3, t3_value);
+	      ctx[31].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -54390,14 +54381,14 @@ var app = (function () {
 	  var li;
 	  var t0_value =
 	  /*method*/
-	  ctx[29].name + "";
+	  ctx[28].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
 	  /*method*/
-	  ctx[29].count + "";
+	  ctx[28].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -54413,9 +54404,9 @@ var app = (function () {
 
 	    return (
 	      /*click_handler_2*/
-	      (_ctx2 = ctx)[17].apply(_ctx2, [
+	      (_ctx2 = ctx)[15].apply(_ctx2, [
 	      /*method*/
-	      ctx[29]].concat(args))
+	      ctx[28]].concat(args))
 	    );
 	  }
 
@@ -54432,9 +54423,9 @@ var app = (function () {
 	      t4 = text(")");
 	      t5 = space();
 	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$E, 126, 16, 4288);
+	      add_location(span, file$E, 126, 16, 4245);
 	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$E, 124, 14, 4167);
+	      add_location(li, file$E, 124, 14, 4124);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -54458,12 +54449,12 @@ var app = (function () {
 	      /*methods*/
 	      64 && t0_value !== (t0_value =
 	      /*method*/
-	      ctx[29].name + "")) set_data_dev(t0, t0_value);
+	      ctx[28].name + "")) set_data_dev(t0, t0_value);
 	      if (dirty[0] &
 	      /*methods*/
 	      64 && t3_value !== (t3_value =
 	      /*method*/
-	      ctx[29].count + "")) set_data_dev(t3, t3_value);
+	      ctx[28].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -54486,14 +54477,14 @@ var app = (function () {
 	  var li;
 	  var t0_value =
 	  /*sourceCategory*/
-	  ctx[26].name + "";
+	  ctx[25].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
 	  /*sourceCategory*/
-	  ctx[26].count + "";
+	  ctx[25].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -54509,9 +54500,9 @@ var app = (function () {
 
 	    return (
 	      /*click_handler_3*/
-	      (_ctx3 = ctx)[18].apply(_ctx3, [
+	      (_ctx3 = ctx)[16].apply(_ctx3, [
 	      /*sourceCategory*/
-	      ctx[26]].concat(args))
+	      ctx[25]].concat(args))
 	    );
 	  }
 
@@ -54528,9 +54519,9 @@ var app = (function () {
 	      t4 = text(")");
 	      t5 = space();
 	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$E, 137, 16, 4776);
+	      add_location(span, file$E, 137, 16, 4733);
 	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$E, 135, 14, 4631);
+	      add_location(li, file$E, 135, 14, 4588);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -54554,12 +54545,12 @@ var app = (function () {
 	      /*sourceCategories*/
 	      128 && t0_value !== (t0_value =
 	      /*sourceCategory*/
-	      ctx[26].name + "")) set_data_dev(t0, t0_value);
+	      ctx[25].name + "")) set_data_dev(t0, t0_value);
 	      if (dirty[0] &
 	      /*sourceCategories*/
 	      128 && t3_value !== (t3_value =
 	      /*sourceCategory*/
-	      ctx[26].count + "")) set_data_dev(t3, t3_value);
+	      ctx[25].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -54654,29 +54645,24 @@ var app = (function () {
 	};
 
 	var func_1$1 = function func_1(d) {
-	  return d.attributionDate;
+	  return d.testDate;
 	};
 
 	function instance$F($$self, $$props, $$invalidate) {
 	  var $tooltip;
 	  var $width;
 	  var $originalTimeDomain;
-	  var $timeScale;
 	  validate_store(tooltip$1, "tooltip");
 	  component_subscribe($$self, tooltip$1, function ($$value) {
 	    return $$invalidate(8, $tooltip = $$value);
 	  });
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(22, $width = $$value);
+	    return $$invalidate(20, $width = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
 	    return $$invalidate(9, $originalTimeDomain = $$value);
-	  });
-	  validate_store(timeScale, "timeScale");
-	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(10, $timeScale = $$value);
 	  });
 	  var parseDate = timeParse("%m/%d/%Y");
 	  var offset = {
@@ -54808,15 +54794,14 @@ var app = (function () {
 	      maxRange: maxRange,
 	      $tooltip: $tooltip,
 	      $width: $width,
-	      $originalTimeDomain: $originalTimeDomain,
-	      $timeScale: $timeScale
+	      $originalTimeDomain: $originalTimeDomain
 	    };
 	  };
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("tWidth" in $$props) $$invalidate(0, tWidth = $$props.tWidth);
 	    if ("tHeight" in $$props) $$invalidate(1, tHeight = $$props.tHeight);
-	    if ("side" in $$props) $$invalidate(21, side = $$props.side);
+	    if ("side" in $$props) $$invalidate(19, side = $$props.side);
 	    if ("left" in $$props) $$invalidate(2, left = $$props.left);
 	    if ("top" in $$props) $$invalidate(3, top = $$props.top);
 	    if ("contentTop" in $$props) $$invalidate(4, contentTop = $$props.contentTop);
@@ -54832,9 +54817,9 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty[0] &
 	    /*$tooltip, $width, contentTop, tHeight, side, tWidth*/
-	    6291731) {
+	    1573139) {
 	       if ($tooltip) {
-	        $$invalidate(21, side = $width - $tooltip.c[0].xCountry < $width / 2 ? "left" : "right");
+	        $$invalidate(19, side = $width - $tooltip.c[0].xCountry < $width / 2 ? "left" : "right");
 	        $$invalidate(3, top = $tooltip.c[0].yCountry - offset.top);
 	        $$invalidate(4, contentTop = contentOffset - $tooltip.e.pageY + window.pageYOffset);
 
@@ -54861,7 +54846,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [tWidth, tHeight, left, top, contentTop, platforms, methods, sourceCategories, $tooltip, $originalTimeDomain, $timeScale, offset, handleLiClick, maxRange, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, div5_elementresize_handler, div6_elementresize_handler];
+	  return [tWidth, tHeight, left, top, contentTop, platforms, methods, sourceCategories, $tooltip, $originalTimeDomain, offset, handleLiClick, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, div5_elementresize_handler, div6_elementresize_handler];
 	}
 
 	var CentroidTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
