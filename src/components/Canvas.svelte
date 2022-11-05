@@ -30,7 +30,8 @@
 
 
 
-  const worldDataPath = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
+  // const worldDataPath = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
+  const worldDataPath = 'countries-50m.json';
 
   onMount(async function() {
     const response = await fetch(

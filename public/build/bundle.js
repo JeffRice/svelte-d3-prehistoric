@@ -33995,7 +33995,7 @@ var app = (function () {
 	}.call(commonjsGlobal));
 	});
 
-	var data$1 = 'dinosaurdata66.csv'; // export const fossilData = 'ftgreenetrees2.csv';
+	var data$1 = 'dinosaurdata.csv'; // export const fossilData = 'ftgreenetrees2.csv';
 	// export const fossilData = 'fossilsJurassic1.csv';
 
 	var fossilData = 'jurassic_bigdata.csv'; // export const fossilData = 'westernUSjurassicfossils.csv';
@@ -34012,6 +34012,9 @@ var app = (function () {
 	var preloadImages = function preloadImages(data) {
 	  data.forEach(function (d) {
 	    return new Image().src = "".concat(images).concat(d.periodEra, ".jpg");
+	  });
+	  data.forEach(function (d) {
+	    return new Image().src = "".concat(images).concat(d.name.toLowerCase(), "1.jpg");
 	  });
 	}; // split string in array
 
@@ -34144,6 +34147,8 @@ var app = (function () {
 	                sizeIndex: d.size_index,
 	                tooltipContent: d.tooltip_content,
 	                testDate: parseInt(d.test_date),
+	                wikiURL: d.wikiURL,
+	                extraImage: d.extra_image,
 	                //     size: d.size,
 	                weight: d.weight,
 	                size: d.size,
@@ -44023,7 +44028,7 @@ var app = (function () {
 	      attr_dev(filter2, "width", "100%");
 	      attr_dev(filter2, "height", "100%");
 	      add_location(filter2, file$j, 53, 0, 1974);
-	      xlink_attr(feImage3, "xlink:href", "/images/spinosaurus.jpg");
+	      xlink_attr(feImage3, "xlink:href", "/images/spinosaur.jpg");
 	      add_location(feImage3, file$j, 58, 2, 2179);
 	      attr_dev(filter3, "id", "spinosaurus_image");
 	      attr_dev(filter3, "x", "0%");
@@ -44032,125 +44037,125 @@ var app = (function () {
 	      attr_dev(filter3, "height", "100%");
 	      add_location(filter3, file$j, 57, 0, 2104);
 	      xlink_attr(feImage4, "xlink:href", "/images/tyrannoskull.jpg");
-	      add_location(feImage4, file$j, 62, 2, 2314);
+	      add_location(feImage4, file$j, 62, 2, 2312);
 	      attr_dev(filter4, "id", "tyrannoskull_image");
 	      attr_dev(filter4, "x", "0%");
 	      attr_dev(filter4, "y", "0%");
 	      attr_dev(filter4, "width", "100%");
 	      attr_dev(filter4, "height", "100%");
-	      add_location(filter4, file$j, 61, 0, 2238);
+	      add_location(filter4, file$j, 61, 0, 2236);
 	      xlink_attr(feImage5, "xlink:href", "/images/trexskull.jpeg");
-	      add_location(feImage5, file$j, 66, 2, 2447);
+	      add_location(feImage5, file$j, 66, 2, 2445);
 	      attr_dev(filter5, "id", "trexskull_image");
 	      attr_dev(filter5, "x", "0%");
 	      attr_dev(filter5, "y", "0%");
 	      attr_dev(filter5, "width", "100%");
 	      attr_dev(filter5, "height", "100%");
-	      add_location(filter5, file$j, 65, 0, 2374);
+	      add_location(filter5, file$j, 65, 0, 2372);
 	      xlink_attr(feImage6, "xlink:href", "/images/aquatic.svg");
-	      add_location(feImage6, file$j, 70, 2, 2576);
+	      add_location(feImage6, file$j, 70, 2, 2574);
 	      attr_dev(filter6, "id", "aquatic_image");
 	      attr_dev(filter6, "x", "0%");
 	      attr_dev(filter6, "y", "0%");
 	      attr_dev(filter6, "width", "100%");
 	      attr_dev(filter6, "height", "100%");
-	      add_location(filter6, file$j, 69, 0, 2505);
+	      add_location(filter6, file$j, 69, 0, 2503);
 	      xlink_attr(feImage7, "xlink:href", "/images/pterodactyl.svg");
-	      add_location(feImage7, file$j, 74, 2, 2706);
+	      add_location(feImage7, file$j, 74, 2, 2704);
 	      attr_dev(filter7, "id", "pterodactyl_image");
 	      attr_dev(filter7, "x", "0%");
 	      attr_dev(filter7, "y", "0%");
 	      attr_dev(filter7, "width", "100%");
 	      attr_dev(filter7, "height", "100%");
-	      add_location(filter7, file$j, 73, 0, 2631);
+	      add_location(filter7, file$j, 73, 0, 2629);
 	      xlink_attr(feImage8, "xlink:href", "/images/stegosaurus.svg");
-	      add_location(feImage8, file$j, 78, 2, 2840);
+	      add_location(feImage8, file$j, 78, 2, 2838);
 	      attr_dev(filter8, "id", "stegosaurus_image");
 	      attr_dev(filter8, "x", "0%");
 	      attr_dev(filter8, "y", "0%");
 	      attr_dev(filter8, "width", "100%");
 	      attr_dev(filter8, "height", "100%");
-	      add_location(filter8, file$j, 77, 0, 2765);
+	      add_location(filter8, file$j, 77, 0, 2763);
 	      xlink_attr(feImage9, "xlink:href", "/images/stegosaurus2.svg");
-	      add_location(feImage9, file$j, 82, 2, 2975);
+	      add_location(feImage9, file$j, 82, 2, 2973);
 	      attr_dev(filter9, "id", "stegosaurus2_image");
 	      attr_dev(filter9, "x", "0%");
 	      attr_dev(filter9, "y", "0%");
 	      attr_dev(filter9, "width", "100%");
 	      attr_dev(filter9, "height", "100%");
-	      add_location(filter9, file$j, 81, 0, 2899);
+	      add_location(filter9, file$j, 81, 0, 2897);
 	      xlink_attr(feImage10, "xlink:href", "/images/lizard.svg");
-	      add_location(feImage10, file$j, 86, 2, 3105);
+	      add_location(feImage10, file$j, 86, 2, 3103);
 	      attr_dev(filter10, "id", "lizard_image");
 	      attr_dev(filter10, "x", "0%");
 	      attr_dev(filter10, "y", "0%");
 	      attr_dev(filter10, "width", "100%");
 	      attr_dev(filter10, "height", "100%");
-	      add_location(filter10, file$j, 85, 0, 3035);
+	      add_location(filter10, file$j, 85, 0, 3033);
 	      xlink_attr(feImage11, "xlink:href", "/images/smallraptor.svg");
-	      add_location(feImage11, file$j, 90, 2, 3234);
+	      add_location(feImage11, file$j, 90, 2, 3232);
 	      attr_dev(filter11, "id", "smallraptor_image");
 	      attr_dev(filter11, "x", "0%");
 	      attr_dev(filter11, "y", "0%");
 	      attr_dev(filter11, "width", "100%");
 	      attr_dev(filter11, "height", "100%");
-	      add_location(filter11, file$j, 89, 0, 3159);
+	      add_location(filter11, file$j, 89, 0, 3157);
 	      xlink_attr(feImage12, "xlink:href", "/images/seaskeleton.svg");
-	      add_location(feImage12, file$j, 94, 2, 3368);
+	      add_location(feImage12, file$j, 94, 2, 3366);
 	      attr_dev(filter12, "id", "seaskeleton_image");
 	      attr_dev(filter12, "x", "0%");
 	      attr_dev(filter12, "y", "0%");
 	      attr_dev(filter12, "width", "100%");
 	      attr_dev(filter12, "height", "100%");
-	      add_location(filter12, file$j, 93, 0, 3293);
+	      add_location(filter12, file$j, 93, 0, 3291);
 	      xlink_attr(feImage13, "xlink:href", "/images/armored.svg");
-	      add_location(feImage13, file$j, 98, 2, 3498);
+	      add_location(feImage13, file$j, 98, 2, 3496);
 	      attr_dev(filter13, "id", "armored_image");
 	      attr_dev(filter13, "x", "0%");
 	      attr_dev(filter13, "y", "0%");
 	      attr_dev(filter13, "width", "100%");
 	      attr_dev(filter13, "height", "100%");
-	      add_location(filter13, file$j, 97, 0, 3427);
+	      add_location(filter13, file$j, 97, 0, 3425);
 	      xlink_attr(feImage14, "xlink:href", "/images/tyrannosaurskeleton.svg");
-	      add_location(feImage14, file$j, 102, 2, 3636);
+	      add_location(feImage14, file$j, 102, 2, 3634);
 	      attr_dev(filter14, "id", "tyrannosaurskeleton_image");
 	      attr_dev(filter14, "x", "0%");
 	      attr_dev(filter14, "y", "0%");
 	      attr_dev(filter14, "width", "100%");
 	      attr_dev(filter14, "height", "100%");
-	      add_location(filter14, file$j, 101, 0, 3553);
+	      add_location(filter14, file$j, 101, 0, 3551);
 	      xlink_attr(feImage15, "xlink:href", "/images/triceratops.svg");
-	      add_location(feImage15, file$j, 106, 2, 3778);
+	      add_location(feImage15, file$j, 106, 2, 3776);
 	      attr_dev(filter15, "id", "triceratops_image");
 	      attr_dev(filter15, "x", "0%");
 	      attr_dev(filter15, "y", "0%");
 	      attr_dev(filter15, "width", "100%");
 	      attr_dev(filter15, "height", "100%");
-	      add_location(filter15, file$j, 105, 0, 3703);
+	      add_location(filter15, file$j, 105, 0, 3701);
 	      xlink_attr(feImage16, "xlink:href", "/images/talons.svg");
-	      add_location(feImage16, file$j, 110, 2, 3907);
+	      add_location(feImage16, file$j, 110, 2, 3905);
 	      attr_dev(filter16, "id", "talons_image");
 	      attr_dev(filter16, "x", "0%");
 	      attr_dev(filter16, "y", "0%");
 	      attr_dev(filter16, "width", "100%");
 	      attr_dev(filter16, "height", "100%");
-	      add_location(filter16, file$j, 109, 0, 3837);
+	      add_location(filter16, file$j, 109, 0, 3835);
 	      xlink_attr(feImage17, "xlink:href", "/images/basilosaurus.svg");
-	      add_location(feImage17, file$j, 114, 2, 4037);
+	      add_location(feImage17, file$j, 114, 2, 4035);
 	      attr_dev(filter17, "id", "basilosaurus_image");
 	      attr_dev(filter17, "x", "0%");
 	      attr_dev(filter17, "y", "0%");
 	      attr_dev(filter17, "width", "100%");
 	      attr_dev(filter17, "height", "100%");
-	      add_location(filter17, file$j, 113, 0, 3961);
+	      add_location(filter17, file$j, 113, 0, 3959);
 	      xlink_attr(feImage18, "xlink:href", "/images/duckbilled.svg");
-	      add_location(feImage18, file$j, 118, 2, 4171);
+	      add_location(feImage18, file$j, 118, 2, 4169);
 	      attr_dev(filter18, "id", "duckbilled_image");
 	      attr_dev(filter18, "x", "0%");
 	      attr_dev(filter18, "y", "0%");
 	      attr_dev(filter18, "width", "100%");
 	      attr_dev(filter18, "height", "100%");
-	      add_location(filter18, file$j, 117, 0, 4097);
+	      add_location(filter18, file$j, 117, 0, 4095);
 	      add_location(defs, file$j, 5, 0, 105);
 	    },
 	    l: function claim(nodes) {
@@ -45793,19 +45798,19 @@ var app = (function () {
 	  child_ctx[27] = list[i];
 	  child_ctx[29] = i;
 	  return child_ctx;
-	} // (118:0) {#if (showTooltip)}
+	} // (122:0) {#if (showTooltip)}
 
 
 	function create_if_block$b(ctx) {
-	  var div15;
+	  var div16;
 	  var eventtooltipcross;
 	  var t0;
 	  var div0;
 	  var t1;
 	  var div1;
 	  var t2;
+	  var div15;
 	  var div14;
-	  var div13;
 	  var div10;
 	  var h2;
 	  var t3_value =
@@ -45814,7 +45819,7 @@ var app = (function () {
 	  var t3;
 	  var t4;
 	  var div8;
-	  var section;
+	  var section0;
 	  var div2;
 	  var span0;
 	  var strong0;
@@ -45873,37 +45878,44 @@ var app = (function () {
 	  ctx[10].tp.disinformantNation + "";
 	  var t31;
 	  var t32;
-	  var share;
-	  var t33;
+	  var section1;
 	  var span6;
-	  var t35;
+	  var t34;
 	  var span7;
-	  var t37;
+	  var t36;
 	  var span8;
-	  var t39;
+	  var t38;
 	  var span9;
-	  var t41;
+	  var t40;
 	  var span10;
-	  var t43;
+	  var t42;
 	  var div9;
 	  var img;
 	  var img_src_value;
 	  var img_alt_value;
+	  var t43;
 	  var t44;
-	  var t45;
-	  var t46;
 	  var div11;
-	  var h30;
-	  var t48;
-	  var p;
-	  var t50;
+	  var t45;
+	  var a0;
+	  var t46_value =
+	  /*$tooltip*/
+	  ctx[10].tp.name + "";
+	  var t46;
+	  var a0_href_value;
+	  var t47;
 	  var div12;
+	  var h30;
+	  var t49;
+	  var p;
+	  var t51;
+	  var div13;
 	  var h31;
-	  var t52;
-	  var a;
-	  var div14_resize_listener;
+	  var t53;
+	  var a1;
 	  var div15_resize_listener;
-	  var div15_transition;
+	  var div16_resize_listener;
+	  var div16_transition;
 	  var current;
 	  var mounted;
 	  var dispose;
@@ -45921,39 +45933,26 @@ var app = (function () {
 	    },
 	    $$inline: true
 	  });
-	  share = new Share({
-	    props: {
-	      text: "",
-	      caseId:
-	      /*$tooltip*/
-	      ctx[10].tp.id,
-	      mode: "tooltip"
-	    },
-	    $$inline: true
-	  });
-	  var if_block0 =
+	  var if_block =
 	  /*$tooltip*/
-	  ctx[10].tp.tooltipContent && create_if_block_2$3(ctx);
-	  var if_block1 =
-	  /*$tooltip*/
-	  ctx[10].tp.periodEra && create_if_block_1$5(ctx);
+	  ctx[10].tp.tooltipContent && create_if_block_1$5(ctx);
 	  var block = {
 	    c: function create() {
-	      div15 = element("div");
+	      div16 = element("div");
 	      create_component(eventtooltipcross.$$.fragment);
 	      t0 = space();
 	      div0 = element("div");
 	      t1 = space();
 	      div1 = element("div");
 	      t2 = space();
+	      div15 = element("div");
 	      div14 = element("div");
-	      div13 = element("div");
 	      div10 = element("div");
 	      h2 = element("h2");
 	      t3 = text(t3_value);
 	      t4 = space();
 	      div8 = element("div");
-	      section = element("section");
+	      section0 = element("section");
 	      div2 = element("div");
 	      span0 = element("span");
 	      strong0 = element("strong");
@@ -46000,43 +45999,45 @@ var app = (function () {
 	      t30 = space();
 	      t31 = text(t31_value);
 	      t32 = space();
-	      create_component(share.$$.fragment);
-	      t33 = space();
+	      section1 = element("section");
 	      span6 = element("span");
 	      span6.textContent = "Cretaceous";
-	      t35 = space();
+	      t34 = space();
 	      span7 = element("span");
 	      span7.textContent = "Jurassic";
-	      t37 = space();
+	      t36 = space();
 	      span8 = element("span");
 	      span8.textContent = "Triassic";
-	      t39 = space();
+	      t38 = space();
 	      span9 = element("span");
 	      span9.textContent = "Paleogene";
-	      t41 = space();
+	      t40 = space();
 	      span10 = element("span");
 	      span10.textContent = "Neogene";
-	      t43 = space();
+	      t42 = space();
 	      div9 = element("div");
 	      img = element("img");
+	      t43 = space();
+	      if (if_block) if_block.c();
 	      t44 = space();
-	      if (if_block0) if_block0.c();
-	      t45 = space();
-	      if (if_block1) if_block1.c();
-	      t46 = space();
 	      div11 = element("div");
+	      t45 = text("Wiki Link:\n          ");
+	      a0 = element("a");
+	      t46 = text(t46_value);
+	      t47 = space();
+	      div12 = element("div");
 	      h30 = element("h3");
 	      h30.textContent = "Description";
-	      t48 = space();
+	      t49 = space();
 	      p = element("p");
 	      p.textContent = "short description here";
-	      t50 = space();
-	      div12 = element("div");
+	      t51 = space();
+	      div13 = element("div");
 	      h31 = element("h3");
 	      h31.textContent = "Link";
-	      t52 = space();
-	      a = element("a");
-	      a.textContent = "wikipedia link";
+	      t53 = space();
+	      a1 = element("a");
+	      a1.textContent = "wikipedia link";
 	      attr_dev(div0, "class", "mouse-catcher");
 	      set_style(div0, "width",
 	      /*tWidth*/
@@ -46050,7 +46051,7 @@ var app = (function () {
 	      set_style(div0, "top",
 	      /*contentTop*/
 	      ctx[6] - 10 + "px");
-	      add_location(div0, file$n, 125, 4, 4031);
+	      add_location(div0, file$n, 129, 4, 4100);
 	      attr_dev(div1, "class", "mouse-catcher");
 	      set_style(div1, "width",
 	      /*tWidth*/
@@ -46064,208 +46065,220 @@ var app = (function () {
 	      set_style(div1, "top",
 	      /*$tooltip*/
 	      ctx[10].tp.rSizeTot + 5 + "px");
-	      add_location(div1, file$n, 130, 4, 4279);
-	      attr_dev(h2, "class", "svelte-fd4l8c");
-	      add_location(h2, file$n, 143, 10, 4824);
-	      add_location(strong0, file$n, 150, 44, 4979);
-	      add_location(span0, file$n, 150, 38, 4973);
-	      attr_dev(div2, "class", "stats-item svelte-fd4l8c");
-	      add_location(div2, file$n, 150, 14, 4949);
-	      add_location(strong1, file$n, 151, 44, 5083);
-	      add_location(span1, file$n, 151, 38, 5077);
-	      attr_dev(div3, "class", "stats-item svelte-fd4l8c");
-	      add_location(div3, file$n, 151, 14, 5053);
-	      add_location(strong2, file$n, 152, 44, 5190);
-	      add_location(span2, file$n, 152, 38, 5184);
-	      attr_dev(div4, "class", "stats-item svelte-fd4l8c");
-	      add_location(div4, file$n, 152, 14, 5160);
-	      add_location(strong3, file$n, 153, 44, 5306);
-	      add_location(span3, file$n, 153, 38, 5300);
-	      attr_dev(div5, "class", "stats-item svelte-fd4l8c");
-	      add_location(div5, file$n, 153, 14, 5276);
-	      add_location(strong4, file$n, 154, 44, 5420);
-	      add_location(span4, file$n, 154, 38, 5414);
-	      attr_dev(div6, "class", "stats-item svelte-fd4l8c");
-	      add_location(div6, file$n, 154, 14, 5390);
-	      add_location(strong5, file$n, 155, 44, 5519);
-	      add_location(span5, file$n, 155, 38, 5513);
-	      attr_dev(div7, "class", "stats-item svelte-fd4l8c");
-	      add_location(div7, file$n, 155, 14, 5489);
-	      attr_dev(section, "class", "dino-stats svelte-fd4l8c");
-	      add_location(section, file$n, 147, 12, 4900);
-	      attr_dev(div8, "class", "title-top svelte-fd4l8c");
-	      add_location(div8, file$n, 144, 10, 4862);
-	      attr_dev(span6, "class", "tag-label Cretaceous svelte-fd4l8c");
-	      add_location(span6, file$n, 166, 10, 5715);
-	      attr_dev(span7, "class", "tag-label Jurassic svelte-fd4l8c");
-	      add_location(span7, file$n, 167, 10, 5781);
-	      attr_dev(span8, "class", "tag-label Triassic svelte-fd4l8c");
-	      add_location(span8, file$n, 168, 10, 5843);
-	      attr_dev(span9, "class", "tag-label Paleogene svelte-fd4l8c");
-	      add_location(span9, file$n, 169, 10, 5905);
-	      attr_dev(span10, "class", "tag-label Neogene svelte-fd4l8c");
-	      add_location(span10, file$n, 170, 10, 5969);
-	      if (img.src !== (img_src_value = "" + (images +
+	      add_location(div1, file$n, 134, 4, 4348);
+	      attr_dev(h2, "class", "svelte-1143ogu");
+	      add_location(h2, file$n, 147, 10, 4893);
+	      add_location(strong0, file$n, 156, 44, 5050);
+	      add_location(span0, file$n, 156, 38, 5044);
+	      attr_dev(div2, "class", "stats-item svelte-1143ogu");
+	      add_location(div2, file$n, 156, 14, 5020);
+	      add_location(strong1, file$n, 157, 44, 5154);
+	      add_location(span1, file$n, 157, 38, 5148);
+	      attr_dev(div3, "class", "stats-item svelte-1143ogu");
+	      add_location(div3, file$n, 157, 14, 5124);
+	      add_location(strong2, file$n, 158, 44, 5261);
+	      add_location(span2, file$n, 158, 38, 5255);
+	      attr_dev(div4, "class", "stats-item svelte-1143ogu");
+	      add_location(div4, file$n, 158, 14, 5231);
+	      add_location(strong3, file$n, 159, 44, 5377);
+	      add_location(span3, file$n, 159, 38, 5371);
+	      attr_dev(div5, "class", "stats-item svelte-1143ogu");
+	      add_location(div5, file$n, 159, 14, 5347);
+	      add_location(strong4, file$n, 160, 44, 5491);
+	      add_location(span4, file$n, 160, 38, 5485);
+	      attr_dev(div6, "class", "stats-item svelte-1143ogu");
+	      add_location(div6, file$n, 160, 14, 5461);
+	      add_location(strong5, file$n, 161, 44, 5590);
+	      add_location(span5, file$n, 161, 38, 5584);
+	      attr_dev(div7, "class", "stats-item svelte-1143ogu");
+	      add_location(div7, file$n, 161, 14, 5560);
+	      attr_dev(section0, "class", "dino-stats svelte-1143ogu");
+	      add_location(section0, file$n, 153, 12, 4971);
+	      attr_dev(div8, "class", "title-top svelte-1143ogu");
+	      add_location(div8, file$n, 148, 10, 4931);
+	      attr_dev(span6, "class", "tag-label Cretaceous svelte-1143ogu");
+	      add_location(span6, file$n, 171, 10, 5850);
+	      attr_dev(span7, "class", "tag-label Jurassic svelte-1143ogu");
+	      add_location(span7, file$n, 172, 10, 5916);
+	      attr_dev(span8, "class", "tag-label Triassic svelte-1143ogu");
+	      add_location(span8, file$n, 173, 10, 5978);
+	      attr_dev(span9, "class", "tag-label Paleogene svelte-1143ogu");
+	      add_location(span9, file$n, 174, 10, 6040);
+	      attr_dev(span10, "class", "tag-label Neogene svelte-1143ogu");
+	      add_location(span10, file$n, 175, 10, 6104);
+	      attr_dev(section1, "class", "era-labels svelte-1143ogu");
+	      add_location(section1, file$n, 170, 10, 5811);
+	      if (img.src !== (img_src_value = "" + (images + removeSpace(
 	      /*$tooltip*/
-	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) attr_dev(img, "src", img_src_value);
+	      ctx[10].tp.name.toLowerCase()) + ".jpg"))) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-fd4l8c");
-	      add_location(img, file$n, 172, 12, 6061);
-	      attr_dev(div9, "class", "image svelte-fd4l8c");
-	      add_location(div9, file$n, 171, 10, 6029);
-	      attr_dev(div10, "class", "title title-bg svelte-fd4l8c");
-	      add_location(div10, file$n, 142, 8, 4785);
-	      attr_dev(h30, "class", "svelte-fd4l8c");
-	      add_location(h30, file$n, 199, 10, 6839);
-	      attr_dev(p, "class", "svelte-fd4l8c");
-	      add_location(p, file$n, 200, 10, 6870);
-	      attr_dev(div11, "class", "description svelte-fd4l8c");
-	      add_location(div11, file$n, 198, 8, 6803);
-	      attr_dev(h31, "class", "svelte-fd4l8c");
-	      add_location(h31, file$n, 260, 10, 9416);
-	      attr_dev(a, "href", "http://www.wikipedia.org");
-	      attr_dev(a, "target", "_blank");
-	      attr_dev(a, "class", "no-float svelte-fd4l8c");
-	      add_location(a, file$n, 261, 10, 9440);
-	      attr_dev(div12, "class", "link svelte-fd4l8c");
-	      add_location(div12, file$n, 259, 8, 9387);
-	      attr_dev(div13, "class", "scroll-wrapper svelte-fd4l8c");
-	      add_location(div13, file$n, 139, 6, 4699);
-	      attr_dev(div14, "class", "content svelte-fd4l8c");
-	      set_style(div14, "top",
+	      attr_dev(img, "class", "svelte-1143ogu");
+	      add_location(img, file$n, 181, 12, 6220);
+	      attr_dev(div9, "class", "image svelte-1143ogu");
+	      add_location(div9, file$n, 180, 10, 6188);
+	      attr_dev(div10, "class", "title title-bg svelte-1143ogu");
+	      add_location(div10, file$n, 146, 8, 4854);
+	      attr_dev(a0, "href", a0_href_value =
+	      /*$tooltip*/
+	      ctx[10].tp.wikiURL);
+	      attr_dev(a0, "target", "_blank");
+	      attr_dev(a0, "class", "no-float svelte-1143ogu");
+	      add_location(a0, file$n, 225, 10, 7446);
+	      attr_dev(div11, "class", "link svelte-1143ogu");
+	      add_location(div11, file$n, 223, 8, 7396);
+	      attr_dev(h30, "class", "svelte-1143ogu");
+	      add_location(h30, file$n, 230, 10, 7595);
+	      attr_dev(p, "class", "svelte-1143ogu");
+	      add_location(p, file$n, 231, 10, 7626);
+	      attr_dev(div12, "class", "description svelte-1143ogu");
+	      add_location(div12, file$n, 229, 8, 7559);
+	      attr_dev(h31, "class", "svelte-1143ogu");
+	      add_location(h31, file$n, 291, 10, 10172);
+	      attr_dev(a1, "href", "http://www.wikipedia.org");
+	      attr_dev(a1, "target", "_blank");
+	      attr_dev(a1, "class", "no-float svelte-1143ogu");
+	      add_location(a1, file$n, 292, 10, 10196);
+	      attr_dev(div13, "class", "link svelte-1143ogu");
+	      add_location(div13, file$n, 290, 8, 10143);
+	      attr_dev(div14, "class", "scroll-wrapper svelte-1143ogu");
+	      add_location(div14, file$n, 143, 6, 4768);
+	      attr_dev(div15, "class", "content svelte-1143ogu");
+	      set_style(div15, "top",
 	      /*contentTop*/
 	      ctx[6] + "px");
-	      set_style(div14, "margin", "0px " + (
+	      set_style(div15, "margin", "0px " + (
 	      /*$tooltip*/
 	      ctx[10].tp.rSizeTot / 3 +
 	      /*offset*/
 	      ctx[11].left) + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div14_elementresize_handler*/
-	          ctx[16].call(div14)
+	          /*div15_elementresize_handler*/
+	          ctx[16].call(div15)
 	        );
 	      });
-	      add_location(div14, file$n, 135, 4, 4514);
-	      attr_dev(div15, "class", "tooltip svelte-fd4l8c");
-	      set_style(div15, "left",
+	      add_location(div15, file$n, 139, 4, 4583);
+	      attr_dev(div16, "class", "tooltip svelte-1143ogu");
+	      set_style(div16, "left",
 	      /*left*/
 	      ctx[4] + "px");
-	      set_style(div15, "top",
+	      set_style(div16, "top",
 	      /*top*/
 	      ctx[5] + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div15_elementresize_handler*/
-	          ctx[17].call(div15)
+	          /*div16_elementresize_handler*/
+	          ctx[17].call(div16)
 	        );
 	      });
-	      add_location(div15, file$n, 118, 2, 3767);
+	      add_location(div16, file$n, 122, 2, 3836);
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, div15, anchor);
-	      mount_component(eventtooltipcross, div15, null);
-	      append_dev(div15, t0);
-	      append_dev(div15, div0);
-	      append_dev(div15, t1);
-	      append_dev(div15, div1);
-	      append_dev(div15, t2);
+	      insert_dev(target, div16, anchor);
+	      mount_component(eventtooltipcross, div16, null);
+	      append_dev(div16, t0);
+	      append_dev(div16, div0);
+	      append_dev(div16, t1);
+	      append_dev(div16, div1);
+	      append_dev(div16, t2);
+	      append_dev(div16, div15);
 	      append_dev(div15, div14);
-	      append_dev(div14, div13);
-	      append_dev(div13, div10);
+	      append_dev(div14, div10);
 	      append_dev(div10, h2);
 	      append_dev(h2, t3);
 	      append_dev(div10, t4);
 	      append_dev(div10, div8);
-	      append_dev(div8, section);
-	      append_dev(section, div2);
+	      append_dev(div8, section0);
+	      append_dev(section0, div2);
 	      append_dev(div2, span0);
 	      append_dev(span0, strong0);
 	      append_dev(span0, t6);
 	      append_dev(span0, t7);
 	      append_dev(span0, t8);
-	      append_dev(section, t9);
-	      append_dev(section, div3);
+	      append_dev(section0, t9);
+	      append_dev(section0, div3);
 	      append_dev(div3, span1);
 	      append_dev(span1, strong1);
 	      append_dev(span1, t11);
 	      append_dev(span1, t12);
 	      append_dev(span1, t13);
-	      append_dev(section, t14);
-	      append_dev(section, div4);
+	      append_dev(section0, t14);
+	      append_dev(section0, div4);
 	      append_dev(div4, span2);
 	      append_dev(span2, strong2);
 	      append_dev(span2, t16);
 	      append_dev(span2, t17);
 	      append_dev(span2, t18);
-	      append_dev(section, t19);
-	      append_dev(section, div5);
+	      append_dev(section0, t19);
+	      append_dev(section0, div5);
 	      append_dev(div5, span3);
 	      append_dev(span3, strong3);
 	      append_dev(span3, t21);
 	      append_dev(span3, t22);
 	      append_dev(span3, t23);
-	      append_dev(section, t24);
-	      append_dev(section, div6);
+	      append_dev(section0, t24);
+	      append_dev(section0, div6);
 	      append_dev(div6, span4);
 	      append_dev(span4, strong4);
 	      append_dev(span4, t26);
 	      append_dev(span4, t27);
-	      append_dev(section, t28);
-	      append_dev(section, div7);
+	      append_dev(section0, t28);
+	      append_dev(section0, div7);
 	      append_dev(div7, span5);
 	      append_dev(span5, strong5);
 	      append_dev(span5, t30);
 	      append_dev(span5, t31);
 	      append_dev(div10, t32);
-	      mount_component(share, div10, null);
-	      append_dev(div10, t33);
-	      append_dev(div10, span6);
-	      append_dev(div10, t35);
-	      append_dev(div10, span7);
-	      append_dev(div10, t37);
-	      append_dev(div10, span8);
-	      append_dev(div10, t39);
-	      append_dev(div10, span9);
-	      append_dev(div10, t41);
-	      append_dev(div10, span10);
-	      append_dev(div10, t43);
+	      append_dev(div10, section1);
+	      append_dev(section1, span6);
+	      append_dev(section1, t34);
+	      append_dev(section1, span7);
+	      append_dev(section1, t36);
+	      append_dev(section1, span8);
+	      append_dev(section1, t38);
+	      append_dev(section1, span9);
+	      append_dev(section1, t40);
+	      append_dev(section1, span10);
+	      append_dev(div10, t42);
 	      append_dev(div10, div9);
 	      append_dev(div9, img);
-	      append_dev(div13, t44);
-	      if (if_block0) if_block0.m(div13, null);
-	      append_dev(div13, t45);
-	      if (if_block1) if_block1.m(div13, null);
-	      append_dev(div13, t46);
-	      append_dev(div13, div11);
-	      append_dev(div11, h30);
-	      append_dev(div11, t48);
-	      append_dev(div11, p);
-	      append_dev(div13, t50);
-	      append_dev(div13, div12);
-	      append_dev(div12, h31);
-	      append_dev(div12, t52);
-	      append_dev(div12, a);
-	      /*div13_binding*/
-
-	      ctx[14](div13);
+	      append_dev(div14, t43);
+	      if (if_block) if_block.m(div14, null);
+	      append_dev(div14, t44);
+	      append_dev(div14, div11);
+	      append_dev(div11, t45);
+	      append_dev(div11, a0);
+	      append_dev(a0, t46);
+	      append_dev(div14, t47);
+	      append_dev(div14, div12);
+	      append_dev(div12, h30);
+	      append_dev(div12, t49);
+	      append_dev(div12, p);
+	      append_dev(div14, t51);
+	      append_dev(div14, div13);
+	      append_dev(div13, h31);
+	      append_dev(div13, t53);
+	      append_dev(div13, a1);
 	      /*div14_binding*/
 
-	      ctx[15](div14);
-	      div14_resize_listener = add_resize_listener(div14,
-	      /*div14_elementresize_handler*/
-	      ctx[16].bind(div14));
+	      ctx[14](div14);
+	      /*div15_binding*/
+
+	      ctx[15](div15);
 	      div15_resize_listener = add_resize_listener(div15,
 	      /*div15_elementresize_handler*/
-	      ctx[17].bind(div15));
+	      ctx[16].bind(div15));
+	      div16_resize_listener = add_resize_listener(div16,
+	      /*div16_elementresize_handler*/
+	      ctx[17].bind(div16));
 	      current = true;
 
 	      if (!mounted) {
-	        dispose = [listen_dev(div15, "click", stop_propagation(
+	        dispose = [listen_dev(div16, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[12]), false, false, true), listen_dev(div15, "mouseover", stop_propagation(
+	        ctx[12]), false, false, true), listen_dev(div16, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
 	        ctx[13]), false, false, true)];
 	        mounted = true;
@@ -46372,19 +46385,12 @@ var app = (function () {
 	      1024) && t31_value !== (t31_value =
 	      /*$tooltip*/
 	      ctx[10].tp.disinformantNation + "")) set_data_dev(t31, t31_value);
-	      var share_changes = {};
-	      if (dirty &
-	      /*$tooltip*/
-	      1024) share_changes.caseId =
-	      /*$tooltip*/
-	      ctx[10].tp.id;
-	      share.$set(share_changes);
 
 	      if (!current || dirty &
 	      /*$tooltip*/
-	      1024 && img.src !== (img_src_value = "" + (images +
+	      1024 && img.src !== (img_src_value = "" + (images + removeSpace(
 	      /*$tooltip*/
-	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) {
+	      ctx[10].tp.name.toLowerCase()) + ".jpg"))) {
 	        attr_dev(img, "src", img_src_value);
 	      }
 
@@ -46399,37 +46405,36 @@ var app = (function () {
 	      if (
 	      /*$tooltip*/
 	      ctx[10].tp.tooltipContent) {
-	        if (if_block0) {
-	          if_block0.p(ctx, dirty);
+	        if (if_block) {
+	          if_block.p(ctx, dirty);
 	        } else {
-	          if_block0 = create_if_block_2$3(ctx);
-	          if_block0.c();
-	          if_block0.m(div13, t45);
+	          if_block = create_if_block_1$5(ctx);
+	          if_block.c();
+	          if_block.m(div14, t44);
 	        }
-	      } else if (if_block0) {
-	        if_block0.d(1);
-	        if_block0 = null;
+	      } else if (if_block) {
+	        if_block.d(1);
+	        if_block = null;
 	      }
 
-	      if (
+	      if ((!current || dirty &
 	      /*$tooltip*/
-	      ctx[10].tp.periodEra) {
-	        if (if_block1) {
-	          if_block1.p(ctx, dirty);
-	        } else {
-	          if_block1 = create_if_block_1$5(ctx);
-	          if_block1.c();
-	          if_block1.m(div13, t46);
-	        }
-	      } else if (if_block1) {
-	        if_block1.d(1);
-	        if_block1 = null;
+	      1024) && t46_value !== (t46_value =
+	      /*$tooltip*/
+	      ctx[10].tp.name + "")) set_data_dev(t46, t46_value);
+
+	      if (!current || dirty &
+	      /*$tooltip*/
+	      1024 && a0_href_value !== (a0_href_value =
+	      /*$tooltip*/
+	      ctx[10].tp.wikiURL)) {
+	        attr_dev(a0, "href", a0_href_value);
 	      }
 
 	      if (!current || dirty &
 	      /*contentTop*/
 	      64) {
-	        set_style(div14, "top",
+	        set_style(div15, "top",
 	        /*contentTop*/
 	        ctx[6] + "px");
 	      }
@@ -46437,7 +46442,7 @@ var app = (function () {
 	      if (!current || dirty &
 	      /*$tooltip*/
 	      1024) {
-	        set_style(div14, "margin", "0px " + (
+	        set_style(div15, "margin", "0px " + (
 	        /*$tooltip*/
 	        ctx[10].tp.rSizeTot / 3 +
 	        /*offset*/
@@ -46447,7 +46452,7 @@ var app = (function () {
 	      if (!current || dirty &
 	      /*left*/
 	      16) {
-	        set_style(div15, "left",
+	        set_style(div16, "left",
 	        /*left*/
 	        ctx[4] + "px");
 	      }
@@ -46455,7 +46460,7 @@ var app = (function () {
 	      if (!current || dirty &
 	      /*top*/
 	      32) {
-	        set_style(div15, "top",
+	        set_style(div16, "top",
 	        /*top*/
 	        ctx[5] + "px");
 	      }
@@ -46463,39 +46468,35 @@ var app = (function () {
 	    i: function intro(local) {
 	      if (current) return;
 	      transition_in(eventtooltipcross.$$.fragment, local);
-	      transition_in(share.$$.fragment, local);
 	      add_render_callback(function () {
-	        if (!div15_transition) div15_transition = create_bidirectional_transition(div15, fade, {
+	        if (!div16_transition) div16_transition = create_bidirectional_transition(div16, fade, {
 	          duration: 200
 	        }, true);
-	        div15_transition.run(1);
+	        div16_transition.run(1);
 	      });
 	      current = true;
 	    },
 	    o: function outro(local) {
 	      transition_out(eventtooltipcross.$$.fragment, local);
-	      transition_out(share.$$.fragment, local);
-	      if (!div15_transition) div15_transition = create_bidirectional_transition(div15, fade, {
+	      if (!div16_transition) div16_transition = create_bidirectional_transition(div16, fade, {
 	        duration: 200
 	      }, false);
-	      div15_transition.run(0);
+	      div16_transition.run(0);
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div15);
+	      if (detaching) detach_dev(div16);
 	      destroy_component(eventtooltipcross);
-	      destroy_component(share);
-	      if (if_block0) if_block0.d();
-	      if (if_block1) if_block1.d();
-	      /*div13_binding*/
-
-	      ctx[14](null);
+	      if (if_block) if_block.d();
 	      /*div14_binding*/
 
+	      ctx[14](null);
+	      /*div15_binding*/
+
 	      ctx[15](null);
-	      div14_resize_listener();
 	      div15_resize_listener();
-	      if (detaching && div15_transition) div15_transition.end();
+	      div16_resize_listener();
+	      if (detaching && div16_transition) div16_transition.end();
 	      mounted = false;
 	      run_all(dispose);
 	    }
@@ -46504,15 +46505,26 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$b.name,
 	    type: "if",
-	    source: "(118:0) {#if (showTooltip)}",
+	    source: "(122:0) {#if (showTooltip)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (180:8) {#if ($tooltip.tp.tooltipContent)}
+	} // (189:8) {#if ($tooltip.tp.tooltipContent)}
 
 
-	function create_if_block_2$3(ctx) {
+	function create_if_block_1$5(ctx) {
 	  var div;
+	  var t0;
+	  var p;
+	  var t1_value =
+	  /*paragraphs*/
+	  ctx[8][0] + "";
+	  var t1;
+	  var t2;
+	  var t3;
+	  var if_block0 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra && create_if_block_4$2(ctx);
 	  var each_value =
 	  /*paragraphs*/
 	  ctx[8];
@@ -46523,27 +46535,68 @@ var app = (function () {
 	    each_blocks[i] = create_each_block$5(get_each_context$5(ctx, each_value, i));
 	  }
 
+	  var if_block1 =
+	  /*$tooltip*/
+	  ctx[10].tp.extraImage === "yes" && create_if_block_2$3(ctx);
 	  var block = {
 	    c: function create() {
 	      div = element("div");
+	      if (if_block0) if_block0.c();
+	      t0 = space();
+	      p = element("p");
+	      t1 = text(t1_value);
+	      t2 = space();
 
 	      for (var _i = 0; _i < each_blocks.length; _i += 1) {
 	        each_blocks[_i].c();
 	      }
 
-	      attr_dev(div, "class", "description svelte-fd4l8c");
-	      add_location(div, file$n, 180, 8, 6237);
+	      t3 = space();
+	      if (if_block1) if_block1.c();
+	      attr_dev(p, "class", "svelte-1143ogu");
+	      add_location(p, file$n, 201, 10, 6780);
+	      attr_dev(div, "class", "description svelte-1143ogu");
+	      add_location(div, file$n, 189, 8, 6408);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
+	      if (if_block0) if_block0.m(div, null);
+	      append_dev(div, t0);
+	      append_dev(div, p);
+	      append_dev(p, t1);
+	      append_dev(div, t2);
 
 	      for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
 	        each_blocks[_i2].m(div, null);
 	      }
+
+	      append_dev(div, t3);
+	      if (if_block1) if_block1.m(div, null);
 	    },
 	    p: function update(ctx, dirty) {
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra) {
+	        if (if_block0) {
+	          if_block0.p(ctx, dirty);
+	        } else {
+	          if_block0 = create_if_block_4$2(ctx);
+	          if_block0.c();
+	          if_block0.m(div, t0);
+	        }
+	      } else if (if_block0) {
+	        if_block0.d(1);
+	        if_block0 = null;
+	      }
+
 	      if (dirty &
-	      /*images, $tooltip, paragraphs*/
+	      /*paragraphs*/
+	      256 && t1_value !== (t1_value =
+	      /*paragraphs*/
+	      ctx[8][0] + "")) set_data_dev(t1, t1_value);
+
+	      if (dirty &
+	      /*paragraphs, images, removeSpace, $tooltip*/
 	      1280) {
 	        each_value =
 	        /*paragraphs*/
@@ -46562,7 +46615,7 @@ var app = (function () {
 
 	            each_blocks[_i3].c();
 
-	            each_blocks[_i3].m(div, null);
+	            each_blocks[_i3].m(div, t3);
 	          }
 	        }
 
@@ -46572,109 +46625,41 @@ var app = (function () {
 
 	        each_blocks.length = each_value.length;
 	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.extraImage === "yes") {
+	        if (if_block1) {
+	          if_block1.p(ctx, dirty);
+	        } else {
+	          if_block1 = create_if_block_2$3(ctx);
+	          if_block1.c();
+	          if_block1.m(div, null);
+	        }
+	      } else if (if_block1) {
+	        if_block1.d(1);
+	        if_block1 = null;
+	      }
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(div);
+	      if (if_block0) if_block0.d();
 	      destroy_each(each_blocks, detaching);
+	      if (if_block1) if_block1.d();
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block_2$3.name,
+	    id: create_if_block_1$5.name,
 	    type: "if",
-	    source: "(180:8) {#if ($tooltip.tp.tooltipContent)}",
+	    source: "(189:8) {#if ($tooltip.tp.tooltipContent)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (182:12) {#each paragraphs as paragraph, i}
+	} // (195:10) {#if ($tooltip.tp.periodEra)}
 
 
-	function create_each_block$5(ctx) {
-	  var p;
-	  var t0_value =
-	  /*paragraph*/
-	  ctx[27] + "";
-	  var t0;
-	  var t1;
-	  var div;
-	  var img;
-	  var img_src_value;
-	  var img_alt_value;
-	  var t2;
-	  var block = {
-	    c: function create() {
-	      p = element("p");
-	      t0 = text(t0_value);
-	      t1 = space();
-	      div = element("div");
-	      img = element("img");
-	      t2 = space();
-	      attr_dev(p, "class", "svelte-fd4l8c");
-	      add_location(p, file$n, 182, 12, 6322);
-	      if (img.src !== (img_src_value = "" + (images +
-	      /*$tooltip*/
-	      ctx[10].tp.name.toLowerCase() + (
-	      /*i*/
-	      ctx[29] + 1) + ".jpg"))) attr_dev(img, "src", img_src_value);
-	      attr_dev(img, "alt", img_alt_value =
-	      /*$tooltip*/
-	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-fd4l8c");
-	      add_location(img, file$n, 184, 16, 6391);
-	      attr_dev(div, "class", "image svelte-fd4l8c");
-	      add_location(div, file$n, 183, 14, 6355);
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, p, anchor);
-	      append_dev(p, t0);
-	      insert_dev(target, t1, anchor);
-	      insert_dev(target, div, anchor);
-	      append_dev(div, img);
-	      append_dev(div, t2);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty &
-	      /*paragraphs*/
-	      256 && t0_value !== (t0_value =
-	      /*paragraph*/
-	      ctx[27] + "")) set_data_dev(t0, t0_value);
-
-	      if (dirty &
-	      /*$tooltip*/
-	      1024 && img.src !== (img_src_value = "" + (images +
-	      /*$tooltip*/
-	      ctx[10].tp.name.toLowerCase() + (
-	      /*i*/
-	      ctx[29] + 1) + ".jpg"))) {
-	        attr_dev(img, "src", img_src_value);
-	      }
-
-	      if (dirty &
-	      /*$tooltip*/
-	      1024 && img_alt_value !== (img_alt_value =
-	      /*$tooltip*/
-	      ctx[10].tp.shortTitle)) {
-	        attr_dev(img, "alt", img_alt_value);
-	      }
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(p);
-	      if (detaching) detach_dev(t1);
-	      if (detaching) detach_dev(div);
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_each_block$5.name,
-	    type: "each",
-	    source: "(182:12) {#each paragraphs as paragraph, i}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (192:8) {#if ($tooltip.tp.periodEra)}
-
-
-	function create_if_block_1$5(ctx) {
+	function create_if_block_4$2(ctx) {
 	  var div;
 	  var img;
 	  var img_src_value;
@@ -46692,18 +46677,18 @@ var app = (function () {
 	      t0 = space();
 	      p = element("p");
 	      t1 = text(t1_value);
+	      attr_dev(img, "class", "image svelte-1143ogu");
 	      if (img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
 	      ctx[10].tp.periodEra + ".jpg"))) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-fd4l8c");
-	      add_location(img, file$n, 193, 12, 6639);
-	      attr_dev(p, "class", "svelte-fd4l8c");
-	      add_location(p, file$n, 194, 12, 6730);
-	      attr_dev(div, "class", "image svelte-fd4l8c");
-	      add_location(div, file$n, 192, 10, 6607);
+	      add_location(img, file$n, 196, 12, 6523);
+	      attr_dev(p, "class", "svelte-1143ogu");
+	      add_location(p, file$n, 197, 12, 6628);
+	      attr_dev(div, "class", "tt-image svelte-1143ogu");
+	      add_location(div, file$n, 195, 10, 6488);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -46741,9 +46726,182 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block_1$5.name,
+	    id: create_if_block_4$2.name,
 	    type: "if",
-	    source: "(192:8) {#if ($tooltip.tp.periodEra)}",
+	    source: "(195:10) {#if ($tooltip.tp.periodEra)}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (207:14) {#if i > 0}
+
+
+	function create_if_block_3$3(ctx) {
+	  var div;
+	  var img;
+	  var img_src_value;
+	  var img_alt_value;
+	  var t0;
+	  var p;
+	  var t1_value =
+	  /*paragraph*/
+	  ctx[27] + "";
+	  var t1;
+	  var block = {
+	    c: function create() {
+	      div = element("div");
+	      img = element("img");
+	      t0 = space();
+	      p = element("p");
+	      t1 = text(t1_value);
+	      if (img.src !== (img_src_value = "" + (images + removeSpace(
+	      /*$tooltip*/
+	      ctx[10].tp.name.toLowerCase()) +
+	      /*i*/
+	      ctx[29] + ".jpg"))) attr_dev(img, "src", img_src_value);
+	      attr_dev(img, "alt", img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle);
+	      attr_dev(img, "class", "svelte-1143ogu");
+	      add_location(img, file$n, 208, 16, 6930);
+	      attr_dev(div, "class", "image svelte-1143ogu");
+	      add_location(div, file$n, 207, 14, 6894);
+	      attr_dev(p, "class", "svelte-1143ogu");
+	      add_location(p, file$n, 210, 16, 7071);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, div, anchor);
+	      append_dev(div, img);
+	      insert_dev(target, t0, anchor);
+	      insert_dev(target, p, anchor);
+	      append_dev(p, t1);
+	    },
+	    p: function update(ctx, dirty) {
+	      if (dirty &
+	      /*$tooltip*/
+	      1024 && img.src !== (img_src_value = "" + (images + removeSpace(
+	      /*$tooltip*/
+	      ctx[10].tp.name.toLowerCase()) +
+	      /*i*/
+	      ctx[29] + ".jpg"))) {
+	        attr_dev(img, "src", img_src_value);
+	      }
+
+	      if (dirty &
+	      /*$tooltip*/
+	      1024 && img_alt_value !== (img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle)) {
+	        attr_dev(img, "alt", img_alt_value);
+	      }
+
+	      if (dirty &
+	      /*paragraphs*/
+	      256 && t1_value !== (t1_value =
+	      /*paragraph*/
+	      ctx[27] + "")) set_data_dev(t1, t1_value);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(div);
+	      if (detaching) detach_dev(t0);
+	      if (detaching) detach_dev(p);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_3$3.name,
+	    type: "if",
+	    source: "(207:14) {#if i > 0}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (206:12) {#each paragraphs as paragraph, i}
+
+
+	function create_each_block$5(ctx) {
+	  var if_block_anchor;
+	  var if_block =
+	  /*i*/
+	  ctx[29] > 0 && create_if_block_3$3(ctx);
+	  var block = {
+	    c: function create() {
+	      if (if_block) if_block.c();
+	      if_block_anchor = empty();
+	    },
+	    m: function mount(target, anchor) {
+	      if (if_block) if_block.m(target, anchor);
+	      insert_dev(target, if_block_anchor, anchor);
+	    },
+	    p: function update(ctx, dirty) {
+	      if (
+	      /*i*/
+	      ctx[29] > 0) if_block.p(ctx, dirty);
+	    },
+	    d: function destroy(detaching) {
+	      if (if_block) if_block.d(detaching);
+	      if (detaching) detach_dev(if_block_anchor);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_each_block$5.name,
+	    type: "each",
+	    source: "(206:12) {#each paragraphs as paragraph, i}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (214:12) {#if ($tooltip.tp.extraImage === 'yes')}
+
+
+	function create_if_block_2$3(ctx) {
+	  var div;
+	  var img;
+	  var img_src_value;
+	  var img_alt_value;
+	  var block = {
+	    c: function create() {
+	      div = element("div");
+	      img = element("img");
+	      if (img.src !== (img_src_value = "" + (images +
+	      /*$tooltip*/
+	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) attr_dev(img, "src", img_src_value);
+	      attr_dev(img, "alt", img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle);
+	      attr_dev(img, "class", "svelte-1143ogu");
+	      add_location(img, file$n, 215, 14, 7229);
+	      attr_dev(div, "class", "image svelte-1143ogu");
+	      add_location(div, file$n, 214, 12, 7195);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, div, anchor);
+	      append_dev(div, img);
+	    },
+	    p: function update(ctx, dirty) {
+	      if (dirty &
+	      /*$tooltip*/
+	      1024 && img.src !== (img_src_value = "" + (images +
+	      /*$tooltip*/
+	      ctx[10].tp.name.toLowerCase() + "3.jpg"))) {
+	        attr_dev(img, "src", img_src_value);
+	      }
+
+	      if (dirty &
+	      /*$tooltip*/
+	      1024 && img_alt_value !== (img_alt_value =
+	      /*$tooltip*/
+	      ctx[10].tp.shortTitle)) {
+	        attr_dev(img, "alt", img_alt_value);
+	      }
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(div);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_2$3.name,
+	    type: "if",
+	    source: "(214:12) {#if ($tooltip.tp.extraImage === 'yes')}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -46819,6 +46977,10 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
+	}
+
+	function removeSpace(str) {
+	  return str.replace(/\s/g, "");
 	}
 
 	function instance$o($$self, $$props, $$invalidate) {
@@ -46909,26 +47071,26 @@ var app = (function () {
 	    bubble($$self, event);
 	  }
 
-	  function div13_binding($$value) {
+	  function div14_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      scrollWrapper = $$value;
 	      $$invalidate(7, scrollWrapper);
 	    });
 	  }
 
-	  function div14_binding($$value) {
+	  function div15_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      elem = $$value;
 	      $$invalidate(0, elem);
 	    });
 	  }
 
-	  function div14_elementresize_handler() {
+	  function div15_elementresize_handler() {
 	    tHeight = this.clientHeight;
 	    $$invalidate(2, tHeight);
 	  }
 
-	  function div15_elementresize_handler() {
+	  function div16_elementresize_handler() {
 	    tWidth = this.clientWidth;
 	    $$invalidate(1, tWidth);
 	  }
@@ -46972,6 +47134,7 @@ var app = (function () {
 	      scoreQuestionsExpanded: scoreQuestionsExpanded,
 	      handleLiClick: handleLiClick,
 	      highlight: highlight,
+	      removeSpace: removeSpace,
 	      $textSearchFilter: $textSearchFilter,
 	      showTooltip: showTooltip,
 	      $width: $width,
@@ -47053,7 +47216,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, paragraphs, showTooltip, $tooltip, offset, click_handler, mouseover_handler, div13_binding, div14_binding, div14_elementresize_handler, div15_elementresize_handler];
+	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, paragraphs, showTooltip, $tooltip, offset, click_handler, mouseover_handler, div14_binding, div15_binding, div15_elementresize_handler, div16_elementresize_handler];
 	}
 
 	var EventTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -48551,7 +48714,7 @@ var app = (function () {
 
 	  function setOpacity(selected, hovered, extraFaint) {
 	    if (extraFaint) return 0.2 / 3 / 2;
-	    var opacity = 0.35 / source.disinformantNation.length;
+	    var opacity = 0.15 / source.disinformantNation.length;
 
 	    if (selected === "selected" || hovered === "selected") {
 	      opacity = 0.95;
@@ -52601,13 +52764,13 @@ var app = (function () {
 	      canvas_1 = element("canvas");
 	      div1 = element("div");
 	      attr_dev(div0, "class", "layer");
-	      add_location(div0, file$B, 406, 0, 8287);
+	      add_location(div0, file$B, 407, 0, 8336);
 	      attr_dev(div1, "id", "points");
-	      add_location(div1, file$B, 408, 30, 8358);
+	      add_location(div1, file$B, 409, 30, 8407);
 	      attr_dev(canvas_1, "class", "svelte-5592ys");
-	      add_location(canvas_1, file$B, 408, 3, 8331);
+	      add_location(canvas_1, file$B, 409, 3, 8380);
 	      attr_dev(div2, "id", "map");
-	      add_location(div2, file$B, 407, 0, 8313);
+	      add_location(div2, file$B, 408, 0, 8362);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -52644,7 +52807,7 @@ var app = (function () {
 	  return block;
 	}
 
-	var worldDataPath = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json";
+	var worldDataPath = "countries-50m.json";
 
 	function instance$C($$self, $$props, $$invalidate) {
 	  var $fossilDatapoints;
@@ -55195,7 +55358,7 @@ var app = (function () {
 	} // (79:14) {#if (column.sortable)}
 
 
-	function create_if_block_3$3(ctx) {
+	function create_if_block_3$4(ctx) {
 	  var svg;
 	  var path;
 	  var svg_class_value;
@@ -55259,7 +55422,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block_3$3.name,
+	    id: create_if_block_3$4.name,
 	    type: "if",
 	    source: "(79:14) {#if (column.sortable)}",
 	    ctx: ctx
@@ -55278,7 +55441,7 @@ var app = (function () {
 	  var t2;
 	  var if_block =
 	  /*column*/
-	  ctx[18].sortable && create_if_block_3$3(ctx);
+	  ctx[18].sortable && create_if_block_3$4(ctx);
 	  var block = {
 	    key: key_1,
 	    first: null,
@@ -55312,7 +55475,7 @@ var app = (function () {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 	        } else {
-	          if_block = create_if_block_3$3(ctx);
+	          if_block = create_if_block_3$4(ctx);
 	          if_block.c();
 	          if_block.m(th, t2);
 	        }

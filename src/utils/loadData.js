@@ -23,6 +23,8 @@ const loadData = async () => {
       sizeIndex: d.size_index,
       tooltipContent: d.tooltip_content,
       testDate: parseInt(d.test_date),
+      wikiURL: d.wikiURL,
+      extraImage: d.extra_image,
  //     size: d.size,
       weight: d.weight, 
       size: d.size,

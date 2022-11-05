@@ -1,5 +1,5 @@
 import { uniq } from 'lodash';
-import { mean, min, max, timeParse } from 'd3';
+import { mean, min, max, timeParse  } from 'd3';
 import { images } from '../inputs/dataPaths';
 import { categories } from '../inputs/polarization';
 
@@ -19,6 +19,7 @@ export const getTimeRange = (data) => {
 // preload images
 export const preloadImages = (data) => {
   data.forEach((d) => (new Image()).src = `${images}${d.periodEra}.jpg`);
+  data.forEach((d) => (new Image()).src = `${images}${d.name.toLowerCase()}1.jpg`);
 }
 
 // split string in array

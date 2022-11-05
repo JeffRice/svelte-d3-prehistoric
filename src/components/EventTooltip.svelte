@@ -65,6 +65,10 @@
     return s.replace(new RegExp($textSearchFilter.toLowerCase().split(' or ').join('|'), 'gi'), (match) => `<span class="highlighted">${match}</span>`);
   }
 
+  function removeSpace(str) {
+    return str.replace(/\s/g, '')
+  }
+
   $: if (showTooltip) {
     scoreQuestionsExpanded = false;
 
@@ -145,6 +149,8 @@
           <div class="title-top">
 
 
+
+
             <section class="dino-stats">
   
   
@@ -157,20 +163,23 @@
             </section>
 
 
-
           </div>
 
+          <!--
           <Share text="" caseId={$tooltip.tp.id} mode="tooltip" />
-
-
-
+          -->
+          <section class="era-labels">
           <span class="tag-label Cretaceous"> Cretaceous  </span>
           <span class="tag-label Jurassic"> Jurassic  </span>
           <span class="tag-label Triassic"> Triassic  </span>
           <span class="tag-label Paleogene"> Paleogene  </span>
           <span class="tag-label Neogene"> Neogene  </span>
+          </section>
+
+
+
           <div class="image">
-            <img src="{images}{$tooltip.tp.name.toLowerCase()}3.jpg" alt={$tooltip.tp.shortTitle} />
+            <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}.jpg" alt={$tooltip.tp.shortTitle} />
           </div>
 
         </div>
@@ -179,22 +188,44 @@
 
         {#if ($tooltip.tp.tooltipContent)}
         <div class="description">
-            {#each paragraphs as paragraph, i}
-            <p>{paragraph}</p>
-              <div class="image">
-                <img src="{images}{$tooltip.tp.name.toLowerCase()}{i + 1}.jpg" alt={$tooltip.tp.shortTitle} />
-              </div>
 
+
+
+
+          {#if ($tooltip.tp.periodEra)}
+          <div class="tt-image">
+            <img class="image" src="{images}{$tooltip.tp.periodEra}.jpg" alt={$tooltip.tp.shortTitle} />
+            <p>{$tooltip.tp.imageCredit}</p>
+          </div>
+          {/if}
+          <!-- Just for styling the fist paragraph and image differently-->
+          <p>{paragraphs[0]}</p>
+
+
+
+            {#each paragraphs as paragraph, i}
+              {#if i > 0} 
+              <div class="image">
+                <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}{i}.jpg" alt={$tooltip.tp.shortTitle} />
+              </div>
+                <p>{paragraph}</p>
+              {/if}
             {/each}
+            {#if ($tooltip.tp.extraImage === 'yes')}
+            <div class="image">
+              <img src="{images}{$tooltip.tp.name.toLowerCase()}3.jpg" alt={$tooltip.tp.shortTitle} />
+            </div>
+            {/if}
          </div>
         {/if}
 
-        {#if ($tooltip.tp.periodEra)}
-          <div class="image">
-            <img src="{images}{$tooltip.tp.periodEra}.jpg" alt={$tooltip.tp.shortTitle} />
-            <p>{$tooltip.tp.imageCredit}</p>
-          </div>
-        {/if}
+
+
+        <div class="link">
+          Wiki Link:
+          <a href="{$tooltip.tp.wikiURL}" target="_blank" class="no-float">{$tooltip.tp.name}</a>
+        </div>
+
 
         <div class="description">
           <h3>Description</h3>
@@ -268,7 +299,7 @@
 
 <style>
   .tooltip {
-    width: 40%;
+    width: 50%;
     /* min-width: 550px; */
     font-family: var(--font-02);
     position: absolute;
@@ -338,7 +369,7 @@
 
   h2 {
     margin: 0 0 0 0;
-    font-size: 1.1rem;
+    font-size: 2.1rem;
     font-weight: bold;
   }
 
@@ -349,47 +380,8 @@
     clear: both;
   }
 
-  .score-bars {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .score-bar-wrapper {
-    flex: 1 1 0;
-    display: inline-block;
-  }
-
-  .score-bar-wrapper p {
-    font-size: 0.7rem;
-  }
-
-  .score-bars span.score-info-icon {
-    width: 1rem;
-    height: 1rem;
-    margin: 0;
-    padding: 0 auto 0.1rem auto;
-    font-size: 0.7rem;
-    font-weight: bold;
-    text-align: center;
-    color: var(--usa-lightred);
-    border: 2px solid var(--text-darkgray);
-    border-radius: 2px;
-    background-color: var(--text-darkgray);
-    transition: all 400ms ease;
-    cursor: pointer;
-  }
-
-  .score-bars span.score-info-icon:hover {
-    color: var(--text-darkgray);
-    background-color: var(--usa-lightred);
-  }
-
-  .store-questions-wrapper {
-    position: relative;
-  }
-
-  .title-bg {
+  
+.title-bg {
   background-color: var(--cretaceous);
 }
 
@@ -496,11 +488,28 @@
     margin-bottom: 16px;
   }
 
+  .era-labels {
+    margin-bottom: 1rem;
+  }
+
   .stats-item{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.75rem;
+    font-size: 0.95rem;
   }
 
+  .tt-image {
+    width: 50%;
+    float: left;
+    padding: 25px;
+  }
+
+  .description {
+    padding: 5px;
+  }
+
+  .description p {
+    padding: 2em;
+  }
 </style>
