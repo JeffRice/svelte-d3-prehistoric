@@ -2,7 +2,7 @@
   // the canvas component holding the world map
   import { width, height, panelHeight, mapHeight } from '../stores/dimensions';
   import { bg, usaRed, usaLightRed, usaLightLightRed, preGreen } from '../utils/colors';
-  import { countries, projection, geoPath } from '../stores/map';
+  import { countries, pangeaRegions, projection, geoPath } from '../stores/map';
   import { scaleFactor } from '../stores/scales';
   import { timeScale } from '../stores/scales';
 
@@ -93,7 +93,7 @@ another way to redraw on updates
 
 
  // $: if (canvas && $countries.length > 0) {
-  $: if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints && $switchValueStore) {
+  $: if (canvas && $countries && pangeaRegions && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints && $switchValueStore) {
   //  console.log('countries store', $countries)
  //   console.log('fossilSpots: ', fossilSpots)
 
@@ -364,7 +364,7 @@ function worldMap() {
     ctx.globalAlpha = 0.75;
     ctx.lineWidth = 1;
     ctx.beginPath();
-    $countries.forEach($geoPath);
+    $pangeaRegions.forEach($geoPath);
     ctx.fillStyle = preGreen;
     ctx.fill();
     ctx.strokeStyle = '#000';

@@ -6,6 +6,7 @@
   import { onMount } from 'svelte';
   import loadData from '../utils/loadData';
   import loadMapData from '../utils/loadMapData';
+  import loadPangeaData from '../utils/loadPangeaData';
   // import loadCoronaData from '../utils/loadCoronaData';
   // import loadGoogleTrendsData from '../utils/loadGoogleTrendsData';
   import { setScales } from '../utils/scales';
@@ -96,6 +97,7 @@
 
     // load the map data
     loadMapData();
+    loadPangeaData();
 
     // setup filters
     disinformantNationFilter.init(data, 'disinformantNation');

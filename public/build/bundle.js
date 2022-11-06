@@ -11230,6 +11230,16 @@ var app = (function () {
 	}
 	var csv$1 = dsvParse(csvParse);
 
+	function responseJson(response) {
+	  if (!response.ok) throw new Error(response.status + " " + response.statusText);
+	  if (response.status === 204 || response.status === 205) return;
+	  return response.json();
+	}
+
+	function json (input, init) {
+	  return fetch(input, init).then(responseJson);
+	}
+
 	function forceCenter (x, y) {
 	  var nodes,
 	      strength = 1;
@@ -34366,16 +34376,17 @@ var app = (function () {
 
 	var offsetFactor = 1.25;
 	var countries = writable([]);
-	var projection$1 = derived([width, mapHeight, countries], function (_ref) {
+	var pangeaRegions = writable([]);
+	var projection$1 = derived([width, mapHeight, pangeaRegions], function (_ref) {
 	  var _ref2 = _slicedToArray(_ref, 3),
 	      $width = _ref2[0],
 	      $mapHeight = _ref2[1],
-	      $countries = _ref2[2];
+	      $pangeaRegions = _ref2[2];
 
-	  if ($countries.length === 0) return;
+	  if ($pangeaRegions.length === 0) return;
 	  var unitProjection = geoMercator().scale(1).translate([0, 0]);
 	  var tmpPath = d3geoPath().projection(unitProjection);
-	  var allBounds = $countries.map(tmpPath.bounds);
+	  var allBounds = $pangeaRegions.map(tmpPath.bounds);
 	  var bounds = [[min$7(allBounds, function (d) {
 	    return d[0][0];
 	  }), min$7(allBounds, function (d) {
@@ -34392,8 +34403,135 @@ var app = (function () {
 	var geoPath = derived(projection$1, function ($projection) {
 	  return d3geoPath().projection($projection);
 	});
+	var pangeaGeoPath = derived(projection$1, function ($projection) {
+	  return d3geoPath().projection($projection);
+	});
+
+	function identity$7(x) {
+	  return x;
+	}
+
+	function transform(transform) {
+	  if (transform == null) return identity$7;
+	  var x0,
+	      y0,
+	      kx = transform.scale[0],
+	      ky = transform.scale[1],
+	      dx = transform.translate[0],
+	      dy = transform.translate[1];
+	  return function(input, i) {
+	    if (!i) x0 = y0 = 0;
+	    var j = 2, n = input.length, output = new Array(n);
+	    output[0] = (x0 += input[0]) * kx + dx;
+	    output[1] = (y0 += input[1]) * ky + dy;
+	    while (j < n) output[j] = input[j], ++j;
+	    return output;
+	  };
+	}
+
+	function reverse(array, n) {
+	  var t, j = array.length, i = j - n;
+	  while (i < --j) t = array[i], array[i++] = array[j], array[j] = t;
+	}
+
+	function feature(topology, o) {
+	  return o.type === "GeometryCollection"
+	      ? {type: "FeatureCollection", features: o.geometries.map(function(o) { return feature$1(topology, o); })}
+	      : feature$1(topology, o);
+	}
+
+	function feature$1(topology, o) {
+	  var id = o.id,
+	      bbox = o.bbox,
+	      properties = o.properties == null ? {} : o.properties,
+	      geometry = object$1(topology, o);
+	  return id == null && bbox == null ? {type: "Feature", properties: properties, geometry: geometry}
+	      : bbox == null ? {type: "Feature", id: id, properties: properties, geometry: geometry}
+	      : {type: "Feature", id: id, bbox: bbox, properties: properties, geometry: geometry};
+	}
+
+	function object$1(topology, o) {
+	  var transformPoint = transform(topology.transform),
+	      arcs = topology.arcs;
+
+	  function arc(i, points) {
+	    if (points.length) points.pop();
+	    for (var a = arcs[i < 0 ? ~i : i], k = 0, n = a.length; k < n; ++k) {
+	      points.push(transformPoint(a[k], k));
+	    }
+	    if (i < 0) reverse(points, n);
+	  }
+
+	  function point(p) {
+	    return transformPoint(p);
+	  }
+
+	  function line(arcs) {
+	    var points = [];
+	    for (var i = 0, n = arcs.length; i < n; ++i) arc(arcs[i], points);
+	    if (points.length < 2) points.push(points[0]); // This should never happen per the specification.
+	    return points;
+	  }
+
+	  function ring(arcs) {
+	    var points = line(arcs);
+	    while (points.length < 4) points.push(points[0]); // This may happen if an arc has only two points.
+	    return points;
+	  }
+
+	  function polygon(arcs) {
+	    return arcs.map(ring);
+	  }
+
+	  function geometry(o) {
+	    var type = o.type, coordinates;
+	    switch (type) {
+	      case "GeometryCollection": return {type: type, geometries: o.geometries.map(geometry)};
+	      case "Point": coordinates = point(o.coordinates); break;
+	      case "MultiPoint": coordinates = o.coordinates.map(point); break;
+	      case "LineString": coordinates = line(o.arcs); break;
+	      case "MultiLineString": coordinates = o.arcs.map(line); break;
+	      case "Polygon": coordinates = polygon(o.arcs); break;
+	      case "MultiPolygon": coordinates = o.arcs.map(polygon); break;
+	      default: return null;
+	    }
+	    return {type: type, coordinates: coordinates};
+	  }
+
+	  return geometry(o);
+	}
+
+	var dataPath = 'countries-50m.json';
 
 	var loadMapData = /*#__PURE__*/function () {
+	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+	    var world;
+	    return regeneratorRuntime.wrap(function _callee$(_context) {
+	      while (1) {
+	        switch (_context.prev = _context.next) {
+	          case 0:
+	            _context.next = 2;
+	            return json(dataPath);
+
+	          case 2:
+	            world = _context.sent;
+	            countries.set(feature(world, world.objects.countries).features //   .filter((d) => d.properties.name !== 'Antarctica')
+	            );
+
+	          case 4:
+	          case "end":
+	            return _context.stop();
+	        }
+	      }
+	    }, _callee);
+	  }));
+
+	  return function loadMapData() {
+	    return _ref.apply(this, arguments);
+	  };
+	}();
+
+	var loadPangeaData = /*#__PURE__*/function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	    var response, json;
 	    return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -34411,7 +34549,7 @@ var app = (function () {
 	          case 5:
 	            json = _context.sent;
 	            console.log('json: ', json);
-	            countries.set(json.features // .filter((d) => d.properties.OBJECTID !== 1)
+	            pangeaRegions.set(json.features // .filter((d) => d.properties.OBJECTID !== 1)
 	            );
 
 	          case 8:
@@ -34422,7 +34560,7 @@ var app = (function () {
 	    }, _callee);
 	  }));
 
-	  return function loadMapData() {
+	  return function loadPangeaData() {
 	    return _ref.apply(this, arguments);
 	  };
 	}();
@@ -49284,16 +49422,16 @@ var app = (function () {
 
 	function get_each_context$7(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[18] = list[i][0];
-	  child_ctx[19] = list[i][1];
+	  child_ctx[20] = list[i][0];
+	  child_ctx[21] = list[i][1];
 	  return child_ctx;
 	}
 
 	function get_each_context_1$1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[22] = list[i];
+	  child_ctx[24] = list[i];
 	  return child_ctx;
-	} // (102:2) {#each sources as source (source.idNation)}
+	} // (115:2) {#each sources as source (source.idNation)}
 
 
 	function create_each_block_1$1(key_1, ctx) {
@@ -49304,14 +49442,14 @@ var app = (function () {
 	    props: {
 	      source:
 	      /*source*/
-	      ctx[22],
+	      ctx[24],
 	      selected:
 	      /*$eSelected*/
 	      ctx[3] &&
 	      /*$eSelected*/
 	      ctx[3].map(func$4).includes(
 	      /*source*/
-	      ctx[22].id) ? "selected" :
+	      ctx[24].id) ? "selected" :
 	      /*$eSelected*/
 	      ctx[3] &&
 	      /*$eSelected*/
@@ -49322,12 +49460,12 @@ var app = (function () {
 	      /*$eHovered*/
 	      ctx[4].id ===
 	      /*source*/
-	      ctx[22].id ? "selected" :
+	      ctx[24].id ? "selected" :
 	      /*$eHovered*/
 	      ctx[4] ? "background" : "unselected",
 	      extraFaint:
 	      /*source*/
-	      ctx[22].outOfTimeRange,
+	      ctx[24].outOfTimeRange,
 	      showPolarizationColor:
 	      /*$highlightPolarization*/
 	      ctx[5]
@@ -49353,7 +49491,7 @@ var app = (function () {
 	      /*sources*/
 	      2) sourcelink_changes.source =
 	      /*source*/
-	      ctx[22];
+	      ctx[24];
 	      if (dirty &
 	      /*$eSelected, sources*/
 	      10) sourcelink_changes.selected =
@@ -49362,7 +49500,7 @@ var app = (function () {
 	      /*$eSelected*/
 	      ctx[3].map(func$4).includes(
 	      /*source*/
-	      ctx[22].id) ? "selected" :
+	      ctx[24].id) ? "selected" :
 	      /*$eSelected*/
 	      ctx[3] &&
 	      /*$eSelected*/
@@ -49375,14 +49513,14 @@ var app = (function () {
 	      /*$eHovered*/
 	      ctx[4].id ===
 	      /*source*/
-	      ctx[22].id ? "selected" :
+	      ctx[24].id ? "selected" :
 	      /*$eHovered*/
 	      ctx[4] ? "background" : "unselected";
 	      if (dirty &
 	      /*sources*/
 	      2) sourcelink_changes.extraFaint =
 	      /*source*/
-	      ctx[22].outOfTimeRange;
+	      ctx[24].outOfTimeRange;
 	      if (dirty &
 	      /*$highlightPolarization*/
 	      32) sourcelink_changes.showPolarizationColor =
@@ -49408,11 +49546,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_1$1.name,
 	    type: "each",
-	    source: "(102:2) {#each sources as source (source.idNation)}",
+	    source: "(115:2) {#each sources as source (source.idNation)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (117:2) {#each centroids as [country, centroid]}
+	} // (130:2) {#each centroids as [country, centroid]}
 
 
 	function create_each_block$7(ctx) {
@@ -49422,15 +49560,15 @@ var app = (function () {
 	    props: {
 	      centroid:
 	      /*centroid*/
-	      ctx[19],
+	      ctx[21],
 	      country:
 	      /*country*/
-	      ctx[18],
+	      ctx[20],
 	      selected:
 	      /*$disinformantNationFilter*/
 	      ctx[0].filter(func_1).map(func_2$2).includes(
 	      /*country*/
-	      ctx[18])
+	      ctx[20])
 	    },
 	    $$inline: true
 	  });
@@ -49454,19 +49592,19 @@ var app = (function () {
 	      /*centroids*/
 	      4) centroid_changes.centroid =
 	      /*centroid*/
-	      ctx[19];
+	      ctx[21];
 	      if (dirty &
 	      /*centroids*/
 	      4) centroid_changes.country =
 	      /*country*/
-	      ctx[18];
+	      ctx[20];
 	      if (dirty &
 	      /*$disinformantNationFilter, centroids*/
 	      5) centroid_changes.selected =
 	      /*$disinformantNationFilter*/
 	      ctx[0].filter(func_1).map(func_2$2).includes(
 	      /*country*/
-	      ctx[18]);
+	      ctx[20]);
 	      centroid.$set(centroid_changes);
 	    },
 	    i: function intro(local) {
@@ -49486,7 +49624,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$7.name,
 	    type: "each",
-	    source: "(117:2) {#each centroids as [country, centroid]}",
+	    source: "(130:2) {#each centroids as [country, centroid]}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -49509,7 +49647,7 @@ var app = (function () {
 	  var get_key = function get_key(ctx) {
 	    return (
 	      /*source*/
-	      ctx[22].idNation
+	      ctx[24].idNation
 	    );
 	  };
 
@@ -49553,7 +49691,7 @@ var app = (function () {
 	      }
 
 	      attr_dev(g, "class", "centroids-sources");
-	      add_location(g, file$t, 100, 0, 3198);
+	      add_location(g, file$t, 113, 0, 3555);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49700,7 +49838,9 @@ var app = (function () {
 	  var $cHovered;
 	  var $disinformantNationFilter;
 	  var $countries;
+	  var $switchValueStore;
 	  var $geoPath;
+	  var $pangeaRegions;
 	  var $panelHeight;
 	  var $eSelected;
 	  var $eHovered;
@@ -49717,13 +49857,21 @@ var app = (function () {
 	  component_subscribe($$self, countries, function ($$value) {
 	    return $$invalidate(14, $countries = $$value);
 	  });
+	  validate_store(switchValueStore, "switchValueStore");
+	  component_subscribe($$self, switchValueStore, function ($$value) {
+	    return $$invalidate(15, $switchValueStore = $$value);
+	  });
 	  validate_store(geoPath, "geoPath");
 	  component_subscribe($$self, geoPath, function ($$value) {
-	    return $$invalidate(15, $geoPath = $$value);
+	    return $$invalidate(16, $geoPath = $$value);
+	  });
+	  validate_store(pangeaRegions, "pangeaRegions");
+	  component_subscribe($$self, pangeaRegions, function ($$value) {
+	    return $$invalidate(17, $pangeaRegions = $$value);
 	  });
 	  validate_store(panelHeight, "panelHeight");
 	  component_subscribe($$self, panelHeight, function ($$value) {
-	    return $$invalidate(16, $panelHeight = $$value);
+	    return $$invalidate(18, $panelHeight = $$value);
 	  });
 	  validate_store(selected, "eSelected");
 	  component_subscribe($$self, selected, function ($$value) {
@@ -49792,7 +49940,9 @@ var app = (function () {
 	      width: width,
 	      mapHeight: mapHeight,
 	      countries: countries,
+	      pangeaRegions: pangeaRegions,
 	      geoPath: geoPath,
+	      switchValueStore: switchValueStore,
 	      group: group,
 	      sortConsistently: sortConsistently,
 	      eHovered: hovered,
@@ -49816,7 +49966,9 @@ var app = (function () {
 	      countryNames: countryNames,
 	      $countries: $countries,
 	      sources: sources,
+	      $switchValueStore: $switchValueStore,
 	      $geoPath: $geoPath,
+	      $pangeaRegions: $pangeaRegions,
 	      $panelHeight: $panelHeight,
 	      centroids: centroids,
 	      $eSelected: $eSelected,
@@ -49852,24 +50004,34 @@ var app = (function () {
 	    }
 
 	    if ($$self.$$.dirty &
-	    /*timePoints, countryNames, $geoPath, $countries, $panelHeight, disNationNumberRight, disNationNumberLeft*/
-	    126464) {
+	    /*timePoints, countryNames, $switchValueStore, $geoPath, $pangeaRegions, $countries, $panelHeight, disNationNumberRight, disNationNumberLeft*/
+	    519680) {
 	       $$invalidate(1, sources = timePoints.map(function (d) {
 	        return d.disinformantNation.map(function (disNation, i) {
 	          var coords = [];
 	          var nativeCountry = false;
 
 	          if (countryNames.includes(disNation)) {
-	            coords = $geoPath.centroid($countries.find(function (country) {
-	              return country.properties.name === disNation;
-	            }));
+	            if ($switchValueStore === "on") {
+	              coords = $geoPath.centroid($pangeaRegions.find(function (country) {
+	                return country.properties.name === disNation;
+	              }));
+	            } else {
+	              coords = $geoPath.centroid($countries.find(function (country) {
+	                return country.properties.name === disNation;
+	              }));
 
-	            if (disNation === "United States of America") {
-	              coords = [$geoPath.centroid($countries.find(function (country) {
-	                return country.properties.name === "Mexico";
-	              }))[0], $geoPath.centroid($countries.find(function (country) {
-	                return country.properties.name === "Spain";
-	              }))[1]];
+	              if (disNation === "North America") {
+	                coords = [$geoPath.centroid($countries.find(function (country) {
+	                  return country.properties.name === "Mexico";
+	                }))[0], $geoPath.centroid($countries.find(function (country) {
+	                  return country.properties.name === "Spain";
+	                }))[1]];
+	              }
+
+	              if (disNation === "Antarctica") {
+	                coords[1] = coords[1] - 100;
+	              }
 	            }
 
 	            nativeCountry = true;
@@ -52551,100 +52713,6 @@ var app = (function () {
 	  return Svg;
 	}(SvelteComponentDev);
 
-	function identity$7(x) {
-	  return x;
-	}
-
-	function transform(transform) {
-	  if (transform == null) return identity$7;
-	  var x0,
-	      y0,
-	      kx = transform.scale[0],
-	      ky = transform.scale[1],
-	      dx = transform.translate[0],
-	      dy = transform.translate[1];
-	  return function(input, i) {
-	    if (!i) x0 = y0 = 0;
-	    var j = 2, n = input.length, output = new Array(n);
-	    output[0] = (x0 += input[0]) * kx + dx;
-	    output[1] = (y0 += input[1]) * ky + dy;
-	    while (j < n) output[j] = input[j], ++j;
-	    return output;
-	  };
-	}
-
-	function reverse(array, n) {
-	  var t, j = array.length, i = j - n;
-	  while (i < --j) t = array[i], array[i++] = array[j], array[j] = t;
-	}
-
-	function feature(topology, o) {
-	  return o.type === "GeometryCollection"
-	      ? {type: "FeatureCollection", features: o.geometries.map(function(o) { return feature$1(topology, o); })}
-	      : feature$1(topology, o);
-	}
-
-	function feature$1(topology, o) {
-	  var id = o.id,
-	      bbox = o.bbox,
-	      properties = o.properties == null ? {} : o.properties,
-	      geometry = object$1(topology, o);
-	  return id == null && bbox == null ? {type: "Feature", properties: properties, geometry: geometry}
-	      : bbox == null ? {type: "Feature", id: id, properties: properties, geometry: geometry}
-	      : {type: "Feature", id: id, bbox: bbox, properties: properties, geometry: geometry};
-	}
-
-	function object$1(topology, o) {
-	  var transformPoint = transform(topology.transform),
-	      arcs = topology.arcs;
-
-	  function arc(i, points) {
-	    if (points.length) points.pop();
-	    for (var a = arcs[i < 0 ? ~i : i], k = 0, n = a.length; k < n; ++k) {
-	      points.push(transformPoint(a[k], k));
-	    }
-	    if (i < 0) reverse(points, n);
-	  }
-
-	  function point(p) {
-	    return transformPoint(p);
-	  }
-
-	  function line(arcs) {
-	    var points = [];
-	    for (var i = 0, n = arcs.length; i < n; ++i) arc(arcs[i], points);
-	    if (points.length < 2) points.push(points[0]); // This should never happen per the specification.
-	    return points;
-	  }
-
-	  function ring(arcs) {
-	    var points = line(arcs);
-	    while (points.length < 4) points.push(points[0]); // This may happen if an arc has only two points.
-	    return points;
-	  }
-
-	  function polygon(arcs) {
-	    return arcs.map(ring);
-	  }
-
-	  function geometry(o) {
-	    var type = o.type, coordinates;
-	    switch (type) {
-	      case "GeometryCollection": return {type: type, geometries: o.geometries.map(geometry)};
-	      case "Point": coordinates = point(o.coordinates); break;
-	      case "MultiPoint": coordinates = o.coordinates.map(point); break;
-	      case "LineString": coordinates = line(o.arcs); break;
-	      case "MultiLineString": coordinates = o.arcs.map(line); break;
-	      case "Polygon": coordinates = polygon(o.arcs); break;
-	      case "MultiPolygon": coordinates = o.arcs.map(polygon); break;
-	      default: return null;
-	    }
-	    return {type: type, coordinates: coordinates};
-	  }
-
-	  return geometry(o);
-	}
-
 	var loadFossilSpots = /*#__PURE__*/function () {
 	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	    var data;
@@ -52764,13 +52832,13 @@ var app = (function () {
 	      canvas_1 = element("canvas");
 	      div1 = element("div");
 	      attr_dev(div0, "class", "layer");
-	      add_location(div0, file$B, 407, 0, 8336);
+	      add_location(div0, file$B, 407, 0, 8372);
 	      attr_dev(div1, "id", "points");
-	      add_location(div1, file$B, 409, 30, 8407);
+	      add_location(div1, file$B, 409, 30, 8443);
 	      attr_dev(canvas_1, "class", "svelte-5592ys");
-	      add_location(canvas_1, file$B, 409, 3, 8380);
+	      add_location(canvas_1, file$B, 409, 3, 8416);
 	      attr_dev(div2, "id", "map");
-	      add_location(div2, file$B, 408, 0, 8362);
+	      add_location(div2, file$B, 408, 0, 8398);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -52820,6 +52888,7 @@ var app = (function () {
 	  var $scaleFactor;
 	  var $panelHeight;
 	  var $geoPath;
+	  var $pangeaRegions;
 	  validate_store(fossilDatapoints, "fossilDatapoints");
 	  component_subscribe($$self, fossilDatapoints, function ($$value) {
 	    return $$invalidate(8, $fossilDatapoints = $$value);
@@ -52859,6 +52928,10 @@ var app = (function () {
 	  validate_store(geoPath, "geoPath");
 	  component_subscribe($$self, geoPath, function ($$value) {
 	    return $$invalidate(17, $geoPath = $$value);
+	  });
+	  validate_store(pangeaRegions, "pangeaRegions");
+	  component_subscribe($$self, pangeaRegions, function ($$value) {
+	    return $$invalidate(18, $pangeaRegions = $$value);
 	  });
 	  var canvas;
 	  var worldFeature;
@@ -52965,7 +53038,7 @@ var app = (function () {
 	  function canvas_1_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      canvas = $$value;
-	      ((((((((((((((($$invalidate(0, canvas), $$invalidate(11, $countries)), $$invalidate(3, worldjson)), $$invalidate(5, fossilSpots)), $$invalidate(6, fossilSpots2)), $$invalidate(7, fossilSpots3)), $$invalidate(12, $switchValueStore)), $$invalidate(9, $width)), $$invalidate(13, $mapHeight)), $$invalidate(14, $projection)), $$invalidate(15, $scaleFactor)), $$invalidate(10, $height)), $$invalidate(16, $panelHeight)), $$invalidate(17, $geoPath)), $$invalidate(8, $fossilDatapoints)), $$invalidate(4, graticule$1)), $$invalidate(2, worldFeature);
+	      (((((((((((((((($$invalidate(0, canvas), $$invalidate(11, $countries)), $$invalidate(3, worldjson)), $$invalidate(5, fossilSpots)), $$invalidate(6, fossilSpots2)), $$invalidate(7, fossilSpots3)), $$invalidate(12, $switchValueStore)), $$invalidate(9, $width)), $$invalidate(13, $mapHeight)), $$invalidate(14, $projection)), $$invalidate(15, $scaleFactor)), $$invalidate(10, $height)), $$invalidate(16, $panelHeight)), $$invalidate(17, $geoPath)), $$invalidate(8, $fossilDatapoints)), $$invalidate(4, graticule$1)), $$invalidate(2, worldFeature)), $$invalidate(18, $pangeaRegions);
 	    });
 	  }
 
@@ -52981,6 +53054,7 @@ var app = (function () {
 	      usaLightLightRed: usaLightLightRed,
 	      preGreen: preGreen,
 	      countries: countries,
+	      pangeaRegions: pangeaRegions,
 	      projection: projection$1,
 	      geoPath: geoPath,
 	      scaleFactor: scaleFactor,
@@ -53016,7 +53090,8 @@ var app = (function () {
 	      $projection: $projection,
 	      $scaleFactor: $scaleFactor,
 	      $panelHeight: $panelHeight,
-	      $geoPath: $geoPath
+	      $geoPath: $geoPath,
+	      $pangeaRegions: $pangeaRegions
 	    };
 	  };
 
@@ -53045,8 +53120,8 @@ var app = (function () {
 	    }
 
 	    if ($$self.$$.dirty &
-	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, fossilSpots3, $switchValueStore, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, $fossilDatapoints, graticule, worldFeature*/
-	    262141) {
+	    /*canvas, $countries, worldjson, fossilSpots, fossilSpots2, fossilSpots3, $switchValueStore, $width, $mapHeight, $projection, $scaleFactor, $height, $panelHeight, $geoPath, $fossilDatapoints, graticule, worldFeature, $pangeaRegions*/
+	    524285) {
 	      /*
 	      another way to redraw on updates
 	      afterUpdate(() => {
@@ -53055,7 +53130,7 @@ var app = (function () {
 	      });
 	      */
 	      // $: if (canvas && $countries.length > 0) {
-	       if (canvas && $countries && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints && $switchValueStore) {
+	       if (canvas && $countries && pangeaRegions && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints && $switchValueStore) {
 	        //  console.log('countries store', $countries)
 	        //   console.log('fossilSpots: ', fossilSpots)
 	        //  console.log($projection)
@@ -53175,7 +53250,7 @@ var app = (function () {
 	          ctx.globalAlpha = 0.75;
 	          ctx.lineWidth = 1;
 	          ctx.beginPath();
-	          $countries.forEach($geoPath);
+	          $pangeaRegions.forEach($geoPath);
 	          ctx.fillStyle = preGreen;
 	          ctx.fill();
 	          ctx.strokeStyle = "#000";
@@ -56243,7 +56318,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$8 = globals.console;
-	var file$H = "src/components/Visualization.svelte"; // (213:2) {#if (!timePoints)}
+	var file$H = "src/components/Visualization.svelte"; // (215:2) {#if (!timePoints)}
 
 	function create_if_block_1$8(ctx) {
 	  var loadinginfo;
@@ -56276,11 +56351,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$8.name,
 	    type: "if",
-	    source: "(213:2) {#if (!timePoints)}",
+	    source: "(215:2) {#if (!timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (221:6) {#if (timePoints)}
+	} // (223:6) {#if (timePoints)}
 
 
 	function create_if_block$k(ctx) {
@@ -56421,7 +56496,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$k.name,
 	    type: "if",
-	    source: "(221:6) {#if (timePoints)}",
+	    source: "(223:6) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -56504,7 +56579,7 @@ var app = (function () {
 	          ctx[9].call(div0)
 	        );
 	      });
-	      add_location(div0, file$H, 216, 4, 7759);
+	      add_location(div0, file$H, 218, 4, 7837);
 	      attr_dev(div1, "class", "draw-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
 	        return (
@@ -56512,11 +56587,11 @@ var app = (function () {
 	          ctx[11].call(div1)
 	        );
 	      });
-	      add_location(div1, file$H, 219, 4, 7873);
+	      add_location(div1, file$H, 221, 4, 7951);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-1k0l8ja");
-	      add_location(div2, file$H, 215, 2, 7726);
+	      add_location(div2, file$H, 217, 2, 7804);
 	      attr_dev(div3, "class", "table-wrapper svelte-1k0l8ja");
-	      add_location(div3, file$H, 232, 2, 8268);
+	      add_location(div3, file$H, 234, 2, 8346);
 	      attr_dev(div4, "id", "viz");
 	      attr_dev(div4, "class", "visualization-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
@@ -56525,7 +56600,7 @@ var app = (function () {
 	          ctx[12].call(div4)
 	        );
 	      });
-	      add_location(div4, file$H, 211, 0, 7603);
+	      add_location(div4, file$H, 213, 0, 7681);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -56824,7 +56899,8 @@ var app = (function () {
 	            });
 	            (0, _context.t0)(0, _context.t1);
 	            // load the map data
-	            loadMapData(); // setup filters
+	            loadMapData();
+	            loadPangeaData(); // setup filters
 
 	            disinformantNationFilter.init(data, "disinformantNation");
 	            platformFilter.init(data, "platforms");
@@ -56857,7 +56933,7 @@ var app = (function () {
 	              set_store_value(highlightCib, $highlightCib = urlFilters.highlightCib);
 	            }
 
-	          case 18:
+	          case 19:
 	          case "end":
 	            return _context.stop();
 	        }
@@ -56900,6 +56976,7 @@ var app = (function () {
 	      onMount: onMount,
 	      loadData: loadData,
 	      loadMapData: loadMapData,
+	      loadPangeaData: loadPangeaData,
 	      setScales: setScales,
 	      width: width,
 	      height: height,

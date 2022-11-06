@@ -10,9 +10,11 @@ const offsetFactor = 1.25;
 
 export const countries = writable([]);
 
-export const projection = derived([width, mapHeight, countries], 
-                                  ([$width, $mapHeight, $countries]) => {
-                                    if ($countries.length === 0) return;
+export const pangeaRegions = writable([]);
+
+export const projection = derived([width, mapHeight, pangeaRegions], 
+                                  ([$width, $mapHeight, $pangeaRegions]) => {
+                                    if ($pangeaRegions.length === 0) return;
 
                                     const unitProjection = geoMercator()
                                       .scale(1)
@@ -20,7 +22,7 @@ export const projection = derived([width, mapHeight, countries],
 
                                     const tmpPath = d3geoPath().projection(unitProjection);
 
-                                    const allBounds = $countries.map(tmpPath.bounds);
+                                    const allBounds = $pangeaRegions.map(tmpPath.bounds);
                                     const bounds = [[min(allBounds, (d) => d[0][0]), min(allBounds, (d) => d[0][1])],
                                                     [max(allBounds, (d) => d[1][0]), max(allBounds, (d) => d[1][1])]];
 
@@ -35,3 +37,5 @@ export const projection = derived([width, mapHeight, countries],
                                   });
 
 export const geoPath = derived(projection, ($projection) => d3geoPath().projection($projection));
+
+export const pangeaGeoPath = derived(projection, ($projection) => d3geoPath().projection($projection));

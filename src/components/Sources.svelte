@@ -1,7 +1,8 @@
 <script>
   // wrapper plotting centroids and source links
   import { panelHeight, width, mapHeight } from '../stores/dimensions';
-  import { countries, geoPath } from '../stores/map';
+  import { countries, pangeaRegions, geoPath } from '../stores/map';
+  import {  switchValueStore } from '../stores/elements';
   import { group } from 'd3';
   import { sortConsistently } from '../utils/misc';
   import { hovered as eHovered, selected as eSelected } from '../stores/eventSelections';
@@ -54,11 +55,23 @@
       let nativeCountry = false;
 
       if (countryNames.includes(disNation)) {
-        coords = $geoPath.centroid($countries.find((country) => country.properties.name === disNation));
-        if (disNation === 'United States of America') {
-          coords = [$geoPath.centroid($countries.find((country) => country.properties.name === 'Mexico'))[0],
-                    $geoPath.centroid($countries.find((country) => country.properties.name === 'Spain'))[1]];
+
+        if ($switchValueStore === 'on'){
+          coords = $geoPath.centroid($pangeaRegions.find((country) => country.properties.name === disNation));
         }
+        else {
+          coords = $geoPath.centroid($countries.find((country) => country.properties.name === disNation));
+          if (disNation === 'North America') {
+            coords = [$geoPath.centroid($countries.find((country) => country.properties.name === 'Mexico'))[0],
+                    $geoPath.centroid($countries.find((country) => country.properties.name === 'Spain'))[1]];
+          }
+          if (disNation === 'Antarctica') {
+            coords[1] = coords[1] - 100
+          }
+        }
+
+
+
         nativeCountry = true;
       }
 
