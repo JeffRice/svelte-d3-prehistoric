@@ -361,7 +361,7 @@ function worldMap() {
     function pangeaMap() {
           //Pangea map
     ctx.strokeStyle = preGreen;
-    ctx.globalAlpha = 0.75;
+    ctx.globalAlpha = 0.15;
     ctx.lineWidth = 1;
     ctx.beginPath();
     $pangeaRegions.forEach($geoPath);
@@ -370,12 +370,49 @@ function worldMap() {
     ctx.strokeStyle = '#000';
     ctx.lineWidth = 1.5;
     ctx.stroke();
+
     
+    setTimeout(function(){
+      
+
+        var fadeEffect = setInterval(function () {
+
+          if (ctx.globalAlpha < 0.225){
+            ctx.globalAlpha += 0.015;
+          ctx.beginPath();
+    $pangeaRegions.forEach($geoPath);
+    ctx.fillStyle = preGreen;
+    ctx.fill();
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+          console.log('draw?')
+          }
+          else {
+            clearInterval(fadeEffect);
+        }
+
+        }, 80);
+    },1);
+
+
     }
+
+    
 
     if($switchValueStore === 'on'){
       pangeaMap()
     }
+    if($switchValueStore === 'off'){
+
+
+
+    }
+      
+    
+    
+
+
   }
 
 

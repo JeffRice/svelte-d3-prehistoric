@@ -49026,7 +49026,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$6 = globals.console;
-	var file$s = "src/components/Centroid.svelte"; // (47:2) {#if (centroid.length > 0)}
+	var file$s = "src/components/Centroid.svelte"; // (54:2) {#if (centroid.length > 0)}
 
 	function create_if_block$f(ctx) {
 	  var g;
@@ -49043,16 +49043,16 @@ var app = (function () {
 	      t = text(t_value);
 	      set_style(text_1, "transition", "opacity " + growDuration + "ms ease");
 	      attr_dev(text_1, "class", "svelte-5cofbe");
-	      add_location(text_1, file$s, 48, 6, 1479);
+	      add_location(text_1, file$s, 55, 6, 1765);
 	      attr_dev(g, "class", "centroid-label svelte-5cofbe");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*centroid*/
 	      ctx[0][0].xCountry + " " + (
 	      /*topMargin*/
-	      ctx[5](
+	      ctx[7](
 	      /*centroid*/
 	      ctx[0][0].yCountry) + 5) + ")");
-	      add_location(g, file$s, 47, 6, 1362);
+	      add_location(g, file$s, 54, 6, 1648);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -49072,7 +49072,7 @@ var app = (function () {
 	      /*centroid*/
 	      ctx[0][0].xCountry + " " + (
 	      /*topMargin*/
-	      ctx[5](
+	      ctx[7](
 	      /*centroid*/
 	      ctx[0][0].yCountry) + 5) + ")")) {
 	        attr_dev(g, "transform", g_transform_value);
@@ -49086,7 +49086,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$f.name,
 	    type: "if",
-	    source: "(47:2) {#if (centroid.length > 0)}",
+	    source: "(54:2) {#if (centroid.length > 0)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -49120,20 +49120,20 @@ var app = (function () {
 	      attr_dev(circle, "class", "centroid-fg svelte-5cofbe");
 	      set_style(circle, "transition", "stroke-opacity " + growDuration + "ms ease");
 	      attr_dev(circle, "cx", circle_cx_value =
-	      /*centroid*/
-	      ctx[0][0].xCountry);
+	      /*$tweenedPos*/
+	      ctx[3].x);
 	      attr_dev(circle, "cy", circle_cy_value =
 	      /*topMargin*/
-	      ctx[5](
-	      /*centroid*/
-	      ctx[0][0].yCountry));
+	      ctx[7](
+	      /*$tweenedPos*/
+	      ctx[3].fy));
 	      attr_dev(circle, "r", circle_r_value =
 	      /*$centroidScale*/
-	      ctx[3](10));
-	      add_location(circle, file$s, 33, 9, 807);
+	      ctx[4](10));
+	      add_location(circle, file$s, 40, 9, 1106);
 	      set_style(text_1, "transition", "opacity " + growDuration + "ms ease");
 	      attr_dev(text_1, "class", "svelte-5cofbe");
-	      add_location(text_1, file$s, 42, 5, 1205);
+	      add_location(text_1, file$s, 49, 5, 1491);
 	      attr_dev(g0, "class", "centroid-name-label");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" + (
 	      /*centroid*/
@@ -49141,15 +49141,15 @@ var app = (function () {
 	      /*country*/
 	      ctx[1].length * 4) + " " + (
 	      /*topMargin*/
-	      ctx[5](
+	      ctx[7](
 	      /*centroid*/
 	      ctx[0][0].yCountry) + 30) + ")");
-	      add_location(g0, file$s, 41, 2, 1060);
+	      add_location(g0, file$s, 48, 2, 1346);
 	      attr_dev(g1, "class", "centroid svelte-5cofbe");
 	      toggle_class(g1, "selected",
 	      /*selected*/
 	      ctx[2]);
-	      add_location(g1, file$s, 27, 0, 577);
+	      add_location(g1, file$s, 34, 0, 876);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -49165,9 +49165,9 @@ var app = (function () {
 	      if (!mounted) {
 	        dispose = [listen_dev(g1, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[6]), false, false, true), listen_dev(g1, "mouseover", stop_propagation(
+	        ctx[8]), false, false, true), listen_dev(g1, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
-	        ctx[7]), false, false, true)];
+	        ctx[9]), false, false, true)];
 	        mounted = true;
 	      }
 	    },
@@ -49176,28 +49176,28 @@ var app = (function () {
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*centroid*/
-	      1 && circle_cx_value !== (circle_cx_value =
-	      /*centroid*/
-	      ctx[0][0].xCountry)) {
+	      /*$tweenedPos*/
+	      8 && circle_cx_value !== (circle_cx_value =
+	      /*$tweenedPos*/
+	      ctx[3].x)) {
 	        attr_dev(circle, "cx", circle_cx_value);
 	      }
 
 	      if (dirty &
-	      /*centroid*/
-	      1 && circle_cy_value !== (circle_cy_value =
+	      /*$tweenedPos*/
+	      8 && circle_cy_value !== (circle_cy_value =
 	      /*topMargin*/
-	      ctx[5](
-	      /*centroid*/
-	      ctx[0][0].yCountry))) {
+	      ctx[7](
+	      /*$tweenedPos*/
+	      ctx[3].fy))) {
 	        attr_dev(circle, "cy", circle_cy_value);
 	      }
 
 	      if (dirty &
 	      /*$centroidScale*/
-	      8 && circle_r_value !== (circle_r_value =
+	      16 && circle_r_value !== (circle_r_value =
 	      /*$centroidScale*/
-	      ctx[3](10))) {
+	      ctx[4](10))) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 
@@ -49215,7 +49215,7 @@ var app = (function () {
 	      /*country*/
 	      ctx[1].length * 4) + " " + (
 	      /*topMargin*/
-	      ctx[5](
+	      ctx[7](
 	      /*centroid*/
 	      ctx[0][0].yCountry) + 30) + ")")) {
 	        attr_dev(g0, "transform", g0_transform_value);
@@ -49268,19 +49268,24 @@ var app = (function () {
 	};
 
 	function instance$t($$self, $$props, $$invalidate) {
+	  var $tweenedPos;
 	  var $centroidScale;
 	  validate_store(centroidScale, "centroidScale");
 	  component_subscribe($$self, centroidScale, function ($$value) {
-	    return $$invalidate(3, $centroidScale = $$value);
+	    return $$invalidate(4, $centroidScale = $$value);
 	  });
 	  var centroid = $$props.centroid;
 	  var country = $$props.country;
 	  var _$$props$selected = $$props.selected,
 	      selected = _$$props$selected === void 0 ? false : _$$props$selected;
-	  var dispatch = createEventDispatcher();
-	  console.log("centroid: ", {
-	    centroid: centroid
+	  var tweenedPos = createTweenedPos();
+	  validate_store(tweenedPos, "tweenedPos");
+	  component_subscribe($$self, tweenedPos, function (value) {
+	    return $$invalidate(3, $tweenedPos = value);
 	  });
+	  var dispatch = createEventDispatcher();
+	  console.log("centroid: ", centroid);
+	  console.log("tweenedPos: ", centroid[0].xCountry);
 
 	  function topMargin(point) {
 	    if (centroid[0].disNation === "Eurasia") {
@@ -49324,14 +49329,20 @@ var app = (function () {
 	  $$self.$capture_state = function () {
 	    return {
 	      centroidScale: centroidScale,
+	      bloomDuration: bloomDuration,
 	      growDuration: growDuration,
+	      jitterFactor: jitterFactor,
 	      haveOverlap: haveOverlap,
 	      createEventDispatcher: createEventDispatcher,
+	      fade: fade,
+	      createTweenedPos: createTweenedPos,
 	      centroid: centroid,
 	      country: country,
 	      selected: selected,
+	      tweenedPos: tweenedPos,
 	      dispatch: dispatch,
 	      topMargin: topMargin,
+	      $tweenedPos: $tweenedPos,
 	      $centroidScale: $centroidScale
 	    };
 	  };
@@ -49346,7 +49357,18 @@ var app = (function () {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [centroid, country, selected, $centroidScale, dispatch, topMargin, click_handler, mouseover_handler];
+	  $$self.$$.update = function () {
+	    if ($$self.$$.dirty &
+	    /*centroid*/
+	    1) {
+	       set_store_value(tweenedPos, $tweenedPos = {
+	        x: centroid[0].xCountry,
+	        fy: centroid[0].yCountry
+	      });
+	    }
+	  };
+
+	  return [centroid, country, selected, $tweenedPos, $centroidScale, tweenedPos, dispatch, topMargin, click_handler, mouseover_handler];
 	}
 
 	var Centroid = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -52832,13 +52854,13 @@ var app = (function () {
 	      canvas_1 = element("canvas");
 	      div1 = element("div");
 	      attr_dev(div0, "class", "layer");
-	      add_location(div0, file$B, 407, 0, 8372);
+	      add_location(div0, file$B, 444, 0, 8931);
 	      attr_dev(div1, "id", "points");
-	      add_location(div1, file$B, 409, 30, 8443);
+	      add_location(div1, file$B, 446, 30, 9002);
 	      attr_dev(canvas_1, "class", "svelte-5592ys");
-	      add_location(canvas_1, file$B, 409, 3, 8416);
+	      add_location(canvas_1, file$B, 446, 3, 8975);
 	      attr_dev(div2, "id", "map");
-	      add_location(div2, file$B, 408, 0, 8398);
+	      add_location(div2, file$B, 445, 0, 8957);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53247,7 +53269,7 @@ var app = (function () {
 	        function pangeaMap() {
 	          //Pangea map
 	          ctx.strokeStyle = preGreen;
-	          ctx.globalAlpha = 0.75;
+	          ctx.globalAlpha = 0.15;
 	          ctx.lineWidth = 1;
 	          ctx.beginPath();
 	          $pangeaRegions.forEach($geoPath);
@@ -53256,6 +53278,23 @@ var app = (function () {
 	          ctx.strokeStyle = "#000";
 	          ctx.lineWidth = 1.5;
 	          ctx.stroke();
+	          setTimeout(function () {
+	            var fadeEffect = setInterval(function () {
+	              if (ctx.globalAlpha < 0.225) {
+	                ctx.globalAlpha += 0.015;
+	                ctx.beginPath();
+	                $pangeaRegions.forEach($geoPath);
+	                ctx.fillStyle = preGreen;
+	                ctx.fill();
+	                ctx.strokeStyle = "#000";
+	                ctx.lineWidth = 1.5;
+	                ctx.stroke();
+	                console.log("draw?");
+	              } else {
+	                clearInterval(fadeEffect);
+	              }
+	            }, 80);
+	          }, 1);
 	        }
 
 	        if ($switchValueStore === "on") {

@@ -1,17 +1,24 @@
 <script>
   // single implementation of a country centroid on the map
   import { centroidScale } from '../stores/scales';
-  import { growDuration } from '../transitions/constants';
+  import { bloomDuration, growDuration, jitterFactor } from '../transitions/constants';
   import { haveOverlap } from '../utils/misc';
   import { createEventDispatcher } from 'svelte';
+  import { fade } from 'svelte/transition';  
+  import { createTweenedPos } from '../transitions/tween';
   
   export let centroid;
   export let country;
   export let selected = false;
 
-  const dispatch = createEventDispatcher();
-  console.log('centroid: ', {centroid})
 
+  const tweenedPos = createTweenedPos();
+
+$: $tweenedPos = {x: centroid[0].xCountry, fy: centroid[0].yCountry};
+
+  const dispatch = createEventDispatcher();
+  console.log('centroid: ', centroid)
+  console.log('tweenedPos: ',   centroid[0].xCountry)
 
   function topMargin (point){
 
@@ -33,8 +40,8 @@ return point
 
          <circle class="centroid-fg"
           style="transition: stroke-opacity {growDuration}ms ease;"
-          cx={centroid[0].xCountry}
-          cy={topMargin(centroid[0].yCountry)}
+          cx={$tweenedPos.x}
+          cy={topMargin($tweenedPos.fy)}
           r={$centroidScale(10)}></circle>
 
 
