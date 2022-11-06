@@ -113,3 +113,7 @@ export const highlightPolarization = writable(false);
 export const highlightCib = writable(false);
 
 export const controlsFilter = writable(false);
+
+export const sourcesSwitch = writable(false);
+
+export const centroidSwitch = writable(false);

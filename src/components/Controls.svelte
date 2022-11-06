@@ -28,6 +28,7 @@
   import CheckboxPanel from './CheckboxPanel.svelte';
   import Share from './Share.svelte';
   import Switch from './Switch.svelte';
+    import CheckboxSources from './CheckboxSources.svelte';
 
 
   export let timePoints;
@@ -156,6 +157,11 @@
     </div>
     <div class="checkbox-panel">
       <CheckboxPanel />
+    <!--  <Share />-->
+    </div>
+
+    <div class="checkbox-panel">
+      <CheckboxSources />
     <!--  <Share />-->
     </div>
 

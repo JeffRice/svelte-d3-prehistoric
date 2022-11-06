@@ -11,7 +11,9 @@
     disinformantNationFilter,
     selectAllFilters,
     unselectAllFilters,
-    highlightPolarization } from '../stores/filters';
+    highlightPolarization,
+    sourcesSwitch,
+    centroidSwitch } from '../stores/filters';
 
   import SourceLink from './SourceLink.svelte';
   import Centroid from './Centroid.svelte';
@@ -111,7 +113,7 @@
 
 <svelte:body on:mouseover={handleBodyMouseover} />
 
-<g class="centroids-sources">
+<g class="centroids-sources"class:hidden={$sourcesSwitch}>
   {#each sources as source (source.idNation)}
     <SourceLink {source} 
                 selected={$eSelected && $eSelected.map((d) => d.id).includes(source.id)
@@ -137,4 +139,7 @@
 </g>
 
 <style>
+    .hidden {
+    display: none;
+  }
 </style>

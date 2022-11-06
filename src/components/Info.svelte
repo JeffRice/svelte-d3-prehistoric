@@ -17,7 +17,7 @@
        style="left: {x}px; top: {y}px;"
        transition:fade>
     <div class="info-icon">i</div>
-    <p>Compare your selection in the <span class="pseudolink" on:click|self={() => document.querySelector('#table').scrollIntoView({behavior: 'smooth'})}>dataset view</span>.</p>  
+    <p>Compare your selection in the <span class="pseudolink" on:click|self={() => document.querySelector('#table').scrollIntoView({behavior: 'auto'})}>dataset view</span>.</p>  
   </div>
 {/if}
 
