@@ -50790,7 +50790,8 @@ var app = (function () {
 	  };
 	}
 
-	var file$w = "src/components/TimelineSpot.svelte"; // (52:18) {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }
+	var console_1$7 = globals.console;
+	var file$w = "src/components/TimelineSpot.svelte"; // (90:18) {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }
 
 	function create_if_block$g(ctx) {
 	  var path;
@@ -50805,7 +50806,7 @@ var app = (function () {
 	      ctx[1].getComputedTextLength() + 2 * offset : 0) + " 0l" + lineLength + " 0");
 	      attr_dev(path, "marker-end", "url(#arrow)");
 	      attr_dev(path, "class", "svelte-thtvro");
-	      add_location(path, file$w, 52, 12, 1452);
+	      add_location(path, file$w, 90, 12, 2259);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, path, anchor);
@@ -50829,7 +50830,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$g.name,
 	    type: "if",
-	    source: "(52:18) {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }",
+	    source: "(90:18) {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }",
 	    ctx: ctx
 	  });
 	  return block;
@@ -50884,24 +50885,24 @@ var app = (function () {
 	      attr_dev(rect, "class", rect_class_value = "" + (null_to_empty(
 	      /*spotName*/
 	      ctx[9]) + " svelte-thtvro"));
-	      add_location(rect, file$w, 41, 12, 960);
+	      add_location(rect, file$w, 79, 12, 1767);
 	      attr_dev(text0, "class", "bg svelte-thtvro");
 	      attr_dev(text0, "dx", offset);
 	      attr_dev(text0, "dy", "4");
-	      add_location(text0, file$w, 45, 12, 1116);
+	      add_location(text0, file$w, 83, 12, 1923);
 	      attr_dev(text1, "dx", offset);
 	      attr_dev(text1, "dy", "4");
 	      attr_dev(text1, "class", "svelte-thtvro");
-	      add_location(text1, file$w, 48, 12, 1222);
+	      add_location(text1, file$w, 86, 12, 2029);
 	      attr_dev(g0, "class", "spot time-scale-label svelte-thtvro");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" +
 	      /*$x*/
 	      ctx[3] + " -20)");
-	      add_location(g0, file$w, 36, 0, 791);
+	      add_location(g0, file$w, 73, 0, 1570);
 	      attr_dev(g1, "class", "time-scale svelte-thtvro");
-	      add_location(g1, file$w, 35, 2, 768);
+	      add_location(g1, file$w, 72, 2, 1547);
 	      attr_dev(g2, "class", "labels");
-	      add_location(g2, file$w, 34, 0, 747);
+	      add_location(g2, file$w, 71, 0, 1526);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -50917,11 +50918,13 @@ var app = (function () {
 	      append_dev(text1, t1);
 	      /*text1_binding*/
 
-	      ctx[10](text1);
+	      ctx[11](text1);
 	      if (if_block) if_block.m(g0, null);
 
 	      if (!mounted) {
-	        dispose = action_destroyer(spottooltipable_action = spottooltipable.call(null, g0, {
+	        dispose = [listen_dev(g0, "click",
+	        /*testSetScale*/
+	        ctx[10], false, false, false), action_destroyer(spottooltipable_action = spottooltipable.call(null, g0, {
 	          data:
 	          /*spot*/
 	          ctx[0],
@@ -50931,7 +50934,7 @@ var app = (function () {
 	          top:
 	          /*$panelHeight*/
 	          ctx[6] + 20
-	        }));
+	        }))];
 	        mounted = true;
 	      }
 	    },
@@ -51007,10 +51010,10 @@ var app = (function () {
 	      if (detaching) detach_dev(g2);
 	      /*text1_binding*/
 
-	      ctx[10](null);
+	      ctx[11](null);
 	      if (if_block) if_block.d();
 	      mounted = false;
-	      dispose();
+	      run_all(dispose);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -51030,11 +51033,16 @@ var app = (function () {
 	  var $x;
 	  var $timeScale;
 	  var $x2;
+	  var $originalTimeDomain;
 	  var $drawWrapper;
 	  var $panelHeight;
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(11, $timeScale = $$value);
+	    return $$invalidate(12, $timeScale = $$value);
+	  });
+	  validate_store(originalTimeDomain, "originalTimeDomain");
+	  component_subscribe($$self, originalTimeDomain, function ($$value) {
+	    return $$invalidate(13, $originalTimeDomain = $$value);
 	  });
 	  validate_store(drawWrapper, "drawWrapper");
 	  component_subscribe($$self, drawWrapper, function ($$value) {
@@ -51065,9 +51073,38 @@ var app = (function () {
 	    displayName = spotName;
 	  }
 
+	  function testSetScale(e) {
+	    console.log(e);
+	    console.log(e.path[0].classList[0]);
+	    if (!$originalTimeDomain) set_store_value(originalTimeDomain, $originalTimeDomain = _toConsumableArray($timeScale.domain()));
+
+	    if (e.path[0].classList[0] === "Neogene") {
+	      $timeScale.domain([2, 23]);
+	    }
+
+	    if (e.path[0].classList[0] === "Paleogene") {
+	      $timeScale.domain([23, 65]);
+	    }
+
+	    if (e.path[0].classList[0] === "Cretaceous") {
+	      $timeScale.domain([65, 150]);
+	    }
+
+	    if (e.path[0].classList[0] === "Jurassic") {
+	      $timeScale.domain([150, 210]);
+	    }
+
+	    if (e.path[0].classList[0] === "Triassic") {
+	      $timeScale.domain([210, 310]);
+	    }
+
+	    timeScale.set($timeScale);
+	  } //resetBrush();
+
+
 	  var writable_props = ["spot"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<TimelineSpot> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<TimelineSpot> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -51089,9 +51126,11 @@ var app = (function () {
 	    return {
 	      panelHeight: panelHeight,
 	      timeScale: timeScale,
+	      margin: margin,
 	      spottooltipable: spottooltipable,
 	      drawWrapper: drawWrapper,
 	      createTweenedPos: createTweenedPos,
+	      originalTimeDomain: originalTimeDomain,
 	      spot: spot,
 	      x: x,
 	      x2: x2,
@@ -51102,9 +51141,11 @@ var app = (function () {
 	      timeScaleText: timeScaleText,
 	      spotName: spotName,
 	      displayName: displayName,
+	      testSetScale: testSetScale,
 	      $x: $x,
 	      $timeScale: $timeScale,
 	      $x2: $x2,
+	      $originalTimeDomain: $originalTimeDomain,
 	      $drawWrapper: $drawWrapper,
 	      $panelHeight: $panelHeight
 	    };
@@ -51126,18 +51167,18 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*$timeScale, spot*/
-	    2049) {
+	    4097) {
 	       set_store_value(x, $x = $timeScale(spot.date));
 	    }
 
 	    if ($$self.$$.dirty &
 	    /*$timeScale, spot*/
-	    2049) {
+	    4097) {
 	       set_store_value(x2, $x2 = $timeScale(spot.endDate));
 	    }
 	  };
 
-	  return [spot, timeScaleText, displayName, $x, $x2, $drawWrapper, $panelHeight, x, x2, spotName, text1_binding];
+	  return [spot, timeScaleText, displayName, $x, $x2, $drawWrapper, $panelHeight, x, x2, spotName, testSetScale, text1_binding];
 	}
 
 	var TimelineSpot = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -51166,7 +51207,7 @@ var app = (function () {
 	    if (
 	    /*spot*/
 	    ctx[0] === undefined && !("spot" in props)) {
-	      console.warn("<TimelineSpot> was created without expected prop 'spot'");
+	      console_1$7.warn("<TimelineSpot> was created without expected prop 'spot'");
 	    }
 
 	    return _this;
@@ -53071,7 +53112,7 @@ var app = (function () {
 	  };
 	}();
 
-	var console_1$7 = globals.console;
+	var console_1$8 = globals.console;
 	var file$C = "src/components/Canvas.svelte";
 
 	function create_fragment$D(ctx) {
@@ -53284,7 +53325,7 @@ var app = (function () {
 
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<Canvas> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -56590,7 +56631,7 @@ var app = (function () {
 	  return Table;
 	}(SvelteComponentDev);
 
-	var console_1$8 = globals.console;
+	var console_1$9 = globals.console;
 	var file$I = "src/components/Visualization.svelte"; // (215:2) {#if (!timePoints)}
 
 	function create_if_block_1$8(ctx) {
@@ -57215,7 +57256,7 @@ var app = (function () {
 	  })));
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$9.warn("<Visualization> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -57561,7 +57602,7 @@ var app = (function () {
 	  return CookieBanner;
 	}(SvelteComponentDev);
 
-	var console_1$9 = globals.console;
+	var console_1$a = globals.console;
 	var file$K = "src/App.svelte"; // (19:2) {:else}
 
 	function create_else_block$2(ctx) {
@@ -57794,7 +57835,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$9.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$a.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,

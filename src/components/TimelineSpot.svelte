@@ -2,9 +2,11 @@
   // selected dates on the timeline (= the spots)
   import { panelHeight } from '../stores/dimensions';
   import { timeScale } from '../stores/scales';
+  import { margin } from '../stores/dimensions';
   import { spottooltipable } from '../actions/spottooltipable';
   import { drawWrapper } from '../stores/elements';
   import { createTweenedPos } from '../transitions/tween';
+  import { originalTimeDomain } from '../stores/filters';
 
   export let spot;
 
@@ -28,6 +30,41 @@
   $: $x2 = $timeScale(spot.endDate);
 
 
+  function testSetScale(e) {
+    console.log(e)
+    console.log(e.path[0].classList[0])
+    if (!$originalTimeDomain) $originalTimeDomain = [...$timeScale.domain()];
+    
+
+    if (e.path[0].classList[0] === 'Neogene'){
+      $timeScale.domain([2, 23])
+    }
+    if (e.path[0].classList[0] === 'Paleogene'){
+      $timeScale.domain([23, 65])
+    }
+    if (e.path[0].classList[0] === 'Cretaceous'){
+      $timeScale.domain([65, 150])
+    }
+    if (e.path[0].classList[0] === 'Jurassic'){
+      $timeScale.domain([150, 210])
+    }
+    if (e.path[0].classList[0] === 'Triassic'){
+      $timeScale.domain([210, 310])
+    }
+
+
+
+
+
+$timeScale = $timeScale;
+//resetBrush();
+
+
+}
+
+
+
+
 
 </script>
 
@@ -36,6 +73,7 @@
   <g class="time-scale">
 <g class="spot time-scale-label"
     transform="translate({$x} -20)"
+    on:click={testSetScale}
     use:spottooltipable={{data: spot, target: $drawWrapper, top: $panelHeight + 20}}>
 
 
