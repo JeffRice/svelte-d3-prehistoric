@@ -51,40 +51,79 @@
   <feImage xlink:href="/images/raptor.svg"/>
 </filter>
 
+
+<filter id="dimetrodon_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/dimetrodon.png"/>
+</filter>
+
+<filter id="gastornis_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/gastornis.png"/>
+</filter>
+
+<filter id="giraffatitan_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/giraffatitan.png"/>
+</filter>
+
 <filter id="herbivore_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/herbivore.svg"/>
 </filter>
 
-<filter id="spinosaurus_image" x="0%" y="0%" width="100%" height="100%">
-  <feImage xlink:href="/images/spinosaur.jpg"/>
+<filter id="meganeura_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/meganeura.png"/>
 </filter>
+
+<filter id="shunosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/shunosaurus.png"/>
+</filter>
+
+<filter id="spinosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/spinosaur.png"/>
+</filter>
+
+<filter id="titanoboa_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/titanoboa.png"/>
+</filter>
+
 
 <filter id="tyrannoskull_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/tyrannoskull.jpg"/>
 </filter>
 
 <filter id="trexskull_image" x="0%" y="0%" width="100%" height="100%">
-  <feImage xlink:href="/images/trexskull.jpeg"/>
+  <feImage xlink:href="/images/trexskull.png"/>
 </filter>
 
 <filter id="aquatic_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/aquatic.svg"/>
 </filter>
 
+<filter id="pachycephalosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/pachycephalosaurus.png"/>
+</filter>
+
 <filter id="pterodactyl_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/pterodactyl.svg"/>
+</filter>
+
+<filter id="smilodon_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/smilodon.png"/>
 </filter>
 
 <filter id="stegosaurus_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/stegosaurus.svg"/>
 </filter>
 
-<filter id="stegosaurus2_image" x="0%" y="0%" width="100%" height="100%">
-  <feImage xlink:href="/images/stegosaurus2.svg"/>
-</filter>
 
 <filter id="lizard_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/lizard.svg"/>
+</filter>
+
+<filter id="mosasaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/mosasaurus.png"/>
+</filter>
+
+<filter id="plateosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/plateosaurus.png"/>
 </filter>
 
 <filter id="smallraptor_image" x="0%" y="0%" width="100%" height="100%">
@@ -111,9 +150,7 @@
   <feImage xlink:href="/images/talons.svg"/>
 </filter>
 
-<filter id="basilosaurus_image" x="0%" y="0%" width="100%" height="100%">
-  <feImage xlink:href="/images/basilosaurus.svg"/>
-</filter>
+
 
 <filter id="duckbilled_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/duckbilled.svg"/>

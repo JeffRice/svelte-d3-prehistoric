@@ -1,6 +1,8 @@
 event_name,date,endDate,description
-Triassic,210,310,"161 million Americans participate in the 2020 presidential election—the highest voter turnout in history. Former Vice President Joe Biden is elected as the 46th President of the United States."
-Jurassic,150,210,"George Floyd, a 46-year-old African-American man, is murdered by Minneapolis police officers. Graphic video of his death ignites waves of racial justice protests across the United States."
-Cretaceous,65,150,"Senator Bernie Sanders (D-VT), the remaining challenger to former Vice President Joe Biden, suspends his campaign. Biden has secured the Democratic presidential nomination."
+Carboniferous,298,358,"161 million Americans participate in the 2020 presidential election—the highest voter turnout in history. Former Vice President Joe Biden is elected as the 46th President of the United States."
+Permian,251,298,"161 million Americans participate in the 2020 presidential election—the highest voter turnout in history. Former Vice President Joe Biden is elected as the 46th President of the United States."
+Triassic,201,251,"161 million Americans participate in the 2020 presidential election—the highest voter turnout in history. Former Vice President Joe Biden is elected as the 46th President of the United States."
+Jurassic,145,201,"George Floyd, a 46-year-old African-American man, is murdered by Minneapolis police officers. Graphic video of his death ignites waves of racial justice protests across the United States."
+Cretaceous,65,145,"Senator Bernie Sanders (D-VT), the remaining challenger to former Vice President Joe Biden, suspends his campaign. Biden has secured the Democratic presidential nomination."
 Paleogene,23,65,"Senator Bernie Sanders (D-VT), the remaining challenger to former Vice President Joe Biden, suspends his campaign. Biden has secured the Democratic presidential nomination."
 Neogene,2,23,"Senator Bernie Sanders (D-VT), the remaining challenger to former Vice President Joe Biden, suspends his campaign. Biden has secured the Democratic presidential nomination."

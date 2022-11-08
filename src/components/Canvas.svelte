@@ -9,12 +9,13 @@
 
   let canvas;
 
-  import {select, geoGraticule, geoNaturalEarth1, geoMercator, geoPath as d3geoPath} from "d3"
+  import {select, geoGraticule, geoNaturalEarth1, geoMercator, geoPath as d3geoPath, scaleLinear} from "d3"
   import { onMount, afterUpdate } from "svelte";
   import { feature } from "topojson";
   import loadFossilSpots from '../utils/loadFossilSpots';
-  import loadFossilSpots2 from '../utils/loadFossilSpots2';
+//   import loadFossilSpots2 from '../utils/loadFossilSpots2';
   import loadFossilSpots3 from '../utils/loadFossilSpots3';
+  import loadTriassicFossils from '../utils/loadTriassicFossils';
 
   
 
@@ -22,9 +23,9 @@
   let worldjson;
   let graticule;
   let fossilSpots;
-  let fossilSpots2;
+//   let fossilSpots2;
   let fossilSpots3;  
-
+  let triassicFossilSpots;
 
   import { fossilDatapoints, switchValueStore } from '../stores/elements';
 
@@ -57,7 +58,7 @@
 
 
   fossilSpots = await loadFossilSpots();
-  fossilSpots2 = await loadFossilSpots2();
+  triassicFossilSpots = await loadTriassicFossils();
   fossilSpots3 = await loadFossilSpots3();  
  // originalJurassicSpots = await loadFossilSpots();
  // originalCretaceousSpots = await loadFossilSpots3();
@@ -70,8 +71,8 @@
 
   $fossilDatapoints.jurassic = fossilSpots;
   $fossilDatapoints.originaljurassic = fossilSpots;
-  $fossilDatapoints.triassic = fossilSpots2;
-  $fossilDatapoints.originaltriassic = fossilSpots2;
+  $fossilDatapoints.triassic = triassicFossilSpots;
+  $fossilDatapoints.originaltriassic = triassicFossilSpots;
   $fossilDatapoints.cretaceous = fossilSpots3;
   $fossilDatapoints.originalcretaceous = fossilSpots3;
 
@@ -93,7 +94,7 @@ another way to redraw on updates
 
 
  // $: if (canvas && $countries.length > 0) {
-  $: if (canvas && $countries && pangeaRegions && worldjson && fossilSpots && fossilSpots2 && fossilSpots3 && fossilDatapoints && $switchValueStore) {
+  $: if (canvas && $countries && pangeaRegions && worldjson && fossilSpots && triassicFossilSpots && fossilSpots3 && fossilDatapoints && $switchValueStore) {
   //  console.log('countries store', $countries)
  //   console.log('fossilSpots: ', fossilSpots)
 
@@ -160,6 +161,7 @@ let info = base.append("div")
     .attr("class", "info");
 
 
+let jurassicPaint= scaleLinear() .domain([140, 206]).range(["#a4e3ef","#2f9eb3"])
 
 function createMap(dataset) {
 
@@ -174,17 +176,21 @@ function createMap(dataset) {
       .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
       .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
       .attr("radius", 4)
-      .attr("fillStyle", "#34B2C9")
+  //    .attr("fillStyle", "#34B2C9")
+      .attr("fillStyle", function(d) {return jurassicPaint(d.maxAge)})
 
 
-      
-      drawCanvas();
+   //   "rgba({255}, 165, 0, 1)"
+   drawCanvas();
 
      
 
 }
 
+let triassicPaint= scaleLinear() .domain([199, 247]).range(["#f2caf7","#6c4870"])
+
 function createTriassicMap(dataset) {
+
 
 
 locations.selectAll("points.arc")
@@ -196,15 +202,19 @@ locations.selectAll("points.arc")
     .classed("arc", true)
     .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
     .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
-    .attr("radius", 5)
-    .attr("fillStyle", "#BD8CC3")
+    .attr("radius", 4)
+  //  .attr("fillStyle", "#BD8CC3")
+    .attr("fillStyle", function(d) {return triassicPaint(d.maxAge)})
 
-
-    drawCanvas();
+//  " + d.maxAge + "
+drawCanvas();
 
 
 
 }
+
+let cretaceousPaint= scaleLinear() .domain([60, 150]).range(["#aad5a9","#486848"])
+
 
 function createCretaceousMap(dataset) {
 
@@ -218,9 +228,9 @@ locations.selectAll("points.arc")
   .classed("arc", true)
   .attr("x", function(d) {return testProjection([d.y,d.x])[0]})
   .attr("y", function(d) {return testProjection([d.y,d.x])[1]})
-  .attr("radius", 3)
-  .attr("fillStyle", "#678F66")
-
+  .attr("radius", 4)
+  // .attr("fillStyle", "#678F66")
+  .attr("fillStyle", function(d) {return cretaceousPaint(d.maxAge)})
 
   drawCanvas();
 
@@ -243,6 +253,24 @@ function drawCanvas() {
       ctx.stroke();
     ctx.closePath();
 	})
+
+}
+
+function drawDonut() {
+
+var elements = locations.selectAll("points.arc");
+  elements.each(function(d, i) {
+  var node = select(this);
+  
+  ctx.beginPath();
+  ctx.arc(node.attr("x"), node.attr("y"), node.attr("radius"), 0, 2 * Math.PI);
+  ctx.fillStyle = node.attr("fillStyle");
+ // ctx.fill();
+  ctx.lineWidth = 0.5;
+    ctx.strokeStyle = node.attr("fillStyle");
+    ctx.stroke();
+  ctx.closePath();
+})
 
 }
 
@@ -341,7 +369,7 @@ function worldMap() {
       // Current World Map
       ctx.save();
     ctx.strokeStyle = '#000';
-    ctx.lineWidth = 1.5;
+    ctx.lineWidth = 1;
     ctx.fillStyle = bg;
     ctx.beginPath();
     ctx.globalAlpha = 0.35;

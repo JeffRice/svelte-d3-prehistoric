@@ -8,7 +8,9 @@ const loadFossilSpots3 = async () => {
       id: i,
       name: d.accepted_name,
       x: d.lat,
-      y: d.lng
+      y: d.lng,
+      maxAge: d.max_ma,
+      minAge: d.min_ma
     };
   });
 

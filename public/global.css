@@ -10,12 +10,16 @@
   --dfrlab-black: #000000;
 
   /* time era colors*/
-
-  --cretaceous: #88af87;
-  --jurassic: #77d4e5;
-  --triassic: #e7b6ed;
+  --carboniferous: #c7c4c3;
+  --permian: #c5ae90;
+  --triassic: #ecc6f1;
+  --jurassic: #a0dfeb;
+  --cretaceous: #b0dbaf;
   --paleogene: #f1ba92;
   --neogene: #F2FA8C;
+
+  
+  
 
   /* possible text colors */
   --text-black: #2a3035;

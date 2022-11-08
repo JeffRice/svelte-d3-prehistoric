@@ -43,13 +43,19 @@
       $timeScale.domain([23, 65])
     }
     if (e.path[0].classList[0] === 'Cretaceous'){
-      $timeScale.domain([65, 150])
+      $timeScale.domain([65, 145])
     }
     if (e.path[0].classList[0] === 'Jurassic'){
-      $timeScale.domain([150, 210])
+      $timeScale.domain([145, 201])
     }
     if (e.path[0].classList[0] === 'Triassic'){
-      $timeScale.domain([210, 310])
+      $timeScale.domain([201, 251])
+    }
+    if (e.path[0].classList[0] === 'Permian'){
+      $timeScale.domain([251, 298])
+    }
+    if (e.path[0].classList[0] === 'Carboniferous'){
+      $timeScale.domain([298, 358])
     }
 
 
@@ -88,7 +94,7 @@ $timeScale = $timeScale;
                   dx={offset}
                   dy="4">{displayName} </text>
                   {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }
-            <path d="M{timeScaleText ? timeScaleText.getComputedTextLength() + 2 * offset: 0} 0l{lineLength} 0"
+            <path d="M{timeScaleText ? timeScaleText.getComputedTextLength() + 2.5 * offset: 0} 0l{lineLength} 0"
                   marker-end="url(#arrow)"></path>
                   {/if}
  <!--
@@ -147,7 +153,14 @@ $timeScale = $timeScale;
   .Neogene {
     fill:  var(--neogene);
   }
-
+  .Permian {
+    fill:  var(--permian);
+  }
+  .Carboniferous {
+    fill:  var(--carboniferous);
+  }
+  
+  
 
   rect.bait {
     fill: none;
@@ -157,7 +170,7 @@ $timeScale = $timeScale;
   .time-scale text {
     fill: var(--text-darkgray);
     font-family: var(--font-02);
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     text-anchor: middle;
   }
 
