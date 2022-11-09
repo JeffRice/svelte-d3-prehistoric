@@ -3,6 +3,7 @@
   import Catch from './Catch.svelte';
   import Visualization from './components/Visualization.svelte';
   import CookieBanner from './CookieBanner.svelte';
+  import ChartApp from './ChartApp.svelte';
 
   let width;
 
@@ -17,8 +18,10 @@
   {:else if (/MSIE|Trident/.test(window.navigator.userAgent))}
     <Catch content={'Please visit us with a modern browser.'} />
   {:else}
-    <Visualization />
+  <Visualization />
+
   {/if}
+        <ChartApp />
 </div>
 
 <style>

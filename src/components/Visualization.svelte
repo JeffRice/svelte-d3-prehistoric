@@ -80,6 +80,7 @@
   import CreatedBy from './CreatedBy.svelte';
   import Table from './Table.svelte';
 
+
   const tf = timeFormat('%B %d, %Y');
   const observeDays = 3;
 
@@ -152,7 +153,7 @@
     })
     .sort((a, b) => sortConsistently(a, b, 'size', 'id'));
 
-    console.log('scaled data: ', scaledData)
+   // console.log('scaled data: ', scaledData)
 
     // for some reason these definitions need to be in here and not in a gobal scope or module
     const simulation = forceSimulation()
@@ -168,7 +169,7 @@
       .nodes(scaledData)
       .alpha(0.8)
       .tick(300);
-console.log(scaledData)
+ //  console.log(scaledData)
     // finally set the global timePoints variable
     simulationCharge
       .nodes(scaledData)
@@ -234,6 +235,9 @@ console.log(scaledData)
   </div>
   <div class="table-wrapper">
     <Table {timePoints} />
+  </div>
+  <div>
+
   </div>
 </div>
 

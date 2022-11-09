@@ -7,8 +7,5 @@ const app = new App({
   target: document.querySelector('#svelte-target'),
 });
 
-new CookiesEuBanner(function () {
-  googleAnalytics('');
-}, true);
 
 export default app;

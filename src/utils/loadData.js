@@ -53,7 +53,7 @@ const loadData = async () => {
       articleCount: +d.articleCount,
     };
   });
-  console.log('csv data: ', data)
+ // console.log('csv data: ', data)
   return(data.filter((d) => d.timestamp !== null));
 
 };

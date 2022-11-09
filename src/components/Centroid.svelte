@@ -17,8 +17,8 @@
 $: $tweenedPos = {x: centroid[0].xCountry, fy: centroid[0].yCountry};
 
   const dispatch = createEventDispatcher();
-  console.log('centroid: ', centroid)
-  console.log('tweenedPos: ',   centroid[0].xCountry)
+  // console.log('centroid: ', centroid)
+  // console.log('tweenedPos: ',   centroid[0].xCountry)
 
   function topMargin (point){
 

@@ -30,7 +30,7 @@
   ]
   .map((d) => ({...d, r: d.r * sizeFactor}));
 
-  console.log(timePoint);
+ // console.log(timePoint);
 
   $: sizeFactor = 1;
 </script>

@@ -44,8 +44,8 @@
   let fossilFilter = ['cretaceous', 'jurassic', 'triassic'];
 
   function fossilCount(filter, dataPoints) {
-    console.log(dataPoints);
-    console.log(filter);
+ //   console.log(dataPoints);
+ //   console.log(filter);
     return filter.map((d, i) => ({
       id: i,
       title: filter[i],

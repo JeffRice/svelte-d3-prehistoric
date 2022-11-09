@@ -112,8 +112,8 @@
     let tooltipText = $tooltip.tp.tooltipContent;
     paragraphs = tooltipText.split("<p>");
     let numberOfParagraphs = paragraphs.length;
-     console.log(paragraphs[0],paragraphs[1],paragraphs[2] );
-     console.log(numberOfParagraphs);
+  //   console.log(paragraphs[0],paragraphs[1],paragraphs[2] );
+ //    console.log(numberOfParagraphs);
   }
 
   $: showTooltip = ($tooltip && $tooltip.tp && $tooltip.tp.show);

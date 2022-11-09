@@ -16,6 +16,7 @@
     "cookies-eu-banner": "^2.0.1",
     "core-js": "^3.6.5",
     "d3": "^6.1.1",
+    "d3-interpolate-path": "^2.2.3",
     "d3fc-discontinuous-scale": "^2.0.5",
     "flubber": "^0.4.2",
     "lodash": "^4.17.20",
