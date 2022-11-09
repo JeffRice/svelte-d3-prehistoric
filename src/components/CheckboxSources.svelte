@@ -61,7 +61,7 @@
     margin: 2% 0 0 0.5rem;
     font-family: var(--font-02);
     font-size: 0.8rem;
-    color: var(--usa-blue);
+    color: var(--prehistoricDarkGreen);
   }
 
   .hide {

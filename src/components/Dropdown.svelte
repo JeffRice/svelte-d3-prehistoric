@@ -118,7 +118,7 @@
   .label {
     margin: 0 0 0.1rem 0;
     font-size: 0.7rem;
-    color: var(--usa-blue);
+    color: var(--prehistoricDarkGreen);
   }
 
   .selected-items {
@@ -130,7 +130,7 @@
     padding: 0.1rem 0.3rem;
     font-size: 0.8rem;
     background-color: var(--bg);
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 3px;
     cursor: pointer;
   }
@@ -152,7 +152,7 @@
   .selected-items-arrow svg {
     margin-top: 0.2rem;
     stroke: none;
-    fill: var(--usa-blue);
+    fill: var(--prehistoricGreen);
     transition: transform 400ms ease;
   }
 
@@ -168,7 +168,7 @@
 
   .choice {
     width: 100%;
-    border: 2px solid var(--usa-lightblue);
+    border: 2px solid var(--prehistoricLightGreen);
     border-radius: 3px;
     background-color: var(--bg);
     position: absolute;
@@ -197,11 +197,11 @@
   }
 
   button.choice-controls-selectall {
-    background-color: var(--usa-lightblue);
+    background-color: var(--prehistoricLightGreen);
   }
 
   button.choice-controls-unselectall {
-    background-color: var(--usa-lightred);
+    background-color: var(--prehistoricDarkGreen);
   }
 
   ul.choice-list {
@@ -221,7 +221,7 @@
   }
 
   ul.choice-list li:hover {
-    background-color: var(--usa-lightblue);
+    background-color: var(--prehistoricLightGreen);
   }
 
   .choice-entry-count, .choice-entry-source {

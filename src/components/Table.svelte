@@ -137,7 +137,7 @@
     height: 600px;
     max-height: 70vh;
     overflow-x: scroll;
-    border: 1px solid var(--usa-blue);
+    border: 1px solid var(--prehistoricGreen);
   }
 
   .inner-table-wrapper::-webkit-scrollbar {
@@ -153,7 +153,7 @@
   }
 
   .inner-table-wrapper::-webkit-scrollbar-thumb {
-    background-color:var(--usa-lightblue);
+    background-color:var(--prehistoricDarkGreen);
   }
 
   table {
@@ -173,7 +173,7 @@
     font-size: 0.9rem;
     text-align: left;
     vertical-align: top;
-    background-color: var(--usa-lightblue);
+    background-color: var(--prehistoricGreen);
     white-space: nowrap;
     cursor: grab;
     position: -webkit-sticky;
@@ -211,7 +211,7 @@
   }
 
   tr.selected {
-    background-color: var(--usa-lightblue);
+    background-color: var(--prehistoricLightGreen);
   }
 
   td {
@@ -224,7 +224,7 @@
   .score-bar {
     height: 0.7rem;
     margin: auto 0;
-    background-color: var(--usa-lightblue);
+    background-color: var(--prehistoricLightGreen);
     border: none;
     border-radius: 3px;
     position: absolute;

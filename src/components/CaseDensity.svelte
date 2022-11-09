@@ -65,6 +65,6 @@
 
   circle {
     stroke: none;
-    fill: var(--usa-blue);
+    fill: var(--prehistoricGreen);
   }
 </style>

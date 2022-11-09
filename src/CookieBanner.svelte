@@ -21,7 +21,7 @@
     font-family: var(--font-02);
     font-size: 1rem;
     opacity: 0.95;
-    background-color: var(--usa-lightred);
+    background-color: var(--prehistoricLightGreen);
     position: fixed;
     z-index: 1000000;
     left: 0;
@@ -58,11 +58,11 @@
 
   button#cookies-eu-reject {
     color: var(--bg);
-    background-color: var(--usa-lightred);
+    background-color: var(--prehistoricLightGreen);
   }
 
   button#cookies-eu-accept {
-    color: var(--usa-lightred);
+    color: var(--prehistoricLightGreen);
     background-color: var(--bg);
   }
 

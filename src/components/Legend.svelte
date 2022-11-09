@@ -87,13 +87,13 @@
 
   .total-r-scale circle {
     fill: none;
-    stroke: var(--usa-lightred);
+    stroke: var(--prehistoricGreen);
     stroke-width: 0.1rem;
   }
 
   .size-pending circle {
     fill: none;
-    stroke: var(--usa-lightblue);
+    stroke: var(--prehistoricGreen);
     stroke-width: 0.18rem;
     stroke-linecap: round;
     stroke-dasharray: 3px 5px;

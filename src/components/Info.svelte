@@ -35,9 +35,9 @@
     font-family: var(--font-02);
     font-size: 0.8rem;
     font-weight: bold;
-    color: var(--usa-blue);
+    color: var(--prehistoricGreen);
     text-align: center;
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 50%;
   }
 

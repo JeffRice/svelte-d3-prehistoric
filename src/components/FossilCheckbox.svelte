@@ -8,7 +8,7 @@
 
 </script>
 
-<input type="checkbox"
+<input type="checkbox-{fossilera}"
        id="checkbox-{id}"
        class:checked
        fossilera={fossilera}
@@ -27,18 +27,18 @@
     pointer-events: all;
   } 
 
-  input[type="checkbox"] {
+  input[type="checkbox-jurassic"] {
     display: none;
     pointer-events: all;
   }
 
-  input[type="checkbox"] + label::before {
+  input[type="checkbox-jurassic"] + label::before{
     display: block;
     width: 15px;
     height: 15px;
     margin-top: 3px;
     margin-right: 0.4rem;
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--jurassic);
     border-radius: 3px;
     background-color: var(--bg);
     content: "";
@@ -46,8 +46,56 @@
     left: 0.5rem;
   }
 
-  input[type="checkbox"].checked + label::before {
+  input[type="checkbox-jurassic"].checked + label::before {
     box-shadow: inset 0px 0px 0px 3px var(--bg);
-    background-color: var(--usa-blue);
+    background-color: var(--jurassic);
+  }
+
+  input[type="checkbox-cretaceous"] {
+    display: none;
+    pointer-events: all;
+  }
+
+  input[type="checkbox-cretaceous"] + label::before{
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+    margin-right: 0.4rem;
+    border: 2px solid var(--cretaceous);
+    border-radius: 3px;
+    background-color: var(--bg);
+    content: "";
+    position: absolute;
+    left: 0.5rem;
+  }
+
+  input[type="checkbox-cretaceous"].checked + label::before {
+    box-shadow: inset 0px 0px 0px 3px var(--bg);
+    background-color: var(--cretaceous);
+  }
+
+  input[type="checkbox-triassic"] {
+    display: none;
+    pointer-events: all;
+  }
+
+  input[type="checkbox-triassic"] + label::before{
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+    margin-right: 0.4rem;
+    border: 2px solid var(--triassic);
+    border-radius: 3px;
+    background-color: var(--bg);
+    content: "";
+    position: absolute;
+    left: 0.5rem;
+  }
+
+  input[type="checkbox-triassic"].checked + label::before {
+    box-shadow: inset 0px 0px 0px 3px var(--bg);
+    background-color: var(--triassic);
   }
 </style>

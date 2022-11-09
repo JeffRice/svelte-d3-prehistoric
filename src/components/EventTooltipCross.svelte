@@ -29,7 +29,7 @@
   }
 
   path {
-    stroke: var(--usa-blue);
+    stroke: var(--prehistoricGreen);
     stroke-width: 2px;
     stroke-linecap: round;
     fill: none;

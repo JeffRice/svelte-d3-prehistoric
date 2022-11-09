@@ -14,12 +14,17 @@
   --permian: #c5ae90;
   --triassic: #ecc6f1;
   --jurassic: #a0dfeb;
-  --cretaceous: #b0dbaf;
+  --cretaceous: #91b790;
   --paleogene: #f1ba92;
   --neogene: #F2FA8C;
 
   
-  
+
+  --prehistoricGreen: #8eaa9d;
+  --prehistoricLightGreen: #aed3c2;
+  --prehistoricDarkGreen: #70887d;
+
+    --preGreen: #147C47;
 
   /* possible text colors */
   --text-black: #2a3035;
@@ -50,8 +55,6 @@
   /* --bg: #eee9df; */
   --transparentbg: #F9F8F8cb;
 
-    /* new colors */
-    --preGreen: #147C47;
 
   /* fonts */
   --font-01: Volkhov, serif;
@@ -118,14 +121,14 @@ body {
 }
 
 a, span.pseudolink {
-  color: var(--usa-blue);
+  color: var(--prehistoricDarkGreen);
   text-decoration: underline;
   cursor: pointer;
   transition: all 200ms ease;
 }
 
 a:hover, span.pseudolink:hover {
-  color: var(--usa-lightblue);
+  color: var(--prehistoricLightGreen);
 }
 
 .highlighted {
@@ -207,7 +210,7 @@ section {
 
 .separator.thicker {
   border-width: 2px;
-  border-color: var(--usa-blue);
+  border-color: var(--prehistoricGreen);
 }
 
 .info-card {
@@ -299,7 +302,7 @@ section h1 {
   margin: 0.5rem 0 0 0;
   font-family: var(--font-01);
   font-size: 3rem;
-  color: var(--usa-blue);
+  color: var(--prehistoricGreen);
   text-align: center;
 }
 
@@ -311,7 +314,7 @@ section h2 {
   margin: 0 0 1.5rem 0;
   font-size: 1.1rem;
   text-align: center;
-  color: var(--usa-blue);
+  color: var(--prehistoricGreen);
 }
 
 section h3 {
@@ -340,7 +343,7 @@ section span.copy-tooltip {
   padding: 0 0.15rem;
   border: none;
   border-radius: 2px;
-  background-color: var(--dfrlab-lightgray);
+
 }
 
 section p, section ul {
@@ -464,8 +467,8 @@ section ul.filter-list {
 section ul.filter-list li {
   margin: 0.2rem -0.1rem;
   padding: 0 0.1rem;
-  color: var(--usa-blue);
-  border-bottom: 2px solid var(--usa-blue);
+  color: var(--prehistoricGreen);
+  border-bottom: 2px solid var(--prehistoricGreen);
   cursor: pointer;
   transition: all 200ms ease;
 }
@@ -473,11 +476,11 @@ section ul.filter-list li {
 section ul.filter-list li:hover {
   color: var(--bg);
   border-radius: 3px;
-  background-color: var(--usa-lightblue);
+  background-color: var(--prehistoricLightGreen);
 }
 
 section ul.filter-list li:hover span.apply-filter {
-  background-color: var(--usa-blue);
+  background-color: var(--prehistoricGreen);
 }
 
 section ol {

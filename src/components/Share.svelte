@@ -74,7 +74,7 @@
   }
 
   p {
-    color: var(--usa-blue);
+    color: var(--prehistoricGreen);
     white-space: nowrap;
   }
 

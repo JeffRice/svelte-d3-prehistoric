@@ -106,7 +106,7 @@
   .label {
     margin: 0 0 0.1rem 0;
     font-size: 0.7rem;
-    color: var(--usa-blue);
+    color: var(--prehistoricGreen);
   }
 
   .slider-body {
@@ -122,7 +122,7 @@
   }
 
   .border {
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 3px;
   }
 
@@ -137,7 +137,7 @@
   .slider-handle {
     width: var(--handle-width);
     height: var(--handle-width);
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 50%;
     background-color: var(--bg);
     cursor: pointer;
@@ -150,7 +150,7 @@
     height: 100%;
     font-size: 0.7rem;
     text-align: center;
-    color: var(--usa-blue);
+    color: var(--prehistoricGreen);
     position: absolute;
   }
 </style>

@@ -77,7 +77,7 @@
 
 <style>
 			:root {
-		--accent-color: CornflowerBlue;
+		--accent-color:var(--prehistoricLightGreen);
 		--gray: #ccc;
 	}
     /* Inner Design Option */

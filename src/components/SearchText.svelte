@@ -72,7 +72,7 @@
     display: flex;
     margin: 0 0 0.1rem 0;
     font-size: 0.7rem;
-    color: var(--usa-blue);
+    color: var(--prehistoricDarkGreen);
   }
 
   .label > * {
@@ -82,7 +82,7 @@
   .label span {
     margin: 0 -0.1rem;
     padding: 0 0.1rem;
-    color: var(--usa-blue);
+    color: var(--prehistoricDarkGreen);
     border: none;
     border-radius: 3px;
     cursor: pointer;
@@ -91,7 +91,7 @@
 
   .label span:hover {
     color: var(--bg);
-    background-color: var(--usa-blue);
+    background-color: var(--prehistoricGreen);
   }
 
   .search {
@@ -102,7 +102,7 @@
     height: 1.7rem;
     font-size: 0.8rem;
     background-color: var(--bg);
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 3px;
     position: relative;
   }

@@ -96,7 +96,7 @@
   }
 
   .selected .balloon-effect {
-    stroke: var(--usa-blue);
+    stroke: var(--prehistoricGreen);
     stroke-width: 0.18rem;
   }
 

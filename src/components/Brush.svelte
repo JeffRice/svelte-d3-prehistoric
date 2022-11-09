@@ -120,8 +120,8 @@
 <style>
   .brush-area {
     visibility: visible;
-    fill: var(--usa-red);
-    opacity: 0.3;
+    fill: var(--prehistoricLightGreen);
+    opacity: 0.5;
     pointer-events: none;
   }
 
@@ -142,8 +142,8 @@
   }
 
   .reset-brush rect {
-    fill: var(--usa-lightred);
-    stroke: var(--usa-lightred);
+    fill: var(--prehistoricLightGreen);
+    stroke: var(--prehistoricLightGreen);
     stroke-width: 0.15rem;
     transition: fill 200ms ease;
   }
@@ -160,6 +160,6 @@
   }
 
   .reset-brush:hover text {
-    fill: var(--usa-lightred);
+    fill: var(--prehistoricLightGreen);
   }
 </style>

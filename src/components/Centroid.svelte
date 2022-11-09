@@ -63,6 +63,13 @@ return point
     cursor: pointer;
   }
 
+
+  .centroid-name-label{
+    fill: var(--usa-blue);
+    font-family: var(--font-02);
+    font-weight: 500;
+  }
+
   .centroid-fg {
     stroke: var(--usa-blue);
     stroke-width: 0.18rem;

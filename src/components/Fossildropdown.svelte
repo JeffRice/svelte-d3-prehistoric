@@ -127,7 +127,7 @@ return $fossilDatapoints;
     <span class="selected-items-icon"></span>
     <span class="selected-items-text">
       {items.filter((d) => d.added).length === 0
-        ? 'none'
+        ? 'toggle fossil locations'
         : (items.every((d) => d.added && items.length > 1)
           ? 'all'
           : items.filter((d) => d.added).map((d) => d[nameField]).join(', '))}
@@ -141,10 +141,12 @@ return $fossilDatapoints;
   <div class="choice-wrapper">
     {#if (expanded)}
       <div class="choice" transition:slide class:superior>
+        <!--
         <div class="choice-controls">
           <button class="choice-controls-selectall" on:click|stopPropagation={selectAll}>Select all</button>
           <button class="choice-controls-unselectall" on:click|stopPropagation={unselectAll}>Unselect all</button>
         </div>
+      -->
         <ul class="choice-list">
           {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
             {#if (!(hideOneHitWonders && item.count === 1))}
@@ -192,7 +194,7 @@ return $fossilDatapoints;
   .label {
     margin: 0 0 0.1rem 0;
     font-size: 0.7rem;
-    color: var(--usa-blue);
+    color: var(--prehistoricDarkGreen);
   }
 
   .selected-items {
@@ -204,7 +206,7 @@ return $fossilDatapoints;
     padding: 0.1rem 0.3rem;
     font-size: 0.8rem;
     background-color: var(--bg);
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 3px;
     cursor: pointer;
   }
@@ -226,7 +228,7 @@ return $fossilDatapoints;
   .selected-items-arrow svg {
     margin-top: 0.2rem;
     stroke: none;
-    fill: var(--usa-blue);
+    fill: var(--prehistoricGreen);
     transition: transform 400ms ease;
   }
 
@@ -242,7 +244,7 @@ return $fossilDatapoints;
 
   .choice {
     width: 100%;
-    border: 2px solid var(--usa-lightblue);
+    border: 2px solid var(--prehistoricLightGreen);
     border-radius: 3px;
     background-color: var(--bg);
     position: absolute;
@@ -271,11 +273,11 @@ return $fossilDatapoints;
   }
 
   button.choice-controls-selectall {
-    background-color: var(--usa-lightblue);
+    background-color: var(--prehistoricLightGreen);
   }
 
   button.choice-controls-unselectall {
-    background-color: var(--usa-lightred);
+    background-color: var(--prehistoricDarkGreen);
   }
 
   ul.choice-list {
@@ -295,7 +297,7 @@ return $fossilDatapoints;
   }
 
   ul.choice-list li:hover {
-    background-color: var(--usa-lightblue);
+    background-color: var(--prehistoricLightGreen);
   }
 
   .choice-entry-count, .choice-entry-source {

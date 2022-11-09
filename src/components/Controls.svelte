@@ -217,9 +217,9 @@
     font-size: 0.8rem;
     font-weight: normal;
     line-height: 1.3rem;
-    color: var(--usa-blue);
+    color: var(--prehistoricDarkGreen);
     background-color: var(--bg);
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 3px;
     outline: none;
     overflow: hidden;
@@ -228,7 +228,7 @@
 
   button.reset-filters:hover {
     color: var(--bg);
-    background-color: var(--usa-blue);
+    background-color: var(--prehistoricGreen);
     cursor: pointer;
   }
 
@@ -250,4 +250,5 @@
   .hidden {
     display: none;
   }
+
 </style>

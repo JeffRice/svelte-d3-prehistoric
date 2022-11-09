@@ -51,6 +51,21 @@
   <feImage xlink:href="/images/raptor.svg"/>
 </filter>
 
+<filter id="archelon_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/archelon.png"/>
+</filter>
+
+<filter id="argentinosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/argentinosaurus.png"/>
+</filter>
+
+<filter id="argentavis_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/argentavis.png"/>
+</filter>
+
+<filter id="basilosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/basilosaurus.png"/>
+</filter>
 
 <filter id="dimetrodon_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/dimetrodon.png"/>
@@ -58,6 +73,10 @@
 
 <filter id="gastornis_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/gastornis.png"/>
+</filter>
+
+<filter id="giganotosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/giganotosaurus.png"/>
 </filter>
 
 <filter id="giraffatitan_image" x="0%" y="0%" width="100%" height="100%">
@@ -68,8 +87,20 @@
   <feImage xlink:href="/images/herbivore.svg"/>
 </filter>
 
+<filter id="iguanodon_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/iguanodon.png"/>
+</filter>
+
 <filter id="meganeura_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/meganeura.png"/>
+</filter>
+
+<filter id="megatherium_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/megatherium.png"/>
+</filter>
+
+<filter id="muttaburrasaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/muttaburrasaurus.png"/>
 </filter>
 
 <filter id="shunosaurus_image" x="0%" y="0%" width="100%" height="100%">
@@ -113,9 +144,17 @@
   <feImage xlink:href="/images/stegosaurus.svg"/>
 </filter>
 
+<filter id="ophthalmosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/ophthalmosaurus.png"/>
+</filter>
+
 
 <filter id="lizard_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/lizard.svg"/>
+</filter>
+
+<filter id="mesosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/mesosaurus.png"/>
 </filter>
 
 <filter id="mosasaurus_image" x="0%" y="0%" width="100%" height="100%">

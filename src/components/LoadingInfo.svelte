@@ -17,7 +17,7 @@
   }
 
   p {
-    color: var(--usa-blue);
+    color: var(--prehistoricGreen);
     font-size: 1rem;
   }
 </style>

@@ -32,7 +32,7 @@
     height: 15px;
     margin-top: 3px;
     margin-right: 0.4rem;
-    border: 2px solid var(--usa-blue);
+    border: 2px solid var(--prehistoricGreen);
     border-radius: 3px;
     background-color: var(--bg);
     content: "";
@@ -42,6 +42,6 @@
 
   input[type="checkbox"].checked + label::before {
     box-shadow: inset 0px 0px 0px 3px var(--bg);
-    background-color: var(--usa-blue);
+    background-color: var(--prehistoricGreen);
   }
 </style>
