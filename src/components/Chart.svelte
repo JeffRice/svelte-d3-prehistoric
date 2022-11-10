@@ -1,5 +1,5 @@
 <script>
-    import { scaleLinear } from 'd3';
+    import { scaleLinear, interpolateMagma  } from 'd3';
 
     import ChartXAxis from './ChartXAxis.svelte';
     import ChartYAxis from './ChartYAxis.svelte';
@@ -14,6 +14,14 @@
     let chartWidth;
     let chartHeight;
 
+    let jurassicPaint= scaleLinear().domain([0, 40]).range(["#f2caf7","#6c4870"])
+
+    let magmaPaint= scaleLinear().domain([0, 5, 10, 15, 20, 25, 30, 35, 40, 45]).range(["#150e38","#1d1147","#251255","#390f6e","#440f76","#52137c","#701f81","#802582","#982d80","#b2357b"])
+
+    let mScale = scaleLinear()
+        .domain([0,40])
+        .range([0,1]);
+
     $: xScale = scaleLinear()
         .domain(xRange)
         .range([padding, chartWidth - padding]);
@@ -23,9 +31,14 @@
         .range([chartHeight - padding, padding]);
 
     $: renderedData = data.map((d) => {
+
+        let magmaStoke = mScale(d.x)
         return {
             x: xScale(d.x),
-            y: yScale(d.y)
+            y: yScale(d.y),
+            name: d.name,
+            stroke: interpolateMagma(magmaStoke)
+    //        stroke: jurassicPaint(d.x)
         };
     });
 </script>
@@ -34,7 +47,7 @@
     {#if (chartWidth)}
         <svg
             width={chartWidth}
-            height=800
+            height={chartHeight}
         >
             <ChartXAxis
                 scale={xScale}
@@ -44,10 +57,12 @@
                 scale={yScale}
                 x={padding}
             />
-            {#each renderedData as { x, y }}
+            {#each renderedData as { x, y, name, stroke }}
                 <ChartDatapoint
                     x={x}
                     y={y}
+                    name={name}
+                    stroke={stroke}
                 />
             {/each}
         </svg>
@@ -59,6 +74,8 @@
         flex: 1;
         width: 100%;
         overflow: hidden;
+        min-width: 400px;
+        height: 400px;
     }
 
     /* svg {

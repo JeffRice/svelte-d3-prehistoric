@@ -84,16 +84,11 @@
 
 		let aArray = [];
 		const dinoChartData = await csv(dataz, (d, i) => {
-		let newItem = {x: parseFloat(d.size),
-			y: parseFloat(d.weight),
-		  }
-		  aArray.push(newItem);
 			return {
 				x: parseFloat(d.size),
 				y: parseFloat(d.weight),
+				name: d.name
 			  };
-
-
 
 
 	});
@@ -106,28 +101,6 @@
 		});
 
 
-		let aArray = [];
-		const loadFossilSpots = async () => {
-  const dataF = await csv(dataz, (d, i) => {
-		let newItem = {x: parseFloat(d.size),
-			y: parseFloat(d.weight),
-		  }
-		  aArray.push(newItem);
-			return {
-				x: parseFloat(d.size),
-				y: parseFloat(d.weight),
-			  };
-
-
-
-
-	});
-
-
-
-  return(dataF);
- //return(newTestData);
-};
 
 
 	$: newTestData.a = fossilSpots;
@@ -137,17 +110,13 @@
 	console.log(data.a)
 
 
-	console.log(loadFossilSpots())
-
-	
-
 </script>
 <div class="wrapper">
 	
 	<Chart 
 		data={selectedData}
-		xRange={[0, 160]}
-		yRange={[0, 200000]}
+		xRange={[0, 40]}
+		yRange={[0, 10000]}
 	/>
 	<ChartSelector
 		options={Object.keys(data)}
@@ -160,5 +129,6 @@
 		flex-direction: column;
 		width: 100%;
 		height: 100%;
+		height: 650px;
 	}
 </style>

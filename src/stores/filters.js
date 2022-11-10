@@ -104,6 +104,7 @@ export const textSearchFilter = createTextSearchFilter();
 export const contextData = createInclusiveFilter();
 
 export const brushed = writable(false);
+
 export const originalTimeDomain = writable(null);
 
 export const caseIdFilter = writable();

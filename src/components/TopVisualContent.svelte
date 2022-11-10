@@ -77,7 +77,7 @@
         <em>Map View</em> shows a Mercator projection of the Earth. Cases are plotted on the map by means of tails connected to particular Disinformant Nations: the more lines a particular country has originating from it, the more it has been implicated in allegations of foreign interference. By hovering over a particular country, users can see a density plot of attributions over time (if n > 5), as well as breakdowns of Platform, Method, Source, and Source Category. Each of these can be auto-filtered together with the selected country.
       </p>
       <p>
-        <em>Dataset View</em> presents a simplified spreadsheet view of the FIAT dataset. Cases are affected by all applied filters. By clicking on one or more cases in the Case View, users can "pin" them to the top of the Dataset View for easy comparison. The <em>Dataset View</em> for easy comparison. The <a href="https://github.com/DFRLab/Interference2020-Data">full dataset</a> can also be downloaded from this view. 
+        <em>Dataset View</em> presents a simplified spreadsheet view of the FIAT dataset. Cases are affected by all applied filters. By clicking on one or more cases in the Case View, users can "pin" them to the top of the Dataset View for easy comparison. The <em>Dataset View</em> for easy comparison. The <a href="https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public">full dataset</a> can also be downloaded from this view. 
       </p>
     </div>
   </section>

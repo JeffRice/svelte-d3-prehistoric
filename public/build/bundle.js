@@ -15729,6 +15729,30 @@ var app = (function () {
 	  return pow$2.apply(null, arguments).exponent(0.5);
 	}
 
+	function colors (specifier) {
+	  var n = specifier.length / 6 | 0,
+	      colors = new Array(n),
+	      i = 0;
+
+	  while (i < n) {
+	    colors[i] = "#" + specifier.slice(i * 6, ++i * 6);
+	  }
+
+	  return colors;
+	}
+
+	function ramp(range) {
+	  var n = range.length;
+	  return function (t) {
+	    return range[Math.max(0, Math.min(n - 1, Math.floor(t * n)))];
+	  };
+	}
+
+	ramp(colors("44015444025645045745055946075a46085c460a5d460b5e470d60470e6147106347116447136548146748166848176948186a481a6c481b6d481c6e481d6f481f70482071482173482374482475482576482677482878482979472a7a472c7a472d7b472e7c472f7d46307e46327e46337f463480453581453781453882443983443a83443b84433d84433e85423f854240864241864142874144874045884046883f47883f48893e49893e4a893e4c8a3d4d8a3d4e8a3c4f8a3c508b3b518b3b528b3a538b3a548c39558c39568c38588c38598c375a8c375b8d365c8d365d8d355e8d355f8d34608d34618d33628d33638d32648e32658e31668e31678e31688e30698e306a8e2f6b8e2f6c8e2e6d8e2e6e8e2e6f8e2d708e2d718e2c718e2c728e2c738e2b748e2b758e2a768e2a778e2a788e29798e297a8e297b8e287c8e287d8e277e8e277f8e27808e26818e26828e26828e25838e25848e25858e24868e24878e23888e23898e238a8d228b8d228c8d228d8d218e8d218f8d21908d21918c20928c20928c20938c1f948c1f958b1f968b1f978b1f988b1f998a1f9a8a1e9b8a1e9c891e9d891f9e891f9f881fa0881fa1881fa1871fa28720a38620a48621a58521a68522a78522a88423a98324aa8325ab8225ac8226ad8127ad8128ae8029af7f2ab07f2cb17e2db27d2eb37c2fb47c31b57b32b67a34b67935b77937b87838b9773aba763bbb753dbc743fbc7340bd7242be7144bf7046c06f48c16e4ac16d4cc26c4ec36b50c46a52c56954c56856c66758c7655ac8645cc8635ec96260ca6063cb5f65cb5e67cc5c69cd5b6ccd5a6ece5870cf5773d05675d05477d1537ad1517cd2507fd34e81d34d84d44b86d54989d5488bd6468ed64590d74393d74195d84098d83e9bd93c9dd93ba0da39a2da37a5db36a8db34aadc32addc30b0dd2fb2dd2db5de2bb8de29bade28bddf26c0df25c2df23c5e021c8e020cae11fcde11dd0e11cd2e21bd5e21ad8e219dae319dde318dfe318e2e418e5e419e7e419eae51aece51befe51cf1e51df4e61ef6e620f8e621fbe723fde725"));
+	var magma = ramp(colors("00000401000501010601010802010902020b02020d03030f03031204041405041606051806051a07061c08071e0907200a08220b09240c09260d0a290e0b2b100b2d110c2f120d31130d34140e36150e38160f3b180f3d19103f1a10421c10441d11471e114920114b21114e22115024125325125527125829115a2a115c2c115f2d11612f116331116533106734106936106b38106c390f6e3b0f703d0f713f0f72400f74420f75440f764510774710784910784a10794c117a4e117b4f127b51127c52137c54137d56147d57157e59157e5a167e5c167f5d177f5f187f601880621980641a80651a80671b80681c816a1c816b1d816d1d816e1e81701f81721f817320817521817621817822817922827b23827c23827e24828025828125818326818426818627818827818928818b29818c29818e2a81902a81912b81932b80942c80962c80982d80992d809b2e7f9c2e7f9e2f7fa02f7fa1307ea3307ea5317ea6317da8327daa337dab337cad347cae347bb0357bb2357bb3367ab5367ab73779b83779ba3878bc3978bd3977bf3a77c03a76c23b75c43c75c53c74c73d73c83e73ca3e72cc3f71cd4071cf4070d0416fd2426fd3436ed5446dd6456cd8456cd9466bdb476adc4869de4968df4a68e04c67e24d66e34e65e44f64e55064e75263e85362e95462ea5661eb5760ec5860ed5a5fee5b5eef5d5ef05f5ef1605df2625df2645cf3655cf4675cf4695cf56b5cf66c5cf66e5cf7705cf7725cf8745cf8765cf9785df9795df97b5dfa7d5efa7f5efa815ffb835ffb8560fb8761fc8961fc8a62fc8c63fc8e64fc9065fd9266fd9467fd9668fd9869fd9a6afd9b6bfe9d6cfe9f6dfea16efea36ffea571fea772fea973feaa74feac76feae77feb078feb27afeb47bfeb67cfeb77efeb97ffebb81febd82febf84fec185fec287fec488fec68afec88cfeca8dfecc8ffecd90fecf92fed194fed395fed597fed799fed89afdda9cfddc9efddea0fde0a1fde2a3fde3a5fde5a7fde7a9fde9aafdebacfcecaefceeb0fcf0b2fcf2b4fcf4b6fcf6b8fcf7b9fcf9bbfcfbbdfcfdbf"));
+	var inferno = ramp(colors("00000401000501010601010802010a02020c02020e03021004031204031405041706041907051b08051d09061f0a07220b07240c08260d08290e092b10092d110a30120a32140b34150b37160b39180c3c190c3e1b0c411c0c431e0c451f0c48210c4a230c4c240c4f260c51280b53290b552b0b572d0b592f0a5b310a5c320a5e340a5f3609613809623909633b09643d09653e0966400a67420a68440a68450a69470b6a490b6a4a0c6b4c0c6b4d0d6c4f0d6c510e6c520e6d540f6d550f6d57106e59106e5a116e5c126e5d126e5f136e61136e62146e64156e65156e67166e69166e6a176e6c186e6d186e6f196e71196e721a6e741a6e751b6e771c6d781c6d7a1d6d7c1d6d7d1e6d7f1e6c801f6c82206c84206b85216b87216b88226a8a226a8c23698d23698f24699025689225689326679526679727669827669a28659b29649d29649f2a63a02a63a22b62a32c61a52c60a62d60a82e5fa92e5eab2f5ead305dae305cb0315bb1325ab3325ab43359b63458b73557b93556ba3655bc3754bd3853bf3952c03a51c13a50c33b4fc43c4ec63d4dc73e4cc83f4bca404acb4149cc4248ce4347cf4446d04545d24644d34743d44842d54a41d74b3fd84c3ed94d3dda4e3cdb503bdd513ade5238df5337e05536e15635e25734e35933e45a31e55c30e65d2fe75e2ee8602de9612bea632aeb6429eb6628ec6726ed6925ee6a24ef6c23ef6e21f06f20f1711ff1731df2741cf3761bf37819f47918f57b17f57d15f67e14f68013f78212f78410f8850ff8870ef8890cf98b0bf98c0af98e09fa9008fa9207fa9407fb9606fb9706fb9906fb9b06fb9d07fc9f07fca108fca309fca50afca60cfca80dfcaa0ffcac11fcae12fcb014fcb216fcb418fbb61afbb81dfbba1ffbbc21fbbe23fac026fac228fac42afac62df9c72ff9c932f9cb35f8cd37f8cf3af7d13df7d340f6d543f6d746f5d949f5db4cf4dd4ff4df53f4e156f3e35af3e55df2e661f2e865f2ea69f1ec6df1ed71f1ef75f1f179f2f27df2f482f3f586f3f68af4f88ef5f992f6fa96f8fb9af9fc9dfafda1fcffa4"));
+	var plasma = ramp(colors("0d088710078813078916078a19068c1b068d1d068e20068f2206902406912605912805922a05932c05942e05952f059631059733059735049837049938049a3a049a3c049b3e049c3f049c41049d43039e44039e46039f48039f4903a04b03a14c02a14e02a25002a25102a35302a35502a45601a45801a45901a55b01a55c01a65e01a66001a66100a76300a76400a76600a76700a86900a86a00a86c00a86e00a86f00a87100a87201a87401a87501a87701a87801a87a02a87b02a87d03a87e03a88004a88104a78305a78405a78606a68707a68808a68a09a58b0aa58d0ba58e0ca48f0da4910ea3920fa39410a29511a19613a19814a099159f9a169f9c179e9d189d9e199da01a9ca11b9ba21d9aa31e9aa51f99a62098a72197a82296aa2395ab2494ac2694ad2793ae2892b02991b12a90b22b8fb32c8eb42e8db52f8cb6308bb7318ab83289ba3388bb3488bc3587bd3786be3885bf3984c03a83c13b82c23c81c33d80c43e7fc5407ec6417dc7427cc8437bc9447aca457acb4679cc4778cc4977cd4a76ce4b75cf4c74d04d73d14e72d24f71d35171d45270d5536fd5546ed6556dd7566cd8576bd9586ada5a6ada5b69db5c68dc5d67dd5e66de5f65de6164df6263e06363e16462e26561e26660e3685fe4695ee56a5de56b5de66c5ce76e5be76f5ae87059e97158e97257ea7457eb7556eb7655ec7754ed7953ed7a52ee7b51ef7c51ef7e50f07f4ff0804ef1814df1834cf2844bf3854bf3874af48849f48948f58b47f58c46f68d45f68f44f79044f79143f79342f89441f89540f9973ff9983ef99a3efa9b3dfa9c3cfa9e3bfb9f3afba139fba238fca338fca537fca636fca835fca934fdab33fdac33fdae32fdaf31fdb130fdb22ffdb42ffdb52efeb72dfeb82cfeba2cfebb2bfebd2afebe2afec029fdc229fdc328fdc527fdc627fdc827fdca26fdcb26fccd25fcce25fcd025fcd225fbd324fbd524fbd724fad824fada24f9dc24f9dd25f8df25f8e125f7e225f7e425f6e626f6e826f5e926f5eb27f4ed27f3ee27f3f027f2f227f1f426f1f525f0f724f0f921"));
+
 	function constant$4 (x) {
 	  return function constant() {
 	    return x;
@@ -35919,21 +35943,21 @@ var app = (function () {
 	      add_location(p5, file$3, 75, 6, 5424);
 	      add_location(em9, file$3, 79, 8, 6000);
 	      add_location(em10, file$3, 79, 261, 6253);
-	      attr_dev(a, "href", "https://github.com/DFRLab/Interference2020-Data");
+	      attr_dev(a, "href", "https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public");
 	      add_location(a, file$3, 79, 308, 6300);
 	      add_location(p6, file$3, 78, 6, 5988);
 	      attr_dev(div1, "class", "collapsible-content");
 	      add_location(div1, file$3, 67, 4, 2853);
 	      attr_dev(section0, "class", "content no-upper-margin");
 	      add_location(section0, file$3, 45, 2, 1250);
-	      add_location(p7, file$3, 84, 4, 6482);
-	      add_location(li3, file$3, 88, 6, 6646);
-	      add_location(li4, file$3, 89, 6, 6713);
-	      add_location(li5, file$3, 90, 6, 6782);
+	      add_location(p7, file$3, 84, 4, 6501);
+	      add_location(li3, file$3, 88, 6, 6665);
+	      add_location(li4, file$3, 89, 6, 6732);
+	      add_location(li5, file$3, 90, 6, 6801);
 	      attr_dev(ul1, "class", "filter-list");
-	      add_location(ul1, file$3, 87, 4, 6615);
+	      add_location(ul1, file$3, 87, 4, 6634);
 	      attr_dev(section1, "class", "content");
-	      add_location(section1, file$3, 83, 2, 6452);
+	      add_location(section1, file$3, 83, 2, 6471);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, section0, anchor);
@@ -58740,73 +58764,123 @@ var app = (function () {
 	  return ChartYAxis;
 	}(SvelteComponentDev);
 
+	var console_1$5 = globals.console;
 	var file$M = "src/components/ChartDatapoint.svelte";
 
 	function create_fragment$N(ctx) {
-	  var g0;
-	  var g0_transform_value;
-	  var t;
 	  var g1;
 	  var circle;
+	  var g0;
+	  var text_1;
+	  var t;
 	  var g1_transform_value;
+	  var mounted;
+	  var dispose;
 	  var block = {
 	    c: function create() {
-	      g0 = svg_element("g");
-	      t = space();
 	      g1 = svg_element("g");
 	      circle = svg_element("circle");
-	      attr_dev(g0, "transform", g0_transform_value = "translate(-30 " +
-	      /*$tY*/
-	      ctx[0] + ")");
-	      add_location(g0, file$M, 13, 0, 319);
+	      g0 = svg_element("g");
+	      text_1 = svg_element("text");
+	      t = text(
+	      /*name*/
+	      ctx[0]);
+	      attr_dev(circle, "name",
+	      /*name*/
+	      ctx[0]);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", "10");
-	      add_location(circle, file$M, 24, 5, 530);
+	      attr_dev(circle, "stroke",
+	      /*stroke*/
+	      ctx[1]);
+	      attr_dev(circle, "stroke-width", "3");
+	      attr_dev(circle, "fill", "none");
+	      attr_dev(circle, "testy",
+	      /*$tY*/
+	      ctx[3]);
+	      add_location(circle, file$M, 51, 5, 1103);
+	      set_style(text_1, "transition", "opacity 600ms ease");
+	      add_location(text_1, file$M, 57, 8, 1316);
+	      attr_dev(g0, "class", "centroid-name-label");
+	      attr_dev(g0, "transform", "translate(10 -20) rotate(-45)");
+	      add_location(g0, file$M, 56, 5, 1234);
 	      attr_dev(g1, "transform", g1_transform_value = "translate(" +
 	      /*$tX*/
-	      ctx[1] + " " +
+	      ctx[2] + " " +
 	      /*$tY*/
-	      ctx[0] + ")");
-	      add_location(g1, file$M, 23, 0, 486);
+	      ctx[3] + ")");
+	      add_location(g1, file$M, 47, 0, 993);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, g0, anchor);
-	      insert_dev(target, t, anchor);
 	      insert_dev(target, g1, anchor);
 	      append_dev(g1, circle);
+	      append_dev(g1, g0);
+	      append_dev(g0, text_1);
+	      append_dev(text_1, t);
+
+	      if (!mounted) {
+	        dispose = [listen_dev(g1, "click",
+	        /*handleEventClick*/
+	        ctx[7], false, false, false), listen_dev(g1, "mouseover",
+	        /*handleEventMouseover*/
+	        ctx[6], false, false, false)];
+	        mounted = true;
+	      }
 	    },
 	    p: function update(ctx, _ref) {
 	      var _ref2 = _slicedToArray(_ref, 1),
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*$tY*/
-	      1 && g0_transform_value !== (g0_transform_value = "translate(-30 " +
-	      /*$tY*/
-	      ctx[0] + ")")) {
-	        attr_dev(g0, "transform", g0_transform_value);
+	      /*name*/
+	      1) {
+	        attr_dev(circle, "name",
+	        /*name*/
+	        ctx[0]);
 	      }
 
 	      if (dirty &
-	      /*$tX, $tY*/
-	      3 && g1_transform_value !== (g1_transform_value = "translate(" +
-	      /*$tX*/
-	      ctx[1] + " " +
+	      /*stroke*/
+	      2) {
+	        attr_dev(circle, "stroke",
+	        /*stroke*/
+	        ctx[1]);
+	      }
+
+	      if (dirty &
 	      /*$tY*/
-	      ctx[0] + ")")) {
+	      8) {
+	        attr_dev(circle, "testy",
+	        /*$tY*/
+	        ctx[3]);
+	      }
+
+	      if (dirty &
+	      /*name*/
+	      1) set_data_dev(t,
+	      /*name*/
+	      ctx[0]);
+
+	      if (dirty &
+	      /*$tX, $tY*/
+	      12 && g1_transform_value !== (g1_transform_value = "translate(" +
+	      /*$tX*/
+	      ctx[2] + " " +
+	      /*$tY*/
+	      ctx[3] + ")")) {
 	        attr_dev(g1, "transform", g1_transform_value);
 	      }
 	    },
 	    i: noop,
 	    o: noop,
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(g0);
-	      if (detaching) detach_dev(t);
 	      if (detaching) detach_dev(g1);
+	      mounted = false;
+	      run_all(dispose);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -58820,17 +58894,29 @@ var app = (function () {
 	}
 
 	function instance$N($$self, $$props, $$invalidate) {
-	  var $tY;
+	  var $hovered;
+	  var $selected;
 	  var $tX;
+	  var $tY;
+	  validate_store(hovered, "hovered");
+	  component_subscribe($$self, hovered, function ($$value) {
+	    return $$invalidate(10, $hovered = $$value);
+	  });
+	  validate_store(selected, "selected");
+	  component_subscribe($$self, selected, function ($$value) {
+	    return $$invalidate(11, $selected = $$value);
+	  });
 	  var x = $$props.x;
 	  var y = $$props.y;
+	  var name = $$props.name;
+	  var stroke = $$props.stroke;
 	  var tX = tweened(null, {
 	    duration: 800,
 	    easing: cubicOut
 	  });
 	  validate_store(tX, "tX");
 	  component_subscribe($$self, tX, function (value) {
-	    return $$invalidate(1, $tX = value);
+	    return $$invalidate(2, $tX = value);
 	  });
 	  var tY = tweened(null, {
 	    duration: 600,
@@ -58838,11 +58924,30 @@ var app = (function () {
 	  });
 	  validate_store(tY, "tY");
 	  component_subscribe($$self, tY, function (value) {
-	    return $$invalidate(0, $tY = value);
+	    return $$invalidate(3, $tY = value);
 	  });
-	  var writable_props = ["x", "y"];
+
+	  function handleEventMouseover(event) {
+	    console.log("event:", event);
+	    console.log("event.target: ", event.target);
+	    set_store_value(hovered, $hovered = event.detail);
+	  }
+
+	  function handleEventClick(event) {
+	    var obj = event.detail;
+
+	    if ($selected.map(function (d) {
+	      return d.id;
+	    }).includes(obj.id)) {
+	      selected.remove(obj);
+	    } else {
+	      selected.add(obj);
+	    }
+	  }
+
+	  var writable_props = ["x", "y", "name", "stroke"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<ChartDatapoint> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$5.warn("<ChartDatapoint> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -58850,26 +58955,39 @@ var app = (function () {
 	  validate_slots("ChartDatapoint", $$slots, []);
 
 	  $$self.$$set = function ($$props) {
-	    if ("x" in $$props) $$invalidate(4, x = $$props.x);
-	    if ("y" in $$props) $$invalidate(5, y = $$props.y);
+	    if ("x" in $$props) $$invalidate(8, x = $$props.x);
+	    if ("y" in $$props) $$invalidate(9, y = $$props.y);
+	    if ("name" in $$props) $$invalidate(0, name = $$props.name);
+	    if ("stroke" in $$props) $$invalidate(1, stroke = $$props.stroke);
 	  };
 
 	  $$self.$capture_state = function () {
 	    return {
 	      tweened: tweened,
 	      cubicOut: cubicOut,
+	      hovered: hovered,
+	      selected: selected,
+	      scaleLinear: linear$1,
 	      x: x,
 	      y: y,
+	      name: name,
+	      stroke: stroke,
 	      tX: tX,
 	      tY: tY,
-	      $tY: $tY,
-	      $tX: $tX
+	      handleEventMouseover: handleEventMouseover,
+	      handleEventClick: handleEventClick,
+	      $hovered: $hovered,
+	      $selected: $selected,
+	      $tX: $tX,
+	      $tY: $tY
 	    };
 	  };
 
 	  $$self.$inject_state = function ($$props) {
-	    if ("x" in $$props) $$invalidate(4, x = $$props.x);
-	    if ("y" in $$props) $$invalidate(5, y = $$props.y);
+	    if ("x" in $$props) $$invalidate(8, x = $$props.x);
+	    if ("y" in $$props) $$invalidate(9, y = $$props.y);
+	    if ("name" in $$props) $$invalidate(0, name = $$props.name);
+	    if ("stroke" in $$props) $$invalidate(1, stroke = $$props.stroke);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -58879,18 +58997,18 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*x*/
-	    16) {
+	    256) {
 	       tX.set(x);
 	    }
 
 	    if ($$self.$$.dirty &
 	    /*y*/
-	    32) {
+	    512) {
 	       tY.set(y);
 	    }
 	  };
 
-	  return [$tY, $tX, tX, tY, x, y];
+	  return [name, stroke, $tX, $tY, tX, tY, handleEventMouseover, handleEventClick, x, y];
 	}
 
 	var ChartDatapoint = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -58905,8 +59023,10 @@ var app = (function () {
 
 	    _this = _super.call(this, options);
 	    init(_assertThisInitialized(_this), options, instance$N, create_fragment$N, safe_not_equal, {
-	      x: 4,
-	      y: 5
+	      x: 8,
+	      y: 9,
+	      name: 0,
+	      stroke: 1
 	    });
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
@@ -58919,14 +59039,26 @@ var app = (function () {
 
 	    if (
 	    /*x*/
-	    ctx[4] === undefined && !("x" in props)) {
-	      console.warn("<ChartDatapoint> was created without expected prop 'x'");
+	    ctx[8] === undefined && !("x" in props)) {
+	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'x'");
 	    }
 
 	    if (
 	    /*y*/
-	    ctx[5] === undefined && !("y" in props)) {
-	      console.warn("<ChartDatapoint> was created without expected prop 'y'");
+	    ctx[9] === undefined && !("y" in props)) {
+	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'y'");
+	    }
+
+	    if (
+	    /*name*/
+	    ctx[0] === undefined && !("name" in props)) {
+	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'name'");
+	    }
+
+	    if (
+	    /*stroke*/
+	    ctx[1] === undefined && !("stroke" in props)) {
+	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'stroke'");
 	    }
 
 	    return _this;
@@ -58948,6 +59080,22 @@ var app = (function () {
 	    set: function set(value) {
 	      throw new Error("<ChartDatapoint>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 	    }
+	  }, {
+	    key: "name",
+	    get: function get() {
+	      throw new Error("<ChartDatapoint>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    },
+	    set: function set(value) {
+	      throw new Error("<ChartDatapoint>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    }
+	  }, {
+	    key: "stroke",
+	    get: function get() {
+	      throw new Error("<ChartDatapoint>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    },
+	    set: function set(value) {
+	      throw new Error("<ChartDatapoint>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    }
 	  }]);
 
 	  return ChartDatapoint;
@@ -58957,10 +59105,12 @@ var app = (function () {
 
 	function get_each_context$f(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[9] = list[i].x;
-	  child_ctx[10] = list[i].y;
+	  child_ctx[12] = list[i].x;
+	  child_ctx[13] = list[i].y;
+	  child_ctx[14] = list[i].name;
+	  child_ctx[15] = list[i].stroke;
 	  return child_ctx;
-	} // (34:4) {#if (chartWidth)}
+	} // (47:4) {#if (chartWidth)}
 
 
 	function create_if_block$l(ctx) {
@@ -59017,8 +59167,10 @@ var app = (function () {
 	      attr_dev(svg, "width",
 	      /*chartWidth*/
 	      ctx[0]);
-	      attr_dev(svg, "height", "800");
-	      add_location(svg, file$N, 34, 8, 806);
+	      attr_dev(svg, "height",
+	      /*chartHeight*/
+	      ctx[1]);
+	      add_location(svg, file$N, 47, 8, 1333);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, svg, anchor);
@@ -59096,6 +59248,14 @@ var app = (function () {
 	        /*chartWidth*/
 	        ctx[0]);
 	      }
+
+	      if (!current || dirty &
+	      /*chartHeight*/
+	      2) {
+	        attr_dev(svg, "height",
+	        /*chartHeight*/
+	        ctx[1]);
+	      }
 	    },
 	    i: function intro(local) {
 	      if (current) return;
@@ -59130,11 +59290,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$l.name,
 	    type: "if",
-	    source: "(34:4) {#if (chartWidth)}",
+	    source: "(47:4) {#if (chartWidth)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (47:12) {#each renderedData as { x, y }}
+	} // (60:12) {#each renderedData as { x, y, name, stroke }}
 
 
 	function create_each_block$f(ctx) {
@@ -59144,10 +59304,16 @@ var app = (function () {
 	    props: {
 	      x:
 	      /*x*/
-	      ctx[9],
+	      ctx[12],
 	      y:
 	      /*y*/
-	      ctx[10]
+	      ctx[13],
+	      name:
+	      /*name*/
+	      ctx[14],
+	      stroke:
+	      /*stroke*/
+	      ctx[15]
 	    },
 	    $$inline: true
 	  });
@@ -59165,12 +59331,22 @@ var app = (function () {
 	      /*renderedData*/
 	      16) chartdatapoint_changes.x =
 	      /*x*/
-	      ctx[9];
+	      ctx[12];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.y =
 	      /*y*/
-	      ctx[10];
+	      ctx[13];
+	      if (dirty &
+	      /*renderedData*/
+	      16) chartdatapoint_changes.name =
+	      /*name*/
+	      ctx[14];
+	      if (dirty &
+	      /*renderedData*/
+	      16) chartdatapoint_changes.stroke =
+	      /*stroke*/
+	      ctx[15];
 	      chartdatapoint.$set(chartdatapoint_changes);
 	    },
 	    i: function intro(local) {
@@ -59190,7 +59366,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$f.name,
 	    type: "each",
-	    source: "(47:12) {#each renderedData as { x, y }}",
+	    source: "(60:12) {#each renderedData as { x, y, name, stroke }}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -59207,14 +59383,14 @@ var app = (function () {
 	    c: function create() {
 	      div = element("div");
 	      if (if_block) if_block.c();
-	      attr_dev(div, "class", "chart svelte-jstasq");
+	      attr_dev(div, "class", "chart svelte-cef61w");
 	      add_render_callback(function () {
 	        return (
 	          /*div_elementresize_handler*/
 	          ctx[8].call(div)
 	        );
 	      });
-	      add_location(div, file$N, 32, 0, 693);
+	      add_location(div, file$N, 45, 0, 1220);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -59289,6 +59465,9 @@ var app = (function () {
 	  var yRange = $$props.yRange;
 	  var chartWidth;
 	  var chartHeight;
+	  var jurassicPaint = linear$1().domain([0, 40]).range(["#f2caf7", "#6c4870"]);
+	  var magmaPaint = linear$1().domain([0, 5, 10, 15, 20, 25, 30, 35, 40, 45]).range(["#150e38", "#1d1147", "#251255", "#390f6e", "#440f76", "#52137c", "#701f81", "#802582", "#982d80", "#b2357b"]);
+	  var mScale = linear$1().domain([0, 40]).range([0, 1]);
 	  var writable_props = ["data", "xRange", "yRange"];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Chart> was created with unknown prop '".concat(key, "'"));
@@ -59314,6 +59493,7 @@ var app = (function () {
 	  $$self.$capture_state = function () {
 	    return {
 	      scaleLinear: linear$1,
+	      interpolateMagma: magma,
 	      ChartXAxis: ChartXAxis,
 	      ChartYAxis: ChartYAxis,
 	      ChartDatapoint: ChartDatapoint,
@@ -59323,6 +59503,9 @@ var app = (function () {
 	      padding: padding,
 	      chartWidth: chartWidth,
 	      chartHeight: chartHeight,
+	      jurassicPaint: jurassicPaint,
+	      magmaPaint: magmaPaint,
+	      mScale: mScale,
 	      xScale: xScale,
 	      yScale: yScale,
 	      renderedData: renderedData
@@ -59335,6 +59518,9 @@ var app = (function () {
 	    if ("yRange" in $$props) $$invalidate(7, yRange = $$props.yRange);
 	    if ("chartWidth" in $$props) $$invalidate(0, chartWidth = $$props.chartWidth);
 	    if ("chartHeight" in $$props) $$invalidate(1, chartHeight = $$props.chartHeight);
+	    if ("jurassicPaint" in $$props) jurassicPaint = $$props.jurassicPaint;
+	    if ("magmaPaint" in $$props) magmaPaint = $$props.magmaPaint;
+	    if ("mScale" in $$props) $$invalidate(11, mScale = $$props.mScale);
 	    if ("xScale" in $$props) $$invalidate(2, xScale = $$props.xScale);
 	    if ("yScale" in $$props) $$invalidate(3, yScale = $$props.yScale);
 	    if ("renderedData" in $$props) $$invalidate(4, renderedData = $$props.renderedData);
@@ -59365,10 +59551,13 @@ var app = (function () {
 	    /*data, xScale, yScale*/
 	    44) {
 	       $$invalidate(4, renderedData = data.map(function (d) {
+	        var magmaStoke = mScale(d.x);
 	        return {
 	          x: xScale(d.x),
-	          y: yScale(d.y)
-	        };
+	          y: yScale(d.y),
+	          name: d.name,
+	          stroke: magma(magmaStoke)
+	        }; //        stroke: jurassicPaint(d.x)
 	      }));
 	    }
 	  };
@@ -59760,7 +59949,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var Object_1$1 = globals.Object,
-	    console_1$5 = globals.console;
+	    console_1$6 = globals.console;
 	var file$P = "src/components/ChartWrapper.svelte";
 
 	function create_fragment$Q(ctx) {
@@ -59775,8 +59964,8 @@ var app = (function () {
 	      data:
 	      /*selectedData*/
 	      ctx[1],
-	      xRange: [0, 160],
-	      yRange: [0, 200000]
+	      xRange: [0, 40],
+	      yRange: [0, 10000]
 	    },
 	    $$inline: true
 	  });
@@ -59811,8 +60000,8 @@ var app = (function () {
 	      create_component(chart.$$.fragment);
 	      t = space();
 	      create_component(chartselector.$$.fragment);
-	      attr_dev(div, "class", "wrapper svelte-r9cd0j");
-	      add_location(div, file$P, 144, 0, 2477);
+	      attr_dev(div, "class", "wrapper svelte-j7suke");
+	      add_location(div, file$P, 113, 0, 2020);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -60054,22 +60243,17 @@ var app = (function () {
 	    }]
 	  };
 	  onMount( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	    var aArray, dinoChartData;
+	    var dinoChartData;
 	    return regeneratorRuntime.wrap(function _callee$(_context) {
 	      while (1) {
 	        switch (_context.prev = _context.next) {
 	          case 0:
-	            aArray = [];
 	            _context.next = 3;
 	            return csv$1(data$1, function (d, i) {
-	              var newItem = {
-	                x: parseFloat(d.size),
-	                y: parseFloat(d.weight)
-	              };
-	              aArray.push(newItem);
 	              return {
 	                x: parseFloat(d.size),
-	                y: parseFloat(d.weight)
+	                y: parseFloat(d.weight),
+	                name: d.name
 	              };
 	            });
 
@@ -60094,51 +60278,10 @@ var app = (function () {
 	      }
 	    }, _callee);
 	  })));
-	  var aArray = [];
-
-	  var loadFossilSpots = /*#__PURE__*/function () {
-	    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-	      var dataF;
-	      return regeneratorRuntime.wrap(function _callee2$(_context2) {
-	        while (1) {
-	          switch (_context2.prev = _context2.next) {
-	            case 0:
-	              _context2.next = 2;
-	              return csv$1(data$1, function (d, i) {
-	                var newItem = {
-	                  x: parseFloat(d.size),
-	                  y: parseFloat(d.weight)
-	                };
-	                aArray.push(newItem);
-	                return {
-	                  x: parseFloat(d.size),
-	                  y: parseFloat(d.weight)
-	                };
-	              });
-
-	            case 2:
-	              dataF = _context2.sent;
-	              return _context2.abrupt("return", dataF);
-
-	            case 4:
-	            case "end":
-	              return _context2.stop();
-	          }
-	        }
-	      }, _callee2);
-	    }));
-
-	    return function loadFossilSpots() {
-	      return _ref4.apply(this, arguments);
-	    };
-	  }(); //return(newTestData);
-
-
 	  console.log(data$2.a);
-	  console.log(loadFossilSpots());
 	  var writable_props = [];
 	  Object_1$1.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$5.warn("<ChartWrapper> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<ChartWrapper> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -60162,8 +60305,6 @@ var app = (function () {
 	      selectedOption: selectedOption,
 	      fossilSpots: fossilSpots,
 	      newTestData: newTestData,
-	      aArray: aArray,
-	      loadFossilSpots: loadFossilSpots,
 	      selectedData: selectedData
 	    };
 	  };
@@ -60172,7 +60313,6 @@ var app = (function () {
 	    if ("selectedOption" in $$props) $$invalidate(0, selectedOption = $$props.selectedOption);
 	    if ("fossilSpots" in $$props) $$invalidate(3, fossilSpots = $$props.fossilSpots);
 	    if ("newTestData" in $$props) $$invalidate(4, newTestData = $$props.newTestData);
-	    if ("aArray" in $$props) aArray = $$props.aArray;
 	    if ("selectedData" in $$props) $$invalidate(1, selectedData = $$props.selectedData);
 	  };
 
@@ -60317,7 +60457,7 @@ var app = (function () {
 	  return ChartApp;
 	}(SvelteComponentDev);
 
-	var console_1$6 = globals.console;
+	var console_1$7 = globals.console;
 	var file$R = "src/App.svelte"; // (20:2) {:else}
 
 	function create_else_block$2(ctx) {
@@ -60562,7 +60702,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
