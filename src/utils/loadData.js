@@ -6,6 +6,8 @@ const parseTimestamp = timeParse('%m/%d/%Y %H:%M %Z');
 const parseDate = timeParse('%m/%d/%Y');
 
 const loadData = async () => {
+  const dinoNames = [];
+
   const data = await csv(dataPath, (d, i) => {
 
 
@@ -13,6 +15,7 @@ const loadData = async () => {
 
     const sizeTotal = d.size === '' ? Number.NaN : +d.size;
     const sizePending = isNaN(sizeTotal);
+    dinoNames.push(d.name);
 
     return {
       id: i,
@@ -51,6 +54,7 @@ const loadData = async () => {
       attributionScore: +d.attribution_total_score,
    //   tags: splitString(d.tags),
       articleCount: +d.articleCount,
+      dinoNames: dinoNames
     };
   });
  // console.log('csv data: ', data)

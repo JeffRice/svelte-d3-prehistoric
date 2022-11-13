@@ -5,27 +5,25 @@
   import { countries, pangeaRegions, projection, geoPath } from '../stores/map';
   import { scaleFactor } from '../stores/scales';
   import { timeScale } from '../stores/scales';
-
+  
 
   let canvas;
 
   import {select, geoGraticule, geoNaturalEarth1, geoMercator, geoPath as d3geoPath, scaleLinear} from "d3"
   import { onMount, afterUpdate } from "svelte";
   import { feature } from "topojson";
-  import loadFossilSpots from '../utils/loadFossilSpots';
-//   import loadFossilSpots2 from '../utils/loadFossilSpots2';
-  import loadFossilSpots3 from '../utils/loadFossilSpots3';
+  import loadJurassicFossils from '../utils/loadJurassicFossils';
   import loadTriassicFossils from '../utils/loadTriassicFossils';
-
+  import loadCretaceousFossils from '../utils/loadCretaceousFossils';
+  
   
 
   let worldFeature;
   let worldjson;
   let graticule;
-  let fossilSpots;
-//   let fossilSpots2;
-  let fossilSpots3;  
   let triassicFossilSpots;
+  let jurassicFossilSpots;
+  let cretaceousFossilSpots;
 
   import { fossilDatapoints, switchValueStore } from '../stores/elements';
 
@@ -57,9 +55,9 @@
   //  console.log(worldFeature.features );
 
 
-  fossilSpots = await loadFossilSpots();
+  jurassicFossilSpots = await loadJurassicFossils();
   triassicFossilSpots = await loadTriassicFossils();
-  fossilSpots3 = await loadFossilSpots3();  
+  cretaceousFossilSpots = await loadCretaceousFossils();  
  // originalJurassicSpots = await loadFossilSpots();
  // originalCretaceousSpots = await loadFossilSpots3();
 
@@ -69,12 +67,12 @@
 
 
 
-  $fossilDatapoints.jurassic = fossilSpots;
-  $fossilDatapoints.originaljurassic = fossilSpots;
+  $fossilDatapoints.jurassic = jurassicFossilSpots;
+  $fossilDatapoints.originaljurassic = jurassicFossilSpots;
   $fossilDatapoints.triassic = triassicFossilSpots;
   $fossilDatapoints.originaltriassic = triassicFossilSpots;
-  $fossilDatapoints.cretaceous = fossilSpots3;
-  $fossilDatapoints.originalcretaceous = fossilSpots3;
+  $fossilDatapoints.cretaceous = cretaceousFossilSpots;
+  $fossilDatapoints.originalcretaceous = cretaceousFossilSpots;
 
 
 
@@ -94,7 +92,7 @@ another way to redraw on updates
 
 
  // $: if (canvas && $countries.length > 0) {
-  $: if (canvas && $countries && pangeaRegions && worldjson && fossilSpots && triassicFossilSpots && fossilSpots3 && fossilDatapoints && $switchValueStore) {
+  $: if (canvas && $countries && pangeaRegions && worldjson && jurassicFossilSpots && triassicFossilSpots && cretaceousFossilSpots && fossilDatapoints && $switchValueStore) {
   //  console.log('countries store', $countries)
  //   console.log('fossilSpots: ', fossilSpots)
 
@@ -196,7 +194,6 @@ function createTriassicMap(dataset) {
 locations.selectAll("points.arc")
 
   .data(dataset)
-
     .enter()
     .append("points")
     .classed("arc", true)
@@ -205,10 +202,11 @@ locations.selectAll("points.arc")
     .attr("radius", 4)
   //  .attr("fillStyle", "#BD8CC3")
     .attr("fillStyle", function(d) {return triassicPaint(d.maxAge)})
-
 //  " + d.maxAge + "
-drawCanvas();
+   drawCanvas();
 
+
+console.log(dataset)
 
 
 }
@@ -233,9 +231,6 @@ locations.selectAll("points.arc")
   .attr("fillStyle", function(d) {return cretaceousPaint(d.maxAge)})
 
   drawCanvas();
-
-
-
 }
 
 function drawCanvas() {
@@ -300,22 +295,6 @@ function reDraw() {
 ctx.clearRect(0, -$panelHeight, $width, $height);
 
 
-
-
- //   ctx.fillRect(0, -$panelHeight, $width, $height);
-
-//  ctx.fillRect(0, -$panelHeight, $width, $height);
-
-
-
-  
-
-
-//  console.log("redrawing")
-
-// worldMap();
-// pangeaMap();
- // makeGraticules();
  drawCanvas();
 
 
@@ -334,6 +313,33 @@ createTriassicMap($fossilDatapoints.triassic);
 createMap($fossilDatapoints.jurassic);
 
 createCretaceousMap($fossilDatapoints.cretaceous);
+
+
+
+function removeAllFossils() {
+
+$fossilDatapoints['cretaceous'] = [];
+$fossilDatapoints['triassic'] = [];
+$fossilDatapoints['jurassic'] = [];
+
+ reDraw2();
+return $fossilDatapoints;
+
+}
+
+
+function reDraw2() {
+
+let locations = select('#points');
+var elements = locations.selectAll("points.arc");
+
+elements.each(function(d, i) {
+var node = select(this);
+this.remove();
+drawCanvas();
+})
+
+}
 
 
 
@@ -440,9 +446,51 @@ function worldMap() {
     
     
 
+datapointsReady()
+// console.log(removing)
+
+
+
 
   }
 
+
+
+  function removeAllFossils() {
+
+$fossilDatapoints['cretaceous'] = [];
+$fossilDatapoints['triassic'] = [];
+$fossilDatapoints['jurassic'] = [];
+
+reDraw();
+return $fossilDatapoints;
+
+}
+
+function addAllFossils() {
+
+addFossils('cretaceous');
+addFossils('triassic');
+addFossils('jurassic');
+
+}
+
+function addFossils(fossilEra) {
+
+console.log(fossilDatapoints)
+
+let originalEra = 'original' + fossilEra
+
+$fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra];
+reDraw();
+return $fossilDatapoints;
+
+}
+
+
+  function datapointsReady(){
+    $fossilDatapoints.ready = true
+  }
 
   function reDraw() {
 
@@ -471,16 +519,26 @@ this.remove();
 
 
 <div class="layer"></div>
+
 <div id="map">
    <canvas bind:this={canvas}><div id="points"></div></canvas>
 </div>
- 
+<div class="fly choice-controls">
+  <button class="choice-controls-unselectall" on:click|stopPropagation={removeAllFossils}>remove all</button>
+  <button class="choice-controls-unselectall" on:click|stopPropagation={addAllFossils}>add all</button>
+</div>
 
 <style>
 
 canvas {
     position: absolute;
     z-index: 0;
+  }
+
+  .fly {
+    position: absolute;
+    right: 0;
+    z-index: 99999999;
   }
 				
 </style>

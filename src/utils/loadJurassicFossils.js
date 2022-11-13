@@ -1,9 +1,9 @@
 import { csv } from 'd3';
-import { fossilData } from '../inputs/dataPaths';
+import { jurassicFossilData } from '../inputs/dataPaths';
 
 
-const loadFossilSpots = async () => {
-  const data = await csv(fossilData, (d, i) => {
+const loadJurassicFossils = async () => {
+  const data = await csv(jurassicFossilData, (d, i) => {
     return {
       id: i,
       name: d.accepted_name,
@@ -17,4 +17,4 @@ const loadFossilSpots = async () => {
   return(data);
 };
 
-export default loadFossilSpots;
+export default loadJurassicFossils;

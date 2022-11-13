@@ -1,12 +1,6 @@
 export const data = 'dinosaurdata1.csv';
-// export const fossilData = 'ftgreenetrees2.csv';
-// export const fossilData = 'fossilsJurassic1.csv';
- export const fossilData = 'jurassic_bigdata.csv';
-// export const fossilData = 'westernUSjurassicfossils.csv';
+ export const jurassicFossilData = 'jurassic_bigdata.csv';
 export const triassicFossilData = 'triassicFossils.csv';
-export const fossilData3 = 'cretaceousFossils.csv';
-// export const data = '/data/DFRLab_interference2020.csv';
+export const cretaceousFossilData = 'cretaceousFossils.csv';
 export const spotData = 'timelinedates.csv';
-// export const coronaData = 'us.csv';
  export const images = 'images/';
-// export const googleTrendsApiPath = '-cove-42135.herokuapp.com/keyword/';

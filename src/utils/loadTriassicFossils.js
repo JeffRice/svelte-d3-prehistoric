@@ -10,7 +10,8 @@ const loadTriassicFossils = async () => {
       x: d.lat,
       y: d.lng,
       maxAge: d.max_ma,
-      minAge: d.min_ma
+      minAge: d.min_ma,
+      accepted_name: d.accepted_name
     };
   });
 

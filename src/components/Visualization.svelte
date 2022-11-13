@@ -53,7 +53,7 @@
     showCib,
     preloadImages } from '../utils/misc';
   import { selected } from '../stores/eventSelections';
-  import { drawWrapper } from '../stores/elements';
+  import { drawWrapper, fossilDatapoints } from '../stores/elements';
   
   import { uniq } from 'lodash';
   import {
@@ -79,6 +79,7 @@
   import CentroidTooltip from './CentroidTooltip.svelte';
   import CreatedBy from './CreatedBy.svelte';
   import Table from './Table.svelte';
+  import FossilDetails from './FossilDetails.svelte';
 
 
   const tf = timeFormat('%B %d, %Y');
@@ -233,6 +234,11 @@
       {/if}
     </div>
   </div>
+    {#if ($fossilDatapoints)}
+      <div class="fossil-wrapper">
+        <FossilDetails />
+      </div>
+    {/if}
   <div class="table-wrapper">
     <Table {timePoints} />
   </div>

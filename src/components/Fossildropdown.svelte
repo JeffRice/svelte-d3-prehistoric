@@ -4,7 +4,8 @@
   import { slide } from 'svelte/transition';
   import { sortConsistently } from '../utils/misc';
   import {select} from "d3";
-  import { fossilDatapoints } from '../stores/elements';
+  import { cretaceous, fossilDatapoints, jurassic, triassic } from '../stores/elements';
+
 
   import FossilCheckbox from './FossilCheckbox.svelte';
 
@@ -15,6 +16,7 @@
   export let nameField = 'id';
   export let hideOneHitWonders = false;
   export let superior = false;
+
 
 
   const dispatch = createEventDispatcher();
@@ -55,13 +57,14 @@
 function handleFossilClick(event, fossilEra) {
 
 const target = event.target
-console.log('target: ', target)
+
 
 fossilEra = target.getAttribute('fossilera')
 const state = target.getAttribute('added')
 
-
-
+console.log('target: ', target)
+console.log('state: ', state)
+console.log('fossilDatapoints: ', fossilDatapoints)
 
 if (state  === 'false' || state  === '0' ){
   addFossils(fossilEra);
@@ -83,13 +86,37 @@ else {
 
 function removeFossils(fossilEra) {
 
-$fossilDatapoints[fossilEra] = [];
+ $fossilDatapoints[fossilEra] = [];
+
+reDraw();
+return $fossilDatapoints;
+
+}
+export const testy = () => console.log('testing');
+
+
+function removeAllFossils() {
+
+$fossilDatapoints['cretaceous'] = [];
+$fossilDatapoints['triassic'] = [];
+$fossilDatapoints['jurassic'] = [];
+
 reDraw();
 return $fossilDatapoints;
 
 }
 
+function addAllFossils() {
+
+  addFossils('cretaceous');
+  addFossils('triassic');
+  addFossils('jurassic');
+
+}
+
 function addFossils(fossilEra) {
+
+  console.log(fossilDatapoints)
 
 let originalEra = 'original' + fossilEra
 
@@ -113,6 +140,8 @@ return $fossilDatapoints;
   })
 
 }
+
+
 
 </script>
 
@@ -141,12 +170,10 @@ return $fossilDatapoints;
   <div class="choice-wrapper">
     {#if (expanded)}
       <div class="choice" transition:slide class:superior>
-        <!--
         <div class="choice-controls">
-          <button class="choice-controls-selectall" on:click|stopPropagation={selectAll}>Select all</button>
-          <button class="choice-controls-unselectall" on:click|stopPropagation={unselectAll}>Unselect all</button>
+          <button class="choice-controls-selectall" on:click|stopPropagation={addAllFossils}>Select all</button>
+          <button class="choice-controls-unselectall" on:click|stopPropagation={removeAllFossils}>Unselect all</button>
         </div>
-      -->
         <ul class="choice-list">
           {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
             {#if (!(hideOneHitWonders && item.count === 1))}
