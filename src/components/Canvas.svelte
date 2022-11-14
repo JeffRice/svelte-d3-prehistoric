@@ -456,7 +456,7 @@ datapointsReady()
 
 
 
-  function removeAllFossils() {
+function removeAllFossils() {
 
 $fossilDatapoints['cretaceous'] = [];
 $fossilDatapoints['triassic'] = [];
@@ -519,26 +519,14 @@ this.remove();
 
 
 <div class="layer"></div>
-
 <div id="map">
    <canvas bind:this={canvas}><div id="points"></div></canvas>
 </div>
-<div class="fly choice-controls">
-  <button class="choice-controls-unselectall" on:click|stopPropagation={removeAllFossils}>remove all</button>
-  <button class="choice-controls-unselectall" on:click|stopPropagation={addAllFossils}>add all</button>
-</div>
-
 <style>
 
 canvas {
     position: absolute;
     z-index: 0;
-  }
-
-  .fly {
-    position: absolute;
-    right: 0;
-    z-index: 99999999;
   }
 				
 </style>
