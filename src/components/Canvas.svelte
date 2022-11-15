@@ -1,7 +1,7 @@
 <script>
   // the canvas component holding the world map
   import { width, height, panelHeight, mapHeight } from '../stores/dimensions';
-  import { bg, usaRed, usaLightRed, usaLightLightRed, preGreen } from '../utils/colors';
+  import { bg, usaRed, usaLightRed, usaLightLightRed, preGreen, preBlue, prePurple } from '../utils/colors';
   import { countries, pangeaRegions, projection, geoPath } from '../stores/map';
   import { scaleFactor } from '../stores/scales';
   import { timeScale } from '../stores/scales';
@@ -308,6 +308,7 @@ ctx.clearRect(0, -$panelHeight, $width, $height);
 }
 
 
+
 createTriassicMap($fossilDatapoints.triassic);
 
 createMap($fossilDatapoints.jurassic);
@@ -370,6 +371,7 @@ function makeGraticules() {
 
          makeGraticules();
 
+         
 
 function worldMap() {
       // Current World Map
@@ -438,16 +440,91 @@ function worldMap() {
       pangeaMap()
     }
     if($switchValueStore === 'off'){
-
-
-
     }
       
-    
-    
 
-datapointsReady()
-// console.log(removing)
+function createLegend(){
+
+  ctx.fillStyle = bg;
+  ctx.fillRect($width - 250, $mapHeight - 230, 300, 230);
+  ctx.strokeStyle = '#000';
+  ctx.strokeRect($width - 250, $mapHeight - 230, 300, 230);
+
+
+  ctx.font = 'bold 16px Quicksand';
+  ctx.fillStyle = "#000";
+  ctx.fillText('Fossil Color Scale', $width - 200, $mapHeight - 211);
+
+  ctx.beginPath();
+  ctx.moveTo($width - 200, $mapHeight - 205);
+  ctx.lineTo($width - 66, $mapHeight - 205);
+  ctx.stroke();
+
+
+  ctx.font = '16px Quicksand';
+  ctx.fillStyle = "#000";
+  ctx.fillText('Cretaceous', $width - 200, $mapHeight - 179);
+ // ctx.fillStyle = preBlue;
+
+
+  //gradient
+  const gradientCretaceous = ctx.createLinearGradient($width - 200, 0, $width - 25, 0);
+  gradientCretaceous.addColorStop(0, "#aad5a9");
+  gradientCretaceous.addColorStop(1, "#486848");
+  ctx.fillStyle = gradientCretaceous;
+  ctx.fillRect($width - 200, $mapHeight - 162, 175, 16);
+
+  //years range
+  ctx.fillStyle = '#000';
+  ctx.font = '12px Quicksand';
+  ctx.fillText('65 mya', $width - 200, $mapHeight - 165);
+  ctx.fillText('145 mya', $width - 72, $mapHeight - 165);
+
+
+
+   //time era
+  ctx.font = '16px Quicksand';
+  ctx.fillText('Jurassic', $width - 200, $mapHeight - 110);
+//  ctx.fillStyle = prePurple;
+
+
+
+  //gradient
+  const gradientJurassic = ctx.createLinearGradient($width - 200, 0, $width - 25, 0);
+  gradientJurassic.addColorStop(0, "#a4e3ef");
+  gradientJurassic.addColorStop(1, "#2f9eb3");
+  ctx.fillStyle = gradientJurassic;
+  ctx.fillRect($width - 200, $mapHeight - 93, 175, 16);
+
+  //years range
+  ctx.fillStyle = '#000';
+  ctx.font = '12px Quicksand';
+  ctx.fillText('145 mya', $width - 200, $mapHeight - 96);
+  ctx.fillText('201 mya', $width - 72, $mapHeight - 96);
+
+
+  //time era
+  ctx.fillStyle = '#000';
+  ctx.font = '16px Quicksand';
+  ctx.fillText('Triassic', $width - 200, $mapHeight - 41);
+
+  //gradient
+  const gradient = ctx.createLinearGradient($width - 200, 0, $width - 25, 0);
+  gradient.addColorStop(0, "#f2caf7");
+  gradient.addColorStop(1, "#6c4870");
+  ctx.fillStyle = gradient;
+  ctx.fillRect($width - 200, $mapHeight - 25, 175, 16);
+
+  //years range
+  ctx.fillStyle = '#000';
+  ctx.font = '12px Quicksand';
+  ctx.fillText('201 mya', $width - 200, $mapHeight - 28);
+  ctx.fillText('251 mya', $width - 72, $mapHeight - 28);
+
+}
+
+createLegend ()
+
 
 
 
@@ -455,44 +532,7 @@ datapointsReady()
   }
 
 
-
-function removeAllFossils() {
-
-$fossilDatapoints['cretaceous'] = [];
-$fossilDatapoints['triassic'] = [];
-$fossilDatapoints['jurassic'] = [];
-
-reDraw();
-return $fossilDatapoints;
-
-}
-
-function addAllFossils() {
-
-addFossils('cretaceous');
-addFossils('triassic');
-addFossils('jurassic');
-
-}
-
-function addFossils(fossilEra) {
-
-console.log(fossilDatapoints)
-
-let originalEra = 'original' + fossilEra
-
-$fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra];
-reDraw();
-return $fossilDatapoints;
-
-}
-
-
-  function datapointsReady(){
-    $fossilDatapoints.ready = true
-  }
-
-  function reDraw() {
+function reDraw() {
 
 let locations = select('#points');
 var elements = locations.selectAll("points.arc");
@@ -514,13 +554,17 @@ this.remove();
 }
 
 
+
+
 </script>
 
 
 
 <div class="layer"></div>
 <div id="map">
-   <canvas bind:this={canvas}><div id="points"></div></canvas>
+   <canvas bind:this={canvas}>
+      <div id="points"></div>
+  </canvas>
 </div>
 <style>
 

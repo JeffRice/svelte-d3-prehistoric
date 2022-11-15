@@ -5,6 +5,8 @@ export const usaLightRed = '#b22234';
 export const usaLightLightRed = '#dbb6b6';
 
 export const preGreen = '#147C47';
+export const preBlue = '#ecc6f1';
+export const prePurple = '#a0dfeb';
 
 export const polBlue = '#2e64a0';
 export const polLightBlue = '#61a3de';

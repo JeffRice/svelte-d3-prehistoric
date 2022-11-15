@@ -34599,6 +34599,8 @@ var app = (function () {
 	var usaLightRed = '#b22234';
 	var usaLightLightRed = '#dbb6b6';
 	var preGreen = '#147C47';
+	var preBlue = '#ecc6f1';
+	var prePurple = '#a0dfeb';
 	var polBlue = '#2e64a0';
 	var polPurple = '#96659e';
 	var polRed = '#ca0800';
@@ -44331,6 +44333,8 @@ var app = (function () {
 	  var feImage35;
 	  var filter36;
 	  var feImage36;
+	  var filter37;
+	  var feImage37;
 	  var block = {
 	    c: function create() {
 	      defs = svg_element("defs");
@@ -44425,6 +44429,8 @@ var app = (function () {
 	      feImage35 = svg_element("feImage");
 	      filter36 = svg_element("filter");
 	      feImage36 = svg_element("feImage");
+	      filter37 = svg_element("filter");
+	      feImage37 = svg_element("feImage");
 	      attr_dev(stop0, "offset", "40%");
 	      set_style(stop0, "stop-color", "var(--bg)");
 	      attr_dev(stop0, "stop-opacity", "0.7");
@@ -44546,254 +44552,262 @@ var app = (function () {
 	      attr_dev(filter5, "width", "100%");
 	      attr_dev(filter5, "height", "100%");
 	      add_location(filter5, file$k, 65, 0, 2376);
-	      xlink_attr(feImage6, "xlink:href", "/images/dimetrodon.png");
-	      add_location(feImage6, file$k, 70, 2, 2586);
-	      attr_dev(filter6, "id", "dimetrodon_image");
+	      xlink_attr(feImage6, "xlink:href", "/images/coelophysis.png");
+	      add_location(feImage6, file$k, 70, 2, 2587);
+	      attr_dev(filter6, "id", "coelophysis_image");
 	      attr_dev(filter6, "x", "0%");
 	      attr_dev(filter6, "y", "0%");
 	      attr_dev(filter6, "width", "100%");
 	      attr_dev(filter6, "height", "100%");
 	      add_location(filter6, file$k, 69, 0, 2512);
-	      xlink_attr(feImage7, "xlink:href", "/images/gastornis.png");
-	      add_location(feImage7, file$k, 74, 2, 2717);
-	      attr_dev(filter7, "id", "gastornis_image");
+	      xlink_attr(feImage7, "xlink:href", "/images/dimetrodon.png");
+	      add_location(feImage7, file$k, 74, 2, 2720);
+	      attr_dev(filter7, "id", "dimetrodon_image");
 	      attr_dev(filter7, "x", "0%");
 	      attr_dev(filter7, "y", "0%");
 	      attr_dev(filter7, "width", "100%");
 	      attr_dev(filter7, "height", "100%");
-	      add_location(filter7, file$k, 73, 0, 2644);
-	      xlink_attr(feImage8, "xlink:href", "/images/giganotosaurus.png");
-	      add_location(feImage8, file$k, 78, 2, 2852);
-	      attr_dev(filter8, "id", "giganotosaurus_image");
+	      add_location(filter7, file$k, 73, 0, 2646);
+	      xlink_attr(feImage8, "xlink:href", "/images/gastornis.png");
+	      add_location(feImage8, file$k, 78, 2, 2851);
+	      attr_dev(filter8, "id", "gastornis_image");
 	      attr_dev(filter8, "x", "0%");
 	      attr_dev(filter8, "y", "0%");
 	      attr_dev(filter8, "width", "100%");
 	      attr_dev(filter8, "height", "100%");
-	      add_location(filter8, file$k, 77, 0, 2774);
-	      xlink_attr(feImage9, "xlink:href", "/images/giraffatitan.png");
-	      add_location(feImage9, file$k, 82, 2, 2990);
-	      attr_dev(filter9, "id", "giraffatitan_image");
+	      add_location(filter8, file$k, 77, 0, 2778);
+	      xlink_attr(feImage9, "xlink:href", "/images/giganotosaurus.png");
+	      add_location(feImage9, file$k, 82, 2, 2986);
+	      attr_dev(filter9, "id", "giganotosaurus_image");
 	      attr_dev(filter9, "x", "0%");
 	      attr_dev(filter9, "y", "0%");
 	      attr_dev(filter9, "width", "100%");
 	      attr_dev(filter9, "height", "100%");
-	      add_location(filter9, file$k, 81, 0, 2914);
-	      xlink_attr(feImage10, "xlink:href", "/images/herbivore.svg");
-	      add_location(feImage10, file$k, 86, 2, 3123);
-	      attr_dev(filter10, "id", "herbivore_image");
+	      add_location(filter9, file$k, 81, 0, 2908);
+	      xlink_attr(feImage10, "xlink:href", "/images/giraffatitan.png");
+	      add_location(feImage10, file$k, 86, 2, 3124);
+	      attr_dev(filter10, "id", "giraffatitan_image");
 	      attr_dev(filter10, "x", "0%");
 	      attr_dev(filter10, "y", "0%");
 	      attr_dev(filter10, "width", "100%");
 	      attr_dev(filter10, "height", "100%");
-	      add_location(filter10, file$k, 85, 0, 3050);
-	      xlink_attr(feImage11, "xlink:href", "/images/iguanodon.png");
-	      add_location(feImage11, file$k, 90, 2, 3253);
-	      attr_dev(filter11, "id", "iguanodon_image");
+	      add_location(filter10, file$k, 85, 0, 3048);
+	      xlink_attr(feImage11, "xlink:href", "/images/herbivore.svg");
+	      add_location(feImage11, file$k, 90, 2, 3257);
+	      attr_dev(filter11, "id", "herbivore_image");
 	      attr_dev(filter11, "x", "0%");
 	      attr_dev(filter11, "y", "0%");
 	      attr_dev(filter11, "width", "100%");
 	      attr_dev(filter11, "height", "100%");
-	      add_location(filter11, file$k, 89, 0, 3180);
-	      xlink_attr(feImage12, "xlink:href", "/images/meganeura.png");
-	      add_location(feImage12, file$k, 94, 2, 3383);
-	      attr_dev(filter12, "id", "meganeura_image");
+	      add_location(filter11, file$k, 89, 0, 3184);
+	      xlink_attr(feImage12, "xlink:href", "/images/iguanodon.png");
+	      add_location(feImage12, file$k, 94, 2, 3387);
+	      attr_dev(filter12, "id", "iguanodon_image");
 	      attr_dev(filter12, "x", "0%");
 	      attr_dev(filter12, "y", "0%");
 	      attr_dev(filter12, "width", "100%");
 	      attr_dev(filter12, "height", "100%");
-	      add_location(filter12, file$k, 93, 0, 3310);
-	      xlink_attr(feImage13, "xlink:href", "/images/megatherium.png");
-	      add_location(feImage13, file$k, 98, 2, 3515);
-	      attr_dev(filter13, "id", "megatherium_image");
+	      add_location(filter12, file$k, 93, 0, 3314);
+	      xlink_attr(feImage13, "xlink:href", "/images/meganeura.png");
+	      add_location(feImage13, file$k, 98, 2, 3517);
+	      attr_dev(filter13, "id", "meganeura_image");
 	      attr_dev(filter13, "x", "0%");
 	      attr_dev(filter13, "y", "0%");
 	      attr_dev(filter13, "width", "100%");
 	      attr_dev(filter13, "height", "100%");
-	      add_location(filter13, file$k, 97, 0, 3440);
-	      xlink_attr(feImage14, "xlink:href", "/images/muttaburrasaurus.png");
-	      add_location(feImage14, file$k, 102, 2, 3654);
-	      attr_dev(filter14, "id", "muttaburrasaurus_image");
+	      add_location(filter13, file$k, 97, 0, 3444);
+	      xlink_attr(feImage14, "xlink:href", "/images/megatherium.png");
+	      add_location(feImage14, file$k, 102, 2, 3649);
+	      attr_dev(filter14, "id", "megatherium_image");
 	      attr_dev(filter14, "x", "0%");
 	      attr_dev(filter14, "y", "0%");
 	      attr_dev(filter14, "width", "100%");
 	      attr_dev(filter14, "height", "100%");
 	      add_location(filter14, file$k, 101, 0, 3574);
-	      xlink_attr(feImage15, "xlink:href", "/images/shunosaurus.png");
-	      add_location(feImage15, file$k, 106, 2, 3793);
-	      attr_dev(filter15, "id", "shunosaurus_image");
+	      xlink_attr(feImage15, "xlink:href", "/images/muttaburrasaurus.png");
+	      add_location(feImage15, file$k, 106, 2, 3788);
+	      attr_dev(filter15, "id", "muttaburrasaurus_image");
 	      attr_dev(filter15, "x", "0%");
 	      attr_dev(filter15, "y", "0%");
 	      attr_dev(filter15, "width", "100%");
 	      attr_dev(filter15, "height", "100%");
-	      add_location(filter15, file$k, 105, 0, 3718);
-	      xlink_attr(feImage16, "xlink:href", "/images/spinosaur.png");
+	      add_location(filter15, file$k, 105, 0, 3708);
+	      xlink_attr(feImage16, "xlink:href", "/images/shunosaurus.png");
 	      add_location(feImage16, file$k, 110, 2, 3927);
-	      attr_dev(filter16, "id", "spinosaurus_image");
+	      attr_dev(filter16, "id", "shunosaurus_image");
 	      attr_dev(filter16, "x", "0%");
 	      attr_dev(filter16, "y", "0%");
 	      attr_dev(filter16, "width", "100%");
 	      attr_dev(filter16, "height", "100%");
 	      add_location(filter16, file$k, 109, 0, 3852);
-	      xlink_attr(feImage17, "xlink:href", "/images/titanoboa.png");
-	      add_location(feImage17, file$k, 114, 2, 4057);
-	      attr_dev(filter17, "id", "titanoboa_image");
+	      xlink_attr(feImage17, "xlink:href", "/images/spinosaur.png");
+	      add_location(feImage17, file$k, 114, 2, 4061);
+	      attr_dev(filter17, "id", "spinosaurus_image");
 	      attr_dev(filter17, "x", "0%");
 	      attr_dev(filter17, "y", "0%");
 	      attr_dev(filter17, "width", "100%");
 	      attr_dev(filter17, "height", "100%");
-	      add_location(filter17, file$k, 113, 0, 3984);
-	      xlink_attr(feImage18, "xlink:href", "/images/tyrannoskull.jpg");
-	      add_location(feImage18, file$k, 119, 2, 4191);
-	      attr_dev(filter18, "id", "tyrannoskull_image");
+	      add_location(filter17, file$k, 113, 0, 3986);
+	      xlink_attr(feImage18, "xlink:href", "/images/titanoboa.png");
+	      add_location(feImage18, file$k, 118, 2, 4191);
+	      attr_dev(filter18, "id", "titanoboa_image");
 	      attr_dev(filter18, "x", "0%");
 	      attr_dev(filter18, "y", "0%");
 	      attr_dev(filter18, "width", "100%");
 	      attr_dev(filter18, "height", "100%");
-	      add_location(filter18, file$k, 118, 0, 4115);
-	      xlink_attr(feImage19, "xlink:href", "/images/trexskull.png");
-	      add_location(feImage19, file$k, 123, 2, 4324);
-	      attr_dev(filter19, "id", "trexskull_image");
+	      add_location(filter18, file$k, 117, 0, 4118);
+	      xlink_attr(feImage19, "xlink:href", "/images/tyrannoskull.jpg");
+	      add_location(feImage19, file$k, 123, 2, 4325);
+	      attr_dev(filter19, "id", "tyrannoskull_image");
 	      attr_dev(filter19, "x", "0%");
 	      attr_dev(filter19, "y", "0%");
 	      attr_dev(filter19, "width", "100%");
 	      attr_dev(filter19, "height", "100%");
-	      add_location(filter19, file$k, 122, 0, 4251);
-	      xlink_attr(feImage20, "xlink:href", "/images/aquatic.svg");
-	      add_location(feImage20, file$k, 127, 2, 4452);
-	      attr_dev(filter20, "id", "aquatic_image");
+	      add_location(filter19, file$k, 122, 0, 4249);
+	      xlink_attr(feImage20, "xlink:href", "/images/trexskull.png");
+	      add_location(feImage20, file$k, 127, 2, 4458);
+	      attr_dev(filter20, "id", "trexskull_image");
 	      attr_dev(filter20, "x", "0%");
 	      attr_dev(filter20, "y", "0%");
 	      attr_dev(filter20, "width", "100%");
 	      attr_dev(filter20, "height", "100%");
-	      add_location(filter20, file$k, 126, 0, 4381);
-	      xlink_attr(feImage21, "xlink:href", "/images/pachycephalosaurus.png");
-	      add_location(feImage21, file$k, 131, 2, 4589);
-	      attr_dev(filter21, "id", "pachycephalosaurus_image");
+	      add_location(filter20, file$k, 126, 0, 4385);
+	      xlink_attr(feImage21, "xlink:href", "/images/aquatic.svg");
+	      add_location(feImage21, file$k, 131, 2, 4586);
+	      attr_dev(filter21, "id", "aquatic_image");
 	      attr_dev(filter21, "x", "0%");
 	      attr_dev(filter21, "y", "0%");
 	      attr_dev(filter21, "width", "100%");
 	      attr_dev(filter21, "height", "100%");
-	      add_location(filter21, file$k, 130, 0, 4507);
-	      xlink_attr(feImage22, "xlink:href", "/images/pterodactyl.svg");
-	      add_location(feImage22, file$k, 135, 2, 4730);
-	      attr_dev(filter22, "id", "pterodactyl_image");
+	      add_location(filter21, file$k, 130, 0, 4515);
+	      xlink_attr(feImage22, "xlink:href", "/images/pachycephalosaurus.png");
+	      add_location(feImage22, file$k, 135, 2, 4723);
+	      attr_dev(filter22, "id", "pachycephalosaurus_image");
 	      attr_dev(filter22, "x", "0%");
 	      attr_dev(filter22, "y", "0%");
 	      attr_dev(filter22, "width", "100%");
 	      attr_dev(filter22, "height", "100%");
-	      add_location(filter22, file$k, 134, 0, 4655);
-	      xlink_attr(feImage23, "xlink:href", "/images/smilodon.png");
-	      add_location(feImage23, file$k, 139, 2, 4861);
-	      attr_dev(filter23, "id", "smilodon_image");
+	      add_location(filter22, file$k, 134, 0, 4641);
+	      xlink_attr(feImage23, "xlink:href", "/images/pterodactyl.svg");
+	      add_location(feImage23, file$k, 139, 2, 4864);
+	      attr_dev(filter23, "id", "pterodactyl_image");
 	      attr_dev(filter23, "x", "0%");
 	      attr_dev(filter23, "y", "0%");
 	      attr_dev(filter23, "width", "100%");
 	      attr_dev(filter23, "height", "100%");
 	      add_location(filter23, file$k, 138, 0, 4789);
-	      xlink_attr(feImage24, "xlink:href", "/images/stegosaurus.svg");
-	      add_location(feImage24, file$k, 143, 2, 4992);
-	      attr_dev(filter24, "id", "stegosaurus_image");
+	      xlink_attr(feImage24, "xlink:href", "/images/smilodon.png");
+	      add_location(feImage24, file$k, 143, 2, 4995);
+	      attr_dev(filter24, "id", "smilodon_image");
 	      attr_dev(filter24, "x", "0%");
 	      attr_dev(filter24, "y", "0%");
 	      attr_dev(filter24, "width", "100%");
 	      attr_dev(filter24, "height", "100%");
-	      add_location(filter24, file$k, 142, 0, 4917);
-	      xlink_attr(feImage25, "xlink:href", "/images/ophthalmosaurus.png");
-	      add_location(feImage25, file$k, 147, 2, 5130);
-	      attr_dev(filter25, "id", "ophthalmosaurus_image");
+	      add_location(filter24, file$k, 142, 0, 4923);
+	      xlink_attr(feImage25, "xlink:href", "/images/stegosaurus.svg");
+	      add_location(feImage25, file$k, 147, 2, 5126);
+	      attr_dev(filter25, "id", "stegosaurus_image");
 	      attr_dev(filter25, "x", "0%");
 	      attr_dev(filter25, "y", "0%");
 	      attr_dev(filter25, "width", "100%");
 	      attr_dev(filter25, "height", "100%");
 	      add_location(filter25, file$k, 146, 0, 5051);
-	      xlink_attr(feImage26, "xlink:href", "/images/lizard.svg");
-	      add_location(feImage26, file$k, 152, 2, 5264);
-	      attr_dev(filter26, "id", "lizard_image");
+	      xlink_attr(feImage26, "xlink:href", "/images/ophthalmosaurus.png");
+	      add_location(feImage26, file$k, 151, 2, 5264);
+	      attr_dev(filter26, "id", "ophthalmosaurus_image");
 	      attr_dev(filter26, "x", "0%");
 	      attr_dev(filter26, "y", "0%");
 	      attr_dev(filter26, "width", "100%");
 	      attr_dev(filter26, "height", "100%");
-	      add_location(filter26, file$k, 151, 0, 5194);
-	      xlink_attr(feImage27, "xlink:href", "/images/mesosaurus.png");
-	      add_location(feImage27, file$k, 156, 2, 5392);
-	      attr_dev(filter27, "id", "mesosaurus_image");
+	      add_location(filter26, file$k, 150, 0, 5185);
+	      xlink_attr(feImage27, "xlink:href", "/images/lizard.svg");
+	      add_location(feImage27, file$k, 156, 2, 5398);
+	      attr_dev(filter27, "id", "lizard_image");
 	      attr_dev(filter27, "x", "0%");
 	      attr_dev(filter27, "y", "0%");
 	      attr_dev(filter27, "width", "100%");
 	      attr_dev(filter27, "height", "100%");
-	      add_location(filter27, file$k, 155, 0, 5318);
-	      xlink_attr(feImage28, "xlink:href", "/images/mosasaurus.png");
-	      add_location(feImage28, file$k, 160, 2, 5524);
-	      attr_dev(filter28, "id", "mosasaurus_image");
+	      add_location(filter27, file$k, 155, 0, 5328);
+	      xlink_attr(feImage28, "xlink:href", "/images/mesosaurus.png");
+	      add_location(feImage28, file$k, 160, 2, 5526);
+	      attr_dev(filter28, "id", "mesosaurus_image");
 	      attr_dev(filter28, "x", "0%");
 	      attr_dev(filter28, "y", "0%");
 	      attr_dev(filter28, "width", "100%");
 	      attr_dev(filter28, "height", "100%");
-	      add_location(filter28, file$k, 159, 0, 5450);
-	      xlink_attr(feImage29, "xlink:href", "/images/plateosaurus.png");
+	      add_location(filter28, file$k, 159, 0, 5452);
+	      xlink_attr(feImage29, "xlink:href", "/images/mosasaurus.png");
 	      add_location(feImage29, file$k, 164, 2, 5658);
-	      attr_dev(filter29, "id", "plateosaurus_image");
+	      attr_dev(filter29, "id", "mosasaurus_image");
 	      attr_dev(filter29, "x", "0%");
 	      attr_dev(filter29, "y", "0%");
 	      attr_dev(filter29, "width", "100%");
 	      attr_dev(filter29, "height", "100%");
-	      add_location(filter29, file$k, 163, 0, 5582);
-	      xlink_attr(feImage30, "xlink:href", "/images/smallraptor.svg");
-	      add_location(feImage30, file$k, 168, 2, 5793);
-	      attr_dev(filter30, "id", "smallraptor_image");
+	      add_location(filter29, file$k, 163, 0, 5584);
+	      xlink_attr(feImage30, "xlink:href", "/images/plateosaurus.png");
+	      add_location(feImage30, file$k, 168, 2, 5792);
+	      attr_dev(filter30, "id", "plateosaurus_image");
 	      attr_dev(filter30, "x", "0%");
 	      attr_dev(filter30, "y", "0%");
 	      attr_dev(filter30, "width", "100%");
 	      attr_dev(filter30, "height", "100%");
-	      add_location(filter30, file$k, 167, 0, 5718);
-	      xlink_attr(feImage31, "xlink:href", "/images/seaskeleton.svg");
+	      add_location(filter30, file$k, 167, 0, 5716);
+	      xlink_attr(feImage31, "xlink:href", "/images/smallraptor.svg");
 	      add_location(feImage31, file$k, 172, 2, 5927);
-	      attr_dev(filter31, "id", "seaskeleton_image");
+	      attr_dev(filter31, "id", "smallraptor_image");
 	      attr_dev(filter31, "x", "0%");
 	      attr_dev(filter31, "y", "0%");
 	      attr_dev(filter31, "width", "100%");
 	      attr_dev(filter31, "height", "100%");
 	      add_location(filter31, file$k, 171, 0, 5852);
-	      xlink_attr(feImage32, "xlink:href", "/images/armored.svg");
-	      add_location(feImage32, file$k, 176, 2, 6057);
-	      attr_dev(filter32, "id", "armored_image");
+	      xlink_attr(feImage32, "xlink:href", "/images/seaskeleton.svg");
+	      add_location(feImage32, file$k, 176, 2, 6061);
+	      attr_dev(filter32, "id", "seaskeleton_image");
 	      attr_dev(filter32, "x", "0%");
 	      attr_dev(filter32, "y", "0%");
 	      attr_dev(filter32, "width", "100%");
 	      attr_dev(filter32, "height", "100%");
 	      add_location(filter32, file$k, 175, 0, 5986);
-	      xlink_attr(feImage33, "xlink:href", "/images/tyrannosaurskeleton.svg");
-	      add_location(feImage33, file$k, 180, 2, 6195);
-	      attr_dev(filter33, "id", "tyrannosaurskeleton_image");
+	      xlink_attr(feImage33, "xlink:href", "/images/armored.svg");
+	      add_location(feImage33, file$k, 180, 2, 6191);
+	      attr_dev(filter33, "id", "armored_image");
 	      attr_dev(filter33, "x", "0%");
 	      attr_dev(filter33, "y", "0%");
 	      attr_dev(filter33, "width", "100%");
 	      attr_dev(filter33, "height", "100%");
-	      add_location(filter33, file$k, 179, 0, 6112);
-	      xlink_attr(feImage34, "xlink:href", "/images/triceratops.svg");
-	      add_location(feImage34, file$k, 184, 2, 6337);
-	      attr_dev(filter34, "id", "triceratops_image");
+	      add_location(filter33, file$k, 179, 0, 6120);
+	      xlink_attr(feImage34, "xlink:href", "/images/tyrannosaurskeleton.svg");
+	      add_location(feImage34, file$k, 184, 2, 6329);
+	      attr_dev(filter34, "id", "tyrannosaurskeleton_image");
 	      attr_dev(filter34, "x", "0%");
 	      attr_dev(filter34, "y", "0%");
 	      attr_dev(filter34, "width", "100%");
 	      attr_dev(filter34, "height", "100%");
-	      add_location(filter34, file$k, 183, 0, 6262);
-	      xlink_attr(feImage35, "xlink:href", "/images/talons.svg");
-	      add_location(feImage35, file$k, 188, 2, 6466);
-	      attr_dev(filter35, "id", "talons_image");
+	      add_location(filter34, file$k, 183, 0, 6246);
+	      xlink_attr(feImage35, "xlink:href", "/images/triceratops.svg");
+	      add_location(feImage35, file$k, 188, 2, 6471);
+	      attr_dev(filter35, "id", "triceratops_image");
 	      attr_dev(filter35, "x", "0%");
 	      attr_dev(filter35, "y", "0%");
 	      attr_dev(filter35, "width", "100%");
 	      attr_dev(filter35, "height", "100%");
 	      add_location(filter35, file$k, 187, 0, 6396);
-	      xlink_attr(feImage36, "xlink:href", "/images/duckbilled.svg");
-	      add_location(feImage36, file$k, 194, 2, 6596);
-	      attr_dev(filter36, "id", "duckbilled_image");
+	      xlink_attr(feImage36, "xlink:href", "/images/talons.svg");
+	      add_location(feImage36, file$k, 192, 2, 6600);
+	      attr_dev(filter36, "id", "talons_image");
 	      attr_dev(filter36, "x", "0%");
 	      attr_dev(filter36, "y", "0%");
 	      attr_dev(filter36, "width", "100%");
 	      attr_dev(filter36, "height", "100%");
-	      add_location(filter36, file$k, 193, 0, 6522);
+	      add_location(filter36, file$k, 191, 0, 6530);
+	      xlink_attr(feImage37, "xlink:href", "/images/duckbilled.svg");
+	      add_location(feImage37, file$k, 198, 2, 6730);
+	      attr_dev(filter37, "id", "duckbilled_image");
+	      attr_dev(filter37, "x", "0%");
+	      attr_dev(filter37, "y", "0%");
+	      attr_dev(filter37, "width", "100%");
+	      attr_dev(filter37, "height", "100%");
+	      add_location(filter37, file$k, 197, 0, 6656);
 	      add_location(defs, file$k, 5, 0, 105);
 	    },
 	    l: function claim(nodes) {
@@ -44892,6 +44906,8 @@ var app = (function () {
 	      append_dev(filter35, feImage35);
 	      append_dev(defs, filter36);
 	      append_dev(filter36, feImage36);
+	      append_dev(defs, filter37);
+	      append_dev(filter37, feImage37);
 	    },
 	    p: noop,
 	    i: noop,
@@ -53453,13 +53469,13 @@ var app = (function () {
 	      canvas_1 = element("canvas");
 	      div1 = element("div");
 	      attr_dev(div0, "class", "layer");
-	      add_location(div0, file$C, 520, 0, 10832);
+	      add_location(div0, file$C, 562, 0, 12539);
 	      attr_dev(div1, "id", "points");
-	      add_location(div1, file$C, 522, 30, 10903);
+	      add_location(div1, file$C, 565, 6, 12617);
 	      attr_dev(canvas_1, "class", "svelte-5592ys");
-	      add_location(canvas_1, file$C, 522, 3, 10876);
+	      add_location(canvas_1, file$C, 564, 3, 12583);
 	      attr_dev(div2, "id", "map");
-	      add_location(div2, file$C, 521, 0, 10858);
+	      add_location(div2, file$C, 563, 0, 12565);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -53634,32 +53650,6 @@ var app = (function () {
 	    }, _callee);
 	  })));
 
-	  function removeAllFossils() {
-	    set_store_value(fossilDatapoints, $fossilDatapoints["cretaceous"] = [], $fossilDatapoints);
-	    set_store_value(fossilDatapoints, $fossilDatapoints["triassic"] = [], $fossilDatapoints);
-	    set_store_value(fossilDatapoints, $fossilDatapoints["jurassic"] = [], $fossilDatapoints);
-	    reDraw();
-	    return $fossilDatapoints;
-	  }
-
-	  function addAllFossils() {
-	    addFossils("cretaceous");
-	    addFossils("triassic");
-	    addFossils("jurassic");
-	  }
-
-	  function addFossils(fossilEra) {
-	    console.log(fossilDatapoints);
-	    var originalEra = "original" + fossilEra;
-	    set_store_value(fossilDatapoints, $fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra], $fossilDatapoints);
-	    reDraw();
-	    return $fossilDatapoints;
-	  }
-
-	  function datapointsReady() {
-	    set_store_value(fossilDatapoints, $fossilDatapoints.ready = true, $fossilDatapoints);
-	  }
-
 	  function reDraw() {
 	    var locations = select("#points");
 	    var elements = locations.selectAll("points.arc"); // console.log('elements: ', elements)
@@ -53700,6 +53690,8 @@ var app = (function () {
 	      usaLightRed: usaLightRed,
 	      usaLightLightRed: usaLightLightRed,
 	      preGreen: preGreen,
+	      preBlue: preBlue,
+	      prePurple: prePurple,
 	      countries: countries,
 	      pangeaRegions: pangeaRegions,
 	      projection: projection$1,
@@ -53728,10 +53720,6 @@ var app = (function () {
 	      fossilDatapoints: fossilDatapoints,
 	      switchValueStore: switchValueStore,
 	      worldDataPath: worldDataPath,
-	      removeAllFossils: removeAllFossils,
-	      addAllFossils: addAllFossils,
-	      addFossils: addFossils,
-	      datapointsReady: datapointsReady,
 	      reDraw: reDraw,
 	      $fossilDatapoints: $fossilDatapoints,
 	      $width: $width,
@@ -53948,9 +53936,67 @@ var app = (function () {
 	          pangeaMap();
 	        }
 
-	        datapointsReady();
-	      } // console.log(removing)
+	        function createLegend() {
+	          ctx.fillStyle = bg;
+	          ctx.fillRect($width - 250, $mapHeight - 230, 300, 230);
+	          ctx.strokeStyle = "#000";
+	          ctx.strokeRect($width - 250, $mapHeight - 230, 300, 230);
+	          ctx.font = "bold 16px Quicksand";
+	          ctx.fillStyle = "#000";
+	          ctx.fillText("Fossil Color Scale", $width - 200, $mapHeight - 211);
+	          ctx.beginPath();
+	          ctx.moveTo($width - 200, $mapHeight - 205);
+	          ctx.lineTo($width - 66, $mapHeight - 205);
+	          ctx.stroke();
+	          ctx.font = "16px Quicksand";
+	          ctx.fillStyle = "#000";
+	          ctx.fillText("Cretaceous", $width - 200, $mapHeight - 179); // ctx.fillStyle = preBlue;
+	          //gradient
 
+	          var gradientCretaceous = ctx.createLinearGradient($width - 200, 0, $width - 25, 0);
+	          gradientCretaceous.addColorStop(0, "#aad5a9");
+	          gradientCretaceous.addColorStop(1, "#486848");
+	          ctx.fillStyle = gradientCretaceous;
+	          ctx.fillRect($width - 200, $mapHeight - 162, 175, 16); //years range
+
+	          ctx.fillStyle = "#000";
+	          ctx.font = "12px Quicksand";
+	          ctx.fillText("65 mya", $width - 200, $mapHeight - 165);
+	          ctx.fillText("145 mya", $width - 72, $mapHeight - 165); //time era
+
+	          ctx.font = "16px Quicksand";
+	          ctx.fillText("Jurassic", $width - 200, $mapHeight - 110); //  ctx.fillStyle = prePurple;
+	          //gradient
+
+	          var gradientJurassic = ctx.createLinearGradient($width - 200, 0, $width - 25, 0);
+	          gradientJurassic.addColorStop(0, "#a4e3ef");
+	          gradientJurassic.addColorStop(1, "#2f9eb3");
+	          ctx.fillStyle = gradientJurassic;
+	          ctx.fillRect($width - 200, $mapHeight - 93, 175, 16); //years range
+
+	          ctx.fillStyle = "#000";
+	          ctx.font = "12px Quicksand";
+	          ctx.fillText("145 mya", $width - 200, $mapHeight - 96);
+	          ctx.fillText("201 mya", $width - 72, $mapHeight - 96); //time era
+
+	          ctx.fillStyle = "#000";
+	          ctx.font = "16px Quicksand";
+	          ctx.fillText("Triassic", $width - 200, $mapHeight - 41); //gradient
+
+	          var gradient = ctx.createLinearGradient($width - 200, 0, $width - 25, 0);
+	          gradient.addColorStop(0, "#f2caf7");
+	          gradient.addColorStop(1, "#6c4870");
+	          ctx.fillStyle = gradient;
+	          ctx.fillRect($width - 200, $mapHeight - 25, 175, 16); //years range
+
+	          ctx.fillStyle = "#000";
+	          ctx.font = "12px Quicksand";
+	          ctx.fillText("201 mya", $width - 200, $mapHeight - 28);
+	          ctx.fillText("251 mya", $width - 72, $mapHeight - 28);
+	        }
+
+	        createLegend();
+	      }
 	    }
 	  };
 

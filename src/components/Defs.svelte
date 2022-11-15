@@ -67,6 +67,10 @@
   <feImage xlink:href="/images/basilosaurus.png"/>
 </filter>
 
+<filter id="coelophysis_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/coelophysis.png"/>
+</filter>
+
 <filter id="dimetrodon_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/dimetrodon.png"/>
 </filter>
