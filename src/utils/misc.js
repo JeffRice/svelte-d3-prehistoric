@@ -19,7 +19,7 @@ export const getTimeRange = (data) => {
 // preload images
 export const preloadImages = (data) => {
  // data.forEach((d) => (new Image()).src = `${images}${d.periodEra}.jpg`);
- // data.forEach((d) => (new Image()).src = `${images}${d.name.toLowerCase()}1.jpg`);
+  data.forEach((d) => (new Image()).src = `${images}${d.name.toLowerCase()}.jpg`);
 }
 
 // split string in array

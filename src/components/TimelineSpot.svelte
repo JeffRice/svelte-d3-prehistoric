@@ -91,6 +91,8 @@ $timeScale = $timeScale;
                   dx={offset}
                   dy="4">{displayName} </text>
             <text bind:this={timeScaleText}
+                  class="{spotName}"
+                  on:click={testSetScale}
                   dx={offset}
                   dy="4">{displayName} </text>
                   {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }

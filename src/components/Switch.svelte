@@ -77,7 +77,7 @@
 
 <style>
 			:root {
-		--accent-color:var(--prehistoricLightGreen);
+		--accent-color:var(--prehistoricGreen);
 		--gray: #ccc;
 	}
     /* Inner Design Option */
