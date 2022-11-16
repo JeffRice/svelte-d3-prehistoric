@@ -32,7 +32,7 @@
       <text class="bg">Today</text>
       <text>Today</text>
     </g> -->
-    <g class="time-scale-label" transform="translate({15 + $timeScale.range()[0] - $margin.left / 1.5} -15)">
+    <g class="time-scale-label" transform="translate({15 + $timeScale.range()[0] - $margin.left / 1.5} 30)">
       <path d="M0 0l{lineLength} 0"></path>
       <text class="bg"
             dx={lineLength + offset}

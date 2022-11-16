@@ -7,6 +7,7 @@
     export let x;
     export let y;
     export let name;
+    export let hoverName;
     export let stroke;
 
     const tX = tweened(null, { duration: 800, easing: cubicOut });
@@ -49,13 +50,14 @@
 on:click={handleEventClick}
 on:mouseover={handleEventMouseover}
 >
-     <circle name={name} cx="0" cy="0" r="10" stroke={stroke} stroke-width="3" fill="none"
+     <circle name={name} hoverName={hoverName} cx="0" cy="0" r="10" stroke={stroke} stroke-width="3" fill="none"
      testy={$tY}/>
 
-
+{#if (name !== undefined)}
      <!-- label-->
-     <g class="centroid-name-label" transform="translate(10 -20) rotate(-45)">
+     <g class="centroid-name-label" transform="translate(10 -20) rotate(-20)">
         <text style="transition: opacity 600ms ease;">{name}</text>
      </g>
-    
+{/if}
 </g>
+

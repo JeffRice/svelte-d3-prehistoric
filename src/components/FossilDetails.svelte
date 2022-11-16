@@ -11,6 +11,7 @@
 
   let data, triassicFossilData, jurassicFossilData, cretaceousFossilData;
   let map1, map2, map3, map4, uniqueNames, uniqueCretaceousNames, uniqueTriassicNames, sortedCretaceousNames, sortedJurassicNames, sortedTriassicNames;
+  let sortedCretaceousFilter, sortedJurassicFilter, sortedTriassicFilter;
   let triassicTracker = [];
   let jurassicFilter, triassicFilter, cretaceousFilter;
   let allNames;
@@ -21,18 +22,11 @@
     // load the dataset and add runtime variables
     data = (await loadData())
             .map((d) => ({
-              ...d,
-               search: [d.shortTitle, d.shortDescription, d.platforms, d.methods, d.sourceNation, d.source, d.sourceCategory, d.diet].flat().join('__').toLowerCase(),
-              show: false
+              ...d
             }));
 
     // load the dataset and add runtime variables
-    
     triassicFossilData = (await loadTriassicFossils())
-
-
-
-
 
     // load the dataset and add runtime variables
     jurassicFossilData = (await loadJurassicFossils())
@@ -45,66 +39,46 @@
 
         })
 
-        $: if (data) {
-            console.log('dinoNames: ', data[0].dinoNames)
-
-
-        }
-
-
         $: if ($fossilDatapoints && triassicFossilData && jurassicFossilData && cretaceousFossilData && data) {
-            console.log('jurassicFossilData: ', jurassicFossilData)
 
-
+            allNames = data[0].dinoNames
 
             uniqueNames = uniq(jurassicFossilData.map((d) => d.name));
             sortedJurassicNames = sortBy(uniqueNames.map((d) => d)).join(' | ');
 
 
-            
-            allNames = data[0].dinoNames
-
             jurassicFilter = allNames.map((d, i) => 
-            
-            jurassicFossilData.filter(d => d.name.includes(allNames[i]))
+            [allNames[i],
+            jurassicFossilData.filter(d =>    d.name.includes(allNames[i]))]
            );
+
+            sortedJurassicFilter = sortBy(jurassicFilter, [function(d) { return d[1]; }]).reverse();
+             
 
            triassicFilter = allNames.map((d, i) => 
-            
-            triassicFossilData.filter(d => d.name.includes(allNames[i]))
+           [allNames[i],
+            triassicFossilData.filter(d => d.name.includes(allNames[i]))]
            );
+
+           sortedTriassicFilter = sortBy(triassicFilter, [function(d) { return d[1]; }]).reverse();
 
             uniqueTriassicNames = uniq(triassicFossilData.map((d) => d.name));
             sortedTriassicNames = sortBy(uniqueTriassicNames.map((d) => d)).join(' | ');
 
            cretaceousFilter = allNames.map((d, i) => 
-            
-           cretaceousFossilData.filter(d => d.name.includes(allNames[i]))
+           [allNames[i],
+           cretaceousFossilData.filter(d => d.name.includes(allNames[i]))]
            );
 
-              uniqueCretaceousNames = uniq(cretaceousFossilData.map((d) => d.name));
-              sortedCretaceousNames = sortBy(uniqueCretaceousNames.map((d) => d)).join(' | ');
+           sortedCretaceousFilter = sortBy(cretaceousFilter, [function(d) { return d[1]; }]).reverse();
 
-   //     console.log(sortedCretaceousNames)
+           uniqueCretaceousNames = uniq(cretaceousFossilData.map((d) => d.name));
+           sortedCretaceousNames = sortBy(uniqueCretaceousNames.map((d) => d)).join(' | ');
 
-
-     //       uniqueCretaceousNames = sortBy(uniqueCretaceousNames, ['name']);
-            
-            
-
-             console.log('infoTest: ', jurassicFilter)
         }
-        
+    
 
-  if ($fossilDatapoints) {
-  //  console.log($fossilDatapoints)
-
-
-  }
-
-
-
-  function removeAllFossils() {
+function removeAllFossils() {
 
 $fossilDatapoints['cretaceous'] = [];
 $fossilDatapoints['triassic'] = [];
@@ -125,7 +99,6 @@ function addAllFossils() {
 
 function addFossils(fossilEra) {
 
-  console.log(fossilDatapoints)
 
 let originalEra = 'original' + fossilEra
 
@@ -135,18 +108,14 @@ return $fossilDatapoints;
 
 }
 
-function addDino(dino, fossilEra) {
-
- console.log('add dino test ', dino)
-
-// let filteredFossils = jurassicFossilData.filter(d => d.name.includes(dino))
-
-removeAllFossils()
-reDraw();
-
-$fossilDatapoints[fossilEra] = dino;
-reDraw();
-return $fossilDatapoints;
+function addDino(dino, fossilEra) { 
+  
+  removeAllFossils()
+  reDraw();
+  
+  $fossilDatapoints[fossilEra] = dino;
+  reDraw();
+  return $fossilDatapoints;
 
 }
 
@@ -175,22 +144,23 @@ return $fossilDatapoints;
 </div>
 <section class="fossil-flex">
 
-{#if (jurassicFilter && cretaceousFilter && triassicFilter && allNames)}
+{#if (sortedCretaceousFilter && sortedTriassicFilter && sortedJurassicFilter)}
 
 <section class="fossil-wrap">
     <h3 class="Cretaceous">Cretaceous Dinosaur Fossils</h3>
-  {#each cretaceousFilter as fossilDatapoint, i}
-    {#if (fossilDatapoint.length)}
-      <section class="fossil-names">{allNames[i]} ({fossilDatapoint.length})
-        <button class="CretaceousButton" on:click={() => addDino(fossilDatapoint, 'cretaceous')}>
-            Plot {allNames[i]} fossils
+  {#each sortedCretaceousFilter as fossilDatapoint, i}
+    {#if (fossilDatapoint[1].length)}
+      <section class="fossil-names">{fossilDatapoint[0]} ({fossilDatapoint[1].length})<br />
+        <button class="CretaceousButton" on:click={() => addDino(fossilDatapoint[1], 'cretaceous')}>
+            Plot {fossilDatapoint[0]} fossils
         </button><br />
         <input id="collapsible-Cretaceous-{i}" class="toggle" type="checkbox">
         <label for="collapsible-Cretaceous-{i}" class="lbl-toggle top">View Locations</label>
         <div class="collapsible-content">
-      {#each cretaceousFilter[i] as newTest, i}
+      {#each fossilDatapoint[1] as newTest, i}
       <p> Dinosaur Name: {newTest.name}, Coords:({newTest.x}, {newTest.y})</p>
       <p>    Max Age: {newTest.maxAge}, Min Age: {newTest.minAge}</p>
+      <hr />
       {/each}
     </div>
       </section>
@@ -199,18 +169,19 @@ return $fossilDatapoints;
 </section>
 <section class="fossil-wrap">
   <h3 class="Jurassic">Jurassic Dinosaur Fossils</h3>
-  {#each jurassicFilter as fossilDatapoint, i}
-    {#if (fossilDatapoint.length)}
-      <section class="fossil-names">{allNames[i]} ({fossilDatapoint.length})
-        <button class="JurassicButton" on:click={() => addDino(fossilDatapoint, 'jurassic')}>
-            Plot {allNames[i]} fossils
+  {#each sortedJurassicFilter as fossilDatapoint, i}
+    {#if (fossilDatapoint[1].length)}
+      <section class="fossil-names">{fossilDatapoint[0]} ({fossilDatapoint[1].length})<br />
+        <button class="JurassicButton" on:click={() => addDino(fossilDatapoint[1], 'jurassic')}>
+            Plot {fossilDatapoint[0]} fossils
         </button><br />
         <input id="collapsible-Jurassic-{i}" class="toggle" type="checkbox">
         <label for="collapsible-Jurassic-{i}" class="lbl-toggle top">View Locations</label>
         <div class="collapsible-content">
-      {#each jurassicFilter[i] as newTest, i}
+      {#each fossilDatapoint[1] as newTest, i}
       <p> Dinosaur Name: {newTest.name}, Coords:({newTest.x}, {newTest.y})</p>
       <p>    Max Age: {newTest.maxAge}, Min Age: {newTest.minAge}</p>
+      <hr />
       {/each}
     </div>
       </section>
@@ -219,18 +190,19 @@ return $fossilDatapoints;
 </section>
 <section class="fossil-wrap">
   <h3 class="Triassic">Triassic Dinosaur Fossils</h3>
-  {#each triassicFilter as fossilDatapoint, i}
-    {#if (fossilDatapoint.length)}
-      <section class="fossil-names">{allNames[i]} ({fossilDatapoint.length})
-        <button class="TriassicButton" on:click={() => addDino(fossilDatapoint, 'triassic')}>
-            Plot {allNames[i]} fossils
+  {#each sortedTriassicFilter as fossilDatapoint, i}
+  {#if (fossilDatapoint[1].length)}
+  <section class="fossil-names">{fossilDatapoint[0]} ({fossilDatapoint[1].length})<br />
+        <button class="TriassicButton" on:click={() => addDino(fossilDatapoint[1], 'triassic')}>
+            Plot {fossilDatapoint[0]} fossils
         </button><br />
         <input id="collapsible-Triassic-{i}" class="toggle" type="checkbox">
         <label for="collapsible-Triassic-{i}" class="lbl-toggle top">View Locations</label>
         <div class="collapsible-content">
-      {#each triassicFilter[i] as newTest, i}
+        {#each fossilDatapoint[1] as newTest, i}
       <p> Dinosaur Name: {newTest.name}, Coords:({newTest.x}, {newTest.y})</p>
       <p>    Max Age: {newTest.maxAge}, Min Age: {newTest.minAge}</p>
+      <hr />
       {/each}
     </div>
       </section>
@@ -281,6 +253,10 @@ return $fossilDatapoints;
 
 
 <style>
+
+    section {
+        text-align: center;
+    }
     .fossil-names{
         padding: 1rem;
     }
@@ -295,12 +271,15 @@ return $fossilDatapoints;
     }
     .Cretaceous {
     color: var(--prehistoricDarkGreen);
+    text-decoration: underline;
     }
     .Jurassic {
-    color: #44acc1
+    color: #44acc1;
+    text-decoration: underline;
     }
     .Triassic {
     color: #6c4870;
+    text-decoration: underline;
     }
     button {
     align-self: flex-end;

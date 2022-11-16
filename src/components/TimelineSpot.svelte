@@ -95,11 +95,12 @@ $timeScale = $timeScale;
                   on:click={testSetScale}
                   dx={offset}
                   dy="4">{displayName} </text>
+ <!--
                   {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }
             <path d="M{timeScaleText ? timeScaleText.getComputedTextLength() + 2.5 * offset: 0} 0l{lineLength} 0"
                   marker-end="url(#arrow)"></path>
                   {/if}
- <!--
+
   
   <circle cx="0" cy="0" r="5"></circle>
   <circle class="bait" cx="0" cy="0" r="10"></circle>

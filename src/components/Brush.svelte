@@ -142,8 +142,8 @@
   }
 
   .reset-brush rect {
-    fill: var(--prehistoricLightGreen);
-    stroke: var(--prehistoricLightGreen);
+    fill: var(--prehistoricDarkGreen);
+    stroke: var(--prehistoricDarkGreen);
     stroke-width: 0.15rem;
     transition: fill 200ms ease;
   }
@@ -160,6 +160,6 @@
   }
 
   .reset-brush:hover text {
-    fill: var(--prehistoricLightGreen);
+    fill: var(--prehistoricDarkGreen);
   }
 </style>

@@ -15,7 +15,7 @@ const loadFossilSpots = async () => {
               ...d,
             }));
 
-			console.log('dataTest: ', dataTest)
+//	console.log('dataTest: ', dataTest)
   
 
 	let aArray = [];
@@ -28,32 +28,15 @@ const loadFossilSpots = async () => {
 				x: parseFloat(d.size),
 				y: parseFloat(d.weight),
 			  };
-
-
-
-
 	});
-	
-	const foo  = await loadData().then(result => result.data);
 
-	console.log('aArray: ', aArray)
-
-
-	console.log('dinochartdata: ', dinoChartData)
+//	console.log('aArray: ', aArray)
+//	console.log('dinochartdata: ', dinoChartData)
   
 	let newData = []
-	newData.push(aArray[0]);
-
-	console.log('foo: ', foo)
-  
+	newData.push(aArray[0]);  
 	return(newData);
 };
-
-// onMount(async () => {
-    // load the dataset and add runtime variables
-
-
-	//	});
 
 
 export default {
@@ -98,6 +81,19 @@ export default {
 		{ x: 8, y: 6.89 }
 	],
 	e: [
+		{ x: 8, y: 6.58 },
+		{ x: 8, y: 5.76 },
+		{ x: 8, y: 7.71 },
+		{ x: 8, y: 8.84 },
+		{ x: 8, y: 8.47 },
+		{ x: 8, y: 7.04 },
+		{ x: 8, y: 5.25 },
+		{ x: 19, y: 12.5 },
+		{ x: 8, y: 5.56 },
+		{ x: 8, y: 7.91 },
+		{ x: 8, y: 6.89 }
+	],
+	f: [
 		{ x: 8, y: 6.58 },
 		{ x: 8, y: 5.76 },
 		{ x: 8, y: 7.71 },
