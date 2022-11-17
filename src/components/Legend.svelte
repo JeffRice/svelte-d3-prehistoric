@@ -11,7 +11,7 @@
 
   const commaFormat = format(',');
  // const rTicks = [$sizeTotalYScale(115), $sizeTotalYScale(40), $sizeTotalYScale(20)];
-    const rTicks = [115, 50, 15];
+    const rTicks = [115, 50, 10];
   const unscaled = [115, 40, 20]
 
   let circleScale = 1.25
@@ -45,23 +45,23 @@
 
 <g class="legend"
    transform="translate({$width - (rTicks[0] * circleScale) - 65  } {$sizeTotalYScale.range()[1] - 20})">
-  <text transform="translate({-(rTicks[0] * circleScale) - 20} {(rTicks.slice(-1)[0]  * circleScale)}) rotate(270)"
+  <text transform="translate({-(rTicks[0] * circleScale) + 55} {(rTicks.slice(-1)[0]  * circleScale) + 70}) rotate(270)"
         dy="4">
         Size in feet
   </text>
   <g class="total-r-scale" transform="translate(0 {-2 * (rTicks.slice(-1)[0]  * circleScale)})">
     {#each rTicks as tick, i}
       <line x1="0"
-            y1={(rTicks[0] * circleScale) - 2 * (tick * circleScale)}
+            y1={(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(tick)}
             x2={(rTicks[0] * circleScale) + 15}
-            y2={(rTicks[0] * circleScale) - 2 * (tick * circleScale)}></line>
+            y2={(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(tick)}></line>
       <text class="tick"
-            transform="translate({(rTicks[0] * circleScale) + 18} {(rTicks[0] * circleScale) - 2 * (tick * circleScale)})">
+            transform="translate({(rTicks[0] * circleScale) + 18} {(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(tick)})">
         {commaFormat(tick)}
       </text>
       <circle cx="0"
-              cy={(rTicks[0] * circleScale) - (tick * circleScale)}
-              r={(tick  * circleScale)}></circle>
+              cy={(rTicks[0] * circleScale) - $sizeTotalRScale(tick)}
+              r={$sizeTotalRScale(tick)}></circle>
     {/each}
   </g>
 

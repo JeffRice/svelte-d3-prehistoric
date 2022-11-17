@@ -125,6 +125,7 @@
        bind:clientWidth={tWidth}
        on:click|stopPropagation
        on:mouseover|stopPropagation
+       in:fade={{duration: 200}}
        >
     <EventTooltipCross {tWidth} {offset} {side} />
     <div class="mouse-catcher"

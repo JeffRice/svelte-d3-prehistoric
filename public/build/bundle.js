@@ -15540,189 +15540,6 @@ var app = (function () {
 	  return linearish(scale);
 	}
 
-	var log$3 = Math.log;
-	var LOG10E = Math.LOG10E;
-
-	// `Math.log10` method
-	// https://tc39.github.io/ecma262/#sec-math.log10
-	_export({ target: 'Math', stat: true }, {
-	  log10: function log10(x) {
-	    return log$3(x) * LOG10E;
-	  }
-	});
-
-	var log$4 = Math.log;
-	var LN2$1 = Math.LN2;
-
-	// `Math.log2` method
-	// https://tc39.github.io/ecma262/#sec-math.log2
-	_export({ target: 'Math', stat: true }, {
-	  log2: function log2(x) {
-	    return log$4(x) / LN2$1;
-	  }
-	});
-
-	function nice (domain, interval) {
-	  domain = domain.slice();
-	  var i0 = 0,
-	      i1 = domain.length - 1,
-	      x0 = domain[i0],
-	      x1 = domain[i1],
-	      t;
-
-	  if (x1 < x0) {
-	    t = i0, i0 = i1, i1 = t;
-	    t = x0, x0 = x1, x1 = t;
-	  }
-
-	  domain[i0] = interval.floor(x0);
-	  domain[i1] = interval.ceil(x1);
-	  return domain;
-	}
-
-	function transformLog(x) {
-	  return Math.log(x);
-	}
-
-	function transformExp(x) {
-	  return Math.exp(x);
-	}
-
-	function transformLogn(x) {
-	  return -Math.log(-x);
-	}
-
-	function transformExpn(x) {
-	  return -Math.exp(-x);
-	}
-
-	function pow10(x) {
-	  return isFinite(x) ? +("1e" + x) : x < 0 ? 0 : x;
-	}
-
-	function powp(base) {
-	  return base === 10 ? pow10 : base === Math.E ? Math.exp : function (x) {
-	    return Math.pow(base, x);
-	  };
-	}
-
-	function logp(base) {
-	  return base === Math.E ? Math.log : base === 10 && Math.log10 || base === 2 && Math.log2 || (base = Math.log(base), function (x) {
-	    return Math.log(x) / base;
-	  });
-	}
-
-	function reflect(f) {
-	  return function (x) {
-	    return -f(-x);
-	  };
-	}
-
-	function loggish(transform) {
-	  var scale = transform(transformLog, transformExp),
-	      domain = scale.domain,
-	      base = 10,
-	      logs,
-	      pows;
-
-	  function rescale() {
-	    logs = logp(base), pows = powp(base);
-
-	    if (domain()[0] < 0) {
-	      logs = reflect(logs), pows = reflect(pows);
-	      transform(transformLogn, transformExpn);
-	    } else {
-	      transform(transformLog, transformExp);
-	    }
-
-	    return scale;
-	  }
-
-	  scale.base = function (_) {
-	    return arguments.length ? (base = +_, rescale()) : base;
-	  };
-
-	  scale.domain = function (_) {
-	    return arguments.length ? (domain(_), rescale()) : domain();
-	  };
-
-	  scale.ticks = function (count) {
-	    var d = domain(),
-	        u = d[0],
-	        v = d[d.length - 1],
-	        r;
-	    if (r = v < u) i = u, u = v, v = i;
-	    var i = logs(u),
-	        j = logs(v),
-	        p,
-	        k,
-	        t,
-	        n = count == null ? 10 : +count,
-	        z = [];
-
-	    if (!(base % 1) && j - i < n) {
-	      i = Math.floor(i), j = Math.ceil(j);
-	      if (u > 0) for (; i <= j; ++i) {
-	        for (k = 1, p = pows(i); k < base; ++k) {
-	          t = p * k;
-	          if (t < u) continue;
-	          if (t > v) break;
-	          z.push(t);
-	        }
-	      } else for (; i <= j; ++i) {
-	        for (k = base - 1, p = pows(i); k >= 1; --k) {
-	          t = p * k;
-	          if (t < u) continue;
-	          if (t > v) break;
-	          z.push(t);
-	        }
-	      }
-	      if (z.length * 2 < n) z = ticks(u, v, n);
-	    } else {
-	      z = ticks(i, j, Math.min(j - i, n)).map(pows);
-	    }
-
-	    return r ? z.reverse() : z;
-	  };
-
-	  scale.tickFormat = function (count, specifier) {
-	    if (specifier == null) specifier = base === 10 ? ".0e" : ",";
-	    if (typeof specifier !== "function") specifier = format$1(specifier);
-	    if (count === Infinity) return specifier;
-	    if (count == null) count = 10;
-	    var k = Math.max(1, base * count / scale.ticks().length); // TODO fast estimate?
-
-	    return function (d) {
-	      var i = d / pows(Math.round(logs(d)));
-	      if (i * base < base - 0.5) i *= base;
-	      return i <= k ? specifier(d) : "";
-	    };
-	  };
-
-	  scale.nice = function () {
-	    return domain(nice(domain(), {
-	      floor: function floor(x) {
-	        return pows(Math.floor(logs(x)));
-	      },
-	      ceil: function ceil(x) {
-	        return pows(Math.ceil(logs(x)));
-	      }
-	    }));
-	  };
-
-	  return scale;
-	}
-	function log$5() {
-	  var scale = loggish(transformer$1()).domain([1, 10]);
-
-	  scale.copy = function () {
-	    return copy(scale, log$5()).base(scale.base());
-	  };
-
-	  initRange.apply(scale, arguments);
-	  return scale;
-	}
-
 	function transformPow(exponent) {
 	  return function (x) {
 	    return x < 0 ? -Math.pow(-x, exponent) : Math.pow(x, exponent);
@@ -34651,11 +34468,11 @@ var app = (function () {
 	  */
 	  // time scale
 
-	  timeScale.set(linear$1().domain([-25, max$4(data, function (d) {
-	    return d.testDate + 25;
+	  timeScale.set(linear$1().domain([-49, max$4(data, function (d) {
+	    return d.testDate + 10;
 	  })]).range([margin.left, width - margin.right])); // total scale for the y axis
 
-	  sizeTotalYScale.set(log$5().domain([10, max$4(data, function (d) {
+	  sizeTotalYScale.set(sqrt$2().domain([1, max$4(data, function (d) {
 	    return d.sizeTotal;
 	  })]).range([panelHeight - margin.bottom, margin.top])); // total scale for the radii
 
@@ -44371,6 +44188,8 @@ var app = (function () {
 	  var feImage36;
 	  var filter37;
 	  var feImage37;
+	  var filter38;
+	  var feImage38;
 	  var block = {
 	    c: function create() {
 	      defs = svg_element("defs");
@@ -44467,6 +44286,8 @@ var app = (function () {
 	      feImage36 = svg_element("feImage");
 	      filter37 = svg_element("filter");
 	      feImage37 = svg_element("feImage");
+	      filter38 = svg_element("filter");
+	      feImage38 = svg_element("feImage");
 	      attr_dev(stop0, "offset", "40%");
 	      set_style(stop0, "stop-color", "var(--bg)");
 	      attr_dev(stop0, "stop-opacity", "0.7");
@@ -44636,214 +44457,222 @@ var app = (function () {
 	      attr_dev(filter11, "width", "100%");
 	      attr_dev(filter11, "height", "100%");
 	      add_location(filter11, file$k, 89, 0, 3184);
-	      xlink_attr(feImage12, "xlink:href", "/images/iguanodon.png");
-	      add_location(feImage12, file$k, 94, 2, 3387);
-	      attr_dev(filter12, "id", "iguanodon_image");
+	      xlink_attr(feImage12, "xlink:href", "/images/herrerasaurus2.png");
+	      add_location(feImage12, file$k, 94, 2, 3391);
+	      attr_dev(filter12, "id", "herrerasaurus_image");
 	      attr_dev(filter12, "x", "0%");
 	      attr_dev(filter12, "y", "0%");
 	      attr_dev(filter12, "width", "100%");
 	      attr_dev(filter12, "height", "100%");
 	      add_location(filter12, file$k, 93, 0, 3314);
-	      xlink_attr(feImage13, "xlink:href", "/images/meganeura.png");
-	      add_location(feImage13, file$k, 98, 2, 3517);
-	      attr_dev(filter13, "id", "meganeura_image");
+	      xlink_attr(feImage13, "xlink:href", "/images/iguanodon.png");
+	      add_location(feImage13, file$k, 98, 2, 3526);
+	      attr_dev(filter13, "id", "iguanodon_image");
 	      attr_dev(filter13, "x", "0%");
 	      attr_dev(filter13, "y", "0%");
 	      attr_dev(filter13, "width", "100%");
 	      attr_dev(filter13, "height", "100%");
-	      add_location(filter13, file$k, 97, 0, 3444);
-	      xlink_attr(feImage14, "xlink:href", "/images/megatherium.png");
-	      add_location(feImage14, file$k, 102, 2, 3649);
-	      attr_dev(filter14, "id", "megatherium_image");
+	      add_location(filter13, file$k, 97, 0, 3453);
+	      xlink_attr(feImage14, "xlink:href", "/images/meganeura.png");
+	      add_location(feImage14, file$k, 102, 2, 3656);
+	      attr_dev(filter14, "id", "meganeura_image");
 	      attr_dev(filter14, "x", "0%");
 	      attr_dev(filter14, "y", "0%");
 	      attr_dev(filter14, "width", "100%");
 	      attr_dev(filter14, "height", "100%");
-	      add_location(filter14, file$k, 101, 0, 3574);
-	      xlink_attr(feImage15, "xlink:href", "/images/muttaburrasaurus.png");
+	      add_location(filter14, file$k, 101, 0, 3583);
+	      xlink_attr(feImage15, "xlink:href", "/images/megatherium.png");
 	      add_location(feImage15, file$k, 106, 2, 3788);
-	      attr_dev(filter15, "id", "muttaburrasaurus_image");
+	      attr_dev(filter15, "id", "megatherium_image");
 	      attr_dev(filter15, "x", "0%");
 	      attr_dev(filter15, "y", "0%");
 	      attr_dev(filter15, "width", "100%");
 	      attr_dev(filter15, "height", "100%");
-	      add_location(filter15, file$k, 105, 0, 3708);
-	      xlink_attr(feImage16, "xlink:href", "/images/shunosaurus.png");
+	      add_location(filter15, file$k, 105, 0, 3713);
+	      xlink_attr(feImage16, "xlink:href", "/images/muttaburrasaurus.png");
 	      add_location(feImage16, file$k, 110, 2, 3927);
-	      attr_dev(filter16, "id", "shunosaurus_image");
+	      attr_dev(filter16, "id", "muttaburrasaurus_image");
 	      attr_dev(filter16, "x", "0%");
 	      attr_dev(filter16, "y", "0%");
 	      attr_dev(filter16, "width", "100%");
 	      attr_dev(filter16, "height", "100%");
-	      add_location(filter16, file$k, 109, 0, 3852);
-	      xlink_attr(feImage17, "xlink:href", "/images/spinosaur.png");
-	      add_location(feImage17, file$k, 114, 2, 4061);
-	      attr_dev(filter17, "id", "spinosaurus_image");
+	      add_location(filter16, file$k, 109, 0, 3847);
+	      xlink_attr(feImage17, "xlink:href", "/images/shunosaurus.png");
+	      add_location(feImage17, file$k, 114, 2, 4066);
+	      attr_dev(filter17, "id", "shunosaurus_image");
 	      attr_dev(filter17, "x", "0%");
 	      attr_dev(filter17, "y", "0%");
 	      attr_dev(filter17, "width", "100%");
 	      attr_dev(filter17, "height", "100%");
-	      add_location(filter17, file$k, 113, 0, 3986);
-	      xlink_attr(feImage18, "xlink:href", "/images/titanoboa.png");
-	      add_location(feImage18, file$k, 118, 2, 4191);
-	      attr_dev(filter18, "id", "titanoboa_image");
+	      add_location(filter17, file$k, 113, 0, 3991);
+	      xlink_attr(feImage18, "xlink:href", "/images/spinosaur.png");
+	      add_location(feImage18, file$k, 118, 2, 4200);
+	      attr_dev(filter18, "id", "spinosaurus_image");
 	      attr_dev(filter18, "x", "0%");
 	      attr_dev(filter18, "y", "0%");
 	      attr_dev(filter18, "width", "100%");
 	      attr_dev(filter18, "height", "100%");
-	      add_location(filter18, file$k, 117, 0, 4118);
-	      xlink_attr(feImage19, "xlink:href", "/images/tyrannoskull.jpg");
-	      add_location(feImage19, file$k, 123, 2, 4325);
-	      attr_dev(filter19, "id", "tyrannoskull_image");
+	      add_location(filter18, file$k, 117, 0, 4125);
+	      xlink_attr(feImage19, "xlink:href", "/images/titanoboa.png");
+	      add_location(feImage19, file$k, 122, 2, 4330);
+	      attr_dev(filter19, "id", "titanoboa_image");
 	      attr_dev(filter19, "x", "0%");
 	      attr_dev(filter19, "y", "0%");
 	      attr_dev(filter19, "width", "100%");
 	      attr_dev(filter19, "height", "100%");
-	      add_location(filter19, file$k, 122, 0, 4249);
-	      xlink_attr(feImage20, "xlink:href", "/images/trexskull.png");
-	      add_location(feImage20, file$k, 127, 2, 4458);
-	      attr_dev(filter20, "id", "trexskull_image");
+	      add_location(filter19, file$k, 121, 0, 4257);
+	      xlink_attr(feImage20, "xlink:href", "/images/tyrannoskull.jpg");
+	      add_location(feImage20, file$k, 127, 2, 4464);
+	      attr_dev(filter20, "id", "tyrannoskull_image");
 	      attr_dev(filter20, "x", "0%");
 	      attr_dev(filter20, "y", "0%");
 	      attr_dev(filter20, "width", "100%");
 	      attr_dev(filter20, "height", "100%");
-	      add_location(filter20, file$k, 126, 0, 4385);
-	      xlink_attr(feImage21, "xlink:href", "/images/aquatic.svg");
-	      add_location(feImage21, file$k, 131, 2, 4586);
-	      attr_dev(filter21, "id", "aquatic_image");
+	      add_location(filter20, file$k, 126, 0, 4388);
+	      xlink_attr(feImage21, "xlink:href", "/images/trexskull.png");
+	      add_location(feImage21, file$k, 131, 2, 4597);
+	      attr_dev(filter21, "id", "trexskull_image");
 	      attr_dev(filter21, "x", "0%");
 	      attr_dev(filter21, "y", "0%");
 	      attr_dev(filter21, "width", "100%");
 	      attr_dev(filter21, "height", "100%");
-	      add_location(filter21, file$k, 130, 0, 4515);
-	      xlink_attr(feImage22, "xlink:href", "/images/pachycephalosaurus.png");
-	      add_location(feImage22, file$k, 135, 2, 4723);
-	      attr_dev(filter22, "id", "pachycephalosaurus_image");
+	      add_location(filter21, file$k, 130, 0, 4524);
+	      xlink_attr(feImage22, "xlink:href", "/images/aquatic.svg");
+	      add_location(feImage22, file$k, 135, 2, 4725);
+	      attr_dev(filter22, "id", "aquatic_image");
 	      attr_dev(filter22, "x", "0%");
 	      attr_dev(filter22, "y", "0%");
 	      attr_dev(filter22, "width", "100%");
 	      attr_dev(filter22, "height", "100%");
-	      add_location(filter22, file$k, 134, 0, 4641);
-	      xlink_attr(feImage23, "xlink:href", "/images/pterodactyl.svg");
-	      add_location(feImage23, file$k, 139, 2, 4864);
-	      attr_dev(filter23, "id", "pterodactyl_image");
+	      add_location(filter22, file$k, 134, 0, 4654);
+	      xlink_attr(feImage23, "xlink:href", "/images/pachycephalosaurus.png");
+	      add_location(feImage23, file$k, 139, 2, 4862);
+	      attr_dev(filter23, "id", "pachycephalosaurus_image");
 	      attr_dev(filter23, "x", "0%");
 	      attr_dev(filter23, "y", "0%");
 	      attr_dev(filter23, "width", "100%");
 	      attr_dev(filter23, "height", "100%");
-	      add_location(filter23, file$k, 138, 0, 4789);
-	      xlink_attr(feImage24, "xlink:href", "/images/smilodon.png");
-	      add_location(feImage24, file$k, 143, 2, 4995);
-	      attr_dev(filter24, "id", "smilodon_image");
+	      add_location(filter23, file$k, 138, 0, 4780);
+	      xlink_attr(feImage24, "xlink:href", "/images/pterodactyl.svg");
+	      add_location(feImage24, file$k, 143, 2, 5003);
+	      attr_dev(filter24, "id", "pterodactyl_image");
 	      attr_dev(filter24, "x", "0%");
 	      attr_dev(filter24, "y", "0%");
 	      attr_dev(filter24, "width", "100%");
 	      attr_dev(filter24, "height", "100%");
-	      add_location(filter24, file$k, 142, 0, 4923);
-	      xlink_attr(feImage25, "xlink:href", "/images/stegosaurus.svg");
-	      add_location(feImage25, file$k, 147, 2, 5126);
-	      attr_dev(filter25, "id", "stegosaurus_image");
+	      add_location(filter24, file$k, 142, 0, 4928);
+	      xlink_attr(feImage25, "xlink:href", "/images/smilodon.png");
+	      add_location(feImage25, file$k, 147, 2, 5134);
+	      attr_dev(filter25, "id", "smilodon_image");
 	      attr_dev(filter25, "x", "0%");
 	      attr_dev(filter25, "y", "0%");
 	      attr_dev(filter25, "width", "100%");
 	      attr_dev(filter25, "height", "100%");
-	      add_location(filter25, file$k, 146, 0, 5051);
-	      xlink_attr(feImage26, "xlink:href", "/images/ophthalmosaurus.png");
-	      add_location(feImage26, file$k, 151, 2, 5264);
-	      attr_dev(filter26, "id", "ophthalmosaurus_image");
+	      add_location(filter25, file$k, 146, 0, 5062);
+	      xlink_attr(feImage26, "xlink:href", "/images/stegosaurus.svg");
+	      add_location(feImage26, file$k, 151, 2, 5265);
+	      attr_dev(filter26, "id", "stegosaurus_image");
 	      attr_dev(filter26, "x", "0%");
 	      attr_dev(filter26, "y", "0%");
 	      attr_dev(filter26, "width", "100%");
 	      attr_dev(filter26, "height", "100%");
-	      add_location(filter26, file$k, 150, 0, 5185);
-	      xlink_attr(feImage27, "xlink:href", "/images/lizard.svg");
-	      add_location(feImage27, file$k, 156, 2, 5398);
-	      attr_dev(filter27, "id", "lizard_image");
+	      add_location(filter26, file$k, 150, 0, 5190);
+	      xlink_attr(feImage27, "xlink:href", "/images/ophthalmosaurus.png");
+	      add_location(feImage27, file$k, 155, 2, 5403);
+	      attr_dev(filter27, "id", "ophthalmosaurus_image");
 	      attr_dev(filter27, "x", "0%");
 	      attr_dev(filter27, "y", "0%");
 	      attr_dev(filter27, "width", "100%");
 	      attr_dev(filter27, "height", "100%");
-	      add_location(filter27, file$k, 155, 0, 5328);
-	      xlink_attr(feImage28, "xlink:href", "/images/mesosaurus.png");
-	      add_location(feImage28, file$k, 160, 2, 5526);
-	      attr_dev(filter28, "id", "mesosaurus_image");
+	      add_location(filter27, file$k, 154, 0, 5324);
+	      xlink_attr(feImage28, "xlink:href", "/images/lizard.svg");
+	      add_location(feImage28, file$k, 160, 2, 5537);
+	      attr_dev(filter28, "id", "lizard_image");
 	      attr_dev(filter28, "x", "0%");
 	      attr_dev(filter28, "y", "0%");
 	      attr_dev(filter28, "width", "100%");
 	      attr_dev(filter28, "height", "100%");
-	      add_location(filter28, file$k, 159, 0, 5452);
-	      xlink_attr(feImage29, "xlink:href", "/images/mosasaurus.png");
-	      add_location(feImage29, file$k, 164, 2, 5658);
-	      attr_dev(filter29, "id", "mosasaurus_image");
+	      add_location(filter28, file$k, 159, 0, 5467);
+	      xlink_attr(feImage29, "xlink:href", "/images/mesosaurus.png");
+	      add_location(feImage29, file$k, 164, 2, 5665);
+	      attr_dev(filter29, "id", "mesosaurus_image");
 	      attr_dev(filter29, "x", "0%");
 	      attr_dev(filter29, "y", "0%");
 	      attr_dev(filter29, "width", "100%");
 	      attr_dev(filter29, "height", "100%");
-	      add_location(filter29, file$k, 163, 0, 5584);
-	      xlink_attr(feImage30, "xlink:href", "/images/plateosaurus.png");
-	      add_location(feImage30, file$k, 168, 2, 5792);
-	      attr_dev(filter30, "id", "plateosaurus_image");
+	      add_location(filter29, file$k, 163, 0, 5591);
+	      xlink_attr(feImage30, "xlink:href", "/images/mosasaurus.png");
+	      add_location(feImage30, file$k, 168, 2, 5797);
+	      attr_dev(filter30, "id", "mosasaurus_image");
 	      attr_dev(filter30, "x", "0%");
 	      attr_dev(filter30, "y", "0%");
 	      attr_dev(filter30, "width", "100%");
 	      attr_dev(filter30, "height", "100%");
-	      add_location(filter30, file$k, 167, 0, 5716);
-	      xlink_attr(feImage31, "xlink:href", "/images/smallraptor.svg");
-	      add_location(feImage31, file$k, 172, 2, 5927);
-	      attr_dev(filter31, "id", "smallraptor_image");
+	      add_location(filter30, file$k, 167, 0, 5723);
+	      xlink_attr(feImage31, "xlink:href", "/images/plateosaurus.png");
+	      add_location(feImage31, file$k, 172, 2, 5931);
+	      attr_dev(filter31, "id", "plateosaurus_image");
 	      attr_dev(filter31, "x", "0%");
 	      attr_dev(filter31, "y", "0%");
 	      attr_dev(filter31, "width", "100%");
 	      attr_dev(filter31, "height", "100%");
-	      add_location(filter31, file$k, 171, 0, 5852);
-	      xlink_attr(feImage32, "xlink:href", "/images/seaskeleton.svg");
-	      add_location(feImage32, file$k, 176, 2, 6061);
-	      attr_dev(filter32, "id", "seaskeleton_image");
+	      add_location(filter31, file$k, 171, 0, 5855);
+	      xlink_attr(feImage32, "xlink:href", "/images/smallraptor.svg");
+	      add_location(feImage32, file$k, 176, 2, 6066);
+	      attr_dev(filter32, "id", "smallraptor_image");
 	      attr_dev(filter32, "x", "0%");
 	      attr_dev(filter32, "y", "0%");
 	      attr_dev(filter32, "width", "100%");
 	      attr_dev(filter32, "height", "100%");
-	      add_location(filter32, file$k, 175, 0, 5986);
-	      xlink_attr(feImage33, "xlink:href", "/images/armored.svg");
-	      add_location(feImage33, file$k, 180, 2, 6191);
-	      attr_dev(filter33, "id", "armored_image");
+	      add_location(filter32, file$k, 175, 0, 5991);
+	      xlink_attr(feImage33, "xlink:href", "/images/seaskeleton.svg");
+	      add_location(feImage33, file$k, 180, 2, 6200);
+	      attr_dev(filter33, "id", "seaskeleton_image");
 	      attr_dev(filter33, "x", "0%");
 	      attr_dev(filter33, "y", "0%");
 	      attr_dev(filter33, "width", "100%");
 	      attr_dev(filter33, "height", "100%");
-	      add_location(filter33, file$k, 179, 0, 6120);
-	      xlink_attr(feImage34, "xlink:href", "/images/tyrannosaurskeleton.svg");
-	      add_location(feImage34, file$k, 184, 2, 6329);
-	      attr_dev(filter34, "id", "tyrannosaurskeleton_image");
+	      add_location(filter33, file$k, 179, 0, 6125);
+	      xlink_attr(feImage34, "xlink:href", "/images/armored.svg");
+	      add_location(feImage34, file$k, 184, 2, 6330);
+	      attr_dev(filter34, "id", "armored_image");
 	      attr_dev(filter34, "x", "0%");
 	      attr_dev(filter34, "y", "0%");
 	      attr_dev(filter34, "width", "100%");
 	      attr_dev(filter34, "height", "100%");
-	      add_location(filter34, file$k, 183, 0, 6246);
-	      xlink_attr(feImage35, "xlink:href", "/images/triceratops.svg");
-	      add_location(feImage35, file$k, 188, 2, 6471);
-	      attr_dev(filter35, "id", "triceratops_image");
+	      add_location(filter34, file$k, 183, 0, 6259);
+	      xlink_attr(feImage35, "xlink:href", "/images/tyrannosaurskeleton.svg");
+	      add_location(feImage35, file$k, 188, 2, 6468);
+	      attr_dev(filter35, "id", "tyrannosaurskeleton_image");
 	      attr_dev(filter35, "x", "0%");
 	      attr_dev(filter35, "y", "0%");
 	      attr_dev(filter35, "width", "100%");
 	      attr_dev(filter35, "height", "100%");
-	      add_location(filter35, file$k, 187, 0, 6396);
-	      xlink_attr(feImage36, "xlink:href", "/images/talons.svg");
-	      add_location(feImage36, file$k, 192, 2, 6600);
-	      attr_dev(filter36, "id", "talons_image");
+	      add_location(filter35, file$k, 187, 0, 6385);
+	      xlink_attr(feImage36, "xlink:href", "/images/triceratops.svg");
+	      add_location(feImage36, file$k, 192, 2, 6610);
+	      attr_dev(filter36, "id", "triceratops_image");
 	      attr_dev(filter36, "x", "0%");
 	      attr_dev(filter36, "y", "0%");
 	      attr_dev(filter36, "width", "100%");
 	      attr_dev(filter36, "height", "100%");
-	      add_location(filter36, file$k, 191, 0, 6530);
-	      xlink_attr(feImage37, "xlink:href", "/images/duckbilled.svg");
-	      add_location(feImage37, file$k, 198, 2, 6730);
-	      attr_dev(filter37, "id", "duckbilled_image");
+	      add_location(filter36, file$k, 191, 0, 6535);
+	      xlink_attr(feImage37, "xlink:href", "/images/talons.svg");
+	      add_location(feImage37, file$k, 196, 2, 6739);
+	      attr_dev(filter37, "id", "talons_image");
 	      attr_dev(filter37, "x", "0%");
 	      attr_dev(filter37, "y", "0%");
 	      attr_dev(filter37, "width", "100%");
 	      attr_dev(filter37, "height", "100%");
-	      add_location(filter37, file$k, 197, 0, 6656);
+	      add_location(filter37, file$k, 195, 0, 6669);
+	      xlink_attr(feImage38, "xlink:href", "/images/duckbilled.svg");
+	      add_location(feImage38, file$k, 202, 2, 6869);
+	      attr_dev(filter38, "id", "duckbilled_image");
+	      attr_dev(filter38, "x", "0%");
+	      attr_dev(filter38, "y", "0%");
+	      attr_dev(filter38, "width", "100%");
+	      attr_dev(filter38, "height", "100%");
+	      add_location(filter38, file$k, 201, 0, 6795);
 	      add_location(defs, file$k, 5, 0, 105);
 	    },
 	    l: function claim(nodes) {
@@ -44944,6 +44773,8 @@ var app = (function () {
 	      append_dev(filter36, feImage36);
 	      append_dev(defs, filter37);
 	      append_dev(filter37, feImage37);
+	      append_dev(defs, filter38);
+	      append_dev(filter38, feImage38);
 	    },
 	    p: noop,
 	    i: noop,
@@ -45557,7 +45388,7 @@ var app = (function () {
 	      attr_dev(circle, "r", circle_r_value =
 	      /*r*/
 	      ctx[8]);
-	      add_location(circle, file$m, 43, 4, 1200);
+	      add_location(circle, file$m, 43, 4, 1227);
 	      this.first = circle;
 	    },
 	    m: function mount(target, anchor) {
@@ -45641,7 +45472,7 @@ var app = (function () {
 	      ctx[2] ||
 	      /*hovered*/
 	      ctx[3]);
-	      add_location(g, file$m, 37, 0, 847);
+	      add_location(g, file$m, 37, 0, 874);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -45804,15 +45635,15 @@ var app = (function () {
 	       if (timePoint) $$invalidate(4, sortedRadii = [{
 	        id: 2,
 	        className: "reddit",
-	        r: timePoint.size * 0.1 + timePoint.size * 0.3 + timePoint.size * 0.85
+	        r: timePoint.rSizeTot * 0.1 + timePoint.rSizeTot * 0.3 + timePoint.rSizeTot * 0.85
 	      }, {
 	        id: 1,
 	        className: "twitter",
-	        r: timePoint.size * 0.3 + timePoint.size * 0.85
+	        r: timePoint.rSizeTot * 0.3 + timePoint.rSizeTot * 0.85
 	      }, {
 	        id: 0,
 	        className: "facebook",
-	        r: timePoint.size * 0.85
+	        r: timePoint.rSizeTot * 0.75
 	      }].map(function (d) {
 	        return _objectSpread2(_objectSpread2({}, d), {}, {
 	          r: d.r * sizeFactor
@@ -45821,7 +45652,7 @@ var app = (function () {
 	    }
 	  };
 
-	   $$invalidate(5, sizeFactor = 1);
+	   $$invalidate(5, sizeFactor = 0.85);
 
 	  return [timePoint, tweenedPos, selected, hovered, sortedRadii];
 	}
@@ -46638,6 +46469,7 @@ var app = (function () {
 	  var a1;
 	  var div15_resize_listener;
 	  var div16_resize_listener;
+	  var div16_intro;
 	  var current;
 	  var mounted;
 	  var dispose;
@@ -46773,7 +46605,7 @@ var app = (function () {
 	      set_style(div0, "top",
 	      /*contentTop*/
 	      ctx[6] - 10 + "px");
-	      add_location(div0, file$o, 129, 4, 4071);
+	      add_location(div0, file$o, 130, 4, 4104);
 	      attr_dev(div1, "class", "mouse-catcher");
 	      set_style(div1, "width",
 	      /*tWidth*/
@@ -46787,49 +46619,49 @@ var app = (function () {
 	      set_style(div1, "top",
 	      /*$tooltip*/
 	      ctx[10].tp.rSizeTot + 5 + "px");
-	      add_location(div1, file$o, 134, 4, 4319);
+	      add_location(div1, file$o, 135, 4, 4352);
 	      attr_dev(h2, "class", "svelte-1143ogu");
-	      add_location(h2, file$o, 147, 10, 4864);
-	      add_location(strong0, file$o, 156, 44, 5021);
-	      add_location(span0, file$o, 156, 38, 5015);
+	      add_location(h2, file$o, 148, 10, 4897);
+	      add_location(strong0, file$o, 157, 44, 5054);
+	      add_location(span0, file$o, 157, 38, 5048);
 	      attr_dev(div2, "class", "stats-item svelte-1143ogu");
-	      add_location(div2, file$o, 156, 14, 4991);
-	      add_location(strong1, file$o, 157, 44, 5125);
-	      add_location(span1, file$o, 157, 38, 5119);
+	      add_location(div2, file$o, 157, 14, 5024);
+	      add_location(strong1, file$o, 158, 44, 5158);
+	      add_location(span1, file$o, 158, 38, 5152);
 	      attr_dev(div3, "class", "stats-item svelte-1143ogu");
-	      add_location(div3, file$o, 157, 14, 5095);
-	      add_location(strong2, file$o, 158, 44, 5232);
-	      add_location(span2, file$o, 158, 38, 5226);
+	      add_location(div3, file$o, 158, 14, 5128);
+	      add_location(strong2, file$o, 159, 44, 5265);
+	      add_location(span2, file$o, 159, 38, 5259);
 	      attr_dev(div4, "class", "stats-item svelte-1143ogu");
-	      add_location(div4, file$o, 158, 14, 5202);
-	      add_location(strong3, file$o, 159, 44, 5348);
-	      add_location(span3, file$o, 159, 38, 5342);
+	      add_location(div4, file$o, 159, 14, 5235);
+	      add_location(strong3, file$o, 160, 44, 5381);
+	      add_location(span3, file$o, 160, 38, 5375);
 	      attr_dev(div5, "class", "stats-item svelte-1143ogu");
-	      add_location(div5, file$o, 159, 14, 5318);
-	      add_location(strong4, file$o, 160, 44, 5462);
-	      add_location(span4, file$o, 160, 38, 5456);
+	      add_location(div5, file$o, 160, 14, 5351);
+	      add_location(strong4, file$o, 161, 44, 5495);
+	      add_location(span4, file$o, 161, 38, 5489);
 	      attr_dev(div6, "class", "stats-item svelte-1143ogu");
-	      add_location(div6, file$o, 160, 14, 5432);
-	      add_location(strong5, file$o, 161, 44, 5561);
-	      add_location(span5, file$o, 161, 38, 5555);
+	      add_location(div6, file$o, 161, 14, 5465);
+	      add_location(strong5, file$o, 162, 44, 5594);
+	      add_location(span5, file$o, 162, 38, 5588);
 	      attr_dev(div7, "class", "stats-item svelte-1143ogu");
-	      add_location(div7, file$o, 161, 14, 5531);
+	      add_location(div7, file$o, 162, 14, 5564);
 	      attr_dev(section0, "class", "dino-stats svelte-1143ogu");
-	      add_location(section0, file$o, 153, 12, 4942);
+	      add_location(section0, file$o, 154, 12, 4975);
 	      attr_dev(div8, "class", "title-top svelte-1143ogu");
-	      add_location(div8, file$o, 148, 10, 4902);
+	      add_location(div8, file$o, 149, 10, 4935);
 	      attr_dev(span6, "class", "tag-label Cretaceous svelte-1143ogu");
-	      add_location(span6, file$o, 171, 10, 5821);
+	      add_location(span6, file$o, 172, 10, 5854);
 	      attr_dev(span7, "class", "tag-label Jurassic svelte-1143ogu");
-	      add_location(span7, file$o, 172, 10, 5887);
+	      add_location(span7, file$o, 173, 10, 5920);
 	      attr_dev(span8, "class", "tag-label Triassic svelte-1143ogu");
-	      add_location(span8, file$o, 173, 10, 5949);
+	      add_location(span8, file$o, 174, 10, 5982);
 	      attr_dev(span9, "class", "tag-label Paleogene svelte-1143ogu");
-	      add_location(span9, file$o, 174, 10, 6011);
+	      add_location(span9, file$o, 175, 10, 6044);
 	      attr_dev(span10, "class", "tag-label Neogene svelte-1143ogu");
-	      add_location(span10, file$o, 175, 10, 6075);
+	      add_location(span10, file$o, 176, 10, 6108);
 	      attr_dev(section1, "class", "era-labels svelte-1143ogu");
-	      add_location(section1, file$o, 170, 10, 5782);
+	      add_location(section1, file$o, 171, 10, 5815);
 	      if (img.src !== (img_src_value = "" + (images + removeSpace(
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase()) + ".jpg"))) attr_dev(img, "src", img_src_value);
@@ -46837,35 +46669,35 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 181, 12, 6191);
+	      add_location(img, file$o, 182, 12, 6224);
 	      attr_dev(div9, "class", "image svelte-1143ogu");
-	      add_location(div9, file$o, 180, 10, 6159);
+	      add_location(div9, file$o, 181, 10, 6192);
 	      attr_dev(div10, "class", "title title-bg svelte-1143ogu");
-	      add_location(div10, file$o, 146, 8, 4825);
+	      add_location(div10, file$o, 147, 8, 4858);
 	      attr_dev(a0, "href", a0_href_value =
 	      /*$tooltip*/
 	      ctx[10].tp.wikiURL);
 	      attr_dev(a0, "target", "_blank");
 	      attr_dev(a0, "class", "no-float svelte-1143ogu");
-	      add_location(a0, file$o, 225, 10, 7417);
+	      add_location(a0, file$o, 226, 10, 7450);
 	      attr_dev(div11, "class", "link svelte-1143ogu");
-	      add_location(div11, file$o, 223, 8, 7367);
+	      add_location(div11, file$o, 224, 8, 7400);
 	      attr_dev(h30, "class", "svelte-1143ogu");
-	      add_location(h30, file$o, 230, 10, 7566);
+	      add_location(h30, file$o, 231, 10, 7599);
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 231, 10, 7597);
+	      add_location(p, file$o, 232, 10, 7630);
 	      attr_dev(div12, "class", "description svelte-1143ogu");
-	      add_location(div12, file$o, 229, 8, 7530);
+	      add_location(div12, file$o, 230, 8, 7563);
 	      attr_dev(h31, "class", "svelte-1143ogu");
-	      add_location(h31, file$o, 291, 10, 10143);
+	      add_location(h31, file$o, 292, 10, 10176);
 	      attr_dev(a1, "href", "http://www.wikipedia.org");
 	      attr_dev(a1, "target", "_blank");
 	      attr_dev(a1, "class", "no-float svelte-1143ogu");
-	      add_location(a1, file$o, 292, 10, 10167);
+	      add_location(a1, file$o, 293, 10, 10200);
 	      attr_dev(div13, "class", "link svelte-1143ogu");
-	      add_location(div13, file$o, 290, 8, 10114);
+	      add_location(div13, file$o, 291, 8, 10147);
 	      attr_dev(div14, "class", "scroll-wrapper svelte-1143ogu");
-	      add_location(div14, file$o, 143, 6, 4739);
+	      add_location(div14, file$o, 144, 6, 4772);
 	      attr_dev(div15, "class", "content svelte-1143ogu");
 	      set_style(div15, "top",
 	      /*contentTop*/
@@ -46881,7 +46713,7 @@ var app = (function () {
 	          ctx[16].call(div15)
 	        );
 	      });
-	      add_location(div15, file$o, 139, 4, 4554);
+	      add_location(div15, file$o, 140, 4, 4587);
 	      attr_dev(div16, "class", "tooltip svelte-1143ogu");
 	      set_style(div16, "left",
 	      /*left*/
@@ -47190,6 +47022,16 @@ var app = (function () {
 	    i: function intro(local) {
 	      if (current) return;
 	      transition_in(eventtooltipcross.$$.fragment, local);
+
+	      if (!div16_intro) {
+	        add_render_callback(function () {
+	          div16_intro = create_in_transition(div16, fade, {
+	            duration: 200
+	          });
+	          div16_intro.start();
+	        });
+	      }
+
 	      current = true;
 	    },
 	    o: function outro(local) {
@@ -47220,7 +47062,7 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
-	} // (189:8) {#if ($tooltip.tp.tooltipContent)}
+	} // (190:8) {#if ($tooltip.tp.tooltipContent)}
 
 
 	function create_if_block_1$5(ctx) {
@@ -47265,9 +47107,9 @@ var app = (function () {
 	      t3 = space();
 	      if (if_block1) if_block1.c();
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 201, 10, 6751);
+	      add_location(p, file$o, 202, 10, 6784);
 	      attr_dev(div, "class", "description svelte-1143ogu");
-	      add_location(div, file$o, 189, 8, 6379);
+	      add_location(div, file$o, 190, 8, 6412);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47363,11 +47205,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$5.name,
 	    type: "if",
-	    source: "(189:8) {#if ($tooltip.tp.tooltipContent)}",
+	    source: "(190:8) {#if ($tooltip.tp.tooltipContent)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (195:10) {#if ($tooltip.tp.periodEra)}
+	} // (196:10) {#if ($tooltip.tp.periodEra)}
 
 
 	function create_if_block_4$2(ctx) {
@@ -47395,11 +47237,11 @@ var app = (function () {
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      add_location(img, file$o, 196, 12, 6494);
+	      add_location(img, file$o, 197, 12, 6527);
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 197, 12, 6599);
+	      add_location(p, file$o, 198, 12, 6632);
 	      attr_dev(div, "class", "tt-image svelte-1143ogu");
-	      add_location(div, file$o, 195, 10, 6459);
+	      add_location(div, file$o, 196, 10, 6492);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47439,11 +47281,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$2.name,
 	    type: "if",
-	    source: "(195:10) {#if ($tooltip.tp.periodEra)}",
+	    source: "(196:10) {#if ($tooltip.tp.periodEra)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (207:14) {#if i > 0}
+	} // (208:14) {#if i > 0}
 
 
 	function create_if_block_3$3(ctx) {
@@ -47473,11 +47315,11 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 208, 16, 6901);
+	      add_location(img, file$o, 209, 16, 6934);
 	      attr_dev(div, "class", "image svelte-1143ogu");
-	      add_location(div, file$o, 207, 14, 6865);
+	      add_location(div, file$o, 208, 14, 6898);
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 210, 16, 7042);
+	      add_location(p, file$o, 211, 16, 7075);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47521,11 +47363,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$3.name,
 	    type: "if",
-	    source: "(207:14) {#if i > 0}",
+	    source: "(208:14) {#if i > 0}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (206:12) {#each paragraphs as paragraph, i}
+	} // (207:12) {#each paragraphs as paragraph, i}
 
 
 	function create_each_block$5(ctx) {
@@ -47556,11 +47398,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$5.name,
 	    type: "each",
-	    source: "(206:12) {#each paragraphs as paragraph, i}",
+	    source: "(207:12) {#each paragraphs as paragraph, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (214:12) {#if ($tooltip.tp.extraImage === 'yes')}
+	} // (215:12) {#if ($tooltip.tp.extraImage === 'yes')}
 
 
 	function create_if_block_2$3(ctx) {
@@ -47579,9 +47421,9 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 215, 14, 7200);
+	      add_location(img, file$o, 216, 14, 7233);
 	      attr_dev(div, "class", "image svelte-1143ogu");
-	      add_location(div, file$o, 214, 12, 7166);
+	      add_location(div, file$o, 215, 12, 7199);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47612,7 +47454,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$3.name,
 	    type: "if",
-	    source: "(214:12) {#if ($tooltip.tp.extraImage === 'yes')}",
+	    source: "(215:12) {#if ($tooltip.tp.extraImage === 'yes')}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -47967,8 +47809,8 @@ var app = (function () {
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", circle_r_value =
 	      /*timePoint*/
-	      ctx[0].size);
-	      add_location(circle, file$p, 40, 4, 1201);
+	      ctx[0].rSizeTot);
+	      add_location(circle, file$p, 40, 4, 1200);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, circle, anchor);
@@ -47978,7 +47820,7 @@ var app = (function () {
 	      /*timePoint*/
 	      1 && circle_r_value !== (circle_r_value =
 	      /*timePoint*/
-	      ctx[0].size)) {
+	      ctx[0].rSizeTot)) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 	    },
@@ -48020,11 +47862,11 @@ var app = (function () {
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", circle_r_value = setRadius(
 	      /*timePoint*/
-	      ctx[0].size) * 1.55);
+	      ctx[0].rSizeTot * 1.15));
 	      attr_dev(circle, "filter", circle_filter_value = "url(#" +
 	      /*timePoint*/
 	      ctx[0].image_location + "_image)");
-	      add_location(circle, file$p, 47, 2, 1328);
+	      add_location(circle, file$p, 47, 2, 1331);
 	      attr_dev(g, "class", "balloon svelte-jc1d7v");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*tweenedPos*/
@@ -48034,7 +47876,7 @@ var app = (function () {
 	      toggle_class(g, "selected",
 	      /*selected*/
 	      ctx[2]);
-	      add_location(g, file$p, 32, 0, 793);
+	      add_location(g, file$p, 32, 0, 792);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -48077,7 +47919,7 @@ var app = (function () {
 	      /*timePoint*/
 	      1 && circle_r_value !== (circle_r_value = setRadius(
 	      /*timePoint*/
-	      ctx[0].size) * 1.55)) {
+	      ctx[0].rSizeTot * 1.15))) {
 	        attr_dev(circle, "r", circle_r_value);
 	      }
 
@@ -48158,7 +48000,7 @@ var app = (function () {
 	}
 
 	function setRadius(size) {
-	  return Math.max(size, 15);
+	  return Math.max(size, 5);
 	}
 
 	function instance$q($$self, $$props, $$invalidate) {
@@ -51955,8 +51797,8 @@ var app = (function () {
 
 	function get_each_context$9(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[6] = list[i];
-	  child_ctx[8] = i;
+	  child_ctx[7] = list[i];
+	  child_ctx[9] = i;
 	  return child_ctx;
 	} // (53:4) {#each rTicks as tick, i}
 
@@ -51969,9 +51811,9 @@ var app = (function () {
 	  var text_1;
 	  var t_value =
 	  /*commaFormat*/
-	  ctx[2](
+	  ctx[3](
 	  /*tick*/
-	  ctx[6]) + "";
+	  ctx[7]) + "";
 	  var t;
 	  var text_1_transform_value;
 	  var circle;
@@ -51986,61 +51828,61 @@ var app = (function () {
 	      attr_dev(line, "x1", "0");
 	      attr_dev(line, "y1", line_y__value =
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] - 2 * (
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
 	      /*tick*/
-	      ctx[6] *
-	      /*circleScale*/
-	      ctx[4]));
+	      ctx[7]));
 	      attr_dev(line, "x2", line_x__value =
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] + 15);
+	      ctx[5] + 15);
 	      attr_dev(line, "y2", line_y__value_1 =
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] - 2 * (
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
 	      /*tick*/
-	      ctx[6] *
-	      /*circleScale*/
-	      ctx[4]));
+	      ctx[7]));
 	      attr_dev(line, "class", "svelte-msgbcg");
-	      add_location(line, file$z, 53, 6, 1977);
+	      add_location(line, file$z, 53, 6, 1982);
 	      attr_dev(text_1, "class", "tick svelte-msgbcg");
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] + 18) + " " + (
+	      ctx[5] + 18) + " " + (
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] - 2 * (
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
 	      /*tick*/
-	      ctx[6] *
-	      /*circleScale*/
-	      ctx[4])) + ")");
-	      add_location(text_1, file$z, 57, 6, 2192);
+	      ctx[7])) + ")");
+	      add_location(text_1, file$z, 57, 6, 2201);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", circle_cy_value =
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] -
+	      ctx[5] -
+	      /*$sizeTotalRScale*/
+	      ctx[2](
 	      /*tick*/
-	      ctx[6] *
-	      /*circleScale*/
-	      ctx[4]);
+	      ctx[7]));
 	      attr_dev(circle, "r", circle_r_value =
+	      /*$sizeTotalRScale*/
+	      ctx[2](
 	      /*tick*/
-	      ctx[6] *
-	      /*circleScale*/
-	      ctx[4]);
+	      ctx[7]));
 	      attr_dev(circle, "class", "svelte-msgbcg");
-	      add_location(circle, file$z, 61, 6, 2383);
+	      add_location(circle, file$z, 61, 6, 2394);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, line, anchor);
@@ -52048,7 +51890,77 @@ var app = (function () {
 	      append_dev(text_1, t);
 	      insert_dev(target, circle, anchor);
 	    },
-	    p: noop,
+	    p: function update(ctx, dirty) {
+	      if (dirty &
+	      /*$sizeTotalRScale*/
+	      4 && line_y__value !== (line_y__value =
+	      /*rTicks*/
+	      ctx[4][0] *
+	      /*circleScale*/
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
+	      /*tick*/
+	      ctx[7]))) {
+	        attr_dev(line, "y1", line_y__value);
+	      }
+
+	      if (dirty &
+	      /*$sizeTotalRScale*/
+	      4 && line_y__value_1 !== (line_y__value_1 =
+	      /*rTicks*/
+	      ctx[4][0] *
+	      /*circleScale*/
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
+	      /*tick*/
+	      ctx[7]))) {
+	        attr_dev(line, "y2", line_y__value_1);
+	      }
+
+	      if (dirty &
+	      /*$sizeTotalRScale*/
+	      4 && text_1_transform_value !== (text_1_transform_value = "translate(" + (
+	      /*rTicks*/
+	      ctx[4][0] *
+	      /*circleScale*/
+	      ctx[5] + 18) + " " + (
+	      /*rTicks*/
+	      ctx[4][0] *
+	      /*circleScale*/
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
+	      /*tick*/
+	      ctx[7])) + ")")) {
+	        attr_dev(text_1, "transform", text_1_transform_value);
+	      }
+
+	      if (dirty &
+	      /*$sizeTotalRScale*/
+	      4 && circle_cy_value !== (circle_cy_value =
+	      /*rTicks*/
+	      ctx[4][0] *
+	      /*circleScale*/
+	      ctx[5] -
+	      /*$sizeTotalRScale*/
+	      ctx[2](
+	      /*tick*/
+	      ctx[7]))) {
+	        attr_dev(circle, "cy", circle_cy_value);
+	      }
+
+	      if (dirty &
+	      /*$sizeTotalRScale*/
+	      4 && circle_r_value !== (circle_r_value =
+	      /*$sizeTotalRScale*/
+	      ctx[2](
+	      /*tick*/
+	      ctx[7]))) {
+	        attr_dev(circle, "r", circle_r_value);
+	      }
+	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(line);
 	      if (detaching) detach_dev(text_1);
@@ -52075,7 +51987,7 @@ var app = (function () {
 	  var g1_transform_value;
 	  var each_value =
 	  /*rTicks*/
-	  ctx[3];
+	  ctx[4];
 	  validate_each_argument(each_value);
 	  var each_blocks = [];
 
@@ -52096,31 +52008,31 @@ var app = (function () {
 
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (-(
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4]) - 20) + " " +
+	      ctx[5]) + 55) + " " + (
 	      /*rTicks*/
-	      ctx[3].slice(-1)[0] *
+	      ctx[4].slice(-1)[0] *
 	      /*circleScale*/
-	      ctx[4] + ") rotate(270)");
+	      ctx[5] + 70) + ") rotate(270)");
 	      attr_dev(text_1, "dy", "4");
 	      attr_dev(text_1, "class", "svelte-msgbcg");
 	      add_location(text_1, file$z, 47, 2, 1683);
 	      attr_dev(g0, "class", "total-r-scale svelte-msgbcg");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(0 " + -2 * (
 	      /*rTicks*/
-	      ctx[3].slice(-1)[0] *
+	      ctx[4].slice(-1)[0] *
 	      /*circleScale*/
-	      ctx[4]) + ")");
-	      add_location(g0, file$z, 51, 2, 1846);
+	      ctx[5]) + ")");
+	      add_location(g0, file$z, 51, 2, 1851);
 	      attr_dev(g1, "class", "legend");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(" + (
 	      /*$width*/
 	      ctx[0] -
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] - 65) + " " + (
+	      ctx[5] - 65) + " " + (
 	      /*$sizeTotalYScale*/
 	      ctx[1].range()[1] - 20) + ")");
 	      add_location(g1, file$z, 45, 0, 1557);
@@ -52143,11 +52055,11 @@ var app = (function () {
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*rTicks, circleScale, commaFormat*/
-	      28) {
+	      /*rTicks, circleScale, $sizeTotalRScale, commaFormat*/
+	      60) {
 	        each_value =
 	        /*rTicks*/
-	        ctx[3];
+	        ctx[4];
 	        validate_each_argument(each_value);
 
 	        var _i3;
@@ -52179,9 +52091,9 @@ var app = (function () {
 	      /*$width*/
 	      ctx[0] -
 	      /*rTicks*/
-	      ctx[3][0] *
+	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[4] - 65) + " " + (
+	      ctx[5] - 65) + " " + (
 	      /*$sizeTotalYScale*/
 	      ctx[1].range()[1] - 20) + ")")) {
 	        attr_dev(g1, "transform", g1_transform_value);
@@ -52207,6 +52119,7 @@ var app = (function () {
 	function instance$A($$self, $$props, $$invalidate) {
 	  var $width;
 	  var $sizeTotalYScale;
+	  var $sizeTotalRScale;
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
 	    return $$invalidate(0, $width = $$value);
@@ -52215,9 +52128,13 @@ var app = (function () {
 	  component_subscribe($$self, sizeTotalYScale, function ($$value) {
 	    return $$invalidate(1, $sizeTotalYScale = $$value);
 	  });
+	  validate_store(sizeTotalRScale, "sizeTotalRScale");
+	  component_subscribe($$self, sizeTotalRScale, function ($$value) {
+	    return $$invalidate(2, $sizeTotalRScale = $$value);
+	  });
 	  var commaFormat = format(","); // const rTicks = [$sizeTotalYScale(115), $sizeTotalYScale(40), $sizeTotalYScale(20)];
 
-	  var rTicks = [115, 50, 15];
+	  var rTicks = [115, 50, 10];
 	  var unscaled = [115, 40, 20];
 	  var circleScale = 1.25;
 	  var writable_props = [];
@@ -52243,19 +52160,20 @@ var app = (function () {
 	      unscaled: unscaled,
 	      circleScale: circleScale,
 	      $width: $width,
-	      $sizeTotalYScale: $sizeTotalYScale
+	      $sizeTotalYScale: $sizeTotalYScale,
+	      $sizeTotalRScale: $sizeTotalRScale
 	    };
 	  };
 
 	  $$self.$inject_state = function ($$props) {
-	    if ("circleScale" in $$props) $$invalidate(4, circleScale = $$props.circleScale);
+	    if ("circleScale" in $$props) $$invalidate(5, circleScale = $$props.circleScale);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [$width, $sizeTotalYScale, commaFormat, rTicks, circleScale];
+	  return [$width, $sizeTotalYScale, $sizeTotalRScale, commaFormat, rTicks, circleScale];
 	}
 
 	var Legend = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -59204,7 +59122,7 @@ var app = (function () {
 	      div = element("div");
 	      create_component(fossildetails.$$.fragment);
 	      attr_dev(div, "class", "fossil-wrapper");
-	      add_location(div, file$J, 237, 6, 8460);
+	      add_location(div, file$J, 237, 6, 8312);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -59322,7 +59240,7 @@ var app = (function () {
 	          ctx[10].call(div0)
 	        );
 	      });
-	      add_location(div0, file$J, 220, 4, 7917);
+	      add_location(div0, file$J, 220, 4, 7769);
 	      attr_dev(div1, "class", "draw-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
 	        return (
@@ -59330,12 +59248,12 @@ var app = (function () {
 	          ctx[12].call(div1)
 	        );
 	      });
-	      add_location(div1, file$J, 223, 4, 8031);
+	      add_location(div1, file$J, 223, 4, 7883);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-1k0l8ja");
-	      add_location(div2, file$J, 219, 2, 7884);
+	      add_location(div2, file$J, 219, 2, 7736);
 	      attr_dev(div3, "class", "table-wrapper svelte-1k0l8ja");
-	      add_location(div3, file$J, 241, 2, 8540);
-	      add_location(div4, file$J, 244, 2, 8606);
+	      add_location(div3, file$J, 241, 2, 8392);
+	      add_location(div4, file$J, 244, 2, 8458);
 	      attr_dev(div5, "id", "viz");
 	      attr_dev(div5, "class", "visualization-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
@@ -59344,7 +59262,7 @@ var app = (function () {
 	          ctx[13].call(div5)
 	        );
 	      });
-	      add_location(div5, file$J, 215, 0, 7761);
+	      add_location(div5, file$J, 215, 0, 7613);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -59881,7 +59799,7 @@ var app = (function () {
 	            color: $attributionScoreScale(d.attributionScore),
 	            size: d.size,
 	            rSizeTot: isNaN(d.size) || d.size === 0 ? $sizeTotalRScale.range()[0] : $sizeTotalRScale(d.size),
-	            fy: d.sizePending ? Math.min($sizeTotalYScale.range()[0], $sizeTotalYScale.range()[0] - 2 * $sizeTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $sizeTotalYScale(Math.max(d.sizeTotal, 15))
+	            fy: $sizeTotalYScale(Math.max(d.sizeTotal, 6))
 	          });
 	        }).sort(function (a, b) {
 	          return sortConsistently(a, b, "size", "id");

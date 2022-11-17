@@ -14,7 +14,7 @@
 
   //making a minimum size 
   function setRadius (size) {
-   return Math.max(size, 15)
+   return Math.max(size, 5)
   }
 
 
@@ -41,14 +41,14 @@
     <circle class="glow"
             cx="0"
             cy="0"
-            r={timePoint.size}
+            r={timePoint.rSizeTot}
             ></circle>
    
   {/if}
   <circle class="balloon-main"
           cx="0"
           cy="0"
-          r={setRadius(timePoint.size) * 1.55}
+          r={setRadius(timePoint.rSizeTot * 1.15)}
           filter="url(#{timePoint.image_location}_image)"
          ></circle>
           

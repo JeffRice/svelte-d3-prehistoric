@@ -148,7 +148,7 @@
         color: $attributionScoreScale(d.attributionScore),
         size: d.size,
         rSizeTot: isNaN(d.size) || d.size === 0 ? $sizeTotalRScale.range()[0] : $sizeTotalRScale(d.size),
-        fy: d.sizePending ? Math.min($sizeTotalYScale.range()[0], $sizeTotalYScale.range()[0] - 2 * $sizeTotalRScale.range()[0] + (Math.random() - 0.5) * 20) : $sizeTotalYScale(Math.max(d.sizeTotal, 15)),
+        fy:  $sizeTotalYScale(Math.max(d.sizeTotal, 6)),
       };
 
     })

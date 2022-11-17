@@ -35,12 +35,12 @@ export const setScales = (data, width, minDim, maxDim, panelHeight, margin) => {
  */
   // time scale
   timeScale.set(scaleLinear()
-    .domain([-25,  max(data, (d) => d.testDate + 25)])
+    .domain([-49,  max(data, (d) => d.testDate + 10)])
     .range([margin.left, width - margin.right]));
 
   // total scale for the y axis
-  sizeTotalYScale.set(scaleLog()
-    .domain([10, max(data, (d) => d.sizeTotal) ])
+  sizeTotalYScale.set(scaleSqrt()
+    .domain([1, max(data, (d) => d.sizeTotal)  ])
     .range([panelHeight - margin.bottom, margin.top]));
 
   // total scale for the radii

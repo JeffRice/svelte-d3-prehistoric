@@ -91,6 +91,10 @@
   <feImage xlink:href="/images/herbivore.svg"/>
 </filter>
 
+<filter id="herrerasaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/herrerasaurus2.png"/>
+</filter>
+
 <filter id="iguanodon_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/iguanodon.png"/>
 </filter>
