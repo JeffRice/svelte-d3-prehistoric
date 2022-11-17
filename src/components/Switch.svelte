@@ -36,7 +36,6 @@
 
 {#if design == 'inner'}
 <div class="s s--inner">
-    <span id={`switch-${uniqueID}`}>{label}</span>
     <button
         role="switch"
         aria-checked={checked}
@@ -45,6 +44,7 @@
             <span>on</span>
             <span>off</span>
     </button>
+    <span id={`switch-${uniqueID}`}>{label}</span>
 </div>
 {:else if design == 'slider'}
 <div class="s s--slider" style="font-size:{fontSize}px">
@@ -82,7 +82,6 @@
 	}
     /* Inner Design Option */
     .s--inner button {
-        padding: 0.5em;
         background-color: #fff;
         border: 1px solid var(--gray);
     }

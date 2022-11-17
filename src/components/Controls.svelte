@@ -79,6 +79,7 @@
                   label="Search"
                   on:change={(e) => $textSearchFilter = e.detail}
                   on:reset={() => textSearchFilter.reset()} />
+                  <!--
       <Slider value={$attributionScoreFilter}
               label="Attribution Score"
               min={attributionScoreDef[0]} 
@@ -87,6 +88,8 @@
               startColor={$attributionScoreScale(attributionScoreDef[0])}
               stopColor={$attributionScoreScale(attributionScoreDef[1])}
               on:changed={(e) => $attributionScoreFilter = e.detail} />
+            
+            -->
       <Dropdown items={addCount($disinformantNationFilter, 'disinformantNation', timePoints)}
                 label="Continent"
                 superior
@@ -140,30 +143,30 @@
 
         {#if ($fossilDatapoints)}
         <Fossildropdown items={fossilCount(fossilFilter, $fossilDatapoints)}
-                  label="Fossil Datapoints"
+                  label="Plot Fossil Datapoints"
                   />
         {/if}
   
 
-        <div class="dropdown pangea-switch">
-          <Switch bind:value={$switchValueStore} label="Toggle Pangea" design="inner" />
-          <p>
-            Pangea is {$switchValueStore}
-          </p>
-          </div>
+
 
       
   
     </div>
-    <div class="checkbox-panel">
+    <div class="show-hide">
       <CheckboxPanel />
-    <!--  <Share />-->
     </div>
 
-    <div class="checkbox-panel">
+    <div class="show-hide">
       <CheckboxSources />
-    <!--  <Share />-->
     </div>
+
+      <div class="dropdown pangea-switch">
+        <Switch bind:value={$switchValueStore} label="Toggle Pangea" design="inner" />
+      </div>
+
+
+
 
   </div>
 {/if}
@@ -237,14 +240,19 @@
     align-items: center;
   }
 
+  .show-hide{
+    float: left;
+  }
+
   .pangea-switch {
-    align-self: flex-end;
-    display: flex;
-    flex-direction: column;
+    float: left;
     font-family: var(--font-02);
     position: relative;
     pointer-events: all;
-    font-size: 0.75em;
+    font-size: .8rem;
+    color: var(--prehistoricDarkGreen);
+    margin-left: 8px;
+    margin-top: 3px;
   }
 
   .hidden {

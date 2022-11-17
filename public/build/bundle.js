@@ -4505,6 +4505,10 @@ var app = (function () {
 	  return current_component;
 	}
 
+	function beforeUpdate(fn) {
+	  get_current_component().$$.before_update.push(fn);
+	}
+
 	function onMount(fn) {
 	  get_current_component().$$.on_mount.push(fn);
 	}
@@ -4554,6 +4558,11 @@ var app = (function () {
 	    update_scheduled = true;
 	    resolved_promise.then(flush$1);
 	  }
+	}
+
+	function tick() {
+	  schedule_update();
+	  return resolved_promise;
 	}
 
 	function add_render_callback(fn) {
@@ -9119,7 +9128,7 @@ var app = (function () {
 	  dispatch: selection_dispatch
 	}, Symbol.iterator, _callee);
 
-	function select (selector) {
+	function select$1 (selector) {
 	  return typeof selector === "string" ? new Selection([[document.querySelector(selector)]], [document.documentElement]) : new Selection([[selector]], root);
 	}
 
@@ -9141,6 +9150,10 @@ var app = (function () {
 	    var f = String(rf === undefined && R instanceof RegExp && !('flags' in RegExpPrototype) ? regexpFlags.call(R) : rf);
 	    return '/' + p + '/' + f;
 	  }, { unsafe: true });
+	}
+
+	function selectAll (selector) {
+	  return typeof selector === "string" ? new Selection([document.querySelectorAll(selector)], [document.documentElement]) : new Selection([selector == null ? [] : array(selector)], root);
 	}
 
 	var defineProperty$a = objectDefineProperty.f;
@@ -34468,7 +34481,7 @@ var app = (function () {
 	  */
 	  // time scale
 
-	  timeScale.set(linear$1().domain([-49, max$4(data, function (d) {
+	  timeScale.set(linear$1().domain([-30, max$4(data, function (d) {
 	    return d.testDate + 10;
 	  })]).range([margin.left, width - margin.right])); // total scale for the y axis
 
@@ -38747,10 +38760,10 @@ var app = (function () {
 	  }
 
 	  function reDraw() {
-	    var locations = select("#points");
+	    var locations = select$1("#points");
 	    var elements = locations.selectAll("points.arc");
 	    elements.each(function (d, i) {
-	      var node = select(this);
+	      var node = select$1(this);
 	      this.remove();
 	    });
 	  }
@@ -38805,7 +38818,7 @@ var app = (function () {
 	      onMount: onMount,
 	      slide: slide,
 	      sortConsistently: sortConsistently,
-	      select: select,
+	      select: select$1,
 	      cretaceous: cretaceous,
 	      fossilDatapoints: fossilDatapoints,
 	      jurassic: jurassic,
@@ -42450,13 +42463,13 @@ var app = (function () {
 	        each_blocks[_i].c();
 	      }
 
-	      attr_dev(div0, "class", "legend svelte-gf00s8");
+	      attr_dev(div0, "class", "legend svelte-wmf5e3");
 	      attr_dev(div0, "id", div0_id_value = "label-".concat(
 	      /*uniqueID*/
 	      ctx[6]));
 	      add_location(div0, file$h, 65, 4, 1754);
 	      attr_dev(div1, "role", "radiogroup");
-	      attr_dev(div1, "class", "group-container svelte-gf00s8");
+	      attr_dev(div1, "class", "group-container svelte-wmf5e3");
 	      attr_dev(div1, "aria-labelledby", div1_aria_labelledby_value = "label-".concat(
 	      /*uniqueID*/
 	      ctx[6]));
@@ -42467,7 +42480,7 @@ var app = (function () {
 	      /*uniqueID*/
 	      ctx[6]));
 	      add_location(div1, file$h, 60, 4, 1587);
-	      attr_dev(div2, "class", "s s--multi svelte-gf00s8");
+	      attr_dev(div2, "class", "s s--multi svelte-wmf5e3");
 	      add_location(div2, file$h, 59, 0, 1558);
 	    },
 	    m: function mount(target, anchor) {
@@ -42565,7 +42578,7 @@ var app = (function () {
 	      attr_dev(span, "id", span_id_value = "switch-".concat(
 	      /*uniqueID*/
 	      ctx[6]));
-	      attr_dev(span, "class", "svelte-gf00s8");
+	      attr_dev(span, "class", "svelte-wmf5e3");
 	      add_location(span, file$h, 50, 4, 1338);
 	      attr_dev(button, "role", "switch");
 	      attr_dev(button, "aria-checked",
@@ -42574,9 +42587,9 @@ var app = (function () {
 	      attr_dev(button, "aria-labelledby", button_aria_labelledby_value = "switch-".concat(
 	      /*uniqueID*/
 	      ctx[6]));
-	      attr_dev(button, "class", "svelte-gf00s8");
+	      attr_dev(button, "class", "svelte-wmf5e3");
 	      add_location(button, file$h, 51, 4, 1389);
-	      attr_dev(div, "class", "s s--slider svelte-gf00s8");
+	      attr_dev(div, "class", "s s--slider svelte-wmf5e3");
 	      set_style(div, "font-size",
 	      /*fontSize*/
 	      ctx[4] + "px");
@@ -42638,40 +42651,35 @@ var app = (function () {
 
 	function create_if_block$8(ctx) {
 	  var div;
-	  var span0;
-	  var t0;
-	  var span0_id_value;
-	  var t1;
 	  var button;
+	  var span0;
+	  var t1;
 	  var span1;
+	  var button_aria_labelledby_value;
 	  var t3;
 	  var span2;
-	  var button_aria_labelledby_value;
+	  var t4;
+	  var span2_id_value;
 	  var mounted;
 	  var dispose;
 	  var block = {
 	    c: function create() {
 	      div = element("div");
-	      span0 = element("span");
-	      t0 = text(
-	      /*label*/
-	      ctx[1]);
-	      t1 = space();
 	      button = element("button");
+	      span0 = element("span");
+	      span0.textContent = "on";
+	      t1 = space();
 	      span1 = element("span");
-	      span1.textContent = "on";
+	      span1.textContent = "off";
 	      t3 = space();
 	      span2 = element("span");
-	      span2.textContent = "off";
-	      attr_dev(span0, "id", span0_id_value = "switch-".concat(
-	      /*uniqueID*/
-	      ctx[6]));
-	      attr_dev(span0, "class", "svelte-gf00s8");
-	      add_location(span0, file$h, 38, 4, 978);
-	      attr_dev(span1, "class", "svelte-gf00s8");
-	      add_location(span1, file$h, 44, 12, 1181);
-	      attr_dev(span2, "class", "svelte-gf00s8");
-	      add_location(span2, file$h, 45, 12, 1209);
+	      t4 = text(
+	      /*label*/
+	      ctx[1]);
+	      attr_dev(span0, "class", "svelte-wmf5e3");
+	      add_location(span0, file$h, 43, 12, 1130);
+	      attr_dev(span1, "class", "svelte-wmf5e3");
+	      add_location(span1, file$h, 44, 12, 1158);
 	      attr_dev(button, "role", "switch");
 	      attr_dev(button, "aria-checked",
 	      /*checked*/
@@ -42679,20 +42687,25 @@ var app = (function () {
 	      attr_dev(button, "aria-labelledby", button_aria_labelledby_value = "switch-".concat(
 	      /*uniqueID*/
 	      ctx[6]));
-	      attr_dev(button, "class", "svelte-gf00s8");
-	      add_location(button, file$h, 39, 4, 1029);
-	      attr_dev(div, "class", "s s--inner svelte-gf00s8");
+	      attr_dev(button, "class", "svelte-wmf5e3");
+	      add_location(button, file$h, 38, 4, 978);
+	      attr_dev(span2, "id", span2_id_value = "switch-".concat(
+	      /*uniqueID*/
+	      ctx[6]));
+	      attr_dev(span2, "class", "svelte-wmf5e3");
+	      add_location(span2, file$h, 46, 4, 1193);
+	      attr_dev(div, "class", "s s--inner svelte-wmf5e3");
 	      add_location(div, file$h, 37, 0, 949);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
-	      append_dev(div, span0);
-	      append_dev(span0, t0);
-	      append_dev(div, t1);
 	      append_dev(div, button);
+	      append_dev(button, span0);
+	      append_dev(button, t1);
 	      append_dev(button, span1);
-	      append_dev(button, t3);
-	      append_dev(button, span2);
+	      append_dev(div, t3);
+	      append_dev(div, span2);
+	      append_dev(span2, t4);
 
 	      if (!mounted) {
 	        dispose = listen_dev(button, "click",
@@ -42703,18 +42716,18 @@ var app = (function () {
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty &
-	      /*label*/
-	      2) set_data_dev(t0,
-	      /*label*/
-	      ctx[1]);
-
-	      if (dirty &
 	      /*checked*/
 	      32) {
 	        attr_dev(button, "aria-checked",
 	        /*checked*/
 	        ctx[5]);
 	      }
+
+	      if (dirty &
+	      /*label*/
+	      2) set_data_dev(t4,
+	      /*label*/
+	      ctx[1]);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(div);
@@ -42764,7 +42777,7 @@ var app = (function () {
 	      /*option*/
 	      ctx[11];
 	      input.value = input.__value;
-	      attr_dev(input, "class", "svelte-gf00s8");
+	      attr_dev(input, "class", "svelte-wmf5e3");
 	      /*$$binding_groups*/
 
 	      ctx[9][0].push(input);
@@ -42774,7 +42787,7 @@ var app = (function () {
 	      ctx[11], "-").concat(
 	      /*uniqueID*/
 	      ctx[6]));
-	      attr_dev(label_1, "class", "svelte-gf00s8");
+	      attr_dev(label_1, "class", "svelte-wmf5e3");
 	      add_location(label_1, file$h, 68, 12, 1955);
 	    },
 	    m: function mount(target, anchor) {
@@ -43280,33 +43293,27 @@ var app = (function () {
 
 	function create_if_block$9(ctx) {
 	  var div4;
-	  var div1;
+	  var div0;
 	  var searchtext;
 	  var t0;
-	  var slider;
-	  var t1;
 	  var dropdown0;
-	  var t2;
+	  var t1;
 	  var dropdown1;
-	  var t3;
+	  var t2;
 	  var dropdown2;
-	  var t4;
+	  var t3;
 	  var button;
+	  var t5;
 	  var t6;
+	  var div1;
+	  var checkboxpanel;
 	  var t7;
-	  var div0;
+	  var div2;
+	  var checkboxsources;
+	  var t8;
+	  var div3;
 	  var switch_1;
 	  var updating_value;
-	  var t8;
-	  var p;
-	  var t9;
-	  var t10;
-	  var t11;
-	  var div2;
-	  var checkboxpanel;
-	  var t12;
-	  var div3;
-	  var checkboxsources;
 	  var current;
 	  var mounted;
 	  var dispose;
@@ -43321,36 +43328,15 @@ var app = (function () {
 	  });
 	  searchtext.$on("change",
 	  /*change_handler*/
-	  ctx[12]);
+	  ctx[10]);
 	  searchtext.$on("reset",
 	  /*reset_handler*/
-	  ctx[13]);
-	  slider = new Slider({
-	    props: {
-	      value:
-	      /*$attributionScoreFilter*/
-	      ctx[3],
-	      label: "Attribution Score",
-	      min: attributionScoreDef[0],
-	      max: attributionScoreDef[1],
-	      showHandleLabels: false,
-	      startColor:
-	      /*$attributionScoreScale*/
-	      ctx[4](attributionScoreDef[0]),
-	      stopColor:
-	      /*$attributionScoreScale*/
-	      ctx[4](attributionScoreDef[1])
-	    },
-	    $$inline: true
-	  });
-	  slider.$on("changed",
-	  /*changed_handler*/
-	  ctx[14]);
+	  ctx[11]);
 	  dropdown0 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$disinformantNationFilter*/
-	      ctx[5], "disinformantNation",
+	      ctx[3], "disinformantNation",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Continent",
@@ -43360,15 +43346,15 @@ var app = (function () {
 	  });
 	  dropdown0.$on("itemsAdded",
 	  /*itemsAdded_handler*/
-	  ctx[15]);
+	  ctx[12]);
 	  dropdown0.$on("itemsRemoved",
 	  /*itemsRemoved_handler*/
-	  ctx[16]);
+	  ctx[13]);
 	  dropdown1 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$dietFilter*/
-	      ctx[6], "diet",
+	      ctx[4], "diet",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Diet"
@@ -43377,15 +43363,15 @@ var app = (function () {
 	  });
 	  dropdown1.$on("itemsAdded",
 	  /*itemsAdded_handler_1*/
-	  ctx[17]);
+	  ctx[14]);
 	  dropdown1.$on("itemsRemoved",
 	  /*itemsRemoved_handler_1*/
-	  ctx[18]);
+	  ctx[15]);
 	  dropdown2 = new Dropdown({
 	    props: {
 	      items: addCount(
 	      /*$timeperiodFilter*/
-	      ctx[7], "periodEra",
+	      ctx[5], "periodEra",
 	      /*timePoints*/
 	      ctx[0]),
 	      label: "Time Periods",
@@ -43395,17 +43381,23 @@ var app = (function () {
 	  });
 	  dropdown2.$on("itemsAdded",
 	  /*itemsAdded_handler_2*/
-	  ctx[19]);
+	  ctx[16]);
 	  dropdown2.$on("itemsRemoved",
 	  /*itemsRemoved_handler_2*/
-	  ctx[20]);
+	  ctx[17]);
 	  var if_block =
 	  /*$fossilDatapoints*/
-	  ctx[8] && create_if_block_1$4(ctx);
+	  ctx[6] && create_if_block_1$4(ctx);
+	  checkboxpanel = new CheckboxPanel({
+	    $$inline: true
+	  });
+	  checkboxsources = new CheckboxSources({
+	    $$inline: true
+	  });
 
 	  function switch_1_value_binding(value) {
 	    /*switch_1_value_binding*/
-	    ctx[22].call(null, value);
+	    ctx[19].call(null, value);
 	  }
 
 	  var switch_1_props = {
@@ -43415,10 +43407,10 @@ var app = (function () {
 
 	  if (
 	  /*$switchValueStore*/
-	  ctx[9] !== void 0) {
+	  ctx[7] !== void 0) {
 	    switch_1_props.value =
 	    /*$switchValueStore*/
-	    ctx[9];
+	    ctx[7];
 	  }
 
 	  switch_1 = new Switch({
@@ -43428,97 +43420,76 @@ var app = (function () {
 	  binding_callbacks.push(function () {
 	    return bind$1(switch_1, "value", switch_1_value_binding);
 	  });
-	  checkboxpanel = new CheckboxPanel({
-	    $$inline: true
-	  });
-	  checkboxsources = new CheckboxSources({
-	    $$inline: true
-	  });
 	  var block = {
 	    c: function create() {
 	      div4 = element("div");
-	      div1 = element("div");
+	      div0 = element("div");
 	      create_component(searchtext.$$.fragment);
 	      t0 = space();
-	      create_component(slider.$$.fragment);
-	      t1 = space();
 	      create_component(dropdown0.$$.fragment);
-	      t2 = space();
+	      t1 = space();
 	      create_component(dropdown1.$$.fragment);
-	      t3 = space();
+	      t2 = space();
 	      create_component(dropdown2.$$.fragment);
-	      t4 = space();
+	      t3 = space();
 	      button = element("button");
 	      button.textContent = "Reset";
-	      t6 = space();
+	      t5 = space();
 	      if (if_block) if_block.c();
-	      t7 = space();
-	      div0 = element("div");
-	      create_component(switch_1.$$.fragment);
-	      t8 = space();
-	      p = element("p");
-	      t9 = text("Pangea is ");
-	      t10 = text(
-	      /*$switchValueStore*/
-	      ctx[9]);
-	      t11 = space();
-	      div2 = element("div");
+	      t6 = space();
+	      div1 = element("div");
 	      create_component(checkboxpanel.$$.fragment);
-	      t12 = space();
-	      div3 = element("div");
+	      t7 = space();
+	      div2 = element("div");
 	      create_component(checkboxsources.$$.fragment);
-	      attr_dev(button, "class", "reset-filters svelte-5zpsxp");
-	      add_location(button, file$j, 132, 7, 5015);
-	      add_location(p, file$j, 149, 10, 5471);
-	      attr_dev(div0, "class", "dropdown pangea-switch svelte-5zpsxp");
-	      add_location(div0, file$j, 147, 8, 5335);
-	      attr_dev(div1, "class", "controls svelte-5zpsxp");
-	      toggle_class(div1, "hidden",
+	      t8 = space();
+	      div3 = element("div");
+	      create_component(switch_1.$$.fragment);
+	      attr_dev(button, "class", "reset-filters svelte-1xdostt");
+	      add_location(button, file$j, 135, 7, 5067);
+	      attr_dev(div0, "class", "controls svelte-1xdostt");
+	      toggle_class(div0, "hidden",
 	      /*$controlsFilter*/
 	      ctx[1]);
-	      add_location(div1, file$j, 76, 4, 2064);
-	      attr_dev(div2, "class", "checkbox-panel svelte-5zpsxp");
-	      add_location(div2, file$j, 157, 4, 5575);
-	      attr_dev(div3, "class", "checkbox-panel svelte-5zpsxp");
-	      add_location(div3, file$j, 162, 4, 5667);
-	      attr_dev(div4, "class", "controls-inner-wrapper svelte-5zpsxp");
+	      add_location(div0, file$j, 76, 4, 2064);
+	      attr_dev(div1, "class", "show-hide svelte-1xdostt");
+	      add_location(div1, file$j, 155, 4, 5411);
+	      attr_dev(div2, "class", "show-hide svelte-1xdostt");
+	      add_location(div2, file$j, 159, 4, 5475);
+	      attr_dev(div3, "class", "dropdown pangea-switch svelte-1xdostt");
+	      add_location(div3, file$j, 163, 6, 5543);
+	      attr_dev(div4, "class", "controls-inner-wrapper svelte-1xdostt");
 	      add_location(div4, file$j, 75, 2, 2023);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div4, anchor);
+	      append_dev(div4, div0);
+	      mount_component(searchtext, div0, null);
+	      append_dev(div0, t0);
+	      mount_component(dropdown0, div0, null);
+	      append_dev(div0, t1);
+	      mount_component(dropdown1, div0, null);
+	      append_dev(div0, t2);
+	      mount_component(dropdown2, div0, null);
+	      append_dev(div0, t3);
+	      append_dev(div0, button);
+	      append_dev(div0, t5);
+	      if (if_block) if_block.m(div0, null);
+	      append_dev(div4, t6);
 	      append_dev(div4, div1);
-	      mount_component(searchtext, div1, null);
-	      append_dev(div1, t0);
-	      mount_component(slider, div1, null);
-	      append_dev(div1, t1);
-	      mount_component(dropdown0, div1, null);
-	      append_dev(div1, t2);
-	      mount_component(dropdown1, div1, null);
-	      append_dev(div1, t3);
-	      mount_component(dropdown2, div1, null);
-	      append_dev(div1, t4);
-	      append_dev(div1, button);
-	      append_dev(div1, t6);
-	      if (if_block) if_block.m(div1, null);
-	      append_dev(div1, t7);
-	      append_dev(div1, div0);
-	      mount_component(switch_1, div0, null);
-	      append_dev(div0, t8);
-	      append_dev(div0, p);
-	      append_dev(p, t9);
-	      append_dev(p, t10);
-	      append_dev(div4, t11);
+	      mount_component(checkboxpanel, div1, null);
+	      append_dev(div4, t7);
 	      append_dev(div4, div2);
-	      mount_component(checkboxpanel, div2, null);
-	      append_dev(div4, t12);
+	      mount_component(checkboxsources, div2, null);
+	      append_dev(div4, t8);
 	      append_dev(div4, div3);
-	      mount_component(checkboxsources, div3, null);
+	      mount_component(switch_1, div3, null);
 	      current = true;
 
 	      if (!mounted) {
 	        dispose = listen_dev(button, "click",
 	        /*click_handler*/
-	        ctx[21], false, false, false);
+	        ctx[18], false, false, false);
 	        mounted = true;
 	      }
 	    },
@@ -43530,67 +43501,50 @@ var app = (function () {
 	      /*$textSearchFilter*/
 	      ctx[2];
 	      searchtext.$set(searchtext_changes);
-	      var slider_changes = {};
-	      if (dirty &
-	      /*$attributionScoreFilter*/
-	      8) slider_changes.value =
-	      /*$attributionScoreFilter*/
-	      ctx[3];
-	      if (dirty &
-	      /*$attributionScoreScale*/
-	      16) slider_changes.startColor =
-	      /*$attributionScoreScale*/
-	      ctx[4](attributionScoreDef[0]);
-	      if (dirty &
-	      /*$attributionScoreScale*/
-	      16) slider_changes.stopColor =
-	      /*$attributionScoreScale*/
-	      ctx[4](attributionScoreDef[1]);
-	      slider.$set(slider_changes);
 	      var dropdown0_changes = {};
 	      if (dirty &
 	      /*$disinformantNationFilter, timePoints*/
-	      33) dropdown0_changes.items = addCount(
+	      9) dropdown0_changes.items = addCount(
 	      /*$disinformantNationFilter*/
-	      ctx[5], "disinformantNation",
+	      ctx[3], "disinformantNation",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown0.$set(dropdown0_changes);
 	      var dropdown1_changes = {};
 	      if (dirty &
 	      /*$dietFilter, timePoints*/
-	      65) dropdown1_changes.items = addCount(
+	      17) dropdown1_changes.items = addCount(
 	      /*$dietFilter*/
-	      ctx[6], "diet",
+	      ctx[4], "diet",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown1.$set(dropdown1_changes);
 	      var dropdown2_changes = {};
 	      if (dirty &
 	      /*$timeperiodFilter, timePoints*/
-	      129) dropdown2_changes.items = addCount(
+	      33) dropdown2_changes.items = addCount(
 	      /*$timeperiodFilter*/
-	      ctx[7], "periodEra",
+	      ctx[5], "periodEra",
 	      /*timePoints*/
 	      ctx[0]);
 	      dropdown2.$set(dropdown2_changes);
 
 	      if (
 	      /*$fossilDatapoints*/
-	      ctx[8]) {
+	      ctx[6]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
 	          if (dirty &
 	          /*$fossilDatapoints*/
-	          256) {
+	          64) {
 	            transition_in(if_block, 1);
 	          }
 	        } else {
 	          if_block = create_if_block_1$4(ctx);
 	          if_block.c();
 	          transition_in(if_block, 1);
-	          if_block.m(div1, t7);
+	          if_block.m(div0, null);
 	        }
 	      } else if (if_block) {
 	        group_outros();
@@ -43600,71 +43554,63 @@ var app = (function () {
 	        check_outros();
 	      }
 
+	      if (dirty &
+	      /*$controlsFilter*/
+	      2) {
+	        toggle_class(div0, "hidden",
+	        /*$controlsFilter*/
+	        ctx[1]);
+	      }
+
 	      var switch_1_changes = {};
 
 	      if (!updating_value && dirty &
 	      /*$switchValueStore*/
-	      512) {
+	      128) {
 	        updating_value = true;
 	        switch_1_changes.value =
 	        /*$switchValueStore*/
-	        ctx[9];
+	        ctx[7];
 	        add_flush_callback(function () {
 	          return updating_value = false;
 	        });
 	      }
 
 	      switch_1.$set(switch_1_changes);
-	      if (!current || dirty &
-	      /*$switchValueStore*/
-	      512) set_data_dev(t10,
-	      /*$switchValueStore*/
-	      ctx[9]);
-
-	      if (dirty &
-	      /*$controlsFilter*/
-	      2) {
-	        toggle_class(div1, "hidden",
-	        /*$controlsFilter*/
-	        ctx[1]);
-	      }
 	    },
 	    i: function intro(local) {
 	      if (current) return;
 	      transition_in(searchtext.$$.fragment, local);
-	      transition_in(slider.$$.fragment, local);
 	      transition_in(dropdown0.$$.fragment, local);
 	      transition_in(dropdown1.$$.fragment, local);
 	      transition_in(dropdown2.$$.fragment, local);
 	      transition_in(if_block);
-	      transition_in(switch_1.$$.fragment, local);
 	      transition_in(checkboxpanel.$$.fragment, local);
 	      transition_in(checkboxsources.$$.fragment, local);
+	      transition_in(switch_1.$$.fragment, local);
 	      current = true;
 	    },
 	    o: function outro(local) {
 	      transition_out(searchtext.$$.fragment, local);
-	      transition_out(slider.$$.fragment, local);
 	      transition_out(dropdown0.$$.fragment, local);
 	      transition_out(dropdown1.$$.fragment, local);
 	      transition_out(dropdown2.$$.fragment, local);
 	      transition_out(if_block);
-	      transition_out(switch_1.$$.fragment, local);
 	      transition_out(checkboxpanel.$$.fragment, local);
 	      transition_out(checkboxsources.$$.fragment, local);
+	      transition_out(switch_1.$$.fragment, local);
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(div4);
 	      destroy_component(searchtext);
-	      destroy_component(slider);
 	      destroy_component(dropdown0);
 	      destroy_component(dropdown1);
 	      destroy_component(dropdown2);
 	      if (if_block) if_block.d();
-	      destroy_component(switch_1);
 	      destroy_component(checkboxpanel);
 	      destroy_component(checkboxsources);
+	      destroy_component(switch_1);
 	      mounted = false;
 	      dispose();
 	    }
@@ -43677,7 +43623,7 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
-	} // (141:8) {#if ($fossilDatapoints)}
+	} // (144:8) {#if ($fossilDatapoints)}
 
 
 	function create_if_block_1$4(ctx) {
@@ -43687,10 +43633,10 @@ var app = (function () {
 	    props: {
 	      items: fossilCount(
 	      /*fossilFilter*/
-	      ctx[10],
+	      ctx[8],
 	      /*$fossilDatapoints*/
-	      ctx[8]),
-	      label: "Fossil Datapoints"
+	      ctx[6]),
+	      label: "Plot Fossil Datapoints"
 	    },
 	    $$inline: true
 	  });
@@ -43706,11 +43652,11 @@ var app = (function () {
 	      var fossildropdown_changes = {};
 	      if (dirty &
 	      /*$fossilDatapoints*/
-	      256) fossildropdown_changes.items = fossilCount(
+	      64) fossildropdown_changes.items = fossilCount(
 	      /*fossilFilter*/
-	      ctx[10],
+	      ctx[8],
 	      /*$fossilDatapoints*/
-	      ctx[8]);
+	      ctx[6]);
 	      fossildropdown.$set(fossildropdown_changes);
 	    },
 	    i: function intro(local) {
@@ -43730,7 +43676,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$4.name,
 	    type: "if",
-	    source: "(141:8) {#if ($fossilDatapoints)}",
+	    source: "(144:8) {#if ($fossilDatapoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -43848,8 +43794,6 @@ var app = (function () {
 	  var $timeScale;
 	  var $controlsFilter;
 	  var $textSearchFilter;
-	  var $attributionScoreFilter;
-	  var $attributionScoreScale;
 	  var $disinformantNationFilter;
 	  var $dietFilter;
 	  var $timeperiodFilter;
@@ -43857,19 +43801,19 @@ var app = (function () {
 	  var $switchValueStore;
 	  validate_store(highlightPolarization, "highlightPolarization");
 	  component_subscribe($$self, highlightPolarization, function ($$value) {
-	    return $$invalidate(23, $highlightPolarization = $$value);
+	    return $$invalidate(20, $highlightPolarization = $$value);
 	  });
 	  validate_store(highlightCib, "highlightCib");
 	  component_subscribe($$self, highlightCib, function ($$value) {
-	    return $$invalidate(24, $highlightCib = $$value);
+	    return $$invalidate(21, $highlightCib = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
-	    return $$invalidate(25, $originalTimeDomain = $$value);
+	    return $$invalidate(22, $originalTimeDomain = $$value);
 	  });
 	  validate_store(timeScale, "timeScale");
 	  component_subscribe($$self, timeScale, function ($$value) {
-	    return $$invalidate(26, $timeScale = $$value);
+	    return $$invalidate(23, $timeScale = $$value);
 	  });
 	  validate_store(controlsFilter, "controlsFilter");
 	  component_subscribe($$self, controlsFilter, function ($$value) {
@@ -43879,33 +43823,25 @@ var app = (function () {
 	  component_subscribe($$self, textSearchFilter, function ($$value) {
 	    return $$invalidate(2, $textSearchFilter = $$value);
 	  });
-	  validate_store(attributionScoreFilter, "attributionScoreFilter");
-	  component_subscribe($$self, attributionScoreFilter, function ($$value) {
-	    return $$invalidate(3, $attributionScoreFilter = $$value);
-	  });
-	  validate_store(attributionScoreScale, "attributionScoreScale");
-	  component_subscribe($$self, attributionScoreScale, function ($$value) {
-	    return $$invalidate(4, $attributionScoreScale = $$value);
-	  });
 	  validate_store(disinformantNationFilter, "disinformantNationFilter");
 	  component_subscribe($$self, disinformantNationFilter, function ($$value) {
-	    return $$invalidate(5, $disinformantNationFilter = $$value);
+	    return $$invalidate(3, $disinformantNationFilter = $$value);
 	  });
 	  validate_store(dietFilter, "dietFilter");
 	  component_subscribe($$self, dietFilter, function ($$value) {
-	    return $$invalidate(6, $dietFilter = $$value);
+	    return $$invalidate(4, $dietFilter = $$value);
 	  });
 	  validate_store(timeperiodFilter, "timeperiodFilter");
 	  component_subscribe($$self, timeperiodFilter, function ($$value) {
-	    return $$invalidate(7, $timeperiodFilter = $$value);
+	    return $$invalidate(5, $timeperiodFilter = $$value);
 	  });
 	  validate_store(fossilDatapoints, "fossilDatapoints");
 	  component_subscribe($$self, fossilDatapoints, function ($$value) {
-	    return $$invalidate(8, $fossilDatapoints = $$value);
+	    return $$invalidate(6, $fossilDatapoints = $$value);
 	  });
 	  validate_store(switchValueStore, "switchValueStore");
 	  component_subscribe($$self, switchValueStore, function ($$value) {
-	    return $$invalidate(9, $switchValueStore = $$value);
+	    return $$invalidate(7, $switchValueStore = $$value);
 	  });
 	  var timePoints = $$props.timePoints;
 	  var fossilFilter = ["cretaceous", "jurassic", "triassic"];
@@ -43938,10 +43874,6 @@ var app = (function () {
 
 	  var reset_handler = function reset_handler() {
 	    return textSearchFilter.reset();
-	  };
-
-	  var changed_handler = function changed_handler(e) {
-	    return set_store_value(attributionScoreFilter, $attributionScoreFilter = e.detail);
 	  };
 
 	  var itemsAdded_handler = function itemsAdded_handler(e) {
@@ -44001,7 +43933,7 @@ var app = (function () {
 	      controlsFilter: controlsFilter,
 	      timeScale: timeScale,
 	      attributionScoreScale: attributionScoreScale,
-	      select: select,
+	      select: select$1,
 	      fossilDatapoints: fossilDatapoints,
 	      switchValueStore: switchValueStore,
 	      Dropdown: Dropdown,
@@ -44023,8 +43955,6 @@ var app = (function () {
 	      $timeScale: $timeScale,
 	      $controlsFilter: $controlsFilter,
 	      $textSearchFilter: $textSearchFilter,
-	      $attributionScoreFilter: $attributionScoreFilter,
-	      $attributionScoreScale: $attributionScoreScale,
 	      $disinformantNationFilter: $disinformantNationFilter,
 	      $dietFilter: $dietFilter,
 	      $timeperiodFilter: $timeperiodFilter,
@@ -44035,14 +43965,14 @@ var app = (function () {
 
 	  $$self.$inject_state = function ($$props) {
 	    if ("timePoints" in $$props) $$invalidate(0, timePoints = $$props.timePoints);
-	    if ("fossilFilter" in $$props) $$invalidate(10, fossilFilter = $$props.fossilFilter);
+	    if ("fossilFilter" in $$props) $$invalidate(8, fossilFilter = $$props.fossilFilter);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
 	    $$self.$inject_state($$props.$$inject);
 	  }
 
-	  return [timePoints, $controlsFilter, $textSearchFilter, $attributionScoreFilter, $attributionScoreScale, $disinformantNationFilter, $dietFilter, $timeperiodFilter, $fossilDatapoints, $switchValueStore, fossilFilter, handleButtonClick, change_handler, reset_handler, changed_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, click_handler, switch_1_value_binding];
+	  return [timePoints, $controlsFilter, $textSearchFilter, $disinformantNationFilter, $dietFilter, $timeperiodFilter, $fossilDatapoints, $switchValueStore, fossilFilter, handleButtonClick, change_handler, reset_handler, itemsAdded_handler, itemsRemoved_handler, itemsAdded_handler_1, itemsRemoved_handler_1, itemsAdded_handler_2, itemsRemoved_handler_2, click_handler, switch_1_value_binding];
 	}
 
 	var Controls = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -53529,10 +53459,10 @@ var app = (function () {
 	  }))); //end main reactive loop
 
 	  function reDraw() {
-	    var locations = select("#points");
+	    var locations = select$1("#points");
 	    var elements = locations.selectAll("points.arc");
 	    elements.each(function (d, i) {
-	      var node = select(this);
+	      var node = select$1(this);
 	      this.remove();
 	    });
 	  }
@@ -53572,7 +53502,7 @@ var app = (function () {
 	      geoPath: geoPath,
 	      scaleFactor: scaleFactor,
 	      timeScale: timeScale,
-	      select: select,
+	      select: select$1,
 	      geoGraticule: graticule,
 	      geoNaturalEarth1: geoNaturalEarth1,
 	      geoMercator: geoMercator,
@@ -53666,10 +53596,10 @@ var app = (function () {
 	        $geoPath.context(ctx); // console.log(projection)
 	        // begin fossil adding code
 
-	        var container = select("#container").style("width", width + "px").style("height", height + "px");
-	        var base = select("#map");
-	        var locations = select("#points");
-	        var layer = select(".layer");
+	        var container = select$1("#container").style("width", width + "px").style("height", height + "px");
+	        var base = select$1("#map");
+	        var locations = select$1("#points");
+	        var layer = select$1(".layer");
 	        var info = base.append("div").attr("class", "info");
 	        var jurassicPaint = linear$1().domain([140, 206]).range(["#a4e3ef", "#2f9eb3"]);
 
@@ -53713,7 +53643,7 @@ var app = (function () {
 	        function drawCanvas() {
 	          var elements = locations.selectAll("points.arc");
 	          elements.each(function (d, i) {
-	            var node = select(this);
+	            var node = select$1(this);
 	            ctx.beginPath();
 	            ctx.arc(node.attr("x"), node.attr("y"), node.attr("radius"), 0, 2 * Math.PI);
 	            ctx.fillStyle = node.attr("fillStyle");
@@ -58746,10 +58676,10 @@ var app = (function () {
 	  }
 
 	  function reDraw() {
-	    var locations = select("#points");
+	    var locations = select$1("#points");
 	    var elements = locations.selectAll("points.arc");
 	    elements.each(function (d, i) {
-	      var node = select(this);
+	      var node = select$1(this);
 	      this.remove();
 	    });
 	  }
@@ -58785,7 +58715,7 @@ var app = (function () {
 	      loadCretaceousFossils: loadCretaceousFossils,
 	      uniq: lodash.uniq,
 	      sortBy: lodash.sortBy,
-	      select: select,
+	      select: select$1,
 	      data: data,
 	      triassicFossilData: triassicFossilData,
 	      jurassicFossilData: jurassicFossilData,
@@ -59122,7 +59052,7 @@ var app = (function () {
 	      div = element("div");
 	      create_component(fossildetails.$$.fragment);
 	      attr_dev(div, "class", "fossil-wrapper");
-	      add_location(div, file$J, 237, 6, 8312);
+	      add_location(div, file$J, 237, 6, 8328);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -59240,7 +59170,7 @@ var app = (function () {
 	          ctx[10].call(div0)
 	        );
 	      });
-	      add_location(div0, file$J, 220, 4, 7769);
+	      add_location(div0, file$J, 220, 4, 7785);
 	      attr_dev(div1, "class", "draw-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
 	        return (
@@ -59248,12 +59178,12 @@ var app = (function () {
 	          ctx[12].call(div1)
 	        );
 	      });
-	      add_location(div1, file$J, 223, 4, 7883);
+	      add_location(div1, file$J, 223, 4, 7899);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-1k0l8ja");
-	      add_location(div2, file$J, 219, 2, 7736);
+	      add_location(div2, file$J, 219, 2, 7752);
 	      attr_dev(div3, "class", "table-wrapper svelte-1k0l8ja");
-	      add_location(div3, file$J, 241, 2, 8392);
-	      add_location(div4, file$J, 244, 2, 8458);
+	      add_location(div3, file$J, 241, 2, 8408);
+	      add_location(div4, file$J, 244, 2, 8474);
 	      attr_dev(div5, "id", "viz");
 	      attr_dev(div5, "class", "visualization-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
@@ -59262,7 +59192,7 @@ var app = (function () {
 	          ctx[13].call(div5)
 	        );
 	      });
-	      add_location(div5, file$J, 215, 0, 7613);
+	      add_location(div5, file$J, 215, 0, 7629);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -59815,7 +59745,7 @@ var app = (function () {
 	        //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
 	        //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
 	        force("charge", forceManyBody().strength(function (d) {
-	          return -(d.rSizeTot + 1) * 10;
+	          return -($sizeTotalRScale(d.size) + 10) * 10;
 	        }).distanceMax(500).distanceMin(50));
 	        simulation.nodes(scaledData).alpha(0.8).tick(300); //  console.log(scaledData)
 	        // finally set the global timePoints variable
@@ -60896,24 +60826,29 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$5 = globals.console;
-	var file$N = "src/components/ChartDatapoint.svelte"; // (56:0) {#if (name !== undefined)}
+	var file$N = "src/components/ChartDatapoint.svelte"; // (105:0) {#if (x <= ($width/2))}
 
-	function create_if_block$l(ctx) {
+	function create_if_block_1$a(ctx) {
 	  var g;
 	  var text_1;
 	  var t;
+	  var g_transform_value;
 	  var block = {
 	    c: function create() {
 	      g = svg_element("g");
 	      text_1 = svg_element("text");
 	      t = text(
-	      /*name*/
-	      ctx[0]);
+	      /*hoverName*/
+	      ctx[2]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$N, 58, 8, 1390);
-	      attr_dev(g, "class", "centroid-name-label");
-	      attr_dev(g, "transform", "translate(10 -20) rotate(-20)");
-	      add_location(g, file$N, 57, 5, 1308);
+	      add_location(text_1, file$N, 107, 8, 3293);
+	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
+	      attr_dev(g, "transform", g_transform_value = "translate(" + (
+	      /*$tX*/
+	      ctx[4] + 10) + " " + (
+	      /*$tY*/
+	      ctx[5] - 20) + ")");
+	      add_location(g, file$N, 106, 5, 3196);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -60922,10 +60857,79 @@ var app = (function () {
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty &
-	      /*name*/
-	      1) set_data_dev(t,
-	      /*name*/
-	      ctx[0]);
+	      /*hoverName*/
+	      4) set_data_dev(t,
+	      /*hoverName*/
+	      ctx[2]);
+
+	      if (dirty &
+	      /*$tX, $tY*/
+	      48 && g_transform_value !== (g_transform_value = "translate(" + (
+	      /*$tX*/
+	      ctx[4] + 10) + " " + (
+	      /*$tY*/
+	      ctx[5] - 20) + ")")) {
+	        attr_dev(g, "transform", g_transform_value);
+	      }
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(g);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_1$a.name,
+	    type: "if",
+	    source: "(105:0) {#if (x <= ($width/2))}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (112:0) {#if (x > ($width/2))}
+
+
+	function create_if_block$l(ctx) {
+	  var g;
+	  var text_1;
+	  var t;
+	  var g_transform_value;
+	  var block = {
+	    c: function create() {
+	      g = svg_element("g");
+	      text_1 = svg_element("text");
+	      t = text(
+	      /*hoverName*/
+	      ctx[2]);
+	      set_style(text_1, "transition", "opacity 600ms ease");
+	      add_location(text_1, file$N, 114, 8, 3520);
+	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
+	      attr_dev(g, "transform", g_transform_value = "translate(" + (
+	      /*$tX*/
+	      ctx[4] - 100) + " " + (
+	      /*$tY*/
+	      ctx[5] - 20) + ")");
+	      add_location(g, file$N, 113, 5, 3422);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, g, anchor);
+	      append_dev(g, text_1);
+	      append_dev(text_1, t);
+	    },
+	    p: function update(ctx, dirty) {
+	      if (dirty &
+	      /*hoverName*/
+	      4) set_data_dev(t,
+	      /*hoverName*/
+	      ctx[2]);
+
+	      if (dirty &
+	      /*$tX, $tY*/
+	      48 && g_transform_value !== (g_transform_value = "translate(" + (
+	      /*$tX*/
+	      ctx[4] - 100) + " " + (
+	      /*$tY*/
+	      ctx[5] - 20) + ")")) {
+	        attr_dev(g, "transform", g_transform_value);
+	      }
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(g);
@@ -60935,7 +60939,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$l.name,
 	    type: "if",
-	    source: "(56:0) {#if (name !== undefined)}",
+	    source: "(112:0) {#if (x > ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -60945,40 +60949,57 @@ var app = (function () {
 	  var g;
 	  var circle;
 	  var g_transform_value;
+	  var t0;
+	  var t1;
+	  var if_block1_anchor;
 	  var mounted;
 	  var dispose;
-	  var if_block =
-	  /*name*/
-	  ctx[0] !== undefined && create_if_block$l(ctx);
+	  var if_block0 =
+	  /*x*/
+	  ctx[0] <=
+	  /*$width*/
+	  ctx[6] / 2 && create_if_block_1$a(ctx);
+	  var if_block1 =
+	  /*x*/
+	  ctx[0] >
+	  /*$width*/
+	  ctx[6] / 2 && create_if_block$l(ctx);
 	  var block = {
 	    c: function create() {
 	      g = svg_element("g");
 	      circle = svg_element("circle");
-	      if (if_block) if_block.c();
+	      t0 = space();
+	      if (if_block0) if_block0.c();
+	      t1 = space();
+	      if (if_block1) if_block1.c();
+	      if_block1_anchor = empty();
 	      attr_dev(circle, "name",
 	      /*name*/
-	      ctx[0]);
+	      ctx[1]);
 	      attr_dev(circle, "hovername",
 	      /*hoverName*/
-	      ctx[1]);
+	      ctx[2]);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", "0");
 	      attr_dev(circle, "r", "10");
 	      attr_dev(circle, "stroke",
 	      /*stroke*/
-	      ctx[2]);
+	      ctx[3]);
 	      attr_dev(circle, "stroke-width", "3");
 	      attr_dev(circle, "fill", "none");
 	      attr_dev(circle, "testy",
 	      /*$tY*/
+	      ctx[5]);
+	      attr_dev(circle, "testx",
+	      /*$tX*/
 	      ctx[4]);
-	      add_location(circle, file$N, 52, 5, 1129);
+	      add_location(circle, file$N, 100, 5, 3003);
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*$tX*/
-	      ctx[3] + " " +
+	      ctx[4] + " " +
 	      /*$tY*/
-	      ctx[4] + ")");
-	      add_location(g, file$N, 48, 0, 1019);
+	      ctx[5] + ")");
+	      add_location(g, file$N, 97, 0, 2921);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -60986,14 +61007,16 @@ var app = (function () {
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
 	      append_dev(g, circle);
-	      if (if_block) if_block.m(g, null);
+	      insert_dev(target, t0, anchor);
+	      if (if_block0) if_block0.m(target, anchor);
+	      insert_dev(target, t1, anchor);
+	      if (if_block1) if_block1.m(target, anchor);
+	      insert_dev(target, if_block1_anchor, anchor);
 
 	      if (!mounted) {
-	        dispose = [listen_dev(g, "click",
-	        /*handleEventClick*/
-	        ctx[8], false, false, false), listen_dev(g, "mouseover",
+	        dispose = listen_dev(g, "mouseover",
 	        /*handleEventMouseover*/
-	        ctx[7], false, false, false)];
+	        ctx[9], false, false, false);
 	        mounted = true;
 	      }
 	    },
@@ -61003,68 +61026,99 @@ var app = (function () {
 
 	      if (dirty &
 	      /*name*/
-	      1) {
+	      2) {
 	        attr_dev(circle, "name",
 	        /*name*/
-	        ctx[0]);
-	      }
-
-	      if (dirty &
-	      /*hoverName*/
-	      2) {
-	        attr_dev(circle, "hovername",
-	        /*hoverName*/
 	        ctx[1]);
 	      }
 
 	      if (dirty &
-	      /*stroke*/
+	      /*hoverName*/
 	      4) {
-	        attr_dev(circle, "stroke",
-	        /*stroke*/
+	        attr_dev(circle, "hovername",
+	        /*hoverName*/
 	        ctx[2]);
 	      }
 
 	      if (dirty &
-	      /*$tY*/
-	      16) {
-	        attr_dev(circle, "testy",
-	        /*$tY*/
-	        ctx[4]);
+	      /*stroke*/
+	      8) {
+	        attr_dev(circle, "stroke",
+	        /*stroke*/
+	        ctx[3]);
 	      }
 
-	      if (
-	      /*name*/
-	      ctx[0] !== undefined) {
-	        if (if_block) {
-	          if_block.p(ctx, dirty);
-	        } else {
-	          if_block = create_if_block$l(ctx);
-	          if_block.c();
-	          if_block.m(g, null);
-	        }
-	      } else if (if_block) {
-	        if_block.d(1);
-	        if_block = null;
+	      if (dirty &
+	      /*$tY*/
+	      32) {
+	        attr_dev(circle, "testy",
+	        /*$tY*/
+	        ctx[5]);
+	      }
+
+	      if (dirty &
+	      /*$tX*/
+	      16) {
+	        attr_dev(circle, "testx",
+	        /*$tX*/
+	        ctx[4]);
 	      }
 
 	      if (dirty &
 	      /*$tX, $tY*/
-	      24 && g_transform_value !== (g_transform_value = "translate(" +
+	      48 && g_transform_value !== (g_transform_value = "translate(" +
 	      /*$tX*/
-	      ctx[3] + " " +
+	      ctx[4] + " " +
 	      /*$tY*/
-	      ctx[4] + ")")) {
+	      ctx[5] + ")")) {
 	        attr_dev(g, "transform", g_transform_value);
+	      }
+
+	      if (
+	      /*x*/
+	      ctx[0] <=
+	      /*$width*/
+	      ctx[6] / 2) {
+	        if (if_block0) {
+	          if_block0.p(ctx, dirty);
+	        } else {
+	          if_block0 = create_if_block_1$a(ctx);
+	          if_block0.c();
+	          if_block0.m(t1.parentNode, t1);
+	        }
+	      } else if (if_block0) {
+	        if_block0.d(1);
+	        if_block0 = null;
+	      }
+
+	      if (
+	      /*x*/
+	      ctx[0] >
+	      /*$width*/
+	      ctx[6] / 2) {
+	        if (if_block1) {
+	          if_block1.p(ctx, dirty);
+	        } else {
+	          if_block1 = create_if_block$l(ctx);
+	          if_block1.c();
+	          if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+	        }
+	      } else if (if_block1) {
+	        if_block1.d(1);
+	        if_block1 = null;
 	      }
 	    },
 	    i: noop,
 	    o: noop,
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(g);
-	      if (if_block) if_block.d();
+	      if (detaching) detach_dev(t0);
+	      if (if_block0) if_block0.d(detaching);
+	      if (detaching) detach_dev(t1);
+	      if (if_block1) if_block1.d(detaching);
+	      if (detaching) detach_dev(if_block1_anchor);
 	      mounted = false;
-	      run_all(dispose);
+	      dispose();
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -61077,11 +61131,51 @@ var app = (function () {
 	  return block;
 	}
 
+	function arrangeLabels() {
+	  var svg = select(".scatter-chart");
+	  var move = 1;
+
+	  while (move > 0) {
+	    move = 0;
+	    svg.selectAll(".place-label").each(function () {
+	      var that = this,
+	          a = this.getBoundingClientRect();
+	      svg.selectAll(".place-label").each(function () {
+	        if (this != that) {
+	          var b = this.getBoundingClientRect();
+
+	          if (Math.abs(a.left - b.left) * 2 < a.width + b.width && Math.abs(a.top - b.top) * 2 < a.height + b.height) {
+	            // overlap, move labels
+	            var dx = (Math.max(0, a.right - b.left) + Math.min(0, a.left - b.right)) * 0.01,
+	                dy = (Math.max(0, a.bottom - b.top) + Math.min(0, a.top - b.bottom)) * 0.02,
+	                tt = getTranslation(select(this).attr("transform")),
+	                to = getTranslation(select(that).attr("transform"));
+	            move += Math.abs(dx) + Math.abs(dy);
+	            console.log(this, "this | that ", that);
+	            console.log("to", to);
+	            console.log("tt", tt);
+	            to.translate = [to[0] + dx, to[1] + dy];
+	            tt.translate = [tt[0] - dx, tt[1] - dy];
+	            console.log("to", to);
+	            console.log("tt", tt); //         console.log(totest, '|', tttest)
+
+	            select(this).attr("transform", "translate(" + tt.translate + ")");
+	            select(that).attr("transform", "translate(" + to.translate + ")");
+	            a = this.getBoundingClientRect();
+	            console.log(this, "|", that);
+	          }
+	        }
+	      });
+	    });
+	  }
+	}
+
 	function instance$O($$self, $$props, $$invalidate) {
 	  var $hovered;
 	  var $selected;
 	  var $tX;
 	  var $tY;
+	  var $width;
 	  validate_store(hovered, "hovered");
 	  component_subscribe($$self, hovered, function ($$value) {
 	    return $$invalidate(11, $hovered = $$value);
@@ -61089,6 +61183,10 @@ var app = (function () {
 	  validate_store(selected, "selected");
 	  component_subscribe($$self, selected, function ($$value) {
 	    return $$invalidate(12, $selected = $$value);
+	  });
+	  validate_store(width, "width");
+	  component_subscribe($$self, width, function ($$value) {
+	    return $$invalidate(6, $width = $$value);
 	  });
 	  var x = $$props.x;
 	  var y = $$props.y;
@@ -61101,7 +61199,7 @@ var app = (function () {
 	  });
 	  validate_store(tX, "tX");
 	  component_subscribe($$self, tX, function (value) {
-	    return $$invalidate(3, $tX = value);
+	    return $$invalidate(4, $tX = value);
 	  });
 	  var tY = tweened(null, {
 	    duration: 600,
@@ -61109,7 +61207,7 @@ var app = (function () {
 	  });
 	  validate_store(tY, "tY");
 	  component_subscribe($$self, tY, function (value) {
-	    return $$invalidate(4, $tY = value);
+	    return $$invalidate(5, $tY = value);
 	  });
 
 	  function handleEventMouseover(event) {
@@ -61140,11 +61238,11 @@ var app = (function () {
 	  validate_slots("ChartDatapoint", $$slots, []);
 
 	  $$self.$$set = function ($$props) {
-	    if ("x" in $$props) $$invalidate(9, x = $$props.x);
+	    if ("x" in $$props) $$invalidate(0, x = $$props.x);
 	    if ("y" in $$props) $$invalidate(10, y = $$props.y);
-	    if ("name" in $$props) $$invalidate(0, name = $$props.name);
-	    if ("hoverName" in $$props) $$invalidate(1, hoverName = $$props.hoverName);
-	    if ("stroke" in $$props) $$invalidate(2, stroke = $$props.stroke);
+	    if ("name" in $$props) $$invalidate(1, name = $$props.name);
+	    if ("hoverName" in $$props) $$invalidate(2, hoverName = $$props.hoverName);
+	    if ("stroke" in $$props) $$invalidate(3, stroke = $$props.stroke);
 	  };
 
 	  $$self.$capture_state = function () {
@@ -61154,6 +61252,10 @@ var app = (function () {
 	      hovered: hovered,
 	      selected: selected,
 	      scaleLinear: linear$1,
+	      width: width,
+	      height: height,
+	      panelHeight: panelHeight,
+	      mapHeight: mapHeight,
 	      x: x,
 	      y: y,
 	      name: name,
@@ -61163,19 +61265,21 @@ var app = (function () {
 	      tY: tY,
 	      handleEventMouseover: handleEventMouseover,
 	      handleEventClick: handleEventClick,
+	      arrangeLabels: arrangeLabels,
 	      $hovered: $hovered,
 	      $selected: $selected,
 	      $tX: $tX,
-	      $tY: $tY
+	      $tY: $tY,
+	      $width: $width
 	    };
 	  };
 
 	  $$self.$inject_state = function ($$props) {
-	    if ("x" in $$props) $$invalidate(9, x = $$props.x);
+	    if ("x" in $$props) $$invalidate(0, x = $$props.x);
 	    if ("y" in $$props) $$invalidate(10, y = $$props.y);
-	    if ("name" in $$props) $$invalidate(0, name = $$props.name);
-	    if ("hoverName" in $$props) $$invalidate(1, hoverName = $$props.hoverName);
-	    if ("stroke" in $$props) $$invalidate(2, stroke = $$props.stroke);
+	    if ("name" in $$props) $$invalidate(1, name = $$props.name);
+	    if ("hoverName" in $$props) $$invalidate(2, hoverName = $$props.hoverName);
+	    if ("stroke" in $$props) $$invalidate(3, stroke = $$props.stroke);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -61185,7 +61289,7 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*x*/
-	    512) {
+	    1) {
 	       tX.set(x);
 	    }
 
@@ -61196,7 +61300,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [name, hoverName, stroke, $tX, $tY, tX, tY, handleEventMouseover, handleEventClick, x, y];
+	  return [x, name, hoverName, stroke, $tX, $tY, $width, tX, tY, handleEventMouseover, y];
 	}
 
 	var ChartDatapoint = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -61211,11 +61315,11 @@ var app = (function () {
 
 	    _this = _super.call(this, options);
 	    init(_assertThisInitialized(_this), options, instance$O, create_fragment$O, safe_not_equal, {
-	      x: 9,
+	      x: 0,
 	      y: 10,
-	      name: 0,
-	      hoverName: 1,
-	      stroke: 2
+	      name: 1,
+	      hoverName: 2,
+	      stroke: 3
 	    });
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
@@ -61228,7 +61332,7 @@ var app = (function () {
 
 	    if (
 	    /*x*/
-	    ctx[9] === undefined && !("x" in props)) {
+	    ctx[0] === undefined && !("x" in props)) {
 	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'x'");
 	    }
 
@@ -61240,19 +61344,19 @@ var app = (function () {
 
 	    if (
 	    /*name*/
-	    ctx[0] === undefined && !("name" in props)) {
+	    ctx[1] === undefined && !("name" in props)) {
 	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'name'");
 	    }
 
 	    if (
 	    /*hoverName*/
-	    ctx[1] === undefined && !("hoverName" in props)) {
+	    ctx[2] === undefined && !("hoverName" in props)) {
 	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'hoverName'");
 	    }
 
 	    if (
 	    /*stroke*/
-	    ctx[2] === undefined && !("stroke" in props)) {
+	    ctx[3] === undefined && !("stroke" in props)) {
 	      console_1$5.warn("<ChartDatapoint> was created without expected prop 'stroke'");
 	    }
 
@@ -61304,17 +61408,18 @@ var app = (function () {
 	  return ChartDatapoint;
 	}(SvelteComponentDev);
 
+	var console_1$6 = globals.console;
 	var file$O = "src/components/Chart.svelte";
 
 	function get_each_context$g(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[10] = list[i].x;
-	  child_ctx[11] = list[i].y;
-	  child_ctx[12] = list[i].name;
-	  child_ctx[13] = list[i].stroke;
-	  child_ctx[14] = list[i].hoverName;
+	  child_ctx[11] = list[i].x;
+	  child_ctx[12] = list[i].y;
+	  child_ctx[13] = list[i].name;
+	  child_ctx[14] = list[i].stroke;
+	  child_ctx[15] = list[i].hoverName;
 	  return child_ctx;
-	} // (48:4) {#if (chartWidth)}
+	} // (203:4) {#if (chartWidth)}
 
 
 	function create_if_block$m(ctx) {
@@ -61368,6 +61473,7 @@ var app = (function () {
 	        each_blocks[_i].c();
 	      }
 
+	      attr_dev(svg, "class", "scatter-chart");
 	      attr_dev(svg, "width",
 	      /*chartWidth*/
 	      ctx[0]);
@@ -61375,7 +61481,7 @@ var app = (function () {
 	      /*chartHeight*/
 	      ctx[1]);
 	      set_style(svg, "overflow", "visible");
-	      add_location(svg, file$O, 48, 8, 1376);
+	      add_location(svg, file$O, 203, 8, 6854);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, svg, anchor);
@@ -61495,11 +61601,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$m.name,
 	    type: "if",
-	    source: "(48:4) {#if (chartWidth)}",
+	    source: "(203:4) {#if (chartWidth)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (62:12) {#each renderedData as { x, y, name, stroke, hoverName }}
+	} // (218:12) {#each renderedData as { x, y, name, stroke, hoverName }}
 
 
 	function create_each_block$g(ctx) {
@@ -61509,19 +61615,19 @@ var app = (function () {
 	    props: {
 	      x:
 	      /*x*/
-	      ctx[10],
+	      ctx[11],
 	      y:
 	      /*y*/
-	      ctx[11],
+	      ctx[12],
 	      name:
 	      /*name*/
-	      ctx[12],
+	      ctx[13],
 	      hoverName:
 	      /*hoverName*/
-	      ctx[14],
+	      ctx[15],
 	      stroke:
 	      /*stroke*/
-	      ctx[13]
+	      ctx[14]
 	    },
 	    $$inline: true
 	  });
@@ -61539,27 +61645,27 @@ var app = (function () {
 	      /*renderedData*/
 	      16) chartdatapoint_changes.x =
 	      /*x*/
-	      ctx[10];
+	      ctx[11];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.y =
 	      /*y*/
-	      ctx[11];
+	      ctx[12];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.name =
 	      /*name*/
-	      ctx[12];
+	      ctx[13];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.hoverName =
 	      /*hoverName*/
-	      ctx[14];
+	      ctx[15];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.stroke =
 	      /*stroke*/
-	      ctx[13];
+	      ctx[14];
 	      chartdatapoint.$set(chartdatapoint_changes);
 	    },
 	    i: function intro(local) {
@@ -61579,7 +61685,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$g.name,
 	    type: "each",
-	    source: "(62:12) {#each renderedData as { x, y, name, stroke, hoverName }}",
+	    source: "(218:12) {#each renderedData as { x, y, name, stroke, hoverName }}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -61603,7 +61709,7 @@ var app = (function () {
 	          ctx[8].call(div)
 	        );
 	      });
-	      add_location(div, file$O, 46, 0, 1263);
+	      add_location(div, file$O, 201, 0, 6741);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -61672,6 +61778,57 @@ var app = (function () {
 
 	var padding = 80;
 
+	function getTranslation$1(transform) {
+	  // Create a dummy g for calculation purposes only. This will never
+	  // be appended to the DOM and will be discarded once this function 
+	  // returns.
+	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g"); // Set the transform attribute to the provided string value.
+
+	  g.setAttributeNS(null, "transform", transform); // consolidate the SVGTransformList containing all transformations
+	  // to a single SVGTransform of type SVG_TRANSFORM_MATRIX and get
+	  // its SVGMatrix. 
+
+	  var matrix = g.transform.baseVal.consolidate().matrix; // As per definition values e and f are the ones for the translation.
+
+	  return [matrix.e, matrix.f];
+	}
+
+	function getTransformation(transform) {
+	  // Create a dummy g for calculation purposes only. This will never
+	  // be appended to the DOM and will be discarded once this function 
+	  // returns.
+	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g"); // Set the transform attribute to the provided string value.
+
+	  g.setAttributeNS(null, "transform", transform); // consolidate the SVGTransformList containing all transformations
+	  // to a single SVGTransform of type SVG_TRANSFORM_MATRIX and get
+	  // its SVGMatrix. 
+
+	  var matrix = g.transform.baseVal.consolidate().matrix; // Below calculations are taken and adapted from the private function
+	  // transform/decompose.js of D3's module d3-interpolate.
+
+	  var a = matrix.a,
+	      b = matrix.b,
+	      c = matrix.c,
+	      d = matrix.d,
+	      e = matrix.e,
+	      f = matrix.f; // ES6, if this doesn't work, use below assignment
+	  // var a=matrix.a, b=matrix.b, c=matrix.c, d=matrix.d, e=matrix.e, f=matrix.f; // ES5
+
+	  var scaleX, scaleY, skewX;
+	  if (scaleX = Math.sqrt(a * a + b * b)) a /= scaleX, b /= scaleX;
+	  if (skewX = a * c + b * d) c -= a * skewX, d -= b * skewX;
+	  if (scaleY = Math.sqrt(c * c + d * d)) c /= scaleY, d /= scaleY, skewX /= scaleY;
+	  if (a * d < b * c) a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
+	  return {
+	    translateX: e,
+	    translateY: f,
+	    rotate: Math.atan2(b, a) * 180 / Math.PI,
+	    skewX: Math.atan(skewX) * 180 / Math.PI,
+	    scaleX: scaleX,
+	    scaleY: scaleY
+	  };
+	}
+
 	function instance$P($$self, $$props, $$invalidate) {
 	  var data = $$props.data;
 	  var xRange = $$props.xRange;
@@ -61681,9 +61838,75 @@ var app = (function () {
 	  //   let magmaPaint= scaleLinear().domain([0, 5, 10, 15, 20, 25, 30, 35, 40, 45]).range(["#150e38","#1d1147","#251255","#390f6e","#440f76","#52137c","#701f81","#802582","#982d80","#b2357b"])
 
 	  var mScale = linear$1().domain([-40, 160]).range([0, 1]);
+	  afterUpdate(function () {
+	    // setTimeout(arrangeLabels(), 200);
+	    arrangeLabels();
+	  });
+
+	  function arrangeLabels() {
+	    var svg = select$1(".scatter-chart");
+	    var move = 1;
+
+	    while (move > 0) {
+	      move = 0;
+	      svg.selectAll(".place-label").each(function () {
+	        var that = this,
+	            a = this.getBoundingClientRect();
+	        var z = getTransformation(select$1(this).attr("transform"));
+	        console.log("label transform", z); //		 console.log(z.translateX);
+	        // if(!typeof(z.translateX === NaN)){
+
+	        svg.selectAll(".place-label").each(function () {
+	          //    console.log('78', select(this).attr("transform"));
+	          //    console.log('789', select(that).attr("transform"));
+	          if (select$1(that).attr("transform") === "translate(undefined)" || select$1(this).attr("transform") === "translate(undefined)") {
+	            //           console.log('exit')
+	            return;
+	          }
+
+	          if (select$1(that).attr("transform") === "NaN)") {
+	            //            console.log('exit')
+	            return;
+	          } else {
+	            if (this != that) {
+	              if (select$1(that).attr("transform") === "NaN") {
+	                //               console.log('exit')
+	                return;
+	              }
+
+	              var b = this.getBoundingClientRect();
+
+	              if (Math.abs(a.left - b.left) * 2 < a.width + b.width && Math.abs(a.top - b.top) * 2 < a.height + b.height) {
+	                // overlap, move labels
+	                console.log("overLa APPP ");
+	                var dx = (Math.max(0, a.right - b.left) + Math.min(0, a.left - b.right)) * 0.01,
+	                    dy = (Math.max(1, a.bottom - b.top) + Math.min(1, a.top - b.bottom)) * 0.02,
+	                    tt = getTranslation$1(select$1(this).attr("transform")),
+	                    to = getTranslation$1(select$1(that).attr("transform"));
+	                move += Math.abs(dx) + Math.abs(dy); //         console.log(this, 'this | that ', that)
+	                //        console.log('to', to)
+	                //         console.log('tt', tt)
+
+	                to.translated = [to[0] + dx, to[1] + dy];
+	                tt.translated = [tt[0] - dx, tt[1] - dy]; //        console.log('to', to)
+	                //        console.log('tt', tt)
+	                //         console.log(totest, '|', tttest)
+
+	                select$1(this).attr("transform", "translate(" + tt.translated + ")");
+	                select$1(that).attr("transform", "translate(" + to.translated + ")");
+	                a = this.getBoundingClientRect();
+	              } //         console.log(this, 'this | that ', that)
+
+	            }
+	          }
+	        });
+	      }); //   } //end type check
+	    }
+	  }
+
 	  var writable_props = ["data", "xRange", "yRange"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Chart> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<Chart> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -61707,9 +61930,23 @@ var app = (function () {
 	    return {
 	      scaleLinear: linear$1,
 	      interpolateMagma: magma,
+	      csv: csv$1,
+	      min: min$7,
+	      max: max$4,
+	      forceSimulation: forceSimulation,
+	      forceX: forceX,
+	      forceY: forceY,
+	      forceManyBody: forceManyBody,
+	      forceCenter: forceCenter,
+	      forceCollide: forceCollide,
+	      select: select$1,
+	      selectAll: selectAll,
 	      ChartXAxis: ChartXAxis,
 	      ChartYAxis: ChartYAxis,
 	      ChartDatapoint: ChartDatapoint,
+	      beforeUpdate: beforeUpdate,
+	      afterUpdate: afterUpdate,
+	      tick: tick,
 	      data: data,
 	      xRange: xRange,
 	      yRange: yRange,
@@ -61717,6 +61954,9 @@ var app = (function () {
 	      chartWidth: chartWidth,
 	      chartHeight: chartHeight,
 	      mScale: mScale,
+	      arrangeLabels: arrangeLabels,
+	      getTranslation: getTranslation$1,
+	      getTransformation: getTransformation,
 	      xScale: xScale,
 	      yScale: yScale,
 	      renderedData: renderedData
@@ -61770,6 +62010,10 @@ var app = (function () {
 	        }; //        stroke: jurassicPaint(d.x)
 	      }));
 	    }
+
+	    if ($$self.$$.dirty &
+	    /*xScale*/
+	    4) ;
 	  };
 
 	  return [chartWidth, chartHeight, xScale, yScale, renderedData, data, xRange, yRange, div_elementresize_handler];
@@ -61803,19 +62047,19 @@ var app = (function () {
 	    if (
 	    /*data*/
 	    ctx[5] === undefined && !("data" in props)) {
-	      console.warn("<Chart> was created without expected prop 'data'");
+	      console_1$6.warn("<Chart> was created without expected prop 'data'");
 	    }
 
 	    if (
 	    /*xRange*/
 	    ctx[6] === undefined && !("xRange" in props)) {
-	      console.warn("<Chart> was created without expected prop 'xRange'");
+	      console_1$6.warn("<Chart> was created without expected prop 'xRange'");
 	    }
 
 	    if (
 	    /*yRange*/
 	    ctx[7] === undefined && !("yRange" in props)) {
-	      console.warn("<Chart> was created without expected prop 'yRange'");
+	      console_1$6.warn("<Chart> was created without expected prop 'yRange'");
 	    }
 
 	    return _this;
@@ -62159,7 +62403,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var Object_1$1 = globals.Object,
-	    console_1$6 = globals.console;
+	    console_1$7 = globals.console;
 	var file$Q = "src/components/ChartWrapper.svelte";
 
 	function create_fragment$R(ctx) {
@@ -62227,7 +62471,7 @@ var app = (function () {
 	      t = space();
 	      create_component(chartselector.$$.fragment);
 	      attr_dev(div, "class", "wrapper svelte-8zw8d4");
-	      add_location(div, file$Q, 156, 0, 3045);
+	      add_location(div, file$Q, 365, 0, 10438);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -62315,6 +62559,57 @@ var app = (function () {
 	  return block;
 	}
 
+	function getTranslation$2(transform) {
+	  // Create a dummy g for calculation purposes only. This will never
+	  // be appended to the DOM and will be discarded once this function 
+	  // returns.
+	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g"); // Set the transform attribute to the provided string value.
+
+	  g.setAttributeNS(null, "transform", transform); // consolidate the SVGTransformList containing all transformations
+	  // to a single SVGTransform of type SVG_TRANSFORM_MATRIX and get
+	  // its SVGMatrix. 
+
+	  var matrix = g.transform.baseVal.consolidate().matrix; // As per definition values e and f are the ones for the translation.
+
+	  return [matrix.e, matrix.f];
+	}
+
+	function getTransformation$1(transform) {
+	  // Create a dummy g for calculation purposes only. This will never
+	  // be appended to the DOM and will be discarded once this function 
+	  // returns.
+	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g"); // Set the transform attribute to the provided string value.
+
+	  g.setAttributeNS(null, "transform", transform); // consolidate the SVGTransformList containing all transformations
+	  // to a single SVGTransform of type SVG_TRANSFORM_MATRIX and get
+	  // its SVGMatrix. 
+
+	  var matrix = g.transform.baseVal.consolidate().matrix; // Below calculations are taken and adapted from the private function
+	  // transform/decompose.js of D3's module d3-interpolate.
+
+	  var a = matrix.a,
+	      b = matrix.b,
+	      c = matrix.c,
+	      d = matrix.d,
+	      e = matrix.e,
+	      f = matrix.f; // ES6, if this doesn't work, use below assignment
+	  // var a=matrix.a, b=matrix.b, c=matrix.c, d=matrix.d, e=matrix.e, f=matrix.f; // ES5
+
+	  var scaleX, scaleY, skewX;
+	  if (scaleX = Math.sqrt(a * a + b * b)) a /= scaleX, b /= scaleX;
+	  if (skewX = a * c + b * d) c -= a * skewX, d -= b * skewX;
+	  if (scaleY = Math.sqrt(c * c + d * d)) c /= scaleY, d /= scaleY, skewX /= scaleY;
+	  if (a * d < b * c) a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
+	  return {
+	    translateX: e,
+	    translateY: f,
+	    rotate: Math.atan2(b, a) * 180 / Math.PI,
+	    skewX: Math.atan(skewX) * 180 / Math.PI,
+	    scaleX: scaleX,
+	    scaleY: scaleY
+	  };
+	}
+
 	var func$6 = function func(d) {
 	  return d.x;
 	};
@@ -62332,9 +62627,25 @@ var app = (function () {
 	};
 
 	function instance$R($$self, $$props, $$invalidate) {
+	  var $originalTimeDomain;
+	  var $margin;
+	  var $width;
+	  validate_store(originalTimeDomain, "originalTimeDomain");
+	  component_subscribe($$self, originalTimeDomain, function ($$value) {
+	    return $$invalidate(12, $originalTimeDomain = $$value);
+	  });
+	  validate_store(margin, "margin");
+	  component_subscribe($$self, margin, function ($$value) {
+	    return $$invalidate(13, $margin = $$value);
+	  });
+	  validate_store(width, "width");
+	  component_subscribe($$self, width, function ($$value) {
+	    return $$invalidate(14, $width = $$value);
+	  });
 	  var selectedOption = "f";
 	  var fossilSpots, fossilSpots10, fossilSpots20, fossilSpots200, fossilSpots2000;
 	  var fossilSpots40;
+	  var oktest, svg;
 	  var newTestData = {
 	    a: [{
 	      x: 10,
@@ -62577,10 +62888,10 @@ var app = (function () {
 	              return d.x < 11;
 	            }));
 	            $$invalidate(6, fossilSpots20 = dinoChartData.filter(function (d) {
-	              return d.x < 21 && d.x > 10;
+	              return d.x < 26 && d.x > 10;
 	            }));
 	            $$invalidate(9, fossilSpots40 = dinoChartData.filter(function (d) {
-	              return d.x < 40 && d.x > 20;
+	              return d.x < 40 && d.x > 25;
 	            }));
 	            $$invalidate(7, fossilSpots200 = dinoChartData.filter(function (d) {
 	              return d.x > 39;
@@ -62601,9 +62912,114 @@ var app = (function () {
 	      }
 	    }, _callee);
 	  })));
+	  afterUpdate(function () {}); //	arrangeLabels()
+
+	  function cool() {
+	    console.log(selectedData); // for some reason these definitions need to be in here and not in a gobal scope or module
+
+	    var simulation = forceSimulation().force("x", forceX().x(function (d) {
+	      return d._x;
+	    }));
+	    var simulationCharge = forceSimulation().force("x", forceX().x(function (d) {
+	      return d._x;
+	    })). //   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
+	    //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
+	    //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
+	    force("charge", forceManyBody().strength(-50));
+	    simulation.nodes(selectedData).alpha(0.8).tick(300); //  console.log(scaledData)
+	    // finally set the global timePoints variable
+
+	    simulationCharge.nodes(selectedData).alpha(0.8).tick(300).on("end", function () {
+	      oktest = selectedData.map(function (d) {
+	        return _objectSpread2(_objectSpread2({}, d), {}, {
+	          y: d.y,
+	          z: parseInt(d.x),
+	          x: $originalTimeDomain ? d.x : Math.max($margin.left - Math.random() * $margin.left / 4, Math.min($width - $margin.right + (Math.random() + 2) * $margin.right / 4, d.x))
+	        });
+	      });
+	      console.log(oktest);
+	    });
+	  }
+
+	  function arrangeLabels() {
+	    svg = select$1(".scatter-chart");
+	    var move = 10;
+
+	    while (move > 0) {
+	      move = 0;
+	      select$1(".scatter-chart").selectAll(".place-label").each(function () {
+	        var that = this,
+	            a = this.getBoundingClientRect();
+	        var z = select$1(this).attr("transform");
+	        console.log(z);
+	        var zztest = z.split(" ");
+	        console.log(zztest);
+	        console.log(zztest[1].slice(0, -1));
+	        console.log(zztest[0].slice(10, zztest[0].length)); //    if(!typeof(z.translateX === NaN)){
+	        //	console.log('big boi skip', this);
+	        //	}
+
+	        console.log(select$1(this).attr("transform"));
+	        var zz = select$1(this).attr("transform");
+	        console.log(select$1(that).attr("transform"));
+	        var xx = select$1(that).attr("transform");
+	        console.log("this", this);
+	        console.log("that", that);
+	        console.log("zz", zz);
+	        console.log("xx", xx);
+
+	        if (zz === "NaN)" || zz === "translate(NaN,NaN)" || zz === "translate(NaN)" || xx === "translate(NaN,NaN)" || xx === "translate(NaN)" || xx === "NaN)") {
+	          console.log("Fuckin Skip!");
+	          return;
+	        }
+
+	        select$1(".scatter-chart").selectAll(".place-label").each(function () {
+	          if (this != that) {
+	            var b = this.getBoundingClientRect();
+
+	            if (Math.abs(a.left - b.left) * 2 < a.width + b.width && Math.abs(a.top - b.top) * 2 < a.height + b.height) {
+	              // overlap, move labels
+	              console.log("overlap were movin bois");
+	              console.log("this", this);
+	              console.log("that", that);
+	              console.log(select$1(this).attr("transform"));
+	              var z2 = select$1(this).attr("transform");
+	              console.log(that);
+	              console.log(select$1(that).attr("transform"));
+	              var x2 = select$1(that).attr("transform");
+	              console.log(x2);
+	              console.log(z2);
+	              var dx = (Math.max(0, a.right - b.left) + Math.min(0, a.left - b.right)) * 0.01,
+	                  dy = (Math.max(0, a.bottom - b.top) + Math.min(0, a.top - b.bottom)) * 0.02,
+	                  tt = getTransformation$1(select$1(this).attr("transform")),
+	                  to = getTransformation$1(select$1(that).attr("transform"));
+	              move += Math.abs(dx) + Math.abs(dy);
+	              console.log(this, "this | that ", that);
+	              console.log("to", to);
+	              console.log("tt", tt);
+	              to.translated = [to.translateX + dx, to.translateX + dy];
+	              tt.translated = [tt.translateY - dx, tt.translateY - dy];
+	              console.log("to", to);
+	              console.log("tt", tt); //         console.log(totest, '|', tttest)
+
+	              select$1(this).attr("transform", "translate(" + (tt.translated[0] + dx) + " " + (tt.translated[1] + dy) + ")");
+	              select$1(that).attr("transform", "translate(" + (to.translated[0] - dx) + " " + (to.translated[1] - dy) + ")");
+	              a = this.getBoundingClientRect();
+	              console.log(this, "this | that ", that);
+	            } //		} // lil else
+
+	          }
+	        });
+	      }); // } // end if
+	    }
+
+	    console.log(select$1(".scatter-chart").selectAll(".place-label"));
+	    var newLabels = select$1(".scatter-chart").selectAll(".place-label");
+	  }
+
 	  var writable_props = [];
 	  Object_1$1.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<ChartWrapper> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<ChartWrapper> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -62621,11 +63037,29 @@ var app = (function () {
 	      csv: csv$1,
 	      min: min$7,
 	      max: max$4,
+	      forceSimulation: forceSimulation,
+	      forceX: forceX,
+	      forceY: forceY,
+	      forceManyBody: forceManyBody,
+	      forceCenter: forceCenter,
+	      forceCollide: forceCollide,
+	      select: select$1,
+	      selectAll: selectAll,
 	      dataz: data$1,
 	      Chart: Chart,
 	      ChartSelector: ChartSelector,
 	      loadData: loadData,
 	      onMount: onMount,
+	      originalTimeDomain: originalTimeDomain,
+	      beforeUpdate: beforeUpdate,
+	      afterUpdate: afterUpdate,
+	      width: width,
+	      height: height,
+	      panelHeight: panelHeight,
+	      minDim: minDim,
+	      maxDim: maxDim,
+	      margin: margin,
+	      controlsHeight: controlsHeight,
 	      selectedOption: selectedOption,
 	      fossilSpots: fossilSpots,
 	      fossilSpots10: fossilSpots10,
@@ -62633,8 +63067,17 @@ var app = (function () {
 	      fossilSpots200: fossilSpots200,
 	      fossilSpots2000: fossilSpots2000,
 	      fossilSpots40: fossilSpots40,
+	      oktest: oktest,
+	      svg: svg,
 	      newTestData: newTestData,
-	      selectedData: selectedData
+	      cool: cool,
+	      arrangeLabels: arrangeLabels,
+	      getTranslation: getTranslation$2,
+	      getTransformation: getTransformation$1,
+	      selectedData: selectedData,
+	      $originalTimeDomain: $originalTimeDomain,
+	      $margin: $margin,
+	      $width: $width
 	    };
 	  };
 
@@ -62646,6 +63089,8 @@ var app = (function () {
 	    if ("fossilSpots200" in $$props) $$invalidate(7, fossilSpots200 = $$props.fossilSpots200);
 	    if ("fossilSpots2000" in $$props) $$invalidate(8, fossilSpots2000 = $$props.fossilSpots2000);
 	    if ("fossilSpots40" in $$props) $$invalidate(9, fossilSpots40 = $$props.fossilSpots40);
+	    if ("oktest" in $$props) oktest = $$props.oktest;
+	    if ("svg" in $$props) svg = $$props.svg;
 	    if ("newTestData" in $$props) $$invalidate(1, newTestData = $$props.newTestData);
 	    if ("selectedData" in $$props) $$invalidate(2, selectedData = $$props.selectedData);
 	  };
@@ -62702,6 +63147,10 @@ var app = (function () {
 	        return a.x < b.x ? 1 : -1;
 	      }));
 	    }
+
+	    if ($$self.$$.dirty &
+	    /*selectedData*/
+	    4) ;
 	  };
 
 	  return [selectedOption, newTestData, selectedData, chartselector_selected_binding];
@@ -62823,7 +63272,7 @@ var app = (function () {
 	  return ChartApp;
 	}(SvelteComponentDev);
 
-	var console_1$7 = globals.console;
+	var console_1$8 = globals.console;
 	var file$S = "src/App.svelte"; // (20:2) {:else}
 
 	function create_else_block$2(ctx) {
@@ -62864,7 +63313,7 @@ var app = (function () {
 	} // (18:62) 
 
 
-	function create_if_block_1$a(ctx) {
+	function create_if_block_1$b(ctx) {
 	  var catch_1;
 	  var current;
 	  catch_1 = new Catch({
@@ -62896,7 +63345,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block_1$a.name,
+	    id: create_if_block_1$b.name,
 	    type: "if",
 	    source: "(18:62) ",
 	    ctx: ctx
@@ -62959,7 +63408,7 @@ var app = (function () {
 	  cookiebanner = new CookieBanner({
 	    $$inline: true
 	  });
-	  var if_block_creators = [create_if_block$n, create_if_block_1$a, create_else_block$2];
+	  var if_block_creators = [create_if_block$n, create_if_block_1$b, create_else_block$2];
 	  var if_blocks = [];
 
 	  function select_block_type(ctx, dirty) {
@@ -63068,7 +63517,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,

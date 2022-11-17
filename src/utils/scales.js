@@ -35,7 +35,7 @@ export const setScales = (data, width, minDim, maxDim, panelHeight, margin) => {
  */
   // time scale
   timeScale.set(scaleLinear()
-    .domain([-49,  max(data, (d) => d.testDate + 10)])
+    .domain([-30,  max(data, (d) => d.testDate + 10)])
     .range([margin.left, width - margin.right]));
 
   // total scale for the y axis
