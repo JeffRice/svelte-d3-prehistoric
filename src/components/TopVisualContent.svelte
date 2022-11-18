@@ -43,12 +43,12 @@
 </script>
 
 {#if (data.length > 0 && $fossilDatapoints)}
-  <section class="content no-upper-margin">
+  <section class="content transparent-bg no-upper-margin" >
     <input id="collapsible-status-quo" class="toggle" type="checkbox">
     <label for="collapsible-status-quo" class="lbl-toggle top">Overview</label>
     <div class="collapsible-content">
       <p>
-        The Prehistoric Life Timeline Mapping is an interactive, open-source database that shows a variety of information about prehistoric creatures. It maps these creatures to their geographic location and period in time they existed. It also maps fossils to their current era discovery sites.
+        The Prehistoric Life Timeline Mapping is an interactive, open-source database that shows a variety of information about prehistoric creatures. They are mapped to their original geographic location and period in time they existed. It also maps fossils to their current era discovery sites.
       </p>
       <p>
         This dataset contains <em>{data.length} creatures</em> that existed up to <em> 300 million years ago </em>
@@ -80,8 +80,7 @@
         <em>Dataset View</em> presents a simplified spreadsheet view of the FIAT dataset. Cases are affected by all applied filters. By clicking on one or more cases in the Case View, users can "pin" them to the top of the Dataset View for easy comparison. The <em>Dataset View</em> for easy comparison. The <a href="https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public">full dataset</a> can also be downloaded from this view. 
       </p>
     </div>
-  </section>
-  <section class="content">
+
     <p>
        enables users to filter and examine data in a multitude of ways. As you get started, consider filtering by: 
     </p>
