@@ -165,7 +165,7 @@
    //   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
     //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
    //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
-   .force('collide', forceCollide().strength(1).radius( (d) => $sizeTotalRScale(d.size) * 1.15  ) );
+   .force('collide', forceCollide().strength(1).radius( (d) => $sizeTotalRScale(d.size) * 1  ) );
  //  .force('charge', forceManyBody().strength((d) => -($sizeTotalRScale(d.size) + 10) * 10).distanceMax(500).distanceMin(50));
     simulation
       .nodes(scaledData)

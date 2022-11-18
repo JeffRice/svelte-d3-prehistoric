@@ -63,6 +63,10 @@
   <feImage xlink:href="/images/argentavis.png"/>
 </filter>
 
+<filter id="baryonyx_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/baryonyx.png"/>
+</filter>
+
 <filter id="basilosaurus_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/basilosaurus.png"/>
 </filter>
@@ -97,6 +101,10 @@
 
 <filter id="iguanodon_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/iguanodon.png"/>
+</filter>
+
+<filter id="leaellynasaura_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/leaellynasaura.png"/>
 </filter>
 
 <filter id="meganeura_image" x="0%" y="0%" width="100%" height="100%">

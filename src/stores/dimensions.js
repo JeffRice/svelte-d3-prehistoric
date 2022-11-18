@@ -3,7 +3,7 @@ import { writable, derived } from 'svelte/store';
 export const width = writable();
 export const height = writable();
 
-export const panelHeight = derived(height, ($height) => ($height / 1.5));
+export const panelHeight = derived(height, ($height) => ($height / 1.75));
 export const mapHeight = derived([height, panelHeight], ([$height, $panelHeight]) => ($height - $panelHeight));
 
 export const margin = derived(panelHeight, ($panelHeight) => ({
