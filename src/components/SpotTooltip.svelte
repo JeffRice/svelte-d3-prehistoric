@@ -9,7 +9,7 @@
 
   const tf = timeFormat('%B %d, %Y');
 
-  const maxWidth = 300;
+  const maxWidth = 450;
   const margin = 10;
 
   let width = maxWidth;
@@ -28,10 +28,10 @@
   }
 </script>
 
-<div class="spot-tooltip"
+<div class="spot-tooltip {data.name}"
      bind:clientWidth={width}
-     style="left: {left}px; top: {y}px; width: {maxWidth}px;"
-     transition:fade={{duration: 200}}>
+     style="left: {left}px; top: {y - 20}px; width: {maxWidth}px;"
+     in:fade={{duration: 200}}>
   <div class="content">
     <p class="date">
       {data.date} - {data.endDate} Million Years Ago
@@ -39,7 +39,9 @@
     <h2 class="name">
       {data.name}
     </h2>
-    <img src="images/{data.name}.jpg" alt="timeline era" />
+    <div class="image">
+      <img src="images/{data.name}.jpg" alt="timeline era" />
+    </div>
     <p class=" description">
       {data.description}
     </p>
@@ -51,6 +53,7 @@
     margin-right: 1rem;
     position: absolute;
     z-index: 1000000000;
+    text-align: center;
   }
 
   .content {
@@ -81,4 +84,28 @@
     font-size: 0.8rem;
     line-height: 1.5;
   }
+
+  .Cretaceous {
+    border: 2px solid var(--cretaceous);
+  }
+  .Jurassic {
+    border: 2px solid var(--jurassic);
+  }
+  .Triassic {
+    border: 2px solid var(--triassic);
+   }
+  .Paleogene {
+    border: 2px solid var(--paleogene);
+  }
+  .Neogene {
+    border: 2px solid var(--neogene);
+  }
+  .Permian {
+    border: 2px solid var(--permian);
+  }
+  .Carboniferous {
+    border: 2px solid var(--carboniferous);
+  }
+  
+
 </style>

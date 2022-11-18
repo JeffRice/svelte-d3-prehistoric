@@ -5,7 +5,7 @@
   import { tooltip } from '../stores/eventSelections';
   import { fade, slide } from 'svelte/transition';
   import { timeFormat } from 'd3';
-  import { extractHostname } from '../utils/misc';
+  import { extractHostname, removeSpace } from '../utils/misc';
   import {
     platformFilter,
     methodFilter,
@@ -65,10 +65,6 @@
     return s.replace(new RegExp($textSearchFilter.toLowerCase().split(' or ').join('|'), 'gi'), (match) => `<span class="highlighted">${match}</span>`);
   }
 
-  function removeSpace(str) {
-    return str.replace(/\s/g, '')
-  }
-
   $: if (showTooltip) {
     scoreQuestionsExpanded = false;
 
@@ -94,7 +90,7 @@
       contentTop -= balloonPos + contentTop - window.pageYOffset - $controlsHeight - 50;
     }
 
-    // // if the tooltip hits the uper border of the SVG
+    // // if the tooltip hits the upper border of the SVG
     if ($tooltip.tp.fy + contentTop < $controlsHeight) {
       // console.log('border')
       contentTop -= $tooltip.tp.fy + contentTop - $controlsHeight;

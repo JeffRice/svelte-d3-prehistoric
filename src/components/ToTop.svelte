@@ -6,7 +6,7 @@
   let show = false;
 
   function handleScroll() {
-    if (window.pageYOffset > window.innerHeight) {
+    if (window.pageYOffset - 500 > window.innerHeight) {
       show = true;
     } else {
       show = false;
@@ -33,9 +33,9 @@
     font-family: var(--font-02);
     font-size: 0.9rem;
     background-color: var(--transparentbg);
-    border-top: 2px solid var(--usa-lightblue);
-    border-left: 2px solid var(--usa-lightblue);
-    border-right: 2px solid var(--usa-lightblue);
+    border-top: 2px solid var(--prehistoricDarkGreen);
+    border-left: 2px solid var(--prehistoricDarkGreen);
+    border-right: 2px solid var(--prehistoricDarkGreen);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     position: fixed;

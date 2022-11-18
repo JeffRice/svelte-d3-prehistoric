@@ -33904,10 +33904,14 @@ var app = (function () {
 
 	var parseDate = timeParse('%m/%d/%Y'); // extract attribution date range from data
 
+	var removeSpace = function removeSpace(str) {
+	  return str.replace(/\s/g, '');
+	}; // preload images
+
 	var preloadImages = function preloadImages(data) {
 	  // data.forEach((d) => (new Image()).src = `${images}${d.periodEra}.jpg`);
 	  data.forEach(function (d) {
-	    return new Image().src = "".concat(images).concat(d.name.toLowerCase(), ".jpg");
+	    return new Image().src = "".concat(images).concat(removeSpace(d.name.toLowerCase()), ".jpg");
 	  });
 	}; // split string in array
 
@@ -34945,12 +34949,12 @@ var app = (function () {
 	      t1 = space();
 	      span1 = element("span");
 	      span1.textContent = "To Visualization";
-	      attr_dev(span0, "class", "pseudolink svelte-gdqxus");
-	      add_location(span0, file$1, 24, 4, 500);
-	      attr_dev(span1, "class", "pseudolink svelte-gdqxus");
-	      add_location(span1, file$1, 25, 4, 583);
-	      attr_dev(div, "class", "to-top svelte-gdqxus");
-	      add_location(div, file$1, 23, 2, 434);
+	      attr_dev(span0, "class", "pseudolink svelte-y3eqgz");
+	      add_location(span0, file$1, 24, 4, 506);
+	      attr_dev(span1, "class", "pseudolink svelte-y3eqgz");
+	      add_location(span1, file$1, 25, 4, 589);
+	      attr_dev(div, "class", "to-top svelte-y3eqgz");
+	      add_location(div, file$1, 23, 2, 440);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -35092,7 +35096,7 @@ var app = (function () {
 	  var show = false;
 
 	  function handleScroll() {
-	    if (window.pageYOffset > window.innerHeight) {
+	    if (window.pageYOffset - 500 > window.innerHeight) {
 	      $$invalidate(0, show = true);
 	    } else {
 	      $$invalidate(0, show = false);
@@ -46282,7 +46286,7 @@ var app = (function () {
 	  child_ctx[27] = list[i];
 	  child_ctx[29] = i;
 	  return child_ctx;
-	} // (122:0) {#if (showTooltip)}
+	} // (118:0) {#if (showTooltip)}
 
 
 	function create_if_block$b(ctx) {
@@ -46535,7 +46539,7 @@ var app = (function () {
 	      set_style(div0, "top",
 	      /*contentTop*/
 	      ctx[6] - 10 + "px");
-	      add_location(div0, file$o, 130, 4, 4104);
+	      add_location(div0, file$o, 126, 4, 4049);
 	      attr_dev(div1, "class", "mouse-catcher");
 	      set_style(div1, "width",
 	      /*tWidth*/
@@ -46549,49 +46553,49 @@ var app = (function () {
 	      set_style(div1, "top",
 	      /*$tooltip*/
 	      ctx[10].tp.rSizeTot + 5 + "px");
-	      add_location(div1, file$o, 135, 4, 4352);
+	      add_location(div1, file$o, 131, 4, 4297);
 	      attr_dev(h2, "class", "svelte-1143ogu");
-	      add_location(h2, file$o, 148, 10, 4897);
-	      add_location(strong0, file$o, 157, 44, 5054);
-	      add_location(span0, file$o, 157, 38, 5048);
+	      add_location(h2, file$o, 144, 10, 4842);
+	      add_location(strong0, file$o, 153, 44, 4999);
+	      add_location(span0, file$o, 153, 38, 4993);
 	      attr_dev(div2, "class", "stats-item svelte-1143ogu");
-	      add_location(div2, file$o, 157, 14, 5024);
-	      add_location(strong1, file$o, 158, 44, 5158);
-	      add_location(span1, file$o, 158, 38, 5152);
+	      add_location(div2, file$o, 153, 14, 4969);
+	      add_location(strong1, file$o, 154, 44, 5103);
+	      add_location(span1, file$o, 154, 38, 5097);
 	      attr_dev(div3, "class", "stats-item svelte-1143ogu");
-	      add_location(div3, file$o, 158, 14, 5128);
-	      add_location(strong2, file$o, 159, 44, 5265);
-	      add_location(span2, file$o, 159, 38, 5259);
+	      add_location(div3, file$o, 154, 14, 5073);
+	      add_location(strong2, file$o, 155, 44, 5210);
+	      add_location(span2, file$o, 155, 38, 5204);
 	      attr_dev(div4, "class", "stats-item svelte-1143ogu");
-	      add_location(div4, file$o, 159, 14, 5235);
-	      add_location(strong3, file$o, 160, 44, 5381);
-	      add_location(span3, file$o, 160, 38, 5375);
+	      add_location(div4, file$o, 155, 14, 5180);
+	      add_location(strong3, file$o, 156, 44, 5326);
+	      add_location(span3, file$o, 156, 38, 5320);
 	      attr_dev(div5, "class", "stats-item svelte-1143ogu");
-	      add_location(div5, file$o, 160, 14, 5351);
-	      add_location(strong4, file$o, 161, 44, 5495);
-	      add_location(span4, file$o, 161, 38, 5489);
+	      add_location(div5, file$o, 156, 14, 5296);
+	      add_location(strong4, file$o, 157, 44, 5440);
+	      add_location(span4, file$o, 157, 38, 5434);
 	      attr_dev(div6, "class", "stats-item svelte-1143ogu");
-	      add_location(div6, file$o, 161, 14, 5465);
-	      add_location(strong5, file$o, 162, 44, 5594);
-	      add_location(span5, file$o, 162, 38, 5588);
+	      add_location(div6, file$o, 157, 14, 5410);
+	      add_location(strong5, file$o, 158, 44, 5539);
+	      add_location(span5, file$o, 158, 38, 5533);
 	      attr_dev(div7, "class", "stats-item svelte-1143ogu");
-	      add_location(div7, file$o, 162, 14, 5564);
+	      add_location(div7, file$o, 158, 14, 5509);
 	      attr_dev(section0, "class", "dino-stats svelte-1143ogu");
-	      add_location(section0, file$o, 154, 12, 4975);
+	      add_location(section0, file$o, 150, 12, 4920);
 	      attr_dev(div8, "class", "title-top svelte-1143ogu");
-	      add_location(div8, file$o, 149, 10, 4935);
+	      add_location(div8, file$o, 145, 10, 4880);
 	      attr_dev(span6, "class", "tag-label Cretaceous svelte-1143ogu");
-	      add_location(span6, file$o, 172, 10, 5854);
+	      add_location(span6, file$o, 168, 10, 5799);
 	      attr_dev(span7, "class", "tag-label Jurassic svelte-1143ogu");
-	      add_location(span7, file$o, 173, 10, 5920);
+	      add_location(span7, file$o, 169, 10, 5865);
 	      attr_dev(span8, "class", "tag-label Triassic svelte-1143ogu");
-	      add_location(span8, file$o, 174, 10, 5982);
+	      add_location(span8, file$o, 170, 10, 5927);
 	      attr_dev(span9, "class", "tag-label Paleogene svelte-1143ogu");
-	      add_location(span9, file$o, 175, 10, 6044);
+	      add_location(span9, file$o, 171, 10, 5989);
 	      attr_dev(span10, "class", "tag-label Neogene svelte-1143ogu");
-	      add_location(span10, file$o, 176, 10, 6108);
+	      add_location(span10, file$o, 172, 10, 6053);
 	      attr_dev(section1, "class", "era-labels svelte-1143ogu");
-	      add_location(section1, file$o, 171, 10, 5815);
+	      add_location(section1, file$o, 167, 10, 5760);
 	      if (img.src !== (img_src_value = "" + (images + removeSpace(
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase()) + ".jpg"))) attr_dev(img, "src", img_src_value);
@@ -46599,35 +46603,35 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 182, 12, 6224);
+	      add_location(img, file$o, 178, 12, 6169);
 	      attr_dev(div9, "class", "image svelte-1143ogu");
-	      add_location(div9, file$o, 181, 10, 6192);
+	      add_location(div9, file$o, 177, 10, 6137);
 	      attr_dev(div10, "class", "title title-bg svelte-1143ogu");
-	      add_location(div10, file$o, 147, 8, 4858);
+	      add_location(div10, file$o, 143, 8, 4803);
 	      attr_dev(a0, "href", a0_href_value =
 	      /*$tooltip*/
 	      ctx[10].tp.wikiURL);
 	      attr_dev(a0, "target", "_blank");
 	      attr_dev(a0, "class", "no-float svelte-1143ogu");
-	      add_location(a0, file$o, 226, 10, 7450);
+	      add_location(a0, file$o, 222, 10, 7395);
 	      attr_dev(div11, "class", "link svelte-1143ogu");
-	      add_location(div11, file$o, 224, 8, 7400);
+	      add_location(div11, file$o, 220, 8, 7345);
 	      attr_dev(h30, "class", "svelte-1143ogu");
-	      add_location(h30, file$o, 231, 10, 7599);
+	      add_location(h30, file$o, 227, 10, 7544);
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 232, 10, 7630);
+	      add_location(p, file$o, 228, 10, 7575);
 	      attr_dev(div12, "class", "description svelte-1143ogu");
-	      add_location(div12, file$o, 230, 8, 7563);
+	      add_location(div12, file$o, 226, 8, 7508);
 	      attr_dev(h31, "class", "svelte-1143ogu");
-	      add_location(h31, file$o, 292, 10, 10176);
+	      add_location(h31, file$o, 288, 10, 10121);
 	      attr_dev(a1, "href", "http://www.wikipedia.org");
 	      attr_dev(a1, "target", "_blank");
 	      attr_dev(a1, "class", "no-float svelte-1143ogu");
-	      add_location(a1, file$o, 293, 10, 10200);
+	      add_location(a1, file$o, 289, 10, 10145);
 	      attr_dev(div13, "class", "link svelte-1143ogu");
-	      add_location(div13, file$o, 291, 8, 10147);
+	      add_location(div13, file$o, 287, 8, 10092);
 	      attr_dev(div14, "class", "scroll-wrapper svelte-1143ogu");
-	      add_location(div14, file$o, 144, 6, 4772);
+	      add_location(div14, file$o, 140, 6, 4717);
 	      attr_dev(div15, "class", "content svelte-1143ogu");
 	      set_style(div15, "top",
 	      /*contentTop*/
@@ -46643,7 +46647,7 @@ var app = (function () {
 	          ctx[16].call(div15)
 	        );
 	      });
-	      add_location(div15, file$o, 140, 4, 4587);
+	      add_location(div15, file$o, 136, 4, 4532);
 	      attr_dev(div16, "class", "tooltip svelte-1143ogu");
 	      set_style(div16, "left",
 	      /*left*/
@@ -46657,7 +46661,7 @@ var app = (function () {
 	          ctx[17].call(div16)
 	        );
 	      });
-	      add_location(div16, file$o, 122, 2, 3840);
+	      add_location(div16, file$o, 118, 2, 3785);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div16, anchor);
@@ -46988,11 +46992,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$b.name,
 	    type: "if",
-	    source: "(122:0) {#if (showTooltip)}",
+	    source: "(118:0) {#if (showTooltip)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (190:8) {#if ($tooltip.tp.tooltipContent)}
+	} // (186:8) {#if ($tooltip.tp.tooltipContent)}
 
 
 	function create_if_block_1$5(ctx) {
@@ -47037,9 +47041,9 @@ var app = (function () {
 	      t3 = space();
 	      if (if_block1) if_block1.c();
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 202, 10, 6784);
+	      add_location(p, file$o, 198, 10, 6729);
 	      attr_dev(div, "class", "description svelte-1143ogu");
-	      add_location(div, file$o, 190, 8, 6412);
+	      add_location(div, file$o, 186, 8, 6357);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47135,11 +47139,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$5.name,
 	    type: "if",
-	    source: "(190:8) {#if ($tooltip.tp.tooltipContent)}",
+	    source: "(186:8) {#if ($tooltip.tp.tooltipContent)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (196:10) {#if ($tooltip.tp.periodEra)}
+	} // (192:10) {#if ($tooltip.tp.periodEra)}
 
 
 	function create_if_block_4$2(ctx) {
@@ -47167,11 +47171,11 @@ var app = (function () {
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      add_location(img, file$o, 197, 12, 6527);
+	      add_location(img, file$o, 193, 12, 6472);
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 198, 12, 6632);
+	      add_location(p, file$o, 194, 12, 6577);
 	      attr_dev(div, "class", "tt-image svelte-1143ogu");
-	      add_location(div, file$o, 196, 10, 6492);
+	      add_location(div, file$o, 192, 10, 6437);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47211,11 +47215,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$2.name,
 	    type: "if",
-	    source: "(196:10) {#if ($tooltip.tp.periodEra)}",
+	    source: "(192:10) {#if ($tooltip.tp.periodEra)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (208:14) {#if i > 0}
+	} // (204:14) {#if i > 0}
 
 
 	function create_if_block_3$3(ctx) {
@@ -47245,11 +47249,11 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 209, 16, 6934);
+	      add_location(img, file$o, 205, 16, 6879);
 	      attr_dev(div, "class", "image svelte-1143ogu");
-	      add_location(div, file$o, 208, 14, 6898);
+	      add_location(div, file$o, 204, 14, 6843);
 	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 211, 16, 7075);
+	      add_location(p, file$o, 207, 16, 7020);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47293,11 +47297,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$3.name,
 	    type: "if",
-	    source: "(208:14) {#if i > 0}",
+	    source: "(204:14) {#if i > 0}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (207:12) {#each paragraphs as paragraph, i}
+	} // (203:12) {#each paragraphs as paragraph, i}
 
 
 	function create_each_block$5(ctx) {
@@ -47328,11 +47332,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$5.name,
 	    type: "each",
-	    source: "(207:12) {#each paragraphs as paragraph, i}",
+	    source: "(203:12) {#each paragraphs as paragraph, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (215:12) {#if ($tooltip.tp.extraImage === 'yes')}
+	} // (211:12) {#if ($tooltip.tp.extraImage === 'yes')}
 
 
 	function create_if_block_2$3(ctx) {
@@ -47351,9 +47355,9 @@ var app = (function () {
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
 	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 216, 14, 7233);
+	      add_location(img, file$o, 212, 14, 7178);
 	      attr_dev(div, "class", "image svelte-1143ogu");
-	      add_location(div, file$o, 215, 12, 7199);
+	      add_location(div, file$o, 211, 12, 7144);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47384,7 +47388,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$3.name,
 	    type: "if",
-	    source: "(215:12) {#if ($tooltip.tp.extraImage === 'yes')}",
+	    source: "(211:12) {#if ($tooltip.tp.extraImage === 'yes')}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -47460,10 +47464,6 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
-	}
-
-	function removeSpace(str) {
-	  return str.replace(/\s/g, "");
 	}
 
 	function instance$p($$self, $$props, $$invalidate) {
@@ -47589,6 +47589,7 @@ var app = (function () {
 	      slide: slide,
 	      timeFormat: timeFormat,
 	      extractHostname: extractHostname,
+	      removeSpace: removeSpace,
 	      platformFilter: platformFilter,
 	      methodFilter: methodFilter,
 	      timeperiodFilter: timeperiodFilter,
@@ -47617,7 +47618,6 @@ var app = (function () {
 	      scoreQuestionsExpanded: scoreQuestionsExpanded,
 	      handleLiClick: handleLiClick,
 	      highlight: highlight,
-	      removeSpace: removeSpace,
 	      $textSearchFilter: $textSearchFilter,
 	      showTooltip: showTooltip,
 	      $width: $width,
@@ -47674,7 +47674,7 @@ var app = (function () {
 	        if (balloonPos + contentTop - window.pageYOffset < $controlsHeight) {
 	          // console.log('upper')
 	          $$invalidate(6, contentTop -= balloonPos + contentTop - window.pageYOffset - $controlsHeight - 50);
-	        } // // if the tooltip hits the uper border of the SVG
+	        } // // if the tooltip hits the upper border of the SVG
 
 
 	        if ($tooltip.tp.fy + contentTop < $controlsHeight) {
@@ -50554,8 +50554,8 @@ var app = (function () {
 	var file$v = "src/components/SpotTooltip.svelte";
 
 	function create_fragment$w(ctx) {
+	  var div2;
 	  var div1;
-	  var div0;
 	  var p0;
 	  var t0_value =
 	  /*data*/
@@ -50574,6 +50574,7 @@ var app = (function () {
 	  ctx[0].name + "";
 	  var t5;
 	  var t6;
+	  var div0;
 	  var img;
 	  var img_src_value;
 	  var t7;
@@ -50582,13 +50583,13 @@ var app = (function () {
 	  /*data*/
 	  ctx[0].description + "";
 	  var t8;
-	  var div1_resize_listener;
-	  var div1_transition;
-	  var current;
+	  var div2_class_value;
+	  var div2_resize_listener;
+	  var div2_intro;
 	  var block = {
 	    c: function create() {
+	      div2 = element("div");
 	      div1 = element("div");
-	      div0 = element("div");
 	      p0 = element("p");
 	      t0 = text(t0_value);
 	      t1 = text(" - ");
@@ -50598,84 +50599,89 @@ var app = (function () {
 	      h2 = element("h2");
 	      t5 = text(t5_value);
 	      t6 = space();
+	      div0 = element("div");
 	      img = element("img");
 	      t7 = space();
 	      p1 = element("p");
 	      t8 = text(t8_value);
-	      attr_dev(p0, "class", "date svelte-t89rcg");
-	      add_location(p0, file$v, 35, 4, 732);
-	      attr_dev(h2, "class", "name svelte-t89rcg");
-	      add_location(h2, file$v, 38, 4, 815);
+	      attr_dev(p0, "class", "date svelte-1j7wuax");
+	      add_location(p0, file$v, 35, 4, 741);
+	      attr_dev(h2, "class", "name svelte-1j7wuax");
+	      add_location(h2, file$v, 38, 4, 824);
 	      if (img.src !== (img_src_value = "images/" +
 	      /*data*/
 	      ctx[0].name + ".jpg")) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", "timeline era");
-	      add_location(img, file$v, 41, 4, 865);
-	      attr_dev(p1, "class", " description svelte-t89rcg");
-	      add_location(p1, file$v, 42, 4, 925);
-	      attr_dev(div0, "class", "content svelte-t89rcg");
-	      add_location(div0, file$v, 34, 2, 706);
-	      attr_dev(div1, "class", "spot-tooltip svelte-t89rcg");
-	      set_style(div1, "left",
+	      add_location(img, file$v, 42, 6, 900);
+	      attr_dev(div0, "class", "image");
+	      add_location(div0, file$v, 41, 4, 874);
+	      attr_dev(p1, "class", " description svelte-1j7wuax");
+	      add_location(p1, file$v, 44, 4, 971);
+	      attr_dev(div1, "class", "content svelte-1j7wuax");
+	      add_location(div1, file$v, 34, 2, 715);
+	      attr_dev(div2, "class", div2_class_value = "spot-tooltip " +
+	      /*data*/
+	      ctx[0].name + " svelte-1j7wuax");
+	      set_style(div2, "left",
 	      /*left*/
 	      ctx[3] + "px");
-	      set_style(div1, "top",
+	      set_style(div2, "top",
 	      /*y*/
-	      ctx[1] + "px");
-	      set_style(div1, "width", maxWidth$1 + "px");
+	      ctx[1] - 20 + "px");
+	      set_style(div2, "width", maxWidth$1 + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div1_elementresize_handler*/
-	          ctx[5].call(div1)
+	          /*div2_elementresize_handler*/
+	          ctx[5].call(div2)
 	        );
 	      });
-	      add_location(div1, file$v, 30, 0, 546);
+	      add_location(div2, file$v, 30, 0, 546);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, div1, anchor);
-	      append_dev(div1, div0);
-	      append_dev(div0, p0);
+	      insert_dev(target, div2, anchor);
+	      append_dev(div2, div1);
+	      append_dev(div1, p0);
 	      append_dev(p0, t0);
 	      append_dev(p0, t1);
 	      append_dev(p0, t2);
 	      append_dev(p0, t3);
-	      append_dev(div0, t4);
-	      append_dev(div0, h2);
+	      append_dev(div1, t4);
+	      append_dev(div1, h2);
 	      append_dev(h2, t5);
-	      append_dev(div0, t6);
+	      append_dev(div1, t6);
+	      append_dev(div1, div0);
 	      append_dev(div0, img);
-	      append_dev(div0, t7);
-	      append_dev(div0, p1);
+	      append_dev(div1, t7);
+	      append_dev(div1, p1);
 	      append_dev(p1, t8);
-	      div1_resize_listener = add_resize_listener(div1,
-	      /*div1_elementresize_handler*/
-	      ctx[5].bind(div1));
-	      current = true;
+	      div2_resize_listener = add_resize_listener(div2,
+	      /*div2_elementresize_handler*/
+	      ctx[5].bind(div2));
 	    },
 	    p: function update(ctx, _ref) {
 	      var _ref2 = _slicedToArray(_ref, 1),
 	          dirty = _ref2[0];
 
-	      if ((!current || dirty &
+	      if (dirty &
 	      /*data*/
-	      1) && t0_value !== (t0_value =
+	      1 && t0_value !== (t0_value =
 	      /*data*/
 	      ctx[0].date + "")) set_data_dev(t0, t0_value);
-	      if ((!current || dirty &
+	      if (dirty &
 	      /*data*/
-	      1) && t2_value !== (t2_value =
+	      1 && t2_value !== (t2_value =
 	      /*data*/
 	      ctx[0].endDate + "")) set_data_dev(t2, t2_value);
-	      if ((!current || dirty &
+	      if (dirty &
 	      /*data*/
-	      1) && t5_value !== (t5_value =
+	      1 && t5_value !== (t5_value =
 	      /*data*/
 	      ctx[0].name + "")) set_data_dev(t5, t5_value);
 
-	      if (!current || dirty &
+	      if (dirty &
 	      /*data*/
 	      1 && img.src !== (img_src_value = "images/" +
 	      /*data*/
@@ -50683,49 +50689,50 @@ var app = (function () {
 	        attr_dev(img, "src", img_src_value);
 	      }
 
-	      if ((!current || dirty &
+	      if (dirty &
 	      /*data*/
-	      1) && t8_value !== (t8_value =
+	      1 && t8_value !== (t8_value =
 	      /*data*/
 	      ctx[0].description + "")) set_data_dev(t8, t8_value);
 
-	      if (!current || dirty &
+	      if (dirty &
+	      /*data*/
+	      1 && div2_class_value !== (div2_class_value = "spot-tooltip " +
+	      /*data*/
+	      ctx[0].name + " svelte-1j7wuax")) {
+	        attr_dev(div2, "class", div2_class_value);
+	      }
+
+	      if (dirty &
 	      /*left*/
 	      8) {
-	        set_style(div1, "left",
+	        set_style(div2, "left",
 	        /*left*/
 	        ctx[3] + "px");
 	      }
 
-	      if (!current || dirty &
+	      if (dirty &
 	      /*y*/
 	      2) {
-	        set_style(div1, "top",
+	        set_style(div2, "top",
 	        /*y*/
-	        ctx[1] + "px");
+	        ctx[1] - 20 + "px");
 	      }
 	    },
 	    i: function intro(local) {
-	      if (current) return;
-	      add_render_callback(function () {
-	        if (!div1_transition) div1_transition = create_bidirectional_transition(div1, fade, {
-	          duration: 200
-	        }, true);
-	        div1_transition.run(1);
-	      });
-	      current = true;
+	      if (!div2_intro) {
+	        add_render_callback(function () {
+	          div2_intro = create_in_transition(div2, fade, {
+	            duration: 200
+	          });
+	          div2_intro.start();
+	        });
+	      }
 	    },
-	    o: function outro(local) {
-	      if (!div1_transition) div1_transition = create_bidirectional_transition(div1, fade, {
-	        duration: 200
-	      }, false);
-	      div1_transition.run(0);
-	      current = false;
-	    },
+	    o: noop,
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div1);
-	      div1_resize_listener();
-	      if (detaching && div1_transition) div1_transition.end();
+	      if (detaching) detach_dev(div2);
+	      div2_resize_listener();
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -50738,7 +50745,7 @@ var app = (function () {
 	  return block;
 	}
 
-	var maxWidth$1 = 300;
+	var maxWidth$1 = 450;
 	var margin$2 = 10;
 
 	function instance$w($$self, $$props, $$invalidate) {
@@ -50759,7 +50766,7 @@ var app = (function () {
 	      $$scope = $$props.$$scope;
 	  validate_slots("SpotTooltip", $$slots, []);
 
-	  function div1_elementresize_handler() {
+	  function div2_elementresize_handler() {
 	    width = this.clientWidth;
 	    $$invalidate(2, width);
 	  }
@@ -50815,7 +50822,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [data, y, width, left, x, div1_elementresize_handler];
+	  return [data, y, width, left, x, div2_elementresize_handler];
 	}
 
 	var SpotTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -58855,7 +58862,7 @@ var app = (function () {
 	  return FossilDetails;
 	}(SvelteComponentDev);
 
-	var file$J = "src/components/Visualization.svelte"; // (217:2) {#if (!timePoints)}
+	var file$J = "src/components/Visualization.svelte"; // (218:2) {#if (!timePoints)}
 
 	function create_if_block_2$6(ctx) {
 	  var loadinginfo;
@@ -58888,11 +58895,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$6.name,
 	    type: "if",
-	    source: "(217:2) {#if (!timePoints)}",
+	    source: "(218:2) {#if (!timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (225:6) {#if (timePoints)}
+	} // (226:6) {#if (timePoints)}
 
 
 	function create_if_block_1$9(ctx) {
@@ -59033,11 +59040,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$9.name,
 	    type: "if",
-	    source: "(225:6) {#if (timePoints)}",
+	    source: "(226:6) {#if (timePoints)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (237:4) {#if ($fossilDatapoints)}
+	} // (238:4) {#if ($fossilDatapoints)}
 
 
 	function create_if_block$k(ctx) {
@@ -59052,7 +59059,7 @@ var app = (function () {
 	      div = element("div");
 	      create_component(fossildetails.$$.fragment);
 	      attr_dev(div, "class", "fossil-wrapper");
-	      add_location(div, file$J, 237, 6, 8328);
+	      add_location(div, file$J, 238, 6, 8431);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -59077,7 +59084,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$k.name,
 	    type: "if",
-	    source: "(237:4) {#if ($fossilDatapoints)}",
+	    source: "(238:4) {#if ($fossilDatapoints)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -59170,7 +59177,7 @@ var app = (function () {
 	          ctx[10].call(div0)
 	        );
 	      });
-	      add_location(div0, file$J, 220, 4, 7785);
+	      add_location(div0, file$J, 221, 4, 7888);
 	      attr_dev(div1, "class", "draw-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
 	        return (
@@ -59178,12 +59185,12 @@ var app = (function () {
 	          ctx[12].call(div1)
 	        );
 	      });
-	      add_location(div1, file$J, 223, 4, 7899);
+	      add_location(div1, file$J, 224, 4, 8002);
 	      attr_dev(div2, "class", "sticky-wrapper svelte-1k0l8ja");
-	      add_location(div2, file$J, 219, 2, 7752);
+	      add_location(div2, file$J, 220, 2, 7855);
 	      attr_dev(div3, "class", "table-wrapper svelte-1k0l8ja");
-	      add_location(div3, file$J, 241, 2, 8408);
-	      add_location(div4, file$J, 244, 2, 8474);
+	      add_location(div3, file$J, 242, 2, 8511);
+	      add_location(div4, file$J, 245, 2, 8577);
 	      attr_dev(div5, "id", "viz");
 	      attr_dev(div5, "class", "visualization-wrapper svelte-1k0l8ja");
 	      add_render_callback(function () {
@@ -59192,7 +59199,7 @@ var app = (function () {
 	          ctx[13].call(div5)
 	        );
 	      });
-	      add_location(div5, file$J, 215, 0, 7629);
+	      add_location(div5, file$J, 216, 0, 7732);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -59744,9 +59751,10 @@ var app = (function () {
 	        })). //   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
 	        //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
 	        //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
-	        force("charge", forceManyBody().strength(function (d) {
-	          return -($sizeTotalRScale(d.size) + 10) * 10;
-	        }).distanceMax(500).distanceMin(50));
+	        force("collide", forceCollide().strength(1).radius(function (d) {
+	          return $sizeTotalRScale(d.size) * 1.15;
+	        })); //  .force('charge', forceManyBody().strength((d) => -($sizeTotalRScale(d.size) + 10) * 10).distanceMax(500).distanceMin(50));
+
 	        simulation.nodes(scaledData).alpha(0.8).tick(300); //  console.log(scaledData)
 	        // finally set the global timePoints variable
 

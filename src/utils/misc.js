@@ -16,10 +16,15 @@ export const getTimeRange = (data) => {
   return([new Date(minRange), new Date(maxRange)]);
 };
 
+// remove space from string
+export const removeSpace = (str) => {
+  return str.replace(/\s/g, '')
+}
+
 // preload images
 export const preloadImages = (data) => {
  // data.forEach((d) => (new Image()).src = `${images}${d.periodEra}.jpg`);
-  data.forEach((d) => (new Image()).src = `${images}${d.name.toLowerCase()}.jpg`);
+  data.forEach((d) => (new Image()).src = `${images}${removeSpace(d.name.toLowerCase())}.jpg`);
 }
 
 // split string in array
