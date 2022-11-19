@@ -241,6 +241,7 @@ section {
   z-index: -1;
   height: 811px;
   opacity: 75%;
+  overflow: hidden;
 }
 
 @media (min-width: 980px) {
