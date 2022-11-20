@@ -35653,16 +35653,16 @@ var app = (function () {
 	      p0.textContent = "The Prehistoric Life Timeline Mapping is an interactive, open-source database that shows a variety of information about prehistoric creatures. They are mapped to their original geographic location and period in time they existed. It also maps fossils to their current era discovery sites.";
 	      t4 = space();
 	      p1 = element("p");
-	      t5 = text("This dataset contains ");
+	      t5 = text("The timeline visualization contains ");
 	      em0 = element("em");
 	      t6 = text(t6_value);
-	      t7 = text(" creatures");
+	      t7 = text(" Prehistoric Creatures");
 	      t8 = text(" that existed up to ");
 	      em1 = element("em");
-	      em1.textContent = "300 million years ago";
+	      em1.textContent = "305 million years ago";
 	      t10 = space();
 	      p2 = element("p");
-	      t11 = text("The fossil dataset contains a total of ");
+	      t11 = text("The mapped fossil datasets contain a total of ");
 	      em2 = element("em");
 	      t12 = text(t12_value);
 	      t13 = text(" Dinosaur fossils");
@@ -35757,58 +35757,58 @@ var app = (function () {
 	      attr_dev(label0, "class", "lbl-toggle top");
 	      add_location(label0, file$3, 47, 4, 1383);
 	      add_location(p0, file$3, 49, 6, 1503);
-	      add_location(em0, file$3, 53, 30, 1855);
-	      add_location(em1, file$3, 53, 82, 1907);
+	      add_location(em0, file$3, 53, 44, 1869);
+	      add_location(em1, file$3, 53, 108, 1933);
 	      add_location(p1, file$3, 52, 6, 1821);
-	      add_location(em2, file$3, 56, 47, 2008);
-	      add_location(p2, file$3, 55, 6, 1957);
-	      add_location(em3, file$3, 59, 42, 2264);
-	      add_location(li0, file$3, 59, 38, 2260);
-	      add_location(em4, file$3, 60, 42, 2401);
-	      add_location(li1, file$3, 60, 38, 2397);
-	      add_location(em5, file$3, 61, 42, 2534);
-	      add_location(li2, file$3, 61, 38, 2530);
-	      add_location(ul0, file$3, 58, 37, 2217);
+	      add_location(em2, file$3, 56, 54, 2041);
+	      add_location(p2, file$3, 55, 6, 1983);
+	      add_location(em3, file$3, 59, 42, 2297);
+	      add_location(li0, file$3, 59, 38, 2293);
+	      add_location(em4, file$3, 60, 42, 2434);
+	      add_location(li1, file$3, 60, 38, 2430);
+	      add_location(em5, file$3, 61, 42, 2567);
+	      add_location(li2, file$3, 61, 38, 2563);
+	      add_location(ul0, file$3, 58, 37, 2250);
 	      attr_dev(div0, "class", "collapsible-content");
 	      add_location(div0, file$3, 48, 4, 1463);
 	      attr_dev(input1, "id", "collapsible-how-to");
 	      attr_dev(input1, "class", "toggle");
 	      attr_dev(input1, "type", "checkbox");
-	      add_location(input1, file$3, 65, 4, 2721);
+	      add_location(input1, file$3, 65, 4, 2754);
 	      attr_dev(label1, "for", "collapsible-how-to");
 	      attr_dev(label1, "class", "lbl-toggle top");
-	      add_location(label1, file$3, 66, 4, 2788);
-	      add_location(em6, file$3, 70, 8, 2929);
+	      add_location(label1, file$3, 66, 4, 2821);
+	      add_location(em6, file$3, 70, 8, 2962);
 	      attr_dev(span0, "class", "pseudolink copy-tooltip");
-	      add_location(span0, file$3, 70, 75, 2996);
+	      add_location(span0, file$3, 70, 75, 3029);
 	      attr_dev(span1, "class", "pseudolink copy-tooltip");
-	      add_location(span1, file$3, 70, 424, 3345);
+	      add_location(span1, file$3, 70, 424, 3378);
 	      attr_dev(span2, "class", "pseudolink copy-tooltip");
-	      add_location(span2, file$3, 70, 746, 3667);
+	      add_location(span2, file$3, 70, 746, 3700);
 	      attr_dev(span3, "class", "pseudolink copy-tooltip");
-	      add_location(span3, file$3, 70, 1074, 3995);
+	      add_location(span3, file$3, 70, 1074, 4028);
 	      attr_dev(span4, "class", "pseudolink copy-tooltip");
-	      add_location(span4, file$3, 70, 1390, 4311);
+	      add_location(span4, file$3, 70, 1390, 4344);
 	      attr_dev(span5, "class", "pseudolink copy-tooltip");
-	      add_location(span5, file$3, 70, 1630, 4551);
-	      add_location(p3, file$3, 69, 6, 2917);
-	      add_location(em7, file$3, 73, 8, 4947);
-	      add_location(p4, file$3, 72, 6, 4935);
-	      add_location(em8, file$3, 76, 8, 5459);
-	      add_location(p5, file$3, 75, 6, 5447);
-	      add_location(em9, file$3, 79, 8, 6023);
-	      add_location(em10, file$3, 79, 261, 6276);
+	      add_location(span5, file$3, 70, 1630, 4584);
+	      add_location(p3, file$3, 69, 6, 2950);
+	      add_location(em7, file$3, 73, 8, 4980);
+	      add_location(p4, file$3, 72, 6, 4968);
+	      add_location(em8, file$3, 76, 8, 5492);
+	      add_location(p5, file$3, 75, 6, 5480);
+	      add_location(em9, file$3, 79, 8, 6056);
+	      add_location(em10, file$3, 79, 261, 6309);
 	      attr_dev(a, "href", "https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public");
-	      add_location(a, file$3, 79, 308, 6323);
-	      add_location(p6, file$3, 78, 6, 6011);
+	      add_location(a, file$3, 79, 308, 6356);
+	      add_location(p6, file$3, 78, 6, 6044);
 	      attr_dev(div1, "class", "collapsible-content");
-	      add_location(div1, file$3, 67, 4, 2876);
-	      add_location(p7, file$3, 83, 4, 6484);
-	      add_location(li3, file$3, 87, 6, 6648);
-	      add_location(li4, file$3, 88, 6, 6715);
-	      add_location(li5, file$3, 89, 6, 6784);
+	      add_location(div1, file$3, 67, 4, 2909);
+	      add_location(p7, file$3, 83, 4, 6517);
+	      add_location(li3, file$3, 87, 6, 6681);
+	      add_location(li4, file$3, 88, 6, 6748);
+	      add_location(li5, file$3, 89, 6, 6817);
 	      attr_dev(ul1, "class", "filter-list");
-	      add_location(ul1, file$3, 86, 4, 6617);
+	      add_location(ul1, file$3, 86, 4, 6650);
 	      attr_dev(section, "class", "content transparent-bg no-upper-margin");
 	      add_location(section, file$3, 45, 2, 1250);
 	    },
@@ -46316,124 +46316,111 @@ var app = (function () {
 	  child_ctx[27] = list[i];
 	  child_ctx[29] = i;
 	  return child_ctx;
-	} // (118:0) {#if (showTooltip)}
+	} // (111:0) {#if (showTooltip)}
 
 
 	function create_if_block$b(ctx) {
-	  var div16;
+	  var div14;
 	  var eventtooltipcross;
 	  var t0;
 	  var div0;
 	  var t1;
 	  var div1;
 	  var t2;
-	  var div15;
-	  var div14;
+	  var div13;
+	  var div12;
 	  var div10;
-	  var h2;
+	  var section0;
+	  var span0;
 	  var t3_value =
 	  /*$tooltip*/
 	  ctx[10].tp.name + "";
 	  var t3;
 	  var t4;
-	  var div8;
-	  var section0;
-	  var div2;
-	  var span0;
-	  var strong0;
+	  var t5;
 	  var t6;
-	  var t7_value =
-	  /*$tooltip*/
-	  ctx[10].tp.size + "";
 	  var t7;
 	  var t8;
 	  var t9;
-	  var div3;
-	  var span1;
-	  var strong1;
+	  var t10;
 	  var t11;
-	  var t12_value =
+	  var div8;
+	  var section1;
+	  var div2;
+	  var span1;
+	  var strong0;
+	  var t13;
+	  var t14_value =
+	  /*$tooltip*/
+	  ctx[10].tp.size + "";
+	  var t14;
+	  var t15;
+	  var t16;
+	  var div3;
+	  var span2;
+	  var strong1;
+	  var t18;
+	  var t19_value =
 	  /*$tooltip*/
 	  ctx[10].tp.weight + "";
-	  var t12;
-	  var t13;
-	  var t14;
-	  var div4;
-	  var span2;
-	  var strong2;
-	  var t16;
-	  var t17_value =
-	  /*$tooltip*/
-	  ctx[10].tp.testDate + "";
-	  var t17;
-	  var t18;
 	  var t19;
-	  var div5;
-	  var span3;
-	  var strong3;
+	  var t20;
 	  var t21;
-	  var t22_value =
-	  /*$tooltip*/
-	  ctx[10].tp.testDate + "";
-	  var t22;
+	  var div4;
+	  var span3;
+	  var strong2;
 	  var t23;
+	  var t24_value =
+	  /*$tooltip*/
+	  ctx[10].tp.startDate + "";
 	  var t24;
-	  var div6;
-	  var span4;
-	  var strong4;
+	  var t25;
 	  var t26;
-	  var t27_value =
+	  var div5;
+	  var span4;
+	  var strong3;
+	  var t28;
+	  var t29_value =
+	  /*$tooltip*/
+	  ctx[10].tp.endDate + "";
+	  var t29;
+	  var t30;
+	  var t31;
+	  var div6;
+	  var span5;
+	  var strong4;
+	  var t33;
+	  var t34_value =
 	  /*$tooltip*/
 	  ctx[10].tp.diet + "";
-	  var t27;
-	  var t28;
+	  var t34;
+	  var t35;
 	  var div7;
-	  var span5;
+	  var span6;
 	  var strong5;
-	  var t30;
-	  var t31_value =
+	  var t37;
+	  var t38_value =
 	  /*$tooltip*/
 	  ctx[10].tp.disinformantNation + "";
-	  var t31;
-	  var t32;
-	  var section1;
-	  var span6;
-	  var t34;
-	  var span7;
-	  var t36;
-	  var span8;
 	  var t38;
-	  var span9;
-	  var t40;
-	  var span10;
-	  var t42;
+	  var t39;
 	  var div9;
 	  var img;
 	  var img_src_value;
 	  var img_alt_value;
-	  var t43;
-	  var t44;
+	  var t40;
+	  var t41;
 	  var div11;
-	  var t45;
-	  var a0;
-	  var t46_value =
+	  var t42;
+	  var a;
+	  var t43_value =
 	  /*$tooltip*/
 	  ctx[10].tp.name + "";
-	  var t46;
-	  var a0_href_value;
-	  var t47;
-	  var div12;
-	  var h30;
-	  var t49;
-	  var p;
-	  var t51;
-	  var div13;
-	  var h31;
-	  var t53;
-	  var a1;
-	  var div15_resize_listener;
-	  var div16_resize_listener;
-	  var div16_intro;
+	  var t43;
+	  var a_href_value;
+	  var div13_resize_listener;
+	  var div14_resize_listener;
+	  var div14_intro;
 	  var current;
 	  var mounted;
 	  var dispose;
@@ -46451,111 +46438,117 @@ var app = (function () {
 	    },
 	    $$inline: true
 	  });
-	  var if_block =
+	  var if_block0 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra === "Cretaceous" && create_if_block_11(ctx);
+	  var if_block1 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra === "Jurassic" && create_if_block_10(ctx);
+	  var if_block2 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra === "Triassic" && create_if_block_9(ctx);
+	  var if_block3 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra === "Paleogene" && create_if_block_8(ctx);
+	  var if_block4 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra === "Neogene" && create_if_block_7(ctx);
+	  var if_block5 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra === "Permian" && create_if_block_6(ctx);
+	  var if_block6 =
+	  /*$tooltip*/
+	  ctx[10].tp.periodEra === "Carboniferous" && create_if_block_5(ctx);
+	  var if_block7 =
 	  /*$tooltip*/
 	  ctx[10].tp.tooltipContent && create_if_block_1$5(ctx);
 	  var block = {
 	    c: function create() {
-	      div16 = element("div");
+	      div14 = element("div");
 	      create_component(eventtooltipcross.$$.fragment);
 	      t0 = space();
 	      div0 = element("div");
 	      t1 = space();
 	      div1 = element("div");
 	      t2 = space();
-	      div15 = element("div");
-	      div14 = element("div");
+	      div13 = element("div");
+	      div12 = element("div");
 	      div10 = element("div");
-	      h2 = element("h2");
+	      section0 = element("section");
+	      span0 = element("span");
 	      t3 = text(t3_value);
 	      t4 = space();
+	      if (if_block0) if_block0.c();
+	      t5 = space();
+	      if (if_block1) if_block1.c();
+	      t6 = space();
+	      if (if_block2) if_block2.c();
+	      t7 = space();
+	      if (if_block3) if_block3.c();
+	      t8 = space();
+	      if (if_block4) if_block4.c();
+	      t9 = space();
+	      if (if_block5) if_block5.c();
+	      t10 = space();
+	      if (if_block6) if_block6.c();
+	      t11 = space();
 	      div8 = element("div");
-	      section0 = element("section");
+	      section1 = element("section");
 	      div2 = element("div");
-	      span0 = element("span");
+	      span1 = element("span");
 	      strong0 = element("strong");
 	      strong0.textContent = "Length:";
-	      t6 = space();
-	      t7 = text(t7_value);
-	      t8 = text(" ft");
-	      t9 = space();
+	      t13 = space();
+	      t14 = text(t14_value);
+	      t15 = text(" ft");
+	      t16 = space();
 	      div3 = element("div");
-	      span1 = element("span");
+	      span2 = element("span");
 	      strong1 = element("strong");
 	      strong1.textContent = "Weight:";
-	      t11 = space();
-	      t12 = text(t12_value);
-	      t13 = text(" lbs");
-	      t14 = space();
-	      div4 = element("div");
-	      span2 = element("span");
-	      strong2 = element("strong");
-	      strong2.textContent = "Earliest Date:";
-	      t16 = space();
-	      t17 = text(t17_value);
-	      t18 = text(" MYA");
-	      t19 = space();
-	      div5 = element("div");
-	      span3 = element("span");
-	      strong3 = element("strong");
-	      strong3.textContent = "Latest Date:";
+	      t18 = space();
+	      t19 = text(t19_value);
+	      t20 = text(" lbs");
 	      t21 = space();
-	      t22 = text(t22_value);
-	      t23 = text(" MYA");
-	      t24 = space();
-	      div6 = element("div");
+	      div4 = element("div");
+	      span3 = element("span");
+	      strong2 = element("strong");
+	      strong2.textContent = "Min Date:";
+	      t23 = space();
+	      t24 = text(t24_value);
+	      t25 = text(" MYA");
+	      t26 = space();
+	      div5 = element("div");
 	      span4 = element("span");
+	      strong3 = element("strong");
+	      strong3.textContent = "Max Date:";
+	      t28 = space();
+	      t29 = text(t29_value);
+	      t30 = text(" MYA");
+	      t31 = space();
+	      div6 = element("div");
+	      span5 = element("span");
 	      strong4 = element("strong");
 	      strong4.textContent = "Diet:";
-	      t26 = space();
-	      t27 = text(t27_value);
-	      t28 = space();
+	      t33 = space();
+	      t34 = text(t34_value);
+	      t35 = space();
 	      div7 = element("div");
-	      span5 = element("span");
+	      span6 = element("span");
 	      strong5 = element("strong");
 	      strong5.textContent = "Regions:";
-	      t30 = space();
-	      t31 = text(t31_value);
-	      t32 = space();
-	      section1 = element("section");
-	      span6 = element("span");
-	      span6.textContent = "Cretaceous";
-	      t34 = space();
-	      span7 = element("span");
-	      span7.textContent = "Jurassic";
-	      t36 = space();
-	      span8 = element("span");
-	      span8.textContent = "Triassic";
-	      t38 = space();
-	      span9 = element("span");
-	      span9.textContent = "Paleogene";
-	      t40 = space();
-	      span10 = element("span");
-	      span10.textContent = "Neogene";
-	      t42 = space();
+	      t37 = space();
+	      t38 = text(t38_value);
+	      t39 = space();
 	      div9 = element("div");
 	      img = element("img");
-	      t43 = space();
-	      if (if_block) if_block.c();
-	      t44 = space();
+	      t40 = space();
+	      if (if_block7) if_block7.c();
+	      t41 = space();
 	      div11 = element("div");
-	      t45 = text("Wiki Link:\n          ");
-	      a0 = element("a");
-	      t46 = text(t46_value);
-	      t47 = space();
-	      div12 = element("div");
-	      h30 = element("h3");
-	      h30.textContent = "Description";
-	      t49 = space();
-	      p = element("p");
-	      p.textContent = "short description here";
-	      t51 = space();
-	      div13 = element("div");
-	      h31 = element("h3");
-	      h31.textContent = "Link";
-	      t53 = space();
-	      a1 = element("a");
-	      a1.textContent = "wikipedia link";
+	      t42 = text("Wiki Link:\n          ");
+	      a = element("a");
+	      t43 = text(t43_value);
 	      attr_dev(div0, "class", "mouse-catcher");
 	      set_style(div0, "width",
 	      /*tWidth*/
@@ -46569,7 +46562,7 @@ var app = (function () {
 	      set_style(div0, "top",
 	      /*contentTop*/
 	      ctx[6] - 10 + "px");
-	      add_location(div0, file$o, 126, 4, 4049);
+	      add_location(div0, file$o, 119, 4, 3732);
 	      attr_dev(div1, "class", "mouse-catcher");
 	      set_style(div1, "width",
 	      /*tWidth*/
@@ -46583,220 +46576,190 @@ var app = (function () {
 	      set_style(div1, "top",
 	      /*$tooltip*/
 	      ctx[10].tp.rSizeTot + 5 + "px");
-	      add_location(div1, file$o, 131, 4, 4297);
-	      attr_dev(h2, "class", "svelte-1143ogu");
-	      add_location(h2, file$o, 144, 10, 4842);
-	      add_location(strong0, file$o, 153, 44, 4999);
-	      add_location(span0, file$o, 153, 38, 4993);
-	      attr_dev(div2, "class", "stats-item svelte-1143ogu");
-	      add_location(div2, file$o, 153, 14, 4969);
-	      add_location(strong1, file$o, 154, 44, 5103);
-	      add_location(span1, file$o, 154, 38, 5097);
-	      attr_dev(div3, "class", "stats-item svelte-1143ogu");
-	      add_location(div3, file$o, 154, 14, 5073);
-	      add_location(strong2, file$o, 155, 44, 5210);
-	      add_location(span2, file$o, 155, 38, 5204);
-	      attr_dev(div4, "class", "stats-item svelte-1143ogu");
-	      add_location(div4, file$o, 155, 14, 5180);
-	      add_location(strong3, file$o, 156, 44, 5326);
-	      add_location(span3, file$o, 156, 38, 5320);
-	      attr_dev(div5, "class", "stats-item svelte-1143ogu");
-	      add_location(div5, file$o, 156, 14, 5296);
-	      add_location(strong4, file$o, 157, 44, 5440);
-	      add_location(span4, file$o, 157, 38, 5434);
-	      attr_dev(div6, "class", "stats-item svelte-1143ogu");
-	      add_location(div6, file$o, 157, 14, 5410);
-	      add_location(strong5, file$o, 158, 44, 5539);
-	      add_location(span5, file$o, 158, 38, 5533);
-	      attr_dev(div7, "class", "stats-item svelte-1143ogu");
-	      add_location(div7, file$o, 158, 14, 5509);
-	      attr_dev(section0, "class", "dino-stats svelte-1143ogu");
-	      add_location(section0, file$o, 150, 12, 4920);
-	      attr_dev(div8, "class", "title-top svelte-1143ogu");
-	      add_location(div8, file$o, 145, 10, 4880);
-	      attr_dev(span6, "class", "tag-label Cretaceous svelte-1143ogu");
-	      add_location(span6, file$o, 168, 10, 5799);
-	      attr_dev(span7, "class", "tag-label Jurassic svelte-1143ogu");
-	      add_location(span7, file$o, 169, 10, 5865);
-	      attr_dev(span8, "class", "tag-label Triassic svelte-1143ogu");
-	      add_location(span8, file$o, 170, 10, 5927);
-	      attr_dev(span9, "class", "tag-label Paleogene svelte-1143ogu");
-	      add_location(span9, file$o, 171, 10, 5989);
-	      attr_dev(span10, "class", "tag-label Neogene svelte-1143ogu");
-	      add_location(span10, file$o, 172, 10, 6053);
-	      attr_dev(section1, "class", "era-labels svelte-1143ogu");
-	      add_location(section1, file$o, 167, 10, 5760);
+	      add_location(div1, file$o, 124, 4, 3980);
+	      attr_dev(span0, "class", "title-header svelte-1upu3tj");
+	      add_location(span0, file$o, 140, 10, 4576);
+	      attr_dev(section0, "class", "era-labels svelte-1upu3tj");
+	      add_location(section0, file$o, 138, 10, 4536);
+	      add_location(strong0, file$o, 172, 44, 5776);
+	      add_location(span1, file$o, 172, 38, 5770);
+	      attr_dev(div2, "class", "stats-item svelte-1upu3tj");
+	      add_location(div2, file$o, 172, 14, 5746);
+	      add_location(strong1, file$o, 173, 44, 5880);
+	      add_location(span2, file$o, 173, 38, 5874);
+	      attr_dev(div3, "class", "stats-item svelte-1upu3tj");
+	      add_location(div3, file$o, 173, 14, 5850);
+	      add_location(strong2, file$o, 174, 44, 5987);
+	      add_location(span3, file$o, 174, 38, 5981);
+	      attr_dev(div4, "class", "stats-item svelte-1upu3tj");
+	      add_location(div4, file$o, 174, 14, 5957);
+	      add_location(strong3, file$o, 175, 44, 6099);
+	      add_location(span4, file$o, 175, 38, 6093);
+	      attr_dev(div5, "class", "stats-item svelte-1upu3tj");
+	      add_location(div5, file$o, 175, 14, 6069);
+	      add_location(strong4, file$o, 176, 44, 6209);
+	      add_location(span5, file$o, 176, 38, 6203);
+	      attr_dev(div6, "class", "stats-item svelte-1upu3tj");
+	      add_location(div6, file$o, 176, 14, 6179);
+	      add_location(strong5, file$o, 177, 44, 6308);
+	      add_location(span6, file$o, 177, 38, 6302);
+	      attr_dev(div7, "class", "stats-item svelte-1upu3tj");
+	      add_location(div7, file$o, 177, 14, 6278);
+	      attr_dev(section1, "class", "dino-stats svelte-1upu3tj");
+	      add_location(section1, file$o, 171, 12, 5701);
+	      attr_dev(div8, "class", "title-top");
+	      add_location(div8, file$o, 166, 10, 5661);
 	      if (img.src !== (img_src_value = "" + (images + removeSpace(
 	      /*$tooltip*/
 	      ctx[10].tp.name.toLowerCase()) + ".jpg"))) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 178, 12, 6169);
-	      attr_dev(div9, "class", "image svelte-1143ogu");
-	      add_location(div9, file$o, 177, 10, 6137);
-	      attr_dev(div10, "class", "title title-bg svelte-1143ogu");
-	      add_location(div10, file$o, 143, 8, 4803);
-	      attr_dev(a0, "href", a0_href_value =
+	      attr_dev(img, "class", "svelte-1upu3tj");
+	      add_location(img, file$o, 190, 12, 6481);
+	      attr_dev(div9, "class", "image svelte-1upu3tj");
+	      add_location(div9, file$o, 189, 10, 6449);
+	      attr_dev(div10, "class", "title title-bg svelte-1upu3tj");
+	      add_location(div10, file$o, 136, 8, 4486);
+	      attr_dev(a, "href", a_href_value =
 	      /*$tooltip*/
 	      ctx[10].tp.wikiURL);
-	      attr_dev(a0, "target", "_blank");
-	      attr_dev(a0, "class", "no-float svelte-1143ogu");
-	      add_location(a0, file$o, 222, 10, 7395);
-	      attr_dev(div11, "class", "link svelte-1143ogu");
-	      add_location(div11, file$o, 220, 8, 7345);
-	      attr_dev(h30, "class", "svelte-1143ogu");
-	      add_location(h30, file$o, 227, 10, 7544);
-	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 228, 10, 7575);
-	      attr_dev(div12, "class", "description svelte-1143ogu");
-	      add_location(div12, file$o, 226, 8, 7508);
-	      attr_dev(h31, "class", "svelte-1143ogu");
-	      add_location(h31, file$o, 288, 10, 10121);
-	      attr_dev(a1, "href", "http://www.wikipedia.org");
-	      attr_dev(a1, "target", "_blank");
-	      attr_dev(a1, "class", "no-float svelte-1143ogu");
-	      add_location(a1, file$o, 289, 10, 10145);
-	      attr_dev(div13, "class", "link svelte-1143ogu");
-	      add_location(div13, file$o, 287, 8, 10092);
-	      attr_dev(div14, "class", "scroll-wrapper svelte-1143ogu");
-	      add_location(div14, file$o, 140, 6, 4717);
-	      attr_dev(div15, "class", "content svelte-1143ogu");
-	      set_style(div15, "top",
+	      attr_dev(a, "target", "_blank");
+	      attr_dev(a, "class", "no-float svelte-1upu3tj");
+	      add_location(a, file$o, 233, 10, 7662);
+	      attr_dev(div11, "class", "link svelte-1upu3tj");
+	      add_location(div11, file$o, 231, 8, 7612);
+	      attr_dev(div12, "class", "scroll-wrapper svelte-1upu3tj");
+	      add_location(div12, file$o, 133, 6, 4400);
+	      attr_dev(div13, "class", "content svelte-1upu3tj");
+	      set_style(div13, "top",
 	      /*contentTop*/
 	      ctx[6] + "px");
-	      set_style(div15, "margin", "0px " + (
+	      set_style(div13, "margin", "0px " + (
 	      /*$tooltip*/
 	      ctx[10].tp.rSizeTot / 3 +
 	      /*offset*/
 	      ctx[11].left) + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div15_elementresize_handler*/
-	          ctx[16].call(div15)
+	          /*div13_elementresize_handler*/
+	          ctx[16].call(div13)
 	        );
 	      });
-	      add_location(div15, file$o, 136, 4, 4532);
-	      attr_dev(div16, "class", "tooltip svelte-1143ogu");
-	      set_style(div16, "left",
+	      add_location(div13, file$o, 129, 4, 4215);
+	      attr_dev(div14, "class", "tooltip svelte-1upu3tj");
+	      set_style(div14, "left",
 	      /*left*/
 	      ctx[4] + "px");
-	      set_style(div16, "top",
+	      set_style(div14, "top",
 	      /*top*/
 	      ctx[5] + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div16_elementresize_handler*/
-	          ctx[17].call(div16)
+	          /*div14_elementresize_handler*/
+	          ctx[17].call(div14)
 	        );
 	      });
-	      add_location(div16, file$o, 118, 2, 3785);
+	      add_location(div14, file$o, 111, 2, 3468);
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, div16, anchor);
-	      mount_component(eventtooltipcross, div16, null);
-	      append_dev(div16, t0);
-	      append_dev(div16, div0);
-	      append_dev(div16, t1);
-	      append_dev(div16, div1);
-	      append_dev(div16, t2);
-	      append_dev(div16, div15);
-	      append_dev(div15, div14);
-	      append_dev(div14, div10);
-	      append_dev(div10, h2);
-	      append_dev(h2, t3);
-	      append_dev(div10, t4);
-	      append_dev(div10, div8);
-	      append_dev(div8, section0);
-	      append_dev(section0, div2);
-	      append_dev(div2, span0);
-	      append_dev(span0, strong0);
-	      append_dev(span0, t6);
-	      append_dev(span0, t7);
-	      append_dev(span0, t8);
+	      insert_dev(target, div14, anchor);
+	      mount_component(eventtooltipcross, div14, null);
+	      append_dev(div14, t0);
+	      append_dev(div14, div0);
+	      append_dev(div14, t1);
+	      append_dev(div14, div1);
+	      append_dev(div14, t2);
+	      append_dev(div14, div13);
+	      append_dev(div13, div12);
+	      append_dev(div12, div10);
+	      append_dev(div10, section0);
+	      append_dev(section0, span0);
+	      append_dev(span0, t3);
+	      append_dev(section0, t4);
+	      if (if_block0) if_block0.m(section0, null);
+	      append_dev(section0, t5);
+	      if (if_block1) if_block1.m(section0, null);
+	      append_dev(section0, t6);
+	      if (if_block2) if_block2.m(section0, null);
+	      append_dev(section0, t7);
+	      if (if_block3) if_block3.m(section0, null);
+	      append_dev(section0, t8);
+	      if (if_block4) if_block4.m(section0, null);
 	      append_dev(section0, t9);
-	      append_dev(section0, div3);
-	      append_dev(div3, span1);
-	      append_dev(span1, strong1);
-	      append_dev(span1, t11);
-	      append_dev(span1, t12);
+	      if (if_block5) if_block5.m(section0, null);
+	      append_dev(section0, t10);
+	      if (if_block6) if_block6.m(section0, null);
+	      append_dev(div10, t11);
+	      append_dev(div10, div8);
+	      append_dev(div8, section1);
+	      append_dev(section1, div2);
+	      append_dev(div2, span1);
+	      append_dev(span1, strong0);
 	      append_dev(span1, t13);
-	      append_dev(section0, t14);
-	      append_dev(section0, div4);
-	      append_dev(div4, span2);
-	      append_dev(span2, strong2);
-	      append_dev(span2, t16);
-	      append_dev(span2, t17);
+	      append_dev(span1, t14);
+	      append_dev(span1, t15);
+	      append_dev(section1, t16);
+	      append_dev(section1, div3);
+	      append_dev(div3, span2);
+	      append_dev(span2, strong1);
 	      append_dev(span2, t18);
-	      append_dev(section0, t19);
-	      append_dev(section0, div5);
-	      append_dev(div5, span3);
-	      append_dev(span3, strong3);
-	      append_dev(span3, t21);
-	      append_dev(span3, t22);
+	      append_dev(span2, t19);
+	      append_dev(span2, t20);
+	      append_dev(section1, t21);
+	      append_dev(section1, div4);
+	      append_dev(div4, span3);
+	      append_dev(span3, strong2);
 	      append_dev(span3, t23);
-	      append_dev(section0, t24);
-	      append_dev(section0, div6);
-	      append_dev(div6, span4);
-	      append_dev(span4, strong4);
-	      append_dev(span4, t26);
-	      append_dev(span4, t27);
-	      append_dev(section0, t28);
-	      append_dev(section0, div7);
-	      append_dev(div7, span5);
-	      append_dev(span5, strong5);
-	      append_dev(span5, t30);
-	      append_dev(span5, t31);
-	      append_dev(div10, t32);
-	      append_dev(div10, section1);
-	      append_dev(section1, span6);
-	      append_dev(section1, t34);
-	      append_dev(section1, span7);
-	      append_dev(section1, t36);
-	      append_dev(section1, span8);
-	      append_dev(section1, t38);
-	      append_dev(section1, span9);
-	      append_dev(section1, t40);
-	      append_dev(section1, span10);
-	      append_dev(div10, t42);
+	      append_dev(span3, t24);
+	      append_dev(span3, t25);
+	      append_dev(section1, t26);
+	      append_dev(section1, div5);
+	      append_dev(div5, span4);
+	      append_dev(span4, strong3);
+	      append_dev(span4, t28);
+	      append_dev(span4, t29);
+	      append_dev(span4, t30);
+	      append_dev(section1, t31);
+	      append_dev(section1, div6);
+	      append_dev(div6, span5);
+	      append_dev(span5, strong4);
+	      append_dev(span5, t33);
+	      append_dev(span5, t34);
+	      append_dev(section1, t35);
+	      append_dev(section1, div7);
+	      append_dev(div7, span6);
+	      append_dev(span6, strong5);
+	      append_dev(span6, t37);
+	      append_dev(span6, t38);
+	      append_dev(div10, t39);
 	      append_dev(div10, div9);
 	      append_dev(div9, img);
-	      append_dev(div14, t43);
-	      if (if_block) if_block.m(div14, null);
-	      append_dev(div14, t44);
-	      append_dev(div14, div11);
-	      append_dev(div11, t45);
-	      append_dev(div11, a0);
-	      append_dev(a0, t46);
-	      append_dev(div14, t47);
-	      append_dev(div14, div12);
-	      append_dev(div12, h30);
-	      append_dev(div12, t49);
-	      append_dev(div12, p);
-	      append_dev(div14, t51);
-	      append_dev(div14, div13);
-	      append_dev(div13, h31);
-	      append_dev(div13, t53);
-	      append_dev(div13, a1);
-	      /*div14_binding*/
+	      append_dev(div12, t40);
+	      if (if_block7) if_block7.m(div12, null);
+	      append_dev(div12, t41);
+	      append_dev(div12, div11);
+	      append_dev(div11, t42);
+	      append_dev(div11, a);
+	      append_dev(a, t43);
+	      /*div12_binding*/
 
-	      ctx[14](div14);
-	      /*div15_binding*/
+	      ctx[14](div12);
+	      /*div13_binding*/
 
-	      ctx[15](div15);
-	      div15_resize_listener = add_resize_listener(div15,
-	      /*div15_elementresize_handler*/
-	      ctx[16].bind(div15));
-	      div16_resize_listener = add_resize_listener(div16,
-	      /*div16_elementresize_handler*/
-	      ctx[17].bind(div16));
+	      ctx[15](div13);
+	      div13_resize_listener = add_resize_listener(div13,
+	      /*div13_elementresize_handler*/
+	      ctx[16].bind(div13));
+	      div14_resize_listener = add_resize_listener(div14,
+	      /*div14_elementresize_handler*/
+	      ctx[17].bind(div14));
 	      current = true;
 
 	      if (!mounted) {
-	        dispose = [listen_dev(div16, "click", stop_propagation(
+	        dispose = [listen_dev(div14, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[12]), false, false, true), listen_dev(div16, "mouseover", stop_propagation(
+	        ctx[12]), false, false, true), listen_dev(div14, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
 	        ctx[13]), false, false, true)];
 	        mounted = true;
@@ -46873,36 +46836,128 @@ var app = (function () {
 	      1024) && t3_value !== (t3_value =
 	      /*$tooltip*/
 	      ctx[10].tp.name + "")) set_data_dev(t3, t3_value);
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra === "Cretaceous") {
+	        if (if_block0) ; else {
+	          if_block0 = create_if_block_11(ctx);
+	          if_block0.c();
+	          if_block0.m(section0, t5);
+	        }
+	      } else if (if_block0) {
+	        if_block0.d(1);
+	        if_block0 = null;
+	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra === "Jurassic") {
+	        if (if_block1) ; else {
+	          if_block1 = create_if_block_10(ctx);
+	          if_block1.c();
+	          if_block1.m(section0, t6);
+	        }
+	      } else if (if_block1) {
+	        if_block1.d(1);
+	        if_block1 = null;
+	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra === "Triassic") {
+	        if (if_block2) ; else {
+	          if_block2 = create_if_block_9(ctx);
+	          if_block2.c();
+	          if_block2.m(section0, t7);
+	        }
+	      } else if (if_block2) {
+	        if_block2.d(1);
+	        if_block2 = null;
+	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra === "Paleogene") {
+	        if (if_block3) ; else {
+	          if_block3 = create_if_block_8(ctx);
+	          if_block3.c();
+	          if_block3.m(section0, t8);
+	        }
+	      } else if (if_block3) {
+	        if_block3.d(1);
+	        if_block3 = null;
+	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra === "Neogene") {
+	        if (if_block4) ; else {
+	          if_block4 = create_if_block_7(ctx);
+	          if_block4.c();
+	          if_block4.m(section0, t9);
+	        }
+	      } else if (if_block4) {
+	        if_block4.d(1);
+	        if_block4 = null;
+	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra === "Permian") {
+	        if (if_block5) ; else {
+	          if_block5 = create_if_block_6(ctx);
+	          if_block5.c();
+	          if_block5.m(section0, t10);
+	        }
+	      } else if (if_block5) {
+	        if_block5.d(1);
+	        if_block5 = null;
+	      }
+
+	      if (
+	      /*$tooltip*/
+	      ctx[10].tp.periodEra === "Carboniferous") {
+	        if (if_block6) ; else {
+	          if_block6 = create_if_block_5(ctx);
+	          if_block6.c();
+	          if_block6.m(section0, null);
+	        }
+	      } else if (if_block6) {
+	        if_block6.d(1);
+	        if_block6 = null;
+	      }
+
 	      if ((!current || dirty &
 	      /*$tooltip*/
-	      1024) && t7_value !== (t7_value =
+	      1024) && t14_value !== (t14_value =
 	      /*$tooltip*/
-	      ctx[10].tp.size + "")) set_data_dev(t7, t7_value);
+	      ctx[10].tp.size + "")) set_data_dev(t14, t14_value);
 	      if ((!current || dirty &
 	      /*$tooltip*/
-	      1024) && t12_value !== (t12_value =
+	      1024) && t19_value !== (t19_value =
 	      /*$tooltip*/
-	      ctx[10].tp.weight + "")) set_data_dev(t12, t12_value);
+	      ctx[10].tp.weight + "")) set_data_dev(t19, t19_value);
 	      if ((!current || dirty &
 	      /*$tooltip*/
-	      1024) && t17_value !== (t17_value =
+	      1024) && t24_value !== (t24_value =
 	      /*$tooltip*/
-	      ctx[10].tp.testDate + "")) set_data_dev(t17, t17_value);
+	      ctx[10].tp.startDate + "")) set_data_dev(t24, t24_value);
 	      if ((!current || dirty &
 	      /*$tooltip*/
-	      1024) && t22_value !== (t22_value =
+	      1024) && t29_value !== (t29_value =
 	      /*$tooltip*/
-	      ctx[10].tp.testDate + "")) set_data_dev(t22, t22_value);
+	      ctx[10].tp.endDate + "")) set_data_dev(t29, t29_value);
 	      if ((!current || dirty &
 	      /*$tooltip*/
-	      1024) && t27_value !== (t27_value =
+	      1024) && t34_value !== (t34_value =
 	      /*$tooltip*/
-	      ctx[10].tp.diet + "")) set_data_dev(t27, t27_value);
+	      ctx[10].tp.diet + "")) set_data_dev(t34, t34_value);
 	      if ((!current || dirty &
 	      /*$tooltip*/
-	      1024) && t31_value !== (t31_value =
+	      1024) && t38_value !== (t38_value =
 	      /*$tooltip*/
-	      ctx[10].tp.disinformantNation + "")) set_data_dev(t31, t31_value);
+	      ctx[10].tp.disinformantNation + "")) set_data_dev(t38, t38_value);
 
 	      if (!current || dirty &
 	      /*$tooltip*/
@@ -46923,36 +46978,36 @@ var app = (function () {
 	      if (
 	      /*$tooltip*/
 	      ctx[10].tp.tooltipContent) {
-	        if (if_block) {
-	          if_block.p(ctx, dirty);
+	        if (if_block7) {
+	          if_block7.p(ctx, dirty);
 	        } else {
-	          if_block = create_if_block_1$5(ctx);
-	          if_block.c();
-	          if_block.m(div14, t44);
+	          if_block7 = create_if_block_1$5(ctx);
+	          if_block7.c();
+	          if_block7.m(div12, t41);
 	        }
-	      } else if (if_block) {
-	        if_block.d(1);
-	        if_block = null;
+	      } else if (if_block7) {
+	        if_block7.d(1);
+	        if_block7 = null;
 	      }
 
 	      if ((!current || dirty &
 	      /*$tooltip*/
-	      1024) && t46_value !== (t46_value =
+	      1024) && t43_value !== (t43_value =
 	      /*$tooltip*/
-	      ctx[10].tp.name + "")) set_data_dev(t46, t46_value);
+	      ctx[10].tp.name + "")) set_data_dev(t43, t43_value);
 
 	      if (!current || dirty &
 	      /*$tooltip*/
-	      1024 && a0_href_value !== (a0_href_value =
+	      1024 && a_href_value !== (a_href_value =
 	      /*$tooltip*/
 	      ctx[10].tp.wikiURL)) {
-	        attr_dev(a0, "href", a0_href_value);
+	        attr_dev(a, "href", a_href_value);
 	      }
 
 	      if (!current || dirty &
 	      /*contentTop*/
 	      64) {
-	        set_style(div15, "top",
+	        set_style(div13, "top",
 	        /*contentTop*/
 	        ctx[6] + "px");
 	      }
@@ -46960,7 +47015,7 @@ var app = (function () {
 	      if (!current || dirty &
 	      /*$tooltip*/
 	      1024) {
-	        set_style(div15, "margin", "0px " + (
+	        set_style(div13, "margin", "0px " + (
 	        /*$tooltip*/
 	        ctx[10].tp.rSizeTot / 3 +
 	        /*offset*/
@@ -46970,7 +47025,7 @@ var app = (function () {
 	      if (!current || dirty &
 	      /*left*/
 	      16) {
-	        set_style(div16, "left",
+	        set_style(div14, "left",
 	        /*left*/
 	        ctx[4] + "px");
 	      }
@@ -46978,7 +47033,7 @@ var app = (function () {
 	      if (!current || dirty &
 	      /*top*/
 	      32) {
-	        set_style(div16, "top",
+	        set_style(div14, "top",
 	        /*top*/
 	        ctx[5] + "px");
 	      }
@@ -46987,12 +47042,12 @@ var app = (function () {
 	      if (current) return;
 	      transition_in(eventtooltipcross.$$.fragment, local);
 
-	      if (!div16_intro) {
+	      if (!div14_intro) {
 	        add_render_callback(function () {
-	          div16_intro = create_in_transition(div16, fade, {
+	          div14_intro = create_in_transition(div14, fade, {
 	            duration: 200
 	          });
-	          div16_intro.start();
+	          div14_intro.start();
 	        });
 	      }
 
@@ -47003,17 +47058,24 @@ var app = (function () {
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div16);
+	      if (detaching) detach_dev(div14);
 	      destroy_component(eventtooltipcross);
-	      if (if_block) if_block.d();
-	      /*div14_binding*/
+	      if (if_block0) if_block0.d();
+	      if (if_block1) if_block1.d();
+	      if (if_block2) if_block2.d();
+	      if (if_block3) if_block3.d();
+	      if (if_block4) if_block4.d();
+	      if (if_block5) if_block5.d();
+	      if (if_block6) if_block6.d();
+	      if (if_block7) if_block7.d();
+	      /*div12_binding*/
 
 	      ctx[14](null);
-	      /*div15_binding*/
+	      /*div13_binding*/
 
 	      ctx[15](null);
-	      div15_resize_listener();
-	      div16_resize_listener();
+	      div13_resize_listener();
+	      div14_resize_listener();
 	      mounted = false;
 	      run_all(dispose);
 	    }
@@ -47022,11 +47084,200 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$b.name,
 	    type: "if",
-	    source: "(118:0) {#if (showTooltip)}",
+	    source: "(111:0) {#if (showTooltip)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (186:8) {#if ($tooltip.tp.tooltipContent)}
+	} // (144:12) {#if ($tooltip.tp.periodEra === 'Cretaceous')}
+
+
+	function create_if_block_11(ctx) {
+	  var span;
+	  var block = {
+	    c: function create() {
+	      span = element("span");
+	      span.textContent = "Cretaceous";
+	      attr_dev(span, "class", "tag-label Cretaceous svelte-1upu3tj");
+	      add_location(span, file$o, 144, 12, 4703);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, span, anchor);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(span);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_11.name,
+	    type: "if",
+	    source: "(144:12) {#if ($tooltip.tp.periodEra === 'Cretaceous')}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (147:12) {#if ($tooltip.tp.periodEra === 'Jurassic')}
+
+
+	function create_if_block_10(ctx) {
+	  var span;
+	  var block = {
+	    c: function create() {
+	      span = element("span");
+	      span.textContent = "Jurassic";
+	      attr_dev(span, "class", "tag-label Jurassic svelte-1upu3tj");
+	      add_location(span, file$o, 147, 12, 4847);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, span, anchor);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(span);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_10.name,
+	    type: "if",
+	    source: "(147:12) {#if ($tooltip.tp.periodEra === 'Jurassic')}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (150:12) {#if ($tooltip.tp.periodEra === 'Triassic')}
+
+
+	function create_if_block_9(ctx) {
+	  var span;
+	  var block = {
+	    c: function create() {
+	      span = element("span");
+	      span.textContent = "Triassic";
+	      attr_dev(span, "class", "tag-label Triassic svelte-1upu3tj");
+	      add_location(span, file$o, 150, 12, 4987);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, span, anchor);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(span);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_9.name,
+	    type: "if",
+	    source: "(150:12) {#if ($tooltip.tp.periodEra === 'Triassic')}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (153:12) {#if ($tooltip.tp.periodEra === 'Paleogene')}
+
+
+	function create_if_block_8(ctx) {
+	  var span;
+	  var block = {
+	    c: function create() {
+	      span = element("span");
+	      span.textContent = "Paleogene";
+	      attr_dev(span, "class", "tag-label Paleogene svelte-1upu3tj");
+	      add_location(span, file$o, 153, 12, 5128);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, span, anchor);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(span);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_8.name,
+	    type: "if",
+	    source: "(153:12) {#if ($tooltip.tp.periodEra === 'Paleogene')}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (156:12) {#if ($tooltip.tp.periodEra === 'Neogene')}
+
+
+	function create_if_block_7(ctx) {
+	  var span;
+	  var block = {
+	    c: function create() {
+	      span = element("span");
+	      span.textContent = "Neogene";
+	      attr_dev(span, "class", "tag-label Neogene svelte-1upu3tj");
+	      add_location(span, file$o, 156, 12, 5269);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, span, anchor);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(span);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_7.name,
+	    type: "if",
+	    source: "(156:12) {#if ($tooltip.tp.periodEra === 'Neogene')}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (159:12) {#if ($tooltip.tp.periodEra === 'Permian')}
+
+
+	function create_if_block_6(ctx) {
+	  var span;
+	  var block = {
+	    c: function create() {
+	      span = element("span");
+	      span.textContent = "Permian";
+	      attr_dev(span, "class", "tag-label Permian svelte-1upu3tj");
+	      add_location(span, file$o, 159, 12, 5406);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, span, anchor);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(span);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_6.name,
+	    type: "if",
+	    source: "(159:12) {#if ($tooltip.tp.periodEra === 'Permian')}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (162:12) {#if ($tooltip.tp.periodEra === 'Carboniferous')}
+
+
+	function create_if_block_5(ctx) {
+	  var span;
+	  var block = {
+	    c: function create() {
+	      span = element("span");
+	      span.textContent = "Carboniferous";
+	      attr_dev(span, "class", "tag-label Carboniferous svelte-1upu3tj");
+	      add_location(span, file$o, 162, 12, 5549);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, span, anchor);
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(span);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_5.name,
+	    type: "if",
+	    source: "(162:12) {#if ($tooltip.tp.periodEra === 'Carboniferous')}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (198:8) {#if ($tooltip.tp.tooltipContent)}
 
 
 	function create_if_block_1$5(ctx) {
@@ -47070,10 +47321,10 @@ var app = (function () {
 
 	      t3 = space();
 	      if (if_block1) if_block1.c();
-	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 198, 10, 6729);
-	      attr_dev(div, "class", "description svelte-1143ogu");
-	      add_location(div, file$o, 186, 8, 6357);
+	      attr_dev(p, "class", "svelte-1upu3tj");
+	      add_location(p, file$o, 209, 10, 6996);
+	      attr_dev(div, "class", "description svelte-1upu3tj");
+	      add_location(div, file$o, 198, 8, 6669);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47169,11 +47420,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$5.name,
 	    type: "if",
-	    source: "(186:8) {#if ($tooltip.tp.tooltipContent)}",
+	    source: "(198:8) {#if ($tooltip.tp.tooltipContent)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (192:10) {#if ($tooltip.tp.periodEra)}
+	} // (204:10) {#if ($tooltip.tp.periodEra)}
 
 
 	function create_if_block_4$2(ctx) {
@@ -47181,38 +47432,24 @@ var app = (function () {
 	  var img;
 	  var img_src_value;
 	  var img_alt_value;
-	  var t0;
-	  var p;
-	  var t1_value =
-	  /*$tooltip*/
-	  ctx[10].tp.imageCredit + "";
-	  var t1;
 	  var block = {
 	    c: function create() {
 	      div = element("div");
 	      img = element("img");
-	      t0 = space();
-	      p = element("p");
-	      t1 = text(t1_value);
-	      attr_dev(img, "class", "image svelte-1143ogu");
+	      attr_dev(img, "class", "image svelte-1upu3tj");
 	      if (img.src !== (img_src_value = "" + (images +
 	      /*$tooltip*/
 	      ctx[10].tp.periodEra + ".jpg"))) attr_dev(img, "src", img_src_value);
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      add_location(img, file$o, 193, 12, 6472);
-	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 194, 12, 6577);
-	      attr_dev(div, "class", "tt-image svelte-1143ogu");
-	      add_location(div, file$o, 192, 10, 6437);
+	      add_location(img, file$o, 205, 12, 6784);
+	      attr_dev(div, "class", "tt-image svelte-1upu3tj");
+	      add_location(div, file$o, 204, 10, 6749);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
 	      append_dev(div, img);
-	      append_dev(div, t0);
-	      append_dev(div, p);
-	      append_dev(p, t1);
 	    },
 	    p: function update(ctx, dirty) {
 	      if (dirty &
@@ -47230,12 +47467,6 @@ var app = (function () {
 	      ctx[10].tp.shortTitle)) {
 	        attr_dev(img, "alt", img_alt_value);
 	      }
-
-	      if (dirty &
-	      /*$tooltip*/
-	      1024 && t1_value !== (t1_value =
-	      /*$tooltip*/
-	      ctx[10].tp.imageCredit + "")) set_data_dev(t1, t1_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(div);
@@ -47245,11 +47476,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$2.name,
 	    type: "if",
-	    source: "(192:10) {#if ($tooltip.tp.periodEra)}",
+	    source: "(204:10) {#if ($tooltip.tp.periodEra)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (204:14) {#if i > 0}
+	} // (215:14) {#if i > 0}
 
 
 	function create_if_block_3$3(ctx) {
@@ -47278,12 +47509,12 @@ var app = (function () {
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 205, 16, 6879);
-	      attr_dev(div, "class", "image svelte-1143ogu");
-	      add_location(div, file$o, 204, 14, 6843);
-	      attr_dev(p, "class", "svelte-1143ogu");
-	      add_location(p, file$o, 207, 16, 7020);
+	      attr_dev(img, "class", "svelte-1upu3tj");
+	      add_location(img, file$o, 216, 16, 7146);
+	      attr_dev(div, "class", "image svelte-1upu3tj");
+	      add_location(div, file$o, 215, 14, 7110);
+	      attr_dev(p, "class", "svelte-1upu3tj");
+	      add_location(p, file$o, 218, 16, 7287);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47327,11 +47558,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$3.name,
 	    type: "if",
-	    source: "(204:14) {#if i > 0}",
+	    source: "(215:14) {#if i > 0}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (203:12) {#each paragraphs as paragraph, i}
+	} // (214:12) {#each paragraphs as paragraph, i}
 
 
 	function create_each_block$5(ctx) {
@@ -47362,11 +47593,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$5.name,
 	    type: "each",
-	    source: "(203:12) {#each paragraphs as paragraph, i}",
+	    source: "(214:12) {#each paragraphs as paragraph, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (211:12) {#if ($tooltip.tp.extraImage === 'yes')}
+	} // (222:12) {#if ($tooltip.tp.extraImage === 'yes')}
 
 
 	function create_if_block_2$3(ctx) {
@@ -47384,10 +47615,10 @@ var app = (function () {
 	      attr_dev(img, "alt", img_alt_value =
 	      /*$tooltip*/
 	      ctx[10].tp.shortTitle);
-	      attr_dev(img, "class", "svelte-1143ogu");
-	      add_location(img, file$o, 212, 14, 7178);
-	      attr_dev(div, "class", "image svelte-1143ogu");
-	      add_location(div, file$o, 211, 12, 7144);
+	      attr_dev(img, "class", "svelte-1upu3tj");
+	      add_location(img, file$o, 223, 14, 7445);
+	      attr_dev(div, "class", "image svelte-1upu3tj");
+	      add_location(div, file$o, 222, 12, 7411);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -47418,7 +47649,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$3.name,
 	    type: "if",
-	    source: "(211:12) {#if ($tooltip.tp.extraImage === 'yes')}",
+	    source: "(222:12) {#if ($tooltip.tp.extraImage === 'yes')}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -47584,26 +47815,26 @@ var app = (function () {
 	    bubble($$self, event);
 	  }
 
-	  function div14_binding($$value) {
+	  function div12_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      scrollWrapper = $$value;
 	      $$invalidate(7, scrollWrapper);
 	    });
 	  }
 
-	  function div15_binding($$value) {
+	  function div13_binding($$value) {
 	    binding_callbacks[$$value ? "unshift" : "push"](function () {
 	      elem = $$value;
 	      $$invalidate(0, elem);
 	    });
 	  }
 
-	  function div15_elementresize_handler() {
+	  function div13_elementresize_handler() {
 	    tHeight = this.clientHeight;
 	    $$invalidate(2, tHeight);
 	  }
 
-	  function div16_elementresize_handler() {
+	  function div14_elementresize_handler() {
 	    tWidth = this.clientWidth;
 	    $$invalidate(1, tWidth);
 	  }
@@ -47729,7 +47960,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, paragraphs, showTooltip, $tooltip, offset, click_handler, mouseover_handler, div14_binding, div15_binding, div15_elementresize_handler, div16_elementresize_handler];
+	  return [elem, tWidth, tHeight, side, left, top, contentTop, scrollWrapper, paragraphs, showTooltip, $tooltip, offset, click_handler, mouseover_handler, div12_binding, div13_binding, div13_elementresize_handler, div14_elementresize_handler];
 	}
 
 	var EventTooltip = /*#__PURE__*/function (_SvelteComponentDev) {

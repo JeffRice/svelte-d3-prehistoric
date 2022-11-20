@@ -51,10 +51,10 @@
         The Prehistoric Life Timeline Mapping is an interactive, open-source database that shows a variety of information about prehistoric creatures. They are mapped to their original geographic location and period in time they existed. It also maps fossils to their current era discovery sites.
       </p>
       <p>
-        This dataset contains <em>{data.length} creatures</em> that existed up to <em> 300 million years ago </em>
+        The timeline visualization contains <em>{data.length} Prehistoric Creatures</em> that existed up to <em> 305 million years ago </em>
       </p>
       <p>
-        The fossil dataset contains a total of <em>{$fossilDatapoints.originaljurassic.length + $fossilDatapoints.originalcretaceous.length + $fossilDatapoints.originaltriassic.length} Dinosaur fossils</em>:
+        The mapped fossil datasets contain a total of <em>{$fossilDatapoints.originaljurassic.length + $fossilDatapoints.originalcretaceous.length + $fossilDatapoints.originaltriassic.length} Dinosaur fossils</em>:
       </p>
                                      <ul>
                                       <li><em>{$fossilDatapoints.originalcretaceous.length} fossils</em> from the Cretaceous Period</li>

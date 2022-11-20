@@ -16,17 +16,10 @@
     textSearchFilter,
     highlightPolarization,
     selectAllFilters} from '../stores/filters';
- // import { maxScores } from '../inputs/scores';
   import { images } from '../inputs/dataPaths';
 
   import EventTooltipCross from './EventTooltipCross.svelte';
-  /*
-  import ScoreBar from './ScoreBar.svelte';
-  import ScoreQuestions from './ScoreQuestions.svelte';
-  import ImpactStrip from './ImpactStrip.svelte';
-  import PolarizationLegend from './PolarizationLegend.svelte';
-  import CibTable from './CibTable.svelte';
-  */
+
   import Share from './Share.svelte';
 
   const offset = {
@@ -142,36 +135,55 @@
            bind:this={scrollWrapper}>
            
         <div class="title title-bg">
-          <h2>{$tooltip.tp.name}</h2>
+          
+          <section class="era-labels">
+
+          <span class="title-header">{$tooltip.tp.name}</span>
+
+
+            {#if ($tooltip.tp.periodEra === 'Cretaceous')} 
+            <span class="tag-label Cretaceous"> Cretaceous  </span>
+            {/if}
+            {#if ($tooltip.tp.periodEra === 'Jurassic')} 
+            <span class="tag-label Jurassic"> Jurassic  </span>
+            {/if}
+            {#if ($tooltip.tp.periodEra === 'Triassic')} 
+            <span class="tag-label Triassic"> Triassic  </span>
+            {/if}
+            {#if ($tooltip.tp.periodEra === 'Paleogene')} 
+            <span class="tag-label Paleogene"> Paleogene  </span>
+            {/if}
+            {#if ($tooltip.tp.periodEra === 'Neogene')} 
+            <span class="tag-label Neogene"> Neogene  </span>
+            {/if}
+            {#if ($tooltip.tp.periodEra === 'Permian')} 
+            <span class="tag-label Permian"> Permian  </span>
+            {/if}
+            {#if ($tooltip.tp.periodEra === 'Carboniferous')} 
+            <span class="tag-label Carboniferous"> Carboniferous  </span>
+            {/if}
+          </section>
+
           <div class="title-top">
 
 
 
 
-            <section class="dino-stats">
-  
-  
+            <section class="dino-stats">  
               <div class="stats-item"><span><strong>Length:</strong> {$tooltip.tp.size} ft</span></div>
               <div class="stats-item"><span><strong>Weight:</strong> {$tooltip.tp.weight} lbs</span></div>
-              <div class="stats-item"><span><strong>Earliest Date:</strong> {$tooltip.tp.testDate} MYA</span></div>
-              <div class="stats-item"><span><strong>Latest Date:</strong> {$tooltip.tp.testDate} MYA</span></div>
+              <div class="stats-item"><span><strong>Min Date:</strong> {$tooltip.tp.startDate} MYA</span></div>
+              <div class="stats-item"><span><strong>Max Date:</strong> {$tooltip.tp.endDate} MYA</span></div>
               <div class="stats-item"><span><strong>Diet:</strong> {$tooltip.tp.diet}</span></div>
               <div class="stats-item"><span><strong>Regions:</strong> {$tooltip.tp.disinformantNation}</span></div>
-            </section>
+          
 
+            </section>
 
           </div>
 
-          <!--
-          <Share text="" caseId={$tooltip.tp.id} mode="tooltip" />
-          -->
-          <section class="era-labels">
-          <span class="tag-label Cretaceous"> Cretaceous  </span>
-          <span class="tag-label Jurassic"> Jurassic  </span>
-          <span class="tag-label Triassic"> Triassic  </span>
-          <span class="tag-label Paleogene"> Paleogene  </span>
-          <span class="tag-label Neogene"> Neogene  </span>
-          </section>
+
+
 
 
 
@@ -192,7 +204,6 @@
           {#if ($tooltip.tp.periodEra)}
           <div class="tt-image">
             <img class="image" src="{images}{$tooltip.tp.periodEra}.jpg" alt={$tooltip.tp.shortTitle} />
-            <p>{$tooltip.tp.imageCredit}</p>
           </div>
           {/if}
           <!-- Just for styling the fist paragraph and image differently-->
@@ -224,71 +235,6 @@
         </div>
 
 
-        <div class="description">
-          <h3>Description</h3>
-          <p> short description here</p>
-        </div>
-<!--
-        {#if (!($tooltip.tp.tags.length === 1 && $tooltip.tp.tags[0] === 'unspecified'))}
-          <div class="tags">
-            <h3>Tags</h3>
-            <ul>
-              {#each $tooltip.tp.tags as tag (tag)}
-                <li class="card" on:click|self={() => handleLiClick('tag', tag)}>{@html highlight(tag)}</li>
-              {/each}
-            </ul>
-          </div>
-        {/if}
-        <div class="platforms">
-          <h3>Platforms</h3>
-          <ul>
-            {#each $tooltip.tp.platforms as platform (platform)}
-              <li class="card" on:click|self={() => handleLiClick('platform', platform)}>{@html highlight(platform)}</li>
-            {/each}
-          </ul>
-        </div>
-        <div class="methods">
-          <h3>Methods</h3>
-          <ul>
-            {#each $tooltip.tp.methods as method (method)}
-              <li class="card" on:click|self={() => handleLiClick('method', method)}>{@html highlight(method)}</li>
-            {/each}
-          </ul>
-        </div>
-
-        <div class="source">
-          <h3>Source{$tooltip.tp.source.length !== 1 ? 's' : ''}</h3>
-          <ul>
-            {#each $tooltip.tp.source as source, i (source)}
-              <li class="card" on:click|self={() => handleLiClick('source', $tooltip.tp.sourceFilter[i] ? $tooltip.tp.sourceFilter[i] : $tooltip.tp.sourceFilter.slice(-1)[0])}>
-                {#if ($tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter[i] !== source)}
-                  {@html highlight(source)} / {@html highlight($tooltip.tp.sourceFilter[i])}
-                {:else if (!$tooltip.tp.sourceFilter[i] && $tooltip.tp.sourceFilter.slice(-1)[0] !== source)}
-                  {@html highlight(source)} / {@html highlight($tooltip.tp.sourceFilter.slice(-1)[0])}
-                {:else if ($tooltip.tp.sourceFilter[i])}
-                  {@html highlight($tooltip.tp.sourceFilter[i])}
-                {:else}
-                  {@html highlight($tooltip.tp.sourceFilter.slice(-1)[0])}
-                {/if}
-              </li>
-            {/each}
-          </ul>
-        </div>
-
-        <div class="source-category">
-          <h3>Source Categor{$tooltip.tp.sourceCategory.length !== 1 ? 'ies' : 'y'}</h3>
-          <ul>
-            {#each $tooltip.tp.sourceCategory as cat (cat)}
-              <li class="card" on:click|self={() => handleLiClick('sourceCategory', cat)}>{@html highlight(cat)}</li>
-            {/each}
-          </ul>
-        </div>
-
-        -->
-        <div class="link">
-          <h3>Link</h3>
-          <a href="http://www.wikipedia.org" target="_blank" class="no-float">wikipedia link</a>
-        </div>
       </div>
     </div>
   </div>
@@ -340,11 +286,6 @@
     position: relative;
   }
 
-  .title-top {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-  }
 
   .title-dates {
     flex: 1;
@@ -382,6 +323,13 @@
   background-color: var(--cretaceous);
 }
 
+.title-header{
+  color: var(--text-black);
+    margin: 0;
+    font-size: 2.1rem;
+    font-weight: 700;
+}
+
 /* Time Era Styling */
 .Cretaceous {
   color: var(--cretaceous);
@@ -398,6 +346,13 @@
 .Neogene {
   color:  var(--neogene);
 }
+.Permian {
+  color:  var(--permian);
+ }
+.Carboniferous {
+  color:  var(--carboniferous);
+ }
+
 .tag-label {
   border-radius: 1rem;
   padding: 0.5rem;
