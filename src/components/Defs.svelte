@@ -51,6 +51,10 @@
   <feImage xlink:href="/images/raptor.svg"/>
 </filter>
 
+<filter id="archaeopteryx_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/archaeopteryx.png"/>
+</filter>
+
 <filter id="archelon_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/archelon.png"/>
 </filter>
@@ -127,10 +131,13 @@
   <feImage xlink:href="/images/spinosaur.png"/>
 </filter>
 
+<filter id="thecodontosaurus_image" x="0%" y="0%" width="100%" height="100%">
+  <feImage xlink:href="/images/thecodontosaurus.png"/>
+</filter>
+
 <filter id="titanoboa_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/titanoboa.png"/>
 </filter>
-
 
 <filter id="tyrannoskull_image" x="0%" y="0%" width="100%" height="100%">
   <feImage xlink:href="/images/tyrannoskull.jpg"/>

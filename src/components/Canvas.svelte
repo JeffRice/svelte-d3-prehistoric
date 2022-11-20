@@ -362,9 +362,9 @@ function worldMap() {
 function createLegend(){
 
   ctx.fillStyle = bg;
-  ctx.fillRect($width - 250, $mapHeight - 230, 300, 230);
+  ctx.fillRect($width - 220, $mapHeight - 230, 300, 230);
   ctx.strokeStyle = '#000';
-  ctx.strokeRect($width - 250, $mapHeight - 230, 300, 230);
+  ctx.strokeRect($width - 220, $mapHeight - 230, 300, 230);
 
 
   ctx.font = 'bold 16px Quicksand';

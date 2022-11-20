@@ -57,9 +57,9 @@
         The fossil dataset contains a total of <em>{$fossilDatapoints.originaljurassic.length + $fossilDatapoints.originalcretaceous.length + $fossilDatapoints.originaltriassic.length} Dinosaur fossils</em>:
       </p>
                                      <ul>
-                                      <li><em>{$fossilDatapoints.originalcretaceous.length} fossils</em> from the Cretaceous era </li>
-                                      <li><em>{$fossilDatapoints.originaljurassic.length} fossils</em> from the Jurassic era </li>
-                                      <li><em>{$fossilDatapoints.originaltriassic.length} and fossils</em> from the Triassic era  </li>
+                                      <li><em>{$fossilDatapoints.originalcretaceous.length} fossils</em> from the Cretaceous Period</li>
+                                      <li><em>{$fossilDatapoints.originaljurassic.length} fossils</em> from the Jurassic Period</li>
+                                      <li><em>{$fossilDatapoints.originaltriassic.length} and fossils</em> from the Triassic Period </li>
                                      </ul>
                                 
     </div>

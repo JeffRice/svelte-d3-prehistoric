@@ -2,7 +2,7 @@
   // loading banner
 </script>
 
-<div class="loading-info">
+<div class="loading-info transparent-bg">
   <p>Loading and visualizing...</p>
 </div>
 

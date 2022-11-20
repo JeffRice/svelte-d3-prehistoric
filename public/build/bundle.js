@@ -4560,11 +4560,6 @@ var app = (function () {
 	  }
 	}
 
-	function tick() {
-	  schedule_update();
-	  return resolved_promise;
-	}
-
 	function add_render_callback(fn) {
 	  render_callbacks.push(fn);
 	}
@@ -9128,7 +9123,7 @@ var app = (function () {
 	  dispatch: selection_dispatch
 	}, Symbol.iterator, _callee);
 
-	function select$1 (selector) {
+	function select (selector) {
 	  return typeof selector === "string" ? new Selection([[document.querySelector(selector)]], [document.documentElement]) : new Selection([[selector]], root);
 	}
 
@@ -34048,31 +34043,17 @@ var app = (function () {
 	                testDate: parseInt(d.test_date),
 	                wikiURL: d.wikiURL,
 	                extraImage: d.extra_image,
-	                //     size: d.size,
 	                weight: d.weight,
 	                size: d.size,
-	                // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
 	                timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
-	                //   source: splitString(source),
-	                //   sourceFilter: splitString(d.source_subcategory !== '' ? d.source_subcategory : source),
-	                //   sourceSubcategory: splitString(d.source_subcategory),
-	                //   sourceCategory: splitString(d.source_category),
-	                //   sourceNation: d.source_nation,
-	                //   disinformant: d.disinformant,
 	                disinformantNation: splitString(d.regions),
-	                //   disinformantAttribution: d.disinformant_attribution,
 	                shortTitle: d.short_title,
 	                shortDescription: d.short_description,
-	                //    attributionUrl: d.attribution_url,
-	                //    attributionArchiveUrl: d.archived_attribution_url,
-	                //    platforms: splitString([d.social_media, d.messaging_platforms].join(',')),
-	                startDate: parseDate$1(d.start_date),
-	                endDate: parseDate$1(d.end_date),
+	                startDate: d.start_date,
+	                endDate: d.end_date,
 	                attributionDate: parseDate$1(d.attribution_date),
-	                //     methods: splitString(d.methods),
 	                sizeTotal: sizeTotal,
 	                attributionScore: +d.attribution_total_score,
-	                //   tags: splitString(d.tags),
 	                articleCount: +d.articleCount,
 	                dinoNames: dinoNames
 	              };
@@ -34485,8 +34466,8 @@ var app = (function () {
 	  */
 	  // time scale
 
-	  timeScale.set(linear$1().domain([-30, max$4(data, function (d) {
-	    return d.testDate + 10;
+	  timeScale.set(linear$1().domain([-25, max$4(data, function (d) {
+	    return d.testDate + 2;
 	  })]).range([margin.left, width - margin.right])); // total scale for the y axis
 
 	  sizeTotalYScale.set(sqrt$2().domain([1, max$4(data, function (d) {
@@ -35692,19 +35673,19 @@ var app = (function () {
 	      em3 = element("em");
 	      t16 = text(t16_value);
 	      t17 = text(" fossils");
-	      t18 = text(" from the Cretaceous era");
+	      t18 = text(" from the Cretaceous Period");
 	      t19 = space();
 	      li1 = element("li");
 	      em4 = element("em");
 	      t20 = text(t20_value);
 	      t21 = text(" fossils");
-	      t22 = text(" from the Jurassic era");
+	      t22 = text(" from the Jurassic Period");
 	      t23 = space();
 	      li2 = element("li");
 	      em5 = element("em");
 	      t24 = text(t24_value);
 	      t25 = text(" and fossils");
-	      t26 = text(" from the Triassic era");
+	      t26 = text(" from the Triassic Period");
 	      t27 = space();
 	      input1 = element("input");
 	      t28 = space();
@@ -35783,51 +35764,51 @@ var app = (function () {
 	      add_location(p2, file$3, 55, 6, 1957);
 	      add_location(em3, file$3, 59, 42, 2264);
 	      add_location(li0, file$3, 59, 38, 2260);
-	      add_location(em4, file$3, 60, 42, 2399);
-	      add_location(li1, file$3, 60, 38, 2395);
-	      add_location(em5, file$3, 61, 42, 2530);
-	      add_location(li2, file$3, 61, 38, 2526);
+	      add_location(em4, file$3, 60, 42, 2401);
+	      add_location(li1, file$3, 60, 38, 2397);
+	      add_location(em5, file$3, 61, 42, 2534);
+	      add_location(li2, file$3, 61, 38, 2530);
 	      add_location(ul0, file$3, 58, 37, 2217);
 	      attr_dev(div0, "class", "collapsible-content");
 	      add_location(div0, file$3, 48, 4, 1463);
 	      attr_dev(input1, "id", "collapsible-how-to");
 	      attr_dev(input1, "class", "toggle");
 	      attr_dev(input1, "type", "checkbox");
-	      add_location(input1, file$3, 65, 4, 2715);
+	      add_location(input1, file$3, 65, 4, 2721);
 	      attr_dev(label1, "for", "collapsible-how-to");
 	      attr_dev(label1, "class", "lbl-toggle top");
-	      add_location(label1, file$3, 66, 4, 2782);
-	      add_location(em6, file$3, 70, 8, 2923);
+	      add_location(label1, file$3, 66, 4, 2788);
+	      add_location(em6, file$3, 70, 8, 2929);
 	      attr_dev(span0, "class", "pseudolink copy-tooltip");
-	      add_location(span0, file$3, 70, 75, 2990);
+	      add_location(span0, file$3, 70, 75, 2996);
 	      attr_dev(span1, "class", "pseudolink copy-tooltip");
-	      add_location(span1, file$3, 70, 424, 3339);
+	      add_location(span1, file$3, 70, 424, 3345);
 	      attr_dev(span2, "class", "pseudolink copy-tooltip");
-	      add_location(span2, file$3, 70, 746, 3661);
+	      add_location(span2, file$3, 70, 746, 3667);
 	      attr_dev(span3, "class", "pseudolink copy-tooltip");
-	      add_location(span3, file$3, 70, 1074, 3989);
+	      add_location(span3, file$3, 70, 1074, 3995);
 	      attr_dev(span4, "class", "pseudolink copy-tooltip");
-	      add_location(span4, file$3, 70, 1390, 4305);
+	      add_location(span4, file$3, 70, 1390, 4311);
 	      attr_dev(span5, "class", "pseudolink copy-tooltip");
-	      add_location(span5, file$3, 70, 1630, 4545);
-	      add_location(p3, file$3, 69, 6, 2911);
-	      add_location(em7, file$3, 73, 8, 4941);
-	      add_location(p4, file$3, 72, 6, 4929);
-	      add_location(em8, file$3, 76, 8, 5453);
-	      add_location(p5, file$3, 75, 6, 5441);
-	      add_location(em9, file$3, 79, 8, 6017);
-	      add_location(em10, file$3, 79, 261, 6270);
+	      add_location(span5, file$3, 70, 1630, 4551);
+	      add_location(p3, file$3, 69, 6, 2917);
+	      add_location(em7, file$3, 73, 8, 4947);
+	      add_location(p4, file$3, 72, 6, 4935);
+	      add_location(em8, file$3, 76, 8, 5459);
+	      add_location(p5, file$3, 75, 6, 5447);
+	      add_location(em9, file$3, 79, 8, 6023);
+	      add_location(em10, file$3, 79, 261, 6276);
 	      attr_dev(a, "href", "https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public");
-	      add_location(a, file$3, 79, 308, 6317);
-	      add_location(p6, file$3, 78, 6, 6005);
+	      add_location(a, file$3, 79, 308, 6323);
+	      add_location(p6, file$3, 78, 6, 6011);
 	      attr_dev(div1, "class", "collapsible-content");
-	      add_location(div1, file$3, 67, 4, 2870);
-	      add_location(p7, file$3, 83, 4, 6478);
-	      add_location(li3, file$3, 87, 6, 6642);
-	      add_location(li4, file$3, 88, 6, 6709);
-	      add_location(li5, file$3, 89, 6, 6778);
+	      add_location(div1, file$3, 67, 4, 2876);
+	      add_location(p7, file$3, 83, 4, 6484);
+	      add_location(li3, file$3, 87, 6, 6648);
+	      add_location(li4, file$3, 88, 6, 6715);
+	      add_location(li5, file$3, 89, 6, 6784);
 	      attr_dev(ul1, "class", "filter-list");
-	      add_location(ul1, file$3, 86, 4, 6611);
+	      add_location(ul1, file$3, 86, 4, 6617);
 	      attr_dev(section, "class", "content transparent-bg no-upper-margin");
 	      add_location(section, file$3, 45, 2, 1250);
 	    },
@@ -36251,8 +36232,8 @@ var app = (function () {
 	      p = element("p");
 	      p.textContent = "Loading and visualizing...";
 	      attr_dev(p, "class", "svelte-86siw2");
-	      add_location(p, file$4, 5, 2, 69);
-	      attr_dev(div, "class", "loading-info svelte-86siw2");
+	      add_location(p, file$4, 5, 2, 84);
+	      attr_dev(div, "class", "loading-info transparent-bg svelte-86siw2");
 	      add_location(div, file$4, 4, 0, 40);
 	    },
 	    l: function claim(nodes) {
@@ -38757,10 +38738,10 @@ var app = (function () {
 	  }
 
 	  function reDraw() {
-	    var locations = select$1("#points");
+	    var locations = select("#points");
 	    var elements = locations.selectAll("points.arc");
 	    elements.each(function (d, i) {
-	      var node = select$1(this);
+	      var node = select(this);
 	      this.remove();
 	    });
 	  }
@@ -38815,7 +38796,7 @@ var app = (function () {
 	      onMount: onMount,
 	      slide: slide,
 	      sortConsistently: sortConsistently,
-	      select: select$1,
+	      select: select,
 	      cretaceous: cretaceous,
 	      fossilDatapoints: fossilDatapoints,
 	      jurassic: jurassic,
@@ -43930,7 +43911,7 @@ var app = (function () {
 	      controlsFilter: controlsFilter,
 	      timeScale: timeScale,
 	      attributionScoreScale: attributionScoreScale,
-	      select: select$1,
+	      select: select,
 	      fossilDatapoints: fossilDatapoints,
 	      switchValueStore: switchValueStore,
 	      Dropdown: Dropdown,
@@ -44121,6 +44102,10 @@ var app = (function () {
 	  var feImage39;
 	  var filter40;
 	  var feImage40;
+	  var filter41;
+	  var feImage41;
+	  var filter42;
+	  var feImage42;
 	  var block = {
 	    c: function create() {
 	      defs = svg_element("defs");
@@ -44223,6 +44208,10 @@ var app = (function () {
 	      feImage39 = svg_element("feImage");
 	      filter40 = svg_element("filter");
 	      feImage40 = svg_element("feImage");
+	      filter41 = svg_element("filter");
+	      feImage41 = svg_element("feImage");
+	      filter42 = svg_element("filter");
+	      feImage42 = svg_element("feImage");
 	      attr_dev(stop0, "offset", "40%");
 	      set_style(stop0, "stop-color", "var(--bg)");
 	      attr_dev(stop0, "stop-opacity", "0.7");
@@ -44312,318 +44301,334 @@ var app = (function () {
 	      attr_dev(filter1, "width", "100%");
 	      attr_dev(filter1, "height", "100%");
 	      add_location(filter1, file$k, 49, 0, 1850);
-	      xlink_attr(feImage2, "xlink:href", "/images/archelon.png");
-	      add_location(feImage2, file$k, 54, 2, 2046);
-	      attr_dev(filter2, "id", "archelon_image");
+	      xlink_attr(feImage2, "xlink:href", "/images/archaeopteryx.png");
+	      add_location(feImage2, file$k, 54, 2, 2051);
+	      attr_dev(filter2, "id", "archaeopteryx_image");
 	      attr_dev(filter2, "x", "0%");
 	      attr_dev(filter2, "y", "0%");
 	      attr_dev(filter2, "width", "100%");
 	      attr_dev(filter2, "height", "100%");
 	      add_location(filter2, file$k, 53, 0, 1974);
-	      xlink_attr(feImage3, "xlink:href", "/images/argentinosaurus.png");
-	      add_location(feImage3, file$k, 58, 2, 2181);
-	      attr_dev(filter3, "id", "argentinosaurus_image");
+	      xlink_attr(feImage3, "xlink:href", "/images/archelon.png");
+	      add_location(feImage3, file$k, 58, 2, 2184);
+	      attr_dev(filter3, "id", "archelon_image");
 	      attr_dev(filter3, "x", "0%");
 	      attr_dev(filter3, "y", "0%");
 	      attr_dev(filter3, "width", "100%");
 	      attr_dev(filter3, "height", "100%");
-	      add_location(filter3, file$k, 57, 0, 2102);
-	      xlink_attr(feImage4, "xlink:href", "/images/argentavis.png");
-	      add_location(feImage4, file$k, 62, 2, 2318);
-	      attr_dev(filter4, "id", "argentavis_image");
+	      add_location(filter3, file$k, 57, 0, 2112);
+	      xlink_attr(feImage4, "xlink:href", "/images/argentinosaurus.png");
+	      add_location(feImage4, file$k, 62, 2, 2319);
+	      attr_dev(filter4, "id", "argentinosaurus_image");
 	      attr_dev(filter4, "x", "0%");
 	      attr_dev(filter4, "y", "0%");
 	      attr_dev(filter4, "width", "100%");
 	      attr_dev(filter4, "height", "100%");
-	      add_location(filter4, file$k, 61, 0, 2244);
-	      xlink_attr(feImage5, "xlink:href", "/images/baryonyx.png");
-	      add_location(feImage5, file$k, 66, 2, 2448);
-	      attr_dev(filter5, "id", "baryonyx_image");
+	      add_location(filter4, file$k, 61, 0, 2240);
+	      xlink_attr(feImage5, "xlink:href", "/images/argentavis.png");
+	      add_location(feImage5, file$k, 66, 2, 2456);
+	      attr_dev(filter5, "id", "argentavis_image");
 	      attr_dev(filter5, "x", "0%");
 	      attr_dev(filter5, "y", "0%");
 	      attr_dev(filter5, "width", "100%");
 	      attr_dev(filter5, "height", "100%");
-	      add_location(filter5, file$k, 65, 0, 2376);
-	      xlink_attr(feImage6, "xlink:href", "/images/basilosaurus.png");
-	      add_location(feImage6, file$k, 70, 2, 2580);
-	      attr_dev(filter6, "id", "basilosaurus_image");
+	      add_location(filter5, file$k, 65, 0, 2382);
+	      xlink_attr(feImage6, "xlink:href", "/images/baryonyx.png");
+	      add_location(feImage6, file$k, 70, 2, 2586);
+	      attr_dev(filter6, "id", "baryonyx_image");
 	      attr_dev(filter6, "x", "0%");
 	      attr_dev(filter6, "y", "0%");
 	      attr_dev(filter6, "width", "100%");
 	      attr_dev(filter6, "height", "100%");
-	      add_location(filter6, file$k, 69, 0, 2504);
-	      xlink_attr(feImage7, "xlink:href", "/images/coelophysis.png");
-	      add_location(feImage7, file$k, 74, 2, 2715);
-	      attr_dev(filter7, "id", "coelophysis_image");
+	      add_location(filter6, file$k, 69, 0, 2514);
+	      xlink_attr(feImage7, "xlink:href", "/images/basilosaurus.png");
+	      add_location(feImage7, file$k, 74, 2, 2718);
+	      attr_dev(filter7, "id", "basilosaurus_image");
 	      attr_dev(filter7, "x", "0%");
 	      attr_dev(filter7, "y", "0%");
 	      attr_dev(filter7, "width", "100%");
 	      attr_dev(filter7, "height", "100%");
-	      add_location(filter7, file$k, 73, 0, 2640);
-	      xlink_attr(feImage8, "xlink:href", "/images/dimetrodon.png");
-	      add_location(feImage8, file$k, 78, 2, 2848);
-	      attr_dev(filter8, "id", "dimetrodon_image");
+	      add_location(filter7, file$k, 73, 0, 2642);
+	      xlink_attr(feImage8, "xlink:href", "/images/coelophysis.png");
+	      add_location(feImage8, file$k, 78, 2, 2853);
+	      attr_dev(filter8, "id", "coelophysis_image");
 	      attr_dev(filter8, "x", "0%");
 	      attr_dev(filter8, "y", "0%");
 	      attr_dev(filter8, "width", "100%");
 	      attr_dev(filter8, "height", "100%");
-	      add_location(filter8, file$k, 77, 0, 2774);
-	      xlink_attr(feImage9, "xlink:href", "/images/gastornis.png");
-	      add_location(feImage9, file$k, 82, 2, 2979);
-	      attr_dev(filter9, "id", "gastornis_image");
+	      add_location(filter8, file$k, 77, 0, 2778);
+	      xlink_attr(feImage9, "xlink:href", "/images/dimetrodon.png");
+	      add_location(feImage9, file$k, 82, 2, 2986);
+	      attr_dev(filter9, "id", "dimetrodon_image");
 	      attr_dev(filter9, "x", "0%");
 	      attr_dev(filter9, "y", "0%");
 	      attr_dev(filter9, "width", "100%");
 	      attr_dev(filter9, "height", "100%");
-	      add_location(filter9, file$k, 81, 0, 2906);
-	      xlink_attr(feImage10, "xlink:href", "/images/giganotosaurus.png");
-	      add_location(feImage10, file$k, 86, 2, 3114);
-	      attr_dev(filter10, "id", "giganotosaurus_image");
+	      add_location(filter9, file$k, 81, 0, 2912);
+	      xlink_attr(feImage10, "xlink:href", "/images/gastornis.png");
+	      add_location(feImage10, file$k, 86, 2, 3117);
+	      attr_dev(filter10, "id", "gastornis_image");
 	      attr_dev(filter10, "x", "0%");
 	      attr_dev(filter10, "y", "0%");
 	      attr_dev(filter10, "width", "100%");
 	      attr_dev(filter10, "height", "100%");
-	      add_location(filter10, file$k, 85, 0, 3036);
-	      xlink_attr(feImage11, "xlink:href", "/images/giraffatitan.png");
+	      add_location(filter10, file$k, 85, 0, 3044);
+	      xlink_attr(feImage11, "xlink:href", "/images/giganotosaurus.png");
 	      add_location(feImage11, file$k, 90, 2, 3252);
-	      attr_dev(filter11, "id", "giraffatitan_image");
+	      attr_dev(filter11, "id", "giganotosaurus_image");
 	      attr_dev(filter11, "x", "0%");
 	      attr_dev(filter11, "y", "0%");
 	      attr_dev(filter11, "width", "100%");
 	      attr_dev(filter11, "height", "100%");
-	      add_location(filter11, file$k, 89, 0, 3176);
-	      xlink_attr(feImage12, "xlink:href", "/images/herbivore.svg");
-	      add_location(feImage12, file$k, 94, 2, 3385);
-	      attr_dev(filter12, "id", "herbivore_image");
+	      add_location(filter11, file$k, 89, 0, 3174);
+	      xlink_attr(feImage12, "xlink:href", "/images/giraffatitan.png");
+	      add_location(feImage12, file$k, 94, 2, 3390);
+	      attr_dev(filter12, "id", "giraffatitan_image");
 	      attr_dev(filter12, "x", "0%");
 	      attr_dev(filter12, "y", "0%");
 	      attr_dev(filter12, "width", "100%");
 	      attr_dev(filter12, "height", "100%");
-	      add_location(filter12, file$k, 93, 0, 3312);
-	      xlink_attr(feImage13, "xlink:href", "/images/herrerasaurus2.png");
-	      add_location(feImage13, file$k, 98, 2, 3519);
-	      attr_dev(filter13, "id", "herrerasaurus_image");
+	      add_location(filter12, file$k, 93, 0, 3314);
+	      xlink_attr(feImage13, "xlink:href", "/images/herbivore.svg");
+	      add_location(feImage13, file$k, 98, 2, 3523);
+	      attr_dev(filter13, "id", "herbivore_image");
 	      attr_dev(filter13, "x", "0%");
 	      attr_dev(filter13, "y", "0%");
 	      attr_dev(filter13, "width", "100%");
 	      attr_dev(filter13, "height", "100%");
-	      add_location(filter13, file$k, 97, 0, 3442);
-	      xlink_attr(feImage14, "xlink:href", "/images/iguanodon.png");
-	      add_location(feImage14, file$k, 102, 2, 3654);
-	      attr_dev(filter14, "id", "iguanodon_image");
+	      add_location(filter13, file$k, 97, 0, 3450);
+	      xlink_attr(feImage14, "xlink:href", "/images/herrerasaurus2.png");
+	      add_location(feImage14, file$k, 102, 2, 3657);
+	      attr_dev(filter14, "id", "herrerasaurus_image");
 	      attr_dev(filter14, "x", "0%");
 	      attr_dev(filter14, "y", "0%");
 	      attr_dev(filter14, "width", "100%");
 	      attr_dev(filter14, "height", "100%");
-	      add_location(filter14, file$k, 101, 0, 3581);
-	      xlink_attr(feImage15, "xlink:href", "/images/leaellynasaura.png");
-	      add_location(feImage15, file$k, 106, 2, 3789);
-	      attr_dev(filter15, "id", "leaellynasaura_image");
+	      add_location(filter14, file$k, 101, 0, 3580);
+	      xlink_attr(feImage15, "xlink:href", "/images/iguanodon.png");
+	      add_location(feImage15, file$k, 106, 2, 3792);
+	      attr_dev(filter15, "id", "iguanodon_image");
 	      attr_dev(filter15, "x", "0%");
 	      attr_dev(filter15, "y", "0%");
 	      attr_dev(filter15, "width", "100%");
 	      attr_dev(filter15, "height", "100%");
-	      add_location(filter15, file$k, 105, 0, 3711);
-	      xlink_attr(feImage16, "xlink:href", "/images/meganeura.png");
-	      add_location(feImage16, file$k, 110, 2, 3924);
-	      attr_dev(filter16, "id", "meganeura_image");
+	      add_location(filter15, file$k, 105, 0, 3719);
+	      xlink_attr(feImage16, "xlink:href", "/images/leaellynasaura.png");
+	      add_location(feImage16, file$k, 110, 2, 3927);
+	      attr_dev(filter16, "id", "leaellynasaura_image");
 	      attr_dev(filter16, "x", "0%");
 	      attr_dev(filter16, "y", "0%");
 	      attr_dev(filter16, "width", "100%");
 	      attr_dev(filter16, "height", "100%");
-	      add_location(filter16, file$k, 109, 0, 3851);
-	      xlink_attr(feImage17, "xlink:href", "/images/megatherium.png");
-	      add_location(feImage17, file$k, 114, 2, 4056);
-	      attr_dev(filter17, "id", "megatherium_image");
+	      add_location(filter16, file$k, 109, 0, 3849);
+	      xlink_attr(feImage17, "xlink:href", "/images/meganeura.png");
+	      add_location(feImage17, file$k, 114, 2, 4062);
+	      attr_dev(filter17, "id", "meganeura_image");
 	      attr_dev(filter17, "x", "0%");
 	      attr_dev(filter17, "y", "0%");
 	      attr_dev(filter17, "width", "100%");
 	      attr_dev(filter17, "height", "100%");
-	      add_location(filter17, file$k, 113, 0, 3981);
-	      xlink_attr(feImage18, "xlink:href", "/images/muttaburrasaurus.png");
-	      add_location(feImage18, file$k, 118, 2, 4195);
-	      attr_dev(filter18, "id", "muttaburrasaurus_image");
+	      add_location(filter17, file$k, 113, 0, 3989);
+	      xlink_attr(feImage18, "xlink:href", "/images/megatherium.png");
+	      add_location(feImage18, file$k, 118, 2, 4194);
+	      attr_dev(filter18, "id", "megatherium_image");
 	      attr_dev(filter18, "x", "0%");
 	      attr_dev(filter18, "y", "0%");
 	      attr_dev(filter18, "width", "100%");
 	      attr_dev(filter18, "height", "100%");
-	      add_location(filter18, file$k, 117, 0, 4115);
-	      xlink_attr(feImage19, "xlink:href", "/images/shunosaurus.png");
-	      add_location(feImage19, file$k, 122, 2, 4334);
-	      attr_dev(filter19, "id", "shunosaurus_image");
+	      add_location(filter18, file$k, 117, 0, 4119);
+	      xlink_attr(feImage19, "xlink:href", "/images/muttaburrasaurus.png");
+	      add_location(feImage19, file$k, 122, 2, 4333);
+	      attr_dev(filter19, "id", "muttaburrasaurus_image");
 	      attr_dev(filter19, "x", "0%");
 	      attr_dev(filter19, "y", "0%");
 	      attr_dev(filter19, "width", "100%");
 	      attr_dev(filter19, "height", "100%");
-	      add_location(filter19, file$k, 121, 0, 4259);
-	      xlink_attr(feImage20, "xlink:href", "/images/spinosaur.png");
-	      add_location(feImage20, file$k, 126, 2, 4468);
-	      attr_dev(filter20, "id", "spinosaurus_image");
+	      add_location(filter19, file$k, 121, 0, 4253);
+	      xlink_attr(feImage20, "xlink:href", "/images/shunosaurus.png");
+	      add_location(feImage20, file$k, 126, 2, 4472);
+	      attr_dev(filter20, "id", "shunosaurus_image");
 	      attr_dev(filter20, "x", "0%");
 	      attr_dev(filter20, "y", "0%");
 	      attr_dev(filter20, "width", "100%");
 	      attr_dev(filter20, "height", "100%");
-	      add_location(filter20, file$k, 125, 0, 4393);
-	      xlink_attr(feImage21, "xlink:href", "/images/titanoboa.png");
-	      add_location(feImage21, file$k, 130, 2, 4598);
-	      attr_dev(filter21, "id", "titanoboa_image");
+	      add_location(filter20, file$k, 125, 0, 4397);
+	      xlink_attr(feImage21, "xlink:href", "/images/spinosaur.png");
+	      add_location(feImage21, file$k, 130, 2, 4606);
+	      attr_dev(filter21, "id", "spinosaurus_image");
 	      attr_dev(filter21, "x", "0%");
 	      attr_dev(filter21, "y", "0%");
 	      attr_dev(filter21, "width", "100%");
 	      attr_dev(filter21, "height", "100%");
-	      add_location(filter21, file$k, 129, 0, 4525);
-	      xlink_attr(feImage22, "xlink:href", "/images/tyrannoskull.jpg");
-	      add_location(feImage22, file$k, 135, 2, 4732);
-	      attr_dev(filter22, "id", "tyrannoskull_image");
+	      add_location(filter21, file$k, 129, 0, 4531);
+	      xlink_attr(feImage22, "xlink:href", "/images/thecodontosaurus.png");
+	      add_location(feImage22, file$k, 134, 2, 4743);
+	      attr_dev(filter22, "id", "thecodontosaurus_image");
 	      attr_dev(filter22, "x", "0%");
 	      attr_dev(filter22, "y", "0%");
 	      attr_dev(filter22, "width", "100%");
 	      attr_dev(filter22, "height", "100%");
-	      add_location(filter22, file$k, 134, 0, 4656);
-	      xlink_attr(feImage23, "xlink:href", "/images/trexskull.png");
-	      add_location(feImage23, file$k, 139, 2, 4865);
-	      attr_dev(filter23, "id", "trexskull_image");
+	      add_location(filter22, file$k, 133, 0, 4663);
+	      xlink_attr(feImage23, "xlink:href", "/images/titanoboa.png");
+	      add_location(feImage23, file$k, 138, 2, 4880);
+	      attr_dev(filter23, "id", "titanoboa_image");
 	      attr_dev(filter23, "x", "0%");
 	      attr_dev(filter23, "y", "0%");
 	      attr_dev(filter23, "width", "100%");
 	      attr_dev(filter23, "height", "100%");
-	      add_location(filter23, file$k, 138, 0, 4792);
-	      xlink_attr(feImage24, "xlink:href", "/images/aquatic.svg");
-	      add_location(feImage24, file$k, 143, 2, 4993);
-	      attr_dev(filter24, "id", "aquatic_image");
+	      add_location(filter23, file$k, 137, 0, 4807);
+	      xlink_attr(feImage24, "xlink:href", "/images/tyrannoskull.jpg");
+	      add_location(feImage24, file$k, 142, 2, 5013);
+	      attr_dev(filter24, "id", "tyrannoskull_image");
 	      attr_dev(filter24, "x", "0%");
 	      attr_dev(filter24, "y", "0%");
 	      attr_dev(filter24, "width", "100%");
 	      attr_dev(filter24, "height", "100%");
-	      add_location(filter24, file$k, 142, 0, 4922);
-	      xlink_attr(feImage25, "xlink:href", "/images/pachycephalosaurus.png");
-	      add_location(feImage25, file$k, 147, 2, 5130);
-	      attr_dev(filter25, "id", "pachycephalosaurus_image");
+	      add_location(filter24, file$k, 141, 0, 4937);
+	      xlink_attr(feImage25, "xlink:href", "/images/trexskull.png");
+	      add_location(feImage25, file$k, 146, 2, 5146);
+	      attr_dev(filter25, "id", "trexskull_image");
 	      attr_dev(filter25, "x", "0%");
 	      attr_dev(filter25, "y", "0%");
 	      attr_dev(filter25, "width", "100%");
 	      attr_dev(filter25, "height", "100%");
-	      add_location(filter25, file$k, 146, 0, 5048);
-	      xlink_attr(feImage26, "xlink:href", "/images/pterodactyl.svg");
-	      add_location(feImage26, file$k, 151, 2, 5271);
-	      attr_dev(filter26, "id", "pterodactyl_image");
+	      add_location(filter25, file$k, 145, 0, 5073);
+	      xlink_attr(feImage26, "xlink:href", "/images/aquatic.svg");
+	      add_location(feImage26, file$k, 150, 2, 5274);
+	      attr_dev(filter26, "id", "aquatic_image");
 	      attr_dev(filter26, "x", "0%");
 	      attr_dev(filter26, "y", "0%");
 	      attr_dev(filter26, "width", "100%");
 	      attr_dev(filter26, "height", "100%");
-	      add_location(filter26, file$k, 150, 0, 5196);
-	      xlink_attr(feImage27, "xlink:href", "/images/smilodon.png");
-	      add_location(feImage27, file$k, 155, 2, 5402);
-	      attr_dev(filter27, "id", "smilodon_image");
+	      add_location(filter26, file$k, 149, 0, 5203);
+	      xlink_attr(feImage27, "xlink:href", "/images/pachycephalosaurus.png");
+	      add_location(feImage27, file$k, 154, 2, 5411);
+	      attr_dev(filter27, "id", "pachycephalosaurus_image");
 	      attr_dev(filter27, "x", "0%");
 	      attr_dev(filter27, "y", "0%");
 	      attr_dev(filter27, "width", "100%");
 	      attr_dev(filter27, "height", "100%");
-	      add_location(filter27, file$k, 154, 0, 5330);
-	      xlink_attr(feImage28, "xlink:href", "/images/stegosaurus.svg");
-	      add_location(feImage28, file$k, 159, 2, 5533);
-	      attr_dev(filter28, "id", "stegosaurus_image");
+	      add_location(filter27, file$k, 153, 0, 5329);
+	      xlink_attr(feImage28, "xlink:href", "/images/pterodactyl.svg");
+	      add_location(feImage28, file$k, 158, 2, 5552);
+	      attr_dev(filter28, "id", "pterodactyl_image");
 	      attr_dev(filter28, "x", "0%");
 	      attr_dev(filter28, "y", "0%");
 	      attr_dev(filter28, "width", "100%");
 	      attr_dev(filter28, "height", "100%");
-	      add_location(filter28, file$k, 158, 0, 5458);
-	      xlink_attr(feImage29, "xlink:href", "/images/ophthalmosaurus.png");
-	      add_location(feImage29, file$k, 163, 2, 5671);
-	      attr_dev(filter29, "id", "ophthalmosaurus_image");
+	      add_location(filter28, file$k, 157, 0, 5477);
+	      xlink_attr(feImage29, "xlink:href", "/images/smilodon.png");
+	      add_location(feImage29, file$k, 162, 2, 5683);
+	      attr_dev(filter29, "id", "smilodon_image");
 	      attr_dev(filter29, "x", "0%");
 	      attr_dev(filter29, "y", "0%");
 	      attr_dev(filter29, "width", "100%");
 	      attr_dev(filter29, "height", "100%");
-	      add_location(filter29, file$k, 162, 0, 5592);
-	      xlink_attr(feImage30, "xlink:href", "/images/lizard.svg");
-	      add_location(feImage30, file$k, 168, 2, 5805);
-	      attr_dev(filter30, "id", "lizard_image");
+	      add_location(filter29, file$k, 161, 0, 5611);
+	      xlink_attr(feImage30, "xlink:href", "/images/stegosaurus.svg");
+	      add_location(feImage30, file$k, 166, 2, 5814);
+	      attr_dev(filter30, "id", "stegosaurus_image");
 	      attr_dev(filter30, "x", "0%");
 	      attr_dev(filter30, "y", "0%");
 	      attr_dev(filter30, "width", "100%");
 	      attr_dev(filter30, "height", "100%");
-	      add_location(filter30, file$k, 167, 0, 5735);
-	      xlink_attr(feImage31, "xlink:href", "/images/mesosaurus.png");
-	      add_location(feImage31, file$k, 172, 2, 5933);
-	      attr_dev(filter31, "id", "mesosaurus_image");
+	      add_location(filter30, file$k, 165, 0, 5739);
+	      xlink_attr(feImage31, "xlink:href", "/images/ophthalmosaurus.png");
+	      add_location(feImage31, file$k, 170, 2, 5952);
+	      attr_dev(filter31, "id", "ophthalmosaurus_image");
 	      attr_dev(filter31, "x", "0%");
 	      attr_dev(filter31, "y", "0%");
 	      attr_dev(filter31, "width", "100%");
 	      attr_dev(filter31, "height", "100%");
-	      add_location(filter31, file$k, 171, 0, 5859);
-	      xlink_attr(feImage32, "xlink:href", "/images/mosasaurus.png");
-	      add_location(feImage32, file$k, 176, 2, 6065);
-	      attr_dev(filter32, "id", "mosasaurus_image");
+	      add_location(filter31, file$k, 169, 0, 5873);
+	      xlink_attr(feImage32, "xlink:href", "/images/lizard.svg");
+	      add_location(feImage32, file$k, 175, 2, 6086);
+	      attr_dev(filter32, "id", "lizard_image");
 	      attr_dev(filter32, "x", "0%");
 	      attr_dev(filter32, "y", "0%");
 	      attr_dev(filter32, "width", "100%");
 	      attr_dev(filter32, "height", "100%");
-	      add_location(filter32, file$k, 175, 0, 5991);
-	      xlink_attr(feImage33, "xlink:href", "/images/plateosaurus.png");
-	      add_location(feImage33, file$k, 180, 2, 6199);
-	      attr_dev(filter33, "id", "plateosaurus_image");
+	      add_location(filter32, file$k, 174, 0, 6016);
+	      xlink_attr(feImage33, "xlink:href", "/images/mesosaurus.png");
+	      add_location(feImage33, file$k, 179, 2, 6214);
+	      attr_dev(filter33, "id", "mesosaurus_image");
 	      attr_dev(filter33, "x", "0%");
 	      attr_dev(filter33, "y", "0%");
 	      attr_dev(filter33, "width", "100%");
 	      attr_dev(filter33, "height", "100%");
-	      add_location(filter33, file$k, 179, 0, 6123);
-	      xlink_attr(feImage34, "xlink:href", "/images/smallraptor.svg");
-	      add_location(feImage34, file$k, 184, 2, 6334);
-	      attr_dev(filter34, "id", "smallraptor_image");
+	      add_location(filter33, file$k, 178, 0, 6140);
+	      xlink_attr(feImage34, "xlink:href", "/images/mosasaurus.png");
+	      add_location(feImage34, file$k, 183, 2, 6346);
+	      attr_dev(filter34, "id", "mosasaurus_image");
 	      attr_dev(filter34, "x", "0%");
 	      attr_dev(filter34, "y", "0%");
 	      attr_dev(filter34, "width", "100%");
 	      attr_dev(filter34, "height", "100%");
-	      add_location(filter34, file$k, 183, 0, 6259);
-	      xlink_attr(feImage35, "xlink:href", "/images/seaskeleton.svg");
-	      add_location(feImage35, file$k, 188, 2, 6468);
-	      attr_dev(filter35, "id", "seaskeleton_image");
+	      add_location(filter34, file$k, 182, 0, 6272);
+	      xlink_attr(feImage35, "xlink:href", "/images/plateosaurus.png");
+	      add_location(feImage35, file$k, 187, 2, 6480);
+	      attr_dev(filter35, "id", "plateosaurus_image");
 	      attr_dev(filter35, "x", "0%");
 	      attr_dev(filter35, "y", "0%");
 	      attr_dev(filter35, "width", "100%");
 	      attr_dev(filter35, "height", "100%");
-	      add_location(filter35, file$k, 187, 0, 6393);
-	      xlink_attr(feImage36, "xlink:href", "/images/armored.svg");
-	      add_location(feImage36, file$k, 192, 2, 6598);
-	      attr_dev(filter36, "id", "armored_image");
+	      add_location(filter35, file$k, 186, 0, 6404);
+	      xlink_attr(feImage36, "xlink:href", "/images/smallraptor.svg");
+	      add_location(feImage36, file$k, 191, 2, 6615);
+	      attr_dev(filter36, "id", "smallraptor_image");
 	      attr_dev(filter36, "x", "0%");
 	      attr_dev(filter36, "y", "0%");
 	      attr_dev(filter36, "width", "100%");
 	      attr_dev(filter36, "height", "100%");
-	      add_location(filter36, file$k, 191, 0, 6527);
-	      xlink_attr(feImage37, "xlink:href", "/images/tyrannosaurskeleton.svg");
-	      add_location(feImage37, file$k, 196, 2, 6736);
-	      attr_dev(filter37, "id", "tyrannosaurskeleton_image");
+	      add_location(filter36, file$k, 190, 0, 6540);
+	      xlink_attr(feImage37, "xlink:href", "/images/seaskeleton.svg");
+	      add_location(feImage37, file$k, 195, 2, 6749);
+	      attr_dev(filter37, "id", "seaskeleton_image");
 	      attr_dev(filter37, "x", "0%");
 	      attr_dev(filter37, "y", "0%");
 	      attr_dev(filter37, "width", "100%");
 	      attr_dev(filter37, "height", "100%");
-	      add_location(filter37, file$k, 195, 0, 6653);
-	      xlink_attr(feImage38, "xlink:href", "/images/triceratops.svg");
-	      add_location(feImage38, file$k, 200, 2, 6878);
-	      attr_dev(filter38, "id", "triceratops_image");
+	      add_location(filter37, file$k, 194, 0, 6674);
+	      xlink_attr(feImage38, "xlink:href", "/images/armored.svg");
+	      add_location(feImage38, file$k, 199, 2, 6879);
+	      attr_dev(filter38, "id", "armored_image");
 	      attr_dev(filter38, "x", "0%");
 	      attr_dev(filter38, "y", "0%");
 	      attr_dev(filter38, "width", "100%");
 	      attr_dev(filter38, "height", "100%");
-	      add_location(filter38, file$k, 199, 0, 6803);
-	      xlink_attr(feImage39, "xlink:href", "/images/talons.svg");
-	      add_location(feImage39, file$k, 204, 2, 7007);
-	      attr_dev(filter39, "id", "talons_image");
+	      add_location(filter38, file$k, 198, 0, 6808);
+	      xlink_attr(feImage39, "xlink:href", "/images/tyrannosaurskeleton.svg");
+	      add_location(feImage39, file$k, 203, 2, 7017);
+	      attr_dev(filter39, "id", "tyrannosaurskeleton_image");
 	      attr_dev(filter39, "x", "0%");
 	      attr_dev(filter39, "y", "0%");
 	      attr_dev(filter39, "width", "100%");
 	      attr_dev(filter39, "height", "100%");
-	      add_location(filter39, file$k, 203, 0, 6937);
-	      xlink_attr(feImage40, "xlink:href", "/images/duckbilled.svg");
-	      add_location(feImage40, file$k, 210, 2, 7137);
-	      attr_dev(filter40, "id", "duckbilled_image");
+	      add_location(filter39, file$k, 202, 0, 6934);
+	      xlink_attr(feImage40, "xlink:href", "/images/triceratops.svg");
+	      add_location(feImage40, file$k, 207, 2, 7159);
+	      attr_dev(filter40, "id", "triceratops_image");
 	      attr_dev(filter40, "x", "0%");
 	      attr_dev(filter40, "y", "0%");
 	      attr_dev(filter40, "width", "100%");
 	      attr_dev(filter40, "height", "100%");
-	      add_location(filter40, file$k, 209, 0, 7063);
+	      add_location(filter40, file$k, 206, 0, 7084);
+	      xlink_attr(feImage41, "xlink:href", "/images/talons.svg");
+	      add_location(feImage41, file$k, 211, 2, 7288);
+	      attr_dev(filter41, "id", "talons_image");
+	      attr_dev(filter41, "x", "0%");
+	      attr_dev(filter41, "y", "0%");
+	      attr_dev(filter41, "width", "100%");
+	      attr_dev(filter41, "height", "100%");
+	      add_location(filter41, file$k, 210, 0, 7218);
+	      xlink_attr(feImage42, "xlink:href", "/images/duckbilled.svg");
+	      add_location(feImage42, file$k, 217, 2, 7418);
+	      attr_dev(filter42, "id", "duckbilled_image");
+	      attr_dev(filter42, "x", "0%");
+	      attr_dev(filter42, "y", "0%");
+	      attr_dev(filter42, "width", "100%");
+	      attr_dev(filter42, "height", "100%");
+	      add_location(filter42, file$k, 216, 0, 7344);
 	      add_location(defs, file$k, 5, 0, 105);
 	    },
 	    l: function claim(nodes) {
@@ -44730,6 +44735,10 @@ var app = (function () {
 	      append_dev(filter39, feImage39);
 	      append_dev(defs, filter40);
 	      append_dev(filter40, feImage40);
+	      append_dev(defs, filter41);
+	      append_dev(filter41, feImage41);
+	      append_dev(defs, filter42);
+	      append_dev(filter42, feImage42);
 	    },
 	    p: noop,
 	    i: noop,
@@ -53487,10 +53496,10 @@ var app = (function () {
 	  }))); //end main reactive loop
 
 	  function reDraw() {
-	    var locations = select$1("#points");
+	    var locations = select("#points");
 	    var elements = locations.selectAll("points.arc");
 	    elements.each(function (d, i) {
-	      var node = select$1(this);
+	      var node = select(this);
 	      this.remove();
 	    });
 	  }
@@ -53530,7 +53539,7 @@ var app = (function () {
 	      geoPath: geoPath,
 	      scaleFactor: scaleFactor,
 	      timeScale: timeScale,
-	      select: select$1,
+	      select: select,
 	      geoGraticule: graticule,
 	      geoNaturalEarth1: geoNaturalEarth1,
 	      geoMercator: geoMercator,
@@ -53624,10 +53633,10 @@ var app = (function () {
 	        $geoPath.context(ctx); // console.log(projection)
 	        // begin fossil adding code
 
-	        var container = select$1("#container").style("width", width + "px").style("height", height + "px");
-	        var base = select$1("#map");
-	        var locations = select$1("#points");
-	        var layer = select$1(".layer");
+	        var container = select("#container").style("width", width + "px").style("height", height + "px");
+	        var base = select("#map");
+	        var locations = select("#points");
+	        var layer = select(".layer");
 	        var info = base.append("div").attr("class", "info");
 	        var jurassicPaint = linear$1().domain([140, 206]).range(["#a4e3ef", "#2f9eb3"]);
 
@@ -53671,7 +53680,7 @@ var app = (function () {
 	        function drawCanvas() {
 	          var elements = locations.selectAll("points.arc");
 	          elements.each(function (d, i) {
-	            var node = select$1(this);
+	            var node = select(this);
 	            ctx.beginPath();
 	            ctx.arc(node.attr("x"), node.attr("y"), node.attr("radius"), 0, 2 * Math.PI);
 	            ctx.fillStyle = node.attr("fillStyle");
@@ -53761,9 +53770,9 @@ var app = (function () {
 
 	        function createLegend() {
 	          ctx.fillStyle = bg;
-	          ctx.fillRect($width - 250, $mapHeight - 230, 300, 230);
+	          ctx.fillRect($width - 220, $mapHeight - 230, 300, 230);
 	          ctx.strokeStyle = "#000";
-	          ctx.strokeRect($width - 250, $mapHeight - 230, 300, 230);
+	          ctx.strokeRect($width - 220, $mapHeight - 230, 300, 230);
 	          ctx.font = "bold 16px Quicksand";
 	          ctx.fillStyle = "#000";
 	          ctx.fillText("Fossil Color Scale", $width - 200, $mapHeight - 211);
@@ -58704,10 +58713,10 @@ var app = (function () {
 	  }
 
 	  function reDraw() {
-	    var locations = select$1("#points");
+	    var locations = select("#points");
 	    var elements = locations.selectAll("points.arc");
 	    elements.each(function (d, i) {
-	      var node = select$1(this);
+	      var node = select(this);
 	      this.remove();
 	    });
 	  }
@@ -58743,7 +58752,7 @@ var app = (function () {
 	      loadCretaceousFossils: loadCretaceousFossils,
 	      uniq: lodash.uniq,
 	      sortBy: lodash.sortBy,
-	      select: select$1,
+	      select: select,
 	      data: data,
 	      triassicFossilData: triassicFossilData,
 	      jurassicFossilData: jurassicFossilData,
@@ -59947,229 +59956,26 @@ var app = (function () {
 	  return CookieBanner;
 	}(SvelteComponentDev);
 
-	var dataTest;
-
-	var loadFossilSpots = /*#__PURE__*/function () {
-	  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-	    var aArray, dinoChartData, newData;
-	    return regeneratorRuntime.wrap(function _callee$(_context) {
-	      while (1) {
-	        switch (_context.prev = _context.next) {
-	          case 0:
-	            _context.next = 2;
-	            return loadData();
-
-	          case 2:
-	            dataTest = _context.sent.map(function (d) {
-	              return _objectSpread2({}, d);
-	            });
-	            //	console.log('dataTest: ', dataTest)
-	            aArray = [];
-	            _context.next = 6;
-	            return csv$1(data$1, function (d, i) {
-	              var newItem = {
-	                x: parseFloat(d.size),
-	                y: parseFloat(d.weight)
-	              };
-	              aArray.push(newItem);
-	              return {
-	                x: parseFloat(d.size),
-	                y: parseFloat(d.weight)
-	              };
-	            });
-
-	          case 6:
-	            dinoChartData = _context.sent;
-	            //	console.log('aArray: ', aArray)
-	            //	console.log('dinochartdata: ', dinoChartData)
-	            newData = [];
-	            newData.push(aArray[0]);
-	            return _context.abrupt("return", newData);
-
-	          case 10:
-	          case "end":
-	            return _context.stop();
-	        }
-	      }
-	    }, _callee);
-	  }));
-
-	  return function loadFossilSpots() {
-	    return _ref.apply(this, arguments);
-	  };
-	}();
-
 	var data$2 = {
-	  a: loadFossilSpots(),
+	  a: [{
+	    x: 10,
+	    y: 9.14
+	  }],
 	  b: [{
 	    x: 10,
 	    y: 9.14
-	  }, {
-	    x: 28,
-	    y: 8.14
-	  }, {
-	    x: 13,
-	    y: 8.74
-	  }, {
-	    x: 39,
-	    y: 8.77
-	  }, {
-	    x: 41,
-	    y: 9.26
-	  }, {
-	    x: 54,
-	    y: 8.1
-	  }, {
-	    x: 66,
-	    y: 6.13
-	  }, {
-	    x: 72,
-	    y: 3.1
-	  }, {
-	    x: 82,
-	    y: 9.13
-	  }, {
-	    x: 97,
-	    y: 7.26
-	  }, {
-	    x: 101,
-	    y: 4.74
 	  }],
 	  c: [{
 	    x: 10,
 	    y: 7.46
-	  }, {
-	    x: 8,
-	    y: 6.77
-	  }, {
-	    x: 13,
-	    y: 12.74
-	  }, {
-	    x: 9,
-	    y: 7.11
-	  }, {
-	    x: 11,
-	    y: 7.81
-	  }, {
-	    x: 14,
-	    y: 8.84
-	  }, {
-	    x: 6,
-	    y: 6.08
-	  }, {
-	    x: 4,
-	    y: 5.39
-	  }, {
-	    x: 12,
-	    y: 8.15
-	  }, {
-	    x: 7,
-	    y: 6.42
-	  }, {
-	    x: 5,
-	    y: 5.73
 	  }],
 	  d: [{
 	    x: 8,
 	    y: 6.58
-	  }, {
-	    x: 8,
-	    y: 5.76
-	  }, {
-	    x: 8,
-	    y: 7.71
-	  }, {
-	    x: 8,
-	    y: 8.84
-	  }, {
-	    x: 8,
-	    y: 8.47
-	  }, {
-	    x: 8,
-	    y: 7.04
-	  }, {
-	    x: 8,
-	    y: 5.25
-	  }, {
-	    x: 19,
-	    y: 12.5
-	  }, {
-	    x: 8,
-	    y: 5.56
-	  }, {
-	    x: 8,
-	    y: 7.91
-	  }, {
-	    x: 8,
-	    y: 6.89
 	  }],
 	  e: [{
 	    x: 8,
 	    y: 6.58
-	  }, {
-	    x: 8,
-	    y: 5.76
-	  }, {
-	    x: 8,
-	    y: 7.71
-	  }, {
-	    x: 8,
-	    y: 8.84
-	  }, {
-	    x: 8,
-	    y: 8.47
-	  }, {
-	    x: 8,
-	    y: 7.04
-	  }, {
-	    x: 8,
-	    y: 5.25
-	  }, {
-	    x: 19,
-	    y: 12.5
-	  }, {
-	    x: 8,
-	    y: 5.56
-	  }, {
-	    x: 8,
-	    y: 7.91
-	  }, {
-	    x: 8,
-	    y: 6.89
-	  }],
-	  f: [{
-	    x: 8,
-	    y: 6.58
-	  }, {
-	    x: 8,
-	    y: 5.76
-	  }, {
-	    x: 8,
-	    y: 7.71
-	  }, {
-	    x: 8,
-	    y: 8.84
-	  }, {
-	    x: 8,
-	    y: 8.47
-	  }, {
-	    x: 8,
-	    y: 7.04
-	  }, {
-	    x: 8,
-	    y: 5.25
-	  }, {
-	    x: 19,
-	    y: 12.5
-	  }, {
-	    x: 8,
-	    y: 5.56
-	  }, {
-	    x: 8,
-	    y: 7.91
-	  }, {
-	    x: 8,
-	    y: 6.89
 	  }]
 	};
 
@@ -60855,7 +60661,145 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$5 = globals.console;
-	var file$N = "src/components/ChartDatapoint.svelte"; // (105:0) {#if (x <= ($width/2))}
+	var file$N = "src/components/ChartDatapoint.svelte"; // (49:0) {#if (name)}
+
+	function create_if_block$l(ctx) {
+	  var t;
+	  var if_block1_anchor;
+	  var if_block0 =
+	  /*x*/
+	  ctx[0] <=
+	  /*$width*/
+	  ctx[6] / 2 && create_if_block_2$7(ctx);
+	  var if_block1 =
+	  /*x*/
+	  ctx[0] >
+	  /*$width*/
+	  ctx[6] / 2 && create_if_block_1$a(ctx);
+	  var block = {
+	    c: function create() {
+	      if (if_block0) if_block0.c();
+	      t = space();
+	      if (if_block1) if_block1.c();
+	      if_block1_anchor = empty();
+	    },
+	    m: function mount(target, anchor) {
+	      if (if_block0) if_block0.m(target, anchor);
+	      insert_dev(target, t, anchor);
+	      if (if_block1) if_block1.m(target, anchor);
+	      insert_dev(target, if_block1_anchor, anchor);
+	    },
+	    p: function update(ctx, dirty) {
+	      if (
+	      /*x*/
+	      ctx[0] <=
+	      /*$width*/
+	      ctx[6] / 2) {
+	        if (if_block0) {
+	          if_block0.p(ctx, dirty);
+	        } else {
+	          if_block0 = create_if_block_2$7(ctx);
+	          if_block0.c();
+	          if_block0.m(t.parentNode, t);
+	        }
+	      } else if (if_block0) {
+	        if_block0.d(1);
+	        if_block0 = null;
+	      }
+
+	      if (
+	      /*x*/
+	      ctx[0] >
+	      /*$width*/
+	      ctx[6] / 2) {
+	        if (if_block1) {
+	          if_block1.p(ctx, dirty);
+	        } else {
+	          if_block1 = create_if_block_1$a(ctx);
+	          if_block1.c();
+	          if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+	        }
+	      } else if (if_block1) {
+	        if_block1.d(1);
+	        if_block1 = null;
+	      }
+	    },
+	    d: function destroy(detaching) {
+	      if (if_block0) if_block0.d(detaching);
+	      if (detaching) detach_dev(t);
+	      if (if_block1) if_block1.d(detaching);
+	      if (detaching) detach_dev(if_block1_anchor);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block$l.name,
+	    type: "if",
+	    source: "(49:0) {#if (name)}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (50:0) {#if (x <= ($width/2))}
+
+
+	function create_if_block_2$7(ctx) {
+	  var g;
+	  var text_1;
+	  var t;
+	  var g_transform_value;
+	  var block = {
+	    c: function create() {
+	      g = svg_element("g");
+	      text_1 = svg_element("text");
+	      t = text(
+	      /*hoverName*/
+	      ctx[2]);
+	      set_style(text_1, "transition", "opacity 600ms ease");
+	      add_location(text_1, file$N, 52, 8, 1284);
+	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
+	      attr_dev(g, "transform", g_transform_value = "translate(" + (
+	      /*$tX*/
+	      ctx[4] + 10) + " " + (
+	      /*$tY*/
+	      ctx[5] - 20) + ")");
+	      add_location(g, file$N, 51, 5, 1187);
+	    },
+	    m: function mount(target, anchor) {
+	      insert_dev(target, g, anchor);
+	      append_dev(g, text_1);
+	      append_dev(text_1, t);
+	    },
+	    p: function update(ctx, dirty) {
+	      if (dirty &
+	      /*hoverName*/
+	      4) set_data_dev(t,
+	      /*hoverName*/
+	      ctx[2]);
+
+	      if (dirty &
+	      /*$tX, $tY*/
+	      48 && g_transform_value !== (g_transform_value = "translate(" + (
+	      /*$tX*/
+	      ctx[4] + 10) + " " + (
+	      /*$tY*/
+	      ctx[5] - 20) + ")")) {
+	        attr_dev(g, "transform", g_transform_value);
+	      }
+	    },
+	    d: function destroy(detaching) {
+	      if (detaching) detach_dev(g);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
+	    id: create_if_block_2$7.name,
+	    type: "if",
+	    source: "(50:0) {#if (x <= ($width/2))}",
+	    ctx: ctx
+	  });
+	  return block;
+	} // (57:0) {#if (x > ($width/2))}
+
 
 	function create_if_block_1$a(ctx) {
 	  var g;
@@ -60870,14 +60814,14 @@ var app = (function () {
 	      /*hoverName*/
 	      ctx[2]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$N, 107, 8, 3293);
+	      add_location(text_1, file$N, 59, 8, 1511);
 	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$tX*/
-	      ctx[4] + 10) + " " + (
+	      ctx[4] - 100) + " " + (
 	      /*$tY*/
 	      ctx[5] - 20) + ")");
-	      add_location(g, file$N, 106, 5, 3196);
+	      add_location(g, file$N, 58, 5, 1413);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -60895,7 +60839,7 @@ var app = (function () {
 	      /*$tX, $tY*/
 	      48 && g_transform_value !== (g_transform_value = "translate(" + (
 	      /*$tX*/
-	      ctx[4] + 10) + " " + (
+	      ctx[4] - 100) + " " + (
 	      /*$tY*/
 	      ctx[5] - 20) + ")")) {
 	        attr_dev(g, "transform", g_transform_value);
@@ -60909,66 +60853,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$a.name,
 	    type: "if",
-	    source: "(105:0) {#if (x <= ($width/2))}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (112:0) {#if (x > ($width/2))}
-
-
-	function create_if_block$l(ctx) {
-	  var g;
-	  var text_1;
-	  var t;
-	  var g_transform_value;
-	  var block = {
-	    c: function create() {
-	      g = svg_element("g");
-	      text_1 = svg_element("text");
-	      t = text(
-	      /*hoverName*/
-	      ctx[2]);
-	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$N, 114, 8, 3520);
-	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
-	      attr_dev(g, "transform", g_transform_value = "translate(" + (
-	      /*$tX*/
-	      ctx[4] - 100) + " " + (
-	      /*$tY*/
-	      ctx[5] - 20) + ")");
-	      add_location(g, file$N, 113, 5, 3422);
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, g, anchor);
-	      append_dev(g, text_1);
-	      append_dev(text_1, t);
-	    },
-	    p: function update(ctx, dirty) {
-	      if (dirty &
-	      /*hoverName*/
-	      4) set_data_dev(t,
-	      /*hoverName*/
-	      ctx[2]);
-
-	      if (dirty &
-	      /*$tX, $tY*/
-	      48 && g_transform_value !== (g_transform_value = "translate(" + (
-	      /*$tX*/
-	      ctx[4] - 100) + " " + (
-	      /*$tY*/
-	      ctx[5] - 20) + ")")) {
-	        attr_dev(g, "transform", g_transform_value);
-	      }
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(g);
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_if_block$l.name,
-	    type: "if",
-	    source: "(112:0) {#if (x > ($width/2))}",
+	    source: "(57:0) {#if (x > ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -60978,30 +60863,20 @@ var app = (function () {
 	  var g;
 	  var circle;
 	  var g_transform_value;
-	  var t0;
-	  var t1;
-	  var if_block1_anchor;
+	  var t;
+	  var if_block_anchor;
 	  var mounted;
 	  var dispose;
-	  var if_block0 =
-	  /*x*/
-	  ctx[0] <=
-	  /*$width*/
-	  ctx[6] / 2 && create_if_block_1$a(ctx);
-	  var if_block1 =
-	  /*x*/
-	  ctx[0] >
-	  /*$width*/
-	  ctx[6] / 2 && create_if_block$l(ctx);
+	  var if_block =
+	  /*name*/
+	  ctx[1] && create_if_block$l(ctx);
 	  var block = {
 	    c: function create() {
 	      g = svg_element("g");
 	      circle = svg_element("circle");
-	      t0 = space();
-	      if (if_block0) if_block0.c();
-	      t1 = space();
-	      if (if_block1) if_block1.c();
-	      if_block1_anchor = empty();
+	      t = space();
+	      if (if_block) if_block.c();
+	      if_block_anchor = empty();
 	      attr_dev(circle, "name",
 	      /*name*/
 	      ctx[1]);
@@ -61022,13 +60897,13 @@ var app = (function () {
 	      attr_dev(circle, "testx",
 	      /*$tX*/
 	      ctx[4]);
-	      add_location(circle, file$N, 100, 5, 3003);
+	      add_location(circle, file$N, 43, 5, 980);
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*$tX*/
 	      ctx[4] + " " +
 	      /*$tY*/
 	      ctx[5] + ")");
-	      add_location(g, file$N, 97, 0, 2921);
+	      add_location(g, file$N, 40, 0, 898);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -61036,11 +60911,9 @@ var app = (function () {
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
 	      append_dev(g, circle);
-	      insert_dev(target, t0, anchor);
-	      if (if_block0) if_block0.m(target, anchor);
-	      insert_dev(target, t1, anchor);
-	      if (if_block1) if_block1.m(target, anchor);
-	      insert_dev(target, if_block1_anchor, anchor);
+	      insert_dev(target, t, anchor);
+	      if (if_block) if_block.m(target, anchor);
+	      insert_dev(target, if_block_anchor, anchor);
 
 	      if (!mounted) {
 	        dispose = listen_dev(g, "mouseover",
@@ -61104,48 +60977,27 @@ var app = (function () {
 	      }
 
 	      if (
-	      /*x*/
-	      ctx[0] <=
-	      /*$width*/
-	      ctx[6] / 2) {
-	        if (if_block0) {
-	          if_block0.p(ctx, dirty);
+	      /*name*/
+	      ctx[1]) {
+	        if (if_block) {
+	          if_block.p(ctx, dirty);
 	        } else {
-	          if_block0 = create_if_block_1$a(ctx);
-	          if_block0.c();
-	          if_block0.m(t1.parentNode, t1);
+	          if_block = create_if_block$l(ctx);
+	          if_block.c();
+	          if_block.m(if_block_anchor.parentNode, if_block_anchor);
 	        }
-	      } else if (if_block0) {
-	        if_block0.d(1);
-	        if_block0 = null;
-	      }
-
-	      if (
-	      /*x*/
-	      ctx[0] >
-	      /*$width*/
-	      ctx[6] / 2) {
-	        if (if_block1) {
-	          if_block1.p(ctx, dirty);
-	        } else {
-	          if_block1 = create_if_block$l(ctx);
-	          if_block1.c();
-	          if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
-	        }
-	      } else if (if_block1) {
-	        if_block1.d(1);
-	        if_block1 = null;
+	      } else if (if_block) {
+	        if_block.d(1);
+	        if_block = null;
 	      }
 	    },
 	    i: noop,
 	    o: noop,
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(g);
-	      if (detaching) detach_dev(t0);
-	      if (if_block0) if_block0.d(detaching);
-	      if (detaching) detach_dev(t1);
-	      if (if_block1) if_block1.d(detaching);
-	      if (detaching) detach_dev(if_block1_anchor);
+	      if (detaching) detach_dev(t);
+	      if (if_block) if_block.d(detaching);
+	      if (detaching) detach_dev(if_block_anchor);
 	      mounted = false;
 	      dispose();
 	    }
@@ -61158,45 +61010,6 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
-	}
-
-	function arrangeLabels() {
-	  var svg = select(".scatter-chart");
-	  var move = 1;
-
-	  while (move > 0) {
-	    move = 0;
-	    svg.selectAll(".place-label").each(function () {
-	      var that = this,
-	          a = this.getBoundingClientRect();
-	      svg.selectAll(".place-label").each(function () {
-	        if (this != that) {
-	          var b = this.getBoundingClientRect();
-
-	          if (Math.abs(a.left - b.left) * 2 < a.width + b.width && Math.abs(a.top - b.top) * 2 < a.height + b.height) {
-	            // overlap, move labels
-	            var dx = (Math.max(0, a.right - b.left) + Math.min(0, a.left - b.right)) * 0.01,
-	                dy = (Math.max(0, a.bottom - b.top) + Math.min(0, a.top - b.bottom)) * 0.02,
-	                tt = getTranslation(select(this).attr("transform")),
-	                to = getTranslation(select(that).attr("transform"));
-	            move += Math.abs(dx) + Math.abs(dy);
-	            console.log(this, "this | that ", that);
-	            console.log("to", to);
-	            console.log("tt", tt);
-	            to.translate = [to[0] + dx, to[1] + dy];
-	            tt.translate = [tt[0] - dx, tt[1] - dy];
-	            console.log("to", to);
-	            console.log("tt", tt); //         console.log(totest, '|', tttest)
-
-	            select(this).attr("transform", "translate(" + tt.translate + ")");
-	            select(that).attr("transform", "translate(" + to.translate + ")");
-	            a = this.getBoundingClientRect();
-	            console.log(this, "|", that);
-	          }
-	        }
-	      });
-	    });
-	  }
 	}
 
 	function instance$O($$self, $$props, $$invalidate) {
@@ -61223,7 +61036,7 @@ var app = (function () {
 	  var hoverName = $$props.hoverName;
 	  var stroke = $$props.stroke;
 	  var tX = tweened(null, {
-	    duration: 800,
+	    duration: 0,
 	    easing: cubicOut
 	  });
 	  validate_store(tX, "tX");
@@ -61231,7 +61044,7 @@ var app = (function () {
 	    return $$invalidate(4, $tX = value);
 	  });
 	  var tY = tweened(null, {
-	    duration: 600,
+	    duration: 0,
 	    easing: cubicOut
 	  });
 	  validate_store(tY, "tY");
@@ -61280,7 +61093,6 @@ var app = (function () {
 	      cubicOut: cubicOut,
 	      hovered: hovered,
 	      selected: selected,
-	      scaleLinear: linear$1,
 	      width: width,
 	      height: height,
 	      panelHeight: panelHeight,
@@ -61294,7 +61106,6 @@ var app = (function () {
 	      tY: tY,
 	      handleEventMouseover: handleEventMouseover,
 	      handleEventClick: handleEventClick,
-	      arrangeLabels: arrangeLabels,
 	      $hovered: $hovered,
 	      $selected: $selected,
 	      $tX: $tX,
@@ -61437,18 +61248,17 @@ var app = (function () {
 	  return ChartDatapoint;
 	}(SvelteComponentDev);
 
-	var console_1$6 = globals.console;
 	var file$O = "src/components/Chart.svelte";
 
 	function get_each_context$g(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[11] = list[i].x;
-	  child_ctx[12] = list[i].y;
-	  child_ctx[13] = list[i].name;
-	  child_ctx[14] = list[i].stroke;
-	  child_ctx[15] = list[i].hoverName;
+	  child_ctx[10] = list[i].x;
+	  child_ctx[11] = list[i].y;
+	  child_ctx[12] = list[i].name;
+	  child_ctx[13] = list[i].stroke;
+	  child_ctx[14] = list[i].hoverName;
 	  return child_ctx;
-	} // (203:4) {#if (chartWidth)}
+	} // (50:4) {#if (chartWidth)}
 
 
 	function create_if_block$m(ctx) {
@@ -61510,7 +61320,7 @@ var app = (function () {
 	      /*chartHeight*/
 	      ctx[1]);
 	      set_style(svg, "overflow", "visible");
-	      add_location(svg, file$O, 203, 8, 6854);
+	      add_location(svg, file$O, 50, 8, 1394);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, svg, anchor);
@@ -61630,11 +61440,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$m.name,
 	    type: "if",
-	    source: "(203:4) {#if (chartWidth)}",
+	    source: "(50:4) {#if (chartWidth)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (218:12) {#each renderedData as { x, y, name, stroke, hoverName }}
+	} // (65:12) {#each renderedData as { x, y, name, stroke, hoverName }}
 
 
 	function create_each_block$g(ctx) {
@@ -61644,19 +61454,19 @@ var app = (function () {
 	    props: {
 	      x:
 	      /*x*/
-	      ctx[11],
+	      ctx[10],
 	      y:
 	      /*y*/
-	      ctx[12],
+	      ctx[11],
 	      name:
 	      /*name*/
-	      ctx[13],
+	      ctx[12],
 	      hoverName:
 	      /*hoverName*/
-	      ctx[15],
+	      ctx[14],
 	      stroke:
 	      /*stroke*/
-	      ctx[14]
+	      ctx[13]
 	    },
 	    $$inline: true
 	  });
@@ -61674,27 +61484,27 @@ var app = (function () {
 	      /*renderedData*/
 	      16) chartdatapoint_changes.x =
 	      /*x*/
-	      ctx[11];
+	      ctx[10];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.y =
 	      /*y*/
-	      ctx[12];
+	      ctx[11];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.name =
 	      /*name*/
-	      ctx[13];
+	      ctx[12];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.hoverName =
 	      /*hoverName*/
-	      ctx[15];
+	      ctx[14];
 	      if (dirty &
 	      /*renderedData*/
 	      16) chartdatapoint_changes.stroke =
 	      /*stroke*/
-	      ctx[14];
+	      ctx[13];
 	      chartdatapoint.$set(chartdatapoint_changes);
 	    },
 	    i: function intro(local) {
@@ -61714,7 +61524,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$g.name,
 	    type: "each",
-	    source: "(218:12) {#each renderedData as { x, y, name, stroke, hoverName }}",
+	    source: "(65:12) {#each renderedData as { x, y, name, stroke, hoverName }}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -61731,14 +61541,14 @@ var app = (function () {
 	    c: function create() {
 	      div = element("div");
 	      if (if_block) if_block.c();
-	      attr_dev(div, "class", "chart svelte-q1eefp");
+	      attr_dev(div, "class", "chart svelte-wc2stb");
 	      add_render_callback(function () {
 	        return (
 	          /*div_elementresize_handler*/
 	          ctx[8].call(div)
 	        );
 	      });
-	      add_location(div, file$O, 201, 0, 6741);
+	      add_location(div, file$O, 48, 0, 1281);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -61807,57 +61617,6 @@ var app = (function () {
 
 	var padding = 80;
 
-	function getTranslation$1(transform) {
-	  // Create a dummy g for calculation purposes only. This will never
-	  // be appended to the DOM and will be discarded once this function 
-	  // returns.
-	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g"); // Set the transform attribute to the provided string value.
-
-	  g.setAttributeNS(null, "transform", transform); // consolidate the SVGTransformList containing all transformations
-	  // to a single SVGTransform of type SVG_TRANSFORM_MATRIX and get
-	  // its SVGMatrix. 
-
-	  var matrix = g.transform.baseVal.consolidate().matrix; // As per definition values e and f are the ones for the translation.
-
-	  return [matrix.e, matrix.f];
-	}
-
-	function getTransformation(transform) {
-	  // Create a dummy g for calculation purposes only. This will never
-	  // be appended to the DOM and will be discarded once this function 
-	  // returns.
-	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g"); // Set the transform attribute to the provided string value.
-
-	  g.setAttributeNS(null, "transform", transform); // consolidate the SVGTransformList containing all transformations
-	  // to a single SVGTransform of type SVG_TRANSFORM_MATRIX and get
-	  // its SVGMatrix. 
-
-	  var matrix = g.transform.baseVal.consolidate().matrix; // Below calculations are taken and adapted from the private function
-	  // transform/decompose.js of D3's module d3-interpolate.
-
-	  var a = matrix.a,
-	      b = matrix.b,
-	      c = matrix.c,
-	      d = matrix.d,
-	      e = matrix.e,
-	      f = matrix.f; // ES6, if this doesn't work, use below assignment
-	  // var a=matrix.a, b=matrix.b, c=matrix.c, d=matrix.d, e=matrix.e, f=matrix.f; // ES5
-
-	  var scaleX, scaleY, skewX;
-	  if (scaleX = Math.sqrt(a * a + b * b)) a /= scaleX, b /= scaleX;
-	  if (skewX = a * c + b * d) c -= a * skewX, d -= b * skewX;
-	  if (scaleY = Math.sqrt(c * c + d * d)) c /= scaleY, d /= scaleY, skewX /= scaleY;
-	  if (a * d < b * c) a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
-	  return {
-	    translateX: e,
-	    translateY: f,
-	    rotate: Math.atan2(b, a) * 180 / Math.PI,
-	    skewX: Math.atan(skewX) * 180 / Math.PI,
-	    scaleX: scaleX,
-	    scaleY: scaleY
-	  };
-	}
-
 	function instance$P($$self, $$props, $$invalidate) {
 	  var data = $$props.data;
 	  var xRange = $$props.xRange;
@@ -61867,75 +61626,9 @@ var app = (function () {
 	  //   let magmaPaint= scaleLinear().domain([0, 5, 10, 15, 20, 25, 30, 35, 40, 45]).range(["#150e38","#1d1147","#251255","#390f6e","#440f76","#52137c","#701f81","#802582","#982d80","#b2357b"])
 
 	  var mScale = linear$1().domain([-40, 160]).range([0, 1]);
-	  afterUpdate(function () {
-	    // setTimeout(arrangeLabels(), 200);
-	    arrangeLabels();
-	  });
-
-	  function arrangeLabels() {
-	    var svg = select$1(".scatter-chart");
-	    var move = 1;
-
-	    while (move > 0) {
-	      move = 0;
-	      svg.selectAll(".place-label").each(function () {
-	        var that = this,
-	            a = this.getBoundingClientRect();
-	        var z = getTransformation(select$1(this).attr("transform"));
-	        console.log("label transform", z); //		 console.log(z.translateX);
-	        // if(!typeof(z.translateX === NaN)){
-
-	        svg.selectAll(".place-label").each(function () {
-	          //    console.log('78', select(this).attr("transform"));
-	          //    console.log('789', select(that).attr("transform"));
-	          if (select$1(that).attr("transform") === "translate(undefined)" || select$1(this).attr("transform") === "translate(undefined)") {
-	            //           console.log('exit')
-	            return;
-	          }
-
-	          if (select$1(that).attr("transform") === "NaN)") {
-	            //            console.log('exit')
-	            return;
-	          } else {
-	            if (this != that) {
-	              if (select$1(that).attr("transform") === "NaN") {
-	                //               console.log('exit')
-	                return;
-	              }
-
-	              var b = this.getBoundingClientRect();
-
-	              if (Math.abs(a.left - b.left) * 2 < a.width + b.width && Math.abs(a.top - b.top) * 2 < a.height + b.height) {
-	                // overlap, move labels
-	                console.log("overLa APPP ");
-	                var dx = (Math.max(0, a.right - b.left) + Math.min(0, a.left - b.right)) * 0.01,
-	                    dy = (Math.max(1, a.bottom - b.top) + Math.min(1, a.top - b.bottom)) * 0.02,
-	                    tt = getTranslation$1(select$1(this).attr("transform")),
-	                    to = getTranslation$1(select$1(that).attr("transform"));
-	                move += Math.abs(dx) + Math.abs(dy); //         console.log(this, 'this | that ', that)
-	                //        console.log('to', to)
-	                //         console.log('tt', tt)
-
-	                to.translated = [to[0] + dx, to[1] + dy];
-	                tt.translated = [tt[0] - dx, tt[1] - dy]; //        console.log('to', to)
-	                //        console.log('tt', tt)
-	                //         console.log(totest, '|', tttest)
-
-	                select$1(this).attr("transform", "translate(" + tt.translated + ")");
-	                select$1(that).attr("transform", "translate(" + to.translated + ")");
-	                a = this.getBoundingClientRect();
-	              } //         console.log(this, 'this | that ', that)
-
-	            }
-	          }
-	        });
-	      }); //   } //end type check
-	    }
-	  }
-
 	  var writable_props = ["data", "xRange", "yRange"];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<Chart> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Chart> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -61959,23 +61652,9 @@ var app = (function () {
 	    return {
 	      scaleLinear: linear$1,
 	      interpolateMagma: magma,
-	      csv: csv$1,
-	      min: min$7,
-	      max: max$4,
-	      forceSimulation: forceSimulation,
-	      forceX: forceX,
-	      forceY: forceY,
-	      forceManyBody: forceManyBody,
-	      forceCenter: forceCenter,
-	      forceCollide: forceCollide,
-	      select: select$1,
-	      selectAll: selectAll,
 	      ChartXAxis: ChartXAxis,
 	      ChartYAxis: ChartYAxis,
 	      ChartDatapoint: ChartDatapoint,
-	      beforeUpdate: beforeUpdate,
-	      afterUpdate: afterUpdate,
-	      tick: tick,
 	      data: data,
 	      xRange: xRange,
 	      yRange: yRange,
@@ -61983,9 +61662,6 @@ var app = (function () {
 	      chartWidth: chartWidth,
 	      chartHeight: chartHeight,
 	      mScale: mScale,
-	      arrangeLabels: arrangeLabels,
-	      getTranslation: getTranslation$1,
-	      getTransformation: getTransformation,
 	      xScale: xScale,
 	      yScale: yScale,
 	      renderedData: renderedData
@@ -62039,10 +61715,6 @@ var app = (function () {
 	        }; //        stroke: jurassicPaint(d.x)
 	      }));
 	    }
-
-	    if ($$self.$$.dirty &
-	    /*xScale*/
-	    4) ;
 	  };
 
 	  return [chartWidth, chartHeight, xScale, yScale, renderedData, data, xRange, yRange, div_elementresize_handler];
@@ -62076,19 +61748,19 @@ var app = (function () {
 	    if (
 	    /*data*/
 	    ctx[5] === undefined && !("data" in props)) {
-	      console_1$6.warn("<Chart> was created without expected prop 'data'");
+	      console.warn("<Chart> was created without expected prop 'data'");
 	    }
 
 	    if (
 	    /*xRange*/
 	    ctx[6] === undefined && !("xRange" in props)) {
-	      console_1$6.warn("<Chart> was created without expected prop 'xRange'");
+	      console.warn("<Chart> was created without expected prop 'xRange'");
 	    }
 
 	    if (
 	    /*yRange*/
 	    ctx[7] === undefined && !("yRange" in props)) {
-	      console_1$6.warn("<Chart> was created without expected prop 'yRange'");
+	      console.warn("<Chart> was created without expected prop 'yRange'");
 	    }
 
 	    return _this;
@@ -62431,11 +62103,10 @@ var app = (function () {
 	  return ChartSelector;
 	}(SvelteComponentDev);
 
-	var Object_1$1 = globals.Object,
-	    console_1$7 = globals.console;
-	var file$Q = "src/components/ChartWrapper.svelte";
+	var Object_1$1 = globals.Object;
+	var file$Q = "src/components/ChartWrapper.svelte"; // (127:0) {#if (selectedData)}
 
-	function create_fragment$R(ctx) {
+	function create_if_block$n(ctx) {
 	  var div;
 	  var chart;
 	  var t;
@@ -62446,25 +62117,25 @@ var app = (function () {
 	    props: {
 	      data:
 	      /*selectedData*/
-	      ctx[2],
+	      ctx[0],
 	      xRange: [min$7(
-	      /*newTestData*/
-	      ctx[1][
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func$6)), max$4(
-	      /*newTestData*/
-	      ctx[1][
+	      ctx[1]].map(func$6)), max$4(
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func_1$3))],
+	      ctx[1]].map(func_1$3))],
 	      yRange: [min$7(
-	      /*newTestData*/
-	      ctx[1][
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func_2$3)), max$4(
-	      /*newTestData*/
-	      ctx[1][
+	      ctx[1]].map(func_2$3)), max$4(
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func_3))]
+	      ctx[1]].map(func_3))]
 	    },
 	    $$inline: true
 	  });
@@ -62480,10 +62151,10 @@ var app = (function () {
 
 	  if (
 	  /*selectedOption*/
-	  ctx[0] !== void 0) {
+	  ctx[1] !== void 0) {
 	    chartselector_props.selected =
 	    /*selectedOption*/
-	    ctx[0];
+	    ctx[1];
 	  }
 
 	  chartselector = new ChartSelector({
@@ -62500,10 +62171,7 @@ var app = (function () {
 	      t = space();
 	      create_component(chartselector.$$.fragment);
 	      attr_dev(div, "class", "wrapper svelte-8zw8d4");
-	      add_location(div, file$Q, 365, 0, 10438);
-	    },
-	    l: function claim(nodes) {
-	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+	      add_location(div, file$Q, 127, 0, 3870);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -62512,48 +62180,45 @@ var app = (function () {
 	      mount_component(chartselector, div, null);
 	      current = true;
 	    },
-	    p: function update(ctx, _ref) {
-	      var _ref2 = _slicedToArray(_ref, 1),
-	          dirty = _ref2[0];
-
+	    p: function update(ctx, dirty) {
 	      var chart_changes = {};
 	      if (dirty &
 	      /*selectedData*/
-	      4) chart_changes.data =
+	      1) chart_changes.data =
 	      /*selectedData*/
-	      ctx[2];
+	      ctx[0];
 	      if (dirty &
-	      /*newTestData, selectedOption*/
-	      3) chart_changes.xRange = [min$7(
-	      /*newTestData*/
-	      ctx[1][
+	      /*chartData, selectedOption*/
+	      6) chart_changes.xRange = [min$7(
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func$6)), max$4(
-	      /*newTestData*/
-	      ctx[1][
+	      ctx[1]].map(func$6)), max$4(
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func_1$3))];
+	      ctx[1]].map(func_1$3))];
 	      if (dirty &
-	      /*newTestData, selectedOption*/
-	      3) chart_changes.yRange = [min$7(
-	      /*newTestData*/
-	      ctx[1][
+	      /*chartData, selectedOption*/
+	      6) chart_changes.yRange = [min$7(
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func_2$3)), max$4(
-	      /*newTestData*/
-	      ctx[1][
+	      ctx[1]].map(func_2$3)), max$4(
+	      /*chartData*/
+	      ctx[2][
 	      /*selectedOption*/
-	      ctx[0]].map(func_3))];
+	      ctx[1]].map(func_3))];
 	      chart.$set(chart_changes);
 	      var chartselector_changes = {};
 
 	      if (!updating_selected && dirty &
 	      /*selectedOption*/
-	      1) {
+	      2) {
 	        updating_selected = true;
 	        chartselector_changes.selected =
 	        /*selectedOption*/
-	        ctx[0];
+	        ctx[1];
 	        add_flush_callback(function () {
 	          return updating_selected = false;
 	        });
@@ -62580,6 +62245,78 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
+	    id: create_if_block$n.name,
+	    type: "if",
+	    source: "(127:0) {#if (selectedData)}",
+	    ctx: ctx
+	  });
+	  return block;
+	}
+
+	function create_fragment$R(ctx) {
+	  var if_block_anchor;
+	  var current;
+	  var if_block =
+	  /*selectedData*/
+	  ctx[0] && create_if_block$n(ctx);
+	  var block = {
+	    c: function create() {
+	      if (if_block) if_block.c();
+	      if_block_anchor = empty();
+	    },
+	    l: function claim(nodes) {
+	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+	    },
+	    m: function mount(target, anchor) {
+	      if (if_block) if_block.m(target, anchor);
+	      insert_dev(target, if_block_anchor, anchor);
+	      current = true;
+	    },
+	    p: function update(ctx, _ref) {
+	      var _ref2 = _slicedToArray(_ref, 1),
+	          dirty = _ref2[0];
+
+	      if (
+	      /*selectedData*/
+	      ctx[0]) {
+	        if (if_block) {
+	          if_block.p(ctx, dirty);
+
+	          if (dirty &
+	          /*selectedData*/
+	          1) {
+	            transition_in(if_block, 1);
+	          }
+	        } else {
+	          if_block = create_if_block$n(ctx);
+	          if_block.c();
+	          transition_in(if_block, 1);
+	          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+	        }
+	      } else if (if_block) {
+	        group_outros();
+	        transition_out(if_block, 1, 1, function () {
+	          if_block = null;
+	        });
+	        check_outros();
+	      }
+	    },
+	    i: function intro(local) {
+	      if (current) return;
+	      transition_in(if_block);
+	      current = true;
+	    },
+	    o: function outro(local) {
+	      transition_out(if_block);
+	      current = false;
+	    },
+	    d: function destroy(detaching) {
+	      if (if_block) if_block.d(detaching);
+	      if (detaching) detach_dev(if_block_anchor);
+	    }
+	  };
+	  dispatch_dev("SvelteRegisterBlock", {
+	    block: block,
 	    id: create_fragment$R.name,
 	    type: "component",
 	    source: "",
@@ -62588,7 +62325,7 @@ var app = (function () {
 	  return block;
 	}
 
-	function getTranslation$2(transform) {
+	function getTranslation(transform) {
 	  // Create a dummy g for calculation purposes only. This will never
 	  // be appended to the DOM and will be discarded once this function 
 	  // returns.
@@ -62601,42 +62338,6 @@ var app = (function () {
 	  var matrix = g.transform.baseVal.consolidate().matrix; // As per definition values e and f are the ones for the translation.
 
 	  return [matrix.e, matrix.f];
-	}
-
-	function getTransformation$1(transform) {
-	  // Create a dummy g for calculation purposes only. This will never
-	  // be appended to the DOM and will be discarded once this function 
-	  // returns.
-	  var g = document.createElementNS("http://www.w3.org/2000/svg", "g"); // Set the transform attribute to the provided string value.
-
-	  g.setAttributeNS(null, "transform", transform); // consolidate the SVGTransformList containing all transformations
-	  // to a single SVGTransform of type SVG_TRANSFORM_MATRIX and get
-	  // its SVGMatrix. 
-
-	  var matrix = g.transform.baseVal.consolidate().matrix; // Below calculations are taken and adapted from the private function
-	  // transform/decompose.js of D3's module d3-interpolate.
-
-	  var a = matrix.a,
-	      b = matrix.b,
-	      c = matrix.c,
-	      d = matrix.d,
-	      e = matrix.e,
-	      f = matrix.f; // ES6, if this doesn't work, use below assignment
-	  // var a=matrix.a, b=matrix.b, c=matrix.c, d=matrix.d, e=matrix.e, f=matrix.f; // ES5
-
-	  var scaleX, scaleY, skewX;
-	  if (scaleX = Math.sqrt(a * a + b * b)) a /= scaleX, b /= scaleX;
-	  if (skewX = a * c + b * d) c -= a * skewX, d -= b * skewX;
-	  if (scaleY = Math.sqrt(c * c + d * d)) c /= scaleY, d /= scaleY, skewX /= scaleY;
-	  if (a * d < b * c) a = -a, b = -b, skewX = -skewX, scaleX = -scaleX;
-	  return {
-	    translateX: e,
-	    translateY: f,
-	    rotate: Math.atan2(b, a) * 180 / Math.PI,
-	    skewX: Math.atan(skewX) * 180 / Math.PI,
-	    scaleX: scaleX,
-	    scaleY: scaleY
-	  };
 	}
 
 	var func$6 = function func(d) {
@@ -62656,231 +62357,9 @@ var app = (function () {
 	};
 
 	function instance$R($$self, $$props, $$invalidate) {
-	  var $originalTimeDomain;
-	  var $margin;
-	  var $width;
-	  validate_store(originalTimeDomain, "originalTimeDomain");
-	  component_subscribe($$self, originalTimeDomain, function ($$value) {
-	    return $$invalidate(12, $originalTimeDomain = $$value);
-	  });
-	  validate_store(margin, "margin");
-	  component_subscribe($$self, margin, function ($$value) {
-	    return $$invalidate(13, $margin = $$value);
-	  });
-	  validate_store(width, "width");
-	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(14, $width = $$value);
-	  });
-	  var selectedOption = "f";
-	  var fossilSpots, fossilSpots10, fossilSpots20, fossilSpots200, fossilSpots2000;
-	  var fossilSpots40;
-	  var oktest, svg;
-	  var newTestData = {
-	    a: [{
-	      x: 10,
-	      y: 8.04
-	    }, {
-	      x: 8,
-	      y: 6.95
-	    }, {
-	      x: 13,
-	      y: 7.58
-	    }, {
-	      x: 9,
-	      y: 8.81
-	    }, {
-	      x: 11,
-	      y: 8.33
-	    }, {
-	      x: 14,
-	      y: 9.96
-	    }, {
-	      x: 6,
-	      y: 7.24
-	    }, {
-	      x: 4,
-	      y: 4.26
-	    }, {
-	      x: 12,
-	      y: 10.84
-	    }, {
-	      x: 7,
-	      y: 4.82
-	    }, {
-	      x: 5,
-	      y: 5.68
-	    }],
-	    b: [{
-	      x: 10,
-	      y: 9.14
-	    }, {
-	      x: 8,
-	      y: 8.14
-	    }, {
-	      x: 13,
-	      y: 8.74
-	    }, {
-	      x: 9,
-	      y: 8.77
-	    }, {
-	      x: 11,
-	      y: 9.26
-	    }, {
-	      x: 14,
-	      y: 8.1
-	    }, {
-	      x: 6,
-	      y: 6.13
-	    }, {
-	      x: 12,
-	      y: 3.1
-	    }, {
-	      x: 12,
-	      y: 9.13
-	    }, {
-	      x: 7,
-	      y: 7.26
-	    }, {
-	      x: 5,
-	      y: 4.74
-	    }],
-	    c: [{
-	      x: 10,
-	      y: 7.46
-	    }, {
-	      x: 8,
-	      y: 6.77
-	    }, {
-	      x: 13,
-	      y: 12.74
-	    }, {
-	      x: 9,
-	      y: 7.11
-	    }, {
-	      x: 11,
-	      y: 7.81
-	    }, {
-	      x: 14,
-	      y: 8.84
-	    }, {
-	      x: 6,
-	      y: 6.08
-	    }, {
-	      x: 4,
-	      y: 5.39
-	    }, {
-	      x: 12,
-	      y: 8.15
-	    }, {
-	      x: 7,
-	      y: 6.42
-	    }, {
-	      x: 5,
-	      y: 5.73
-	    }],
-	    d: [{
-	      x: 8,
-	      y: 6.58
-	    }, {
-	      x: 8,
-	      y: 5.76
-	    }, {
-	      x: 8,
-	      y: 7.71
-	    }, {
-	      x: 8,
-	      y: 8.84
-	    }, {
-	      x: 8,
-	      y: 8.47
-	    }, {
-	      x: 8,
-	      y: 7.04
-	    }, {
-	      x: 8,
-	      y: 5.25
-	    }, {
-	      x: 19,
-	      y: 12.5
-	    }, {
-	      x: 8,
-	      y: 5.56
-	    }, {
-	      x: 8,
-	      y: 7.91
-	    }, {
-	      x: 8,
-	      y: 6.89
-	    }],
-	    e: [{
-	      x: 8,
-	      y: 6.58
-	    }, {
-	      x: 8,
-	      y: 5.76
-	    }, {
-	      x: 8,
-	      y: 7.71
-	    }, {
-	      x: 8,
-	      y: 8.84
-	    }, {
-	      x: 8,
-	      y: 8.47
-	    }, {
-	      x: 8,
-	      y: 7.04
-	    }, {
-	      x: 8,
-	      y: 5.25
-	    }, {
-	      x: 19,
-	      y: 12.5
-	    }, {
-	      x: 8,
-	      y: 5.56
-	    }, {
-	      x: 8,
-	      y: 7.91
-	    }, {
-	      x: 8,
-	      y: 6.89
-	    }],
-	    f: [{
-	      x: 8,
-	      y: 6.58
-	    }, {
-	      x: 8,
-	      y: 5.76
-	    }, {
-	      x: 8,
-	      y: 7.71
-	    }, {
-	      x: 8,
-	      y: 8.84
-	    }, {
-	      x: 8,
-	      y: 8.47
-	    }, {
-	      x: 8,
-	      y: 7.04
-	    }, {
-	      x: 8,
-	      y: 5.25
-	    }, {
-	      x: 19,
-	      y: 12.5
-	    }, {
-	      x: 8,
-	      y: 5.56
-	    }, {
-	      x: 8,
-	      y: 7.91
-	    }, {
-	      x: 8,
-	      y: 6.89
-	    }]
-	  };
+	  var fossilSpots10, fossilSpots25, fossilSpots40, fossilSpots200, allfossilSpots;
+	  var selectedData, selectedOption;
+	  var chartData = {};
 	  onMount( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
 	    var dinoChartData;
 	    return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -62899,156 +62378,76 @@ var app = (function () {
 
 	          case 2:
 	            dinoChartData = _context.sent;
-	            _context.t0 = $$invalidate;
-	            _context.next = 6;
-	            return dinoChartData;
-
-	          case 6:
-	            _context.t1 = fossilSpots = _context.sent;
-	            (0, _context.t0)(4, _context.t1);
-	            $$invalidate(9, fossilSpots40 = dinoChartData);
-
-	            if (dinoChartData) {
-	              console.log(dinoChartData);
-	              $$invalidate(0, selectedOption = "a");
-	            }
-
-	            $$invalidate(5, fossilSpots10 = dinoChartData.filter(function (d) {
-	              return d.x < 11;
-	            }));
-	            $$invalidate(6, fossilSpots20 = dinoChartData.filter(function (d) {
-	              return d.x < 26 && d.x > 10;
-	            }));
-	            $$invalidate(9, fossilSpots40 = dinoChartData.filter(function (d) {
-	              return d.x < 40 && d.x > 25;
-	            }));
-	            $$invalidate(7, fossilSpots200 = dinoChartData.filter(function (d) {
-	              return d.x > 39;
-	            })); //fossilSpots2000 = dinoChartData.map(d => d);
-
-	            $$invalidate(8, fossilSpots2000 = dinoChartData.map(function (_ref4) {
+	            $$invalidate(8, allfossilSpots = dinoChartData.map(function (_ref4) {
 	              var name = _ref4.name,
 	                  d = _objectWithoutProperties(_ref4, ["name"]);
 
 	              return d;
 	            }));
-	            console.log(fossilSpots2000);
+	            $$invalidate(4, fossilSpots10 = dinoChartData.filter(function (d) {
+	              return d.x < 11;
+	            }));
+	            $$invalidate(5, fossilSpots25 = dinoChartData.filter(function (d) {
+	              return d.x < 26 && d.x > 10;
+	            }));
+	            $$invalidate(6, fossilSpots40 = dinoChartData.filter(function (d) {
+	              return d.x < 40 && d.x > 25;
+	            }));
+	            $$invalidate(7, fossilSpots200 = dinoChartData.filter(function (d) {
+	              return d.x > 39;
+	            }));
 
-	          case 16:
+	            if (dinoChartData) {
+	              $$invalidate(1, selectedOption = "a");
+	            }
+
+	          case 9:
 	          case "end":
 	            return _context.stop();
 	        }
 	      }
 	    }, _callee);
 	  })));
-	  afterUpdate(function () {}); //	arrangeLabels()
-
-	  function cool() {
-	    console.log(selectedData); // for some reason these definitions need to be in here and not in a gobal scope or module
-
-	    var simulation = forceSimulation().force("x", forceX().x(function (d) {
-	      return d._x;
-	    }));
-	    var simulationCharge = forceSimulation().force("x", forceX().x(function (d) {
-	      return d._x;
-	    })). //   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
-	    //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
-	    //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
-	    force("charge", forceManyBody().strength(-50));
-	    simulation.nodes(selectedData).alpha(0.8).tick(300); //  console.log(scaledData)
-	    // finally set the global timePoints variable
-
-	    simulationCharge.nodes(selectedData).alpha(0.8).tick(300).on("end", function () {
-	      oktest = selectedData.map(function (d) {
-	        return _objectSpread2(_objectSpread2({}, d), {}, {
-	          y: d.y,
-	          z: parseInt(d.x),
-	          x: $originalTimeDomain ? d.x : Math.max($margin.left - Math.random() * $margin.left / 4, Math.min($width - $margin.right + (Math.random() + 2) * $margin.right / 4, d.x))
-	        });
-	      });
-	      console.log(oktest);
-	    });
-	  }
+	  afterUpdate(function () {
+	    arrangeLabels();
+	  });
 
 	  function arrangeLabels() {
-	    svg = select$1(".scatter-chart");
-	    var move = 10;
+	    var svg = select(".scatter-chart");
+	    var move = 1;
 
 	    while (move > 0) {
 	      move = 0;
-	      select$1(".scatter-chart").selectAll(".place-label").each(function () {
+	      svg.selectAll(".place-label").each(function () {
 	        var that = this,
 	            a = this.getBoundingClientRect();
-	        var z = select$1(this).attr("transform");
-	        console.log(z);
-	        var zztest = z.split(" ");
-	        console.log(zztest);
-	        console.log(zztest[1].slice(0, -1));
-	        console.log(zztest[0].slice(10, zztest[0].length)); //    if(!typeof(z.translateX === NaN)){
-	        //	console.log('big boi skip', this);
-	        //	}
-
-	        console.log(select$1(this).attr("transform"));
-	        var zz = select$1(this).attr("transform");
-	        console.log(select$1(that).attr("transform"));
-	        var xx = select$1(that).attr("transform");
-	        console.log("this", this);
-	        console.log("that", that);
-	        console.log("zz", zz);
-	        console.log("xx", xx);
-
-	        if (zz === "NaN)" || zz === "translate(NaN,NaN)" || zz === "translate(NaN)" || xx === "translate(NaN,NaN)" || xx === "translate(NaN)" || xx === "NaN)") {
-	          console.log("Fuckin Skip!");
-	          return;
-	        }
-
-	        select$1(".scatter-chart").selectAll(".place-label").each(function () {
+	        svg.selectAll(".place-label").each(function () {
 	          if (this != that) {
 	            var b = this.getBoundingClientRect();
 
 	            if (Math.abs(a.left - b.left) * 2 < a.width + b.width && Math.abs(a.top - b.top) * 2 < a.height + b.height) {
 	              // overlap, move labels
-	              console.log("overlap were movin bois");
-	              console.log("this", this);
-	              console.log("that", that);
-	              console.log(select$1(this).attr("transform"));
-	              var z2 = select$1(this).attr("transform");
-	              console.log(that);
-	              console.log(select$1(that).attr("transform"));
-	              var x2 = select$1(that).attr("transform");
-	              console.log(x2);
-	              console.log(z2);
+	              // console.log('overLap ')
 	              var dx = (Math.max(0, a.right - b.left) + Math.min(0, a.left - b.right)) * 0.01,
-	                  dy = (Math.max(0, a.bottom - b.top) + Math.min(0, a.top - b.bottom)) * 0.02,
-	                  tt = getTransformation$1(select$1(this).attr("transform")),
-	                  to = getTransformation$1(select$1(that).attr("transform"));
+	                  dy = (Math.max(1, a.bottom - b.top) + Math.min(1, a.top - b.bottom)) * 0.02,
+	                  tt = getTranslation(select(this).attr("transform")),
+	                  to = getTranslation(select(that).attr("transform"));
 	              move += Math.abs(dx) + Math.abs(dy);
-	              console.log(this, "this | that ", that);
-	              console.log("to", to);
-	              console.log("tt", tt);
-	              to.translated = [to.translateX + dx, to.translateX + dy];
-	              tt.translated = [tt.translateY - dx, tt.translateY - dy];
-	              console.log("to", to);
-	              console.log("tt", tt); //         console.log(totest, '|', tttest)
-
-	              select$1(this).attr("transform", "translate(" + (tt.translated[0] + dx) + " " + (tt.translated[1] + dy) + ")");
-	              select$1(that).attr("transform", "translate(" + (to.translated[0] - dx) + " " + (to.translated[1] - dy) + ")");
+	              to.translated = [to[0] + dx, to[1] + dy];
+	              tt.translated = [tt[0] - dx, tt[1] - dy];
+	              select(this).attr("transform", "translate(" + tt.translated + ")");
+	              select(that).attr("transform", "translate(" + to.translated + ")");
 	              a = this.getBoundingClientRect();
-	              console.log(this, "this | that ", that);
-	            } //		} // lil else
-
+	            }
 	          }
 	        });
-	      }); // } // end if
+	      });
 	    }
-
-	    console.log(select$1(".scatter-chart").selectAll(".place-label"));
-	    var newLabels = select$1(".scatter-chart").selectAll(".place-label");
 	  }
 
 	  var writable_props = [];
 	  Object_1$1.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$7.warn("<ChartWrapper> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<ChartWrapper> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
@@ -63057,7 +62456,7 @@ var app = (function () {
 
 	  function chartselector_selected_binding(value) {
 	    selectedOption = value;
-	    $$invalidate(0, selectedOption);
+	    $$invalidate(1, selectedOption);
 	  }
 
 	  $$self.$capture_state = function () {
@@ -63072,9 +62471,9 @@ var app = (function () {
 	      forceManyBody: forceManyBody,
 	      forceCenter: forceCenter,
 	      forceCollide: forceCollide,
-	      select: select$1,
+	      select: select,
 	      selectAll: selectAll,
-	      dataz: data$1,
+	      csvData: data$1,
 	      Chart: Chart,
 	      ChartSelector: ChartSelector,
 	      loadData: loadData,
@@ -63082,49 +62481,29 @@ var app = (function () {
 	      originalTimeDomain: originalTimeDomain,
 	      beforeUpdate: beforeUpdate,
 	      afterUpdate: afterUpdate,
-	      width: width,
-	      height: height,
-	      panelHeight: panelHeight,
-	      minDim: minDim,
-	      maxDim: maxDim,
-	      margin: margin,
-	      controlsHeight: controlsHeight,
-	      selectedOption: selectedOption,
-	      fossilSpots: fossilSpots,
 	      fossilSpots10: fossilSpots10,
-	      fossilSpots20: fossilSpots20,
-	      fossilSpots200: fossilSpots200,
-	      fossilSpots2000: fossilSpots2000,
+	      fossilSpots25: fossilSpots25,
 	      fossilSpots40: fossilSpots40,
-	      oktest: oktest,
-	      svg: svg,
-	      newTestData: newTestData,
-	      cool: cool,
-	      arrangeLabels: arrangeLabels,
-	      getTranslation: getTranslation$2,
-	      getTransformation: getTransformation$1,
+	      fossilSpots200: fossilSpots200,
+	      allfossilSpots: allfossilSpots,
 	      selectedData: selectedData,
-	      $originalTimeDomain: $originalTimeDomain,
-	      $margin: $margin,
-	      $width: $width
+	      selectedOption: selectedOption,
+	      chartData: chartData,
+	      arrangeLabels: arrangeLabels,
+	      getTranslation: getTranslation
 	    };
 	  };
 
 	  $$self.$inject_state = function ($$props) {
-	    if ("selectedOption" in $$props) $$invalidate(0, selectedOption = $$props.selectedOption);
-	    if ("fossilSpots" in $$props) $$invalidate(4, fossilSpots = $$props.fossilSpots);
-	    if ("fossilSpots10" in $$props) $$invalidate(5, fossilSpots10 = $$props.fossilSpots10);
-	    if ("fossilSpots20" in $$props) $$invalidate(6, fossilSpots20 = $$props.fossilSpots20);
+	    if ("fossilSpots10" in $$props) $$invalidate(4, fossilSpots10 = $$props.fossilSpots10);
+	    if ("fossilSpots25" in $$props) $$invalidate(5, fossilSpots25 = $$props.fossilSpots25);
+	    if ("fossilSpots40" in $$props) $$invalidate(6, fossilSpots40 = $$props.fossilSpots40);
 	    if ("fossilSpots200" in $$props) $$invalidate(7, fossilSpots200 = $$props.fossilSpots200);
-	    if ("fossilSpots2000" in $$props) $$invalidate(8, fossilSpots2000 = $$props.fossilSpots2000);
-	    if ("fossilSpots40" in $$props) $$invalidate(9, fossilSpots40 = $$props.fossilSpots40);
-	    if ("oktest" in $$props) oktest = $$props.oktest;
-	    if ("svg" in $$props) svg = $$props.svg;
-	    if ("newTestData" in $$props) $$invalidate(1, newTestData = $$props.newTestData);
-	    if ("selectedData" in $$props) $$invalidate(2, selectedData = $$props.selectedData);
+	    if ("allfossilSpots" in $$props) $$invalidate(8, allfossilSpots = $$props.allfossilSpots);
+	    if ("selectedData" in $$props) $$invalidate(0, selectedData = $$props.selectedData);
+	    if ("selectedOption" in $$props) $$invalidate(1, selectedOption = $$props.selectedOption);
+	    if ("chartData" in $$props) $$invalidate(2, chartData = $$props.chartData);
 	  };
-
-	  var selectedData;
 
 	  if ($$props && "$$inject" in $$props) {
 	    $$self.$inject_state($$props.$$inject);
@@ -63132,57 +62511,47 @@ var app = (function () {
 
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
-	    /*fossilSpots10*/
-	    32) {
-	       if (fossilSpots10) {
-	        $$invalidate(1, newTestData.a = fossilSpots10, newTestData);
-	      }
+	    /*allfossilSpots*/
+	    256) {
+	       $$invalidate(2, chartData.a = allfossilSpots, chartData);
 	    }
 
 	    if ($$self.$$.dirty &
-	    /*fossilSpots20*/
-	    64) {
-	       if (fossilSpots20) {
-	        $$invalidate(1, newTestData.b = fossilSpots20, newTestData);
-	      }
+	    /*fossilSpots10*/
+	    16) {
+	       $$invalidate(2, chartData.b = fossilSpots10, chartData);
+	    }
+
+	    if ($$self.$$.dirty &
+	    /*fossilSpots25*/
+	    32) {
+	       $$invalidate(2, chartData.c = fossilSpots25, chartData);
 	    }
 
 	    if ($$self.$$.dirty &
 	    /*fossilSpots40*/
-	    512) {
-	       $$invalidate(1, newTestData.c = fossilSpots40, newTestData);
+	    64) {
+	       $$invalidate(2, chartData.d = fossilSpots40, chartData);
 	    }
 
 	    if ($$self.$$.dirty &
 	    /*fossilSpots200*/
 	    128) {
-	       if (fossilSpots200) {
-	        $$invalidate(1, newTestData.d = fossilSpots200, newTestData);
+	       $$invalidate(2, chartData.e = fossilSpots200, chartData);
+	    }
+
+	    if ($$self.$$.dirty &
+	    /*chartData, selectedOption*/
+	    6) {
+	       if (chartData.a) {
+	        $$invalidate(0, selectedData = chartData[selectedOption].sort(function (a, b) {
+	          return a.x < b.x ? 1 : -1;
+	        }));
 	      }
 	    }
-
-	    if ($$self.$$.dirty &
-	    /*fossilSpots, fossilSpots2000*/
-	    272) {
-	       if (fossilSpots) {
-	        $$invalidate(1, newTestData.e = fossilSpots2000, newTestData);
-	      }
-	    }
-
-	    if ($$self.$$.dirty &
-	    /*newTestData, selectedOption*/
-	    3) {
-	       $$invalidate(2, selectedData = newTestData[selectedOption].sort(function (a, b) {
-	        return a.x < b.x ? 1 : -1;
-	      }));
-	    }
-
-	    if ($$self.$$.dirty &
-	    /*selectedData*/
-	    4) ;
 	  };
 
-	  return [selectedOption, newTestData, selectedData, chartselector_selected_binding];
+	  return [selectedData, selectedOption, chartData, chartselector_selected_binding];
 	}
 
 	var ChartWrapper = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -63301,7 +62670,7 @@ var app = (function () {
 	  return ChartApp;
 	}(SvelteComponentDev);
 
-	var console_1$8 = globals.console;
+	var console_1$6 = globals.console;
 	var file$S = "src/App.svelte"; // (20:2) {:else}
 
 	function create_else_block$2(ctx) {
@@ -63383,7 +62752,7 @@ var app = (function () {
 	} // (16:2) {#if (width < 600)}
 
 
-	function create_if_block$n(ctx) {
+	function create_if_block$o(ctx) {
 	  var catch_1;
 	  var current;
 	  catch_1 = new Catch({
@@ -63415,7 +62784,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_if_block$n.name,
+	    id: create_if_block$o.name,
 	    type: "if",
 	    source: "(16:2) {#if (width < 600)}",
 	    ctx: ctx
@@ -63437,7 +62806,7 @@ var app = (function () {
 	  cookiebanner = new CookieBanner({
 	    $$inline: true
 	  });
-	  var if_block_creators = [create_if_block$n, create_if_block_1$b, create_else_block$2];
+	  var if_block_creators = [create_if_block$o, create_if_block_1$b, create_else_block$2];
 	  var if_blocks = [];
 
 	  function select_block_type(ctx, dirty) {
@@ -63462,7 +62831,7 @@ var app = (function () {
 	      if_block.c();
 	      t1 = space();
 	      create_component(chartapp.$$.fragment);
-	      attr_dev(div, "class", "app-wrapper svelte-dxcfwj");
+	      attr_dev(div, "class", "app-wrapper svelte-1emjjoy");
 	      add_render_callback(function () {
 	        return (
 	          /*div_elementresize_handler*/
@@ -63546,7 +62915,7 @@ var app = (function () {
 	  console.log("🎉 Fantastic! You are interested in our source code! Check it out – uncompiled:dino code");
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
-	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$8.warn("<App> was created with unknown prop '".concat(key, "'"));
+	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$6.warn("<App> was created with unknown prop '".concat(key, "'"));
 	  });
 	  var _$$props$$$slots = $$props.$$slots,
 	      $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,

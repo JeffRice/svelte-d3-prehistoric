@@ -28,7 +28,7 @@
   .app-wrapper {
     width: 100%;
     margin: 0;
-    padding: 0.3rem 0;
+    padding: 0;
   }
 
   svg {

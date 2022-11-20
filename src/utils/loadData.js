@@ -10,9 +10,7 @@ const loadData = async () => {
 
   const data = await csv(dataPath, (d, i) => {
 
-
     const source = d.source_for_display !== '' ? d.source_for_display : d.source;
-
     const sizeTotal = d.size === '' ? Number.NaN : +d.size;
     const sizePending = isNaN(sizeTotal);
     dinoNames.push(d.name);
@@ -28,31 +26,17 @@ const loadData = async () => {
       testDate: parseInt(d.test_date),
       wikiURL: d.wikiURL,
       extraImage: d.extra_image,
- //     size: d.size,
       weight: d.weight, 
       size: d.size,
-     // timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
       timestamp: parseTimestamp([d.timestamp, '-0400'].join(' ')),
-   //   source: splitString(source),
-   //   sourceFilter: splitString(d.source_subcategory !== '' ? d.source_subcategory : source),
-   //   sourceSubcategory: splitString(d.source_subcategory),
-   //   sourceCategory: splitString(d.source_category),
-   //   sourceNation: d.source_nation,
-   //   disinformant: d.disinformant,
       disinformantNation: splitString(d.regions),
-   //   disinformantAttribution: d.disinformant_attribution,
       shortTitle: d.short_title,
       shortDescription: d.short_description,
-  //    attributionUrl: d.attribution_url,
-  //    attributionArchiveUrl: d.archived_attribution_url,
-  //    platforms: splitString([d.social_media, d.messaging_platforms].join(',')),
-      startDate: parseDate(d.start_date),
-      endDate: parseDate(d.end_date),
+      startDate: d.start_date,
+      endDate: d.end_date,
       attributionDate: parseDate(d.attribution_date),
- //     methods: splitString(d.methods),
       sizeTotal,
       attributionScore: +d.attribution_total_score,
-   //   tags: splitString(d.tags),
       articleCount: +d.articleCount,
       dinoNames: dinoNames
     };
