@@ -2,14 +2,8 @@
   // controls pane holding filters and buttons
   import {
     disinformantNationFilter,
-    platformFilter,
-    methodFilter,
     timeperiodFilter,
-    sourceFilter,
-    sourceCategoryFilter,
     dietFilter,
-    attributionScoreFilter,
-    attributionScoreDef,
     textSearchFilter,
     selectAllFilters,
     contextData,
@@ -17,16 +11,13 @@
     highlightPolarization,
     highlightCib,
     controlsFilter } from '../stores/filters';
-  import { timeScale, attributionScoreScale } from '../stores/scales';
-  import {select} from "d3";
+  import { timeScale } from '../stores/scales';
   import { fossilDatapoints, switchValueStore } from '../stores/elements';
 
   import Dropdown from './Dropdown.svelte';
   import Fossildropdown from './Fossildropdown.svelte';
-  import Slider from './Slider.svelte';
   import SearchText from './SearchText.svelte';
   import CheckboxPanel from './CheckboxPanel.svelte';
-  import Share from './Share.svelte';
   import Switch from './Switch.svelte';
     import CheckboxSources from './CheckboxSources.svelte';
 
@@ -44,12 +35,9 @@
   let fossilFilter = ['cretaceous', 'jurassic', 'triassic'];
 
   function fossilCount(filter, dataPoints) {
- //   console.log(dataPoints);
- //   console.log(filter);
     return filter.map((d, i) => ({
       id: i,
       title: filter[i],
-   //   added: 'true',
       count: filter.length,
       liveCount: dataPoints[d].length
     }));
@@ -79,48 +67,13 @@
                   label="Search"
                   on:change={(e) => $textSearchFilter = e.detail}
                   on:reset={() => textSearchFilter.reset()} />
-                  <!--
-      <Slider value={$attributionScoreFilter}
-              label="Attribution Score"
-              min={attributionScoreDef[0]} 
-              max={attributionScoreDef[1]}
-              showHandleLabels={false}
-              startColor={$attributionScoreScale(attributionScoreDef[0])}
-              stopColor={$attributionScoreScale(attributionScoreDef[1])}
-              on:changed={(e) => $attributionScoreFilter = e.detail} />
-            
-            -->
+                  
       <Dropdown items={addCount($disinformantNationFilter, 'disinformantNation', timePoints)}
                 label="Continent"
                 superior
                 on:itemsAdded={(e) => disinformantNationFilter.select(e.detail)}
                 on:itemsRemoved={(e) => disinformantNationFilter.unselect(e.detail)} />
-      <!--
-      <Dropdown items={addCount($platformFilter, 'platforms', timePoints)}
-                label="Platform"
-                on:itemsAdded={(e) => platformFilter.select(e.detail)}
-                on:itemsRemoved={(e) => platformFilter.unselect(e.detail)} />
-      <Dropdown items={addCount($sourceFilter, 'sourceFilter', timePoints)}
-                label="Source"
-                hideOneHitWonders
-                superior
-                on:itemsAdded={(e) => sourceFilter.select(e.detail)}
-                on:itemsRemoved={(e) => sourceFilter.unselect(e.detail)} />
-      <Dropdown items={addCount($sourceCategoryFilter, 'sourceCategory', timePoints)}
-                label="Source Category"
-                on:itemsAdded={(e) => sourceCategoryFilter.select(e.detail)}
-                on:itemsRemoved={(e) => sourceCategoryFilter.unselect(e.detail)} />
-     <Dropdown items={addCount($methodFilter, 'methods', timePoints)}
-                label="Method"
-                superior
-                on:itemsAdded={(e) => methodFilter.select(e.detail)}
-                on:itemsRemoved={(e) => methodFilter.unselect(e.detail)} />
-      <Dropdown items={$contextData}
-                label="Context Dataset"
-                nameField="name"
-                on:itemsAdded={(e) => contextData.select(e.detail)}
-                on:itemsRemoved={(e) => contextData.unselect(e.detail)} />
--->
+
 
       <Dropdown items={addCount($dietFilter, 'diet', timePoints)}
                 label="Diet"

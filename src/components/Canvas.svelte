@@ -23,32 +23,17 @@
   const worldDataPath = 'countries-50m.json';
 
   onMount(async function() {
-    const response = await fetch(
-      "geopangea.json"
-    );
-    const json = await response.json();
-  //  console.log('json: ', json)
-
-
 
     const worldResponse = await fetch(worldDataPath);
     worldjson = await worldResponse.json();
   //  console.log('worldjson: ', worldjson)
-
-
-
     worldFeature = feature(worldjson, worldjson.objects.countries);
   //  console.log('worldFeature: ', worldFeature)
-
-   // This removes antartica from the world map
-   // worldFeature.features = worldFeature.features.filter((c) => c.properties.name !== 'Antarctica');
-
 
 
   jurassicFossilSpots = await loadJurassicFossils();
   triassicFossilSpots = await loadTriassicFossils();
   cretaceousFossilSpots = await loadCretaceousFossils();  
-
 
 
   $fossilDatapoints.jurassic = jurassicFossilSpots;
@@ -59,6 +44,14 @@
   $fossilDatapoints.originalcretaceous = cretaceousFossilSpots;
 
 
+  // starting without fossil spots on smaller screens to help mobile users
+  if($width < 1000){
+
+$fossilDatapoints['cretaceous'] = [];
+$fossilDatapoints['triassic'] = [];
+$fossilDatapoints['jurassic'] = [];
+
+    }
 
   });
 
@@ -77,8 +70,6 @@ another way to redraw on updates
 
   //main reactive loop
   $: if (canvas && $countries && pangeaRegions && worldjson && jurassicFossilSpots && triassicFossilSpots && cretaceousFossilSpots && fossilDatapoints && $switchValueStore) {
-
-
 
 
     let geoNaturalEarth1projection = geoNaturalEarth1()
@@ -104,19 +95,14 @@ another way to redraw on updates
     canvas.style.width = `${$width}px`;
     canvas.style.height = `${$height}px`;
 
-
-
-
     const ctx = canvas.getContext('2d', { alpha: false });
     ctx.scale($scaleFactor, $scaleFactor);
     ctx.translate(0, $panelHeight);
 
-
     ctx.strokeStyle = preGreen;
     ctx.fillStyle = bg;
     ctx.fillRect(0, -$panelHeight, $width, $height);
-
-    
+   
     $geoPath.context(ctx);
 
    // console.log(projection)
@@ -132,13 +118,6 @@ let base = select('#map');
 
 
 let locations = select('#points');
-
-
-let layer = select('.layer');
-
-let info = base.append("div")
-    .attr("class", "info");
-
 
 let jurassicPaint= scaleLinear() .domain([140, 206]).range(["#a4e3ef","#2f9eb3"])
 
@@ -245,10 +224,18 @@ var elements = locations.selectAll("points.arc");
 
 
 createTriassicMap($fossilDatapoints.triassic);
-
+    
 createMap($fossilDatapoints.jurassic);
-
+  
 createCretaceousMap($fossilDatapoints.cretaceous);
+
+
+
+
+
+
+
+
 
 
 
@@ -336,7 +323,6 @@ function worldMap() {
     ctx.strokeStyle = '#000';
     ctx.lineWidth = 1.5;
     ctx.stroke();
-          console.log('draw?')
           }
           else {
             clearInterval(fadeEffect);
@@ -355,6 +341,8 @@ function worldMap() {
     }
     if($switchValueStore === 'off'){
     }
+
+
       
 
 
@@ -441,8 +429,6 @@ function createLegend(){
     if($width > 1000){
       createLegend()
     }
-
-
 
 
 }

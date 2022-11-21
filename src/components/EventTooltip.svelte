@@ -1,26 +1,15 @@
 <script>
   // a case tooltip (event = case)
-  import { afterUpdate } from 'svelte';
   import { width, panelHeight, controlsHeight } from '../stores/dimensions';
   import { tooltip } from '../stores/eventSelections';
   import { fade, slide } from 'svelte/transition';
   import { timeFormat } from 'd3';
   import { extractHostname, removeSpace } from '../utils/misc';
-  import {
-    platformFilter,
-    methodFilter,
-    timeperiodFilter,
-    sourceFilter,
-    sourceCategoryFilter,
-    tagFilter,
-    textSearchFilter,
-    highlightPolarization,
-    selectAllFilters} from '../stores/filters';
+  import { textSearchFilter } from '../stores/filters';
   import { images } from '../inputs/dataPaths';
-
+  
   import EventTooltipCross from './EventTooltipCross.svelte';
 
-  import Share from './Share.svelte';
 
   const offset = {
     top: 10,
@@ -41,17 +30,6 @@
   let paragraphs;
 
   let scoreQuestionsExpanded = false;
-
-  function handleLiClick(type, item) {
-    selectAllFilters();
-    switch (type) {
-      case 'platform': platformFilter.selectOne(item); break;
-      case 'method': methodFilter.selectOne(item); break;
-      case 'source': sourceFilter.selectOne(item); break;
-      case 'sourceCategory': sourceCategoryFilter.selectOne(item); break;
-      case 'tag': tagFilter.selectOne(item); break;
-    }
-  }
 
   function highlight(s) {
     if (!$textSearchFilter || $textSearchFilter === '') return s;
@@ -165,10 +143,6 @@
           </section>
 
           <div class="title-top">
-
-
-
-
             <section class="dino-stats">  
               <div class="stats-item"><span><strong>Length:</strong> {$tooltip.tp.size} ft</span></div>
               <div class="stats-item"><span><strong>Weight:</strong> {$tooltip.tp.weight} lbs</span></div>
@@ -176,20 +150,14 @@
               <div class="stats-item"><span><strong>Max Date:</strong> {$tooltip.tp.endDate} MYA</span></div>
               <div class="stats-item"><span><strong>Diet:</strong> {$tooltip.tp.diet}</span></div>
               <div class="stats-item"><span><strong>Regions:</strong> {$tooltip.tp.disinformantNation}</span></div>
-          
-
             </section>
-
           </div>
-
-
-
-
 
 
           <div class="image">
             <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}.jpg" alt={$tooltip.tp.shortTitle} />
           </div>
+
 
         </div>
 
@@ -207,7 +175,7 @@
           </div>
           {/if}
           <!-- Just for styling the fist paragraph and image differently-->
-          <p>{paragraphs[0]}</p>
+          <p>{@html highlight(paragraphs[0])}</p>
 
 
 
@@ -216,7 +184,7 @@
               <div class="image">
                 <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}{i}.jpg" alt={$tooltip.tp.shortTitle} />
               </div>
-                <p>{paragraph}</p>
+                <p>{@html highlight(paragraph)}</p>
               {/if}
             {/each}
             {#if ($tooltip.tp.extraImage === 'yes')}
@@ -234,7 +202,7 @@
           <a href="{$tooltip.tp.wikiURL}" target="_blank" class="no-float">{$tooltip.tp.name}</a>
         </div>
 
-
+    
       </div>
     </div>
   </div>
@@ -324,11 +292,18 @@
 }
 
 .title-header{
-  color: var(--text-black);
+    color: var(--text-black);
     margin: 0;
-    font-size: 2.1rem;
+    font-size: 1.2rem;
     font-weight: 700;
 }
+
+@media (min-width: 1000px) {
+  .title-header{
+    font-size: 2.1rem;
+  }
+}
+
 
 /* Time Era Styling */
 .Cretaceous {

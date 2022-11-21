@@ -4,197 +4,96 @@ const commaFormat = format(',');
 
 export const columns = [
   {
-    property: 'source',
-    name: 'Source',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px',
-    format: (d) => d.join(', ')
-  },
-  {
-    property: 'sourceNation',
-    name: 'Source Nation',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px'
-  },
-  {
-    property: 'sourceCategory',
-    name: 'Source Category',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px',
-    format: (d) => d.join(', ')
-  },
-  {
-    property: 'disinformant',
-    name: 'Disinformant',
+    property: 'name',
+    name: 'Name',
     sortable: true,
     classes: 'left',
     minWidth: '100px'
   },
   {
     property: 'disinformantNation',
-    name: 'Disinformant Nation',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px',
-    format: (d) => d.join(', ')
-  },
-  {
-    property: 'disinformantAttribution',
-    name: 'Disinformant Attribution',
+    name: 'Continent',
     sortable: true,
     classes: 'left',
     minWidth: '100px'
   },
+  {
+    property: 'habitat',
+    name: 'Habitat',
+    sortable: true,
+    classes: 'left',
+    minWidth: '100px'
+  },
+  {
+    property: 'type',
+    name: 'Type',
+    sortable: true,
+    classes: 'left',
+    minWidth: '100px'
+  },
+//  {
+ //   property: 'disinformantNation',
+  //  name: 'Disinformant Nation',
+   // sortable: true,
+    //classes: 'left',
+    //minWidth: '100px',
+    //format: (d) => d.join(', ')
+  //},
+  {
+    property: 'periodEra',
+    name: 'Geological Period',
+    sortable: true,
+    classes: 'left',
+    minWidth: '100px'
+  },/*
   {
     property: 'shortTitle',
     name: 'Title',
     sortable: true,
     classes: 'left',
     minWidth: '100px'
-  },
+  },*/
   {
-    property: 'shortDescription',
-    name: 'Description',
+    property: 'size',
+    name: 'Size (feet)',
     sortable: true,
     classes: 'left',
-    minWidth: '500px'
+    minWidth: '50px'
   },
   {
-    property: 'attributionUrl',
-    name: 'Link',
+    property: 'weight',
+    name: 'Weight (pounds)',
     sortable: true,
     classes: 'left',
-    hyperlink: true,
-    minWidth: '100px'
-  },
-  {
-    property: 'openWeb',
-    name: 'Open Web',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px'
-  },
-  {
-    property: 'socialMedia',
-    name: 'Social Media',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px'
-  },
-  {
-    property: 'messagingPlatforms',
-    name: 'Messaging Platforms',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px'
-  },
-  {
-    property: 'other',
-    name: 'Other',
-    sortable: true,
-    classes: 'left',
-    minWidth: '100px'
-  },
-  {
+    minWidth: '50px'
+  },{
     property: 'startDate',
-    name: 'Start Date',
+    name: 'Min Date',
     sortable: true,
-    format: timeFormat('%B %d, %Y'),
     classes: 'left',
-    minWidth: '200px'
+    minWidth: '50px'
   },
   {
     property: 'endDate',
-    name: 'End Date',
-    sortable: true,
-    format: timeFormat('%B %d, %Y'),
-    classes: 'left',
-    minWidth: '200px'
-  },
-  {
-    property: 'attributionDate',
-    name: 'Attribution Date',
-    sortable: true,
-    format: timeFormat('%B %d, %Y'),
-    classes: 'left',
-    minWidth: '200px'
-  },
-  {
-    property: 'methods',
-    name: 'Methods',
+    name: 'Max Date',
     sortable: true,
     classes: 'left',
-    format: (d) => d.join(', '),
-    minWidth: '100px'
+    minWidth: '50px'
   },
   {
-    property: 'smiFacebook',
-    name: 'Facebook Engagement',
+    property: 'tooltipContent',
+    name: 'Description',
     sortable: true,
-    classes: 'right',
-    minWidth: '100px',
-    format: (d) => commaFormat(d)
+    classes: 'left',
+    minWidth: '600px',
+    format: (d) => d.substring(0, d.indexOf('<p>'))
   },
   {
-    property: 'smiTwitter',
-    name: 'Twitter Engagement',
+    property: 'wikiURL',
+    name: 'Wiki Link',
     sortable: true,
-    classes: 'right',
-    minWidth: '100px',
-    format: (d) => commaFormat(d)
-  },
-  {
-    property: 'smiReddit',
-    name: 'Reddit Engagement',
-    sortable: true,
-    classes: 'right',
-    minWidth: '100px',
-    format: (d) => commaFormat(d)
-  },
-  {
-    property: 'smiTotal',
-    name: 'Total Engagement',
-    sortable: true,
-    classes: 'right',
-    minWidth: '100px',
-    format: (d) => commaFormat(d)
-  },
-  {
-    property: 'attributionCredibilityScore',
-    name: 'Credibility Score',
-    sortable: true,
-    classes: 'right',
-    minWidth: '100px'
-  },
-  {
-    property: 'attributionObjectivityScore',
-    name: 'Objectivity Score',
-    sortable: true,
-    classes: 'right',
-    minWidth: '100px'
-  },
-  {
-    property: 'attributionEvidenceScore',
-    name: 'Evidence Score',
-    sortable: true,
-    classes: 'right',
-    minWidth: '100px'
-  },
-  {
-    property: 'attributionTransparencyScore',
-    name: 'Transparency Score',
-    sortable: true,
-    classes: 'right',
-    minWidth: '100px'
-  },
-  {
-    property: 'attributionScore',
-    name: 'Attribution Score',
-    sortable: true,
-    classes: 'right',
+    classes: 'left',
+    hyperlink: true,
     minWidth: '100px'
   }
 ];

@@ -7,8 +7,6 @@
   import loadData from '../utils/loadData';
   import loadMapData from '../utils/loadMapData';
   import loadPangeaData from '../utils/loadPangeaData';
-  // import loadCoronaData from '../utils/loadCoronaData';
-  // import loadGoogleTrendsData from '../utils/loadGoogleTrendsData';
   import { setScales } from '../utils/scales';
   import {
     width,
@@ -93,7 +91,7 @@
             .map((d) => ({
               ...d,
               recentlyAdded: Math.ceil(((new Date()) - d.timestamp) / (1000 * 60 * 60 * 24)) <= observeDays,
-              search: [d.shortTitle, d.shortDescription, d.platforms, d.methods, d.sourceNation, d.source, d.sourceCategory, d.diet].flat().join('__').toLowerCase(),
+              search: [d.name, d.timePeriod, d.disinformantNation, d.tooltipContent, d.type, d.diet].flat().join('__').toLowerCase(),
               show: false
             }));
 
@@ -104,14 +102,10 @@
     // setup filters
     disinformantNationFilter.init(data, 'disinformantNation');
     platformFilter.init(data, 'platforms');
-    methodFilter.init(data, 'methods');
     timeperiodFilter.init(data, 'periodEra');
     sourceFilter.init(data, 'sourceFilter');
-    sourceCategoryFilter.init(data, 'sourceCategory');
     dietFilter.init(data, 'diet');
     tagFilter.init(data, 'tags');
-    $attributionScoreFilter = attributionScoreDef;
-    $polarizationFilter = polarizationDef;
     preloadImages(data);
 
     // apply filters from URL
@@ -119,19 +113,12 @@
       const urlFilters = parseUrl(window.location.hash);
       disinformantNationFilter.applyBoolArray(urlFilters.disinformantNations);
       platformFilter.applyBoolArray(urlFilters.platforms);
-      methodFilter.applyBoolArray(urlFilters.methods);
       timeperiodFilter.applyBoolArray(urlFilters.methods);
       sourceFilter.applyBoolArray(urlFilters.sources);
-      sourceCategoryFilter.applyBoolArray(urlFilters.sourceCategories);
       dietFilter.applyBoolArray(urlFilters.diet);
       tagFilter.applyBoolArray(urlFilters.tags);
       contextData.applyBoolArray(urlFilters.contextData);
-      $attributionScoreFilter = urlFilters.attributionScores;
-      $polarizationFilter = urlFilters.polarization;
       $textSearchFilter = urlFilters.textSearch;
-      $caseIdFilter = urlFilters.caseId;
-      $highlightPolarization = urlFilters.highlightPolarization;
-      $highlightCib = urlFilters.highlightCib;
     } 
   });
 
@@ -145,7 +132,7 @@
         ...d,
         _x: $timeScale(d.testDate),
         _y: $sizeTotalYScale.range()[0],
-        color: $attributionScoreScale(d.attributionScore),
+      //  color: $attributionScoreScale(d.attributionScore),
         size: d.size,
         rSizeTot: isNaN(d.size) || d.size === 0 ? $sizeTotalRScale.range()[0] : $sizeTotalRScale(d.size),
         fy:  $sizeTotalYScale(Math.max(d.sizeTotal, 6)),
@@ -162,16 +149,12 @@
 
     const simulationCharge = forceSimulation()
       .force('x', forceX().x(d => d._x))
-   //   .force('charge', forceManyBody().strength((d) => -(d.rSizeTot + 1) * 10).distanceMax(500).distanceMin(50));
-    //  .force('charge', forceManyBody().strength((d) => -(d.size + 10) * 95).distanceMax(450).distanceMin(200));
-   //   .force('charge', forceManyBody().strength((d) => -(d.size + 50) * 10).distanceMax(500).distanceMin(250));
-   .force('collide', forceCollide().strength(1).radius( (d) => $sizeTotalRScale(d.size) * 1  ) );
+     .force('collide', forceCollide().strength(1).radius( (d) => $sizeTotalRScale(d.size) * 1  ) );
  //  .force('charge', forceManyBody().strength((d) => -($sizeTotalRScale(d.size) + 10) * 10).distanceMax(500).distanceMin(50));
     simulation
       .nodes(scaledData)
       .alpha(0.8)
       .tick(300);
- //  console.log(scaledData)
     // finally set the global timePoints variable
     simulationCharge
       .nodes(scaledData) 
@@ -195,19 +178,9 @@
       timePoints = timePoints.map((d) => ({
         ...d,
         show: haveOverlap($disinformantNationFilter, d.disinformantNation)
-        //      && haveOverlap($platformFilter, d.platforms)
-        //      && haveOverlap($methodFilter, d.methods)
               && haveOverlap($timeperiodFilter, d.periodEra)
-        //      && haveOverlap($sourceFilter, d.sourceFilter)
-        //      && haveOverlap($sourceCategoryFilter, d.sourceCategory)
               && haveOverlap($dietFilter, d.diet)
-        //      && haveOverlap($tagFilter, d.tags)
               && includesTextSearch($textSearchFilter, d.search)
-              && withinRange($attributionScoreFilter, d.attributionScore)
-              && withinRange($polarizationFilter, d.averagePolarization, !$highlightPolarization)
-              && isCaseId($caseIdFilter, d.id)
-              && showPolarization($highlightPolarization, d.polarization)
-              && showCib($highlightCib, d.cib)
       }));
     }
 </script>
