@@ -1,6 +1,28 @@
 <script>
     export let options = [];
     export let selected;
+
+    function renameOption(option) {
+        if (option === 'a'){
+                return 'All Prehistoric Creatures'
+            }
+           else if (option === 'b'){
+                return 'Creatures 0-10 ft'
+            }
+           else if (option === 'c'){
+                return 'Creatures 10-25 ft'
+            }
+           else if (option === 'd'){
+                return 'Creatures 25-40 ft'
+            }
+           else if (option === 'e'){
+                return 'Creatures 40+ ft'
+            }
+            else {
+                return option
+            }
+    }
+    
 </script>
 
 <div class="selector">
@@ -12,7 +34,7 @@
                 on:change={() => (selected = option)}
                 checked={selected === option}
             />
-            <label for={option}>{option}</label>
+            <label for={option}>{renameOption(option)}</label>
         </span>
     {/each}
 </div>
@@ -24,6 +46,9 @@
         gap: 16px;
         width: 100%;
         height: 100px;
-        font-size: 20px;
+        font-size: 1rem;
+        font-family: var(--font-02);
     }
+        
+    
 </style>

@@ -139,6 +139,7 @@ function addDino(dino, fossilEra) {
 
 
 <div class="choice-controls">
+  Dinosaur Fossil datapoints:<br />
     <button class="choice-controls-unselectall" on:click|stopPropagation={removeAllFossils}>remove all</button>
     <button class="choice-controls-unselectall" on:click|stopPropagation={addAllFossils}>add all</button>
 </div>
@@ -298,6 +299,9 @@ function addDino(dino, fossilEra) {
     transition: all .2s ease;
     }
 
+    .choice-controls{
+      font-family: var(--font-02);
+    }
 
 
     .CretaceousButton {

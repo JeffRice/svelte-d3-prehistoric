@@ -41083,20 +41083,20 @@ var app = (function () {
 	      t8 = space();
 	      div3 = element("div");
 	      create_component(switch_1.$$.fragment);
-	      attr_dev(button, "class", "reset-filters svelte-1xdostt");
+	      attr_dev(button, "class", "reset-filters svelte-1pyeb13");
 	      add_location(button, file$e, 88, 7, 2864);
-	      attr_dev(div0, "class", "controls svelte-1xdostt");
+	      attr_dev(div0, "class", "controls svelte-1pyeb13");
 	      toggle_class(div0, "hidden",
 	      /*$controlsFilter*/
 	      ctx[1]);
 	      add_location(div0, file$e, 64, 4, 1718);
-	      attr_dev(div1, "class", "show-hide svelte-1xdostt");
+	      attr_dev(div1, "class", "show-hide svelte-1pyeb13");
 	      add_location(div1, file$e, 108, 4, 3208);
-	      attr_dev(div2, "class", "show-hide svelte-1xdostt");
+	      attr_dev(div2, "class", "show-hide svelte-1pyeb13");
 	      add_location(div2, file$e, 112, 4, 3272);
-	      attr_dev(div3, "class", "dropdown pangea-switch svelte-1xdostt");
+	      attr_dev(div3, "class", "dropdown pangea-switch svelte-1pyeb13");
 	      add_location(div3, file$e, 116, 6, 3340);
-	      attr_dev(div4, "class", "controls-inner-wrapper svelte-1xdostt");
+	      attr_dev(div4, "class", "controls-inner-wrapper svelte-1pyeb13");
 	      add_location(div4, file$e, 63, 2, 1677);
 	    },
 	    m: function mount(target, anchor) {
@@ -53767,14 +53767,14 @@ var app = (function () {
 	      svg = svg_element("svg");
 	      path = svg_element("path");
 	      attr_dev(path, "d", "M0 0L15 0L7.5 10Z");
-	      add_location(path, file$C, 84, 18, 2443);
+	      add_location(path, file$C, 84, 18, 2462);
 	      attr_dev(svg, "viewBox", "0 0 15 10");
 	      attr_dev(svg, "width", "12");
 	      attr_dev(svg, "height", "8");
 	      attr_dev(svg, "class", svg_class_value = "" + (null_to_empty(
 	      /*column*/
 	      ctx[18].sorted) + " svelte-ht7ajw"));
-	      add_location(svg, file$C, 79, 16, 2203);
+	      add_location(svg, file$C, 79, 16, 2222);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, svg, anchor);
@@ -53834,7 +53834,7 @@ var app = (function () {
 	      if (if_block) if_block.c();
 	      t2 = space();
 	      attr_dev(th, "class", "svelte-ht7ajw");
-	      add_location(th, file$C, 76, 12, 2116);
+	      add_location(th, file$C, 76, 12, 2135);
 	      this.first = th;
 	    },
 	    m: function mount(target, anchor) {
@@ -53934,7 +53934,7 @@ var app = (function () {
 	      /*column*/
 	      ctx[18].property]);
 	      attr_dev(a, "target", "_blank");
-	      add_location(a, file$C, 102, 18, 3297);
+	      add_location(a, file$C, 102, 18, 3316);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, a, anchor);
@@ -54074,7 +54074,7 @@ var app = (function () {
 	      ctx[18].minWidth ? "min-width: ".concat(
 	      /*column*/
 	      ctx[18].minWidth, ";") : "");
-	      add_location(td, file$C, 96, 14, 2928);
+	      add_location(td, file$C, 96, 14, 2947);
 	      this.first = td;
 	    },
 	    m: function mount(target, anchor) {
@@ -54173,7 +54173,7 @@ var app = (function () {
 	      ctx[2].map(func_1$2).includes(
 	      /*row*/
 	      ctx[15].id));
-	      add_location(tr, file$C, 93, 10, 2745);
+	      add_location(tr, file$C, 93, 10, 2764);
 	      this.first = tr;
 	    },
 	    m: function mount(target, anchor) {
@@ -54318,23 +54318,23 @@ var app = (function () {
 	        each_blocks[_i6].c();
 	      }
 
-	      attr_dev(a, "href", "https://github.com/DFRLab/Interference2020-Data");
+	      attr_dev(a, "href", "https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public");
 	      attr_dev(a, "target", "_blank");
 	      add_location(a, file$C, 69, 4, 1797);
 	      attr_dev(div0, "class", "table-header svelte-ht7ajw");
 	      add_location(div0, file$C, 68, 2, 1766);
 	      attr_dev(tr, "class", "svelte-ht7ajw");
-	      add_location(tr, file$C, 74, 8, 2045);
+	      add_location(tr, file$C, 74, 8, 2064);
 	      attr_dev(thead, "class", "disable-select");
-	      add_location(thead, file$C, 73, 6, 2006);
+	      add_location(thead, file$C, 73, 6, 2025);
 	      attr_dev(tbody, "class", "svelte-ht7ajw");
-	      add_location(tbody, file$C, 91, 6, 2593);
+	      add_location(tbody, file$C, 91, 6, 2612);
 	      attr_dev(table, "cellspacing", "0");
 	      attr_dev(table, "cellpadding", "0");
 	      attr_dev(table, "class", "svelte-ht7ajw");
-	      add_location(table, file$C, 72, 4, 1960);
+	      add_location(table, file$C, 72, 4, 1979);
 	      attr_dev(div1, "class", "inner-table-wrapper svelte-ht7ajw");
-	      add_location(div1, file$C, 71, 2, 1908);
+	      add_location(div1, file$C, 71, 2, 1927);
 	      attr_dev(div2, "id", "table");
 	      attr_dev(div2, "class", "table-element svelte-ht7ajw");
 	      add_location(div2, file$C, 65, 0, 1690);
@@ -54666,7 +54666,7 @@ var app = (function () {
 	  child_ctx[31] = list[i];
 	  child_ctx[33] = i;
 	  return child_ctx;
-	} // (147:0) {#if (sortedCretaceousFilter && sortedTriassicFilter && sortedJurassicFilter)}
+	} // (148:0) {#if (sortedCretaceousFilter && sortedTriassicFilter && sortedJurassicFilter)}
 
 
 	function create_if_block_1$7(ctx) {
@@ -54742,18 +54742,18 @@ var app = (function () {
 	        each_blocks[_i5].c();
 	      }
 
-	      attr_dev(h30, "class", "Cretaceous svelte-1jke7h1");
-	      add_location(h30, file$D, 149, 4, 4113);
-	      attr_dev(section0, "class", "fossil-wrap svelte-1jke7h1");
-	      add_location(section0, file$D, 148, 0, 4079);
-	      attr_dev(h31, "class", "Jurassic svelte-1jke7h1");
-	      add_location(h31, file$D, 170, 2, 5055);
-	      attr_dev(section1, "class", "fossil-wrap svelte-1jke7h1");
-	      add_location(section1, file$D, 169, 0, 5023);
-	      attr_dev(h32, "class", "Triassic svelte-1jke7h1");
-	      add_location(h32, file$D, 191, 2, 5983);
-	      attr_dev(section2, "class", "fossil-wrap svelte-1jke7h1");
-	      add_location(section2, file$D, 190, 0, 5951);
+	      attr_dev(h30, "class", "Cretaceous svelte-1sz1f6a");
+	      add_location(h30, file$D, 150, 4, 4149);
+	      attr_dev(section0, "class", "fossil-wrap svelte-1sz1f6a");
+	      add_location(section0, file$D, 149, 0, 4115);
+	      attr_dev(h31, "class", "Jurassic svelte-1sz1f6a");
+	      add_location(h31, file$D, 171, 2, 5091);
+	      attr_dev(section1, "class", "fossil-wrap svelte-1sz1f6a");
+	      add_location(section1, file$D, 170, 0, 5059);
+	      attr_dev(h32, "class", "Triassic svelte-1sz1f6a");
+	      add_location(h32, file$D, 192, 2, 6019);
+	      attr_dev(section2, "class", "fossil-wrap svelte-1sz1f6a");
+	      add_location(section2, file$D, 191, 0, 5987);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, section0, anchor);
@@ -54891,11 +54891,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$7.name,
 	    type: "if",
-	    source: "(147:0) {#if (sortedCretaceousFilter && sortedTriassicFilter && sortedJurassicFilter)}",
+	    source: "(148:0) {#if (sortedCretaceousFilter && sortedTriassicFilter && sortedJurassicFilter)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (152:4) {#if (fossilDatapoint[1].length)}
+	} // (153:4) {#if (fossilDatapoint[1].length)}
 
 
 	function create_if_block_4$3(ctx) {
@@ -54984,25 +54984,25 @@ var app = (function () {
 	      }
 
 	      t12 = space();
-	      add_location(br0, file$D, 152, 86, 4348);
-	      attr_dev(button, "class", "CretaceousButton svelte-1jke7h1");
-	      add_location(button, file$D, 153, 8, 4363);
-	      add_location(br1, file$D, 155, 17, 4519);
+	      add_location(br0, file$D, 153, 86, 4384);
+	      attr_dev(button, "class", "CretaceousButton svelte-1sz1f6a");
+	      add_location(button, file$D, 154, 8, 4399);
+	      add_location(br1, file$D, 156, 17, 4555);
 	      attr_dev(input, "id", input_id_value = "collapsible-Cretaceous-" +
 	      /*i*/
 	      ctx[33]);
 	      attr_dev(input, "class", "toggle");
 	      attr_dev(input, "type", "checkbox");
-	      add_location(input, file$D, 156, 8, 4534);
+	      add_location(input, file$D, 157, 8, 4570);
 	      attr_dev(label, "for", label_for_value = "collapsible-Cretaceous-" +
 	      /*i*/
 	      ctx[33]);
 	      attr_dev(label, "class", "lbl-toggle top");
-	      add_location(label, file$D, 157, 8, 4613);
+	      add_location(label, file$D, 158, 8, 4649);
 	      attr_dev(div, "class", "collapsible-content");
-	      add_location(div, file$D, 158, 8, 4707);
-	      attr_dev(section, "class", "fossil-names svelte-1jke7h1");
-	      add_location(section, file$D, 152, 6, 4268);
+	      add_location(div, file$D, 159, 8, 4743);
+	      attr_dev(section, "class", "fossil-names svelte-1sz1f6a");
+	      add_location(section, file$D, 153, 6, 4304);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, section, anchor);
@@ -55095,11 +55095,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_4$3.name,
 	    type: "if",
-	    source: "(152:4) {#if (fossilDatapoint[1].length)}",
+	    source: "(153:4) {#if (fossilDatapoint[1].length)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (160:6) {#each fossilDatapoint[1] as newTest, i}
+	} // (161:6) {#each fossilDatapoint[1] as newTest, i}
 
 
 	function create_each_block_5(ctx) {
@@ -55152,9 +55152,9 @@ var app = (function () {
 	      t11 = text(t11_value);
 	      t12 = space();
 	      hr = element("hr");
-	      add_location(p0, file$D, 160, 6, 4794);
-	      add_location(p1, file$D, 161, 6, 4873);
-	      add_location(hr, file$D, 162, 6, 4943);
+	      add_location(p0, file$D, 161, 6, 4830);
+	      add_location(p1, file$D, 162, 6, 4909);
+	      add_location(hr, file$D, 163, 6, 4979);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p0, anchor);
@@ -55213,11 +55213,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_5.name,
 	    type: "each",
-	    source: "(160:6) {#each fossilDatapoint[1] as newTest, i}",
+	    source: "(161:6) {#each fossilDatapoint[1] as newTest, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (151:2) {#each sortedCretaceousFilter as fossilDatapoint, i}
+	} // (152:2) {#each sortedCretaceousFilter as fossilDatapoint, i}
 
 
 	function create_each_block_4(ctx) {
@@ -55259,11 +55259,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_4.name,
 	    type: "each",
-	    source: "(151:2) {#each sortedCretaceousFilter as fossilDatapoint, i}",
+	    source: "(152:2) {#each sortedCretaceousFilter as fossilDatapoint, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (173:4) {#if (fossilDatapoint[1].length)}
+	} // (174:4) {#if (fossilDatapoint[1].length)}
 
 
 	function create_if_block_3$4(ctx) {
@@ -55352,25 +55352,25 @@ var app = (function () {
 	      }
 
 	      t12 = space();
-	      add_location(br0, file$D, 173, 86, 5284);
-	      attr_dev(button, "class", "JurassicButton svelte-1jke7h1");
-	      add_location(button, file$D, 174, 8, 5299);
-	      add_location(br1, file$D, 176, 17, 5451);
+	      add_location(br0, file$D, 174, 86, 5320);
+	      attr_dev(button, "class", "JurassicButton svelte-1sz1f6a");
+	      add_location(button, file$D, 175, 8, 5335);
+	      add_location(br1, file$D, 177, 17, 5487);
 	      attr_dev(input, "id", input_id_value = "collapsible-Jurassic-" +
 	      /*i*/
 	      ctx[33]);
 	      attr_dev(input, "class", "toggle");
 	      attr_dev(input, "type", "checkbox");
-	      add_location(input, file$D, 177, 8, 5466);
+	      add_location(input, file$D, 178, 8, 5502);
 	      attr_dev(label, "for", label_for_value = "collapsible-Jurassic-" +
 	      /*i*/
 	      ctx[33]);
 	      attr_dev(label, "class", "lbl-toggle top");
-	      add_location(label, file$D, 178, 8, 5543);
+	      add_location(label, file$D, 179, 8, 5579);
 	      attr_dev(div, "class", "collapsible-content");
-	      add_location(div, file$D, 179, 8, 5635);
-	      attr_dev(section, "class", "fossil-names svelte-1jke7h1");
-	      add_location(section, file$D, 173, 6, 5204);
+	      add_location(div, file$D, 180, 8, 5671);
+	      attr_dev(section, "class", "fossil-names svelte-1sz1f6a");
+	      add_location(section, file$D, 174, 6, 5240);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, section, anchor);
@@ -55463,11 +55463,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_3$4.name,
 	    type: "if",
-	    source: "(173:4) {#if (fossilDatapoint[1].length)}",
+	    source: "(174:4) {#if (fossilDatapoint[1].length)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (181:6) {#each fossilDatapoint[1] as newTest, i}
+	} // (182:6) {#each fossilDatapoint[1] as newTest, i}
 
 
 	function create_each_block_3(ctx) {
@@ -55520,9 +55520,9 @@ var app = (function () {
 	      t11 = text(t11_value);
 	      t12 = space();
 	      hr = element("hr");
-	      add_location(p0, file$D, 181, 6, 5722);
-	      add_location(p1, file$D, 182, 6, 5801);
-	      add_location(hr, file$D, 183, 6, 5871);
+	      add_location(p0, file$D, 182, 6, 5758);
+	      add_location(p1, file$D, 183, 6, 5837);
+	      add_location(hr, file$D, 184, 6, 5907);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p0, anchor);
@@ -55581,11 +55581,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_3.name,
 	    type: "each",
-	    source: "(181:6) {#each fossilDatapoint[1] as newTest, i}",
+	    source: "(182:6) {#each fossilDatapoint[1] as newTest, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (172:2) {#each sortedJurassicFilter as fossilDatapoint, i}
+	} // (173:2) {#each sortedJurassicFilter as fossilDatapoint, i}
 
 
 	function create_each_block_2$2(ctx) {
@@ -55627,11 +55627,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_2$2.name,
 	    type: "each",
-	    source: "(172:2) {#each sortedJurassicFilter as fossilDatapoint, i}",
+	    source: "(173:2) {#each sortedJurassicFilter as fossilDatapoint, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (194:2) {#if (fossilDatapoint[1].length)}
+	} // (195:2) {#if (fossilDatapoint[1].length)}
 
 
 	function create_if_block_2$4(ctx) {
@@ -55720,25 +55720,25 @@ var app = (function () {
 	      }
 
 	      t12 = space();
-	      add_location(br0, file$D, 194, 82, 6206);
-	      attr_dev(button, "class", "TriassicButton svelte-1jke7h1");
-	      add_location(button, file$D, 195, 8, 6221);
-	      add_location(br1, file$D, 197, 17, 6373);
+	      add_location(br0, file$D, 195, 82, 6242);
+	      attr_dev(button, "class", "TriassicButton svelte-1sz1f6a");
+	      add_location(button, file$D, 196, 8, 6257);
+	      add_location(br1, file$D, 198, 17, 6409);
 	      attr_dev(input, "id", input_id_value = "collapsible-Triassic-" +
 	      /*i*/
 	      ctx[33]);
 	      attr_dev(input, "class", "toggle");
 	      attr_dev(input, "type", "checkbox");
-	      add_location(input, file$D, 198, 8, 6388);
+	      add_location(input, file$D, 199, 8, 6424);
 	      attr_dev(label, "for", label_for_value = "collapsible-Triassic-" +
 	      /*i*/
 	      ctx[33]);
 	      attr_dev(label, "class", "lbl-toggle top");
-	      add_location(label, file$D, 199, 8, 6465);
+	      add_location(label, file$D, 200, 8, 6501);
 	      attr_dev(div, "class", "collapsible-content");
-	      add_location(div, file$D, 200, 8, 6557);
-	      attr_dev(section, "class", "fossil-names svelte-1jke7h1");
-	      add_location(section, file$D, 194, 2, 6126);
+	      add_location(div, file$D, 201, 8, 6593);
+	      attr_dev(section, "class", "fossil-names svelte-1sz1f6a");
+	      add_location(section, file$D, 195, 2, 6162);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, section, anchor);
@@ -55831,11 +55831,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$4.name,
 	    type: "if",
-	    source: "(194:2) {#if (fossilDatapoint[1].length)}",
+	    source: "(195:2) {#if (fossilDatapoint[1].length)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (202:8) {#each fossilDatapoint[1] as newTest, i}
+	} // (203:8) {#each fossilDatapoint[1] as newTest, i}
 
 
 	function create_each_block_1$4(ctx) {
@@ -55888,9 +55888,9 @@ var app = (function () {
 	      t11 = text(t11_value);
 	      t12 = space();
 	      hr = element("hr");
-	      add_location(p0, file$D, 202, 6, 6646);
-	      add_location(p1, file$D, 203, 6, 6725);
-	      add_location(hr, file$D, 204, 6, 6795);
+	      add_location(p0, file$D, 203, 6, 6682);
+	      add_location(p1, file$D, 204, 6, 6761);
+	      add_location(hr, file$D, 205, 6, 6831);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, p0, anchor);
@@ -55949,11 +55949,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block_1$4.name,
 	    type: "each",
-	    source: "(202:8) {#each fossilDatapoint[1] as newTest, i}",
+	    source: "(203:8) {#each fossilDatapoint[1] as newTest, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (193:2) {#each sortedTriassicFilter as fossilDatapoint, i}
+	} // (194:2) {#each sortedTriassicFilter as fossilDatapoint, i}
 
 
 	function create_each_block$c(ctx) {
@@ -55995,11 +55995,11 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$c.name,
 	    type: "each",
-	    source: "(193:2) {#each sortedTriassicFilter as fossilDatapoint, i}",
+	    source: "(194:2) {#each sortedTriassicFilter as fossilDatapoint, i}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (215:0) {#if (sortedCretaceousNames && sortedJurassicNames && sortedTriassicNames)}
+	} // (216:0) {#if (sortedCretaceousNames && sortedJurassicNames && sortedTriassicNames)}
 
 
 	function create_if_block$i(ctx) {
@@ -56101,47 +56101,47 @@ var app = (function () {
 	      t25 = text(
 	      /*sortedTriassicNames*/
 	      ctx[5]);
-	      attr_dev(h30, "class", "Cretaceous svelte-1jke7h1");
-	      add_location(h30, file$D, 219, 4, 7040);
+	      attr_dev(h30, "class", "Cretaceous svelte-1sz1f6a");
+	      add_location(h30, file$D, 220, 4, 7076);
 	      attr_dev(input0, "id", "collapsible-Cretaceous-unique");
 	      attr_dev(input0, "class", "toggle");
 	      attr_dev(input0, "type", "checkbox");
-	      add_location(input0, file$D, 220, 4, 7138);
+	      add_location(input0, file$D, 221, 4, 7174);
 	      attr_dev(label0, "for", "collapsible-Cretaceous-unique");
 	      attr_dev(label0, "class", "lbl-toggle top");
-	      add_location(label0, file$D, 221, 4, 7216);
+	      add_location(label0, file$D, 222, 4, 7252);
 	      attr_dev(div0, "class", "collapsible-content");
-	      add_location(div0, file$D, 222, 4, 7316);
-	      attr_dev(section0, "class", "fossil-wrap svelte-1jke7h1");
-	      add_location(section0, file$D, 218, 2, 7006);
-	      attr_dev(h31, "class", "Jurassic svelte-1jke7h1");
-	      add_location(h31, file$D, 228, 4, 7441);
+	      add_location(div0, file$D, 223, 4, 7352);
+	      attr_dev(section0, "class", "fossil-wrap svelte-1sz1f6a");
+	      add_location(section0, file$D, 219, 2, 7042);
+	      attr_dev(h31, "class", "Jurassic svelte-1sz1f6a");
+	      add_location(h31, file$D, 229, 4, 7477);
 	      attr_dev(input1, "id", "collapsible-Jurassic-unique");
 	      attr_dev(input1, "class", "toggle");
 	      attr_dev(input1, "type", "checkbox");
-	      add_location(input1, file$D, 229, 4, 7525);
+	      add_location(input1, file$D, 230, 4, 7561);
 	      attr_dev(label1, "for", "collapsible-Jurassic-unique");
 	      attr_dev(label1, "class", "lbl-toggle top");
-	      add_location(label1, file$D, 230, 4, 7601);
+	      add_location(label1, file$D, 231, 4, 7637);
 	      attr_dev(div1, "class", "collapsible-content");
-	      add_location(div1, file$D, 231, 4, 7699);
-	      attr_dev(section1, "class", "fossil-wrap svelte-1jke7h1");
-	      add_location(section1, file$D, 227, 2, 7407);
-	      attr_dev(h32, "class", "Triassic svelte-1jke7h1");
-	      add_location(h32, file$D, 238, 4, 7825);
+	      add_location(div1, file$D, 232, 4, 7735);
+	      attr_dev(section1, "class", "fossil-wrap svelte-1sz1f6a");
+	      add_location(section1, file$D, 228, 2, 7443);
+	      attr_dev(h32, "class", "Triassic svelte-1sz1f6a");
+	      add_location(h32, file$D, 239, 4, 7861);
 	      attr_dev(input2, "id", "collapsible-Triassic-unique");
 	      attr_dev(input2, "class", "toggle");
 	      attr_dev(input2, "type", "checkbox");
-	      add_location(input2, file$D, 239, 4, 7917);
+	      add_location(input2, file$D, 240, 4, 7953);
 	      attr_dev(label2, "for", "collapsible-Triassic-unique");
 	      attr_dev(label2, "class", "lbl-toggle top");
-	      add_location(label2, file$D, 240, 4, 7993);
+	      add_location(label2, file$D, 241, 4, 8029);
 	      attr_dev(div2, "class", "collapsible-content");
-	      add_location(div2, file$D, 241, 4, 8091);
-	      attr_dev(section2, "class", "fossil-wrap svelte-1jke7h1");
-	      add_location(section2, file$D, 237, 2, 7791);
-	      attr_dev(section3, "class", "unique-fossils svelte-1jke7h1");
-	      add_location(section3, file$D, 216, 0, 6970);
+	      add_location(div2, file$D, 242, 4, 8127);
+	      attr_dev(section2, "class", "fossil-wrap svelte-1sz1f6a");
+	      add_location(section2, file$D, 238, 2, 7827);
+	      attr_dev(section3, "class", "unique-fossils svelte-1sz1f6a");
+	      add_location(section3, file$D, 217, 0, 7006);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, section3, anchor);
@@ -56224,7 +56224,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$i.name,
 	    type: "if",
-	    source: "(215:0) {#if (sortedCretaceousNames && sortedJurassicNames && sortedTriassicNames)}",
+	    source: "(216:0) {#if (sortedCretaceousNames && sortedJurassicNames && sortedTriassicNames)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -56232,12 +56232,15 @@ var app = (function () {
 
 	function create_fragment$D(ctx) {
 	  var div;
-	  var button0;
+	  var t0;
+	  var br;
 	  var t1;
-	  var button1;
+	  var button0;
 	  var t3;
+	  var button1;
+	  var t5;
 	  var section;
-	  var t4;
+	  var t6;
 	  var if_block1_anchor;
 	  var mounted;
 	  var dispose;
@@ -56258,38 +56261,45 @@ var app = (function () {
 	  var block = {
 	    c: function create() {
 	      div = element("div");
+	      t0 = text("Dinosaur Fossil datapoints:");
+	      br = element("br");
+	      t1 = space();
 	      button0 = element("button");
 	      button0.textContent = "remove all";
-	      t1 = space();
+	      t3 = space();
 	      button1 = element("button");
 	      button1.textContent = "add all";
-	      t3 = space();
+	      t5 = space();
 	      section = element("section");
 	      if (if_block0) if_block0.c();
-	      t4 = space();
+	      t6 = space();
 	      if (if_block1) if_block1.c();
 	      if_block1_anchor = empty();
-	      attr_dev(button0, "class", "choice-controls-unselectall svelte-1jke7h1");
-	      add_location(button0, file$D, 141, 4, 3747);
-	      attr_dev(button1, "class", "choice-controls-unselectall svelte-1jke7h1");
-	      add_location(button1, file$D, 142, 4, 3859);
-	      attr_dev(div, "class", "choice-controls");
+	      add_location(br, file$D, 141, 29, 3772);
+	      attr_dev(button0, "class", "choice-controls-unselectall svelte-1sz1f6a");
+	      add_location(button0, file$D, 142, 4, 3783);
+	      attr_dev(button1, "class", "choice-controls-unselectall svelte-1sz1f6a");
+	      add_location(button1, file$D, 143, 4, 3895);
+	      attr_dev(div, "class", "choice-controls svelte-1sz1f6a");
 	      add_location(div, file$D, 140, 0, 3713);
-	      attr_dev(section, "class", "fossil-flex svelte-1jke7h1");
-	      add_location(section, file$D, 144, 0, 3968);
+	      attr_dev(section, "class", "fossil-flex svelte-1sz1f6a");
+	      add_location(section, file$D, 145, 0, 4004);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
-	      append_dev(div, button0);
+	      append_dev(div, t0);
+	      append_dev(div, br);
 	      append_dev(div, t1);
+	      append_dev(div, button0);
+	      append_dev(div, t3);
 	      append_dev(div, button1);
-	      insert_dev(target, t3, anchor);
+	      insert_dev(target, t5, anchor);
 	      insert_dev(target, section, anchor);
 	      if (if_block0) if_block0.m(section, null);
-	      insert_dev(target, t4, anchor);
+	      insert_dev(target, t6, anchor);
 	      if (if_block1) if_block1.m(target, anchor);
 	      insert_dev(target, if_block1_anchor, anchor);
 
@@ -56345,10 +56355,10 @@ var app = (function () {
 	    o: noop,
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(div);
-	      if (detaching) detach_dev(t3);
+	      if (detaching) detach_dev(t5);
 	      if (detaching) detach_dev(section);
 	      if (if_block0) if_block0.d();
-	      if (detaching) detach_dev(t4);
+	      if (detaching) detach_dev(t6);
 	      if (if_block1) if_block1.d(detaching);
 	      if (detaching) detach_dev(if_block1_anchor);
 	      mounted = false;
@@ -57683,7 +57693,7 @@ var app = (function () {
 	      g = svg_element("g");
 	      text_1 = svg_element("text");
 	      t = text(t_value);
-	      attr_dev(text_1, "class", "svelte-1lr8x10");
+	      attr_dev(text_1, "class", "svelte-a08cfb");
 	      add_location(text_1, file$G, 20, 16, 436);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
@@ -57769,7 +57779,7 @@ var app = (function () {
 	      attr_dev(line, "y2",
 	      /*y*/
 	      ctx[1]);
-	      attr_dev(line, "class", "svelte-1lr8x10");
+	      attr_dev(line, "class", "svelte-a08cfb");
 	      add_location(line, file$G, 13, 4, 201);
 	      attr_dev(g0, "class", "ticks");
 	      add_location(g0, file$G, 14, 4, 244);
@@ -58024,7 +58034,7 @@ var app = (function () {
 	      text_1 = svg_element("text");
 	      t = text(t_value);
 	      attr_dev(text_1, "dy", textOffset$1);
-	      attr_dev(text_1, "class", "svelte-7pu8kg");
+	      attr_dev(text_1, "class", "svelte-3up6al");
 	      add_location(text_1, file$H, 20, 16, 436);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
@@ -58110,7 +58120,7 @@ var app = (function () {
 	      attr_dev(line, "y2",
 	      /*y1*/
 	      ctx[3]);
-	      attr_dev(line, "class", "svelte-7pu8kg");
+	      attr_dev(line, "class", "svelte-3up6al");
 	      add_location(line, file$H, 13, 4, 201);
 	      attr_dev(g0, "class", "ticks");
 	      add_location(g0, file$H, 14, 4, 244);
@@ -58343,7 +58353,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$3 = globals.console;
-	var file$I = "src/components/ChartDatapoint.svelte"; // (49:0) {#if (name)}
+	var file$I = "src/components/ChartDatapoint.svelte"; // (122:0) {#if (name)}
 
 	function create_if_block$k(ctx) {
 	  var t;
@@ -58417,11 +58427,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$k.name,
 	    type: "if",
-	    source: "(49:0) {#if (name)}",
+	    source: "(122:0) {#if (name)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (50:0) {#if (x <= ($width/2))}
+	} // (123:2) {#if (x <= ($width/2))}
 
 
 	function create_if_block_2$6(ctx) {
@@ -58437,14 +58447,14 @@ var app = (function () {
 	      /*hoverName*/
 	      ctx[2]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$I, 52, 8, 1284);
+	      add_location(text_1, file$I, 125, 10, 3121);
 	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$tX*/
 	      ctx[4] + 10) + " " + (
 	      /*$tY*/
 	      ctx[5] - 20) + ")");
-	      add_location(g, file$I, 51, 5, 1187);
+	      add_location(g, file$I, 124, 7, 3022);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -58476,11 +58486,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$6.name,
 	    type: "if",
-	    source: "(50:0) {#if (x <= ($width/2))}",
+	    source: "(123:2) {#if (x <= ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (57:0) {#if (x > ($width/2))}
+	} // (130:2) {#if (x > ($width/2))}
 
 
 	function create_if_block_1$9(ctx) {
@@ -58496,14 +58506,14 @@ var app = (function () {
 	      /*hoverName*/
 	      ctx[2]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$I, 59, 8, 1511);
+	      add_location(text_1, file$I, 132, 10, 3362);
 	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$tX*/
 	      ctx[4] - 100) + " " + (
 	      /*$tY*/
 	      ctx[5] - 20) + ")");
-	      add_location(g, file$I, 58, 5, 1413);
+	      add_location(g, file$I, 131, 7, 3262);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -58535,7 +58545,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$9.name,
 	    type: "if",
-	    source: "(57:0) {#if (x > ($width/2))}",
+	    source: "(130:2) {#if (x > ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -58579,13 +58589,13 @@ var app = (function () {
 	      attr_dev(circle, "testx",
 	      /*$tX*/
 	      ctx[4]);
-	      add_location(circle, file$I, 43, 5, 980);
+	      add_location(circle, file$I, 114, 7, 2803);
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*$tX*/
 	      ctx[4] + " " +
 	      /*$tY*/
 	      ctx[5] + ")");
-	      add_location(g, file$I, 40, 0, 898);
+	      add_location(g, file$I, 109, 0, 2684);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -58598,9 +58608,9 @@ var app = (function () {
 	      insert_dev(target, if_block_anchor, anchor);
 
 	      if (!mounted) {
-	        dispose = listen_dev(g, "mouseover",
+	        dispose = [listen_dev(g, "mouseover",
 	        /*handleEventMouseover*/
-	        ctx[9], false, false, false);
+	        ctx[9], false, false, false), listen_dev(g, "mouseout", handleEventMouseout, false, false, false)];
 	        mounted = true;
 	      }
 	    },
@@ -58681,7 +58691,7 @@ var app = (function () {
 	      if (if_block) if_block.d(detaching);
 	      if (detaching) detach_dev(if_block_anchor);
 	      mounted = false;
-	      dispose();
+	      run_all(dispose);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -58694,29 +58704,30 @@ var app = (function () {
 	  return block;
 	}
 
+	function handleEventMouseout(event) {
+	  var mypopup = document.getElementById("mypopup");
+	  mypopup.style.display = "none";
+	}
+
 	function instance$I($$self, $$props, $$invalidate) {
-	  var $hovered;
-	  var $selected;
 	  var $tX;
 	  var $tY;
 	  var $width;
-	  validate_store(hovered, "hovered");
-	  component_subscribe($$self, hovered, function ($$value) {
-	    return $$invalidate(11, $hovered = $$value);
-	  });
-	  validate_store(selected, "selected");
-	  component_subscribe($$self, selected, function ($$value) {
-	    return $$invalidate(12, $selected = $$value);
-	  });
+	  var $selected;
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
 	    return $$invalidate(6, $width = $$value);
+	  });
+	  validate_store(selected, "selected");
+	  component_subscribe($$self, selected, function ($$value) {
+	    return $$invalidate(11, $selected = $$value);
 	  });
 	  var x = $$props.x;
 	  var y = $$props.y;
 	  var name = $$props.name;
 	  var hoverName = $$props.hoverName;
 	  var stroke = $$props.stroke;
+	  var showTooltip;
 	  var tX = tweened(null, {
 	    duration: 0,
 	    easing: cubicOut
@@ -58737,7 +58748,38 @@ var app = (function () {
 	  function handleEventMouseover(event) {
 	    console.log("event:", event);
 	    console.log("event.target: ", event.target);
-	    set_store_value(hovered, $hovered = event.detail);
+	    console.log("event.target test x: ", event.target.attributes.testx);
+	    console.log("event.target test y: ", event.target.attributes.testy);
+	    console.log("event.target x: ", event.target.x);
+	    console.log("event.target y: ", event.target.y);
+	    console.log("event.screenX: ", event.screenX);
+	    console.log("event.screenY: ", event.screenY);
+	    console.log("$tX.  : ", $tX);
+	    console.log("$tY.  : ", $tY);
+	    console.log("$window.scrollY.  : ", window.scrollY); //reset popup content for each datapoint
+
+	    var mypopup = document.getElementById("mypopup"); // place on right for left half of screen
+
+	    if (x <= $width / 2) {
+	      mypopup.className = "mypopup";
+	      mypopup.innerHTML = " <h3>Popup title </h3>"; // place popup on the chart and make it visible
+
+	      mypopup.style.left = event.target.getBoundingClientRect().x + 20 + "px";
+	      mypopup.style.top = window.scrollY + event.target.getBoundingClientRect().y - 312 + "px";
+	    } else // place on left for right half of screen
+	      {
+	        mypopup.className = "popup-right";
+	        mypopup.innerHTML = " <h3>Popup title </h3>"; // place popup on the chart and make it visible
+
+	        mypopup.style.left = event.target.getBoundingClientRect().x - 400 + "px";
+	        mypopup.style.top = window.scrollY + event.target.getBoundingClientRect().y - 312 + "px";
+	      }
+
+	    mypopup.style.display = "block"; //create popup content and append
+
+	    var div = document.createElement("div");
+	    div.innerHTML = "<div class=\"slideshow-container\">\n" + " HOWDY" + hoverName + " from a div</div>\n";
+	    mypopup.appendChild(div);
 	  }
 
 	  function handleEventClick(event) {
@@ -58784,15 +58826,16 @@ var app = (function () {
 	      name: name,
 	      hoverName: hoverName,
 	      stroke: stroke,
+	      showTooltip: showTooltip,
 	      tX: tX,
 	      tY: tY,
 	      handleEventMouseover: handleEventMouseover,
+	      handleEventMouseout: handleEventMouseout,
 	      handleEventClick: handleEventClick,
-	      $hovered: $hovered,
-	      $selected: $selected,
 	      $tX: $tX,
 	      $tY: $tY,
-	      $width: $width
+	      $width: $width,
+	      $selected: $selected
 	    };
 	  };
 
@@ -58802,6 +58845,7 @@ var app = (function () {
 	    if ("name" in $$props) $$invalidate(1, name = $$props.name);
 	    if ("hoverName" in $$props) $$invalidate(2, hoverName = $$props.hoverName);
 	    if ("stroke" in $$props) $$invalidate(3, stroke = $$props.stroke);
+	    if ("showTooltip" in $$props) showTooltip = $$props.showTooltip;
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -58940,7 +58984,7 @@ var app = (function () {
 	  child_ctx[13] = list[i].stroke;
 	  child_ctx[14] = list[i].hoverName;
 	  return child_ctx;
-	} // (50:4) {#if (chartWidth)}
+	} // (51:4) {#if (chartWidth)}
 
 
 	function create_if_block$l(ctx) {
@@ -59002,7 +59046,7 @@ var app = (function () {
 	      /*chartHeight*/
 	      ctx[1]);
 	      set_style(svg, "overflow", "visible");
-	      add_location(svg, file$J, 50, 8, 1394);
+	      add_location(svg, file$J, 51, 8, 1395);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, svg, anchor);
@@ -59122,11 +59166,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$l.name,
 	    type: "if",
-	    source: "(50:4) {#if (chartWidth)}",
+	    source: "(51:4) {#if (chartWidth)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (65:12) {#each renderedData as { x, y, name, stroke, hoverName }}
+	} // (66:12) {#each renderedData as { x, y, name, stroke, hoverName }}
 
 
 	function create_each_block$f(ctx) {
@@ -59206,41 +59250,55 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$f.name,
 	    type: "each",
-	    source: "(65:12) {#each renderedData as { x, y, name, stroke, hoverName }}",
+	    source: "(66:12) {#each renderedData as { x, y, name, stroke, hoverName }}",
 	    ctx: ctx
 	  });
 	  return block;
 	}
 
 	function create_fragment$J(ctx) {
-	  var div;
-	  var div_resize_listener;
+	  var div0;
+	  var div0_resize_listener;
+	  var t0;
+	  var div1;
+	  var h3;
 	  var current;
 	  var if_block =
 	  /*chartWidth*/
 	  ctx[0] && create_if_block$l(ctx);
 	  var block = {
 	    c: function create() {
-	      div = element("div");
+	      div0 = element("div");
 	      if (if_block) if_block.c();
-	      attr_dev(div, "class", "chart svelte-wc2stb");
+	      t0 = space();
+	      div1 = element("div");
+	      h3 = element("h3");
+	      h3.textContent = "Popup title";
+	      attr_dev(div0, "class", "chart svelte-qn6zlf");
 	      add_render_callback(function () {
 	        return (
-	          /*div_elementresize_handler*/
-	          ctx[8].call(div)
+	          /*div0_elementresize_handler*/
+	          ctx[8].call(div0)
 	        );
 	      });
-	      add_location(div, file$J, 48, 0, 1281);
+	      add_location(div0, file$J, 49, 0, 1282);
+	      add_location(h3, file$J, 79, 4, 2132);
+	      attr_dev(div1, "id", "mypopup");
+	      attr_dev(div1, "class", "mypopup svelte-qn6zlf");
+	      add_location(div1, file$J, 78, 0, 2093);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, div, anchor);
-	      if (if_block) if_block.m(div, null);
-	      div_resize_listener = add_resize_listener(div,
-	      /*div_elementresize_handler*/
-	      ctx[8].bind(div));
+	      insert_dev(target, div0, anchor);
+	      if (if_block) if_block.m(div0, null);
+	      div0_resize_listener = add_resize_listener(div0,
+	      /*div0_elementresize_handler*/
+	      ctx[8].bind(div0));
+	      insert_dev(target, t0, anchor);
+	      insert_dev(target, div1, anchor);
+	      append_dev(div1, h3);
 	      current = true;
 	    },
 	    p: function update(ctx, _ref) {
@@ -59262,7 +59320,7 @@ var app = (function () {
 	          if_block = create_if_block$l(ctx);
 	          if_block.c();
 	          transition_in(if_block, 1);
-	          if_block.m(div, null);
+	          if_block.m(div0, null);
 	        }
 	      } else if (if_block) {
 	        group_outros();
@@ -59282,9 +59340,11 @@ var app = (function () {
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div);
+	      if (detaching) detach_dev(div0);
 	      if (if_block) if_block.d();
-	      div_resize_listener();
+	      div0_resize_listener();
+	      if (detaching) detach_dev(t0);
+	      if (detaching) detach_dev(div1);
 	    }
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
@@ -59317,7 +59377,7 @@ var app = (function () {
 	      $$scope = $$props.$$scope;
 	  validate_slots("Chart", $$slots, []);
 
-	  function div_elementresize_handler() {
+	  function div0_elementresize_handler() {
 	    chartWidth = this.clientWidth;
 	    chartHeight = this.clientHeight;
 	    $$invalidate(0, chartWidth);
@@ -59399,7 +59459,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [chartWidth, chartHeight, xScale, yScale, renderedData, data, xRange, yRange, div_elementresize_handler];
+	  return [chartWidth, chartHeight, xScale, yScale, renderedData, data, xRange, yRange, div0_elementresize_handler];
 	}
 
 	var Chart = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -59483,7 +59543,7 @@ var app = (function () {
 	  var child_ctx = ctx.slice();
 	  child_ctx[3] = list[i];
 	  return child_ctx;
-	} // (7:4) {#each options as option}
+	} // (29:4) {#each options as option}
 
 
 	function create_each_block$g(ctx) {
@@ -59493,9 +59553,9 @@ var app = (function () {
 	  var input_checked_value;
 	  var t0;
 	  var label;
-	  var t1_value =
+	  var t1_value = renameOption(
 	  /*option*/
-	  ctx[3] + "";
+	  ctx[3]) + "";
 	  var t1;
 	  var label_for_value;
 	  var t2;
@@ -59534,12 +59594,12 @@ var app = (function () {
 	      ctx[0] ===
 	      /*option*/
 	      ctx[3];
-	      add_location(input, file$K, 8, 12, 154);
+	      add_location(input, file$K, 30, 12, 736);
 	      attr_dev(label, "for", label_for_value =
 	      /*option*/
 	      ctx[3]);
-	      add_location(label, file$K, 14, 12, 345);
-	      add_location(span, file$K, 7, 8, 135);
+	      add_location(label, file$K, 36, 12, 927);
+	      add_location(span, file$K, 29, 8, 717);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, span, anchor);
@@ -59577,9 +59637,9 @@ var app = (function () {
 
 	      if (dirty &
 	      /*options*/
-	      2 && t1_value !== (t1_value =
+	      2 && t1_value !== (t1_value = renameOption(
 	      /*option*/
-	      ctx[3] + "")) set_data_dev(t1, t1_value);
+	      ctx[3]) + "")) set_data_dev(t1, t1_value);
 
 	      if (dirty &
 	      /*options*/
@@ -59599,7 +59659,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$g.name,
 	    type: "each",
-	    source: "(7:4) {#each options as option}",
+	    source: "(29:4) {#each options as option}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -59625,8 +59685,8 @@ var app = (function () {
 	        each_blocks[_i].c();
 	      }
 
-	      attr_dev(div, "class", "selector svelte-1f8iioq");
-	      add_location(div, file$K, 5, 0, 74);
+	      attr_dev(div, "class", "selector svelte-7vlskc");
+	      add_location(div, file$K, 27, 0, 656);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -59643,7 +59703,7 @@ var app = (function () {
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*options, selected*/
+	      /*options, renameOption, selected*/
 	      3) {
 	        each_value =
 	        /*options*/
@@ -59690,6 +59750,22 @@ var app = (function () {
 	  return block;
 	}
 
+	function renameOption(option) {
+	  if (option === "a") {
+	    return "All Prehistoric Creatures";
+	  } else if (option === "b") {
+	    return "Creatures 0-10 ft";
+	  } else if (option === "c") {
+	    return "Creatures 10-25 ft";
+	  } else if (option === "d") {
+	    return "Creatures 25-40 ft";
+	  } else if (option === "e") {
+	    return "Creatures 40+ ft";
+	  } else {
+	    return option;
+	  }
+	}
+
 	function instance$K($$self, $$props, $$invalidate) {
 	  var _$$props$options = $$props.options,
 	      options = _$$props$options === void 0 ? [] : _$$props$options;
@@ -59715,7 +59791,8 @@ var app = (function () {
 	  $$self.$capture_state = function () {
 	    return {
 	      options: options,
-	      selected: selected
+	      selected: selected,
+	      renameOption: renameOption
 	    };
 	  };
 
@@ -59786,12 +59863,14 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var Object_1 = globals.Object;
-	var file$L = "src/components/ChartWrapper.svelte"; // (127:0) {#if (selectedData)}
+	var file$L = "src/components/ChartWrapper.svelte"; // (126:0) {#if (selectedData)}
 
 	function create_if_block$m(ctx) {
 	  var div;
 	  var chart;
-	  var t;
+	  var t0;
+	  var section;
+	  var t2;
 	  var chartselector;
 	  var updating_selected;
 	  var current;
@@ -59850,15 +59929,22 @@ var app = (function () {
 	    c: function create() {
 	      div = element("div");
 	      create_component(chart.$$.fragment);
-	      t = space();
+	      t0 = space();
+	      section = element("section");
+	      section.textContent = "Prehistoric Life -  Size and Weight distribution";
+	      t2 = space();
 	      create_component(chartselector.$$.fragment);
-	      attr_dev(div, "class", "wrapper svelte-8zw8d4");
-	      add_location(div, file$L, 127, 0, 3870);
+	      attr_dev(section, "class", "chart-header svelte-1j3gnjx");
+	      add_location(section, file$L, 133, 1, 4136);
+	      attr_dev(div, "class", "wrapper svelte-1j3gnjx");
+	      add_location(div, file$L, 126, 0, 3869);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
 	      mount_component(chart, div, null);
-	      append_dev(div, t);
+	      append_dev(div, t0);
+	      append_dev(div, section);
+	      append_dev(div, t2);
 	      mount_component(chartselector, div, null);
 	      current = true;
 	    },
@@ -59929,7 +60015,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$m.name,
 	    type: "if",
-	    source: "(127:0) {#if (selectedData)}",
+	    source: "(126:0) {#if (selectedData)}",
 	    ctx: ctx
 	  });
 	  return block;

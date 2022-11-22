@@ -10,7 +10,6 @@
 	import { originalTimeDomain } from '../stores/filters';
 	import { beforeUpdate, afterUpdate } from 'svelte';
 
-
 	let fossilSpots10, fossilSpots25, fossilSpots40, fossilSpots200, allfossilSpots;;
 	let selectedData, selectedOption;
 	let chartData = {};
@@ -131,6 +130,9 @@ function getTranslation(transform) {
 		xRange={[min(chartData[selectedOption].map(d => d.x)), max(chartData[selectedOption].map(d => d.x))]}
 		yRange={[min(chartData[selectedOption].map(d => d.y)), max(chartData[selectedOption].map(d => d.y))]}
 	/>
+
+	<section class="chart-header">Prehistoric Life -  Size and Weight distribution</section>
+
 	<ChartSelector
 		options={Object.keys(data)}
 		bind:selected={selectedOption}
@@ -144,6 +146,13 @@ function getTranslation(transform) {
 		width: 100%;
 		height: 100%;
 		height: 650px;
-		padding: 40px;
+		padding: 0;
 	}
+	.chart-header {
+        text-align: center;
+        font-family: var(--font-02);
+		font-size: 1.25rem;
+		margin-bottom: 6px;
+    }
+	
 </style>

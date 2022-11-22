@@ -4,11 +4,14 @@
     import { hovered, selected } from '../stores/eventSelections';
     import { width, height, panelHeight, mapHeight } from '../stores/dimensions';
 
+
     export let x;
     export let y;
     export let name;
     export let hoverName;
     export let stroke;
+
+    let showTooltip;
 
     const tX = tweened(null, { duration: 0, easing: cubicOut });
     const tY = tweened(null, { duration: 0, easing: cubicOut });
@@ -16,12 +19,74 @@
     $: tX.set(x);
     $: tY.set(y);
 
+
   function handleEventMouseover(event) {
+
+
     console.log('event:', event)
     console.log('event.target: ', event.target)
+    console.log('event.target test x: ', event.target.attributes.testx)
+    console.log('event.target test y: ', event.target.attributes.testy)
 
-    $hovered = event.detail;
+    console.log('event.target x: ', event.target.x)
+    console.log('event.target y: ', event.target.y)
+
+
+    console.log('event.screenX: ', event.screenX)
+    console.log('event.screenY: ', event.screenY)
+
+
+    console.log('$tX.  : ', $tX)
+    console.log('$tY.  : ', $tY)
+    console.log('$window.scrollY.  : ', window.scrollY)
+
+
+        //reset popup content for each datapoint
+        let mypopup = document.getElementById("mypopup");
+
+
+    // place on right for left half of screen
+    if (x <= ($width/2)){
+    mypopup.className="mypopup"
+    mypopup.innerHTML = ' <h3>Popup title </h3>';
+
+    
+    // place popup on the chart and make it visible
+    mypopup.style.left = ((event.target.getBoundingClientRect().x) + 20 ) + 'px';
+    mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - 312) + 'px';
+    }
+
+    // place on left for right half of screen
+    else {
+
+    mypopup.className="popup-right"
+    mypopup.innerHTML = ' <h3>Popup title </h3>';
+        
+    // place popup on the chart and make it visible
+    mypopup.style.left = ((event.target.getBoundingClientRect().x) - 400 ) + 'px';
+    mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - 312) + 'px';
+    }
+
+
+    mypopup.style.display = "block";
+
+    //create popup content and append
+    let div = document.createElement("div");
+    div.innerHTML =
+    '<div class="slideshow-container">\n' +
+    ' HOWDY' + hoverName + ' from a div</div>\n' 
+
+      mypopup.appendChild(div);
+
+
   }
+
+  function handleEventMouseout(event) {
+    let mypopup = document.getElementById("mypopup");
+    mypopup.style.display = "none";
+
+  }
+
 
   function handleEventClick(event) {
 
@@ -37,30 +102,40 @@
 
 
 
+
+
 </script>  
+
+
 <g transform="translate({$tX} {$tY})" 
 on:mouseover={handleEventMouseover}
+on:mouseout={handleEventMouseout}
 >
-     <circle name={name} hoverName={hoverName} cx="0" cy="0" r="10" stroke={stroke} stroke-width="3" fill="none"
-     testy={$tY} testx={$tX}/>
+
+       <circle name={name} hoverName={hoverName} cx="0" cy="0" r="10" stroke={stroke} stroke-width="3" fill="none"
+       testy={$tY} testx={$tX}/>
+  
 </g>
 
 
+
 {#if (name)}
-{#if (x <= ($width/2))}
-     <!-- label-->
-     <g class="centroid-name-label place-label" transform="translate({$tX + 10} {$tY - 20})">
-        <text style="transition: opacity 600ms ease;">{hoverName}</text>
-     </g>
+  {#if (x <= ($width/2))}
+       <!-- label-->
+       <g class="centroid-name-label place-label" transform="translate({$tX + 10} {$tY - 20})">
+          <text style="transition: opacity 600ms ease;">{hoverName}</text>
+       </g>
+  {/if}
+  
+  {#if (x > ($width/2))}
+       <!-- label-->
+       <g class="centroid-name-label place-label" transform="translate({$tX - 100} {$tY - 20})">
+          <text style="transition: opacity 600ms ease;">{hoverName}</text>
+       </g>
+  {/if}
 {/if}
 
-{#if (x > ($width/2))}
-     <!-- label-->
-     <g class="centroid-name-label place-label" transform="translate({$tX - 100} {$tY - 20})">
-        <text style="transition: opacity 600ms ease;">{hoverName}</text>
-     </g>
-{/if}
-{/if}
+
 
 <style>
   .place-label{

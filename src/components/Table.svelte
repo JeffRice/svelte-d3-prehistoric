@@ -67,7 +67,7 @@
      class="table-element"
      on:click|stopPropagation>
   <div class="table-header">
-    <a href="https://github.com/DFRLab/Interference2020-Data" target="_blank">Download full dataset</a>
+    <a href="https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public" target="_blank">Download full dataset</a>
   </div>
   <div class="inner-table-wrapper" use:draggable>
     <table cellspacing="0" cellpadding="0">

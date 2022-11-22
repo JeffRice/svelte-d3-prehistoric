@@ -18,6 +18,7 @@
 
  //   let magmaPaint= scaleLinear().domain([0, 5, 10, 15, 20, 25, 30, 35, 40, 45]).range(["#150e38","#1d1147","#251255","#390f6e","#440f76","#52137c","#701f81","#802582","#982d80","#b2357b"])
 
+
     let mScale = scaleLinear()
         .domain([-40,160])
         .range([0,1]);
@@ -75,11 +76,31 @@
     {/if}
 </div>
 
+<div id="mypopup" class="mypopup">
+    <h3>Popup title </h3>
+</div>
+
+
 <style>
     .chart {
         flex: 1;
         width: 100%;
         min-width: 400px;
         height: 400px;
+        margin-bottom: -25px;
+        overflow: hidden;
     }
+
+ #mypopup {
+  width: 400px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  background-color: var(--prehistoricGreen);
+  border-radius: 6px;
+  position: absolute;
+  display: none;
+}
+
+
 </style>

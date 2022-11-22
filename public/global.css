@@ -528,3 +528,56 @@ footer a, footer p {
   text-align: center;
   text-decoration: none;
 }
+
+
+
+#mypopup {
+  width: 400px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  background-color: var(--bg);
+  border: 2px solid var(--prehistoricDarkGreen);
+  border-radius: 6px;
+  position: absolute;
+  display: none;
+  z-index: 999;
+}
+
+.mypopup::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  border-left: 2px solid var(--prehistoricDarkGreen);
+  border-bottom: 2px solid var(--prehistoricDarkGreen);
+  background-color: var(--bg);
+  position: absolute;
+  left: -8px;
+  z-index: 999;
+}
+
+.popup-right {
+  width: 400px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  background-color: var(--bg);
+  border: 2px solid var(--prehistoricDarkGreen);
+  border-radius: 6px;
+  position: absolute;
+  display: none;
+}
+
+.popup-right::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  border-top: 2px solid var(--prehistoricDarkGreen);
+  border-right: 2px solid var(--prehistoricDarkGreen);
+  background-color: var(--bg);
+  position: absolute;
+  left: 390px;
+  z-index: -1;
+}

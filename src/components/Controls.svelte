@@ -138,6 +138,7 @@
     grid-template-rows: repeat(9, 1fr);
     grid-gap: 0.3rem;
     margin-bottom: 0.7rem;
+    pointer-events: bounding-box;
   }
 
   @media (min-width: 460px) {
