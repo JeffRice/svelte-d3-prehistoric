@@ -34565,7 +34565,7 @@ var app = (function () {
 	var platformFilter = createInclusiveFilter();
 	var methodFilter = createInclusiveFilter();
 	var timeperiodFilter = createInclusiveFilter();
-	var sourceFilter$1 = createInclusiveFilter();
+	var sourceFilter = createInclusiveFilter();
 	var sourceCategoryFilter = createInclusiveFilter();
 	var dietFilter = createInclusiveFilter();
 	var tagFilter = createInclusiveFilter();
@@ -34579,7 +34579,7 @@ var app = (function () {
 	  platformFilter.unselectAll();
 	  methodFilter.unselectAll();
 	  timeperiodFilter.unselectAll();
-	  sourceFilter$1.unselectAll();
+	  sourceFilter.unselectAll();
 	  sourceCategoryFilter.unselectAll();
 	  dietFilter.unselectAll();
 	  tagFilter.unselectAll();
@@ -34592,7 +34592,7 @@ var app = (function () {
 	  platformFilter.selectAll();
 	  methodFilter.selectAll();
 	  timeperiodFilter.selectAll();
-	  sourceFilter$1.selectAll();
+	  sourceFilter.selectAll();
 	  sourceCategoryFilter.selectAll();
 	  dietFilter.selectAll();
 	  tagFilter.selectAll();
@@ -35997,7 +35997,7 @@ var app = (function () {
 	        break;
 
 	      case 1:
-	        sourceFilter$1.selectOne("Facebook");
+	        sourceFilter.selectOne("Facebook");
 	        set_store_value(highlightCib, $highlightCib = true);
 	        break;
 
@@ -36064,7 +36064,7 @@ var app = (function () {
 	    return {
 	      disinformantNationFilter: disinformantNationFilter,
 	      contextData: contextData,
-	      sourceFilter: sourceFilter$1,
+	      sourceFilter: sourceFilter,
 	      attributionScoreFilter: attributionScoreFilter,
 	      selectAllFilters: selectAllFilters,
 	      highlightPolarization: highlightPolarization,
@@ -52049,7 +52049,7 @@ var app = (function () {
 	      ctx[3](
 	      /*data*/
 	      ctx[2]));
-	      attr_dev(path, "class", "svelte-1jhx3e9");
+	      attr_dev(path, "class", "svelte-1393ns8");
 	      add_location(path, file$z, 51, 4, 1399);
 	      attr_dev(circle, "cx", circle_cx_value =
 	      /*data*/
@@ -52062,9 +52062,9 @@ var app = (function () {
 	      /*data*/
 	      ctx[2].length - 1][1]);
 	      attr_dev(circle, "r", "5");
-	      attr_dev(circle, "class", "svelte-1jhx3e9");
+	      attr_dev(circle, "class", "svelte-1393ns8");
 	      add_location(circle, file$z, 52, 4, 1432);
-	      attr_dev(g, "class", "line svelte-1jhx3e9");
+	      attr_dev(g, "class", "line svelte-1393ns8");
 	      add_location(g, file$z, 50, 2, 1378);
 	      attr_dev(svg, "viewBox", svg_viewBox_value = "0 0 " +
 	      /*width*/
@@ -52376,38 +52376,32 @@ var app = (function () {
 
 	function get_each_context$a(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[25] = list[i];
+	  child_ctx[20] = list[i];
 	  return child_ctx;
 	}
 
 	function get_each_context_1$2(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[28] = list[i];
+	  child_ctx[23] = list[i];
 	  return child_ctx;
-	}
-
-	function get_each_context_2(ctx, list, i) {
-	  var child_ctx = ctx.slice();
-	  child_ctx[31] = list[i];
-	  return child_ctx;
-	} // (84:0) {#if ($tooltip)}
+	} // (77:0) {#if ($tooltip)}
 
 
 	function create_if_block$g(ctx) {
-	  var div6;
 	  var div5;
 	  var div4;
+	  var div3;
 	  var div0;
 	  var h2;
 	  var t0_value = lodash.uniq(
 	  /*$tooltip*/
-	  ctx[8].c.map(func$5)).join(" | ") + "";
+	  ctx[7].c.map(func$5)).join(" | ") + "";
 	  var t0;
 	  var t1;
 	  var p;
 	  var t2_value =
 	  /*$tooltip*/
-	  ctx[8].c.length + "";
+	  ctx[7].c.length + "";
 	  var t2;
 	  var t3;
 	  var t4;
@@ -52416,107 +52410,73 @@ var app = (function () {
 	  var h30;
 	  var t7;
 	  var ul0;
-	  var each_blocks_2 = [];
+	  var each_blocks_1 = [];
 	  var each0_lookup = new Map();
 	  var t8;
 	  var div2;
 	  var h31;
 	  var t10;
 	  var ul1;
-	  var each_blocks_1 = [];
-	  var each1_lookup = new Map();
-	  var t11;
-	  var div3;
-	  var h32;
-	  var t12;
-	  var t13_value = (
-	  /*sourceCategories*/
-	  ctx[7].length !== 1 ? "ies" : "y") + "";
-	  var t13;
-	  var t14;
-	  var ul2;
 	  var each_blocks = [];
-	  var each2_lookup = new Map();
+	  var each1_lookup = new Map();
+	  var div4_resize_listener;
 	  var div5_resize_listener;
-	  var div6_resize_listener;
-	  var div6_transition;
+	  var div5_transition;
 	  var current;
 	  var mounted;
 	  var dispose;
 	  var if_block =
 	  /*$tooltip*/
-	  ctx[8].c.length > 1 && !
+	  ctx[7].c.length > 1 && !
 	  /*$originalTimeDomain*/
-	  ctx[9] && create_if_block_1$5(ctx);
-	  var each_value_2 =
-	  /*platforms*/
+	  ctx[8] && create_if_block_1$5(ctx);
+	  var each_value_1 =
+	  /*timeperiods*/
 	  ctx[5];
-	  validate_each_argument(each_value_2);
+	  validate_each_argument(each_value_1);
 
 	  var get_key = function get_key(ctx) {
 	    return (
-	      /*platform*/
-	      ctx[31].id
+	      /*timeperiod*/
+	      ctx[23].id
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value_2, get_each_context_2, get_key);
+	  validate_each_keys(ctx, each_value_1, get_each_context_1$2, get_key);
 
-	  for (var i = 0; i < each_value_2.length; i += 1) {
-	    var child_ctx = get_each_context_2(ctx, each_value_2, i);
+	  for (var i = 0; i < each_value_1.length; i += 1) {
+	    var child_ctx = get_each_context_1$2(ctx, each_value_1, i);
 	    var key = get_key(child_ctx);
-	    each0_lookup.set(key, each_blocks_2[i] = create_each_block_2(key, child_ctx));
-	  }
-
-	  var each_value_1 =
-	  /*methods*/
-	  ctx[6];
-	  validate_each_argument(each_value_1);
-
-	  var get_key_1 = function get_key_1(ctx) {
-	    return (
-	      /*method*/
-	      ctx[28].id
-	    );
-	  };
-
-	  validate_each_keys(ctx, each_value_1, get_each_context_1$2, get_key_1);
-
-	  for (var _i = 0; _i < each_value_1.length; _i += 1) {
-	    var _child_ctx = get_each_context_1$2(ctx, each_value_1, _i);
-
-	    var _key = get_key_1(_child_ctx);
-
-	    each1_lookup.set(_key, each_blocks_1[_i] = create_each_block_1$2(_key, _child_ctx));
+	    each0_lookup.set(key, each_blocks_1[i] = create_each_block_1$2(key, child_ctx));
 	  }
 
 	  var each_value =
-	  /*sourceCategories*/
-	  ctx[7];
+	  /*diets*/
+	  ctx[6];
 	  validate_each_argument(each_value);
 
-	  var get_key_2 = function get_key_2(ctx) {
+	  var get_key_1 = function get_key_1(ctx) {
 	    return (
-	      /*sourceCategory*/
-	      ctx[25].id
+	      /*diet*/
+	      ctx[20].id
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value, get_each_context$a, get_key_2);
+	  validate_each_keys(ctx, each_value, get_each_context$a, get_key_1);
 
-	  for (var _i2 = 0; _i2 < each_value.length; _i2 += 1) {
-	    var _child_ctx2 = get_each_context$a(ctx, each_value, _i2);
+	  for (var _i = 0; _i < each_value.length; _i += 1) {
+	    var _child_ctx = get_each_context$a(ctx, each_value, _i);
 
-	    var _key2 = get_key_2(_child_ctx2);
+	    var _key = get_key_1(_child_ctx);
 
-	    each2_lookup.set(_key2, each_blocks[_i2] = create_each_block$a(_key2, _child_ctx2));
+	    each1_lookup.set(_key, each_blocks[_i] = create_each_block$a(_key, _child_ctx));
 	  }
 
 	  var block = {
 	    c: function create() {
-	      div6 = element("div");
 	      div5 = element("div");
 	      div4 = element("div");
+	      div3 = element("div");
 	      div0 = element("div");
 	      h2 = element("h2");
 	      t0 = text(t0_value);
@@ -52529,181 +52489,151 @@ var app = (function () {
 	      t5 = space();
 	      div1 = element("div");
 	      h30 = element("h3");
-	      h30.textContent = "Platforms used";
+	      h30.textContent = "Time periods";
 	      t7 = space();
 	      ul0 = element("ul");
 
-	      for (var _i3 = 0; _i3 < each_blocks_2.length; _i3 += 1) {
-	        each_blocks_2[_i3].c();
+	      for (var _i2 = 0; _i2 < each_blocks_1.length; _i2 += 1) {
+	        each_blocks_1[_i2].c();
 	      }
 
 	      t8 = space();
 	      div2 = element("div");
 	      h31 = element("h3");
-	      h31.textContent = "Methods applied";
+	      h31.textContent = "Diets";
 	      t10 = space();
 	      ul1 = element("ul");
 
-	      for (var _i4 = 0; _i4 < each_blocks_1.length; _i4 += 1) {
-	        each_blocks_1[_i4].c();
+	      for (var _i3 = 0; _i3 < each_blocks.length; _i3 += 1) {
+	        each_blocks[_i3].c();
 	      }
 
-	      t11 = space();
-	      div3 = element("div");
-	      h32 = element("h3");
-	      t12 = text("Source categor");
-	      t13 = text(t13_value);
-	      t14 = space();
-	      ul2 = element("ul");
-
-	      for (var _i5 = 0; _i5 < each_blocks.length; _i5 += 1) {
-	        each_blocks[_i5].c();
-	      }
-
-	      attr_dev(h2, "class", "svelte-djvhn0");
-	      add_location(h2, file$A, 95, 10, 2872);
-	      attr_dev(p, "class", "small no-break svelte-djvhn0");
-	      add_location(p, file$A, 96, 10, 2946);
-	      attr_dev(div0, "class", "title svelte-djvhn0");
-	      add_location(div0, file$A, 94, 8, 2842);
-	      attr_dev(h30, "class", "svelte-djvhn0");
-	      add_location(h30, file$A, 110, 10, 3614);
-	      attr_dev(ul0, "class", "svelte-djvhn0");
-	      add_location(ul0, file$A, 111, 10, 3648);
-	      attr_dev(div1, "class", "platforms-used svelte-djvhn0");
-	      add_location(div1, file$A, 109, 8, 3575);
-	      attr_dev(h31, "class", "svelte-djvhn0");
-	      add_location(h31, file$A, 121, 10, 4020);
-	      attr_dev(ul1, "class", "svelte-djvhn0");
-	      add_location(ul1, file$A, 122, 10, 4055);
-	      attr_dev(div2, "class", "methods-applied svelte-djvhn0");
-	      add_location(div2, file$A, 120, 8, 3980);
-	      attr_dev(h32, "class", "svelte-djvhn0");
-	      add_location(h32, file$A, 132, 10, 4415);
-	      attr_dev(ul2, "class", "svelte-djvhn0");
-	      add_location(ul2, file$A, 133, 10, 4494);
-	      attr_dev(div3, "class", "source-categories svelte-djvhn0");
-	      add_location(div3, file$A, 131, 8, 4373);
-	      attr_dev(div4, "class", "scroll-wrapper svelte-djvhn0");
-	      add_location(div4, file$A, 93, 6, 2805);
-	      attr_dev(div5, "class", "content svelte-djvhn0");
-	      set_style(div5, "top",
+	      attr_dev(h2, "class", "svelte-ip24k5");
+	      add_location(h2, file$A, 88, 10, 2459);
+	      attr_dev(p, "class", "small no-break svelte-ip24k5");
+	      add_location(p, file$A, 89, 10, 2533);
+	      attr_dev(div0, "class", "title svelte-ip24k5");
+	      add_location(div0, file$A, 87, 8, 2429);
+	      attr_dev(h30, "class", "svelte-ip24k5");
+	      add_location(h30, file$A, 103, 10, 3198);
+	      attr_dev(ul0, "class", "svelte-ip24k5");
+	      add_location(ul0, file$A, 104, 10, 3230);
+	      attr_dev(div1, "class", "timeperiods svelte-ip24k5");
+	      add_location(div1, file$A, 102, 8, 3162);
+	      attr_dev(h31, "class", "svelte-ip24k5");
+	      add_location(h31, file$A, 114, 10, 3605);
+	      attr_dev(ul1, "class", "svelte-ip24k5");
+	      add_location(ul1, file$A, 115, 10, 3630);
+	      attr_dev(div2, "class", "diets svelte-ip24k5");
+	      add_location(div2, file$A, 113, 8, 3575);
+	      attr_dev(div3, "class", "scroll-wrapper svelte-ip24k5");
+	      add_location(div3, file$A, 86, 6, 2392);
+	      attr_dev(div4, "class", "content svelte-ip24k5");
+	      set_style(div4, "top",
 	      /*contentTop*/
 	      ctx[4] + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div5_elementresize_handler*/
-	          ctx[17].call(div5)
+	          /*div4_elementresize_handler*/
+	          ctx[15].call(div4)
 	        );
 	      });
-	      add_location(div5, file$A, 90, 4, 2702);
-	      attr_dev(div6, "class", "tooltip svelte-djvhn0");
-	      set_style(div6, "left",
+	      add_location(div4, file$A, 83, 4, 2289);
+	      attr_dev(div5, "class", "tooltip svelte-ip24k5");
+	      set_style(div5, "left",
 	      /*left*/
 	      ctx[2] + "px");
-	      set_style(div6, "top",
+	      set_style(div5, "top",
 	      /*top*/
 	      ctx[3] + "px");
 	      add_render_callback(function () {
 	        return (
-	          /*div6_elementresize_handler*/
-	          ctx[18].call(div6)
+	          /*div5_elementresize_handler*/
+	          ctx[16].call(div5)
 	        );
 	      });
-	      add_location(div6, file$A, 84, 2, 2489);
+	      add_location(div5, file$A, 77, 2, 2076);
 	    },
 	    m: function mount(target, anchor) {
-	      insert_dev(target, div6, anchor);
-	      append_dev(div6, div5);
+	      insert_dev(target, div5, anchor);
 	      append_dev(div5, div4);
-	      append_dev(div4, div0);
+	      append_dev(div4, div3);
+	      append_dev(div3, div0);
 	      append_dev(div0, h2);
 	      append_dev(h2, t0);
 	      append_dev(div0, t1);
 	      append_dev(div0, p);
 	      append_dev(p, t2);
 	      append_dev(p, t3);
-	      append_dev(div4, t4);
-	      if (if_block) if_block.m(div4, null);
-	      append_dev(div4, t5);
-	      append_dev(div4, div1);
+	      append_dev(div3, t4);
+	      if (if_block) if_block.m(div3, null);
+	      append_dev(div3, t5);
+	      append_dev(div3, div1);
 	      append_dev(div1, h30);
 	      append_dev(div1, t7);
 	      append_dev(div1, ul0);
 
-	      for (var _i6 = 0; _i6 < each_blocks_2.length; _i6 += 1) {
-	        each_blocks_2[_i6].m(ul0, null);
+	      for (var _i4 = 0; _i4 < each_blocks_1.length; _i4 += 1) {
+	        each_blocks_1[_i4].m(ul0, null);
 	      }
 
-	      append_dev(div4, t8);
-	      append_dev(div4, div2);
+	      append_dev(div3, t8);
+	      append_dev(div3, div2);
 	      append_dev(div2, h31);
 	      append_dev(div2, t10);
 	      append_dev(div2, ul1);
 
-	      for (var _i7 = 0; _i7 < each_blocks_1.length; _i7 += 1) {
-	        each_blocks_1[_i7].m(ul1, null);
+	      for (var _i5 = 0; _i5 < each_blocks.length; _i5 += 1) {
+	        each_blocks[_i5].m(ul1, null);
 	      }
 
-	      append_dev(div4, t11);
-	      append_dev(div4, div3);
-	      append_dev(div3, h32);
-	      append_dev(h32, t12);
-	      append_dev(h32, t13);
-	      append_dev(div3, t14);
-	      append_dev(div3, ul2);
-
-	      for (var _i8 = 0; _i8 < each_blocks.length; _i8 += 1) {
-	        each_blocks[_i8].m(ul2, null);
-	      }
-
+	      div4_resize_listener = add_resize_listener(div4,
+	      /*div4_elementresize_handler*/
+	      ctx[15].bind(div4));
 	      div5_resize_listener = add_resize_listener(div5,
 	      /*div5_elementresize_handler*/
-	      ctx[17].bind(div5));
-	      div6_resize_listener = add_resize_listener(div6,
-	      /*div6_elementresize_handler*/
-	      ctx[18].bind(div6));
+	      ctx[16].bind(div5));
 	      current = true;
 
 	      if (!mounted) {
-	        dispose = [listen_dev(div6, "click", stop_propagation(
+	        dispose = [listen_dev(div5, "click", stop_propagation(
 	        /*click_handler*/
-	        ctx[12]), false, false, true), listen_dev(div6, "mouseover", stop_propagation(
+	        ctx[11]), false, false, true), listen_dev(div5, "mouseover", stop_propagation(
 	        /*mouseover_handler*/
-	        ctx[13]), false, false, true)];
+	        ctx[12]), false, false, true)];
 	        mounted = true;
 	      }
 	    },
 	    p: function update(ctx, dirty) {
-	      if ((!current || dirty[0] &
+	      if ((!current || dirty &
 	      /*$tooltip*/
-	      256) && t0_value !== (t0_value = lodash.uniq(
+	      128) && t0_value !== (t0_value = lodash.uniq(
 	      /*$tooltip*/
-	      ctx[8].c.map(func$5)).join(" | ") + "")) set_data_dev(t0, t0_value);
-	      if ((!current || dirty[0] &
+	      ctx[7].c.map(func$5)).join(" | ") + "")) set_data_dev(t0, t0_value);
+	      if ((!current || dirty &
 	      /*$tooltip*/
-	      256) && t2_value !== (t2_value =
+	      128) && t2_value !== (t2_value =
 	      /*$tooltip*/
-	      ctx[8].c.length + "")) set_data_dev(t2, t2_value);
+	      ctx[7].c.length + "")) set_data_dev(t2, t2_value);
 
 	      if (
 	      /*$tooltip*/
-	      ctx[8].c.length > 1 && !
+	      ctx[7].c.length > 1 && !
 	      /*$originalTimeDomain*/
-	      ctx[9]) {
+	      ctx[8]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
-	          if (dirty[0] &
+	          if (dirty &
 	          /*$tooltip, $originalTimeDomain*/
-	          768) {
+	          384) {
 	            transition_in(if_block, 1);
 	          }
 	        } else {
 	          if_block = create_if_block_1$5(ctx);
 	          if_block.c();
 	          transition_in(if_block, 1);
-	          if_block.m(div4, t5);
+	          if_block.m(div3, t5);
 	        }
 	      } else if (if_block) {
 	        group_outros();
@@ -52713,65 +52643,48 @@ var app = (function () {
 	        check_outros();
 	      }
 
-	      if (dirty[0] &
-	      /*handleLiClick, platforms*/
-	      2080) {
+	      if (dirty &
+	      /*handleLiClick, timeperiods*/
+	      1056) {
 	        var _each_value_ =
-	        /*platforms*/
+	        /*timeperiods*/
 	        ctx[5];
 	        validate_each_argument(_each_value_);
-	        validate_each_keys(ctx, _each_value_, get_each_context_2, get_key);
-	        each_blocks_2 = update_keyed_each(each_blocks_2, dirty, get_key, 1, ctx, _each_value_, each0_lookup, ul0, destroy_block, create_each_block_2, null, get_each_context_2);
+	        validate_each_keys(ctx, _each_value_, get_each_context_1$2, get_key);
+	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, _each_value_, each0_lookup, ul0, destroy_block, create_each_block_1$2, null, get_each_context_1$2);
 	      }
 
-	      if (dirty[0] &
-	      /*handleLiClick, methods*/
-	      2112) {
-	        var _each_value_2 =
-	        /*methods*/
-	        ctx[6];
-	        validate_each_argument(_each_value_2);
-	        validate_each_keys(ctx, _each_value_2, get_each_context_1$2, get_key_1);
-	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key_1, 1, ctx, _each_value_2, each1_lookup, ul1, destroy_block, create_each_block_1$2, null, get_each_context_1$2);
-	      }
-
-	      if ((!current || dirty[0] &
-	      /*sourceCategories*/
-	      128) && t13_value !== (t13_value = (
-	      /*sourceCategories*/
-	      ctx[7].length !== 1 ? "ies" : "y") + "")) set_data_dev(t13, t13_value);
-
-	      if (dirty[0] &
-	      /*handleLiClick, sourceCategories*/
-	      2176) {
+	      if (dirty &
+	      /*handleLiClick, diets*/
+	      1088) {
 	        var _each_value =
-	        /*sourceCategories*/
-	        ctx[7];
+	        /*diets*/
+	        ctx[6];
 	        validate_each_argument(_each_value);
-	        validate_each_keys(ctx, _each_value, get_each_context$a, get_key_2);
-	        each_blocks = update_keyed_each(each_blocks, dirty, get_key_2, 1, ctx, _each_value, each2_lookup, ul2, destroy_block, create_each_block$a, null, get_each_context$a);
+	        validate_each_keys(ctx, _each_value, get_each_context$a, get_key_1);
+	        each_blocks = update_keyed_each(each_blocks, dirty, get_key_1, 1, ctx, _each_value, each1_lookup, ul1, destroy_block, create_each_block$a, null, get_each_context$a);
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*contentTop*/
 	      16) {
-	        set_style(div5, "top",
+	        set_style(div4, "top",
 	        /*contentTop*/
 	        ctx[4] + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*left*/
 	      4) {
-	        set_style(div6, "left",
+	        set_style(div5, "left",
 	        /*left*/
 	        ctx[2] + "px");
 	      }
 
-	      if (!current || dirty[0] &
+	      if (!current || dirty &
 	      /*top*/
 	      8) {
-	        set_style(div6, "top",
+	        set_style(div5, "top",
 	        /*top*/
 	        ctx[3] + "px");
 	      }
@@ -52780,40 +52693,36 @@ var app = (function () {
 	      if (current) return;
 	      transition_in(if_block);
 	      add_render_callback(function () {
-	        if (!div6_transition) div6_transition = create_bidirectional_transition(div6, fade, {
+	        if (!div5_transition) div5_transition = create_bidirectional_transition(div5, fade, {
 	          duration: 200
 	        }, true);
-	        div6_transition.run(1);
+	        div5_transition.run(1);
 	      });
 	      current = true;
 	    },
 	    o: function outro(local) {
 	      transition_out(if_block);
-	      if (!div6_transition) div6_transition = create_bidirectional_transition(div6, fade, {
+	      if (!div5_transition) div5_transition = create_bidirectional_transition(div5, fade, {
 	        duration: 200
 	      }, false);
-	      div6_transition.run(0);
+	      div5_transition.run(0);
 	      current = false;
 	    },
 	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(div6);
+	      if (detaching) detach_dev(div5);
 	      if (if_block) if_block.d();
 
-	      for (var _i9 = 0; _i9 < each_blocks_2.length; _i9 += 1) {
-	        each_blocks_2[_i9].d();
+	      for (var _i6 = 0; _i6 < each_blocks_1.length; _i6 += 1) {
+	        each_blocks_1[_i6].d();
 	      }
 
-	      for (var _i10 = 0; _i10 < each_blocks_1.length; _i10 += 1) {
-	        each_blocks_1[_i10].d();
+	      for (var _i7 = 0; _i7 < each_blocks.length; _i7 += 1) {
+	        each_blocks[_i7].d();
 	      }
 
-	      for (var _i11 = 0; _i11 < each_blocks.length; _i11 += 1) {
-	        each_blocks[_i11].d();
-	      }
-
+	      div4_resize_listener();
 	      div5_resize_listener();
-	      div6_resize_listener();
-	      if (detaching && div6_transition) div6_transition.end();
+	      if (detaching && div5_transition) div5_transition.end();
 	      mounted = false;
 	      run_all(dispose);
 	    }
@@ -52822,11 +52731,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$g.name,
 	    type: "if",
-	    source: "(84:0) {#if ($tooltip)}",
+	    source: "(77:0) {#if ($tooltip)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (99:8) {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}
+	} // (92:8) {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}
 
 
 	function create_if_block_1$5(ctx) {
@@ -52843,13 +52752,13 @@ var app = (function () {
 	      /*tWidth*/
 	      ctx[0] -
 	      /*offset*/
-	      ctx[10].left -
+	      ctx[9].left -
 	      /*offset*/
-	      ctx[10].right - 2 * 16),
+	      ctx[9].right - 2 * 16),
 	      height: 50,
 	      dates:
 	      /*$tooltip*/
-	      ctx[8].c.map(func_1$1),
+	      ctx[7].c.map(func_1$1),
 	      minDate: 0,
 	      maxDate: 350
 	    },
@@ -52865,11 +52774,11 @@ var app = (function () {
 	      t2 = space();
 	      h6 = element("h6");
 	      h6.textContent = "(Not all prehistoric species, only those represented in the visualization)";
-	      attr_dev(h3, "class", "svelte-djvhn0");
-	      add_location(h3, file$A, 100, 12, 3138);
-	      add_location(h6, file$A, 106, 12, 3452);
-	      attr_dev(div, "class", "case-density-vs-time svelte-djvhn0");
-	      add_location(div, file$A, 99, 10, 3091);
+	      attr_dev(h3, "class", "svelte-ip24k5");
+	      add_location(h3, file$A, 93, 12, 2725);
+	      add_location(h6, file$A, 99, 12, 3039);
+	      attr_dev(div, "class", "case-density-vs-time svelte-ip24k5");
+	      add_location(div, file$A, 92, 10, 2678);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -52882,20 +52791,20 @@ var app = (function () {
 	    },
 	    p: function update(ctx, dirty) {
 	      var casedensity_changes = {};
-	      if (dirty[0] &
+	      if (dirty &
 	      /*tWidth*/
 	      1) casedensity_changes.width = Math.max(0,
 	      /*tWidth*/
 	      ctx[0] -
 	      /*offset*/
-	      ctx[10].left -
+	      ctx[9].left -
 	      /*offset*/
-	      ctx[10].right - 2 * 16);
-	      if (dirty[0] &
+	      ctx[9].right - 2 * 16);
+	      if (dirty &
 	      /*$tooltip*/
-	      256) casedensity_changes.dates =
+	      128) casedensity_changes.dates =
 	      /*$tooltip*/
-	      ctx[8].c.map(func_1$1);
+	      ctx[7].c.map(func_1$1);
 	      casedensity.$set(casedensity_changes);
 	    },
 	    i: function intro(local) {
@@ -52916,25 +52825,25 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$5.name,
 	    type: "if",
-	    source: "(99:8) {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}",
+	    source: "(92:8) {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (113:12) {#each platforms as platform (platform.id)}
+	} // (106:12) {#each timeperiods as timeperiod (timeperiod.id)}
 
 
-	function create_each_block_2(key_1, ctx) {
+	function create_each_block_1$2(key_1, ctx) {
 	  var li;
 	  var t0_value =
-	  /*platform*/
-	  ctx[31].name + "";
+	  /*timeperiod*/
+	  ctx[23].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
-	  /*platform*/
-	  ctx[31].count + "";
+	  /*timeperiod*/
+	  ctx[23].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -52944,15 +52853,15 @@ var app = (function () {
 	  function click_handler_1() {
 	    var _ctx;
 
-	    for (var _len = arguments.length, args = new Array(_len), _key3 = 0; _key3 < _len; _key3++) {
-	      args[_key3] = arguments[_key3];
+	    for (var _len = arguments.length, args = new Array(_len), _key2 = 0; _key2 < _len; _key2++) {
+	      args[_key2] = arguments[_key2];
 	    }
 
 	    return (
 	      /*click_handler_1*/
-	      (_ctx = ctx)[14].apply(_ctx, [
-	      /*platform*/
-	      ctx[31]].concat(args))
+	      (_ctx = ctx)[13].apply(_ctx, [
+	      /*timeperiod*/
+	      ctx[23]].concat(args))
 	    );
 	  }
 
@@ -52968,10 +52877,10 @@ var app = (function () {
 	      t3 = text(t3_value);
 	      t4 = text(")");
 	      t5 = space();
-	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$A, 115, 16, 3850);
-	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$A, 113, 14, 3723);
+	      attr_dev(span, "class", "very-small svelte-ip24k5");
+	      add_location(span, file$A, 108, 16, 3443);
+	      attr_dev(li, "class", "svelte-ip24k5");
+	      add_location(li, file$A, 106, 14, 3311);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -52991,16 +52900,16 @@ var app = (function () {
 	    },
 	    p: function update(new_ctx, dirty) {
 	      ctx = new_ctx;
-	      if (dirty[0] &
-	      /*platforms*/
+	      if (dirty &
+	      /*timeperiods*/
 	      32 && t0_value !== (t0_value =
-	      /*platform*/
-	      ctx[31].name + "")) set_data_dev(t0, t0_value);
-	      if (dirty[0] &
-	      /*platforms*/
+	      /*timeperiod*/
+	      ctx[23].name + "")) set_data_dev(t0, t0_value);
+	      if (dirty &
+	      /*timeperiods*/
 	      32 && t3_value !== (t3_value =
-	      /*platform*/
-	      ctx[31].count + "")) set_data_dev(t3, t3_value);
+	      /*timeperiod*/
+	      ctx[23].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -53010,27 +52919,27 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_2.name,
+	    id: create_each_block_1$2.name,
 	    type: "each",
-	    source: "(113:12) {#each platforms as platform (platform.id)}",
+	    source: "(106:12) {#each timeperiods as timeperiod (timeperiod.id)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (124:12) {#each methods as method (method.id)}
+	} // (117:12) {#each diets as diet (diet.id)}
 
 
-	function create_each_block_1$2(key_1, ctx) {
+	function create_each_block$a(key_1, ctx) {
 	  var li;
 	  var t0_value =
-	  /*method*/
-	  ctx[28].name + "";
+	  /*diet*/
+	  ctx[20].name + "";
 	  var t0;
 	  var t1;
 	  var span;
 	  var t2;
 	  var t3_value =
-	  /*method*/
-	  ctx[28].count + "";
+	  /*diet*/
+	  ctx[20].count + "";
 	  var t3;
 	  var t4;
 	  var t5;
@@ -53040,15 +52949,15 @@ var app = (function () {
 	  function click_handler_2() {
 	    var _ctx2;
 
-	    for (var _len2 = arguments.length, args = new Array(_len2), _key4 = 0; _key4 < _len2; _key4++) {
-	      args[_key4] = arguments[_key4];
+	    for (var _len2 = arguments.length, args = new Array(_len2), _key3 = 0; _key3 < _len2; _key3++) {
+	      args[_key3] = arguments[_key3];
 	    }
 
 	    return (
 	      /*click_handler_2*/
-	      (_ctx2 = ctx)[15].apply(_ctx2, [
-	      /*method*/
-	      ctx[28]].concat(args))
+	      (_ctx2 = ctx)[14].apply(_ctx2, [
+	      /*diet*/
+	      ctx[20]].concat(args))
 	    );
 	  }
 
@@ -53064,10 +52973,10 @@ var app = (function () {
 	      t3 = text(t3_value);
 	      t4 = text(")");
 	      t5 = space();
-	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$A, 126, 16, 4245);
-	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$A, 124, 14, 4124);
+	      attr_dev(span, "class", "very-small svelte-ip24k5");
+	      add_location(span, file$A, 119, 16, 3808);
+	      attr_dev(li, "class", "svelte-ip24k5");
+	      add_location(li, file$A, 117, 14, 3693);
 	      this.first = li;
 	    },
 	    m: function mount(target, anchor) {
@@ -53087,112 +52996,16 @@ var app = (function () {
 	    },
 	    p: function update(new_ctx, dirty) {
 	      ctx = new_ctx;
-	      if (dirty[0] &
-	      /*methods*/
+	      if (dirty &
+	      /*diets*/
 	      64 && t0_value !== (t0_value =
-	      /*method*/
-	      ctx[28].name + "")) set_data_dev(t0, t0_value);
-	      if (dirty[0] &
-	      /*methods*/
+	      /*diet*/
+	      ctx[20].name + "")) set_data_dev(t0, t0_value);
+	      if (dirty &
+	      /*diets*/
 	      64 && t3_value !== (t3_value =
-	      /*method*/
-	      ctx[28].count + "")) set_data_dev(t3, t3_value);
-	    },
-	    d: function destroy(detaching) {
-	      if (detaching) detach_dev(li);
-	      mounted = false;
-	      dispose();
-	    }
-	  };
-	  dispatch_dev("SvelteRegisterBlock", {
-	    block: block,
-	    id: create_each_block_1$2.name,
-	    type: "each",
-	    source: "(124:12) {#each methods as method (method.id)}",
-	    ctx: ctx
-	  });
-	  return block;
-	} // (135:12) {#each sourceCategories as sourceCategory (sourceCategory.id)}
-
-
-	function create_each_block$a(key_1, ctx) {
-	  var li;
-	  var t0_value =
-	  /*sourceCategory*/
-	  ctx[25].name + "";
-	  var t0;
-	  var t1;
-	  var span;
-	  var t2;
-	  var t3_value =
-	  /*sourceCategory*/
-	  ctx[25].count + "";
-	  var t3;
-	  var t4;
-	  var t5;
-	  var mounted;
-	  var dispose;
-
-	  function click_handler_3() {
-	    var _ctx3;
-
-	    for (var _len3 = arguments.length, args = new Array(_len3), _key5 = 0; _key5 < _len3; _key5++) {
-	      args[_key5] = arguments[_key5];
-	    }
-
-	    return (
-	      /*click_handler_3*/
-	      (_ctx3 = ctx)[16].apply(_ctx3, [
-	      /*sourceCategory*/
-	      ctx[25]].concat(args))
-	    );
-	  }
-
-	  var block = {
-	    key: key_1,
-	    first: null,
-	    c: function create() {
-	      li = element("li");
-	      t0 = text(t0_value);
-	      t1 = space();
-	      span = element("span");
-	      t2 = text("(");
-	      t3 = text(t3_value);
-	      t4 = text(")");
-	      t5 = space();
-	      attr_dev(span, "class", "very-small svelte-djvhn0");
-	      add_location(span, file$A, 137, 16, 4733);
-	      attr_dev(li, "class", "svelte-djvhn0");
-	      add_location(li, file$A, 135, 14, 4588);
-	      this.first = li;
-	    },
-	    m: function mount(target, anchor) {
-	      insert_dev(target, li, anchor);
-	      append_dev(li, t0);
-	      append_dev(li, t1);
-	      append_dev(li, span);
-	      append_dev(span, t2);
-	      append_dev(span, t3);
-	      append_dev(span, t4);
-	      append_dev(li, t5);
-
-	      if (!mounted) {
-	        dispose = listen_dev(li, "click", stop_propagation(click_handler_3), false, false, true);
-	        mounted = true;
-	      }
-	    },
-	    p: function update(new_ctx, dirty) {
-	      ctx = new_ctx;
-	      if (dirty[0] &
-	      /*sourceCategories*/
-	      128 && t0_value !== (t0_value =
-	      /*sourceCategory*/
-	      ctx[25].name + "")) set_data_dev(t0, t0_value);
-	      if (dirty[0] &
-	      /*sourceCategories*/
-	      128 && t3_value !== (t3_value =
-	      /*sourceCategory*/
-	      ctx[25].count + "")) set_data_dev(t3, t3_value);
+	      /*diet*/
+	      ctx[20].count + "")) set_data_dev(t3, t3_value);
 	    },
 	    d: function destroy(detaching) {
 	      if (detaching) detach_dev(li);
@@ -53204,7 +53017,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$a.name,
 	    type: "each",
-	    source: "(135:12) {#each sourceCategories as sourceCategory (sourceCategory.id)}",
+	    source: "(117:12) {#each diets as diet (diet.id)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -53215,7 +53028,7 @@ var app = (function () {
 	  var current;
 	  var if_block =
 	  /*$tooltip*/
-	  ctx[8] && create_if_block$g(ctx);
+	  ctx[7] && create_if_block$g(ctx);
 	  var block = {
 	    c: function create() {
 	      if (if_block) if_block.c();
@@ -53229,16 +53042,19 @@ var app = (function () {
 	      insert_dev(target, if_block_anchor, anchor);
 	      current = true;
 	    },
-	    p: function update(ctx, dirty) {
+	    p: function update(ctx, _ref) {
+	      var _ref2 = _slicedToArray(_ref, 1),
+	          dirty = _ref2[0];
+
 	      if (
 	      /*$tooltip*/
-	      ctx[8]) {
+	      ctx[7]) {
 	        if (if_block) {
 	          if_block.p(ctx, dirty);
 
-	          if (dirty[0] &
+	          if (dirty &
 	          /*$tooltip*/
-	          256) {
+	          128) {
 	            transition_in(if_block, 1);
 	          }
 	        } else {
@@ -53280,7 +53096,6 @@ var app = (function () {
 	}
 
 	var contentOffset = 100;
-	var maximumDate = "10/30/0300";
 
 	var func$5 = function func(d) {
 	  return d.disNation;
@@ -53296,49 +53111,39 @@ var app = (function () {
 	  var $originalTimeDomain;
 	  validate_store(tooltip$1, "tooltip");
 	  component_subscribe($$self, tooltip$1, function ($$value) {
-	    return $$invalidate(8, $tooltip = $$value);
+	    return $$invalidate(7, $tooltip = $$value);
 	  });
 	  validate_store(width, "width");
 	  component_subscribe($$self, width, function ($$value) {
-	    return $$invalidate(20, $width = $$value);
+	    return $$invalidate(18, $width = $$value);
 	  });
 	  validate_store(originalTimeDomain, "originalTimeDomain");
 	  component_subscribe($$self, originalTimeDomain, function ($$value) {
-	    return $$invalidate(9, $originalTimeDomain = $$value);
+	    return $$invalidate(8, $originalTimeDomain = $$value);
 	  });
-	  var parseDate = timeParse("%m/%d/%Y");
 	  var offset = {
 	    top: 10,
 	    right: 10,
 	    bottom: 10,
 	    left: 10
 	  };
-	  var tf = timeFormat("%B %d, %Y");
 	  var tWidth = 0;
 	  var tHeight = 0;
 	  var side;
 	  var left, top, contentTop;
-	  var platforms, methods, sourceCategories;
+	  var timeperiods, diets;
 
 	  function handleLiClick(type, item) {
 	    selectAllFilters();
 	    disinformantNationFilter.selectOne($tooltip.c[0].disNation);
 
 	    switch (type) {
-	      case "platform":
-	        platformFilter.selectOne(item);
+	      case "periodEra":
+	        timeperiodFilter.selectOne(item);
 	        break;
 
-	      case "method":
-	        methodFilter.selectOne(item);
-	        break;
-
-	      case "source":
-	        sourceFilter.selectOne(item);
-	        break;
-
-	      case "sourceCategory":
-	        sourceCategoryFilter.selectOne(item);
+	      case "diet":
+	        dietFilter.selectOne(item);
 	        break;
 	    }
 	  }
@@ -53359,7 +53164,6 @@ var app = (function () {
 	    });
 	  }
 
-	  var maxRange = parseDate(maximumDate);
 	  var writable_props = [];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<CentroidTooltip> was created with unknown prop '".concat(key, "'"));
@@ -53377,24 +53181,20 @@ var app = (function () {
 	    bubble($$self, event);
 	  }
 
-	  var click_handler_1 = function click_handler_1(platform) {
-	    return handleLiClick("platform", platform.name);
+	  var click_handler_1 = function click_handler_1(timeperiod) {
+	    return handleLiClick("periodEra", timeperiod.name);
 	  };
 
-	  var click_handler_2 = function click_handler_2(method) {
-	    return handleLiClick("method", method.name);
+	  var click_handler_2 = function click_handler_2(diet) {
+	    return handleLiClick("diet", diet.name);
 	  };
 
-	  var click_handler_3 = function click_handler_3(sourceCategory) {
-	    return handleLiClick("sourceCategory", sourceCategory.name);
-	  };
-
-	  function div5_elementresize_handler() {
+	  function div4_elementresize_handler() {
 	    tHeight = this.clientHeight;
 	    $$invalidate(1, tHeight);
 	  }
 
-	  function div6_elementresize_handler() {
+	  function div5_elementresize_handler() {
 	    tWidth = this.clientWidth;
 	    $$invalidate(0, tWidth);
 	  }
@@ -53408,32 +53208,26 @@ var app = (function () {
 	      sortConsistently: sortConsistently,
 	      originalTimeDomain: originalTimeDomain,
 	      disinformantNationFilter: disinformantNationFilter,
-	      platformFilter: platformFilter,
-	      methodFilter: methodFilter,
-	      sourceCategoryFilter: sourceCategoryFilter,
+	      dietFilter: dietFilter,
+	      timeperiodFilter: timeperiodFilter,
 	      selectAllFilters: selectAllFilters,
 	      timeFormat: timeFormat,
 	      group: group,
 	      timeParse: timeParse,
 	      uniq: lodash.uniq,
-	      parseDate: parseDate,
 	      CaseDensity: CaseDensity,
 	      offset: offset,
 	      contentOffset: contentOffset,
-	      tf: tf,
 	      tWidth: tWidth,
 	      tHeight: tHeight,
 	      side: side,
 	      left: left,
 	      top: top,
 	      contentTop: contentTop,
-	      platforms: platforms,
-	      methods: methods,
-	      sourceCategories: sourceCategories,
+	      timeperiods: timeperiods,
+	      diets: diets,
 	      handleLiClick: handleLiClick,
 	      generateItemsArray: generateItemsArray,
-	      maximumDate: maximumDate,
-	      maxRange: maxRange,
 	      $tooltip: $tooltip,
 	      $width: $width,
 	      $originalTimeDomain: $originalTimeDomain
@@ -53443,13 +53237,12 @@ var app = (function () {
 	  $$self.$inject_state = function ($$props) {
 	    if ("tWidth" in $$props) $$invalidate(0, tWidth = $$props.tWidth);
 	    if ("tHeight" in $$props) $$invalidate(1, tHeight = $$props.tHeight);
-	    if ("side" in $$props) $$invalidate(19, side = $$props.side);
+	    if ("side" in $$props) $$invalidate(17, side = $$props.side);
 	    if ("left" in $$props) $$invalidate(2, left = $$props.left);
 	    if ("top" in $$props) $$invalidate(3, top = $$props.top);
 	    if ("contentTop" in $$props) $$invalidate(4, contentTop = $$props.contentTop);
-	    if ("platforms" in $$props) $$invalidate(5, platforms = $$props.platforms);
-	    if ("methods" in $$props) $$invalidate(6, methods = $$props.methods);
-	    if ("sourceCategories" in $$props) $$invalidate(7, sourceCategories = $$props.sourceCategories);
+	    if ("timeperiods" in $$props) $$invalidate(5, timeperiods = $$props.timeperiods);
+	    if ("diets" in $$props) $$invalidate(6, diets = $$props.diets);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -53457,11 +53250,11 @@ var app = (function () {
 	  }
 
 	  $$self.$$.update = function () {
-	    if ($$self.$$.dirty[0] &
+	    if ($$self.$$.dirty &
 	    /*$tooltip, $width, contentTop, tHeight, side, tWidth*/
-	    1573139) {
+	    393363) {
 	       if ($tooltip) {
-	        $$invalidate(19, side = $width - $tooltip.c[0].xCountry < $width / 2 ? "left" : "right");
+	        $$invalidate(17, side = $width - $tooltip.c[0].xCountry < $width / 2 ? "left" : "right");
 	        $$invalidate(3, top = $tooltip.c[0].yCountry - offset.top);
 	        $$invalidate(4, contentTop = contentOffset - $tooltip.e.pageY + window.pageYOffset);
 
@@ -53477,18 +53270,17 @@ var app = (function () {
 	      }
 	    }
 
-	    if ($$self.$$.dirty[0] &
+	    if ($$self.$$.dirty &
 	    /*$tooltip*/
-	    256) {
+	    128) {
 	       if ($tooltip) {
-	        $$invalidate(5, platforms = generateItemsArray($tooltip.c, "platforms"));
-	        $$invalidate(6, methods = generateItemsArray($tooltip.c, "methods"));
-	        $$invalidate(7, sourceCategories = generateItemsArray($tooltip.c, "sourceCategory"));
+	        $$invalidate(5, timeperiods = generateItemsArray($tooltip.c, "periodEra"));
+	        $$invalidate(6, diets = generateItemsArray($tooltip.c, "diet"));
 	      }
 	    }
 	  };
 
-	  return [tWidth, tHeight, left, top, contentTop, platforms, methods, sourceCategories, $tooltip, $originalTimeDomain, offset, handleLiClick, click_handler, mouseover_handler, click_handler_1, click_handler_2, click_handler_3, div5_elementresize_handler, div6_elementresize_handler];
+	  return [tWidth, tHeight, left, top, contentTop, timeperiods, diets, $tooltip, $originalTimeDomain, offset, handleLiClick, click_handler, mouseover_handler, click_handler_1, click_handler_2, div4_elementresize_handler, div5_elementresize_handler];
 	}
 
 	var CentroidTooltip = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -53502,7 +53294,7 @@ var app = (function () {
 	    _classCallCheck(this, CentroidTooltip);
 
 	    _this = _super.call(this, options);
-	    init(_assertThisInitialized(_this), options, instance$A, create_fragment$A, safe_not_equal, {}, [-1, -1]);
+	    init(_assertThisInitialized(_this), options, instance$A, create_fragment$A, safe_not_equal, {});
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
 	      tagName: "CentroidTooltip",
@@ -53733,7 +53525,7 @@ var app = (function () {
 	  return child_ctx;
 	}
 
-	function get_each_context_2$1(ctx, list, i) {
+	function get_each_context_2(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[18] = list[i];
 	  return child_ctx;
@@ -53813,7 +53605,7 @@ var app = (function () {
 	} // (76:10) {#each columns as column (column.property)}
 
 
-	function create_each_block_2$1(key_1, ctx) {
+	function create_each_block_2(key_1, ctx) {
 	  var th;
 	  var t0_value =
 	  /*column*/
@@ -53873,7 +53665,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_2$1.name,
+	    id: create_each_block_2.name,
 	    type: "each",
 	    source: "(76:10) {#each columns as column (column.property)}",
 	    ctx: ctx
@@ -54263,12 +54055,12 @@ var app = (function () {
 	    );
 	  };
 
-	  validate_each_keys(ctx, each_value_2, get_each_context_2$1, get_key);
+	  validate_each_keys(ctx, each_value_2, get_each_context_2, get_key);
 
 	  for (var i = 0; i < each_value_2.length; i += 1) {
-	    var child_ctx = get_each_context_2$1(ctx, each_value_2, i);
+	    var child_ctx = get_each_context_2(ctx, each_value_2, i);
 	    var key = get_key(child_ctx);
-	    each0_lookup.set(key, each_blocks_1[i] = create_each_block_2$1(key, child_ctx));
+	    each0_lookup.set(key, each_blocks_1[i] = create_each_block_2(key, child_ctx));
 	  }
 
 	  var each_value =
@@ -54383,8 +54175,8 @@ var app = (function () {
 	        /*columns*/
 	        ctx[0];
 	        validate_each_argument(_each_value_2);
-	        validate_each_keys(ctx, _each_value_2, get_each_context_2$1, get_key);
-	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, _each_value_2, each0_lookup, tr, destroy_block, create_each_block_2$1, null, get_each_context_2$1);
+	        validate_each_keys(ctx, _each_value_2, get_each_context_2, get_key);
+	        each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, _each_value_2, each0_lookup, tr, destroy_block, create_each_block_2, null, get_each_context_2);
 	      }
 
 	      if (dirty &
@@ -54647,7 +54439,7 @@ var app = (function () {
 	  return child_ctx;
 	}
 
-	function get_each_context_2$2(ctx, list, i) {
+	function get_each_context_2$1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
 	  child_ctx[31] = list[i];
 	  child_ctx[33] = i;
@@ -54698,7 +54490,7 @@ var app = (function () {
 	  var each_blocks_1 = [];
 
 	  for (var _i = 0; _i < each_value_2.length; _i += 1) {
-	    each_blocks_1[_i] = create_each_block_2$2(get_each_context_2$2(ctx, each_value_2, _i));
+	    each_blocks_1[_i] = create_each_block_2$1(get_each_context_2$1(ctx, each_value_2, _i));
 	  }
 
 	  var each_value =
@@ -54825,12 +54617,12 @@ var app = (function () {
 	        var _i10;
 
 	        for (_i10 = 0; _i10 < each_value_2.length; _i10 += 1) {
-	          var _child_ctx = get_each_context_2$2(ctx, each_value_2, _i10);
+	          var _child_ctx = get_each_context_2$1(ctx, each_value_2, _i10);
 
 	          if (each_blocks_1[_i10]) {
 	            each_blocks_1[_i10].p(_child_ctx, dirty);
 	          } else {
-	            each_blocks_1[_i10] = create_each_block_2$2(_child_ctx);
+	            each_blocks_1[_i10] = create_each_block_2$1(_child_ctx);
 
 	            each_blocks_1[_i10].c();
 
@@ -55588,7 +55380,7 @@ var app = (function () {
 	} // (173:2) {#each sortedJurassicFilter as fossilDatapoint, i}
 
 
-	function create_each_block_2$2(ctx) {
+	function create_each_block_2$1(ctx) {
 	  var if_block_anchor;
 	  var if_block =
 	  /*fossilDatapoint*/
@@ -55625,7 +55417,7 @@ var app = (function () {
 	  };
 	  dispatch_dev("SvelteRegisterBlock", {
 	    block: block,
-	    id: create_each_block_2$2.name,
+	    id: create_each_block_2$1.name,
 	    type: "each",
 	    source: "(173:2) {#each sortedJurassicFilter as fossilDatapoint, i}",
 	    ctx: ctx
@@ -57287,7 +57079,7 @@ var app = (function () {
 	            disinformantNationFilter.init(data, "disinformantNation");
 	            platformFilter.init(data, "platforms");
 	            timeperiodFilter.init(data, "periodEra");
-	            sourceFilter$1.init(data, "sourceFilter");
+	            sourceFilter.init(data, "sourceFilter");
 	            dietFilter.init(data, "diet");
 	            tagFilter.init(data, "tags");
 	            preloadImages(data); // apply filters from URL
@@ -57297,7 +57089,7 @@ var app = (function () {
 	              disinformantNationFilter.applyBoolArray(urlFilters.disinformantNations);
 	              platformFilter.applyBoolArray(urlFilters.platforms);
 	              timeperiodFilter.applyBoolArray(urlFilters.methods);
-	              sourceFilter$1.applyBoolArray(urlFilters.sources);
+	              sourceFilter.applyBoolArray(urlFilters.sources);
 	              dietFilter.applyBoolArray(urlFilters.diet);
 	              tagFilter.applyBoolArray(urlFilters.tags);
 	              contextData.applyBoolArray(urlFilters.contextData);
@@ -57366,7 +57158,7 @@ var app = (function () {
 	      platformFilter: platformFilter,
 	      methodFilter: methodFilter,
 	      timeperiodFilter: timeperiodFilter,
-	      sourceFilter: sourceFilter$1,
+	      sourceFilter: sourceFilter,
 	      sourceCategoryFilter: sourceCategoryFilter,
 	      dietFilter: dietFilter,
 	      attributionScoreFilter: attributionScoreFilter,

@@ -8,15 +8,13 @@
   import { originalTimeDomain } from '../stores/filters';
   import {
     disinformantNationFilter,
-    platformFilter,
-    methodFilter,
-    sourceCategoryFilter,
+    dietFilter,
+    timeperiodFilter,
     selectAllFilters
   } from '../stores/filters';
   import { timeFormat, group, timeParse } from 'd3';
   import { uniq } from 'lodash';
 
-  const parseDate = timeParse('%m/%d/%Y');
 
   import CaseDensity from './CaseDensity.svelte';
 
@@ -28,14 +26,12 @@
   };
   const contentOffset = 100;
 
-  const tf = timeFormat('%B %d, %Y');
-
   let tWidth = 0;
   let tHeight = 0;
   let side;
   let left, top, contentTop;
 
-  let platforms, methods, sourceCategories;
+  let timeperiods, diets;
 
   $: if ($tooltip) {
     side = $width - $tooltip.c[0].xCountry < $width / 2 ? 'left' : 'right';
@@ -58,10 +54,8 @@
     selectAllFilters();
     disinformantNationFilter.selectOne($tooltip.c[0].disNation);
     switch (type) {
-      case 'platform': platformFilter.selectOne(item); break;
-      case 'method': methodFilter.selectOne(item); break;
-      case 'source': sourceFilter.selectOne(item); break;
-      case 'sourceCategory': sourceCategoryFilter.selectOne(item); break;
+      case 'periodEra': timeperiodFilter.selectOne(item); break;
+      case 'diet': dietFilter.selectOne(item); break;
     }
   }
 
@@ -72,13 +66,12 @@
   }
 
   $: if ($tooltip) {
-    platforms = generateItemsArray($tooltip.c, 'platforms');
-    methods = generateItemsArray($tooltip.c, 'methods');
-    sourceCategories = generateItemsArray($tooltip.c, 'sourceCategory');
+    timeperiods = generateItemsArray($tooltip.c, 'periodEra');
+    diets = generateItemsArray($tooltip.c, 'diet');
   }
 
-  const maximumDate ='10/30/0300';
-    const maxRange = parseDate(maximumDate);
+
+
 </script>
 
 {#if ($tooltip)}
@@ -107,39 +100,29 @@
             <h6>(Not all prehistoric species, only those represented in the visualization)</h6>
           </div>
         {/if}
-        <div class="platforms-used">
-          <h3>Platforms used</h3>
+        <div class="timeperiods">
+          <h3>Time periods</h3>
           <ul>
-            {#each platforms as platform (platform.id)}
-              <li on:click|stopPropagation={() => handleLiClick('platform', platform.name)}>
-                {platform.name}
-                <span class="very-small">({platform.count})</span>
+            {#each timeperiods as timeperiod (timeperiod.id)}
+              <li on:click|stopPropagation={() => handleLiClick('periodEra', timeperiod.name)}>
+                {timeperiod.name}
+                <span class="very-small">({timeperiod.count})</span>
               </li>
             {/each}
           </ul>
         </div>
-        <div class="methods-applied">
-          <h3>Methods applied</h3>
+        <div class="diets">
+          <h3>Diets</h3>
           <ul>
-            {#each methods as method (method.id)}
-              <li on:click|stopPropagation={() => handleLiClick('method', method.name)}>
-                {method.name}
-                <span class="very-small">({method.count})</span>
+            {#each diets as diet (diet.id)}
+              <li on:click|stopPropagation={() => handleLiClick('diet', diet.name)}>
+                {diet.name}
+                <span class="very-small">({diet.count})</span>
               </li>
             {/each}
           </ul>
         </div>
-        <div class="source-categories">
-          <h3>Source categor{sourceCategories.length !== 1 ? 'ies' : 'y'}</h3>
-          <ul>
-            {#each sourceCategories as sourceCategory (sourceCategory.id)}
-              <li on:click|stopPropagation={() => handleLiClick('sourceCategory', sourceCategory.name)}>
-                {sourceCategory.name}
-                <span class="very-small">({sourceCategory.count})</span>
-              </li>
-            {/each}
-          </ul>
-        </div>
+
       </div>
     </div>
   </div>
@@ -174,8 +157,7 @@
   .scroll-wrapper {
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
+    overflow: hidden;
   }
 
   .scroll-wrapper .title {

@@ -62,9 +62,8 @@
     stroke-linecap: round;
     fill: none;
   }
-
   circle {
     stroke: none;
-    fill: var(--prehistoricGreen);
+    fill: var(--usa-blue);
   }
 </style>
