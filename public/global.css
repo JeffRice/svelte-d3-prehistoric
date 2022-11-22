@@ -537,7 +537,7 @@ footer a, footer p {
   font-family: Arial, sans-serif;
   font-size: 10pt;
   background-color: var(--bg);
-  border: 2px solid var(--prehistoricDarkGreen);
+  border: 1px solid black;
   border-radius: 6px;
   position: absolute;
   display: none;
@@ -549,8 +549,8 @@ footer a, footer p {
   width: 12px;
   height: 12px;
   transform: rotate(45deg);
-  border-left: 2px solid var(--prehistoricDarkGreen);
-  border-bottom: 2px solid var(--prehistoricDarkGreen);
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
   background-color: var(--bg);
   position: absolute;
   left: -8px;
@@ -563,7 +563,7 @@ footer a, footer p {
   font-family: Arial, sans-serif;
   font-size: 10pt;
   background-color: var(--bg);
-  border: 2px solid var(--prehistoricDarkGreen);
+  border: 1px solid black;
   border-radius: 6px;
   position: absolute;
   display: none;
@@ -574,10 +574,10 @@ footer a, footer p {
   width: 12px;
   height: 12px;
   transform: rotate(45deg);
-  border-top: 2px solid var(--prehistoricDarkGreen);
-  border-right: 2px solid var(--prehistoricDarkGreen);
+  border-top: 1px solid black;
+  border-right: 1px solid black;
   background-color: var(--bg);
   position: absolute;
-  left: 390px;
+  left: 392px;
   z-index: -1;
 }

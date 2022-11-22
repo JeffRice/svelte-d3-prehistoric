@@ -37,6 +37,8 @@
         return {
             x: xScale(d.x),
             y: yScale(d.y),
+            size: d.x,
+            weight: d.y,
             name: d.name,
             hoverName: d.hoverName,
             stroke: interpolateMagma(magmaStoke)
@@ -63,13 +65,15 @@
                 scale={yScale}
                 x={padding}
             />
-            {#each renderedData as { x, y, name, stroke, hoverName }}
+            {#each renderedData as { x, y, name, stroke, hoverName, size, weight }}
                 <ChartDatapoint
                     x={x}
                     y={y}
                     name={name}
                     hoverName={hoverName}
                     stroke={stroke}
+                    weight={weight}
+                    size={size}
                 />
             {/each}
         </svg>
@@ -77,7 +81,7 @@
 </div>
 
 <div id="mypopup" class="mypopup">
-    <h3>Popup title </h3>
+ 
 </div>
 
 

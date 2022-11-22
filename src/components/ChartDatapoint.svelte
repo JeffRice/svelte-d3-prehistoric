@@ -10,8 +10,8 @@
     export let name;
     export let hoverName;
     export let stroke;
-
-    let showTooltip;
+    export let weight;
+    export let size;
 
     const tX = tweened(null, { duration: 0, easing: cubicOut });
     const tY = tweened(null, { duration: 0, easing: cubicOut });
@@ -43,12 +43,12 @@
 
         //reset popup content for each datapoint
         let mypopup = document.getElementById("mypopup");
-
+        mypopup.innerHTML = '';
 
     // place on right for left half of screen
     if (x <= ($width/2)){
     mypopup.className="mypopup"
-    mypopup.innerHTML = ' <h3>Popup title </h3>';
+
 
     
     // place popup on the chart and make it visible
@@ -60,7 +60,7 @@
     else {
 
     mypopup.className="popup-right"
-    mypopup.innerHTML = ' <h3>Popup title </h3>';
+
         
     // place popup on the chart and make it visible
     mypopup.style.left = ((event.target.getBoundingClientRect().x) - 400 ) + 'px';
@@ -68,15 +68,22 @@
     }
 
 
-    mypopup.style.display = "block";
-
     //create popup content and append
     let div = document.createElement("div");
     div.innerHTML =
-    '<div class="slideshow-container">\n' +
-    ' HOWDY' + hoverName + ' from a div</div>\n' 
+
+    '<span style="color:' + stroke + ';"><h2>' + hoverName + '</h2>\n' + 
+    'Max Size: ' + size + ' ft<br />\n' + 
+    'Max Weight: ' + weight + ' lbs</span>' 
+
 
       mypopup.appendChild(div);
+      mypopup.style.display = "block";
+
+
+
+      // fill color 
+      event.target.attributes.fill.value = stroke;
 
 
   }
@@ -85,6 +92,8 @@
     let mypopup = document.getElementById("mypopup");
     mypopup.style.display = "none";
 
+       // reset fill color 
+       event.target.attributes.fill.value = "none";
   }
 
 
@@ -112,8 +121,8 @@ on:mouseover={handleEventMouseover}
 on:mouseout={handleEventMouseout}
 >
 
-       <circle name={name} hoverName={hoverName} cx="0" cy="0" r="10" stroke={stroke} stroke-width="3" fill="none"
-       testy={$tY} testx={$tX}/>
+       <circle name={name} hoverName={hoverName} cx="0" cy="0" r="10" stroke={stroke} stroke-width="2.5" fill="none"
+       testy={$tY} testx={$tX} class="chart-g" id="chart-{hoverName}"/>
   
 </g>
 
@@ -123,14 +132,14 @@ on:mouseout={handleEventMouseout}
   {#if (x <= ($width/2))}
        <!-- label-->
        <g class="centroid-name-label place-label" transform="translate({$tX + 10} {$tY - 20})">
-          <text style="transition: opacity 600ms ease;">{hoverName}</text>
+          <text class="chart-text" fill={stroke} style="transition: opacity 600ms ease;">{hoverName}</text>
        </g>
   {/if}
   
   {#if (x > ($width/2))}
        <!-- label-->
        <g class="centroid-name-label place-label" transform="translate({$tX - 100} {$tY - 20})">
-          <text style="transition: opacity 600ms ease;">{hoverName}</text>
+          <text class="chart-text" fill={stroke} style="transition: opacity 600ms ease;">{hoverName}</text>
        </g>
   {/if}
 {/if}
@@ -140,5 +149,15 @@ on:mouseout={handleEventMouseout}
 <style>
   .place-label{
     padding: 6px;
+  }
+  .chart-g{
+    position: absolute;
+    z-index: 9999;
+    pointer-events: all;
+  }
+  .chart-text{
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
   }
 </style>

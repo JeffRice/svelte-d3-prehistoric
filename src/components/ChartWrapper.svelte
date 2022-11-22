@@ -21,6 +21,8 @@
 			return {
 				x: parseFloat(d.size),
 				y: parseFloat(d.weight),
+				size: parseFloat(d.size),
+				weight: parseFloat(d.weight),
 				name: d.name,
 				hoverName: d.name
 			  };

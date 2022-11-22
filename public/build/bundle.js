@@ -58353,7 +58353,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var console_1$3 = globals.console;
-	var file$I = "src/components/ChartDatapoint.svelte"; // (122:0) {#if (name)}
+	var file$I = "src/components/ChartDatapoint.svelte"; // (131:0) {#if (name)}
 
 	function create_if_block$k(ctx) {
 	  var t;
@@ -58427,11 +58427,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$k.name,
 	    type: "if",
-	    source: "(122:0) {#if (name)}",
+	    source: "(131:0) {#if (name)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (123:2) {#if (x <= ($width/2))}
+	} // (132:2) {#if (x <= ($width/2))}
 
 
 	function create_if_block_2$6(ctx) {
@@ -58446,15 +58446,19 @@ var app = (function () {
 	      t = text(
 	      /*hoverName*/
 	      ctx[2]);
+	      attr_dev(text_1, "class", "chart-text svelte-1wzv8r4");
+	      attr_dev(text_1, "fill",
+	      /*stroke*/
+	      ctx[3]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$I, 125, 10, 3121);
-	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
+	      add_location(text_1, file$I, 134, 10, 3343);
+	      attr_dev(g, "class", "centroid-name-label place-label svelte-1wzv8r4");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$tX*/
 	      ctx[4] + 10) + " " + (
 	      /*$tY*/
 	      ctx[5] - 20) + ")");
-	      add_location(g, file$I, 124, 7, 3022);
+	      add_location(g, file$I, 133, 7, 3244);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -58467,6 +58471,14 @@ var app = (function () {
 	      4) set_data_dev(t,
 	      /*hoverName*/
 	      ctx[2]);
+
+	      if (dirty &
+	      /*stroke*/
+	      8) {
+	        attr_dev(text_1, "fill",
+	        /*stroke*/
+	        ctx[3]);
+	      }
 
 	      if (dirty &
 	      /*$tX, $tY*/
@@ -58486,11 +58498,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$6.name,
 	    type: "if",
-	    source: "(123:2) {#if (x <= ($width/2))}",
+	    source: "(132:2) {#if (x <= ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (130:2) {#if (x > ($width/2))}
+	} // (139:2) {#if (x > ($width/2))}
 
 
 	function create_if_block_1$9(ctx) {
@@ -58505,15 +58517,19 @@ var app = (function () {
 	      t = text(
 	      /*hoverName*/
 	      ctx[2]);
+	      attr_dev(text_1, "class", "chart-text svelte-1wzv8r4");
+	      attr_dev(text_1, "fill",
+	      /*stroke*/
+	      ctx[3]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$I, 132, 10, 3362);
-	      attr_dev(g, "class", "centroid-name-label place-label svelte-8hz93f");
+	      add_location(text_1, file$I, 141, 10, 3617);
+	      attr_dev(g, "class", "centroid-name-label place-label svelte-1wzv8r4");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$tX*/
 	      ctx[4] - 100) + " " + (
 	      /*$tY*/
 	      ctx[5] - 20) + ")");
-	      add_location(g, file$I, 131, 7, 3262);
+	      add_location(g, file$I, 140, 7, 3517);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -58526,6 +58542,14 @@ var app = (function () {
 	      4) set_data_dev(t,
 	      /*hoverName*/
 	      ctx[2]);
+
+	      if (dirty &
+	      /*stroke*/
+	      8) {
+	        attr_dev(text_1, "fill",
+	        /*stroke*/
+	        ctx[3]);
+	      }
 
 	      if (dirty &
 	      /*$tX, $tY*/
@@ -58545,7 +58569,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$9.name,
 	    type: "if",
-	    source: "(130:2) {#if (x > ($width/2))}",
+	    source: "(139:2) {#if (x > ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -58554,6 +58578,7 @@ var app = (function () {
 	function create_fragment$I(ctx) {
 	  var g;
 	  var circle;
+	  var circle_id_value;
 	  var g_transform_value;
 	  var t;
 	  var if_block_anchor;
@@ -58581,7 +58606,7 @@ var app = (function () {
 	      attr_dev(circle, "stroke",
 	      /*stroke*/
 	      ctx[3]);
-	      attr_dev(circle, "stroke-width", "3");
+	      attr_dev(circle, "stroke-width", "2.5");
 	      attr_dev(circle, "fill", "none");
 	      attr_dev(circle, "testy",
 	      /*$tY*/
@@ -58589,13 +58614,17 @@ var app = (function () {
 	      attr_dev(circle, "testx",
 	      /*$tX*/
 	      ctx[4]);
-	      add_location(circle, file$I, 114, 7, 2803);
+	      attr_dev(circle, "class", "chart-g svelte-1wzv8r4");
+	      attr_dev(circle, "id", circle_id_value = "chart-" +
+	      /*hoverName*/
+	      ctx[2]);
+	      add_location(circle, file$I, 123, 7, 2984);
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*$tX*/
 	      ctx[4] + " " +
 	      /*$tY*/
 	      ctx[5] + ")");
-	      add_location(g, file$I, 109, 0, 2684);
+	      add_location(g, file$I, 118, 0, 2865);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -58659,6 +58688,14 @@ var app = (function () {
 	      }
 
 	      if (dirty &
+	      /*hoverName*/
+	      4 && circle_id_value !== (circle_id_value = "chart-" +
+	      /*hoverName*/
+	      ctx[2])) {
+	        attr_dev(circle, "id", circle_id_value);
+	      }
+
+	      if (dirty &
 	      /*$tX, $tY*/
 	      48 && g_transform_value !== (g_transform_value = "translate(" +
 	      /*$tX*/
@@ -58706,7 +58743,9 @@ var app = (function () {
 
 	function handleEventMouseout(event) {
 	  var mypopup = document.getElementById("mypopup");
-	  mypopup.style.display = "none";
+	  mypopup.style.display = "none"; // reset fill color 
+
+	  event.target.attributes.fill.value = "none";
 	}
 
 	function instance$I($$self, $$props, $$invalidate) {
@@ -58720,14 +58759,15 @@ var app = (function () {
 	  });
 	  validate_store(selected, "selected");
 	  component_subscribe($$self, selected, function ($$value) {
-	    return $$invalidate(11, $selected = $$value);
+	    return $$invalidate(13, $selected = $$value);
 	  });
 	  var x = $$props.x;
 	  var y = $$props.y;
 	  var name = $$props.name;
 	  var hoverName = $$props.hoverName;
 	  var stroke = $$props.stroke;
-	  var showTooltip;
+	  var weight = $$props.weight;
+	  var size = $$props.size;
 	  var tX = tweened(null, {
 	    duration: 0,
 	    easing: cubicOut
@@ -58758,28 +58798,29 @@ var app = (function () {
 	    console.log("$tY.  : ", $tY);
 	    console.log("$window.scrollY.  : ", window.scrollY); //reset popup content for each datapoint
 
-	    var mypopup = document.getElementById("mypopup"); // place on right for left half of screen
+	    var mypopup = document.getElementById("mypopup");
+	    mypopup.innerHTML = ""; // place on right for left half of screen
 
 	    if (x <= $width / 2) {
-	      mypopup.className = "mypopup";
-	      mypopup.innerHTML = " <h3>Popup title </h3>"; // place popup on the chart and make it visible
+	      mypopup.className = "mypopup"; // place popup on the chart and make it visible
 
 	      mypopup.style.left = event.target.getBoundingClientRect().x + 20 + "px";
 	      mypopup.style.top = window.scrollY + event.target.getBoundingClientRect().y - 312 + "px";
 	    } else // place on left for right half of screen
 	      {
-	        mypopup.className = "popup-right";
-	        mypopup.innerHTML = " <h3>Popup title </h3>"; // place popup on the chart and make it visible
+	        mypopup.className = "popup-right"; // place popup on the chart and make it visible
 
 	        mypopup.style.left = event.target.getBoundingClientRect().x - 400 + "px";
 	        mypopup.style.top = window.scrollY + event.target.getBoundingClientRect().y - 312 + "px";
-	      }
+	      } //create popup content and append
 
-	    mypopup.style.display = "block"; //create popup content and append
 
 	    var div = document.createElement("div");
-	    div.innerHTML = "<div class=\"slideshow-container\">\n" + " HOWDY" + hoverName + " from a div</div>\n";
+	    div.innerHTML = "<span style=\"color:" + stroke + ";\"><h2>" + hoverName + "</h2>\n" + "Max Size: " + size + " ft<br />\n" + "Max Weight: " + weight + " lbs</span>";
 	    mypopup.appendChild(div);
+	    mypopup.style.display = "block"; // fill color 
+
+	    event.target.attributes.fill.value = stroke;
 	  }
 
 	  function handleEventClick(event) {
@@ -58794,7 +58835,7 @@ var app = (function () {
 	    }
 	  }
 
-	  var writable_props = ["x", "y", "name", "hoverName", "stroke"];
+	  var writable_props = ["x", "y", "name", "hoverName", "stroke", "weight", "size"];
 	  Object.keys($$props).forEach(function (key) {
 	    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console_1$3.warn("<ChartDatapoint> was created with unknown prop '".concat(key, "'"));
 	  });
@@ -58809,6 +58850,8 @@ var app = (function () {
 	    if ("name" in $$props) $$invalidate(1, name = $$props.name);
 	    if ("hoverName" in $$props) $$invalidate(2, hoverName = $$props.hoverName);
 	    if ("stroke" in $$props) $$invalidate(3, stroke = $$props.stroke);
+	    if ("weight" in $$props) $$invalidate(11, weight = $$props.weight);
+	    if ("size" in $$props) $$invalidate(12, size = $$props.size);
 	  };
 
 	  $$self.$capture_state = function () {
@@ -58826,7 +58869,8 @@ var app = (function () {
 	      name: name,
 	      hoverName: hoverName,
 	      stroke: stroke,
-	      showTooltip: showTooltip,
+	      weight: weight,
+	      size: size,
 	      tX: tX,
 	      tY: tY,
 	      handleEventMouseover: handleEventMouseover,
@@ -58845,7 +58889,8 @@ var app = (function () {
 	    if ("name" in $$props) $$invalidate(1, name = $$props.name);
 	    if ("hoverName" in $$props) $$invalidate(2, hoverName = $$props.hoverName);
 	    if ("stroke" in $$props) $$invalidate(3, stroke = $$props.stroke);
-	    if ("showTooltip" in $$props) showTooltip = $$props.showTooltip;
+	    if ("weight" in $$props) $$invalidate(11, weight = $$props.weight);
+	    if ("size" in $$props) $$invalidate(12, size = $$props.size);
 	  };
 
 	  if ($$props && "$$inject" in $$props) {
@@ -58866,7 +58911,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [x, name, hoverName, stroke, $tX, $tY, $width, tX, tY, handleEventMouseover, y];
+	  return [x, name, hoverName, stroke, $tX, $tY, $width, tX, tY, handleEventMouseover, y, weight, size];
 	}
 
 	var ChartDatapoint = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -58885,7 +58930,9 @@ var app = (function () {
 	      y: 10,
 	      name: 1,
 	      hoverName: 2,
-	      stroke: 3
+	      stroke: 3,
+	      weight: 11,
+	      size: 12
 	    });
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
@@ -58924,6 +58971,18 @@ var app = (function () {
 	    /*stroke*/
 	    ctx[3] === undefined && !("stroke" in props)) {
 	      console_1$3.warn("<ChartDatapoint> was created without expected prop 'stroke'");
+	    }
+
+	    if (
+	    /*weight*/
+	    ctx[11] === undefined && !("weight" in props)) {
+	      console_1$3.warn("<ChartDatapoint> was created without expected prop 'weight'");
+	    }
+
+	    if (
+	    /*size*/
+	    ctx[12] === undefined && !("size" in props)) {
+	      console_1$3.warn("<ChartDatapoint> was created without expected prop 'size'");
 	    }
 
 	    return _this;
@@ -58969,6 +59028,22 @@ var app = (function () {
 	    set: function set(value) {
 	      throw new Error("<ChartDatapoint>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
 	    }
+	  }, {
+	    key: "weight",
+	    get: function get() {
+	      throw new Error("<ChartDatapoint>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    },
+	    set: function set(value) {
+	      throw new Error("<ChartDatapoint>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    }
+	  }, {
+	    key: "size",
+	    get: function get() {
+	      throw new Error("<ChartDatapoint>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    },
+	    set: function set(value) {
+	      throw new Error("<ChartDatapoint>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+	    }
 	  }]);
 
 	  return ChartDatapoint;
@@ -58983,8 +59058,10 @@ var app = (function () {
 	  child_ctx[12] = list[i].name;
 	  child_ctx[13] = list[i].stroke;
 	  child_ctx[14] = list[i].hoverName;
+	  child_ctx[15] = list[i].size;
+	  child_ctx[16] = list[i].weight;
 	  return child_ctx;
-	} // (51:4) {#if (chartWidth)}
+	} // (53:4) {#if (chartWidth)}
 
 
 	function create_if_block$l(ctx) {
@@ -59046,7 +59123,7 @@ var app = (function () {
 	      /*chartHeight*/
 	      ctx[1]);
 	      set_style(svg, "overflow", "visible");
-	      add_location(svg, file$J, 51, 8, 1395);
+	      add_location(svg, file$J, 53, 8, 1443);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, svg, anchor);
@@ -59166,11 +59243,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$l.name,
 	    type: "if",
-	    source: "(51:4) {#if (chartWidth)}",
+	    source: "(53:4) {#if (chartWidth)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (66:12) {#each renderedData as { x, y, name, stroke, hoverName }}
+	} // (68:12) {#each renderedData as { x, y, name, stroke, hoverName, size, weight }}
 
 
 	function create_each_block$f(ctx) {
@@ -59192,7 +59269,13 @@ var app = (function () {
 	      ctx[14],
 	      stroke:
 	      /*stroke*/
-	      ctx[13]
+	      ctx[13],
+	      weight:
+	      /*weight*/
+	      ctx[16],
+	      size:
+	      /*size*/
+	      ctx[15]
 	    },
 	    $$inline: true
 	  });
@@ -59231,6 +59314,16 @@ var app = (function () {
 	      16) chartdatapoint_changes.stroke =
 	      /*stroke*/
 	      ctx[13];
+	      if (dirty &
+	      /*renderedData*/
+	      16) chartdatapoint_changes.weight =
+	      /*weight*/
+	      ctx[16];
+	      if (dirty &
+	      /*renderedData*/
+	      16) chartdatapoint_changes.size =
+	      /*size*/
+	      ctx[15];
 	      chartdatapoint.$set(chartdatapoint_changes);
 	    },
 	    i: function intro(local) {
@@ -59250,7 +59343,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$f.name,
 	    type: "each",
-	    source: "(66:12) {#each renderedData as { x, y, name, stroke, hoverName }}",
+	    source: "(68:12) {#each renderedData as { x, y, name, stroke, hoverName, size, weight }}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -59259,9 +59352,8 @@ var app = (function () {
 	function create_fragment$J(ctx) {
 	  var div0;
 	  var div0_resize_listener;
-	  var t0;
+	  var t;
 	  var div1;
-	  var h3;
 	  var current;
 	  var if_block =
 	  /*chartWidth*/
@@ -59270,10 +59362,8 @@ var app = (function () {
 	    c: function create() {
 	      div0 = element("div");
 	      if (if_block) if_block.c();
-	      t0 = space();
+	      t = space();
 	      div1 = element("div");
-	      h3 = element("h3");
-	      h3.textContent = "Popup title";
 	      attr_dev(div0, "class", "chart svelte-qn6zlf");
 	      add_render_callback(function () {
 	        return (
@@ -59281,11 +59371,10 @@ var app = (function () {
 	          ctx[8].call(div0)
 	        );
 	      });
-	      add_location(div0, file$J, 49, 0, 1282);
-	      add_location(h3, file$J, 79, 4, 2132);
+	      add_location(div0, file$J, 51, 0, 1330);
 	      attr_dev(div1, "id", "mypopup");
 	      attr_dev(div1, "class", "mypopup svelte-qn6zlf");
-	      add_location(div1, file$J, 78, 0, 2093);
+	      add_location(div1, file$J, 82, 0, 2223);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -59296,9 +59385,8 @@ var app = (function () {
 	      div0_resize_listener = add_resize_listener(div0,
 	      /*div0_elementresize_handler*/
 	      ctx[8].bind(div0));
-	      insert_dev(target, t0, anchor);
+	      insert_dev(target, t, anchor);
 	      insert_dev(target, div1, anchor);
-	      append_dev(div1, h3);
 	      current = true;
 	    },
 	    p: function update(ctx, _ref) {
@@ -59343,7 +59431,7 @@ var app = (function () {
 	      if (detaching) detach_dev(div0);
 	      if (if_block) if_block.d();
 	      div0_resize_listener();
-	      if (detaching) detach_dev(t0);
+	      if (detaching) detach_dev(t);
 	      if (detaching) detach_dev(div1);
 	    }
 	  };
@@ -59451,6 +59539,8 @@ var app = (function () {
 	        return {
 	          x: xScale(d.x),
 	          y: yScale(d.y),
+	          size: d.x,
+	          weight: d.y,
 	          name: d.name,
 	          hoverName: d.hoverName,
 	          stroke: magma(magmaStoke)
@@ -59863,7 +59953,7 @@ var app = (function () {
 	}(SvelteComponentDev);
 
 	var Object_1 = globals.Object;
-	var file$L = "src/components/ChartWrapper.svelte"; // (126:0) {#if (selectedData)}
+	var file$L = "src/components/ChartWrapper.svelte"; // (128:0) {#if (selectedData)}
 
 	function create_if_block$m(ctx) {
 	  var div;
@@ -59935,9 +60025,9 @@ var app = (function () {
 	      t2 = space();
 	      create_component(chartselector.$$.fragment);
 	      attr_dev(section, "class", "chart-header svelte-1j3gnjx");
-	      add_location(section, file$L, 133, 1, 4136);
+	      add_location(section, file$L, 135, 1, 4200);
 	      attr_dev(div, "class", "wrapper svelte-1j3gnjx");
-	      add_location(div, file$L, 126, 0, 3869);
+	      add_location(div, file$L, 128, 0, 3933);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, div, anchor);
@@ -60015,7 +60105,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$m.name,
 	    type: "if",
-	    source: "(126:0) {#if (selectedData)}",
+	    source: "(128:0) {#if (selectedData)}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -60139,6 +60229,8 @@ var app = (function () {
 	              return {
 	                x: parseFloat(d.size),
 	                y: parseFloat(d.weight),
+	                size: parseFloat(d.size),
+	                weight: parseFloat(d.weight),
 	                name: d.name,
 	                hoverName: d.name
 	              };
