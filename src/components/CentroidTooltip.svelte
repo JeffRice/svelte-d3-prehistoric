@@ -154,12 +154,18 @@
     position: absolute;
   }
 
+
   .scroll-wrapper {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
   }
 
+  @media (min-width: 768px) {
+    .scroll-wrapper {
+    overflow-y: hidden;
+  }
+}
   .scroll-wrapper .title {
     display: flex;
     flex-direction: column;

@@ -149,13 +149,13 @@
               <div class="stats-item"><span><strong>Min Date:</strong> {$tooltip.tp.startDate} MYA</span></div>
               <div class="stats-item"><span><strong>Max Date:</strong> {$tooltip.tp.endDate} MYA</span></div>
               <div class="stats-item"><span><strong>Diet:</strong> {$tooltip.tp.diet}</span></div>
-              <div class="stats-item"><span><strong>Regions:</strong> {$tooltip.tp.disinformantNation}</span></div>
+              <div class="stats-item"><span><strong>Region:</strong> {$tooltip.tp.disinformantNation}</span></div>
             </section>
           </div>
 
 
           <div class="image">
-            <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}.jpg" alt={$tooltip.tp.shortTitle} />
+            <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}.jpg" alt={$tooltip.tp.name} />
           </div>
 
 
@@ -171,7 +171,7 @@
 
           {#if ($tooltip.tp.periodEra)}
           <div class="tt-image">
-            <img class="image" src="{images}{$tooltip.tp.periodEra}.jpg" alt={$tooltip.tp.shortTitle} />
+            <img class="image" src="{images}{$tooltip.tp.periodEra}.jpg" alt={$tooltip.tp.periodEra} />
           </div>
           {/if}
           <!-- Just for styling the fist paragraph and image differently-->
@@ -182,14 +182,14 @@
             {#each paragraphs as paragraph, i}
               {#if i > 0} 
               <div class="image">
-                <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}{i}.jpg" alt={$tooltip.tp.shortTitle} />
+                <img src="{images}{removeSpace($tooltip.tp.name.toLowerCase())}{i}.jpg" alt={$tooltip.tp.name} />
               </div>
                 <p>{@html highlight(paragraph)}</p>
               {/if}
             {/each}
             {#if ($tooltip.tp.extraImage === 'yes')}
             <div class="image">
-              <img src="{images}{$tooltip.tp.name.toLowerCase()}3.jpg" alt={$tooltip.tp.shortTitle} />
+              <img src="{images}{$tooltip.tp.name.toLowerCase()}3.jpg" alt={$tooltip.tp.name} />
             </div>
             {/if}
          </div>

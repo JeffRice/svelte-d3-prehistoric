@@ -12,9 +12,9 @@
   const commaFormat = format(',');
  // const rTicks = [$sizeTotalYScale(115), $sizeTotalYScale(40), $sizeTotalYScale(20)];
     const rTicks = [115, 50, 10];
-  const unscaled = [115, 40, 20]
+ // const unscaled = [115, 40, 20]
 
-  let circleScale = 1.25
+  let circleScale = 1.15
 
 </script>
 <!--
