@@ -20,35 +20,21 @@
     timeScale,
     sizeTotalYScale,
     sizeTotalRScale,
-    sizeShareRScale,
-    attributionScoreScale,
-    polarizationScale } from '../stores/scales';
+    } from '../stores/scales';
   import {
     disinformantNationFilter,
     platformFilter,
-    methodFilter,
     timeperiodFilter,
     sourceFilter,
-    sourceCategoryFilter,
     dietFilter,
-    attributionScoreFilter,
-    attributionScoreDef,
     textSearchFilter,
     originalTimeDomain,
     contextData,
-    caseIdFilter,
-    tagFilter,
-    polarizationFilter,
-    polarizationDef,
-    highlightPolarization,
-    highlightCib } from '../stores/filters';
+    tagFilter
+  } from '../stores/filters';
   import {
     haveOverlap,
-    withinRange,
     includesTextSearch,
-    isCaseId,
-    showPolarization,
-    showCib,
     preloadImages } from '../utils/misc';
   import { selected } from '../stores/eventSelections';
   import { drawWrapper, fossilDatapoints } from '../stores/elements';
@@ -75,7 +61,6 @@
   import Info from './Info.svelte';
   import EventTooltip from './EventTooltip.svelte';
   import CentroidTooltip from './CentroidTooltip.svelte';
-  import CreatedBy from './CreatedBy.svelte';
   import Table from './Table.svelte';
   import FossilDetails from './FossilDetails.svelte';
 
@@ -204,7 +189,6 @@
               y={$sizeTotalYScale.range()[1]} />
         <EventTooltip />
         <CentroidTooltip />
-        <CreatedBy />
       {/if}
     </div>
   </div>

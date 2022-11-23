@@ -24,9 +24,9 @@
               checked={$sourcesSwitch}
               on:click={handleClick}
              >
-      <span use:copytooltipable={{content: 'Toggles filter visibility.', showClickMessage: false}} 
+      <span use:copytooltipable={{content: 'Toggles sources visibility.', showClickMessage: false}} 
             style="white-space: nowrap;">
-        Show/Hide Sources
+        Toggle Sources
       </span>
     </Checkbox>
   </li>

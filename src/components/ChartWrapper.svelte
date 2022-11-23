@@ -146,10 +146,17 @@ function getTranslation(transform) {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
-		height: 100%;
 		height: 650px;
-		padding: 0;
+		padding: 1rem;
 	}
+
+	@media (min-width: 800px) {
+		.wrapper {
+		height: 900;
+	}
+}
+
+
 	.chart-header {
         text-align: center;
         font-family: var(--font-02);

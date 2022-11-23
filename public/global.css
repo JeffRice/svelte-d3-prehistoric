@@ -532,16 +532,17 @@ footer a, footer p {
 
 
 #mypopup {
-  width: 400px;
-  padding: 20px;
+  width: 300px;
+  padding: 15px;
   font-family: Arial, sans-serif;
-  font-size: 10pt;
+  font-size: 0.85rem;
   background-color: var(--bg);
   border: 1px solid black;
   border-radius: 6px;
   position: absolute;
   display: none;
   z-index: 999;
+  text-align: center;
 }
 
 .mypopup::before {
@@ -558,7 +559,7 @@ footer a, footer p {
 }
 
 .popup-right {
-  width: 400px;
+  width: 300px;
   padding: 20px;
   font-family: Arial, sans-serif;
   font-size: 10pt;
@@ -578,6 +579,11 @@ footer a, footer p {
   border-right: 1px solid black;
   background-color: var(--bg);
   position: absolute;
-  left: 392px;
+  left: 292px;
   z-index: -1;
+}
+
+.popup-break {
+
+  margin: 4px;
 }

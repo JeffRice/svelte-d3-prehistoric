@@ -56,14 +56,14 @@
     mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - 312) + 'px';
     }
 
-    // place on left for right half of screen
+    // place tooltip on left for right half of screen
     else {
 
     mypopup.className="popup-right"
 
         
     // place popup on the chart and make it visible
-    mypopup.style.left = ((event.target.getBoundingClientRect().x) - 400 ) + 'px';
+    mypopup.style.left = ((event.target.getBoundingClientRect().x) - 300 ) + 'px';
     mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - 312) + 'px';
     }
 
@@ -72,9 +72,9 @@
     let div = document.createElement("div");
     div.innerHTML =
 
-    '<span style="color:' + stroke + ';"><h2>' + hoverName + '</h2>\n' + 
-    'Max Size: ' + size + ' ft<br />\n' + 
-    'Max Weight: ' + weight + ' lbs</span>' 
+    '<span style="color:' + stroke + ';"><h2>' + hoverName + '</h2><hr class="popup-break" />\n' + 
+    '<b>Max Size:</b> ' + size + ' ft <br />\n' + 
+    '<b>Max Weight:</b> ' + weight + ' lbs</span>' 
 
 
       mypopup.appendChild(div);

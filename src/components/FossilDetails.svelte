@@ -10,9 +10,8 @@
   import {select} from "d3";
 
   let data, triassicFossilData, jurassicFossilData, cretaceousFossilData;
-  let map1, map2, map3, map4, uniqueNames, uniqueCretaceousNames, uniqueTriassicNames, sortedCretaceousNames, sortedJurassicNames, sortedTriassicNames;
+  let uniqueNames, uniqueCretaceousNames, uniqueTriassicNames, sortedCretaceousNames, sortedJurassicNames, sortedTriassicNames;
   let sortedCretaceousFilter, sortedJurassicFilter, sortedTriassicFilter;
-  let triassicTracker = [];
   let jurassicFilter, triassicFilter, cretaceousFilter;
   let allNames;
 
@@ -134,6 +133,14 @@ function addDino(dino, fossilEra) {
 
 }
 
+function showMoreDetails () {
+  let section = document.getElementById("fossil-flex");
+  section.style.height = '100%';
+
+  let showButton = document.getElementById("flex-show");
+  showButton.remove();
+}
+
 
 </script>
 
@@ -143,8 +150,7 @@ function addDino(dino, fossilEra) {
     <button class="choice-controls-unselectall" on:click|stopPropagation={removeAllFossils}>remove all</button>
     <button class="choice-controls-unselectall" on:click|stopPropagation={addAllFossils}>add all</button>
 </div>
-<section class="fossil-flex">
-
+<section id="fossil-flex">
 {#if (sortedCretaceousFilter && sortedTriassicFilter && sortedJurassicFilter)}
 
 <section class="fossil-wrap">
@@ -211,7 +217,12 @@ function addDino(dino, fossilEra) {
   {/each}
 </section>
 {/if}
+
 </section>
+
+<button 
+on:click|stopPropagation={showMoreDetails}
+id="flex-show">Fossils Continued... <i class="arrow down"></i></button>
 
 {#if (sortedCretaceousNames && sortedJurassicNames && sortedTriassicNames)}
 
@@ -267,8 +278,10 @@ function addDino(dino, fossilEra) {
     .unique-fossils {
         padding: 1rem;
     }
-    .fossil-flex {
+    #fossil-flex {
         display: flex;
+        height: 550px;
+        overflow: hidden;
     }
     .Cretaceous {
     color: var(--prehistoricDarkGreen);
@@ -339,5 +352,17 @@ function addDino(dino, fossilEra) {
     background-color: #6c4870;
     cursor: pointer;
   }
+
+  .arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
 
 </style>

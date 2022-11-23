@@ -14,7 +14,9 @@
 <div class="app-wrapper" bind:clientWidth={width}>
   <CookieBanner />
   {#if (width < 600)}
+  <div style="background: 'white';">
     <Catch content={'Please visit us on a larger screen to explore the visualization or try turning your device.'} />
+  </div>
   {:else if (/MSIE|Trident/.test(window.navigator.userAgent))}
     <Catch content={'Please visit us with a modern browser.'} />
   {:else}

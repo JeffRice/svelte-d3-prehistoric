@@ -26,7 +26,7 @@
     $highlightCib = false;
     switch (id) {
       case 0:
-        disinformantNationFilter.selectOne('China');
+        disinformantNationFilter.selectOne('North America');
         contextData.selectOne('corona');
         break;
       case 1:

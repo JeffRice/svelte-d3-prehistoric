@@ -90,21 +90,8 @@
         flex: 1;
         width: 100%;
         min-width: 400px;
-        height: 400px;
         margin-bottom: -25px;
         overflow: hidden;
     }
-
- #mypopup {
-  width: 400px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  font-size: 10pt;
-  background-color: var(--prehistoricGreen);
-  border-radius: 6px;
-  position: absolute;
-  display: none;
-}
-
 
 </style>

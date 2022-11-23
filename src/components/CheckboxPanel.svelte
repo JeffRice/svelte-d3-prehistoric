@@ -24,7 +24,7 @@
              >
       <span use:copytooltipable={{content: 'Toggles filter visibility.', showClickMessage: false}}
             style="white-space: nowrap;">
-        Show/Hide Filters
+        Toggle Filters
       </span>
     </Checkbox>
   </li>
