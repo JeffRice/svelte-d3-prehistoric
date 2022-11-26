@@ -4,17 +4,17 @@
 
   function sendMail() {
     const subject = encodeURIComponent('Dino Tracker');
-    const body = encodeURIComponent('I have seen this project on the web:\nhttps://tba.org');
+    const body = encodeURIComponent('I have seen this project on the web:\nhttps://svelte-d3-prehistoric.vercel.app/');
     window.location.href = `mailto:?subject=${subject}&body=${body}`;
   }
 </script>
 
-<section class="content catch">
+<section class="content catch transparent-bg">
   <p>{content}</p>
   <span class="pseudolink" on:click={sendMail}>Send Email with Link</span>
 </section>
 <div class="placeholder-image">
-  <img src="images/screenshots/fiat_placeholder.jpg" alt="Screenshot of the visualization showing red balloons on a timeline." />
+  <img src="images/screens2.jpg" alt="" />
 </div>
 
 <style>
@@ -23,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     max-width: none;
-    margin: 2rem 0;
+    margin: 3rem 0;
     width: 100%;
     overflow: hidden;
   }

@@ -321,6 +321,7 @@ section h1 {
   font-size: 3rem;
   color: var(--prehistoricDarkGreen);
   text-align: center;
+  white-space: nowrap;
 }
 
 section h2, section h3 {

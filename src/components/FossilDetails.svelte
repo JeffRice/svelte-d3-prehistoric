@@ -146,7 +146,7 @@ function showMoreDetails () {
 
 
 <div class="choice-controls">
-  Dinosaur Fossil datapoints:<br />
+  Dinosaur Fossil Sites:<br />
     <button class="choice-controls-unselectall" on:click|stopPropagation={removeAllFossils}>remove all</button>
     <button class="choice-controls-unselectall" on:click|stopPropagation={addAllFossils}>add all</button>
 </div>
@@ -259,7 +259,7 @@ id="flex-show">Fossils Continued... <i class="arrow down"></i></button>
 </section>
 
 {/if}
-
+<div class="separator thicker"></div>
 
 
 
@@ -363,6 +363,26 @@ id="flex-show">Fossils Continued... <i class="arrow down"></i></button>
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
+}
+
+@media (min-width: 600px) {
+  html, body {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 980px) {
+  html,
+  body {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1260px) {
+  html,
+  body {
+    font-size: 18px;
+  }
 }
 
 </style>

@@ -7,16 +7,16 @@
                 return 'All Prehistoric Creatures'
             }
            else if (option === 'b'){
-                return 'Creatures 0-10 ft'
+                return '0-10 ft'
             }
            else if (option === 'c'){
-                return 'Creatures 10-25 ft'
+                return '10-25 ft'
             }
            else if (option === 'd'){
-                return 'Creatures 25-40 ft'
+                return '25-40 ft'
             }
            else if (option === 'e'){
-                return 'Creatures 40+ ft'
+                return '40+ ft'
             }
             else {
                 return option
@@ -33,7 +33,7 @@
                 id={option}
                 on:change={() => (selected = option)}
                 checked={selected === option}
-            />
+            /><br />
             <label for={option}>{renameOption(option)}</label>
         </span>
     {/each}
@@ -43,11 +43,12 @@
     .selector {
         display: flex;
         justify-content: center;
-        gap: 16px;
+        gap: 35px;
         width: 100%;
         height: 100px;
         font-size: 1rem;
         font-family: var(--font-02);
+        text-align: center;
     }
         
     

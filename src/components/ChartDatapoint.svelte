@@ -23,49 +23,52 @@
   function handleEventMouseover(event) {
 
 
-    console.log('event:', event)
-    console.log('event.target: ', event.target)
-    console.log('event.target test x: ', event.target.attributes.testx)
-    console.log('event.target test y: ', event.target.attributes.testy)
-
-    console.log('event.target x: ', event.target.x)
-    console.log('event.target y: ', event.target.y)
+    //reset popup content for each datapoint
+    let mypopup = document.getElementById("mypopup");
+    mypopup.innerHTML = '';
 
 
-    console.log('event.screenX: ', event.screenX)
-    console.log('event.screenY: ', event.screenY)
+    // to account for the area that is expndable
+    let topContentHeight = document.getElementById("expand-content")
 
+    // to adjust for responsive text size changes
+    let responsiveAdjust = 0;
 
-    console.log('$tX.  : ', $tX)
-    console.log('$tY.  : ', $tY)
-    console.log('$window.scrollY.  : ', window.scrollY)
-
-
-        //reset popup content for each datapoint
-        let mypopup = document.getElementById("mypopup");
-        mypopup.innerHTML = '';
-
-    // place on right for left half of screen
-    if (x <= ($width/2)){
-    mypopup.className="mypopup"
-
-
-    
-    // place popup on the chart and make it visible
-    mypopup.style.left = ((event.target.getBoundingClientRect().x) + 20 ) + 'px';
-    mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - 312) + 'px';
+    if ($width < 1260){
+      responsiveAdjust = 15
     }
 
-    // place tooltip on left for right half of screen
-    else {
-
-    mypopup.className="popup-right"
-
-        
-    // place popup on the chart and make it visible
-    mypopup.style.left = ((event.target.getBoundingClientRect().x) - 300 ) + 'px';
-    mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - 312) + 'px';
+    if ($width < 980){
+      responsiveAdjust = 45
     }
+
+
+
+// place on right for left half of screen
+if (x <= ($width/2)){
+mypopup.className="mypopup"
+mypopup.style.left = ((event.target.getBoundingClientRect().x) + 20 ) + 'px';
+mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - topContentHeight.offsetHeight - 310 + responsiveAdjust) + 'px';
+
+}
+
+// place tooltip on left for right half of screen
+else {
+mypopup.className="popup-right"
+mypopup.style.left = ((event.target.getBoundingClientRect().x) - 300 ) + 'px';
+mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - topContentHeight.offsetHeight - 310 + responsiveAdjust) + 'px';     
+
+}
+
+
+console.log(event)
+console.log(event.target.getBoundingClientRect())
+
+
+
+
+
+
 
 
     //create popup content and append
@@ -76,11 +79,8 @@
     '<b>Max Size:</b> ' + size + ' ft <br />\n' + 
     '<b>Max Weight:</b> ' + weight + ' lbs</span>' 
 
-
       mypopup.appendChild(div);
       mypopup.style.display = "block";
-
-
 
       // fill color 
       event.target.attributes.fill.value = stroke;
@@ -95,23 +95,6 @@
        // reset fill color 
        event.target.attributes.fill.value = "none";
   }
-
-
-  function handleEventClick(event) {
-
-
-    const obj = event.detail;
-    if ($selected.map((d) => d.id).includes(obj.id)) {
-      selected.remove(obj);
-    } else {
-      selected.add(obj);
-    }
-  }
-
-
-
-
-
 
 </script>  
 

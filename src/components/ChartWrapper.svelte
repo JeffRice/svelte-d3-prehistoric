@@ -1,14 +1,11 @@
 <script>
-	import data from './data';
-	import { csv, min, max, forceSimulation, forceX, forceY, forceManyBody, forceCenter, forceCollide, } from 'd3';
+	import { csv, min, max } from 'd3';
 	import { select, selectAll } from 'd3-selection';
 	import { data as csvData } from '../inputs/dataPaths';
 	import Chart from './Chart.svelte';
 	import ChartSelector from './ChartSelector.svelte';
-	import loadData from '../utils/loadData';
 	import { onMount } from "svelte";
-	import { originalTimeDomain } from '../stores/filters';
-	import { beforeUpdate, afterUpdate } from 'svelte';
+	import { afterUpdate } from 'svelte';
 
 	let fossilSpots10, fossilSpots25, fossilSpots40, fossilSpots200, allfossilSpots;;
 	let selectedData, selectedOption;
@@ -136,7 +133,7 @@ function getTranslation(transform) {
 	<section class="chart-header">Prehistoric Life -  Size and Weight distribution</section>
 
 	<ChartSelector
-		options={Object.keys(data)}
+		options={Object.keys(chartData)}
 		bind:selected={selectedOption}
 	/>
 </div>

@@ -255,13 +255,20 @@
   }
 
 
-  .title-dates {
-    flex: 1;
+  .scroll-wrapper::-webkit-scrollbar {
+    -webkit-appearance: none;
   }
 
-  .title-dates p {
-    color: var(--text-black);
-    font-size: 0.7rem;
+  .scroll-wrapper::-webkit-scrollbar:horizontal {
+    height: 7px;
+  }
+
+  .scroll-wrapper::-webkit-scrollbar:vertical {
+    width: 12px;
+  }
+
+  .scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color:var(--prehistoricDarkGreen);
   }
 
   .scroll-wrapper > div {
@@ -361,7 +368,7 @@
     color: var(--text-black);
     border: none;
     border-radius: 0.2rem;
-    background-color: var(--usa-lightlightred);
+    background-color: var(--prehistoricGreen);
     cursor: pointer;
     user-select: none;
     transition: background-color 200ms ease;
@@ -378,7 +385,7 @@
   }
 
   a:hover, li.card:hover {
-    background-color: var(--usa-lightred);
+    background-color: var(--prehistoricLightGreen);
   }
 
   .small {

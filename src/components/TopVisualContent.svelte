@@ -43,7 +43,7 @@
 </script>
 
 {#if (data.length > 0 && $fossilDatapoints)}
-  <section class="content transparent-bg no-upper-margin" >
+  <section id="expand-content" class="content transparent-bg no-upper-margin" >
     <input id="collapsible-status-quo" class="toggle" type="checkbox">
     <label for="collapsible-status-quo" class="lbl-toggle top">Overview</label>
     <div class="collapsible-content">

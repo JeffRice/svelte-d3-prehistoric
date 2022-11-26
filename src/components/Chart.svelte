@@ -49,7 +49,7 @@
 
 </script>
 
-<div class="chart" bind:clientWidth={chartWidth} bind:clientHeight={chartHeight}>
+<div class="chart" id="scatter-chart" bind:clientWidth={chartWidth} bind:clientHeight={chartHeight}>
     {#if (chartWidth)}
         <svg
             class="scatter-chart"

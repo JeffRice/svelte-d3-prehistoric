@@ -63,6 +63,7 @@
   import CentroidTooltip from './CentroidTooltip.svelte';
   import Table from './Table.svelte';
   import FossilDetails from './FossilDetails.svelte';
+  import ChartWrapper from './ChartWrapper.svelte';
 
 
   const tf = timeFormat('%B %d, %Y');
@@ -197,6 +198,10 @@
         <FossilDetails />
       </div>
     {/if}
+    <div class="chart-wrapper">
+      <ChartWrapper />
+    </div>
+    
   <div class="table-wrapper">
     <Table {timePoints} />
   </div>
@@ -227,7 +232,7 @@
     height: 180vmin;
     min-height: 1200px;
     max-height: 100vmax;
-    margin: 2rem 0 0 0;
+    margin: 0 0 0 0;
     position: relative;
   }
 
@@ -258,4 +263,11 @@
     margin: 2rem 0;
     padding: 0.2rem 1rem;
   }
+
+  .chart-wrapper {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		height: 100%;
+	}
 </style>

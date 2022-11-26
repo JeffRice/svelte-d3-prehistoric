@@ -1,8 +1,5 @@
 <script>
   // the little cross showing up on hovered balloons
-  import { draw } from 'svelte/transition';
-  import { oneLineTrim } from 'common-tags';
-
   export let tWidth = 0;
   export let offset = {
     top: 10,
