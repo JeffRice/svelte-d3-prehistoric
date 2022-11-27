@@ -4,4 +4,6 @@ This visualization is an interactive open-source tool that shows a variety of in
 ## To install and run:
 
 `npm install`
+
+
 `npm run dev`
