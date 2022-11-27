@@ -12,6 +12,11 @@
 
 <g class="axis">
     <line x1={x} y1={y0} x2={x} y2={y1} />
+    <text 
+    class="label"
+
+    transform="translate({(x - 66) } {y1 - 260}) rotate(270)"
+        >Max Weight (Pounds)</text>
     <g class="ticks">
         {#each ticks as tick}
             <g
@@ -36,6 +41,11 @@
     text {
         fill: gray;
         text-anchor: end;
-        font-size: 18px;
+        font-size: 16px;
+    }
+
+    .label {
+        font-size: 20px;   
+        text-decoration: underline;
     }
 </style>

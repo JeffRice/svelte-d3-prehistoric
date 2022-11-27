@@ -10,10 +10,10 @@
                 return '0-10 ft'
             }
            else if (option === 'c'){
-                return '10-25 ft'
+                return '11-25 ft'
             }
            else if (option === 'd'){
-                return '25-40 ft'
+                return '26-40 ft'
             }
            else if (option === 'e'){
                 return '40+ ft'

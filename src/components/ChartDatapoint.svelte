@@ -32,23 +32,15 @@
     let topContentHeight = document.getElementById("expand-content")
 
     // to adjust for responsive text size changes
-    let responsiveAdjust = 0;
+    let adjust = 277;
 
-    if ($width < 1260){
-      responsiveAdjust = 15
-    }
-
-    if ($width < 980){
-      responsiveAdjust = 45
-    }
-
-
+    console.log($width)
 
 // place on right for left half of screen
 if (x <= ($width/2)){
 mypopup.className="mypopup"
 mypopup.style.left = ((event.target.getBoundingClientRect().x) + 20 ) + 'px';
-mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - topContentHeight.offsetHeight - 310 + responsiveAdjust) + 'px';
+mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - topContentHeight.offsetHeight - adjust) + 'px';
 
 }
 
@@ -56,13 +48,11 @@ mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) -
 else {
 mypopup.className="popup-right"
 mypopup.style.left = ((event.target.getBoundingClientRect().x) - 300 ) + 'px';
-mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - topContentHeight.offsetHeight - 310 + responsiveAdjust) + 'px';     
+mypopup.style.top = ((window.scrollY + event.target.getBoundingClientRect().y) - topContentHeight.offsetHeight - adjust) + 'px';     
 
 }
 
 
-console.log(event)
-console.log(event.target.getBoundingClientRect())
 
 
 

@@ -117,7 +117,7 @@
 
   .label {
     margin: 0 0 0.1rem 0;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--prehistoricDarkGreen);
   }
 

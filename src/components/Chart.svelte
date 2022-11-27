@@ -90,7 +90,6 @@
         flex: 1;
         width: 100%;
         min-width: 400px;
-        margin-bottom: -25px;
         overflow: hidden;
     }
 

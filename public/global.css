@@ -75,7 +75,6 @@ html {
 html, body {
   width: 100%;
   height: 100%;
-  font-size: 14px;
 }
 
 body {
@@ -89,7 +88,7 @@ body {
   width: 100%;
 }
 
-/* switch font size for different device widths */
+/* switch font size for different device widths 
 @media (min-width: 600px) {
   html,
   body {
@@ -110,6 +109,7 @@ body {
     font-size: 18px;
   }
 }
+*/
 
 /* general classes */
 .disable-select {
@@ -242,7 +242,7 @@ section {
 .fiat-title-bg {
   width: 100%;
   position: absolute;
-  top: 30px;
+  top: -30px;
   z-index: -1;
   height: 811px;
   opacity: 80%;
@@ -322,6 +322,7 @@ section h1 {
   color: var(--prehistoricDarkGreen);
   text-align: center;
   white-space: nowrap;
+
 }
 
 section h2, section h3 {

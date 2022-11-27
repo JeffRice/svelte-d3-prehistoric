@@ -3,13 +3,10 @@
   import loadData from '../utils/loadData';
   import { fossilDatapoints } from '../stores/elements';
   import { onMount } from "svelte";
-  import loadTriassicFossils from '../utils/loadTriassicFossils';
-  import loadJurassicFossils from '../utils/loadJurassicFossils';
-  import loadCretaceousFossils from '../utils/loadCretaceousFossils';
   import { uniq, sortBy } from 'lodash';
   import {select} from "d3";
 
-  let data, triassicFossilData, jurassicFossilData, cretaceousFossilData;
+  let data;
   let uniqueNames, uniqueCretaceousNames, uniqueTriassicNames, sortedCretaceousNames, sortedJurassicNames, sortedTriassicNames;
   let sortedCretaceousFilter, sortedJurassicFilter, sortedTriassicFilter;
   let jurassicFilter, triassicFilter, cretaceousFilter;
@@ -17,62 +14,46 @@
 
   onMount(async () => {
 
-
     // load the dataset and add runtime variables
     data = (await loadData())
             .map((d) => ({
               ...d
             }));
-
-    // load the dataset and add runtime variables
-    triassicFossilData = (await loadTriassicFossils())
-
-    // load the dataset and add runtime variables
-    jurassicFossilData = (await loadJurassicFossils())
-
-    // load the dataset and add runtime variables
-    cretaceousFossilData = (await loadCretaceousFossils())
-
-
-
-
         })
 
-        $: if ($fossilDatapoints && triassicFossilData && jurassicFossilData && cretaceousFossilData && data) {
-
-            allNames = data[0].dinoNames
-
-            uniqueNames = uniq(jurassicFossilData.map((d) => d.name));
-            sortedJurassicNames = sortBy(uniqueNames.map((d) => d)).join(' | ');
+$: if ($fossilDatapoints && $fossilDatapoints.originaltriassic && $fossilDatapoints.originaljurassic && $fossilDatapoints.originalcretaceous && data) {
 
 
-            jurassicFilter = allNames.map((d, i) => 
-            [allNames[i],
-            jurassicFossilData.filter(d =>    d.name.includes(allNames[i]))]
-           );
 
-            sortedJurassicFilter = sortBy(jurassicFilter, [function(d) { return d[1]; }]).reverse();
+          allNames = data[0].dinoNames
+          uniqueNames = uniq($fossilDatapoints.originaljurassic.map((d) => d.name));
+          sortedJurassicNames = sortBy(uniqueNames.map((d) => d)).join(' | ');
+
+
+          jurassicFilter = allNames.map((d, i) => 
+          [allNames[i],
+          $fossilDatapoints.originaljurassic.filter(d =>    d.name.includes(allNames[i]))]
+          );
+          sortedJurassicFilter = sortBy(jurassicFilter, [function(d) { return d[1]; }]).reverse();
              
 
-           triassicFilter = allNames.map((d, i) => 
-           [allNames[i],
-            triassicFossilData.filter(d => d.name.includes(allNames[i]))]
-           );
+          triassicFilter = allNames.map((d, i) => 
+          [allNames[i],
+          $fossilDatapoints.originaltriassic.filter(d => d.name.includes(allNames[i]))]
+          );
 
-           sortedTriassicFilter = sortBy(triassicFilter, [function(d) { return d[1]; }]).reverse();
+          sortedTriassicFilter = sortBy(triassicFilter, [function(d) { return d[1]; }]).reverse();
+          uniqueTriassicNames = uniq($fossilDatapoints.originaltriassic.map((d) => d.name));
+          sortedTriassicNames = sortBy(uniqueTriassicNames.map((d) => d)).join(' | ');
 
-            uniqueTriassicNames = uniq(triassicFossilData.map((d) => d.name));
-            sortedTriassicNames = sortBy(uniqueTriassicNames.map((d) => d)).join(' | ');
+          cretaceousFilter = allNames.map((d, i) => 
+          [allNames[i],
+          $fossilDatapoints.originalcretaceous.filter(d => d.name.includes(allNames[i]))]
+          );
 
-           cretaceousFilter = allNames.map((d, i) => 
-           [allNames[i],
-           cretaceousFossilData.filter(d => d.name.includes(allNames[i]))]
-           );
-
-           sortedCretaceousFilter = sortBy(cretaceousFilter, [function(d) { return d[1]; }]).reverse();
-
-           uniqueCretaceousNames = uniq(cretaceousFossilData.map((d) => d.name));
-           sortedCretaceousNames = sortBy(uniqueCretaceousNames.map((d) => d)).join(' | ');
+          sortedCretaceousFilter = sortBy(cretaceousFilter, [function(d) { return d[1]; }]).reverse();
+          uniqueCretaceousNames = uniq($fossilDatapoints.originalcretaceous.map((d) => d.name));
+          sortedCretaceousNames = sortBy(uniqueCretaceousNames.map((d) => d)).join(' | ');
 
         }
     
@@ -363,26 +344,6 @@ id="flex-show">Fossils Continued... <i class="arrow down"></i></button>
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-}
-
-@media (min-width: 600px) {
-  html, body {
-    font-size: 14px;
-  }
-}
-
-@media (min-width: 980px) {
-  html,
-  body {
-    font-size: 17px;
-  }
-}
-
-@media (min-width: 1260px) {
-  html,
-  body {
-    font-size: 18px;
-  }
 }
 
 </style>

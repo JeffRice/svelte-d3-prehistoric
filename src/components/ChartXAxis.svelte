@@ -12,6 +12,11 @@
 
 <g class="axis">
     <line x1={x0} y1={y} x2={x1} y2={y} />
+    <text 
+    class="label"
+    transform="translate({(x0 + x1)/2} {y + 50})"
+        >Max Size (Feet)</text>
+
     <g class="ticks">
         {#each ticks as tick}
             <g
@@ -26,6 +31,9 @@
     </g>
 </g>
 
+
+
+
 <style>
     line {
         stroke: gray;
@@ -37,5 +45,10 @@
         fill: gray;
         text-anchor: middle;
         font-size: 18px;
+    }
+
+    .label {
+        font-size: 20px;   
+        text-decoration: underline;
     }
 </style>
