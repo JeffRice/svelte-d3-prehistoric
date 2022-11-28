@@ -45,8 +45,8 @@
 
 <g class="legend"
    transform="translate({$width - (rTicks[0] * circleScale) - 65  } {$sizeTotalYScale.range()[1] - 20})">
-  <text transform="translate({-(rTicks[0] * circleScale) + 55} {(rTicks.slice(-1)[0]  * circleScale) + 70}) rotate(270)"
-        dy="4">
+  <text transform="translate({0} {(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(rTicks[0]) - 30})"
+        >
         Size in feet
   </text>
   <g class="total-r-scale" transform="translate(0 {-2 * (rTicks.slice(-1)[0]  * circleScale)})">
@@ -78,11 +78,11 @@
   text {
     fill: var(--text-darkgray);
     font-family: var(--font-02);
-    font-size: 0.7rem;
+    font-size: 0.85rem;
   }
 
   text.tick {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
 
   .total-r-scale circle {

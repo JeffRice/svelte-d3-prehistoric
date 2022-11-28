@@ -78,7 +78,7 @@
   .time-scale text {
     fill: var(--text-darkgray);
     font-family: var(--font-02);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     text-anchor: middle;
   }
 
@@ -89,7 +89,7 @@
   .time-scale text.bg {
     stroke: var(--bg);
     stroke-width: 0.1rem;
-    stroke-opacity: 0.8;
+    stroke-opacity: 0.85;
     fill: var(--bg);
   }
 
@@ -101,11 +101,11 @@
   .y-scale-ticks text, .y-scale text, .map-scale text {
     fill: var(--text-darkgray);
     font-family: var(--font-02);
-    font-size: 0.7rem;
+    font-size: 0.85rem;
   }
 
   .y-scale-ticks text {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
 
   .time-scale path, .y-scale path, .map-scale path {

@@ -69,16 +69,18 @@
 
       <p>
         <em>Filters</em> enable users to adjust the visibility of creatures by <span class="pseudolink copy-tooltip" use:copytooltipable={{content: 'The primary continent this creature lived. Although some may have lived in additional regions they are only mapped to one Continent.'}}>Continent</span>, <span class="pseudolink copy-tooltip" use:copytooltipable={{content: 'The type of diet either herbivore or carinvore. Although it is believed there was a small amount of omnivorous prehistoric life those have not been included.'}}>Diet</span>, and <span class="pseudolink copy-tooltip" use:copytooltipable={{content: 'The geologic time period they belond to. Again although some may have stretched into multiple time periods, so they\'re given a time range that shows dates they may have lived'}}>Time Period</span>. Free text search is also supported.
-        
       </p>
       <p>
         <em>Timeline View</em> ordered chronologically from left to right. By clicking and dragging just below the timeline, users can filter their view to a particular date range. Or by clicking on the colored time period tabs they can select that periods time rage. Return to the default view by clicking "Reset time scale" on the left-hand side of the timeline. 
+        <br /><img class="image" src="images/brushable.jpg" alt="using the timeline brush"  />
+        <br /><img class="image" src="images/selectlabel.jpg" alt="selecting a time period label" />
       </p>
       <p>
-        <em>Map View</em> shows a Mercator projection of the Earth. The source Continent of each Creature is connected by the curved lines: the more lines a particular region has originating from it, shows more creatures mapped to that location. By hovering over a particular Continent, users can see a density plot of creatures over time, as well as breakdowns of the creatures diets and time periods. Each of these can be auto-filtered together with the selected country.
+        <em>Map View</em> shows a Mercator projection of the Earth. There is a current map as well as an overlay of pangea avaialable via the control panel. The source Continent of each Creature is connected by the curved lines: the more lines a particular region has originating from it, shows more creatures mapped to that location. These sources and continent mappings can be hidden via the "Toggle Sources" checkbox in the controls. By hovering over a particular Continent, users can see a density plot of creatures over time, as well as breakdowns of the creatures diets and time periods. Each of these can be auto-filtered together with the selected country. 
       </p>
       <p>
         <em>Fossil Datapoints</em> are a collection of fossils related to dinosaurs or entire time periods. Large screens are automatically populated with all fossil data. Smaller screens are left blank. To control these fossil points select a time period from the dropdowns or select an individual dinosaur from the details section.
+        <br /><img class="image" src="images/fossildata.jpg" alt="using the fossil dropdown" />
       </p>
       <p>
         <em>Size + Weight Distribution</em> is a scatterplot charting the size and weight of each creature. They are broken into smaller size categories you can navigate between using the radio buttons below the chart.
@@ -102,4 +104,7 @@
 {/if}
 
 <style>
+  .image {
+    max-width: 100%;
+  }
 </style>

@@ -35495,34 +35495,44 @@ var app = (function () {
 	  var p4;
 	  var em7;
 	  var t41;
+	  var br0;
+	  var img0;
+	  var img0_src_value;
 	  var t42;
+	  var br1;
+	  var img1;
+	  var img1_src_value;
+	  var t43;
 	  var p5;
 	  var em8;
-	  var t44;
 	  var t45;
+	  var t46;
 	  var p6;
 	  var em9;
-	  var t47;
 	  var t48;
+	  var br2;
+	  var img2;
+	  var img2_src_value;
+	  var t49;
 	  var p7;
 	  var em10;
-	  var t50;
 	  var t51;
+	  var t52;
 	  var p8;
 	  var em11;
-	  var t53;
+	  var t54;
 	  var a;
-	  var t55;
 	  var t56;
+	  var t57;
 	  var ul1;
 	  var li3;
-	  var t58;
+	  var t59;
 	  var li4;
-	  var t60;
+	  var t61;
 	  var li5;
-	  var t62;
+	  var t63;
 	  var li6;
-	  var t64;
+	  var t65;
 	  var li7;
 	  var mounted;
 	  var dispose;
@@ -35596,44 +35606,51 @@ var app = (function () {
 	      p4 = element("p");
 	      em7 = element("em");
 	      em7.textContent = "Timeline View";
-	      t41 = text(" ordered chronologically from left to right. By clicking and dragging just below the timeline, users can filter their view to a particular date range. Or by clicking on the colored time period tabs they can select that periods time rage. Return to the default view by clicking \"Reset time scale\" on the left-hand side of the timeline.");
+	      t41 = text(" ordered chronologically from left to right. By clicking and dragging just below the timeline, users can filter their view to a particular date range. Or by clicking on the colored time period tabs they can select that periods time rage. Return to the default view by clicking \"Reset time scale\" on the left-hand side of the timeline. \n        ");
+	      br0 = element("br");
+	      img0 = element("img");
 	      t42 = space();
+	      br1 = element("br");
+	      img1 = element("img");
+	      t43 = space();
 	      p5 = element("p");
 	      em8 = element("em");
 	      em8.textContent = "Map View";
-	      t44 = text(" shows a Mercator projection of the Earth. The source Continent of each Creature is connected by the curved lines: the more lines a particular region has originating from it, shows more creatures mapped to that location. By hovering over a particular Continent, users can see a density plot of creatures over time, as well as breakdowns of the creatures diets and time periods. Each of these can be auto-filtered together with the selected country.");
-	      t45 = space();
+	      t45 = text(" shows a Mercator projection of the Earth. There is a current map as well as an overlay of pangea avaialable via the control panel. The source Continent of each Creature is connected by the curved lines: the more lines a particular region has originating from it, shows more creatures mapped to that location. These sources and continent mappings can be hidden via the \"Toggle Sources\" checkbox in the controls. By hovering over a particular Continent, users can see a density plot of creatures over time, as well as breakdowns of the creatures diets and time periods. Each of these can be auto-filtered together with the selected country.");
+	      t46 = space();
 	      p6 = element("p");
 	      em9 = element("em");
 	      em9.textContent = "Fossil Datapoints";
-	      t47 = text(" are a collection of fossils related to dinosaurs or entire time periods. Large screens are automatically populated with all fossil data. Smaller screens are left blank. To control these fossil points select a time period from the dropdowns or select an individual dinosaur from the details section.");
-	      t48 = space();
+	      t48 = text(" are a collection of fossils related to dinosaurs or entire time periods. Large screens are automatically populated with all fossil data. Smaller screens are left blank. To control these fossil points select a time period from the dropdowns or select an individual dinosaur from the details section.\n        ");
+	      br2 = element("br");
+	      img2 = element("img");
+	      t49 = space();
 	      p7 = element("p");
 	      em10 = element("em");
 	      em10.textContent = "Size + Weight Distribution";
-	      t50 = text(" is a scatterplot charting the size and weight of each creature. They are broken into smaller size categories you can navigate between using the radio buttons below the chart.");
-	      t51 = space();
+	      t51 = text(" is a scatterplot charting the size and weight of each creature. They are broken into smaller size categories you can navigate between using the radio buttons below the chart.");
+	      t52 = space();
 	      p8 = element("p");
 	      em11 = element("em");
 	      em11.textContent = "Dataset View";
-	      t53 = text(" presents a simplified spreadsheet view of the prehistoric dataset. Creatures are affected by all applied filters. By clicking on one or more creatures in the Timeline View, users can \"pin\" them to the top of the Dataset View for easy comparison. The ");
+	      t54 = text(" presents a simplified spreadsheet view of the prehistoric dataset. Creatures are affected by all applied filters. By clicking on one or more creatures in the Timeline View, users can \"pin\" them to the top of the Dataset View for easy comparison. The ");
 	      a = element("a");
 	      a.textContent = "full dataset";
-	      t55 = text(" can also be downloaded.");
-	      t56 = space();
+	      t56 = text(" can also be downloaded.");
+	      t57 = space();
 	      ul1 = element("ul");
 	      li3 = element("li");
 	      li3.textContent = "Visualization";
-	      t58 = space();
+	      t59 = space();
 	      li4 = element("li");
 	      li4.textContent = "Fossil Details";
-	      t60 = space();
+	      t61 = space();
 	      li5 = element("li");
 	      li5.textContent = "Size + Weight Chart";
-	      t62 = space();
+	      t63 = space();
 	      li6 = element("li");
 	      li6.textContent = "Table";
-	      t64 = space();
+	      t65 = space();
 	      li7 = element("li");
 	      li7.textContent = "About";
 	      attr_dev(input0, "id", "collapsible-status-quo");
@@ -35673,27 +35690,42 @@ var app = (function () {
 	      attr_dev(span2, "class", "pseudolink copy-tooltip");
 	      add_location(span2, file$3, 70, 551, 3489);
 	      add_location(p3, file$3, 69, 6, 2934);
-	      add_location(em7, file$3, 74, 8, 3832);
-	      add_location(p4, file$3, 73, 6, 3820);
-	      add_location(em8, file$3, 77, 8, 4219);
-	      add_location(p5, file$3, 76, 6, 4207);
-	      add_location(em9, file$3, 80, 8, 4714);
-	      add_location(p6, file$3, 79, 6, 4702);
-	      add_location(em10, file$3, 83, 8, 5069);
-	      add_location(p7, file$3, 82, 6, 5057);
-	      add_location(em11, file$3, 86, 8, 5309);
+	      add_location(em7, file$3, 73, 8, 3823);
+	      add_location(br0, file$3, 74, 8, 4189);
+	      attr_dev(img0, "class", "image svelte-7ei3lq");
+	      if (img0.src !== (img0_src_value = "images/brushable.jpg")) attr_dev(img0, "src", img0_src_value);
+	      attr_dev(img0, "alt", "using the timeline brush");
+	      add_location(img0, file$3, 74, 14, 4195);
+	      add_location(br1, file$3, 75, 8, 4284);
+	      attr_dev(img1, "class", "image svelte-7ei3lq");
+	      if (img1.src !== (img1_src_value = "images/selectlabel.jpg")) attr_dev(img1, "src", img1_src_value);
+	      attr_dev(img1, "alt", "selecting a time period label");
+	      add_location(img1, file$3, 75, 14, 4290);
+	      add_location(p4, file$3, 72, 6, 3811);
+	      add_location(em8, file$3, 78, 8, 4406);
+	      add_location(p5, file$3, 77, 6, 4394);
+	      add_location(em9, file$3, 81, 8, 5093);
+	      add_location(br2, file$3, 82, 8, 5427);
+	      attr_dev(img2, "class", "image svelte-7ei3lq");
+	      if (img2.src !== (img2_src_value = "images/fossildata.jpg")) attr_dev(img2, "src", img2_src_value);
+	      attr_dev(img2, "alt", "using the fossil dropdown");
+	      add_location(img2, file$3, 82, 14, 5433);
+	      add_location(p6, file$3, 80, 6, 5081);
+	      add_location(em10, file$3, 85, 8, 5544);
+	      add_location(p7, file$3, 84, 6, 5532);
+	      add_location(em11, file$3, 88, 8, 5784);
 	      attr_dev(a, "href", "https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public");
-	      add_location(a, file$3, 86, 280, 5581);
-	      add_location(p8, file$3, 85, 6, 5297);
+	      add_location(a, file$3, 88, 280, 6056);
+	      add_location(p8, file$3, 87, 6, 5772);
 	      attr_dev(div1, "class", "collapsible-content");
 	      add_location(div1, file$3, 67, 4, 2893);
-	      add_location(li3, file$3, 91, 6, 5758);
-	      add_location(li4, file$3, 92, 6, 5875);
-	      add_location(li5, file$3, 93, 6, 6004);
-	      add_location(li6, file$3, 94, 6, 6137);
-	      add_location(li7, file$3, 95, 6, 6248);
+	      add_location(li3, file$3, 93, 6, 6233);
+	      add_location(li4, file$3, 94, 6, 6350);
+	      add_location(li5, file$3, 95, 6, 6479);
+	      add_location(li6, file$3, 96, 6, 6612);
+	      add_location(li7, file$3, 97, 6, 6723);
 	      attr_dev(ul1, "class", "filter-list");
-	      add_location(ul1, file$3, 90, 4, 5727);
+	      add_location(ul1, file$3, 92, 4, 6202);
 	      attr_dev(section, "id", "expand-content");
 	      attr_dev(section, "class", "content transparent-bg no-upper-margin");
 	      add_location(section, file$3, 45, 2, 1258);
@@ -35759,34 +35791,41 @@ var app = (function () {
 	      append_dev(div1, p4);
 	      append_dev(p4, em7);
 	      append_dev(p4, t41);
-	      append_dev(div1, t42);
+	      append_dev(p4, br0);
+	      append_dev(p4, img0);
+	      append_dev(p4, t42);
+	      append_dev(p4, br1);
+	      append_dev(p4, img1);
+	      append_dev(div1, t43);
 	      append_dev(div1, p5);
 	      append_dev(p5, em8);
-	      append_dev(p5, t44);
-	      append_dev(div1, t45);
+	      append_dev(p5, t45);
+	      append_dev(div1, t46);
 	      append_dev(div1, p6);
 	      append_dev(p6, em9);
-	      append_dev(p6, t47);
-	      append_dev(div1, t48);
+	      append_dev(p6, t48);
+	      append_dev(p6, br2);
+	      append_dev(p6, img2);
+	      append_dev(div1, t49);
 	      append_dev(div1, p7);
 	      append_dev(p7, em10);
-	      append_dev(p7, t50);
-	      append_dev(div1, t51);
+	      append_dev(p7, t51);
+	      append_dev(div1, t52);
 	      append_dev(div1, p8);
 	      append_dev(p8, em11);
-	      append_dev(p8, t53);
+	      append_dev(p8, t54);
 	      append_dev(p8, a);
-	      append_dev(p8, t55);
-	      append_dev(section, t56);
+	      append_dev(p8, t56);
+	      append_dev(section, t57);
 	      append_dev(section, ul1);
 	      append_dev(ul1, li3);
-	      append_dev(ul1, t58);
+	      append_dev(ul1, t59);
 	      append_dev(ul1, li4);
-	      append_dev(ul1, t60);
+	      append_dev(ul1, t61);
 	      append_dev(ul1, li5);
-	      append_dev(ul1, t62);
+	      append_dev(ul1, t63);
 	      append_dev(ul1, li6);
-	      append_dev(ul1, t64);
+	      append_dev(ul1, t65);
 	      append_dev(ul1, li7);
 
 	      if (!mounted) {
@@ -41740,18 +41779,18 @@ var app = (function () {
 	      attr_dev(rect, "height", "20");
 	      attr_dev(rect, "rx", "3");
 	      attr_dev(rect, "ry", "3");
-	      attr_dev(rect, "class", "svelte-i87pbd");
-	      add_location(rect, file$f, 109, 4, 2798);
-	      attr_dev(text_1, "class", "disable-select svelte-i87pbd");
-	      add_location(text_1, file$f, 115, 4, 2969);
-	      attr_dev(g, "class", "reset-brush svelte-i87pbd");
+	      attr_dev(rect, "class", "svelte-1583vey");
+	      add_location(rect, file$f, 109, 4, 2799);
+	      attr_dev(text_1, "class", "disable-select svelte-1583vey");
+	      add_location(text_1, file$f, 115, 4, 2970);
+	      attr_dev(g, "class", "reset-brush svelte-1583vey");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$timeScale*/
-	      ctx[7].range()[0] -
+	      ctx[7].range()[0] - (
 	      /*$margin*/
-	      ctx[8].left / 1.5) + " " + (
+	      ctx[8].left - 45)) + " " + (
 	      /*$panelHeight*/
-	      ctx[9] + 50) + ")");
+	      ctx[9] + 60) + ")");
 	      add_location(g, file$f, 106, 2, 2638);
 	    },
 	    m: function mount(target, anchor) {
@@ -41785,11 +41824,11 @@ var app = (function () {
 	      /*$timeScale, $margin, $panelHeight*/
 	      896 && g_transform_value !== (g_transform_value = "translate(" + (
 	      /*$timeScale*/
-	      ctx[7].range()[0] -
+	      ctx[7].range()[0] - (
 	      /*$margin*/
-	      ctx[8].left / 1.5) + " " + (
+	      ctx[8].left - 45)) + " " + (
 	      /*$panelHeight*/
-	      ctx[9] + 50) + ")")) {
+	      ctx[9] + 60) + ")")) {
 	        attr_dev(g, "transform", g_transform_value);
 	      }
 	    },
@@ -41835,7 +41874,7 @@ var app = (function () {
 	      t = space();
 	      if (if_block) if_block.c();
 	      if_block_anchor = empty();
-	      attr_dev(rect0, "class", "brush-area svelte-i87pbd");
+	      attr_dev(rect0, "class", "brush-area svelte-1583vey");
 	      attr_dev(rect0, "x",
 	      /*x*/
 	      ctx[0]);
@@ -41852,7 +41891,7 @@ var app = (function () {
 	      /*invisible*/
 	      ctx[6]);
 	      add_location(rect0, file$f, 87, 2, 2168);
-	      attr_dev(rect1, "class", "brush-catcher svelte-i87pbd");
+	      attr_dev(rect1, "class", "brush-catcher svelte-1583vey");
 	      attr_dev(rect1, "x",
 	      /*fx*/
 	      ctx[1]);
@@ -48867,9 +48906,9 @@ var app = (function () {
 	      ctx[2](
 	      /*tick*/
 	      ctx[6]));
-	      attr_dev(line, "class", "svelte-msgbcg");
-	      add_location(line, file$t, 53, 6, 1984);
-	      attr_dev(text_1, "class", "tick svelte-msgbcg");
+	      attr_dev(line, "class", "svelte-l3qnxo");
+	      add_location(line, file$t, 53, 6, 1959);
+	      attr_dev(text_1, "class", "tick svelte-l3qnxo");
 	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (
 	      /*rTicks*/
 	      ctx[4][0] *
@@ -48883,7 +48922,7 @@ var app = (function () {
 	      ctx[2](
 	      /*tick*/
 	      ctx[6])) + ")");
-	      add_location(text_1, file$t, 57, 6, 2203);
+	      add_location(text_1, file$t, 57, 6, 2178);
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", circle_cy_value =
 	      /*rTicks*/
@@ -48899,8 +48938,8 @@ var app = (function () {
 	      ctx[2](
 	      /*tick*/
 	      ctx[6]));
-	      attr_dev(circle, "class", "svelte-msgbcg");
-	      add_location(circle, file$t, 61, 6, 2396);
+	      attr_dev(circle, "class", "svelte-l3qnxo");
+	      add_location(circle, file$t, 61, 6, 2371);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, line, anchor);
@@ -49024,25 +49063,24 @@ var app = (function () {
 	        each_blocks[_i].c();
 	      }
 
-	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + (-(
+	      attr_dev(text_1, "transform", text_1_transform_value = "translate(" + 0 + " " + (
 	      /*rTicks*/
 	      ctx[4][0] *
 	      /*circleScale*/
-	      ctx[5]) + 55) + " " + (
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
 	      /*rTicks*/
-	      ctx[4].slice(-1)[0] *
-	      /*circleScale*/
-	      ctx[5] + 70) + ") rotate(270)");
-	      attr_dev(text_1, "dy", "4");
-	      attr_dev(text_1, "class", "svelte-msgbcg");
+	      ctx[4][0]) - 30) + ")");
+	      attr_dev(text_1, "class", "svelte-l3qnxo");
 	      add_location(text_1, file$t, 47, 2, 1685);
-	      attr_dev(g0, "class", "total-r-scale svelte-msgbcg");
+	      attr_dev(g0, "class", "total-r-scale svelte-l3qnxo");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(0 " + -2 * (
 	      /*rTicks*/
 	      ctx[4].slice(-1)[0] *
 	      /*circleScale*/
 	      ctx[5]) + ")");
-	      add_location(g0, file$t, 51, 2, 1853);
+	      add_location(g0, file$t, 51, 2, 1828);
 	      attr_dev(g1, "class", "legend");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(" + (
 	      /*$width*/
@@ -49071,6 +49109,20 @@ var app = (function () {
 	    p: function update(ctx, _ref) {
 	      var _ref2 = _slicedToArray(_ref, 1),
 	          dirty = _ref2[0];
+
+	      if (dirty &
+	      /*$sizeTotalRScale*/
+	      4 && text_1_transform_value !== (text_1_transform_value = "translate(" + 0 + " " + (
+	      /*rTicks*/
+	      ctx[4][0] *
+	      /*circleScale*/
+	      ctx[5] - 2 *
+	      /*$sizeTotalRScale*/
+	      ctx[2](
+	      /*rTicks*/
+	      ctx[4][0]) - 30) + ")")) {
+	        attr_dev(text_1, "transform", text_1_transform_value);
+	      }
 
 	      if (dirty &
 	      /*rTicks, circleScale, $sizeTotalRScale, commaFormat*/
@@ -49257,11 +49309,11 @@ var app = (function () {
 	      attr_dev(circle, "cx", "0");
 	      attr_dev(circle, "cy", "-20");
 	      attr_dev(circle, "r", "5");
-	      attr_dev(circle, "class", "svelte-1ay65iw");
+	      attr_dev(circle, "class", "svelte-1ywcji2");
 	      add_location(circle, file$u, 22, 8, 673);
-	      attr_dev(text0, "class", "bg svelte-1ay65iw");
+	      attr_dev(text0, "class", "bg svelte-1ywcji2");
 	      add_location(text0, file$u, 23, 8, 714);
-	      attr_dev(text1, "class", "svelte-1ay65iw");
+	      attr_dev(text1, "class", "svelte-1ywcji2");
 	      add_location(text1, file$u, 24, 8, 753);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
@@ -49331,7 +49383,7 @@ var app = (function () {
 	      g = svg_element("g");
 	      text_1 = svg_element("text");
 	      t = text(t_value);
-	      attr_dev(text_1, "class", "svelte-1ay65iw");
+	      attr_dev(text_1, "class", "svelte-1ywcji2");
 	      add_location(text_1, file$u, 51, 8, 1840);
 	      attr_dev(g, "class", "tick");
 	      attr_dev(g, "transform", g_transform_value = "translate(0 " +
@@ -49468,15 +49520,15 @@ var app = (function () {
 	      t3 = text("Locations");
 	      path5 = svg_element("path");
 	      attr_dev(path0, "d", path0_d_value = "M0 0l" + lineLength$1 + " 0");
-	      attr_dev(path0, "class", "svelte-1ay65iw");
+	      attr_dev(path0, "class", "svelte-1ywcji2");
 	      add_location(path0, file$u, 35, 6, 1137);
-	      attr_dev(text0, "class", "bg svelte-1ay65iw");
+	      attr_dev(text0, "class", "bg svelte-1ywcji2");
 	      attr_dev(text0, "dx", text0_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text0, "dy", "4");
 	      add_location(text0, file$u, 36, 6, 1181);
 	      attr_dev(text1, "dx", text1_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text1, "dy", "4");
-	      attr_dev(text1, "class", "svelte-1ay65iw");
+	      attr_dev(text1, "class", "svelte-1ywcji2");
 	      add_location(text1, file$u, 39, 6, 1289);
 	      attr_dev(path1, "d", path1_d_value = "M" + (
 	      /*timeScaleText*/
@@ -49484,21 +49536,21 @@ var app = (function () {
 	      /*timeScaleText*/
 	      ctx[2].getComputedTextLength() + lineLength$1 + 2 * offset$1 : 0) + " 0l" + lineLength$1 + " 0");
 	      attr_dev(path1, "marker-end", "url(#arrow)");
-	      attr_dev(path1, "class", "svelte-1ay65iw");
+	      attr_dev(path1, "class", "svelte-1ywcji2");
 	      add_location(path1, file$u, 42, 6, 1412);
-	      attr_dev(g0, "class", "time-scale-label svelte-1ay65iw");
+	      attr_dev(g0, "class", "time-scale-label svelte-1ywcji2");
 	      attr_dev(g0, "transform", g0_transform_value = "translate(" + (15 +
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
 	      /*$margin*/
 	      ctx[5].left / 1.5) + " 30)");
 	      add_location(g0, file$u, 34, 4, 1026);
-	      attr_dev(g1, "class", "time-scale svelte-1ay65iw");
+	      attr_dev(g1, "class", "time-scale svelte-1ywcji2");
 	      attr_dev(g1, "transform", g1_transform_value = "translate(0 " +
 	      /*$sizeTotalYScale*/
 	      ctx[3].range()[0] + ")");
 	      add_location(g1, file$u, 17, 2, 465);
-	      attr_dev(g2, "class", "y-scale-ticks svelte-1ay65iw");
+	      attr_dev(g2, "class", "y-scale-ticks svelte-1ywcji2");
 	      attr_dev(g2, "transform", g2_transform_value = "translate(" + (15 +
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
@@ -49506,12 +49558,12 @@ var app = (function () {
 	      ctx[5].left / 1.5) + " 0)");
 	      add_location(g2, file$u, 46, 2, 1588);
 	      attr_dev(path2, "d", path2_d_value = "M0 0l0 " + -lineLength$1);
-	      attr_dev(path2, "class", "svelte-1ay65iw");
+	      attr_dev(path2, "class", "svelte-1ywcji2");
 	      add_location(path2, file$u, 57, 4, 2039);
 	      attr_dev(text2, "transform", "rotate(270)");
 	      attr_dev(text2, "dx", text2_dx_value = lineLength$1 + offset$1);
 	      attr_dev(text2, "dy", "4");
-	      attr_dev(text2, "class", "svelte-1ay65iw");
+	      attr_dev(text2, "class", "svelte-1ywcji2");
 	      add_location(text2, file$u, 58, 4, 2082);
 	      attr_dev(path3, "d", path3_d_value = "M0 " + (
 	      /*yScaleText*/
@@ -49519,9 +49571,9 @@ var app = (function () {
 	      /*yScaleText*/
 	      ctx[0].getComputedTextLength() - lineLength$1 - 2 * offset$1 : 0) + "l0 " + -lineLength$1);
 	      attr_dev(path3, "marker-end", "url(#arrow)");
-	      attr_dev(path3, "class", "svelte-1ay65iw");
+	      attr_dev(path3, "class", "svelte-1ywcji2");
 	      add_location(path3, file$u, 62, 4, 2221);
-	      attr_dev(g3, "class", "y-scale svelte-1ay65iw");
+	      attr_dev(g3, "class", "y-scale svelte-1ywcji2");
 	      attr_dev(g3, "transform", g3_transform_value = "translate(" + (
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
@@ -49531,7 +49583,7 @@ var app = (function () {
 	      ctx[3].range()[0] + ")");
 	      add_location(g3, file$u, 55, 2, 1905);
 	      attr_dev(path4, "d", path4_d_value = "M0 0l0 " + lineLength$1);
-	      attr_dev(path4, "class", "svelte-1ay65iw");
+	      attr_dev(path4, "class", "svelte-1ywcji2");
 	      add_location(path4, file$u, 67, 4, 2503);
 	      attr_dev(text3, "transform", "rotate(270)");
 	      attr_dev(text3, "dx", text3_dx_value =
@@ -49540,16 +49592,16 @@ var app = (function () {
 	      /*mapScaleText*/
 	      ctx[1].getComputedTextLength() - lineLength$1 - offset$1 : 0);
 	      attr_dev(text3, "dy", "4");
-	      attr_dev(text3, "class", "svelte-1ay65iw");
+	      attr_dev(text3, "class", "svelte-1ywcji2");
 	      add_location(text3, file$u, 68, 4, 2545);
 	      attr_dev(path5, "d", path5_d_value = "M0 " + (
 	      /*mapScaleText*/
 	      ctx[1] ?
 	      /*mapScaleText*/
 	      ctx[1].getComputedTextLength() + lineLength$1 + 2 * offset$1 : 0) + "l0 " + lineLength$1);
-	      attr_dev(path5, "class", "svelte-1ay65iw");
+	      attr_dev(path5, "class", "svelte-1ywcji2");
 	      add_location(path5, file$u, 72, 4, 2741);
-	      attr_dev(g4, "class", "map-scale svelte-1ay65iw");
+	      attr_dev(g4, "class", "map-scale svelte-1ywcji2");
 	      attr_dev(g4, "transform", g4_transform_value = "translate(" + (
 	      /*$timeScale*/
 	      ctx[4].range()[0] -
@@ -56293,7 +56345,7 @@ var app = (function () {
 	  return ChartYAxis;
 	}(SvelteComponentDev);
 
-	var file$E = "src/components/ChartDatapoint.svelte"; // (105:0) {#if (name)}
+	var file$E = "src/components/ChartDatapoint.svelte"; // (109:0) {#if (name)}
 
 	function create_if_block$i(ctx) {
 	  var t;
@@ -56367,11 +56419,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block$i.name,
 	    type: "if",
-	    source: "(105:0) {#if (name)}",
+	    source: "(109:0) {#if (name)}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (106:2) {#if (x <= ($width/2))}
+	} // (110:2) {#if (x <= ($width/2))}
 
 
 	function create_if_block_2$5(ctx) {
@@ -56391,14 +56443,14 @@ var app = (function () {
 	      /*stroke*/
 	      ctx[3]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$E, 108, 10, 2674);
+	      add_location(text_1, file$E, 112, 10, 2720);
 	      attr_dev(g, "class", "centroid-name-label place-label svelte-1wzv8r4");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$tX*/
 	      ctx[5] + 10) + " " + (
 	      /*$tY*/
 	      ctx[6] - 20) + ")");
-	      add_location(g, file$E, 107, 7, 2575);
+	      add_location(g, file$E, 111, 7, 2621);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -56438,11 +56490,11 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_2$5.name,
 	    type: "if",
-	    source: "(106:2) {#if (x <= ($width/2))}",
+	    source: "(110:2) {#if (x <= ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
-	} // (113:2) {#if (x > ($width/2))}
+	} // (117:2) {#if (x > ($width/2))}
 
 
 	function create_if_block_1$8(ctx) {
@@ -56462,14 +56514,14 @@ var app = (function () {
 	      /*stroke*/
 	      ctx[3]);
 	      set_style(text_1, "transition", "opacity 600ms ease");
-	      add_location(text_1, file$E, 115, 10, 2948);
+	      add_location(text_1, file$E, 119, 10, 2994);
 	      attr_dev(g, "class", "centroid-name-label place-label svelte-1wzv8r4");
 	      attr_dev(g, "transform", g_transform_value = "translate(" + (
 	      /*$tX*/
 	      ctx[5] - 100) + " " + (
 	      /*$tY*/
 	      ctx[6] - 20) + ")");
-	      add_location(g, file$E, 114, 7, 2848);
+	      add_location(g, file$E, 118, 7, 2894);
 	    },
 	    m: function mount(target, anchor) {
 	      insert_dev(target, g, anchor);
@@ -56509,7 +56561,7 @@ var app = (function () {
 	    block: block,
 	    id: create_if_block_1$8.name,
 	    type: "if",
-	    source: "(113:2) {#if (x > ($width/2))}",
+	    source: "(117:2) {#if (x > ($width/2))}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -56558,13 +56610,13 @@ var app = (function () {
 	      attr_dev(circle, "id", circle_id_value = "chart-" +
 	      /*hoverName*/
 	      ctx[2]);
-	      add_location(circle, file$E, 97, 7, 2315);
+	      add_location(circle, file$E, 101, 7, 2361);
 	      attr_dev(g, "transform", g_transform_value = "translate(" +
 	      /*$tX*/
 	      ctx[5] + " " +
 	      /*$tY*/
 	      ctx[6] + ")");
-	      add_location(g, file$E, 92, 0, 2196);
+	      add_location(g, file$E, 96, 0, 2242);
 	    },
 	    l: function claim(nodes) {
 	      throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -56726,7 +56778,12 @@ var app = (function () {
 	    mypopup.innerHTML = ""; // to account for the area that is expndable
 
 	    var topContentHeight = document.getElementById("expand-content");
-	    var adjust = 618; // place on right for left half of screen
+	    var adjust = 618;
+
+	    if ($width < 642) {
+	      adjust = 670;
+	    } // place on right for left half of screen
+
 
 	    if (x <= $width / 2) {
 	      mypopup.className = "mypopup";

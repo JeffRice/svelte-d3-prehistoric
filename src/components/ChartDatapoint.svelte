@@ -35,6 +35,10 @@
 
     let adjust = 618;
 
+    if($width < 642){
+    adjust = 670
+    }
+
 
 
 // place on right for left half of screen

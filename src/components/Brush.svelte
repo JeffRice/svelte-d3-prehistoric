@@ -105,7 +105,7 @@
 </g>
 {#if ($originalTimeDomain)}
   <g class="reset-brush"
-     transform="translate({$timeScale.range()[0] - $margin.left / 1.5} {$panelHeight + 50})"
+     transform="translate({$timeScale.range()[0] - ($margin.left - 45)} {$panelHeight + 60})"
      on:click={handleResetButtonClick}>
     <rect x="-3"
           y="-15"
@@ -154,7 +154,7 @@
 
   .reset-brush text {
     font-family: var(--font-02);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     fill: var(--bg);
     transition: fill 200ms ease;
   }
