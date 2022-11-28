@@ -319,7 +319,7 @@ section.no-upper-margin {
 section h1 {
   margin: 0.5rem 0 0 0;
   font-family: var(--font-01);
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: var(--prehistoricDarkGreen);
   text-align: center;
 }
