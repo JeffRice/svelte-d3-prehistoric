@@ -50978,13 +50978,13 @@ var app = (function () {
 	      span = element("span");
 	      span.textContent = "dataset view";
 	      t4 = text(".");
-	      attr_dev(div0, "class", "info-icon svelte-1ghpkny");
+	      attr_dev(div0, "class", "info-icon svelte-1cfcl0a");
 	      add_location(div0, file$x, 18, 4, 418);
 	      attr_dev(span, "class", "pseudolink");
 	      add_location(span, file$x, 19, 37, 486);
-	      attr_dev(p, "class", "svelte-1ghpkny");
+	      attr_dev(p, "class", "svelte-1cfcl0a");
 	      add_location(p, file$x, 19, 4, 453);
-	      attr_dev(div1, "class", "info svelte-1ghpkny");
+	      attr_dev(div1, "class", "info svelte-1cfcl0a");
 	      set_style(div1, "left",
 	      /*x*/
 	      ctx[0] + "px");

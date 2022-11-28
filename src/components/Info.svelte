@@ -46,5 +46,6 @@
     font-family: var(--font-02);
     font-size: 0.8rem;
     color: var(--text-black);
+    background-color: var(--bg);
   }
 </style>
