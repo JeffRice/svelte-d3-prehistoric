@@ -46912,14 +46912,14 @@ var app = (function () {
 
 	function get_each_context$6(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[21] = list[i][0];
-	  child_ctx[22] = list[i][1];
+	  child_ctx[20] = list[i][0];
+	  child_ctx[21] = list[i][1];
 	  return child_ctx;
 	}
 
 	function get_each_context_1(ctx, list, i) {
 	  var child_ctx = ctx.slice();
-	  child_ctx[25] = list[i];
+	  child_ctx[24] = list[i];
 	  return child_ctx;
 	} // (117:2) {#each sources as source (source.idNation)}
 
@@ -46932,33 +46932,24 @@ var app = (function () {
 	    props: {
 	      source:
 	      /*source*/
-	      ctx[25],
+	      ctx[24],
 	      selected:
 	      /*$eSelected*/
 	      ctx[4] &&
 	      /*$eSelected*/
 	      ctx[4].map(func$4).includes(
 	      /*source*/
-	      ctx[25].id) ? "selected" :
+	      ctx[24].id) ? "selected" :
 	      /*$eSelected*/
 	      ctx[4] &&
 	      /*$eSelected*/
 	      ctx[4].length > 0 ? "background" : "unselected",
-	      hovered:
-	      /*$eHovered*/
-	      ctx[5] &&
-	      /*$eHovered*/
-	      ctx[5].id ===
-	      /*source*/
-	      ctx[25].id ? "selected" :
-	      /*$eHovered*/
-	      ctx[5] ? "background" : "unselected",
 	      extraFaint:
 	      /*source*/
-	      ctx[25].outOfTimeRange,
+	      ctx[24].outOfTimeRange,
 	      showPolarizationColor:
 	      /*$highlightPolarization*/
-	      ctx[6]
+	      ctx[5]
 	    },
 	    $$inline: true
 	  });
@@ -46981,7 +46972,7 @@ var app = (function () {
 	      /*sources*/
 	      2) sourcelink_changes.source =
 	      /*source*/
-	      ctx[25];
+	      ctx[24];
 	      if (dirty &
 	      /*$eSelected, sources*/
 	      18) sourcelink_changes.selected =
@@ -46990,32 +46981,21 @@ var app = (function () {
 	      /*$eSelected*/
 	      ctx[4].map(func$4).includes(
 	      /*source*/
-	      ctx[25].id) ? "selected" :
+	      ctx[24].id) ? "selected" :
 	      /*$eSelected*/
 	      ctx[4] &&
 	      /*$eSelected*/
 	      ctx[4].length > 0 ? "background" : "unselected";
 	      if (dirty &
-	      /*$eHovered, sources*/
-	      34) sourcelink_changes.hovered =
-	      /*$eHovered*/
-	      ctx[5] &&
-	      /*$eHovered*/
-	      ctx[5].id ===
-	      /*source*/
-	      ctx[25].id ? "selected" :
-	      /*$eHovered*/
-	      ctx[5] ? "background" : "unselected";
-	      if (dirty &
 	      /*sources*/
 	      2) sourcelink_changes.extraFaint =
 	      /*source*/
-	      ctx[25].outOfTimeRange;
+	      ctx[24].outOfTimeRange;
 	      if (dirty &
 	      /*$highlightPolarization*/
-	      64) sourcelink_changes.showPolarizationColor =
+	      32) sourcelink_changes.showPolarizationColor =
 	      /*$highlightPolarization*/
-	      ctx[6];
+	      ctx[5];
 	      sourcelink.$set(sourcelink_changes);
 	    },
 	    i: function intro(local) {
@@ -47040,7 +47020,7 @@ var app = (function () {
 	    ctx: ctx
 	  });
 	  return block;
-	} // (132:2) {#each centroids as [country, centroid]}
+	} // (127:2) {#each centroids as [country, centroid]}
 
 
 	function create_each_block$6(ctx) {
@@ -47050,24 +47030,24 @@ var app = (function () {
 	    props: {
 	      centroid:
 	      /*centroid*/
-	      ctx[22],
+	      ctx[21],
 	      country:
 	      /*country*/
-	      ctx[21],
+	      ctx[20],
 	      selected:
 	      /*$disinformantNationFilter*/
 	      ctx[0].filter(func_1).map(func_2$2).includes(
 	      /*country*/
-	      ctx[21])
+	      ctx[20])
 	    },
 	    $$inline: true
 	  });
 	  centroid.$on("click",
 	  /*handleCentroidClick*/
-	  ctx[8]);
+	  ctx[7]);
 	  centroid.$on("mouseover",
 	  /*handleCentroidMouseover*/
-	  ctx[9]);
+	  ctx[8]);
 	  var block = {
 	    c: function create() {
 	      create_component(centroid.$$.fragment);
@@ -47082,19 +47062,19 @@ var app = (function () {
 	      /*centroids*/
 	      4) centroid_changes.centroid =
 	      /*centroid*/
-	      ctx[22];
+	      ctx[21];
 	      if (dirty &
 	      /*centroids*/
 	      4) centroid_changes.country =
 	      /*country*/
-	      ctx[21];
+	      ctx[20];
 	      if (dirty &
 	      /*$disinformantNationFilter, centroids*/
 	      5) centroid_changes.selected =
 	      /*$disinformantNationFilter*/
 	      ctx[0].filter(func_1).map(func_2$2).includes(
 	      /*country*/
-	      ctx[21]);
+	      ctx[20]);
 	      centroid.$set(centroid_changes);
 	    },
 	    i: function intro(local) {
@@ -47114,7 +47094,7 @@ var app = (function () {
 	    block: block,
 	    id: create_each_block$6.name,
 	    type: "each",
-	    source: "(132:2) {#each centroids as [country, centroid]}",
+	    source: "(127:2) {#each centroids as [country, centroid]}",
 	    ctx: ctx
 	  });
 	  return block;
@@ -47137,7 +47117,7 @@ var app = (function () {
 	  var get_key = function get_key(ctx) {
 	    return (
 	      /*source*/
-	      ctx[25].idNation
+	      ctx[24].idNation
 	    );
 	  };
 
@@ -47208,7 +47188,7 @@ var app = (function () {
 	      if (!mounted) {
 	        dispose = listen_dev(document.body, "mouseover",
 	        /*handleBodyMouseover*/
-	        ctx[7], false, false, false);
+	        ctx[6], false, false, false);
 	        mounted = true;
 	      }
 	    },
@@ -47217,8 +47197,8 @@ var app = (function () {
 	          dirty = _ref2[0];
 
 	      if (dirty &
-	      /*sources, $eSelected, $eHovered, $highlightPolarization*/
-	      114) {
+	      /*sources, $eSelected, $highlightPolarization*/
+	      50) {
 	        var _each_value_ =
 	        /*sources*/
 	        ctx[1];
@@ -47231,7 +47211,7 @@ var app = (function () {
 
 	      if (dirty &
 	      /*centroids, $disinformantNationFilter, handleCentroidClick, handleCentroidMouseover*/
-	      773) {
+	      389) {
 	        each_value =
 	        /*centroids*/
 	        ctx[2];
@@ -47345,11 +47325,10 @@ var app = (function () {
 	  var $panelHeight;
 	  var $sourcesSwitch;
 	  var $eSelected;
-	  var $eHovered;
 	  var $highlightPolarization;
 	  validate_store(hovered$1, "cHovered");
 	  component_subscribe($$self, hovered$1, function ($$value) {
-	    return $$invalidate(13, $cHovered = $$value);
+	    return $$invalidate(12, $cHovered = $$value);
 	  });
 	  validate_store(disinformantNationFilter, "disinformantNationFilter");
 	  component_subscribe($$self, disinformantNationFilter, function ($$value) {
@@ -47357,23 +47336,23 @@ var app = (function () {
 	  });
 	  validate_store(countries, "countries");
 	  component_subscribe($$self, countries, function ($$value) {
-	    return $$invalidate(15, $countries = $$value);
+	    return $$invalidate(14, $countries = $$value);
 	  });
 	  validate_store(switchValueStore, "switchValueStore");
 	  component_subscribe($$self, switchValueStore, function ($$value) {
-	    return $$invalidate(16, $switchValueStore = $$value);
+	    return $$invalidate(15, $switchValueStore = $$value);
 	  });
 	  validate_store(geoPath, "geoPath");
 	  component_subscribe($$self, geoPath, function ($$value) {
-	    return $$invalidate(17, $geoPath = $$value);
+	    return $$invalidate(16, $geoPath = $$value);
 	  });
 	  validate_store(pangeaRegions, "pangeaRegions");
 	  component_subscribe($$self, pangeaRegions, function ($$value) {
-	    return $$invalidate(18, $pangeaRegions = $$value);
+	    return $$invalidate(17, $pangeaRegions = $$value);
 	  });
 	  validate_store(panelHeight, "panelHeight");
 	  component_subscribe($$self, panelHeight, function ($$value) {
-	    return $$invalidate(19, $panelHeight = $$value);
+	    return $$invalidate(18, $panelHeight = $$value);
 	  });
 	  validate_store(sourcesSwitch, "sourcesSwitch");
 	  component_subscribe($$self, sourcesSwitch, function ($$value) {
@@ -47383,13 +47362,9 @@ var app = (function () {
 	  component_subscribe($$self, selected, function ($$value) {
 	    return $$invalidate(4, $eSelected = $$value);
 	  });
-	  validate_store(hovered, "eHovered");
-	  component_subscribe($$self, hovered, function ($$value) {
-	    return $$invalidate(5, $eHovered = $$value);
-	  });
 	  validate_store(highlightPolarization, "highlightPolarization");
 	  component_subscribe($$self, highlightPolarization, function ($$value) {
-	    return $$invalidate(6, $highlightPolarization = $$value);
+	    return $$invalidate(5, $highlightPolarization = $$value);
 	  });
 	  var timePoints = $$props.timePoints;
 	  var disNationNumberLeft = 0;
@@ -47437,7 +47412,7 @@ var app = (function () {
 	  validate_slots("Sources", $$slots, []);
 
 	  $$self.$$set = function ($$props) {
-	    if ("timePoints" in $$props) $$invalidate(10, timePoints = $$props.timePoints);
+	    if ("timePoints" in $$props) $$invalidate(9, timePoints = $$props.timePoints);
 	  };
 
 	  $$self.$capture_state = function () {
@@ -47481,16 +47456,15 @@ var app = (function () {
 	      centroids: centroids,
 	      $sourcesSwitch: $sourcesSwitch,
 	      $eSelected: $eSelected,
-	      $eHovered: $eHovered,
 	      $highlightPolarization: $highlightPolarization
 	    };
 	  };
 
 	  $$self.$inject_state = function ($$props) {
-	    if ("timePoints" in $$props) $$invalidate(10, timePoints = $$props.timePoints);
+	    if ("timePoints" in $$props) $$invalidate(9, timePoints = $$props.timePoints);
 	    if ("disNationNumberLeft" in $$props) disNationNumberLeft = $$props.disNationNumberLeft;
 	    if ("disNationNumberRight" in $$props) disNationNumberRight = $$props.disNationNumberRight;
-	    if ("countryNames" in $$props) $$invalidate(14, countryNames = $$props.countryNames);
+	    if ("countryNames" in $$props) $$invalidate(13, countryNames = $$props.countryNames);
 	    if ("sources" in $$props) $$invalidate(1, sources = $$props.sources);
 	    if ("centroids" in $$props) $$invalidate(2, centroids = $$props.centroids);
 	  };
@@ -47506,15 +47480,15 @@ var app = (function () {
 	  $$self.$$.update = function () {
 	    if ($$self.$$.dirty &
 	    /*$countries*/
-	    32768) {
-	       $$invalidate(14, countryNames = $countries.map(function (d) {
+	    16384) {
+	       $$invalidate(13, countryNames = $countries.map(function (d) {
 	        return d.properties.name;
 	      }));
 	    }
 
 	    if ($$self.$$.dirty &
 	    /*timePoints, countryNames, $switchValueStore, $geoPath, $pangeaRegions, $countries, $panelHeight, disNationNumberRight, disNationNumberLeft*/
-	    1039360) {
+	    519680) {
 	       $$invalidate(1, sources = timePoints.map(function (d) {
 	        return d.disinformantNation.map(function (disNation, i) {
 	          var coords = [];
@@ -47591,7 +47565,7 @@ var app = (function () {
 	    }
 	  };
 
-	  return [$disinformantNationFilter, sources, centroids, $sourcesSwitch, $eSelected, $eHovered, $highlightPolarization, handleBodyMouseover, handleCentroidClick, handleCentroidMouseover, timePoints];
+	  return [$disinformantNationFilter, sources, centroids, $sourcesSwitch, $eSelected, $highlightPolarization, handleBodyMouseover, handleCentroidClick, handleCentroidMouseover, timePoints];
 	}
 
 	var Sources = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -47606,7 +47580,7 @@ var app = (function () {
 
 	    _this = _super.call(this, options);
 	    init(_assertThisInitialized(_this), options, instance$o, create_fragment$o, safe_not_equal, {
-	      timePoints: 10
+	      timePoints: 9
 	    });
 	    dispatch_dev("SvelteRegisterComponent", {
 	      component: _assertThisInitialized(_this),
@@ -47619,7 +47593,7 @@ var app = (function () {
 
 	    if (
 	    /*timePoints*/
-	    ctx[10] === undefined && !("timePoints" in props)) {
+	    ctx[9] === undefined && !("timePoints" in props)) {
 	      console.warn("<Sources> was created without expected prop 'timePoints'");
 	    }
 

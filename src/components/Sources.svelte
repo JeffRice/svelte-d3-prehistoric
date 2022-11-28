@@ -121,11 +121,6 @@
                             : ($eSelected && $eSelected.length > 0
                                 ? 'background'
                                 : 'unselected')}
-                hovered={$eHovered && $eHovered.id === source.id
-                            ? 'selected'
-                            : ($eHovered
-                                ? 'background'
-                                : 'unselected')}
                 extraFaint={source.outOfTimeRange}
                 showPolarizationColor={$highlightPolarization} />
   {/each}
