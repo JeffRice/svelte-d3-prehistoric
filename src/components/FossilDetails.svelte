@@ -251,7 +251,7 @@ id="flex-show">Fossils Continued... <i class="arrow down"></i></button>
         text-align: center;
     }
     .fossil-names{
-        padding: 1rem;
+        padding: 0.5rem;
     }
     .fossil-wrap{
         padding: 1rem;

@@ -1,6 +1,5 @@
 <script>
   // the timeline
-  import { oneLineTrim } from 'common-tags';
   import { width, maxDim, panelHeight } from '../stores/dimensions';
   import { gentleLine } from '../utils/paths';
 

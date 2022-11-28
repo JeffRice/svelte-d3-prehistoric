@@ -8,12 +8,9 @@
     selectAllFilters,
     contextData,
     originalTimeDomain,
-    highlightPolarization,
-    highlightCib,
     controlsFilter } from '../stores/filters';
   import { timeScale } from '../stores/scales';
   import { fossilDatapoints, switchValueStore } from '../stores/elements';
-
   import Dropdown from './Dropdown.svelte';
   import Fossildropdown from './Fossildropdown.svelte';
   import SearchText from './SearchText.svelte';
@@ -46,8 +43,6 @@
   function handleButtonClick() {
     selectAllFilters();
     contextData.unselectAll();
-    $highlightPolarization = false;
-    $highlightCib = false;
     if ($originalTimeDomain) {
       $timeScale.domain($originalTimeDomain);
       $timeScale = $timeScale;
@@ -143,13 +138,19 @@
 
   @media (min-width: 460px) {
     .controls {
-      grid-template-rows: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
     }
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 800px) {
     .controls {
       grid-template-rows: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1250px) {
+    .controls {
+      grid-template-rows: repeat(1, 1fr);
     }
   }
 

@@ -31,10 +31,11 @@
     // to account for the area that is expndable
     let topContentHeight = document.getElementById("expand-content")
 
-    // to adjust for responsive text size changes
-    let adjust = 277;
 
-    console.log($width)
+
+    let adjust = 618;
+
+
 
 // place on right for left half of screen
 if (x <= ($width/2)){

@@ -1,6 +1,6 @@
 import CopyTooltip from '../components/CopyTooltip.svelte';
 
-export function copytooltipable(node, { content, showClickMessage = true }) {
+export function copytooltipable(node, { content, showClickMessage = false }) {
   let component;
 
   function handleMouseleave(e) {

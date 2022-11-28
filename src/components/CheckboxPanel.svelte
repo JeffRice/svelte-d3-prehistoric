@@ -1,15 +1,9 @@
 <script>
-  import {
-    highlightPolarization,
-    highlightCib,
-    controlsFilter,
-    polarizationFilter,
-    polarizationDef } from '../stores/filters';
-  import { polarizationScale } from '../stores/scales';
+  import { controlsFilter } from '../stores/filters';
   import { copytooltipable } from '../actions/copytooltipable';
 
   import Checkbox from './Checkbox.svelte';
-  import Slider from './Slider.svelte';
+
 
   function handleClick() {
         $controlsFilter = !$controlsFilter;
@@ -28,13 +22,6 @@
       </span>
     </Checkbox>
   </li>
-  <!-- <li>
-    <Checkbox id="checkboxpanel-checkbox-cib"
-              checked={$highlightCib}
-              on:click={() => handleClick('cib')}>
-      <span use:copytooltipable={{content: 'Some content', showClickMessage: false}}>CIB data filter</span>
-    </Checkbox>
-  </li> -->
 </ul>
 
 <style>
@@ -50,9 +37,6 @@
     position: relative;
   }
 
-  li.polarization-slider {
-    margin-bottom: 0.05rem;
-  }
 
   span {
     display: inline-block;

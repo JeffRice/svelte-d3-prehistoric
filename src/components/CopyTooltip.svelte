@@ -6,7 +6,7 @@
   export let content = '';
   export let x = 0;
   export let y = 0;
-  export let showClickMessage = true;
+  export let showClickMessage = false;
 
   const maxWidth = 300;
   const margin = 10;

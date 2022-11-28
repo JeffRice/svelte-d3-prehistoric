@@ -48,7 +48,7 @@
     <label for="collapsible-status-quo" class="lbl-toggle top">Overview</label>
     <div class="collapsible-content">
       <p>
-        The Prehistoric Life Timeline Mapping is an interactive, open-source database that shows a variety of information about prehistoric creatures. They are mapped to their original geographic location and period in time they existed. It also maps fossils to their current era discovery sites.
+        The Prehistoric Life Timeline Mapping is an interactive visualization about prehistoric creatures. They are mapped to their original geographic location and period in time they existed. It also maps fossils to their current era discovery sites.
       </p>
       <p>
         The timeline visualization contains <em>{data.length} Prehistoric Creatures</em> that existed up to <em> 305 million years ago </em>
@@ -68,26 +68,32 @@
     <div class="collapsible-content">
 
       <p>
-        <em>Filters</em> enable users to adjust the visibility of cases by <span class="pseudolink copy-tooltip" on:click={() => scrollTo('attribution-score', 'collapsible-methodology')} use:copytooltipable={{content: 'The Attribution Score is a framework of eighteen binary statements (true or false) intended to assess the credibility, objectivity, evidence, and transparency of a given case.'}}>Attribution Score</span>, <span class="pseudolink copy-tooltip" on:click={() => scrollTo('source', 'collapsible-codebook')} use:copytooltipable={{content: 'Disinformant Nation is the nation from which the case allegedly originated. This does not necessarily denote that the activity was associated with a government.'}}>Disinformant Nation</span>, <span class="pseudolink copy-tooltip" on:click={() => scrollTo('platform', 'collapsible-codebook')} use:copytooltipable={{content: 'Platform(s) on which the case allegedly took place, divided between the open web, social media platforms, messaging platforms, and other platforms like email and forum boards.'}}>Platform</span>, <span class="pseudolink copy-tooltip" on:click={() => scrollTo('method', 'collapsible-codebook')} use:copytooltipable={{content: 'Method(s) involved in both the creation and amplification of content related to the case. Sockpuppets are one method; hacking by means of data exfiltration is another.'}}>Method</span>, <span class="pseudolink copy-tooltip" on:click={() => scrollTo('source', 'collapsible-codebook')} use:copytooltipable={{content: 'Source describes the individual or entity that originated a foreign interference claim.'}}>Source</span>, and <span class="pseudolink copy-tooltip" on:click={() => scrollTo('source', 'collapsible-codebook')} use:copytooltipable={{content: 'Source Category is the broad classification (e.g. Government, Technology Company) of the Source of a given case.'}}>Source Category</span>. Free text search is also supported. This view also supports the addition of contextual datasets.
+        <em>Filters</em> enable users to adjust the visibility of creatures by <span class="pseudolink copy-tooltip" use:copytooltipable={{content: 'The primary continent this creature lived. Although some may have lived in additional regions they are only mapped to one Continent.'}}>Continent</span>, <span class="pseudolink copy-tooltip" use:copytooltipable={{content: 'The type of diet either herbivore or carinvore. Although it is believed there was a small amount of omnivorous prehistoric life those have not been included.'}}>Diet</span>, and <span class="pseudolink copy-tooltip" use:copytooltipable={{content: 'The geologic time period they belond to. Again although some may have stretched into multiple time periods, so they\'re given a time range that shows dates they may have lived'}}>Time Period</span>. Free text search is also supported.
+        
       </p>
       <p>
-        <em>Timeline View</em> enables cases to be ordered chronologically from left to right. Noteworthy U.S. events in the U.S. 2020 election cycle are plotted on the timeline for context and reference. Additional timeline elements can be introduced with the Context Datasets filter. By clicking and dragging on the timeline, users can filter their view to a particular date range. They can return to the default view by clicking "Reset time scale" on the left-hand side of the timeline. 
+        <em>Timeline View</em> ordered chronologically from left to right. By clicking and dragging just below the timeline, users can filter their view to a particular date range. Or by clicking on the colored time period tabs they can select that periods time rage. Return to the default view by clicking "Reset time scale" on the left-hand side of the timeline. 
       </p>
       <p>
-        <em>Map View</em> shows a Mercator projection of the Earth. Cases are plotted on the map by means of tails connected to particular Disinformant Nations: the more lines a particular country has originating from it, the more it has been implicated in allegations of foreign interference. By hovering over a particular country, users can see a density plot of attributions over time (if n > 5), as well as breakdowns of Platform, Method, Source, and Source Category. Each of these can be auto-filtered together with the selected country.
+        <em>Map View</em> shows a Mercator projection of the Earth. The source Continent of each Creature is connected by the curved lines: the more lines a particular region has originating from it, shows more creatures mapped to that location. By hovering over a particular Continent, users can see a density plot of creatures over time, as well as breakdowns of the creatures diets and time periods. Each of these can be auto-filtered together with the selected country.
       </p>
       <p>
-        <em>Dataset View</em> presents a simplified spreadsheet view of the FIAT dataset. Cases are affected by all applied filters. By clicking on one or more cases in the Case View, users can "pin" them to the top of the Dataset View for easy comparison. The <em>Dataset View</em> for easy comparison. The <a href="https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public">full dataset</a> can also be downloaded from this view. 
+        <em>Fossil Datapoints</em> are a collection of fossils related to dinosaurs or entire time periods. Large screens are automatically populated with all fossil data. Smaller screens are left blank. To control these fossil points select a time period from the dropdowns or select an individual dinosaur from the details section.
+      </p>
+      <p>
+        <em>Size + Weight Distribution</em> is a scatterplot charting the size and weight of each creature. They are broken into smaller size categories you can navigate between using the radio buttons below the chart.
+      </p>
+      <p>
+        <em>Dataset View</em> presents a simplified spreadsheet view of the prehistoric dataset. Creatures are affected by all applied filters. By clicking on one or more creatures in the Timeline View, users can "pin" them to the top of the Dataset View for easy comparison. The <a href="https://github.com/JeffRice/svelte-d3-prehistoric/tree/main/public">full dataset</a> can also be downloaded. 
       </p>
     </div>
 
-    <p>
-       enables users to filter and examine data in a multitude of ways. As you get started, consider filtering by: 
-    </p>
     <ul class="filter-list">
-      <li on:click|self={() => handleApplyFilter(0)}>Jurassic</li>
-      <li on:click|self={() => handleApplyFilter(1)}>Cretaceous</li>
-      <li on:click|self={() => handleApplyFilter(2)}>Triassic</li>
+      <li on:click|self={() => document.querySelector('#viz').scrollIntoView({behavior: 'auto'})}>Visualization</li>
+      <li on:click|self={() => document.querySelector('.fossil-wrapper').scrollIntoView({behavior: 'auto'})}>Fossil Details</li>
+      <li on:click|self={() => document.querySelector('.chart-wrapper').scrollIntoView({behavior: 'auto'})}>Size + Weight Chart</li>
+      <li on:click|self={() => document.querySelector('#table').scrollIntoView({behavior: 'auto'})}>Table</li>
+      <li on:click|self={() => document.querySelector('.about').scrollIntoView({behavior: 'auto'})}>About</li>
     </ul>
     <!-- <p>
       Or just explore the full tool <span class="pseudolink" on:click={() => handleApplyFilter(-1)}>below</span>. 

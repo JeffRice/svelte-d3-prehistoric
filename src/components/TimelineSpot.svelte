@@ -2,7 +2,6 @@
   // selected dates on the timeline (= the spots)
   import { panelHeight } from '../stores/dimensions';
   import { timeScale } from '../stores/scales';
-  import { margin } from '../stores/dimensions';
   import { spottooltipable } from '../actions/spottooltipable';
   import { drawWrapper } from '../stores/elements';
   import { createTweenedPos } from '../transitions/tween';
@@ -115,24 +114,7 @@ $timeScale = $timeScale;
     pointer-events: all;
     cursor: pointer;
   }
-
-  g.spot:hover circle:not(.bait) {
-    fill: var(--dfrlab-gray);
-  }
-
-  circle {
-    stroke: var(--dfrlab-gray);
-    stroke-width: 0.13rem;
-    stroke-opacity: 0.9;
-    fill: var(--bg);
-    transition: all 200ms ease;
-  }
-
-  circle.bait {
-    fill: none;
-    stroke: none;
-  }
-
+  
   rect {
     stroke: var(--dfrlab-gray);
     stroke-width: 0.13rem;
@@ -181,25 +163,4 @@ $timeScale = $timeScale;
     text-anchor: start;
   }
 
-
-
-  .time-scale circle {
-    stroke: none;
-    fill: var(--dfrlab-gray);
-  }
-
-  .y-scale-ticks text, .y-scale text, .map-scale text {
-    fill: var(--text-darkgray);
-    font-family: var(--font-02);
-    font-size: 0.7rem;
-  }
-
-  .y-scale-ticks text {
-    font-size: 0.6rem;
-  }
-
-  .time-scale path, .y-scale path, .map-scale path {
-    stroke: var(--text-darkgray);
-    stroke-width: 0.1rem;
-  }
 </style>

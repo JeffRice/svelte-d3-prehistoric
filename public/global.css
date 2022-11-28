@@ -124,7 +124,7 @@ a, span.pseudolink {
   color: var(--prehistoricDarkGreen);
   text-decoration: underline;
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: all 300ms ease;
 }
 
 a:hover, span.pseudolink:hover {
@@ -275,6 +275,7 @@ section {
 section.content.title {
   padding: 0.5rem;
   position: relative;
+  margin-top: 24rem;
 }
 
 section.title .logos {
@@ -318,11 +319,9 @@ section.no-upper-margin {
 section h1 {
   margin: 0.5rem 0 0 0;
   font-family: var(--font-01);
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: var(--prehistoricDarkGreen);
   text-align: center;
-  white-space: nowrap;
-
 }
 
 section h2, section h3 {
@@ -411,7 +410,7 @@ input.toggle[type='checkbox'] {
   font-style: italic;
   color: var(--text-black);
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: all 300ms ease;
 }
 
 .lbl-toggle.top {
@@ -428,13 +427,13 @@ input.toggle[type='checkbox'] {
   vertical-align: middle;
   margin-top: 2px;
   transform: translateX(-0.6rem) translateY(-2px);
-  transition: transform 200ms ease-out;
+  transition: transform 300ms ease-out;
 }
 
 .collapsible-content {
   max-height: 0px;
   overflow: hidden;
-  transition: max-height 200ms ease-in-out;
+  transition: max-height 300ms ease-in-out;
 }
 
 .collapsible-content h4, .collapsible-content h5 {
@@ -479,6 +478,7 @@ section ul.filter-list {
   align-items: flex-start;
   padding: 0;
   list-style-type: none;
+  justify-content: center;
   }
 
 section ul.filter-list li {
@@ -488,8 +488,9 @@ section ul.filter-list li {
   border-bottom: 2px solid var(--prehistoricGreen);
   border-top: 2px solid var(--prehistoricGreen);
   cursor: pointer;
-  transition: all 200ms ease;
+  transition: all 300ms ease;
 }
+
 
 section ul.filter-list li:hover {
   color: var(--bg);

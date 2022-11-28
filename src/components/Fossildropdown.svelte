@@ -1,14 +1,12 @@
 <script>
   // a custom dropdown
-  import { createEventDispatcher, onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { sortConsistently } from '../utils/misc';
   import {select} from "d3";
-  import { cretaceous, fossilDatapoints, jurassic, triassic } from '../stores/elements';
+  import {fossilDatapoints } from '../stores/elements';
 
 
   import FossilCheckbox from './FossilCheckbox.svelte';
-
 
 
   export let items = [];
@@ -17,9 +15,6 @@
   export let hideOneHitWonders = false;
   export let superior = false;
 
-
-
-  const dispatch = createEventDispatcher();
 
   let elem;
   let expanded = false;
@@ -32,24 +27,8 @@
     expanded = !expanded;
   }
 
-  function selectAll() {
-    dispatch('itemsAdded', items.map((d) => d.id));
-  }
-
-  function unselectAll() {
-    dispatch('itemsRemoved', items.map((d) => d.id));
-  }
-
   function handleDropdownClick() {
     toggleExpanded();
-  }
-
-  function handleChoiceClick(id) {
-    if (!items.filter((d) => d.selected).map((d) => d.id).includes(id)) {
-      dispatch('itemsAdded', id);
-    } else {
-      dispatch('itemsRemoved', id);
-    }
   }
 
 

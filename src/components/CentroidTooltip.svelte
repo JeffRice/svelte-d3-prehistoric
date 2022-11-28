@@ -38,6 +38,9 @@
     
     top = $tooltip.c[0].yCountry - offset.top;
 
+    console.log($tooltip.c[0].disNation)
+
+
     contentTop = contentOffset - $tooltip.e.pageY + window.pageYOffset;
     if (Math.abs(contentTop) > tHeight - offset.bottom) {
       contentTop = -tHeight - offset.bottom;
@@ -47,6 +50,10 @@
       left = $tooltip.c[0].xCountry - tWidth - 2 * offset.left;
     } else if (side === 'right') {   
       left = $tooltip.c[0].xCountry - offset.left;
+    }
+
+    if ($tooltip.c[0].disNation === 'Eurasia'){
+      contentTop += 100;
     }
   }
 

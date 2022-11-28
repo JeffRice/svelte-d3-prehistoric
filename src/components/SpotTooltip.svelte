@@ -1,13 +1,10 @@
 <script>
   // tooltip of the timeline spots
   import { fade } from 'svelte/transition';
-  import { timeFormat } from 'd3';
 
   export let data;
   export let x = 0;
   export let y = 0;
-
-  const tf = timeFormat('%B %d, %Y');
 
   const maxWidth = 450;
   const margin = 10;
