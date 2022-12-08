@@ -1,22 +1,28 @@
 <script>
-  import { sourcesSwitch } from '../stores/filters';
-  import { copytooltipable } from '../actions/copytooltipable';
+  import { sourcesSwitch } from "../stores/filters";
+  import { copytooltipable } from "../actions/copytooltipable";
 
-  import Checkbox from './Checkbox.svelte';
+  import Checkbox from "./Checkbox.svelte";
 
   function handleClick() {
-        $sourcesSwitch = !$sourcesSwitch;
+    $sourcesSwitch = !$sourcesSwitch;
   }
 </script>
 
 <ul class="checkboxpanel-wrapper">
   <li>
-    <Checkbox id="checkboxpanel-checkbox-sourcesSwitch"
-              checked={$sourcesSwitch}
-              on:click={handleClick}
-             >
-      <span use:copytooltipable={{content: 'Toggles sources visibility.', showClickMessage: false}} 
-            style="white-space: nowrap;">
+    <Checkbox
+      id="checkboxpanel-checkbox-sourcesSwitch"
+      checked={$sourcesSwitch}
+      on:click={handleClick}
+    >
+      <span
+        use:copytooltipable={{
+          content: "Toggles sources visibility.",
+          showClickMessage: false,
+        }}
+        style="white-space: nowrap;"
+      >
         Toggle Sources
       </span>
     </Checkbox>
@@ -35,7 +41,6 @@
   li {
     position: relative;
   }
-
 
   span {
     display: inline-block;

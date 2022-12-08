@@ -8,35 +8,42 @@
     selectAllFilters,
     contextData,
     originalTimeDomain,
-    controlsFilter } from '../stores/filters';
-  import { timeScale } from '../stores/scales';
-  import { fossilDatapoints, switchValueStore } from '../stores/elements';
-  import Dropdown from './Dropdown.svelte';
-  import Fossildropdown from './Fossildropdown.svelte';
-  import SearchText from './SearchText.svelte';
-  import CheckboxPanel from './CheckboxPanel.svelte';
-  import Switch from './Switch.svelte';
-    import CheckboxSources from './CheckboxSources.svelte';
-
+    controlsFilter,
+  } from "../stores/filters";
+  import { timeScale } from "../stores/scales";
+  import { fossilDatapoints, switchValueStore } from "../stores/elements";
+  import Dropdown from "./Dropdown.svelte";
+  import Fossildropdown from "./Fossildropdown.svelte";
+  import SearchText from "./SearchText.svelte";
+  import CheckboxPanel from "./CheckboxPanel.svelte";
+  import Switch from "./Switch.svelte";
+  import CheckboxSources from "./CheckboxSources.svelte";
 
   export let timePoints;
 
   function addCount(filter, property, timePoints) {
     return filter.map((d) => ({
       ...d,
-      count: timePoints.map((d) => d[property]).flat().filter((a) => a === d.id).length,
-      liveCount: timePoints.filter((d) => d.show).map((d) => d[property]).flat().filter((a) => a === d.id).length
+      count: timePoints
+        .map((d) => d[property])
+        .flat()
+        .filter((a) => a === d.id).length,
+      liveCount: timePoints
+        .filter((d) => d.show)
+        .map((d) => d[property])
+        .flat()
+        .filter((a) => a === d.id).length,
     }));
   }
 
-  let fossilFilter = ['cretaceous', 'jurassic', 'triassic'];
+  let fossilFilter = ["cretaceous", "jurassic", "triassic"];
 
   function fossilCount(filter, dataPoints) {
     return filter.map((d, i) => ({
       id: i,
       title: filter[i],
       count: filter.length,
-      liveCount: dataPoints[d].length
+      liveCount: dataPoints[d].length,
     }));
   }
 
@@ -49,57 +56,55 @@
       $originalTimeDomain = null;
     }
   }
-
-
-
-
 </script>
 
-{#if (timePoints)}
+{#if timePoints}
   <div class="controls-inner-wrapper">
-    <div class="controls"class:hidden={$controlsFilter}>
-      <SearchText searchString={$textSearchFilter}
-                  label="Search"
-                  on:change={(e) => $textSearchFilter = e.detail}
-                  on:reset={() => textSearchFilter.reset()} />
-                  
-      <Dropdown items={addCount($disinformantNationFilter, 'disinformantNation', timePoints)}
-                label="Continent"
-                superior
-                on:itemsAdded={(e) => disinformantNationFilter.select(e.detail)}
-                on:itemsRemoved={(e) => disinformantNationFilter.unselect(e.detail)} />
+    <div class="controls" class:hidden={$controlsFilter}>
+      <SearchText
+        searchString={$textSearchFilter}
+        label="Search"
+        on:change={(e) => ($textSearchFilter = e.detail)}
+        on:reset={() => textSearchFilter.reset()}
+      />
 
+      <Dropdown
+        items={addCount(
+          $disinformantNationFilter,
+          "disinformantNation",
+          timePoints
+        )}
+        label="Continent"
+        superior
+        on:itemsAdded={(e) => disinformantNationFilter.select(e.detail)}
+        on:itemsRemoved={(e) => disinformantNationFilter.unselect(e.detail)}
+      />
 
-      <Dropdown items={addCount($dietFilter, 'diet', timePoints)}
-                label="Diet"
-                on:itemsAdded={(e) => dietFilter.select(e.detail)}
-                on:itemsRemoved={(e) => dietFilter.unselect(e.detail)} />
+      <Dropdown
+        items={addCount($dietFilter, "diet", timePoints)}
+        label="Diet"
+        on:itemsAdded={(e) => dietFilter.select(e.detail)}
+        on:itemsRemoved={(e) => dietFilter.unselect(e.detail)}
+      />
 
-      <Dropdown items={addCount($timeperiodFilter, 'periodEra', timePoints)}
-                label="Time Periods"
-                superior
-                on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
-                on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)} />
+      <Dropdown
+        items={addCount($timeperiodFilter, "periodEra", timePoints)}
+        label="Time Periods"
+        superior
+        on:itemsAdded={(e) => timeperiodFilter.select(e.detail)}
+        on:itemsRemoved={(e) => timeperiodFilter.unselect(e.detail)}
+      />
 
-       <button class="reset-filters"
-        on:click={() => handleButtonClick()}>
-          Reset
-        </button>
+      <button class="reset-filters" on:click={() => handleButtonClick()}>
+        Reset
+      </button>
 
-
-    
-
-        {#if ($fossilDatapoints)}
-        <Fossildropdown items={fossilCount(fossilFilter, $fossilDatapoints)}
-                  label="Plot Fossil Datapoints"
-                  />
-        {/if}
-  
-
-
-
-      
-  
+      {#if $fossilDatapoints}
+        <Fossildropdown
+          items={fossilCount(fossilFilter, $fossilDatapoints)}
+          label="Plot Fossil Datapoints"
+        />
+      {/if}
     </div>
     <div class="show-hide">
       <CheckboxPanel />
@@ -109,13 +114,13 @@
       <CheckboxSources />
     </div>
 
-      <div class="dropdown pangea-switch">
-        <Switch bind:value={$switchValueStore} label="Toggle Pangea" design="inner" />
-      </div>
-
-
-
-
+    <div class="dropdown pangea-switch">
+      <Switch
+        bind:value={$switchValueStore}
+        label="Toggle Pangea"
+        design="inner"
+      />
+    </div>
   </div>
 {/if}
 
@@ -195,7 +200,7 @@
     align-items: center;
   }
 
-  .show-hide{
+  .show-hide {
     float: left;
   }
 
@@ -204,7 +209,7 @@
     font-family: var(--font-02);
     position: relative;
     pointer-events: all;
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: var(--prehistoricDarkGreen);
     margin-left: 8px;
     margin-top: 3px;
@@ -213,5 +218,4 @@
   .hidden {
     display: none;
   }
-
 </style>

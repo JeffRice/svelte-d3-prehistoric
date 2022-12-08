@@ -1,26 +1,23 @@
 <script>
   // a custom dropdown
-  import { slide } from 'svelte/transition';
-  import { sortConsistently } from '../utils/misc';
-  import {select} from "d3";
-  import {fossilDatapoints } from '../stores/elements';
+  import { slide } from "svelte/transition";
+  import { sortConsistently } from "../utils/misc";
+  import { select } from "d3";
+  import { fossilDatapoints } from "../stores/elements";
 
-
-  import FossilCheckbox from './FossilCheckbox.svelte';
-
+  import FossilCheckbox from "./FossilCheckbox.svelte";
 
   export let items = [];
-  export let label = '';
-  export let nameField = 'id';
+  export let label = "";
+  export let nameField = "id";
   export let hideOneHitWonders = false;
   export let superior = false;
-
 
   let elem;
   let expanded = false;
 
   function handleBodyClick() {
-    expanded = false
+    expanded = false;
   }
 
   function toggleExpanded() {
@@ -31,143 +28,124 @@
     toggleExpanded();
   }
 
+  function handleFossilClick(event, fossilEra) {
+    const target = event.target;
 
+    fossilEra = target.getAttribute("fossilera");
+    const state = target.getAttribute("added");
 
-function handleFossilClick(event, fossilEra) {
+    console.log("target: ", target);
+    console.log("state: ", state);
+    console.log("fossilDatapoints: ", fossilDatapoints);
 
-const target = event.target
+    if (state === "false" || state === "0") {
+      addFossils(fossilEra);
+      target.classList.add("checked");
+    } else {
+      removeFossils(fossilEra);
+      target.classList.remove("checked");
+    }
 
+    console.log("items: ", items);
+  }
 
-fossilEra = target.getAttribute('fossilera')
-const state = target.getAttribute('added')
+  function removeFossils(fossilEra) {
+    $fossilDatapoints[fossilEra] = [];
 
-console.log('target: ', target)
-console.log('state: ', state)
-console.log('fossilDatapoints: ', fossilDatapoints)
+    reDraw();
+    return $fossilDatapoints;
+  }
+  export const testy = () => console.log("testing");
 
-if (state  === 'false' || state  === '0' ){
-  addFossils(fossilEra);
-  target.classList.add("checked");
+  function removeAllFossils() {
+    $fossilDatapoints["cretaceous"] = [];
+    $fossilDatapoints["triassic"] = [];
+    $fossilDatapoints["jurassic"] = [];
 
+    reDraw();
+    return $fossilDatapoints;
+  }
 
-}
-else {
-  removeFossils(fossilEra);
-  target.classList.remove("checked");
+  function addAllFossils() {
+    addFossils("cretaceous");
+    addFossils("triassic");
+    addFossils("jurassic");
+  }
 
-}
+  function addFossils(fossilEra) {
+    console.log(fossilDatapoints);
 
+    let originalEra = "original" + fossilEra;
 
-  console.log('items: ', items)
-
-
-}
-
-function removeFossils(fossilEra) {
-
- $fossilDatapoints[fossilEra] = [];
-
-reDraw();
-return $fossilDatapoints;
-
-}
-export const testy = () => console.log('testing');
-
-
-function removeAllFossils() {
-
-$fossilDatapoints['cretaceous'] = [];
-$fossilDatapoints['triassic'] = [];
-$fossilDatapoints['jurassic'] = [];
-
-reDraw();
-return $fossilDatapoints;
-
-}
-
-function addAllFossils() {
-
-  addFossils('cretaceous');
-  addFossils('triassic');
-  addFossils('jurassic');
-
-}
-
-function addFossils(fossilEra) {
-
-  console.log(fossilDatapoints)
-
-let originalEra = 'original' + fossilEra
-
-$fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra];
-reDraw();
-return $fossilDatapoints;
-
-}
-
-
+    $fossilDatapoints[fossilEra] = $fossilDatapoints[originalEra];
+    reDraw();
+    return $fossilDatapoints;
+  }
 
   function reDraw() {
+    let locations = select("#points");
+    var elements = locations.selectAll("points.arc");
 
-  let locations = select('#points');
-  var elements = locations.selectAll("points.arc");
-
-  elements.each(function(d, i) {
-  var node = select(this);
-  this.remove();
-
-  })
-
-}
-
-
-
+    elements.each(function (d, i) {
+      var node = select(this);
+      this.remove();
+    });
+  }
 </script>
 
-<svelte:body on:click={(e) => handleBodyClick(e)}></svelte:body>
-
+<svelte:body on:click={(e) => handleBodyClick(e)} />
 
 <div class="dropdown" bind:this={elem}>
   <div class="label">
     {label}
   </div>
   <div class="selected-items" on:click|stopPropagation={handleDropdownClick}>
-    <span class="selected-items-icon"></span>
+    <span class="selected-items-icon" />
     <span class="selected-items-text">
       {items.filter((d) => d.added).length === 0
-        ? 'toggle fossil locations'
-        : (items.every((d) => d.added && items.length > 1)
-          ? 'all'
-          : items.filter((d) => d.added).map((d) => d[nameField]).join(', '))}
+        ? "toggle fossil locations"
+        : items.every((d) => d.added && items.length > 1)
+        ? "all"
+        : items
+            .filter((d) => d.added)
+            .map((d) => d[nameField])
+            .join(", ")}
     </span>
     <button class="selected-items-arrow">
       <svg class:expanded width="15" height="10">
-        <path d="M0 0L15 0L7.5 10Z"></path>
+        <path d="M0 0L15 0L7.5 10Z" />
       </svg>
     </button>
   </div>
   <div class="choice-wrapper">
-    {#if (expanded)}
+    {#if expanded}
       <div class="choice" transition:slide class:superior>
         <div class="choice-controls">
-          <button class="choice-controls-selectall" on:click|stopPropagation={addAllFossils}>Select all</button>
-          <button class="choice-controls-unselectall" on:click|stopPropagation={removeAllFossils}>Unselect all</button>
+          <button
+            class="choice-controls-selectall"
+            on:click|stopPropagation={addAllFossils}>Select all</button
+          >
+          <button
+            class="choice-controls-unselectall"
+            on:click|stopPropagation={removeAllFossils}>Unselect all</button
+          >
         </div>
         <ul class="choice-list">
-          {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
-            {#if (!(hideOneHitWonders && item.count === 1))}
-              <li on:click|stopPropagation
-              >
-                <FossilCheckbox id="{label}-{i}"
-                          checked={item.liveCount}
-                          added={item.liveCount}
-                          fossilera={item.title}
-                          on:click={handleFossilClick}>
+          {#each items.sort((a, b) => -sortConsistently(a, b, "id", "id")) as item, i (item.id)}
+            {#if !(hideOneHitWonders && item.count === 1)}
+              <li on:click|stopPropagation>
+                <FossilCheckbox
+                  id="{label}-{i}"
+                  checked={item.liveCount}
+                  added={item.liveCount}
+                  fossilera={item.title}
+                  on:click={handleFossilClick}
+                >
                   <span class="choice-entry-name">{item.title}</span>
 
-                  {#if (item.liveCount)}
+                  {#if item.liveCount}
                     <span class="choice-entry-count">({item.liveCount})</span>
-                  {:else if (item.source)}
+                  {:else if item.source}
                     <span class="choice-entry-source">({item.source})</span>
                   {/if}
                 </FossilCheckbox>
@@ -175,8 +153,10 @@ return $fossilDatapoints;
             {/if}
           {/each}
         </ul>
-        {#if (hideOneHitWonders)}
-          <p class="info">{label}s with only one result in the dataset are hidden.</p>
+        {#if hideOneHitWonders}
+          <p class="info">
+            {label}s with only one result in the dataset are hidden.
+          </p>
         {/if}
       </div>
     {/if}
@@ -238,7 +218,7 @@ return $fossilDatapoints;
     transition: transform 400ms ease;
   }
 
-  .selected-items-arrow svg.expanded{
+  .selected-items-arrow svg.expanded {
     transform: rotate(-540deg);
   }
 
@@ -306,7 +286,8 @@ return $fossilDatapoints;
     background-color: var(--prehistoricLightGreen);
   }
 
-  .choice-entry-count, .choice-entry-source {
+  .choice-entry-count,
+  .choice-entry-source {
     font-size: 0.8em;
   }
 

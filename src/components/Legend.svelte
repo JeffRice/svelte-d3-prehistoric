@@ -3,20 +3,20 @@
   import {
     timeScale,
     sizeTotalYScale,
-    sizeTotalRScale,    
-    sizeShareRScale
-   } from '../stores/scales';
-  import { margin, width } from '../stores/dimensions';
-  import { format } from 'd3';
+    sizeTotalRScale,
+    sizeShareRScale,
+  } from "../stores/scales";
+  import { margin, width } from "../stores/dimensions";
+  import { format } from "d3";
 
-  const commaFormat = format(',');
- // const rTicks = [$sizeTotalYScale(115), $sizeTotalYScale(40), $sizeTotalYScale(20)];
-    const rTicks = [115, 50, 10];
- // const unscaled = [115, 40, 20]
+  const commaFormat = format(",");
+  // const rTicks = [$sizeTotalYScale(115), $sizeTotalYScale(40), $sizeTotalYScale(20)];
+  const rTicks = [115, 50, 10];
+  // const unscaled = [115, 40, 20]
 
-  let circleScale = 1.15
-
+  let circleScale = 1.15;
 </script>
+
 <!--
 <g class="legend"
    transform="translate({$width - ((($sizeTotalYScale(rTicks[0]) + 15) * 2))  + 65  } {$sizeTotalYScale.range()[1] - 60})">
@@ -43,29 +43,46 @@
 </g>
 -->
 
-<g class="legend"
-   transform="translate({$width - (rTicks[0] * circleScale) - 65  } {$sizeTotalYScale.range()[1] - 20})">
-  <text transform="translate({0} {(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(rTicks[0]) - 30})"
-        >
-        Size in feet
+<g
+  class="legend"
+  transform="translate({$width -
+    rTicks[0] * circleScale -
+    65} {$sizeTotalYScale.range()[1] - 20})"
+>
+  <text
+    transform="translate({0} {rTicks[0] * circleScale -
+      2 * $sizeTotalRScale(rTicks[0]) -
+      30})"
+  >
+    Size in feet
   </text>
-  <g class="total-r-scale" transform="translate(0 {-2 * (rTicks.slice(-1)[0]  * circleScale)})">
+  <g
+    class="total-r-scale"
+    transform="translate(0 {-2 * (rTicks.slice(-1)[0] * circleScale)})"
+  >
     {#each rTicks as tick, i}
-      <line x1="0"
-            y1={(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(tick)}
-            x2={(rTicks[0] * circleScale) + 15}
-            y2={(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(tick)}></line>
-      <text class="tick"
-            transform="translate({(rTicks[0] * circleScale) + 18} {(rTicks[0] * circleScale) - 2 * $sizeTotalRScale(tick)})">
+      <line
+        x1="0"
+        y1={rTicks[0] * circleScale - 2 * $sizeTotalRScale(tick)}
+        x2={rTicks[0] * circleScale + 15}
+        y2={rTicks[0] * circleScale - 2 * $sizeTotalRScale(tick)}
+      />
+      <text
+        class="tick"
+        transform="translate({rTicks[0] * circleScale + 18} {rTicks[0] *
+          circleScale -
+          2 * $sizeTotalRScale(tick)})"
+      >
         {commaFormat(tick)}
       </text>
-      <circle cx="0"
-              cy={(rTicks[0] * circleScale) - $sizeTotalRScale(tick)}
-              r={$sizeTotalRScale(tick)}></circle>
+      <circle
+        cx="0"
+        cy={rTicks[0] * circleScale - $sizeTotalRScale(tick)}
+        r={$sizeTotalRScale(tick)}
+      />
     {/each}
   </g>
-
-  </g>
+</g>
 
 <style>
   line {

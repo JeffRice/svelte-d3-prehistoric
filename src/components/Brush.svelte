@@ -1,10 +1,10 @@
 <script>
   // the time scale brush / zoom
-  import { onMount } from 'svelte';
-  import { timeScale } from '../stores/scales';
-  import { panelHeight, margin } from '../stores/dimensions';
-  import { brushable } from '../actions/brushable';
-  import { originalTimeDomain } from '../stores/filters';
+  import { onMount } from "svelte";
+  import { timeScale } from "../stores/scales";
+  import { panelHeight, margin } from "../stores/dimensions";
+  import { brushable } from "../actions/brushable";
+  import { originalTimeDomain } from "../stores/filters";
 
   let x = 0;
   let fx = 0;
@@ -51,7 +51,7 @@
 
     $timeScale.domain([$timeScale.invert(x1), $timeScale.invert(x2)]);
     $timeScale = $timeScale;
-    
+
     resetBrush();
   }
 
@@ -65,9 +65,15 @@
       const prevDomain = [...$timeScale.domain()];
       const diff = Math.floor(0.25 * (prevDomain[1] - prevDomain[0]));
       if (e.keyCode === 37) {
-        $timeScale.domain([new Date(prevDomain[0] - diff), new Date(prevDomain[1] - diff)]);
+        $timeScale.domain([
+          new Date(prevDomain[0] - diff),
+          new Date(prevDomain[1] - diff),
+        ]);
       } else if (e.keyCode === 39) {
-        $timeScale.domain([new Date(prevDomain[0] - - diff), new Date(prevDomain[1] - - diff)]);
+        $timeScale.domain([
+          new Date(prevDomain[0] - -diff),
+          new Date(prevDomain[1] - -diff),
+        ]);
       }
       $timeScale = $timeScale;
     }
@@ -82,37 +88,46 @@
   });
 </script>
 
-<svelte:window on:keyup={handleKeyUp}/>
+<svelte:window on:keyup={handleKeyUp} />
 
 <g class="brush disable-select">
-  <rect class="brush-area"
-        class:invisible
-        x={x}
-        y={$panelHeight - 40}
-        width={width}
-        height={80}
-        rx="3"
-        ry="3"></rect>
-  <rect class="brush-catcher"
-        x={fx}
-        y={$panelHeight - 40}
-        width={fWidth}
-        height={fHeight}
-        use:brushable
-        on:brushstart={handleBrushStart}
-        on:brush={handleBrush}
-        on:brushend={handleBrushEnd}></rect>
+  <rect
+    class="brush-area"
+    class:invisible
+    {x}
+    y={$panelHeight - 40}
+    {width}
+    height={80}
+    rx="3"
+    ry="3"
+  />
+  <rect
+    class="brush-catcher"
+    x={fx}
+    y={$panelHeight - 40}
+    width={fWidth}
+    height={fHeight}
+    use:brushable
+    on:brushstart={handleBrushStart}
+    on:brush={handleBrush}
+    on:brushend={handleBrushEnd}
+  />
 </g>
-{#if ($originalTimeDomain)}
-  <g class="reset-brush"
-     transform="translate({$timeScale.range()[0] - ($margin.left - 45)} {$panelHeight + 60})"
-     on:click={handleResetButtonClick}>
-    <rect x="-3"
-          y="-15"
-          width={resetText ? resetText.getComputedTextLength() + 6 : 0}
-          height="20"
-          rx="3"
-          ry="3"></rect>
+{#if $originalTimeDomain}
+  <g
+    class="reset-brush"
+    transform="translate({$timeScale.range()[0] -
+      ($margin.left - 45)} {$panelHeight + 60})"
+    on:click={handleResetButtonClick}
+  >
+    <rect
+      x="-3"
+      y="-15"
+      width={resetText ? resetText.getComputedTextLength() + 6 : 0}
+      height="20"
+      rx="3"
+      ry="3"
+    />
     <text class="disable-select" bind:this={resetText}>Reset time scale</text>
   </g>
 {/if}

@@ -1,28 +1,27 @@
 <script>
   // tooltip for the country centroids
-  import { fade } from 'svelte/transition';
-  import { width } from '../stores/dimensions';
-  import { tooltip } from '../stores/centroidSelections';
-  import { timeScale } from '../stores/scales';
-  import { sortConsistently } from '../utils/misc';
-  import { originalTimeDomain } from '../stores/filters';
+  import { fade } from "svelte/transition";
+  import { width } from "../stores/dimensions";
+  import { tooltip } from "../stores/centroidSelections";
+  import { timeScale } from "../stores/scales";
+  import { sortConsistently } from "../utils/misc";
+  import { originalTimeDomain } from "../stores/filters";
   import {
     disinformantNationFilter,
     dietFilter,
     timeperiodFilter,
-    selectAllFilters
-  } from '../stores/filters';
-  import { timeFormat, group, timeParse } from 'd3';
-  import { uniq } from 'lodash';
+    selectAllFilters,
+  } from "../stores/filters";
+  import { timeFormat, group, timeParse } from "d3";
+  import { uniq } from "lodash";
 
-
-  import CaseDensity from './CaseDensity.svelte';
+  import CaseDensity from "./CaseDensity.svelte";
 
   const offset = {
     top: 10,
     right: 10,
     bottom: 10,
-    left: 10
+    left: 10,
   };
   const contentOffset = 100;
 
@@ -34,25 +33,24 @@
   let timeperiods, diets;
 
   $: if ($tooltip) {
-    side = $width - $tooltip.c[0].xCountry < $width / 2 ? 'left' : 'right';
-    
+    side = $width - $tooltip.c[0].xCountry < $width / 2 ? "left" : "right";
+
     top = $tooltip.c[0].yCountry - offset.top;
 
-    console.log($tooltip.c[0].disNation)
-
+    console.log($tooltip.c[0].disNation);
 
     contentTop = contentOffset - $tooltip.e.pageY + window.pageYOffset;
     if (Math.abs(contentTop) > tHeight - offset.bottom) {
       contentTop = -tHeight - offset.bottom;
     }
-    
-    if (side === 'left') {
+
+    if (side === "left") {
       left = $tooltip.c[0].xCountry - tWidth - 2 * offset.left;
-    } else if (side === 'right') {   
+    } else if (side === "right") {
       left = $tooltip.c[0].xCountry - offset.left;
     }
 
-    if ($tooltip.c[0].disNation === 'Eurasia'){
+    if ($tooltip.c[0].disNation === "Eurasia") {
       contentTop += 100;
     }
   }
@@ -61,57 +59,70 @@
     selectAllFilters();
     disinformantNationFilter.selectOne($tooltip.c[0].disNation);
     switch (type) {
-      case 'periodEra': timeperiodFilter.selectOne(item); break;
-      case 'diet': dietFilter.selectOne(item); break;
+      case "periodEra":
+        timeperiodFilter.selectOne(item);
+        break;
+      case "diet":
+        dietFilter.selectOne(item);
+        break;
     }
   }
 
   function generateItemsArray(data, name) {
     return [...group(data.map((d) => d[name]).flat(), (d) => d)]
-              .map((d, i) => ({id: i, name: d[0], count: d[1].length}))
-              .sort((a, b) => sortConsistently(a, b, 'count', 'id'));
+      .map((d, i) => ({ id: i, name: d[0], count: d[1].length }))
+      .sort((a, b) => sortConsistently(a, b, "count", "id"));
   }
 
   $: if ($tooltip) {
-    timeperiods = generateItemsArray($tooltip.c, 'periodEra');
-    diets = generateItemsArray($tooltip.c, 'diet');
+    timeperiods = generateItemsArray($tooltip.c, "periodEra");
+    diets = generateItemsArray($tooltip.c, "diet");
   }
-
-
-
 </script>
 
-{#if ($tooltip)}
-  <div class="tooltip"
-       style="left: {left}px; top: {top}px;"
-       bind:clientWidth={tWidth}
-       on:click|stopPropagation
-       on:mouseover|stopPropagation
-       transition:fade={{duration: 200}}>
-    <div class="content"
-         bind:clientHeight={tHeight}
-         style="top: {contentTop}px;">
+{#if $tooltip}
+  <div
+    class="tooltip"
+    style="left: {left}px; top: {top}px;"
+    bind:clientWidth={tWidth}
+    on:click|stopPropagation
+    on:mouseover|stopPropagation
+    transition:fade={{ duration: 200 }}
+  >
+    <div
+      class="content"
+      bind:clientHeight={tHeight}
+      style="top: {contentTop}px;"
+    >
       <div class="scroll-wrapper">
         <div class="title">
-          <h2>{uniq($tooltip.c.map((d) => d.disNation)).join(' | ')}</h2>
+          <h2>{uniq($tooltip.c.map((d) => d.disNation)).join(" | ")}</h2>
           <p class="small no-break">{$tooltip.c.length} Species</p>
         </div>
-        {#if ($tooltip.c.length > 1 && !$originalTimeDomain)}
+        {#if $tooltip.c.length > 1 && !$originalTimeDomain}
           <div class="case-density-vs-time">
             <h3>Species over time</h3>
-            <CaseDensity width={Math.max(0, tWidth - offset.left - offset.right - 2 * 16)} 
-                         height={50}
-                         dates={$tooltip.c.map((d) => d.testDate)}
-                         minDate={0}
-                         maxDate={350} />
-            <h6>(Not all prehistoric species, only those represented in the visualization)</h6>
+            <CaseDensity
+              width={Math.max(0, tWidth - offset.left - offset.right - 2 * 16)}
+              height={50}
+              dates={$tooltip.c.map((d) => d.testDate)}
+              minDate={0}
+              maxDate={350}
+            />
+            <h6>
+              (Not all prehistoric species, only those represented in the
+              visualization)
+            </h6>
           </div>
         {/if}
         <div class="timeperiods">
           <h3>Time periods</h3>
           <ul>
             {#each timeperiods as timeperiod (timeperiod.id)}
-              <li on:click|stopPropagation={() => handleLiClick('periodEra', timeperiod.name)}>
+              <li
+                on:click|stopPropagation={() =>
+                  handleLiClick("periodEra", timeperiod.name)}
+              >
                 {timeperiod.name}
                 <span class="very-small">({timeperiod.count})</span>
               </li>
@@ -122,14 +133,16 @@
           <h3>Diets</h3>
           <ul>
             {#each diets as diet (diet.id)}
-              <li on:click|stopPropagation={() => handleLiClick('diet', diet.name)}>
+              <li
+                on:click|stopPropagation={() =>
+                  handleLiClick("diet", diet.name)}
+              >
                 {diet.name}
                 <span class="very-small">({diet.count})</span>
               </li>
             {/each}
           </ul>
         </div>
-
       </div>
     </div>
   </div>
@@ -152,15 +165,11 @@
     margin: 16px;
     color: var(--text-black);
     background-color: var(--bg);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-                0 2px 4px rgba(0,0,0,0.07), 
-                0 4px 8px rgba(0,0,0,0.07), 
-                0 8px 16px rgba(0,0,0,0.07),
-                0 16px 32px rgba(0,0,0,0.07), 
-                0 32px 64px rgba(0,0,0,0.07);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
     position: absolute;
   }
-
 
   .scroll-wrapper {
     width: 100%;
@@ -170,14 +179,17 @@
 
   @media (min-width: 768px) {
     .scroll-wrapper {
-    overflow-y: hidden;
+      overflow-y: hidden;
+    }
   }
-}
   .scroll-wrapper .title {
     display: flex;
     flex-direction: column;
     padding: 1rem;
-    background-image: linear-gradient(var(--usa-lightlightblue), var(--usa-lightblue));
+    background-image: linear-gradient(
+      var(--usa-lightlightblue),
+      var(--usa-lightblue)
+    );
   }
 
   .scroll-wrapper > div {
@@ -185,7 +197,8 @@
     padding: 0.5rem 1rem;
   }
 
-  h2, h3 {
+  h2,
+  h3 {
     color: var(--text-black);
   }
 
@@ -225,8 +238,7 @@
     cursor: pointer;
     user-select: none;
     transition: background-color 200ms ease;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-                0 2px 4px rgba(0,0,0,0.07);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07);
   }
 
   li:hover {

@@ -1,7 +1,7 @@
 <script>
   // setting up all events
-  import Event from './Event.svelte';
-  import { hovered, selected } from '../stores/eventSelections';
+  import Event from "./Event.svelte";
+  import { hovered, selected } from "../stores/eventSelections";
 
   export let timePoints = [];
 
@@ -21,11 +21,13 @@
 
 <g class="events">
   {#each timePoints as timePoint (timePoint.id)}
-    <Event {timePoint}
-           selected={$selected && $selected.map((d) => d.id).includes(timePoint.id)}
-           hovered={$hovered && $hovered.id === timePoint.id}
-           on:click={handleEventClick}
-           on:mouseover={handleEventMouseover} />
+    <Event
+      {timePoint}
+      selected={$selected && $selected.map((d) => d.id).includes(timePoint.id)}
+      hovered={$hovered && $hovered.id === timePoint.id}
+      on:click={handleEventClick}
+      on:mouseover={handleEventMouseover}
+    />
   {/each}
 </g>
 

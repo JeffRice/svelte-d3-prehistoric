@@ -1,6 +1,6 @@
 <script>
   // tooltip of the timeline spots
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
 
   export let data;
   export let x = 0;
@@ -25,10 +25,12 @@
   }
 </script>
 
-<div class="spot-tooltip {data.name}"
-     bind:clientWidth={width}
-     style="left: {left}px; top: {y - 20}px; width: {maxWidth}px;"
-     in:fade={{duration: 200}}>
+<div
+  class="spot-tooltip {data.name}"
+  bind:clientWidth={width}
+  style="left: {left}px; top: {y - 20}px; width: {maxWidth}px;"
+  in:fade={{ duration: 200 }}
+>
   <div class="content">
     <p class="date">
       {data.date} - {data.endDate} Million Years Ago
@@ -60,12 +62,9 @@
     font-family: var(--font-02);
     color: var(--text-black);
     background-color: var(--bg);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-                0 2px 4px rgba(0,0,0,0.07), 
-                0 4px 8px rgba(0,0,0,0.07), 
-                0 8px 16px rgba(0,0,0,0.07),
-                0 16px 32px rgba(0,0,0,0.07), 
-                0 32px 64px rgba(0,0,0,0.07);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
   }
 
   .date {
@@ -90,7 +89,7 @@
   }
   .Triassic {
     border: 2px solid var(--triassic);
-   }
+  }
   .Paleogene {
     border: 2px solid var(--paleogene);
   }
@@ -103,6 +102,4 @@
   .Carboniferous {
     border: 2px solid var(--carboniferous);
   }
-  
-
 </style>

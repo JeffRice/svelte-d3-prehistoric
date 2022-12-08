@@ -1,100 +1,95 @@
 <script>
   // selected dates on the timeline (= the spots)
-  import { panelHeight } from '../stores/dimensions';
-  import { timeScale } from '../stores/scales';
-  import { spottooltipable } from '../actions/spottooltipable';
-  import { drawWrapper } from '../stores/elements';
-  import { createTweenedPos } from '../transitions/tween';
-  import { originalTimeDomain } from '../stores/filters';
+  import { panelHeight } from "../stores/dimensions";
+  import { timeScale } from "../stores/scales";
+  import { spottooltipable } from "../actions/spottooltipable";
+  import { drawWrapper } from "../stores/elements";
+  import { createTweenedPos } from "../transitions/tween";
+  import { originalTimeDomain } from "../stores/filters";
 
   export let spot;
 
   const x = createTweenedPos();
   const x2 = createTweenedPos();
 
-
   const lineLength = 35;
   const offset = 5;
   let yScaleText, mapScaleText, timeScaleText;
-  let spotName = spot.name
+  let spotName = spot.name;
   let displayName;
-  if (spotName === 'Neogene'){
-    displayName = 'Ng'
-  }
-  else {
+  if (spotName === "Neogene") {
+    displayName = "Ng";
+  } else {
     displayName = spotName;
   }
 
   $: $x = $timeScale(spot.date);
   $: $x2 = $timeScale(spot.endDate);
 
-
   function testSetScale(e) {
-    console.log(e)
-    console.log(e.path[0].classList[0])
+    console.log(e);
+    console.log(e.path[0].classList[0]);
     if (!$originalTimeDomain) $originalTimeDomain = [...$timeScale.domain()];
-    
 
-    if (e.path[0].classList[0] === 'Neogene'){
-      $timeScale.domain([2, 23])
+    if (e.path[0].classList[0] === "Neogene") {
+      $timeScale.domain([2, 23]);
     }
-    if (e.path[0].classList[0] === 'Paleogene'){
-      $timeScale.domain([23, 65])
+    if (e.path[0].classList[0] === "Paleogene") {
+      $timeScale.domain([23, 65]);
     }
-    if (e.path[0].classList[0] === 'Cretaceous'){
-      $timeScale.domain([65, 145])
+    if (e.path[0].classList[0] === "Cretaceous") {
+      $timeScale.domain([65, 145]);
     }
-    if (e.path[0].classList[0] === 'Jurassic'){
-      $timeScale.domain([145, 201])
+    if (e.path[0].classList[0] === "Jurassic") {
+      $timeScale.domain([145, 201]);
     }
-    if (e.path[0].classList[0] === 'Triassic'){
-      $timeScale.domain([201, 251])
+    if (e.path[0].classList[0] === "Triassic") {
+      $timeScale.domain([201, 251]);
     }
-    if (e.path[0].classList[0] === 'Permian'){
-      $timeScale.domain([251, 298])
+    if (e.path[0].classList[0] === "Permian") {
+      $timeScale.domain([251, 298]);
     }
-    if (e.path[0].classList[0] === 'Carboniferous'){
-      $timeScale.domain([298, 358])
+    if (e.path[0].classList[0] === "Carboniferous") {
+      $timeScale.domain([298, 358]);
     }
 
-
-
-
-
-$timeScale = $timeScale;
-//resetBrush();
-
-
-}
-
-
-
-
-
+    $timeScale = $timeScale;
+    //resetBrush();
+  }
 </script>
-
 
 <g class="labels">
   <g class="time-scale">
-<g class="spot time-scale-label"
-    transform="translate({$x} -20)"
-    on:click={testSetScale}
-    use:spottooltipable={{data: spot, target: $drawWrapper, top: $panelHeight + 20}}>
+    <g
+      class="spot time-scale-label"
+      transform="translate({$x} -20)"
+      on:click={testSetScale}
+      use:spottooltipable={{
+        data: spot,
+        target: $drawWrapper,
+        top: $panelHeight + 20,
+      }}
+    >
+      <rect
+        x="0"
+        y="-20"
+        width={$x2 - $x}
+        height="40"
+        rx="5"
+        class={spotName}
+      />
 
-
-            <rect x="0" y ="-20" width="{$x2 - $x}" height="40" rx="5" class="{spotName}" />
-
-
-         <!--    <path d="M0 0l{lineLength} 0"></path>   -->
-            <text class="bg"
-                  dx={offset}
-                  dy="4">{displayName} </text>
-            <text bind:this={timeScaleText}
-                  class="{spotName}"
-                  on:click={testSetScale}
-                  dx={offset}
-                  dy="4">{displayName} </text>
- <!--
+      <!--    <path d="M0 0l{lineLength} 0"></path>   -->
+      <text class="bg" dx={offset} dy="4">{displayName} </text>
+      <text
+        bind:this={timeScaleText}
+        class={spotName}
+        on:click={testSetScale}
+        dx={offset}
+        dy="4"
+        >{displayName}
+      </text>
+      <!--
                   {#if (spot.name === 'Jurassic' || spot.name === 'Triassic'|| spot.name === 'Cretaceous') }
             <path d="M{timeScaleText ? timeScaleText.getComputedTextLength() + 2.5 * offset: 0} 0l{lineLength} 0"
                   marker-end="url(#arrow)"></path>
@@ -104,9 +99,8 @@ $timeScale = $timeScale;
   <circle cx="0" cy="0" r="5"></circle>
   <circle class="bait" cx="0" cy="0" r="10"></circle>
  -->
-
-</g>
-</g>
+    </g>
+  </g>
 </g>
 
 <style>
@@ -114,14 +108,13 @@ $timeScale = $timeScale;
     pointer-events: all;
     cursor: pointer;
   }
-  
+
   rect {
     stroke: var(--dfrlab-gray);
     stroke-width: 0.13rem;
     stroke-opacity: 0.9;
     transition: all 200ms ease;
   }
-
 
   .Cretaceous {
     fill: var(--cretaceous);
@@ -131,21 +124,19 @@ $timeScale = $timeScale;
   }
   .Triassic {
     fill: var(--triassic);
-   }
+  }
   .Paleogene {
-    fill:  var(--paleogene);
+    fill: var(--paleogene);
   }
   .Neogene {
-    fill:  var(--neogene);
+    fill: var(--neogene);
   }
   .Permian {
-    fill:  var(--permian);
+    fill: var(--permian);
   }
   .Carboniferous {
-    fill:  var(--carboniferous);
+    fill: var(--carboniferous);
   }
-  
-  
 
   rect.bait {
     fill: none;
@@ -162,5 +153,4 @@ $timeScale = $timeScale;
   .time-scale-label text {
     text-anchor: start;
   }
-
 </style>

@@ -1,14 +1,14 @@
 <script>
   // a custom dropdown
-  import { createEventDispatcher } from 'svelte';
-  import { slide } from 'svelte/transition';
-  import { sortConsistently } from '../utils/misc';
+  import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition";
+  import { sortConsistently } from "../utils/misc";
 
-  import Checkbox from './Checkbox.svelte';
+  import Checkbox from "./Checkbox.svelte";
 
   export let items = [];
-  export let label = '';
-  export let nameField = 'id';
+  export let label = "";
+  export let nameField = "id";
   export let hideOneHitWonders = false;
   export let superior = false;
 
@@ -18,7 +18,7 @@
   let expanded = false;
 
   function handleBodyClick() {
-    expanded = false
+    expanded = false;
   }
 
   function toggleExpanded() {
@@ -26,11 +26,17 @@
   }
 
   function selectAll() {
-    dispatch('itemsAdded', items.map((d) => d.id));
+    dispatch(
+      "itemsAdded",
+      items.map((d) => d.id)
+    );
   }
 
   function unselectAll() {
-    dispatch('itemsRemoved', items.map((d) => d.id));
+    dispatch(
+      "itemsRemoved",
+      items.map((d) => d.id)
+    );
   }
 
   function handleDropdownClick() {
@@ -38,54 +44,70 @@
   }
 
   function handleChoiceClick(id) {
-    console.log(id)
-    if (!items.filter((d) => d.selected).map((d) => d.id).includes(id)) {
-      dispatch('itemsAdded', id);
+    console.log(id);
+    if (
+      !items
+        .filter((d) => d.selected)
+        .map((d) => d.id)
+        .includes(id)
+    ) {
+      dispatch("itemsAdded", id);
     } else {
-      dispatch('itemsRemoved', id);
+      dispatch("itemsRemoved", id);
     }
   }
 </script>
 
-<svelte:body on:click={(e) => handleBodyClick(e)}></svelte:body>
+<svelte:body on:click={(e) => handleBodyClick(e)} />
 
 <div class="dropdown" bind:this={elem}>
   <div class="label">
     {label}
   </div>
   <div class="selected-items" on:click|stopPropagation={handleDropdownClick}>
-    <span class="selected-items-icon"></span>
+    <span class="selected-items-icon" />
     <span class="selected-items-text">
       {items.filter((d) => d.selected).length === 0
-        ? 'none'
-        : (items.every((d) => d.selected && items.length > 1)
-          ? 'all'
-          : items.filter((d) => d.selected).map((d) => d[nameField]).join(', '))}
+        ? "none"
+        : items.every((d) => d.selected && items.length > 1)
+        ? "all"
+        : items
+            .filter((d) => d.selected)
+            .map((d) => d[nameField])
+            .join(", ")}
     </span>
     <button class="selected-items-arrow">
       <svg class:expanded width="15" height="10">
-        <path d="M0 0L15 0L7.5 10Z"></path>
+        <path d="M0 0L15 0L7.5 10Z" />
       </svg>
     </button>
   </div>
   <div class="choice-wrapper">
-    {#if (expanded)}
+    {#if expanded}
       <div class="choice" transition:slide class:superior>
         <div class="choice-controls">
-          <button class="choice-controls-selectall" on:click|stopPropagation={selectAll}>Select all</button>
-          <button class="choice-controls-unselectall" on:click|stopPropagation={unselectAll}>Unselect all</button>
+          <button
+            class="choice-controls-selectall"
+            on:click|stopPropagation={selectAll}>Select all</button
+          >
+          <button
+            class="choice-controls-unselectall"
+            on:click|stopPropagation={unselectAll}>Unselect all</button
+          >
         </div>
         <ul class="choice-list">
-          {#each items.sort((a, b) => -sortConsistently(a, b, 'id', 'id')) as item, i (item.id)}
-            {#if (!(hideOneHitWonders && item.count === 1))}
+          {#each items.sort((a, b) => -sortConsistently(a, b, "id", "id")) as item, i (item.id)}
+            {#if !(hideOneHitWonders && item.count === 1)}
               <li on:click|stopPropagation>
-                <Checkbox id="{label}-{i}"
-                          checked={item.selected}
-                          on:click={() => handleChoiceClick(item.id)}>
+                <Checkbox
+                  id="{label}-{i}"
+                  checked={item.selected}
+                  on:click={() => handleChoiceClick(item.id)}
+                >
                   <span class="choice-entry-name">{item[nameField]}</span>
-                  {#if (item.liveCount)}
+                  {#if item.liveCount}
                     <span class="choice-entry-count">({item.liveCount})</span>
-                  {:else if (item.source)}
+                  {:else if item.source}
                     <span class="choice-entry-source">({item.source})</span>
                   {/if}
                 </Checkbox>
@@ -93,8 +115,10 @@
             {/if}
           {/each}
         </ul>
-        {#if (hideOneHitWonders)}
-          <p class="info">{label}s with only one result in the dataset are hidden.</p>
+        {#if hideOneHitWonders}
+          <p class="info">
+            {label}s with only one result in the dataset are hidden.
+          </p>
         {/if}
       </div>
     {/if}
@@ -156,7 +180,7 @@
     transition: transform 400ms ease;
   }
 
-  .selected-items-arrow svg.expanded{
+  .selected-items-arrow svg.expanded {
     transform: rotate(-540deg);
   }
 
@@ -224,7 +248,8 @@
     background-color: var(--prehistoricLightGreen);
   }
 
-  .choice-entry-count, .choice-entry-source {
+  .choice-entry-count,
+  .choice-entry-source {
     font-size: 0.8em;
   }
 

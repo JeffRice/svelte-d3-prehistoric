@@ -1,14 +1,14 @@
 <script>
   // free text search bar
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
 
-  export let searchString = '';
-  export let label = '';
+  export let searchString = "";
+  export let label = "";
 
   const dispatch = createEventDispatcher();
 
   function reset() {
-    searchString = '';
+    searchString = "";
     search();
   }
 
@@ -21,7 +21,7 @@
   }
 
   function search() {
-    dispatch('change', searchString);
+    dispatch("change", searchString);
   }
 </script>
 
@@ -32,21 +32,27 @@
     <span on:click={() => reset()}>Reset</span>
   </div>
   <div class="search">
-    <input id="table-search-field"
-            type="text"
-            placeholder="Type and press enter"
-            bind:value={searchString}
-            on:keyup={(e) => handleKeyUp(e)} />
-    {#if (searchString !== '')}
+    <input
+      id="table-search-field"
+      type="text"
+      placeholder="Type and press enter"
+      bind:value={searchString}
+      on:keyup={(e) => handleKeyUp(e)}
+    />
+    {#if searchString !== ""}
       <span class="button-fields">
-        <span class="reset"
-                class:active={searchString}
-                on:click={() => searchString = ''}>
+        <span
+          class="reset"
+          class:active={searchString}
+          on:click={() => (searchString = "")}
+        >
           x
         </span>
-        <span class="go"
-              class:active={searchString}
-              on:click={() => handleGoClick()}>
+        <span
+          class="go"
+          class:active={searchString}
+          on:click={() => handleGoClick()}
+        >
           Go
         </span>
       </span>

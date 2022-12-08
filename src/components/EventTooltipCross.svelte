@@ -5,17 +5,19 @@
     top: 10,
     right: 10,
     bottom: 10,
-    left: 10
+    left: 10,
   };
-  export let side = 'left';
+  export let side = "left";
 </script>
 
-<svg viewBox="0 0 {offset.left * 2} {offset.top * 2}"
-     width={offset.left * 2}
-     height={offset.top * 2}
-     style="left: {side === 'right' ? 0 : tWidth - 2 * offset.left}px;">
-  <path d="M{offset.left} 0L{offset.left} {offset.top * 2}"></path>
-  <path d="M0 {offset.top}L{offset.left * 2} {offset.top}"></path>
+<svg
+  viewBox="0 0 {offset.left * 2} {offset.top * 2}"
+  width={offset.left * 2}
+  height={offset.top * 2}
+  style="left: {side === 'right' ? 0 : tWidth - 2 * offset.left}px;"
+>
+  <path d="M{offset.left} 0L{offset.left} {offset.top * 2}" />
+  <path d="M0 {offset.top}L{offset.left * 2} {offset.top}" />
 </svg>
 
 <style>

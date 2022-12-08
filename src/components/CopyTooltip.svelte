@@ -1,9 +1,9 @@
 <script>
   // tooltip on the copy
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
 
-  export let title = '';
-  export let content = '';
+  export let title = "";
+  export let content = "";
   export let x = 0;
   export let y = 0;
   export let showClickMessage = false;
@@ -27,14 +27,16 @@
   }
 </script>
 
-<div class="copy-tooltip"
-     bind:clientWidth={width}
-     style="left: {left}px; top: {y}px; width: {maxWidth}px;"
-     transition:fade={{duration: 200}}>
+<div
+  class="copy-tooltip"
+  bind:clientWidth={width}
+  style="left: {left}px; top: {y}px; width: {maxWidth}px;"
+  transition:fade={{ duration: 200 }}
+>
   <div class="content">
     <h2>{title}</h2>
     <p>{content}</p>
-    {#if (showClickMessage)}
+    {#if showClickMessage}
       <p class="footer">Click to read more.</p>
     {/if}
   </div>
@@ -54,12 +56,9 @@
     font-family: var(--font-02);
     color: var(--text-black);
     background-color: var(--bg);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
-                0 2px 4px rgba(0,0,0,0.07), 
-                0 4px 8px rgba(0,0,0,0.07), 
-                0 8px 16px rgba(0,0,0,0.07),
-                0 16px 32px rgba(0,0,0,0.07), 
-                0 32px 64px rgba(0,0,0,0.07);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
   }
 
   h2 {

@@ -1,10 +1,10 @@
 <script>
   // selected dates on the timeline (= the spots)
-  import { onMount } from 'svelte';
-  import { panelHeight } from '../stores/dimensions';
-  import loadSpots from '../utils/loadSpots';
+  import { onMount } from "svelte";
+  import { panelHeight } from "../stores/dimensions";
+  import loadSpots from "../utils/loadSpots";
 
-  import TimelineSpot from './TimelineSpot.svelte';
+  import TimelineSpot from "./TimelineSpot.svelte";
 
   let spots = [];
 

@@ -4,12 +4,14 @@
   export let checked = false;
 </script>
 
-<input type="checkbox"
-       id="checkbox-{id}"
-       class:checked
-       on:click|stopPropagation />
+<input
+  type="checkbox"
+  id="checkbox-{id}"
+  class:checked
+  on:click|stopPropagation
+/>
 <label for="checkbox-{id}" class="choice-entry-name">
-  <slot></slot>
+  <slot />
 </label>
 
 <style>
@@ -19,7 +21,7 @@
     padding-left: 1.5rem;
     cursor: pointer;
     pointer-events: all;
-  } 
+  }
 
   input[type="checkbox"] {
     display: none;

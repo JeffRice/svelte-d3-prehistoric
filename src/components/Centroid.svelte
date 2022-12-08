@@ -1,59 +1,73 @@
 <script>
   // single implementation of a country centroid on the map
-  import { centroidScale } from '../stores/scales';
-  import { bloomDuration, growDuration, jitterFactor } from '../transitions/constants';
-  import { haveOverlap } from '../utils/misc';
-  import { createEventDispatcher } from 'svelte';
-  import { fade } from 'svelte/transition';  
-  import { createTweenedPos } from '../transitions/tween';
-  
+  import { centroidScale } from "../stores/scales";
+  import {
+    bloomDuration,
+    growDuration,
+    jitterFactor,
+  } from "../transitions/constants";
+  import { haveOverlap } from "../utils/misc";
+  import { createEventDispatcher } from "svelte";
+  import { fade } from "svelte/transition";
+  import { createTweenedPos } from "../transitions/tween";
+
   export let centroid;
   export let country;
   export let selected = false;
 
-
   const tweenedPos = createTweenedPos();
 
-$: $tweenedPos = {x: centroid[0].xCountry, fy: centroid[0].yCountry};
+  $: $tweenedPos = { x: centroid[0].xCountry, fy: centroid[0].yCountry };
 
   const dispatch = createEventDispatcher();
   // console.log('centroid: ', centroid)
   // console.log('tweenedPos: ',   centroid[0].xCountry)
 
-  function topMargin (point){
-
-  if (centroid[0].disNation === 'Eurasia'){
-    point = point + 100
+  function topMargin(point) {
+    if (centroid[0].disNation === "Eurasia") {
+      point = point + 100;
+    }
+    return point;
   }
-return point
-  }
-
-
-
 </script>
 
-<g class="centroid"
-   class:selected
-   on:click|stopPropagation={(e) => dispatch('click', {id: country, c: centroid, e})}
-   on:mouseover|stopPropagation={(e) => dispatch('mouseover', {id: country, c: centroid, e})}>
+<g
+  class="centroid"
+  class:selected
+  on:click|stopPropagation={(e) =>
+    dispatch("click", { id: country, c: centroid, e })}
+  on:mouseover|stopPropagation={(e) =>
+    dispatch("mouseover", { id: country, c: centroid, e })}
+>
+  <circle
+    class="centroid-fg"
+    style="transition: stroke-opacity {growDuration}ms ease;"
+    cx={$tweenedPos.x}
+    cy={topMargin($tweenedPos.fy)}
+    r={$centroidScale(10)}
+  />
 
-
-         <circle class="centroid-fg"
-          style="transition: stroke-opacity {growDuration}ms ease;"
-          cx={$tweenedPos.x}
-          cy={topMargin($tweenedPos.fy)}
-          r={$centroidScale(10)}></circle>
-
-
-   <!-- Centroid Label -->
-  <g class="centroid-name-label" transform="translate({centroid[0].xCountry - (country.length * 4)} {topMargin(centroid[0].yCountry) + 30})">
-     <text style="transition: opacity {growDuration}ms ease;">{country}</text>
+  <!-- Centroid Label -->
+  <g
+    class="centroid-name-label"
+    transform="translate({centroid[0].xCountry - country.length * 4} {topMargin(
+      centroid[0].yCountry
+    ) + 30})"
+  >
+    <text style="transition: opacity {growDuration}ms ease;">{country}</text>
   </g>
- 
+
   <!-- Centroid Circle with count -->
-  {#if (centroid.length > 0)}
-      <g class="centroid-label" transform="translate({centroid[0].xCountry} {topMargin(centroid[0].yCountry) + 5})">
-      <text style="transition: opacity {growDuration}ms ease;">{centroid.filter((c) => c.show).length}</text>
+  {#if centroid.length > 0}
+    <g
+      class="centroid-label"
+      transform="translate({centroid[0].xCountry} {topMargin(
+        centroid[0].yCountry
+      ) + 5})"
+    >
+      <text style="transition: opacity {growDuration}ms ease;"
+        >{centroid.filter((c) => c.show).length}</text
+      >
     </g>
   {/if}
 </g>
@@ -63,8 +77,7 @@ return point
     cursor: pointer;
   }
 
-
-  .centroid-name-label{
+  .centroid-name-label {
     fill: var(--usa-blue);
     font-family: var(--font-02);
     font-weight: 500;

@@ -1,16 +1,16 @@
 <script>
   // the timeline
-  import { width, maxDim, panelHeight } from '../stores/dimensions';
-  import { gentleLine } from '../utils/paths';
+  import { width, maxDim, panelHeight } from "../stores/dimensions";
+  import { gentleLine } from "../utils/paths";
 
-  import TimelineSpots from './TimelineSpots.svelte';
+  import TimelineSpots from "./TimelineSpots.svelte";
 
   const xOffset = $width / 70;
   const yOffset = $maxDim / 900;
 </script>
 
 <g class="timeline" transform="translate(0 {$panelHeight})">
-  <path d={gentleLine($width, xOffset, yOffset)}></path>
+  <path d={gentleLine($width, xOffset, yOffset)} />
 </g>
 <TimelineSpots />
 

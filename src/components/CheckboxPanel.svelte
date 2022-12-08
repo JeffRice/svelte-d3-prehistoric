@@ -1,23 +1,28 @@
 <script>
-  import { controlsFilter } from '../stores/filters';
-  import { copytooltipable } from '../actions/copytooltipable';
+  import { controlsFilter } from "../stores/filters";
+  import { copytooltipable } from "../actions/copytooltipable";
 
-  import Checkbox from './Checkbox.svelte';
-
+  import Checkbox from "./Checkbox.svelte";
 
   function handleClick() {
-        $controlsFilter = !$controlsFilter;
+    $controlsFilter = !$controlsFilter;
   }
 </script>
 
 <ul class="checkboxpanel-wrapper">
   <li>
-    <Checkbox id="checkboxpanel-checkbox-controlsFilter"
-              checked={$controlsFilter}
-              on:click={handleClick}
-             >
-      <span use:copytooltipable={{content: 'Toggles filter visibility.', showClickMessage: false}}
-            style="white-space: nowrap;">
+    <Checkbox
+      id="checkboxpanel-checkbox-controlsFilter"
+      checked={$controlsFilter}
+      on:click={handleClick}
+    >
+      <span
+        use:copytooltipable={{
+          content: "Toggles filter visibility.",
+          showClickMessage: false,
+        }}
+        style="white-space: nowrap;"
+      >
         Toggle Filters
       </span>
     </Checkbox>
@@ -36,7 +41,6 @@
   li {
     position: relative;
   }
-
 
   span {
     display: inline-block;

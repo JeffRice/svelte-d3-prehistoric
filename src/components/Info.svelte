@@ -1,6 +1,6 @@
 <script>
   // info shown on the timeline, e.g. for jumps to table view
-  import { fade } from 'svelte/transition';
+  import { fade } from "svelte/transition";
 
   export let selectedItems = [];
   export let x = 0;
@@ -12,12 +12,17 @@
   $: if (show) showCounter += 1;
 </script>
 
-{#if (show && showCounter <= 2)}
-  <div class="info"
-       style="left: {x}px; top: {y}px;"
-       transition:fade>
+{#if show && showCounter <= 2}
+  <div class="info" style="left: {x}px; top: {y}px;" transition:fade>
     <div class="info-icon">i</div>
-    <p>Compare your selection in the <span class="pseudolink" on:click|self={() => document.querySelector('#table').scrollIntoView({behavior: 'auto'})}>dataset view</span>.</p>  
+    <p>
+      Compare your selection in the <span
+        class="pseudolink"
+        on:click|self={() =>
+          document.querySelector("#table").scrollIntoView({ behavior: "auto" })}
+        >dataset view</span
+      >.
+    </p>
   </div>
 {/if}
 

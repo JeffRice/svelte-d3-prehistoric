@@ -1,8 +1,12 @@
 <script>
   // shiny circle around balloons
-  import { fade } from 'svelte/transition';
-  import { bloomDuration, growDuration, jitterFactor } from '../transitions/constants';
-  import { sortConsistently } from '../utils/misc';
+  import { fade } from "svelte/transition";
+  import {
+    bloomDuration,
+    growDuration,
+    jitterFactor,
+  } from "../transitions/constants";
+  import { sortConsistently } from "../utils/misc";
 
   export let timePoint;
   export let tweenedPos;
@@ -11,40 +15,48 @@
 
   let sortedRadii = [];
 
-  $: if (timePoint) sortedRadii = [
-    {
-      id: 2,
-      className: 'reddit',
-      r: (timePoint.rSizeTot * 0.10 + timePoint.rSizeTot * 0.30 + timePoint.rSizeTot * 0.85),
-    },
-    {
-      id: 1,
-      className: 'twitter',
-      r: (timePoint.rSizeTot * 0.30 + timePoint.rSizeTot * 0.85),
-    },
-    {
-      id: 0,
-      className: 'facebook',
-      r: (timePoint.rSizeTot * 0.75),
-    }
-  ]
-  .map((d) => ({...d, r: d.r * sizeFactor}));
+  $: if (timePoint)
+    sortedRadii = [
+      {
+        id: 2,
+        className: "reddit",
+        r:
+          timePoint.rSizeTot * 0.1 +
+          timePoint.rSizeTot * 0.3 +
+          timePoint.rSizeTot * 0.85,
+      },
+      {
+        id: 1,
+        className: "twitter",
+        r: timePoint.rSizeTot * 0.3 + timePoint.rSizeTot * 0.85,
+      },
+      {
+        id: 0,
+        className: "facebook",
+        r: timePoint.rSizeTot * 0.75,
+      },
+    ].map((d) => ({ ...d, r: d.r * sizeFactor }));
 
- // console.log(timePoint);
+  // console.log(timePoint);
 
   $: sizeFactor = 0.85;
 </script>
 
-<g class="shiny-circle"
-   class:selected={selected || hovered}
-   transform="translate({tweenedPos.x} {tweenedPos.fy})"
-   in:fade|local={{duration: bloomDuration, delay: growDuration + timePoint.id * jitterFactor}}
-   out:fade|local={{duration: bloomDuration, delay: timePoint.id * jitterFactor}}>
-  {#each sortedRadii as {id, className, r} (id)}
-    <circle class={className}
-            cx="0"
-            cy="0"
-            r="{r }" />
+<g
+  class="shiny-circle"
+  class:selected={selected || hovered}
+  transform="translate({tweenedPos.x} {tweenedPos.fy})"
+  in:fade|local={{
+    duration: bloomDuration,
+    delay: growDuration + timePoint.id * jitterFactor,
+  }}
+  out:fade|local={{
+    duration: bloomDuration,
+    delay: timePoint.id * jitterFactor,
+  }}
+>
+  {#each sortedRadii as { id, className, r } (id)}
+    <circle class={className} cx="0" cy="0" {r} />
   {/each}
 </g>
 

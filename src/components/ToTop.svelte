@@ -1,7 +1,7 @@
 <script>
   // back to top or to viz buttons
-  import { fly } from 'svelte/transition';
-  import { scrollTo } from '../utils/misc';
+  import { fly } from "svelte/transition";
+  import { scrollTo } from "../utils/misc";
 
   let show = false;
 
@@ -18,12 +18,16 @@
   }
 </script>
 
-<svelte:window on:scroll={handleScroll}></svelte:window>
+<svelte:window on:scroll={handleScroll} />
 
-{#if (show)}
-  <div class="to-top" transition:fly={{duration: 400, y: 100}}>
-    <span class="pseudolink" on:click={() => handleSpanClick('top')}>To Top</span>
-    <span class="pseudolink" on:click={() => handleSpanClick('viz')}>To Visualization</span>
+{#if show}
+  <div class="to-top" transition:fly={{ duration: 400, y: 100 }}>
+    <span class="pseudolink" on:click={() => handleSpanClick("top")}
+      >To Top</span
+    >
+    <span class="pseudolink" on:click={() => handleSpanClick("viz")}
+      >To Visualization</span
+    >
   </div>
 {/if}
 

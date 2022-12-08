@@ -2,20 +2,20 @@
   // custom checkbox
   export let id;
   export let checked = false;
-  export let fossilera = '';
-  export let added = '';
-
-
+  export let fossilera = "";
+  export let added = "";
 </script>
 
-<input type="checkbox-{fossilera}"
-       id="checkbox-{id}"
-       class:checked
-       fossilera={fossilera}
-       added={added}
-       on:click|stopPropagation />
+<input
+  type="checkbox-{fossilera}"
+  id="checkbox-{id}"
+  class:checked
+  {fossilera}
+  {added}
+  on:click|stopPropagation
+/>
 <label for="checkbox-{id}" class="choice-entry-name">
-  <slot></slot>
+  <slot />
 </label>
 
 <style>
@@ -25,14 +25,14 @@
     padding-left: 1.5rem;
     cursor: pointer;
     pointer-events: all;
-  } 
+  }
 
   input[type="checkbox-jurassic"] {
     display: none;
     pointer-events: all;
   }
 
-  input[type="checkbox-jurassic"] + label::before{
+  input[type="checkbox-jurassic"] + label::before {
     display: block;
     width: 15px;
     height: 15px;
@@ -56,7 +56,7 @@
     pointer-events: all;
   }
 
-  input[type="checkbox-cretaceous"] + label::before{
+  input[type="checkbox-cretaceous"] + label::before {
     display: block;
     width: 15px;
     height: 15px;
@@ -80,7 +80,7 @@
     pointer-events: all;
   }
 
-  input[type="checkbox-triassic"] + label::before{
+  input[type="checkbox-triassic"] + label::before {
     display: block;
     width: 15px;
     height: 15px;
