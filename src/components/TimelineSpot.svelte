@@ -28,28 +28,35 @@
 
   function testSetScale(e) {
     console.log(e);
-    console.log(e.path[0].classList[0]);
+    console.log( e.target.classList[0]);
+    
+
+   // console.log(e.path[0].classList[0]);
     if (!$originalTimeDomain) $originalTimeDomain = [...$timeScale.domain()];
 
-    if (e.path[0].classList[0] === "Neogene") {
+   // console.log('e.path', e.path)
+
+   // console.log('e.composedPath()', e.composedPath())
+
+    if (e.target.classList[0] === "Neogene") {
       $timeScale.domain([2, 23]);
     }
-    if (e.path[0].classList[0] === "Paleogene") {
+    if (e.target.classList[0] === "Paleogene") {
       $timeScale.domain([23, 65]);
     }
-    if (e.path[0].classList[0] === "Cretaceous") {
+    if (e.target.classList[0] === "Cretaceous") {
       $timeScale.domain([65, 145]);
     }
-    if (e.path[0].classList[0] === "Jurassic") {
+    if (e.target.classList[0] === "Jurassic") {
       $timeScale.domain([145, 201]);
     }
-    if (e.path[0].classList[0] === "Triassic") {
+    if (e.target.classList[0] === "Triassic") {
       $timeScale.domain([201, 251]);
     }
-    if (e.path[0].classList[0] === "Permian") {
+    if (e.target.classList[0] === "Permian") {
       $timeScale.domain([251, 298]);
     }
-    if (e.path[0].classList[0] === "Carboniferous") {
+    if (e.target.classList[0] === "Carboniferous") {
       $timeScale.domain([298, 358]);
     }
 
