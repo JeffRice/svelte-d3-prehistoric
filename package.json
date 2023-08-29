@@ -20,7 +20,7 @@
     "d3fc-discontinuous-scale": "^2.0.5",
     "flubber": "^0.4.2",
     "lodash": "^4.17.20",
-    "node-sass": "^4.14.1",
+    "node-sass": "^8.0",
     "prettier": "^2.8.1",
     "prettier-plugin-svelte": "^2.8.1",
     "rollup": "^2.3.4",
